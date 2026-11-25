@@ -9,49 +9,42 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the area of the region bounded by \\(y = x^2\\) and \\(y = x + 2\\).",
+          "q": "Based strictly on the tabulated thermodynamics observations (CALCULUS-337115924), evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Area between two curves",
-          "answer": "Intersections: \\(x^2 = x+2\\), so \\(x^2-x-2=0\\), \\((x-2)(x+1)=0\\): \\(x=-1,2\\). Area \\(= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}\\).",
+          "answer": "**Answer:** \\(15\\). From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
           "explanation": "Intersections: \\(x^2 = x+2\\), so \\(x^2-x-2=0\\), \\((x-2)(x+1)=0\\): \\(x=-1,2\\). Area \\(= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}\\).",
+          "explain": "From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(f(x)\\)",
                 "7",
-                "12",
-                "17"
+                "9",
+                "14",
+                "13"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "1",
+                "2",
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (thermodynamics, CALCULUS-337115924)",
+            "caption_ar": "قيم مختارة للدالتين (الديناميكا الحرارية، CALCULUS-337115924)"
           }
         },
         {
@@ -74,32 +67,56 @@
           }
         },
         {
-          "q": "Find the area enclosed by \\(x = y^2\\) and \\(x = 2y\\) by integrating with respect to \\(y\\).",
+          "q": "The accompanying figure illustrates a cad blueprint configuration (CALCULUS-G370672162); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Setting up with respect to y, and total area",
-          "answer": "Intersections: \\(y^2=2y\\) gives \\(y=0,2\\). Area \\(= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\).",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "Intersections: \\(y^2=2y\\) gives \\(y=0,2\\). Area \\(= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              7
             ],
             "yl": [
-              -4,
-              4
+              -3,
+              7
             ],
-            "xStep": 1,
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "fn": "4/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 2"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G370672162)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G370672162)"
           }
         },
         {
@@ -187,68 +204,90 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Find the area between \\(y=\\cos x\\) and \\(y=0\\) on \\(\\left[0,\\frac{\\pi}{2}\\right]\\).",
+          "q": "From the plotted turbine profile figure above (CALCULUS-G219673605) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Areas involving trigonometric and exponential curves",
-          "answer": "Area \\(=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Area \\(=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 225,
-                "label": "θ"
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#9)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G219673605)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G219673605)"
           }
         },
         {
-          "q": "Find the area between \\(y=e^x\\) and \\(y=e^{-x}\\) on \\([0,1]\\) (note \\(e^x\\geq e^{-x}\\) on this interval).",
+          "q": "The table summarizes measurements from a telemetry evaluation (CALCULUS-202894972); using these entries, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Areas involving trigonometric and exponential curves",
-          "answer": "Area \\(=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2\\).",
+          "answer": "**Answer:** \\(10\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
           "explanation": "Area \\(=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "g(x)",
+                "0",
                 "1",
-                "6",
-                "11",
-                "16"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#10)",
-            "caption_ar": "جدول نمط مرجعي (#10)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
+                "3",
+                "2"
+              ],
               [
-                "g(x)",
                 "1",
-                "6",
-                "11",
-                "16"
+                "2",
+                "5",
+                "5"
+              ],
+              [
+                "2",
+                "3",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (telemetry, CALCULUS-202894972)",
+            "caption_ar": "جدول خطوات أويلر (القياس عن بُعد، CALCULUS-202894972)"
           }
         },
         {
@@ -272,61 +311,88 @@
           }
         },
         {
-          "q": "Find the area between \\(y=6-x^2\\) and \\(y=2\\).",
+          "q": "Given the measurements marked directly on the field geometry schematic (CALCULUS-G948956391) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Area between a curve and a horizontal line",
-          "answer": "Intersections: \\(6-x^2=2\\) gives \\(x=\\pm2\\). Area \\(=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}\\).",
+          "answer": "**Answer:** \\(-2\\). At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
           "explanation": "Intersections: \\(6-x^2=2\\) gives \\(x=\\pm2\\). Area \\(=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}\\).",
+          "explain": "At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
             "xl": [
-              -3,
-              3
+              -1,
+              4
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              5
             ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "step": 1,
+            "pts": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "x": 1,
+                "y": 3,
+                "label": "P(1, 3)"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (CALCULUS-G948956391)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G948956391)"
           }
         },
         {
-          "q": "Two runners' velocities (m/s) over a 10-second race are \\(v_1(t)=2t\\) and \\(v_2(t)=t+3\\). The area between these curves represents the gap in distance traveled. Find this gap over \\([0,10]\\).",
+          "q": "The accompanying figure illustrates a calibration curve configuration (CALCULUS-G965734010); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Area between curves in applied contexts",
-          "answer": "Intersection: \\(2t=t+3\\) gives \\(t=3\\). For \\(t<3\\), \\(v_2>v_1\\); for \\(t>3\\), \\(v_1>v_2\\). Gap \\(=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|\\). \\(\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5\\). \\(\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5\\). Total gap \\(=4.5+24.5=29\\) m.",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "Intersection: \\(2t=t+3\\) gives \\(t=3\\). For \\(t<3\\), \\(v_2>v_1\\); for \\(t>3\\), \\(v_1>v_2\\). Gap \\(=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|\\). \\(\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5\\). \\(\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5\\). Total gap \\(=4.5+24.5=29\\) m.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
+              -1,
               7
             ],
-            "xStep": 1,
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G965734010)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G965734010)"
           }
         },
         {

@@ -5,50 +5,45 @@
       "number": 1,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Express \\(0.\\overline{27}\\) as an irreducible fraction.",
+        "en": "The table summarizes measurements from a telemetry evaluation (ACT2-700); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Let \\(x = 0.\\overline{27} = 0.272727\\dots\\)</p><p><strong>Step 2:</strong> Multiply by \\(10^2 = 100\\) to shift one full repeating period past the decimal:<br>\\[100x = 27.\\overline{27}\\]</p><p><strong>Step 3:</strong> Subtract the original equation to eliminate the repeating tail:<br>\\[100x - x = 27.\\overline{27} - 0.\\overline{27} \\implies 99x = 27 \\implies x = \\frac{27}{99}\\]</p><p><strong>Step 4:</strong> Reduce by dividing numerator and denominator by 9:<br>\\[x = \\frac{27 \\div 9}{99 \\div 9} = \\mathbf{\\frac{3}{11}}\\]</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(13 + 4\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "20",
-            "25",
-            "30",
-            "35"
+            "13",
+            "4",
+            17
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            15,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#1)",
-        "caption_ar": "جدول نمط مرجعي (#1)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "25",
-            "30",
-            "35"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (ACT2-700)",
+        "caption_ar": "ملخص النتائج (ACT2-700)"
       }
     },
     {
@@ -123,50 +118,38 @@
       "number": 4,
       "difficulty": "Advanced",
       "question": {
-        "en": "For what values of \\(k\\) does \\(x^2-kx+9=0\\) have equal real roots?",
+        "en": "From the plotted calibration curve figure above (ACT2-G782) showing a sinusoidal wave with dashed midline \\(y = 6\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> A quadratic equation \\(ax^2 + bx + c = 0\\) has equal real roots if and only if its discriminant equals zero: \\(\\Delta = b^2 - 4ac = 0\\).</p><p><strong>Step 2:</strong> Substitute \\(a = 1\\), \\(b = -k\\), and \\(c = 9\\):<br>\\[(-k)^2 - 4(1)(9) = 0 \\implies k^2 - 36 = 0 \\implies k^2 = 36\\]</p><p><strong>Step 3:</strong> Solve for \\(k\\):<br>\\[k = \\pm \\sqrt{36} \\implies \\mathbf{k = \\pm 6}\\]</p>",
+        "en": "<p>From midline \\(6\\) to peak \\(10\\), amplitude is \\(A = 10 - 6 = 4\\), so peak-to-trough range equals \\(2A = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "sinusoid",
+        "amp": 4,
+        "freq": 1,
+        "phase": 0,
+        "midline": 6,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "rows": [
-          [
-            "g(x)",
-            "2",
-            "11",
-            "20",
-            "29"
-          ]
+        "yl": [
+          1,
+          11
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#4)",
-        "caption_ar": "جدول نمط مرجعي (#4)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "pts": [
+          {
+            "x": 1.57,
+            "y": 10,
+            "label": "max=10"
+          }
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "11",
-            "20",
-            "29"
-          ]
-        ]
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 6 (ACT2-G782)",
+        "caption_ar": "موجة جيبية مع خط الوسط (ACT2-G782)"
       }
     },
     {
@@ -233,116 +216,107 @@
       "number": 7,
       "difficulty": "Intermediate",
       "question": {
-        "en": "What is the horizontal asymptote of \\(f(x)=\\dfrac{3x^2}{x^2+1}\\)?",
+        "en": "The accompanying figure illustrates a fluid channel configuration (ACT2-G871); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Analyze degrees: The degree of the numerator (2) equals the degree of the denominator (2).</p><p><strong>Step 2:</strong> The horizontal asymptote is the ratio of leading coefficients as \\(x \\to \\pm\\infty\\): \\[y = \\lim_{x \\to \\pm\\infty} \\frac{3x^2}{x^2 + 1} = \\lim_{x \\to \\pm\\infty} \\frac{3}{1 + 1/x^2} = \\frac{3}{1} = \\mathbf{3}\\]</p><p>The horizontal asymptote is \\(\\mathbf{y = 3}\\).</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(25\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "rows": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#7)",
-        "caption_ar": "جدول نمط مرجعي (#7)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (ACT2-G871)",
+        "caption_ar": "المدرج التكراري للفئات (ACT2-G871)"
       }
     },
     {
       "number": 8,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Is \\(f(x)=x^4-2x^2\\) even, odd, or neither?",
+        "en": "Given the structured hydraulics observations displayed in the table (ACT2-900), evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Evaluate \\(f(-x)\\): \\[f(-x) = (-x)^4 - 2(-x)^2 = x^4 - 2x^2\\]</p><p><strong>Step 2:</strong> Compare with \\(f(x)\\): Since \\(f(-x) = f(x)\\) for all \\(x\\) in the domain, the function is symmetric across the \\(y\\)-axis, and is therefore <strong>even</strong>.</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "yl": [
-          -2,
-          7
+        "rows": [
+          [
+            "\\(f(x)\\)",
+            "3",
+            "5",
+            "10",
+            "9"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
+          ]
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "2^(x) - 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#8)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (hydraulics, ACT2-900)",
+        "caption_ar": "قيم مختارة للدالتين (الهيدروليك، ACT2-900)"
       }
     },
     {
       "number": 9,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the inverse function of \\(f(x)=\\dfrac{2x-1}{x+3}\\).",
-        "ar": "أوجد الدالة العكسية of \\(f(x)=\\dfrac{2x-1}{x+3}\\)."
+        "en": "Referring to the fluid channel figure (ACT2-G943) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+        "ar": "بالرجوع إلى رسم قناة التدفق (ACT2-G943) لمخطط فن الذي يبيّن أعداد عناصر المجموعتين \\(A\\) و \\(B\\) . أوجد عدد عناصر الاتحاد \\(|A \\cup B|\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Set \\(y = \\frac{2x - 1}{x + 3}\\) and swap variables \\(x\\) and \\(y\\): \\[x = \\frac{2y - 1}{y + 3}\\]</p><p><strong>Step 2:</strong> Multiply both sides by \\((y + 3)\\): \\[x(y + 3) = 2y - 1 \\implies xy + 3x = 2y - 1\\]</p><p><strong>Step 3:</strong> Group terms containing \\(y\\) on one side: \\[xy - 2y = -3x - 1 \\implies y(x - 2) = -(3x + 1)\\]</p><p><strong>Step 4:</strong> Solve for \\(y\\): \\[y = \\mathbf{\\frac{-3x - 1}{x - 2}} = \\mathbf{\\frac{3x + 1}{2 - x}} \\quad (x \\neq 2)\\]</p>",
+        "en": "<p>Counting each disjoint region once yields \\(|A \\cup B| = 8 + 6 + 8 = 22\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(22\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
-        ],
-        "yl": [
-          -4,
-          4
-        ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
+        "type": "venn",
+        "sets": [
           {
-            "fn": "x^3 - 3*x",
-            "label": "y = f(x)"
+            "label": "A",
+            "only": 8
+          },
+          {
+            "label": "B",
+            "only": 8
           }
         ],
-        "title": "Coordinate Graph (#9)",
-        "caption": "Reference graph y = f(x)"
+        "both": 6,
+        "outside": 5,
+        "caption": "Venn count diagram of sets A and B (ACT2-G943)",
+        "caption_ar": "مخطط فن للمجموعتين (ACT2-G943)"
       }
     },
     {
@@ -448,227 +422,241 @@
       "number": 14,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the amplitude and period of \\(y=-4\\cos\\!\\left(\\dfrac{\\pi x}{3}\\right)\\).",
-        "ar": "أوجد amplitude و period of \\(y=-4\\cos\\!\\left(\\dfrac{\\pi x}{3}\\right)\\)."
+        "en": "From the plotted acoustic chamber figure above (ACT2-G1064) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(1)\\).",
+        "ar": "تأمّل الرسم البياني لـ غرفة الصوتيات أعلاه (ACT2-G1064) للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(1)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Amplitude:</strong> \\(|A| = |-4| = \\mathbf{4}\\).</p><p><strong>Period:</strong> For \\(y = A\\cos(Bx)\\) with \\(B = \\frac{\\pi}{3}\\): \\[T = \\frac{2\\pi}{|B|} = \\frac{2\\pi}{\\pi / 3} = 2\\pi \\times \\frac{3}{\\pi} = \\mathbf{6}\\]</p>",
+        "en": "<p>From vertex \\((-1, 1)\\) and point \\((0, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(1) = 3(2)^2 + (1) = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "sinusoid",
-        "amp": 3,
-        "freq": 2,
-        "phase": 0,
-        "midline": 1,
-        "fnType": "sin",
-        "showMidline": true,
-        "caption": "Periodic Model (#14)"
+        "type": "fn",
+        "xl": [
+          -4,
+          2
+        ],
+        "yl": [
+          -1,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "3*(x - (-1))^2 + (1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": -1,
+            "y": 1,
+            "label": "(-1, 1)"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0, 4)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ACT2-G1064)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ACT2-G1064)"
       }
     },
     {
       "number": 15,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the distance from \\((1,\\,-2)\\) to \\((5,\\,1)\\).",
-        "ar": "أوجد distance from \\((1,\\,-2)\\) to \\((5,\\,1)\\)."
+        "en": "During photonics experiment (ACT2-1100), observers compiled the following table; representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
+        "ar": "خلال تجربة الفوتونيات (ACT2-1100) تم تجميع الجدول التالي. من الجدول، الذي يمثّل دالة تربيعية \\(q(x)\\) عند قيم متساوية التباعد. أوجد \\(q(4)\\) ."
       },
       "solution": {
-        "en": "<p>Apply the Euclidean distance formula \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\): \\[d = \\sqrt{(5 - 1)^2 + (1 - (-2))^2} = \\sqrt{4^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = \\mathbf{5}\\]</p>",
+        "en": "<p>First differences are \\(4, 6, 8\\), giving constant second difference \\(2\\). Thus \\(q(4) = 25 + 10 = 35\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(35\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2",
+          "3"
         ],
-        "caption": "Real-Line Scale (#15)"
+        "rows": [
+          [
+            "\\(q(x)\\)",
+            "7",
+            "11",
+            "17",
+            "25"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Quadratic sequence values table (photonics, ACT2-1100)",
+        "caption_ar": "جدول قيم دالة تربيعية (الفوتونيات، ACT2-1100)"
       }
     },
     {
       "number": 16,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the midpoint of the segment from \\((-3,\\,4)\\) to \\((7,\\,-2)\\).",
-        "ar": "أوجد نقطة المنتصف من القطعة المستقيمة من \\((-3,\\,4)\\) إلى \\((7,\\,-2)\\)."
+        "en": "Given the measurements marked directly on the acoustic chamber schematic (ACT2-G1136) showing a rectangle with labeled side lengths. Find its perimeter.",
+        "ar": "القيم على رسم غرفة الصوتيات (ACT2-G1136) موضحة مباشرة على الشكل لمستطيل بأبعاد مرسومة على أضلاعه. أوجد محيط المستطيل."
       },
       "solution": {
-        "en": "<p>Apply the midpoint formula \\(M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)\\): \\[M = \\left( \\frac{-3 + 7}{2}, \\frac{4 + (-2)}{2} \\right) = \\left( \\frac{4}{2}, \\frac{2}{2} \\right) = \\mathbf{(2, 1)}\\]</p>",
-        "ar": "<p>طبّق نقطة المنتصف القانون \\(M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)\\): \\[M = \\left( \\frac{-3 + 7}{2}, \\frac{4 + (-2)}{2} \\right) = \\left( \\frac{4}{2}, \\frac{2}{2} \\right) = \\mathbf{(2, 1)}\\]</p>"
+        "en": "<p>Reading length \\(5\\) and width \\(5\\) from the rectangle, perimeter \\(= 2(5 + 5) = 20\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(20\\)</strong></p>",
+        "ar": "<p>من أبعاد المستطيل الموضحة \\(5\\) و \\(5\\) يكون الناتج \\(20\\) . تحقّق: تأكد من قراءة الصف وتدريج المحور والقيم الحدية من الشكل مع مراجعة الحساب. <strong>الإجابة النهائية: \\(20\\)</strong></p>"
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows": [
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
           [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
+            0,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            5
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#16)",
-        "caption_ar": "جدول نمط مرجعي (#16)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "w": 5,
+        "h": 5,
+        "sides": [
+          "5",
+          "5",
+          "5",
+          "5"
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ]
-        ]
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (ACT2-G1136)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (ACT2-G1136)"
       }
     },
     {
       "number": 17,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the standard equation of the ellipse centered at the origin with horizontal semi-major axis \\(a=5\\) and semi-minor axis \\(b=3\\).",
+        "en": "The accompanying figure illustrates a acoustic chamber configuration (ACT2-G1172); using it representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The standard equation of an ellipse centered at \\((0, 0)\\) is: \\[\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\]</p><p>Substitute \\(a = 5\\) and \\(b = 3\\): \\[\\frac{x^2}{5^2} + \\frac{y^2}{3^2} = 1 \\implies \\mathbf{\\frac{x^2}{25} + \\frac{y^2}{9} = 1}\\]</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 17\\) and \\(Q_3 = 28\\), so \\(\\text{IQR} = 28 - 17 = 11\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(11\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "conic_section",
-        "conic": "ellipse",
-        "h": 0,
-        "k": 0,
-        "a": 5,
-        "b": 3,
-        "p": 2,
-        "orientation": "vertical",
-        "showFoci": true,
-        "caption": "Conic Section (#17)"
+        "type": "boxplot",
+        "boxes": [
+          {
+            "label": "Sample",
+            "min": 11,
+            "q1": 17,
+            "med": 22,
+            "q3": 28,
+            "max": 33
+          }
+        ],
+        "range": [
+          7,
+          37
+        ],
+        "caption": "Five-number summary box plot (ACT2-G1172)",
+        "caption_ar": "مخطط الصندوق والعارضتين (ACT2-G1172)"
       }
     },
     {
       "number": 18,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the focus of the parabola \\(y^2=12x\\).",
-        "ar": "أوجد focus of the parabola \\(y^2=12x\\)."
+        "en": "Selected numerical readings from hydraulics run (ACT2-1208) appear in the table; representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
+        "ar": "تظهر قراءات الهيدروليك المختارة (ACT2-1208) في الجدول التالي؛ استخدم الجدول لإيجاد الذي يمثّل دالة تربيعية \\(q(x)\\) عند قيم متساوية التباعد. أوجد \\(q(4)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Compare with standard form \\(y^2 = 4px\\). The vertex is at \\((0, 0)\\) and it opens rightward.</p><p><strong>Step 2:</strong> Solve for focal distance \\(p\\): \\[4p = 12 \\implies p = 3\\]</p><p><strong>Step 3:</strong> The focus is at \\((h + p, k) = (0 + 3, 0) = \\mathbf{(3, 0)}\\) (and directrix is \\(x = -3\\)).</p>",
+        "en": "<p>First differences are \\(2, 4, 6\\), giving constant second difference \\(2\\). Thus \\(q(4) = 16 + 8 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -2,
-          6
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2",
+          "3"
         ],
-        "yl": [
-          -3,
-          6
+        "rows": [
+          [
+            "\\(q(x)\\)",
+            "4",
+            "6",
+            "10",
+            "16"
+          ]
         ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "0.5*x^2 - 2*x + 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#18)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Quadratic sequence values table (hydraulics, ACT2-1208)",
+        "caption_ar": "جدول قيم دالة تربيعية (الهيدروليك، ACT2-1208)"
       }
     },
     {
       "number": 19,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the equations of the asymptotes of the hyperbola \\(\\dfrac{x^2}{4}-\\dfrac{y^2}{9}=1\\).",
+        "en": "Given the structured optical bench observations displayed in the table (ACT2-1251), modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Identify parameters: \\(a^2 = 4 \\implies a = 2\\) and \\(b^2 = 9 \\implies b = 3\\).</p><p><strong>Step 2:</strong> For a horizontal transverse hyperbola \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\), the asymptotes pass through the origin with slopes \\(\\pm \\frac{b}{a}\\): \\[y = \\pm \\frac{b}{a}x \\implies \\mathbf{y = \\pm \\frac{3}{2}x}\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
+            "\\(E(x)\\)",
+            "3",
             "6",
-            "10",
-            "14"
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#19)",
-        "caption_ar": "جدول نمط مرجعي (#19)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "6",
-            "10",
-            "14"
-          ]
-        ]
+        "caption": "Exponential growth values table (optical bench, ACT2-1251)",
+        "caption_ar": "جدول قيم نمو أسي (المنضدة البصرية، ACT2-1251)"
       }
     },
     {
       "number": 20,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A line passes through \\((2,3)\\) and is parallel to \\(2x-y=5\\). Find its equation in slope-intercept form.",
+        "en": "Inspect the wind tunnel values listed across the table (ACT2-1280); representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Find the slope of \\(2x - y = 5 \\implies y = 2x - 5\\). Slope \\(m = 2\\).</p><p><strong>Step 2:</strong> Parallel lines share identical slopes, so \\(m_{\\text{parallel}} = 2\\).</p><p><strong>Step 3:</strong> Use point-slope form with \\((2, 3)\\): \\[y - 3 = 2(x - 2) \\implies y - 3 = 2x - 4 \\implies \\mathbf{y = 2x - 1}\\]</p>",
+        "en": "<p>First differences are \\(4, 6, 8\\), giving constant second difference \\(2\\). Thus \\(q(4) = 22 + 10 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -676,49 +664,33 @@
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "5",
+            "\\(q(x)\\)",
+            "4",
             "8",
-            "11"
+            "14",
+            "22"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#20)",
-        "caption_ar": "جدول نمط مرجعي (#20)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (wind tunnel, ACT2-1280)",
+        "caption_ar": "جدول قيم دالة تربيعية (نفق الرياح، ACT2-1280)"
       }
     },
     {
       "number": 21,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the area enclosed between \\(y=x^2\\) and \\(y=x+2\\).",
+        "en": "A benchmark telemetry log (ACT2-1316) provides the entries shown in the table; representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1 (Intersection points):</strong> Set \\(x^2 = x + 2 \\implies x^2 - x - 2 = 0 \\implies (x - 2)(x + 1) = 0\\). The curves intersect at \\(x = -1\\) and \\(x = 2\\).</p><p><strong>Step 2 (Definite Integral):</strong> On \\([-1, 2]\\), the line \\(y = x + 2\\) is upper and the parabola \\(y = x^2\\) is lower: \\[A = \\int_{-1}^{2} ((x + 2) - x^2)\\,dx = \\left[ \\frac{x^2}{2} + 2x - \\frac{x^3}{3} \\right]_{-1}^{2}\\]</p><p><strong>Step 3 (Evaluate):</strong> At \\(x = 2\\): \\(2 + 4 - \\frac{8}{3} = \\frac{10}{3}\\). At \\(x = -1\\): \\(\\frac{1}{2} - 2 + \\frac{1}{3} = -\\frac{7}{6}\\). \\[A = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{20 + 7}{6} = \\frac{27}{6} = \\mathbf{\\frac{9}{2}} = 4.5\\]</p>",
+        "en": "<p>First differences are \\(3, 5, 7\\), giving constant second difference \\(2\\). Thus \\(q(4) = 22 + 9 = 31\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(31\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -726,49 +698,33 @@
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
+            "\\(q(x)\\)",
             "7",
-            "12",
-            "17"
+            "10",
+            "15",
+            "22"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#21)",
-        "caption_ar": "جدول نمط مرجعي (#21)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (telemetry, ACT2-1316)",
+        "caption_ar": "جدول قيم دالة تربيعية (القياس عن بُعد، ACT2-1316)"
       }
     },
     {
       "number": 22,
       "difficulty": "Basic",
       "question": {
-        "en": "The vertices of a triangle are \\((0,0)\\), \\((4,0)\\), \\((0,3)\\). Find its area.",
+        "en": "In the photonics record (ACT2-1352), using the table values, representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>This is a right triangle with legs along the coordinate axes: base \\(b = 4\\) along the \\(x\\)-axis and height \\(h = 3\\) along the \\(y\\)-axis: \\[A = \\frac{1}{2}bh = \\frac{1}{2}(4)(3) = \\mathbf{6}\\]</p>",
+        "en": "<p>First differences are \\(2, 4, 6\\), giving constant second difference \\(2\\). Thus \\(q(4) = 16 + 8 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -776,49 +732,33 @@
         ],
         "rows": [
           [
-            "g(x)",
+            "\\(q(x)\\)",
             "4",
-            "7",
+            "6",
             "10",
-            "13"
+            "16"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#22)",
-        "caption_ar": "جدول نمط مرجعي (#22)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "4",
-            "7",
-            "10",
-            "13"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (photonics, ACT2-1352)",
+        "caption_ar": "جدول قيم دالة تربيعية (الفوتونيات، ACT2-1352)"
       }
     },
     {
       "number": 23,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the measure of each exterior angle of a regular hexagon.",
+        "en": "The table summarizes measurements from a acoustics lab evaluation (ACT2-1388); using these entries, representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The sum of all exterior angles of any convex polygon is \\(360^\\circ\\). For a regular hexagon with \\(n = 6\\) equal sides: \\[\\text{Exterior angle} = \\frac{360^\\circ}{n} = \\frac{360^\\circ}{6} = \\mathbf{60^\\circ}\\]</p>",
+        "en": "<p>First differences are \\(4, 6, 8\\), giving constant second difference \\(2\\). Thus \\(q(4) = 25 + 10 = 35\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(35\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -826,99 +766,65 @@
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
+            "\\(q(x)\\)",
             "7",
-            "12",
-            "17"
+            "11",
+            "17",
+            "25"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#23)",
-        "caption_ar": "جدول نمط مرجعي (#23)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (acoustics lab, ACT2-1388)",
+        "caption_ar": "جدول قيم دالة تربيعية (مختبر الصوت، ACT2-1388)"
       }
     },
     {
       "number": 24,
       "difficulty": "Basic",
       "question": {
-        "en": "Two parallel lines are cut by a transversal. What is the sum of co-interior (consecutive interior) angles?",
+        "en": "During acoustics experiment (ACT2-1431), observers compiled the following table; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>By the consecutive interior angle theorem, when two parallel lines are cut by a transversal, the interior angles on the same side of the transversal are supplementary: \\[\\theta_1 + \\theta_2 = \\mathbf{180^\\circ}\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
+            "\\(E(x)\\)",
+            "3",
+            "6",
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#24)",
-        "caption_ar": "جدول نمط مرجعي (#24)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
+        "caption": "Exponential growth values table (acoustics, ACT2-1431)",
+        "caption_ar": "جدول قيم نمو أسي (الصوتيات، ACT2-1431)"
       }
     },
     {
       "number": 25,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the exact area of a regular hexagon with side length 4.",
+        "en": "Examine the hydraulics dataset arranged in the table below (ACT2-1460); representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> A regular hexagon is partitioned into 6 congruent equilateral triangles of side length \\(s = 4\\).</p><p><strong>Step 2:</strong> Area of one equilateral triangle: \\[A_1 = \\frac{\\sqrt{3}}{4}s^2 = \\frac{\\sqrt{3}}{4}(4^2) = 4\\sqrt{3}\\]</p><p><strong>Step 3:</strong> Total area of hexagon: \\[A = 6 \\times 4\\sqrt{3} = \\mathbf{24\\sqrt{3}} \\approx 41.57\\]</p>",
+        "en": "<p>First differences are \\(3, 5, 7\\), giving constant second difference \\(2\\). Thus \\(q(4) = 22 + 9 = 31\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(31\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -926,49 +832,33 @@
         ],
         "rows": [
           [
-            "g(x)",
-            "4",
-            "9",
-            "14",
-            "19"
+            "\\(q(x)\\)",
+            "7",
+            "10",
+            "15",
+            "22"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#25)",
-        "caption_ar": "جدول نمط مرجعي (#25)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "4",
-            "9",
-            "14",
-            "19"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (hydraulics, ACT2-1460)",
+        "caption_ar": "جدول قيم دالة تربيعية (الهيدروليك، ACT2-1460)"
       }
     },
     {
       "number": 26,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Two similar triangles have corresponding sides in the ratio \\(3:5\\). What is the ratio of their areas?",
+        "en": "An engineering team logged thermodynamics measurements in the accompanying table (ACT2-1496); using these data, representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>For any two similar figures with linear scale factor \\(k = \\frac{a}{b}\\), the ratio of their areas is proportional to the square of the scale factor: \\[\\text{Area Ratio} = k^2 = \\left(\\frac{3}{5}\\right)^2 = \\mathbf{\\frac{9}{25}} \\quad (9:25)\\]</p>",
+        "en": "<p>First differences are \\(2, 4, 6\\), giving constant second difference \\(2\\). Thus \\(q(4) = 16 + 8 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
           "2",
@@ -976,32 +866,16 @@
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
-            "8",
-            "13",
-            "18"
+            "\\(q(x)\\)",
+            "4",
+            "6",
+            "10",
+            "16"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#26)",
-        "caption_ar": "جدول نمط مرجعي (#26)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "8",
-            "13",
-            "18"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (thermodynamics, ACT2-1496)",
+        "caption_ar": "جدول قيم دالة تربيعية (الديناميكا الحرارية، ACT2-1496)"
       }
     },
     {

@@ -9,63 +9,33 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Use the limit definition \\(f'(x) = \\lim_{h \\rightarrow 0} \\frac{f(x+h) - f(x)}{h}\\) to find \\(f'(x)\\) for \\(f(x) = x^2 + 3x\\).",
+          "q": "A benchmark robotics log (CALCULUS-101481051) provides the entries shown in the table; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The definition of the derivative",
-          "answer": "\\(\\frac{(x+h)^2 + 3(x+h) - (x^2 + 3x)}{h} = \\frac{2xh + h^2 + 3h}{h} = 2x + h + 3 \\rightarrow 2x + 3\\).",
+          "answer": "**Answer:** \\(42\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
           "explanation": "\\(\\frac{(x+h)^2 + 3(x+h) - (x^2 + 3x)}{h} = \\frac{2xh + h^2 + 3h}{h} = 2x + h + 3 \\rightarrow 2x + 3\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "4",
-              "6",
-              "8"
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (robotics, CALCULUS-101481051)",
+            "caption_ar": "جدول المعدل (الروبوتات، CALCULUS-101481051)"
           }
         },
         {
@@ -107,12 +77,14 @@
           }
         },
         {
-          "q": "Explain why \\(f(x) = |x|\\) is not differentiable at \\(x = 0\\), using one-sided derivatives.",
+          "q": "Given the measurements marked directly on the orbital sector schematic (CALCULUS-G135037289) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Differentiability",
-          "answer": "The left-hand derivative is \\(\\lim_{h\\rightarrow 0^-}\\frac{|h|}{h} = -1\\) and the right-hand derivative is \\(\\lim_{h\\rightarrow 0^+}\\frac{|h|}{h} = 1\\). Since these disagree, \\(f'(0)\\) does not exist.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "The left-hand derivative is \\(\\lim_{h\\rightarrow 0^-}\\frac{|h|}{h} = -1\\) and the right-hand derivative is \\(\\lim_{h\\rightarrow 0^+}\\frac{|h|}{h} = 1\\). Since these disagree, \\(f'(0)\\) does not exist.",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -120,117 +92,192 @@
               3
             ],
             "yl": [
-              -4,
-              4
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G135037289)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G135037289)"
           }
         },
         {
-          "q": "State the relationship between differentiability and continuity: if a function is differentiable at a point, must it be continuous there? Is the converse true?",
+          "q": "From the graphical features displayed in the antenna pattern figure (CALCULUS-G151814922) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Differentiability",
-          "answer": "Differentiability implies continuity (a corner or asymptote would break the limit needed for the derivative). The converse is false — \\(f(x) = |x|\\) is continuous at \\(0\\) but not differentiable there.",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "Differentiability implies continuity (a corner or asymptote would break the limit needed for the derivative). The converse is false — \\(f(x) = |x|\\) is continuous at \\(0\\) but not differentiable there.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
+              -1,
               7
             ],
-            "xStep": 1,
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 4"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G151814922)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G151814922)"
           }
         },
         {
-          "q": "A ball's height is \\(h(t) = -5t^2+20t+2\\) (metres, seconds). Use the derivative definition idea to explain what \\(h'(2)\\) represents physically, and find its value using \\(h'(t)=-10t+20\\).",
+          "q": "An engineering team logged circuit trial measurements in the accompanying table (CALCULUS-168591527); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Interpreting the derivative",
-          "answer": "\\(h'(2)\\) represents the instantaneous vertical velocity of the ball at \\(t=2\\) seconds. \\(h'(2) = -10(2)+20 = 0\\) m/s — the ball is momentarily at rest, at its peak height.",
+          "answer": "**Answer:** \\(9\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 7 + 1(2) = 9\\).",
           "explanation": "\\(h'(2)\\) represents the instantaneous vertical velocity of the ball at \\(t=2\\) seconds. \\(h'(2) = -10(2)+20 = 0\\) m/s — the ball is momentarily at rest, at its peak height.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 7 + 1(2) = 9\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
+                "0",
+                "2",
                 "4",
-                "8",
-                "12",
-                "16"
+                "3"
               ],
               [
-                "f'(x)",
-                "5",
+                "1",
                 "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
+                "7",
+                "2"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (circuit trial, CALCULUS-168591527)",
+            "caption_ar": "جدول خطوات أويلر (تجربة الدائرة، CALCULUS-168591527)"
           }
         },
         {
-          "q": "Use the alternate form \\(f'(a)=\\lim_{x\\rightarrow a}\\frac{f(x)-f(a)}{x-a}\\) to find \\(f'(2)\\) for \\(f(x)=x^3-1\\).",
+          "q": "Referring to the calibration curve figure (CALCULUS-G185370146) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Point-derivatives from the definition",
-          "answer": "\\(f(2)=7\\). \\(\\frac{x^3-1-7}{x-2}=\\frac{x^3-8}{x-2}=\\frac{(x-2)(x^2+2x+4)}{x-2}=x^2+2x+4\\rightarrow4+4+4=12\\): \\(f'(2)=12\\).",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "\\(f(2)=7\\). \\(\\frac{x^3-1-7}{x-2}=\\frac{x^3-8}{x-2}=\\frac{(x-2)(x^2+2x+4)}{x-2}=x^2+2x+4\\rightarrow4+4+4=12\\): \\(f'(2)=12\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "6/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 8,
+                "label": "(4, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G185370146)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G185370146)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the fluid channel schematic (CALCULUS-G202147765) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The derivative as the slope of the tangent line",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "explanation": "\\(f(3)=9-12+1=-2\\). \\(f'(3)=2(3)-4=2\\). Tangent line: \\(y-(-2)=2(x-3)\\), i.e. \\(y=2x-8\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -239,35 +286,33 @@
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "For \\(f(x)=x^2-4x+1\\), use the derivative (found via the limit definition, \\(f'(x)=2x-4\\)) to find the equation of the tangent line at \\(x=3\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "The derivative as the slope of the tangent line",
-          "answer": "\\(f(3)=9-12+1=-2\\). \\(f'(3)=2(3)-4=2\\). Tangent line: \\(y-(-2)=2(x-3)\\), i.e. \\(y=2x-8\\).",
-          "explanation": "\\(f(3)=9-12+1=-2\\). \\(f'(3)=2(3)-4=2\\). Tangent line: \\(y-(-2)=2(x-3)\\), i.e. \\(y=2x-8\\).",
-          "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G202147765)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G202147765)"
           }
         }
       ]
@@ -276,190 +321,44 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Explain why the tangent line to \\(y=x^2\\) at \\(x=0\\) is horizontal, using the derivative \\(f'(x)=2x\\) found from the limit definition.",
+          "q": "During thermodynamics experiment (CALCULUS-245449776), observers compiled the following table; approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The derivative as the slope of the tangent line",
-          "answer": "\\(f'(0)=2(0)=0\\). Since the slope of the tangent line at \\(x=0\\) is \\(0\\), the tangent line is horizontal there — consistent with \\(x=0\\) being the vertex (minimum point) of the parabola.",
+          "answer": "**Answer:** \\(26\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
           "explanation": "\\(f'(0)=2(0)=0\\). Since the slope of the tangent line at \\(x=0\\) is \\(0\\), the tangent line is horizontal there — consistent with \\(x=0\\) being the vertex (minimum point) of the parabola.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
+                "\\(R(t)\\)",
                 "4",
-                "2",
-                "4",
-                "2"
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#9)",
-            "caption_ar": "جدول القيم المختارة (#9)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (thermodynamics, CALCULUS-245449776)",
+            "caption_ar": "جدول المعدل (الديناميكا الحرارية، CALCULUS-245449776)"
           }
         },
         {
-          "q": "Explain the difference between \\(f'(x)\\) and \\(f'(3)\\), using \\(f(x)=x^2\\) as an example.",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G262228409) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The derivative function versus the derivative at a point",
-          "answer": "\\(f'(x)=2x\\) is a FUNCTION giving the slope of the tangent line at any point \\(x\\). \\(f'(3)=2(3)=6\\) is a single NUMBER — the specific slope at the point \\(x=3\\). The function \\(f'(x)\\) can be evaluated at any \\(x\\) to get such a number.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(f'(x)=2x\\) is a FUNCTION giving the slope of the tangent line at any point \\(x\\). \\(f'(3)=2(3)=6\\) is a single NUMBER — the specific slope at the point \\(x=3\\). The function \\(f'(x)\\) can be evaluated at any \\(x\\) to get such a number.",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#10)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "A table gives \\(f(1.9)=8.61\\), \\(f(2.0)=9.00\\), \\(f(2.1)=9.41\\). Use a symmetric difference quotient to estimate \\(f'(2)\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Estimating a derivative from a table",
-          "answer": "\\(f'(2)\\approx\\frac{f(2.1)-f(1.9)}{2.1-1.9}=\\frac{9.41-8.61}{0.2}=\\frac{0.80}{0.2}=4\\).",
-          "explanation": "\\(f'(2)\\approx\\frac{f(2.1)-f(1.9)}{2.1-1.9}=\\frac{9.41-8.61}{0.2}=\\frac{0.80}{0.2}=4\\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#11)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Use the limit definition to show that the derivative of a constant function \\(f(x)=c\\) is \\(0\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The derivative of a constant and linear functions",
-          "answer": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{c-c}{h}=\\frac{0}{h}=0\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}0=0\\).",
-          "explanation": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{c-c}{h}=\\frac{0}{h}=0\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}0=0\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#12)",
-            "caption_ar": "جدول القيم المختارة (#12)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Use the limit definition to show that the derivative of a linear function \\(f(x)=mx+b\\) is the constant \\(m\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The derivative of a constant and linear functions",
-          "answer": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{m(x+h)+b-(mx+b)}{h}=\\frac{mh}{h}=m\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}m=m\\).",
-          "explanation": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{m(x+h)+b-(mx+b)}{h}=\\frac{mh}{h}=m\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}m=m\\).",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -467,36 +366,201 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G262228409)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G262228409)"
+          }
+        },
+        {
+          "q": "Referring to the bridge arch figure (CALCULUS-G83746329) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Estimating a derivative from a table",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(f'(2)\\approx\\frac{f(2.1)-f(1.9)}{2.1-1.9}=\\frac{9.41-8.61}{0.2}=\\frac{0.80}{0.2}=4\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G83746329)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G83746329)"
           }
         },
         {
-          "q": "Level 3 · AdvancedFind the coordinates of all points on the curve \\(x^2 - xy + y^2 = 9\\) where the tangent line is horizontal.",
+          "q": "Selected numerical readings from flow bench run (CALCULUS-66967710) appear in the table; where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(1)\\)?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The derivative of a constant and linear functions",
+          "answer": "**Answer:** \\(6\\). By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (4)(2) + (2)(-1) = 6\\).",
+          "explanation": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{c-c}{h}=\\frac{0}{h}=0\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}0=0\\).",
+          "explain": "By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (4)(2) + (2)(-1) = 6\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "3"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "2",
+                "5"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Differentiable function & derivative values (flow bench, CALCULUS-66967710)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (مختبر التدفق، CALCULUS-66967710)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a lab apparatus configuration (CALCULUS-G50191091); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The derivative of a constant and linear functions",
+          "answer": "**Answer:** \\(-3\\). At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "explanation": "\\(\\frac{f(x+h)-f(x)}{h}=\\frac{m(x+h)+b-(mx+b)}{h}=\\frac{mh}{h}=m\\) for all \\(h\\neq0\\), so \\(f'(x)=\\lim_{h\\rightarrow0}m=m\\).",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G50191091)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G50191091)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a fluid channel configuration (CALCULUS-G33413479); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Interpreting the derivative",
-          "answer": "Step 1 · Implicit Differentiation: Differentiate with respect to \\(x\\): \\(2x - \\left(1 \\cdot y + x \\frac{dy}{dx}\\right) + 2y \\frac{dy}{dx} = 0 \\Rightarrow 2x - y + (2y - x)\\frac{dy}{dx} = 0.\\) Solve for \\(\\frac{dy}{dx}\\): \\(\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}.\\) Step 2 · Condition for Horizontal Tangent: Set the numerator equal to zero while ensuring the denominator is non-zero: \\(y - 2x = 0 \\Rightarrow y = 2x.\\) Step 3 · Substitute into Original Curve: \\(x^2 - x(2x) + (2x)^2 = 9 \\Rightarrow x^2 - 2x^2 + 4x^2 = 9 \\Rightarrow 3x^2 = 9 \\Rightarrow x^2 = 3 \\Rightarrow x = \\pm \\sqrt{3}.\\) Since \\(y = 2x\\): • For \\(x = \\sqrt{3}\\): \\(y = 2\\sqrt{3}\\). Denominator \\(2y - x = 4\\sqrt{3} - \\sqrt{3} = 3\\sqrt{3} eq 0\\). • For \\(x = -\\sqrt{3}\\): \\(y = -2\\sqrt{3}\\). Denominator \\(-4\\sqrt{3} - (-\\sqrt{3}) = -3\\sqrt{3} eq 0\\). Thus, the horizontal tangent points are \\(\\mathbf{(\\sqrt{3}, 2\\sqrt{3})}\\) and \\(\\mathbf{(-\\sqrt{3}, -2\\sqrt{3})}\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Step 1 · Implicit Differentiation: Differentiate with respect to \\(x\\): \\(2x - \\left(1 \\cdot y + x \\frac{dy}{dx}\\right) + 2y \\frac{dy}{dx} = 0 \\Rightarrow 2x - y + (2y - x)\\frac{dy}{dx} = 0.\\) Solve for \\(\\frac{dy}{dx}\\): \\(\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}.\\) Step 2 · Condition for Horizontal Tangent: Set the numerator equal to zero while ensuring the denominator is non-zero: \\(y - 2x = 0 \\Rightarrow y = 2x.\\) Step 3 · Substitute into Original Curve: \\(x^2 - x(2x) + (2x)^2 = 9 \\Rightarrow x^2 - 2x^2 + 4x^2 = 9 \\Rightarrow 3x^2 = 9 \\Rightarrow x^2 = 3 \\Rightarrow x = \\pm \\sqrt{3}.\\) Since \\(y = 2x\\): • For \\(x = \\sqrt{3}\\): \\(y = 2\\sqrt{3}\\). Denominator \\(2y - x = 4\\sqrt{3} - \\sqrt{3} = 3\\sqrt{3} eq 0\\). • For \\(x = -\\sqrt{3}\\): \\(y = -2\\sqrt{3}\\). Denominator \\(-4\\sqrt{3} - (-\\sqrt{3}) = -3\\sqrt{3} eq 0\\). Thus, the horizontal tangent points are \\(\\mathbf{(\\sqrt{3}, 2\\sqrt{3})}\\) and \\(\\mathbf{(-\\sqrt{3}, -2\\sqrt{3})}\\).",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G33413479)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G33413479)"
           }
         },
         {

@@ -37,53 +37,36 @@
         },
         {
           "qtype": "MCQ",
-          "q": "The Laplace transform of \\( f(x) = 95e^{17x} \\) is \\( g(s) = \\dfrac{95}{s - 17} \\) for \\( s > 17 \\). Determine the evaluated transform \\( g(18) \\).",
-          "answer": "**Answer:** A. Substituting \\( s = 18 \\) gives \\( \\frac{95}{18 - 17} = 95 \\).",
+          "q": "Given the structured cohort study observations displayed in the table (ODES-617153623), approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** A. Trapezoidal sum \\(= \\frac{2}{2}(6 + 9) + \\frac{4}{2}(9 + 13) = 15 + 44 = 59\\).",
           "explanation": "Substituting \\( s = 18 \\) gives \\( \\frac{95}{18 - 17} = 95 \\).",
           "choices": [
-            "95",
-            "98",
-            "78",
-            "100"
+            "\\(59\\)",
+            "\\(48\\)",
+            "\\(70\\)",
+            "\\(118\\)"
           ],
           "correct": 0,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(6 + 9) + \\frac{4}{2}(9 + 13) = 15 + 44 = 59\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "7"
             ],
             "rows": [
               [
-                "g(x)",
-                "20",
-                "29",
-                "38",
-                "47"
+                "\\(R(t)\\)",
+                "6",
+                "9",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#3)",
-            "caption_ar": "جدول نمط مرجعي (#3)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "20",
-                "29",
-                "38",
-                "47"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 7] (cohort study, ODES-617153623)",
+            "caption_ar": "جدول المعدل (دراسة الفوج، ODES-617153623)"
           }
         },
         {
@@ -119,122 +102,186 @@
           "correct": 1
         },
         {
-          "q": "Consider the system of linear differential equations: \\(\\frac{dx}{dt}, = ax + by ; \\frac{dy}{dt}, = cx + dy\\) where \\(a, b, c, d\\) are constants. The characteristic equation for the system is \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). We are given that the eigenvalues of the system are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The trace of the coefficient matrix, \\(T = a+d\\), is \\(1\\). Determine the value of the determinant of the coefficient matrix, \\(D = ad-bc\\).",
+          "q": "From the plotted survey layout figure above (ODES-G717820330) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "The characteristic equation of a 2x2 system of linear differential equations \\(\\frac{dx}{dt}, = ax + by ; \\frac{dy}{dt}, = cx + dy\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are given that the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are given that the trace \\(T = a+d = 1\\). Let's verify this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to find the determinant \\(D = ad-bc\\). Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\). Final Answer: \\(-2\\)",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
           "explanation": "The characteristic equation of a 2x2 system of linear differential equations \\(\\frac{dx}{dt}, = ax + by ; \\frac{dy}{dt}, = cx + dy\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are given that the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are given that the trace \\(T = a+d = 1\\). Let's verify this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to find the determinant \\(D = ad-bc\\). Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\). Final Answer: \\(-2\\)",
-          "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -3,
-              3
-            ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#5)"
-          }
-        },
-        {
-          "q": "Find all equilibrium solutions of \\(\\frac{dy}{dt} = y^2 - 4\\), classify each as an attractor (sink) or repeller (source), and determine \\(\\lim_{t\\rightarrow\\infty} y(t)\\) for the solution with \\(y(0) = 0\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Locate equilibria: Set \\(y^2 - 4 = 0 \\Rightarrow y_1 = -2, \\, y_2 = 2\\). Step 2: Classify stability: Let \\(f(y) = y^2 - 4\\). Then \\(f'(y) = 2y\\). At \\(y = -2\\): \\(f'(-2) = -4 < 0 \\Rightarrow y = -2\\) is a stable attractor (sink). At \\(y = 2\\): \\(f'(2) = +4 > 0 \\Rightarrow y = 2\\) is an unstable repeller (source). Step 3: Trajectory with \\(y(0) = 0\\): Since \\(y(0) = 0\\) lies in the interval \\((-2, 2)\\), \\(f(y) = y^2 - 4 < 0\\), so \\(y(t)\\) is monotonically decreasing towards the lower stable equilibrium. Therefore: \\(\\lim_{t\\rightarrow\\infty} y(t) = -2.\\)",
-          "explanation": "Step 1: Locate equilibria: Set \\(y^2 - 4 = 0 \\Rightarrow y_1 = -2, \\, y_2 = 2\\). Step 2: Classify stability: Let \\(f(y) = y^2 - 4\\). Then \\(f'(y) = 2y\\). At \\(y = -2\\): \\(f'(-2) = -4 < 0 \\Rightarrow y = -2\\) is a stable attractor (sink). At \\(y = 2\\): \\(f'(2) = +4 > 0 \\Rightarrow y = 2\\) is an unstable repeller (source). Step 3: Trajectory with \\(y(0) = 0\\): Since \\(y(0) = 0\\) lies in the interval \\((-2, 2)\\), \\(f(y) = y^2 - 4 < 0\\), so \\(y(t)\\) is monotonically decreasing towards the lower stable equilibrium. Therefore: \\(\\lim_{t\\rightarrow\\infty} y(t) = -2.\\)",
-          "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -3,
-              3
-            ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#6)"
-          }
-        },
-        {
-          "q": "Solve the initial value problem \\(\\frac{dy}{dx} = 2x y^2\\) with \\(y(0) = 1\\). Find \\(y(1/2)\\) and state its maximal interval of valid existence.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Separate variables: \\(\\frac{dy}{y^2} = 2x\\,dx\\). Step 2: Integrate: \\(-\\frac{1}{y} = x^2 + C\\). Step 3: Initial condition: \\(-\\frac{1}{1} = 0 + C \\Rightarrow C = -1\\). Thus: \\(-\\frac{1}{y} = x^2 - 1 \\Rightarrow y(x) = \\frac{1}{1 - x^2}\\). At \\(x = 1/2\\): \\(y(1/2) = \\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}.\\) Step 4: Maximal interval: Vertical asymptotes occur at \\(x = \\pm 1\\). The maximal open interval containing the initial point \\(x_0 = 0\\) is \\((-1, 1)\\). As \\(x \\rightarrow 1^-\\), \\(y(x) \\rightarrow +\\infty\\) (finite-time blowup).",
-          "explanation": "Step 1: Separate variables: \\(\\frac{dy}{y^2} = 2x\\,dx\\). Step 2: Integrate: \\(-\\frac{1}{y} = x^2 + C\\). Step 3: Initial condition: \\(-\\frac{1}{1} = 0 + C \\Rightarrow C = -1\\). Thus: \\(-\\frac{1}{y} = x^2 - 1 \\Rightarrow y(x) = \\frac{1}{1 - x^2}\\). At \\(x = 1/2\\): \\(y(1/2) = \\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}.\\) Step 4: Maximal interval: Vertical asymptotes occur at \\(x = \\pm 1\\). The maximal open interval containing the initial point \\(x_0 = 0\\) is \\((-1, 1)\\). As \\(x \\rightarrow 1^-\\), \\(y(x) \\rightarrow +\\infty\\) (finite-time blowup).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#7)",
-            "caption_ar": "جدول نمط مرجعي (#7)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Solve the second-order homogeneous initial value problem \\(y'' - 7y' + 10y = 0\\) with \\(y(0) = 1\\) and \\(y'(0) = -1\\). Find \\(y(1)\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Auxiliary roots: \\(r^2 - 7r + 10 = (r - 2)(r - 5) = 0 \\Rightarrow r_1 = 2, \\quad r_2 = 5.\\) General solution: \\(y(x) = C_1 e^{2x} + C_2 e^{5x}\\). Step 2: Derivative: \\(y'(x) = 2C_1 e^{2x} + 5C_2 e^{5x}\\). Step 3: Apply initial conditions: \\(\\left\\{ C_1 + C_2 = 1 ; 2C_1 + 5C_2 = -1 \\right.\\) From first: \\(C_1 = 1 - C_2\\). Substitute: \\(2(1 - C_2) + 5C_2 = 2 + 3C_2 = -1 \\Rightarrow 3C_2 = -3 \\Rightarrow C_2 = -1, \\, C_1 = 2\\). Step 4: Particular solution: \\(y(x) = 2e^{2x} - e^{5x}, \\qquad y(1) = 2e^2 - e^5.\\)",
-          "explanation": "Step 1: Auxiliary roots: \\(r^2 - 7r + 10 = (r - 2)(r - 5) = 0 \\Rightarrow r_1 = 2, \\quad r_2 = 5.\\) General solution: \\(y(x) = C_1 e^{2x} + C_2 e^{5x}\\). Step 2: Derivative: \\(y'(x) = 2C_1 e^{2x} + 5C_2 e^{5x}\\). Step 3: Apply initial conditions: \\(\\left\\{ C_1 + C_2 = 1 ; 2C_1 + 5C_2 = -1 \\right.\\) From first: \\(C_1 = 1 - C_2\\). Substitute: \\(2(1 - C_2) + 5C_2 = 2 + 3C_2 = -1 \\Rightarrow 3C_2 = -3 \\Rightarrow C_2 = -1, \\, C_1 = 2\\). Step 4: Particular solution: \\(y(x) = 2e^{2x} - e^{5x}, \\qquad y(1) = 2e^2 - e^5.\\)",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -2,
+              3
             ],
             "yl": [
-              -5,
-              7
+              2,
+              21
             ],
-            "xStep": 2,
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G717820330)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G717820330)"
+          }
+        },
+        {
+          "q": "Based on the thermal profile visual model shown (ODES-G734597956) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "**Answer:** \\(13\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "explanation": "Step 1: Locate equilibria: Set \\(y^2 - 4 = 0 \\Rightarrow y_1 = -2, \\, y_2 = 2\\). Step 2: Classify stability: Let \\(f(y) = y^2 - 4\\). Then \\(f'(y) = 2y\\). At \\(y = -2\\): \\(f'(-2) = -4 < 0 \\Rightarrow y = -2\\) is a stable attractor (sink). At \\(y = 2\\): \\(f'(2) = +4 > 0 \\Rightarrow y = 2\\) is an unstable repeller (source). Step 3: Trajectory with \\(y(0) = 0\\): Since \\(y(0) = 0\\) lies in the interval \\((-2, 2)\\), \\(f(y) = y^2 - 4 < 0\\), so \\(y(t)\\) is monotonically decreasing towards the lower stable equilibrium. Therefore: \\(\\lim_{t\\rightarrow\\infty} y(t) = -2.\\)",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (ODES-G734597956)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G734597956)"
+          }
+        },
+        {
+          "q": "During photonics experiment (ODES-684264092), observers compiled the following table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "**Answer:** \\(11\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(5) = 11\\).",
+          "explanation": "Step 1: Separate variables: \\(\\frac{dy}{y^2} = 2x\\,dx\\). Step 2: Integrate: \\(-\\frac{1}{y} = x^2 + C\\). Step 3: Initial condition: \\(-\\frac{1}{1} = 0 + C \\Rightarrow C = -1\\). Thus: \\(-\\frac{1}{y} = x^2 - 1 \\Rightarrow y(x) = \\frac{1}{1 - x^2}\\). At \\(x = 1/2\\): \\(y(1/2) = \\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}.\\) Step 4: Maximal interval: Vertical asymptotes occur at \\(x = \\pm 1\\). The maximal open interval containing the initial point \\(x_0 = 0\\) is \\((-1, 1)\\). As \\(x \\rightarrow 1^-\\), \\(y(x) \\rightarrow +\\infty\\) (finite-time blowup).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(5) = 11\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
+            ],
+            "rows": [
+              [
+                "0",
+                "2",
+                "3",
+                "3"
+              ],
+              [
+                "1",
+                "3",
+                "6",
+                "5"
+              ],
+              [
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
+              ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (photonics, ODES-684264092)",
+            "caption_ar": "جدول خطوات أويلر (الفوتونيات، ODES-684264092)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a waveguide design configuration (ODES-G701042711); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "explanation": "Step 1: Auxiliary roots: \\(r^2 - 7r + 10 = (r - 2)(r - 5) = 0 \\Rightarrow r_1 = 2, \\quad r_2 = 5.\\) General solution: \\(y(x) = C_1 e^{2x} + C_2 e^{5x}\\). Step 2: Derivative: \\(y'(x) = 2C_1 e^{2x} + 5C_2 e^{5x}\\). Step 3: Apply initial conditions: \\(\\left\\{ C_1 + C_2 = 1 ; 2C_1 + 5C_2 = -1 \\right.\\) From first: \\(C_1 = 1 - C_2\\). Substitute: \\(2(1 - C_2) + 5C_2 = 2 + 3C_2 = -1 \\Rightarrow 3C_2 = -3 \\Rightarrow C_2 = -1, \\, C_1 = 2\\). Step 4: Particular solution: \\(y(x) = 2e^{2x} - e^{5x}, \\qquad y(1) = 2e^2 - e^5.\\)",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#8)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G701042711)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G701042711)"
           }
         }
       ]
@@ -243,221 +290,241 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "For the differential equation with a regular singular point at \\(x_0 = 0\\): \\(2x^2 y'' + x y' - (x + 1)y = 0,\\) find the indicial equation, determine the two roots \\(r_1 \\geq r_2\\), and find the first three non-zero terms of the Frobenius series solution corresponding to \\(r_1\\).",
+          "q": "From the plotted optical assembly figure above (ODES-G784930806) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Indicial equation: \\(p_0 = \\lim_{x\\rightarrow 0} x P(x) = \\lim_{x\\rightarrow 0} x \\left(\\frac{x}{2x^2}\\right) = \\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = \\lim_{x\\rightarrow 0} x^2 \\left(-\\frac{x + 1}{2x^2}\\right) = -\\frac{1}{2}.\\) \\(F(r) = r(r - 1) + \\frac{1}{2}r - \\frac{1}{2} = r^2 - \\frac{1}{2}r - \\frac{1}{2} = 0 \\Rightarrow 2r^2 - r - 1 = (2r + 1)(r - 1) = 0.\\) Roots: \\(r_1 = 1, \\, r_2 = -1/2\\). Difference \\(r_1 - r_2 = 3/2 otin \\mathbb{Z}\\). Step 2: Frobenius series for \\(r_1 = 1\\): \\(y(x) = \\sum_{n=0}^\\infty a_n x^{n+1}\\). Substituting into \\(2x^2 y'' + x y' - y = x y\\): \\(\\sum_{n=0}^\\infty [2(n+1)n + (n+1) - 1]a_n x^{n+1} = \\sum_{n=0}^\\infty a_n x^{n+2}\\) \\(\\sum_{n=0}^\\infty n(2n + 3)a_n x^{n+1} = \\sum_{k=1}^\\infty a_{k-1} x^{k+1}.\\) For \\(n = 0\\): $0 \\cdot 3 a_0 = 0\\( (satisfied for arbitrary \\)a_0 eq 0$). For \\(n \\geq 1\\): \\(a_n = \\frac{a_{n-1}}{n(2n + 3)}.\\) Step 3: Coefficients: \\(n = 1\\): \\(a_1 = \\frac{a_0}{1(5)} = \\frac{a_0}{5}\\). \\(n = 2\\): \\(a_2 = \\frac{a_1}{2(7)} = \\frac{a_0}{5 \\cdot 14} = \\frac{a_0}{70}\\). Step 4: Series solution: \\(y_1(x) = x\\left(1 + \\frac{x}{5} + \\frac{x^2}{70} + \\dots\\right).\\)",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
           "explanation": "Step 1: Indicial equation: \\(p_0 = \\lim_{x\\rightarrow 0} x P(x) = \\lim_{x\\rightarrow 0} x \\left(\\frac{x}{2x^2}\\right) = \\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = \\lim_{x\\rightarrow 0} x^2 \\left(-\\frac{x + 1}{2x^2}\\right) = -\\frac{1}{2}.\\) \\(F(r) = r(r - 1) + \\frac{1}{2}r - \\frac{1}{2} = r^2 - \\frac{1}{2}r - \\frac{1}{2} = 0 \\Rightarrow 2r^2 - r - 1 = (2r + 1)(r - 1) = 0.\\) Roots: \\(r_1 = 1, \\, r_2 = -1/2\\). Difference \\(r_1 - r_2 = 3/2 otin \\mathbb{Z}\\). Step 2: Frobenius series for \\(r_1 = 1\\): \\(y(x) = \\sum_{n=0}^\\infty a_n x^{n+1}\\). Substituting into \\(2x^2 y'' + x y' - y = x y\\): \\(\\sum_{n=0}^\\infty [2(n+1)n + (n+1) - 1]a_n x^{n+1} = \\sum_{n=0}^\\infty a_n x^{n+2}\\) \\(\\sum_{n=0}^\\infty n(2n + 3)a_n x^{n+1} = \\sum_{k=1}^\\infty a_{k-1} x^{k+1}.\\) For \\(n = 0\\): $0 \\cdot 3 a_0 = 0\\( (satisfied for arbitrary \\)a_0 eq 0$). For \\(n \\geq 1\\): \\(a_n = \\frac{a_{n-1}}{n(2n + 3)}.\\) Step 3: Coefficients: \\(n = 1\\): \\(a_1 = \\frac{a_0}{1(5)} = \\frac{a_0}{5}\\). \\(n = 2\\): \\(a_2 = \\frac{a_1}{2(7)} = \\frac{a_0}{5 \\cdot 14} = \\frac{a_0}{70}\\). Step 4: Series solution: \\(y_1(x) = x\\left(1 + \\frac{x}{5} + \\frac{x^2}{70} + \\dots\\right).\\)",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              2,
+              17
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#9)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G784930806)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G784930806)"
           }
         },
         {
-          "q": "Solve the defective linear system \\(\\mathbf{x}' = \\left(1, -1 ; 1, 3\\right)\\mathbf{x}\\) with \\(\\mathbf{x}(0) = \\left(2 ; 1\\right)\\).",
+          "q": "In the calorimetry record (ODES-801707425), using the table values, approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Eigenvalues: \\(\\det\\left(1 - \\lambda, -1 ; 1, 3 - \\lambda\\right) = (1 - \\lambda)(3 - \\lambda) + 1 = \\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2 = 0 \\Rightarrow \\lambda = 2.\\) Step 2: Eigenvector: \\((A - 2I)\\mathbf{v}_1 = \\left(-1, -1 ; 1, 1\\right)\\mathbf{v}_1 = \\mathbf{0} \\Rightarrow \\mathbf{v}_1 = \\left(1 ; -1\\right).\\) Step 3: Generalized eigenvector: Solve \\((A - 2I)\\mathbf{v}_2 = \\mathbf{v}_1\\): \\(\\left(-1, -1 ; 1, 1\\right)\\left(v_{21} ; v_{22}\\right) = \\left(1 ; -1\\right) \\Rightarrow -v_{21} - v_{22} = 1 \\Rightarrow \\mathbf{v}_2 = \\left(0 ; -1\\right).\\) Step 4: General solution: \\(\\mathbf{x}(t) = C_1 e^{2t}\\left(1 ; -1\\right) + C_2 e^{2t}\\left[\\left(0 ; -1\\right) + t\\left(1 ; -1\\right)\\right].\\) Apply \\(\\mathbf{x}(0) = (2, 1)^T\\): \\(C_1 \\left(1 ; -1\\right) + C_2 \\left(0 ; -1\\right) = \\left(2 ; 1\\right) \\Rightarrow C_1 = 2, \\quad -C_1 - C_2 = 1 \\Rightarrow C_2 = -3.\\) Particular solution: \\(\\mathbf{x}(t) = 2e^{2t}\\left(1 ; -1\\right) - 3e^{2t}\\left(t ; -1 - t\\right) = e^{2t}\\left(2 - 3t ; 1 + 3t\\right).\\)",
+          "answer": "**Answer:** \\(41\\). Trapezoidal sum \\(= \\frac{2}{2}(3 + 6) + \\frac{4}{2}(6 + 10) = 9 + 32 = 41\\).",
           "explanation": "Step 1: Eigenvalues: \\(\\det\\left(1 - \\lambda, -1 ; 1, 3 - \\lambda\\right) = (1 - \\lambda)(3 - \\lambda) + 1 = \\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2 = 0 \\Rightarrow \\lambda = 2.\\) Step 2: Eigenvector: \\((A - 2I)\\mathbf{v}_1 = \\left(-1, -1 ; 1, 1\\right)\\mathbf{v}_1 = \\mathbf{0} \\Rightarrow \\mathbf{v}_1 = \\left(1 ; -1\\right).\\) Step 3: Generalized eigenvector: Solve \\((A - 2I)\\mathbf{v}_2 = \\mathbf{v}_1\\): \\(\\left(-1, -1 ; 1, 1\\right)\\left(v_{21} ; v_{22}\\right) = \\left(1 ; -1\\right) \\Rightarrow -v_{21} - v_{22} = 1 \\Rightarrow \\mathbf{v}_2 = \\left(0 ; -1\\right).\\) Step 4: General solution: \\(\\mathbf{x}(t) = C_1 e^{2t}\\left(1 ; -1\\right) + C_2 e^{2t}\\left[\\left(0 ; -1\\right) + t\\left(1 ; -1\\right)\\right].\\) Apply \\(\\mathbf{x}(0) = (2, 1)^T\\): \\(C_1 \\left(1 ; -1\\right) + C_2 \\left(0 ; -1\\right) = \\left(2 ; 1\\right) \\Rightarrow C_1 = 2, \\quad -C_1 - C_2 = 1 \\Rightarrow C_2 = -3.\\) Particular solution: \\(\\mathbf{x}(t) = 2e^{2t}\\left(1 ; -1\\right) - 3e^{2t}\\left(t ; -1 - t\\right) = e^{2t}\\left(2 - 3t ; 1 + 3t\\right).\\)",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(3 + 6) + \\frac{4}{2}(6 + 10) = 9 + 32 = 41\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "7"
             ],
             "rows": [
               [
-                "g(x)",
-                "1",
+                "\\(R(t)\\)",
                 "3",
-                "5",
-                "7"
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#10)",
-            "caption_ar": "جدول نمط مرجعي (#10)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "3",
-                "5",
-                "7"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 7] (calorimetry, ODES-801707425)",
+            "caption_ar": "جدول المعدل (قياس السعرات، ODES-801707425)"
           }
         },
         {
-          "q": "Find the power series recurrence relation about \\(x_0 = 0\\) for Hermite's differential equation with parameter 2: \\(y'' - 2x y' + 4y = 0, \\qquad y(0) = 1, \\quad y'(0) = 0.\\) Prove that the solution terminates to a quadratic polynomial and state the polynomial.",
+          "q": "Given the measurements marked directly on the waveguide design schematic (ODES-G678471395) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "answer": "Step 1: Series substitution: \\(\\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2\\sum_{n=1}^\\infty n a_n x^n + 4\\sum_{n=0}^\\infty a_n x^n = 0.\\) Shift first index: \\(\\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 4a_k x^k = 0.\\) Step 2: Recurrence relation: \\((k+2)(k+1)a_{k+2} - 2(k - 2)a_k = 0 \\Rightarrow a_{k+2} = \\frac{2(k - 2)}{(k+2)(k+1)} a_k.\\) Step 3: Initial conditions: \\(a_0 = 1, \\, a_1 = 0\\). Since \\(a_1 = 0\\), all odd coefficients vanish: \\(a_3 = a_5 = a_7 = \\dots = 0\\). For \\(k = 0\\): \\(a_2 = \\frac{2(0 - 2)}{(2)(1)} a_0 = -2(1) = -2\\). For \\(k = 2\\): \\(a_4 = \\frac{2(2 - 2)}{(4)(3)} a_2 = 0\\). Since \\(a_4 = 0\\), the recurrence terminates identically: \\(a_6 = a_8 = \\dots = 0\\). Step 4: Exact solution: \\(y(x) = 1 - 2x^2.\\) (Up to scaling, this is the 2nd Hermite polynomial \\(H_2(x) = 4x^2 - 2 = -2(1 - 2x^2)\\)).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Step 1: Series substitution: \\(\\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2\\sum_{n=1}^\\infty n a_n x^n + 4\\sum_{n=0}^\\infty a_n x^n = 0.\\) Shift first index: \\(\\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 4a_k x^k = 0.\\) Step 2: Recurrence relation: \\((k+2)(k+1)a_{k+2} - 2(k - 2)a_k = 0 \\Rightarrow a_{k+2} = \\frac{2(k - 2)}{(k+2)(k+1)} a_k.\\) Step 3: Initial conditions: \\(a_0 = 1, \\, a_1 = 0\\). Since \\(a_1 = 0\\), all odd coefficients vanish: \\(a_3 = a_5 = a_7 = \\dots = 0\\). For \\(k = 0\\): \\(a_2 = \\frac{2(0 - 2)}{(2)(1)} a_0 = -2(1) = -2\\). For \\(k = 2\\): \\(a_4 = \\frac{2(2 - 2)}{(4)(3)} a_2 = 0\\). Since \\(a_4 = 0\\), the recurrence terminates identically: \\(a_6 = a_8 = \\dots = 0\\). Step 4: Exact solution: \\(y(x) = 1 - 2x^2.\\) (Up to scaling, this is the 2nd Hermite polynomial \\(H_2(x) = 4x^2 - 2 = -2(1 - 2x^2)\\)).",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -3,
-              3
+              -1,
+              15
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#11)"
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G678471395)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G678471395)"
           }
         },
         {
-          "q": "Find the general solution of the linear system \\(\\mathbf{x}' = \\left(1, 3 ; 3, 1\\right)\\mathbf{x}\\). Classify the equilibrium at the origin and determine the cartesian equation of the stable separatrix line.",
+          "q": "Referring to the antenna pattern figure (ODES-G661693776) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "answer": "Step 1: Characteristic polynomial: \\(\\det\\left(1 - \\lambda, 3 ; 3, 1 - \\lambda\\right) = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0.\\) \\(\\lambda_1 = 4, \\qquad \\lambda_2 = -2.\\) Since \\(\\Delta = \\det(A) = -8 < 0\\), the origin is a saddle point. Step 2: Eigenvectors: For \\(\\lambda_1 = 4\\): \\(\\left(-3, 3 ; 3, -3\\right)\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v}_1 = \\left(1 ; 1\\right)\\). For \\(\\lambda_2 = -2\\): \\(\\left(3, 3 ; 3, 3\\right)\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v}_2 = \\left(1 ; -1\\right)\\). Step 3: General solution: \\(\\mathbf{x}(t) = C_1 e^{4t}\\left(1 ; 1\\right) + C_2 e^{-2t}\\left(1 ; -1\\right).\\) The stable separatrix corresponds to \\(C_1 = 0\\), lying along the line spanned by \\((1, -1)^T\\): \\(y = -x.\\)",
+          "answer": "**Answer:** \\(-1\\). At highlighted coordinates \\((1, 2)\\), \\(\\frac{dy}{dx} = 1(1 - 2) = -1\\).",
           "explanation": "Step 1: Characteristic polynomial: \\(\\det\\left(1 - \\lambda, 3 ; 3, 1 - \\lambda\\right) = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0.\\) \\(\\lambda_1 = 4, \\qquad \\lambda_2 = -2.\\) Since \\(\\Delta = \\det(A) = -8 < 0\\), the origin is a saddle point. Step 2: Eigenvectors: For \\(\\lambda_1 = 4\\): \\(\\left(-3, 3 ; 3, -3\\right)\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v}_1 = \\left(1 ; 1\\right)\\). For \\(\\lambda_2 = -2\\): \\(\\left(3, 3 ; 3, 3\\right)\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v}_2 = \\left(1 ; -1\\right)\\). Step 3: General solution: \\(\\mathbf{x}(t) = C_1 e^{4t}\\left(1 ; 1\\right) + C_2 e^{-2t}\\left(1 ; -1\\right).\\) The stable separatrix corresponds to \\(C_1 = 0\\), lying along the line spanned by \\((1, -1)^T\\): \\(y = -x.\\)",
+          "explain": "At highlighted coordinates \\((1, 2)\\), \\(\\frac{dy}{dx} = 1(1 - 2) = -1\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                2,
-                0
-              ],
-              [
-                2,
-                4
-              ],
-              [
-                0,
-                4
-              ]
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
             ],
-            "w": 2,
-            "h": 4,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              -1,
+              5
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#12)",
-            "caption_ar": "مخطط المنطقة المستوية (#12)"
+            "step": 1,
+            "pts": [
+              {
+                "x": 1,
+                "y": 2,
+                "label": "P(1, 2)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (ODES-G661693776)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ODES-G661693776)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Consider the separable differential equation \\(\\frac{dy}{dx} = \\frac{2x}{y}\\) with the initial condition \\(y(1) = 2\\). Find the value of \\(y(3)\\).",
-          "answer": "**Answer:** A. The differential equation is separable: \\(y dy = 2x dx\\).\nIntegrate both sides: \\(\\int y dy = \\int 2x dx\\).\nThis gives \\(\\frac{1}{2}y^2 = x^2 + C\\).\nUse the initial condition \\(y(1) = 2\\) to find C: \\(\\frac{1}{2}(2)^2 = (1)^2 + C \\implies 2 = 1 + C \\implies C = 1\\).\nSo, the solution is \\(\\frac{1}{2}y^2 = x^2 + 1\\), which means \\(y^2 = 2x^2 + 2\\), and \\(y = \\sqrt{2x^2 + 2}\\) (since \\(y(1) = 2 > 0\\)).\nNow, find \\(y(3)\\): \\(y(3) = \\sqrt{2(3)^2 + 2} = \\sqrt{2(9) + 2} = \\sqrt{18 + 2} = \\sqrt{20} = 2\\sqrt{5}\\).",
+          "q": "In assessment dataset (ODES-712025633) for quality audit, the table reports key quantities; approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** A. Trapezoidal sum \\(= \\frac{2}{2}(6 + 10) + \\frac{4}{2}(10 + 14) = 16 + 48 = 64\\).",
           "explanation": "The differential equation is separable: \\(y dy = 2x dx\\).\nIntegrate both sides: \\(\\int y dy = \\int 2x dx\\).\nThis gives \\(\\frac{1}{2}y^2 = x^2 + C\\).\nUse the initial condition \\(y(1) = 2\\) to find C: \\(\\frac{1}{2}(2)^2 = (1)^2 + C \\implies 2 = 1 + C \\implies C = 1\\).\nSo, the solution is \\(\\frac{1}{2}y^2 = x^2 + 1\\), which means \\(y^2 = 2x^2 + 2\\), and \\(y = \\sqrt{2x^2 + 2}\\) (since \\(y(1) = 2 > 0\\)).\nNow, find \\(y(3)\\): \\(y(3) = \\sqrt{2(3)^2 + 2} = \\sqrt{2(9) + 2} = \\sqrt{18 + 2} = \\sqrt{20} = 2\\sqrt{5}\\).",
           "choices": [
-            "\\(2 \\sqrt{5}\\)",
-            "\\(2 \\sqrt{3}\\)",
-            "\\(2 \\sqrt{2}\\)",
-            "\\(4\\)"
+            "\\(64\\)",
+            "\\(52\\)",
+            "\\(76\\)",
+            "\\(128\\)"
           ],
           "correct": 0,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(6 + 10) + \\frac{4}{2}(10 + 14) = 16 + 48 = 64\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "2",
               "4",
-              "6",
               "8"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
+                "\\(R(t)\\)",
                 "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "10",
+                "14"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 8] (quality audit, ODES-712025633)",
+            "caption_ar": "جدول المعدل (تدقيق الجودة، ODES-712025633)"
           }
         },
         {
-          "q": "Solve the Cauchy-Euler differential equation \\(x^2 y'' - x y' + 5y = 0\\) for \\(x > 0\\) with \\(y(1) = 2\\) and \\(y'(1) = 4\\).",
+          "q": "The accompanying figure illustrates a survey layout configuration (ODES-G695249014); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "answer": "Step 1: Auxiliary equation: Substitute \\(y = x^m\\): \\(m(m - 1) - m + 5 = m^2 - 2m + 5 = 0 \\Rightarrow m = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = 1 \\pm 2i.\\) For complex roots \\(\\alpha \\pm i\\beta\\), the real fundamental basis is \\(\\{x^\\alpha \\cos(\\beta\\ln x), x^\\alpha \\sin(\\beta\\ln x)\\}\\). General solution: \\(y(x) = x(C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)).\\) Step 2: Apply \\(y(1) = 2\\): Since \\(\\ln 1 = 0\\): \\(y(1) = 1(C_1 \\cos 0 + 0) = C_1 = 2\\). Step 3: Derivative: \\(y'(x) = (C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)) + x\\left(-\\frac{2C_1}{x}\\sin(2\\ln x) + \\frac{2C_2}{x}\\cos(2\\ln x)\\right).\\) \\(y'(1) = (C_1 + 0) + 2C_2 = 2 + 2C_2 = 4 \\Rightarrow 2C_2 = 2 \\Rightarrow C_2 = 1.\\) Step 4: Particular solution: \\(y(x) = x(2\\cos(2\\ln x) + \\sin(2\\ln x)).\\)",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
           "explanation": "Step 1: Auxiliary equation: Substitute \\(y = x^m\\): \\(m(m - 1) - m + 5 = m^2 - 2m + 5 = 0 \\Rightarrow m = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = 1 \\pm 2i.\\) For complex roots \\(\\alpha \\pm i\\beta\\), the real fundamental basis is \\(\\{x^\\alpha \\cos(\\beta\\ln x), x^\\alpha \\sin(\\beta\\ln x)\\}\\). General solution: \\(y(x) = x(C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)).\\) Step 2: Apply \\(y(1) = 2\\): Since \\(\\ln 1 = 0\\): \\(y(1) = 1(C_1 \\cos 0 + 0) = C_1 = 2\\). Step 3: Derivative: \\(y'(x) = (C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)) + x\\left(-\\frac{2C_1}{x}\\sin(2\\ln x) + \\frac{2C_2}{x}\\cos(2\\ln x)\\right).\\) \\(y'(1) = (C_1 + 0) + 2C_2 = 2 + 2C_2 = 4 \\Rightarrow 2C_2 = 2 \\Rightarrow C_2 = 1.\\) Step 4: Particular solution: \\(y(x) = x(2\\cos(2\\ln x) + \\sin(2\\ln x)).\\)",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "2*x - 1",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              2,
+              21
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = 2*x - 1 (#14)"
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G695249014)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G695249014)"
           }
         },
         {

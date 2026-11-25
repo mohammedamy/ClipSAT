@@ -9,63 +9,44 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "The diagram shows a right-angled triangle ABC, with the right angle at D. The altitude from D to the hypotenuse BC is drawn. Given that BD = 4 cm and DC = 9 cm, find the length of the altitude AD.",
+          "q": "During aerodynamics experiment (ASLEVEL-664967277), observers compiled the following table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Final Answer: 6 cm. **Mark Scheme (CAIE / Edexcel Grading Steps):** - **Step 1 (Method & Formulation):** Identify the required geometric/algebraic relationship from the diagram and substitute the given values. **[M1]** - **Step 2 (Derivation & Calculation):** In a right-angled triangle, the altitude to the hypotenuse creates three similar triangles. Specifically, triangle ABD is similar to triangle CAD, and both are similar to the original triangle ABC. By the geometric mean theorem (or by using similarity ratios), the square of the altitude to the hypotenuse is equal to the product of the two segments it divides the hypotenuse into. Therefore, \\(AD^2 = BD \\times DC\\). Given \\(BD = 4\\) cm and \\(DC = 9\\) cm. \\(AD^2 = 4 \\times 9\\) \\(AD^2 = 36\\) \\(AD = \\sqrt{36}\\) \\(AD = 6\\) cm. **[M1]** - **Step 3 (Final Accuracy):** Verified exact result: 6 cm. **[A1]**",
+          "answer": "**Answer:** \\(9\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(3) = 9\\).",
           "explanation": "**Mark Scheme (CAIE / Edexcel Grading Steps):** - **Step 1 (Method & Formulation):** Identify the required geometric/algebraic relationship from the diagram and substitute the given values. **[M1]** - **Step 2 (Derivation & Calculation):** In a right-angled triangle, the altitude to the hypotenuse creates three similar triangles. Specifically, triangle ABD is similar to triangle CAD, and both are similar to the original triangle ABC. By the geometric mean theorem (or by using similarity ratios), the square of the altitude to the hypotenuse is equal to the product of the two segments it divides the hypotenuse into. Therefore, \\(AD^2 = BD \\times DC\\). Given \\(BD = 4\\) cm and \\(DC = 9\\) cm. \\(AD^2 = 4 \\times 9\\) \\(AD^2 = 36\\) \\(AD = \\sqrt{36}\\) \\(AD = 6\\) cm. **[M1]** - **Step 3 (Final Accuracy):** Verified exact result: 6 cm. **[A1]**",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(3) = 9\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
+                "0",
+                "0",
+                "3",
+                "3"
               ],
               [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
+                "1",
+                "1",
+                "6",
+                "3"
               ],
               [
-                "f'(x)",
-                "4",
                 "2",
-                "4",
-                "2"
+                "2",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (aerodynamics, ASLEVEL-664967277)",
+            "caption_ar": "جدول خطوات أويلر (الديناميكا الهوائية، ASLEVEL-664967277)"
           }
         },
         {
@@ -102,125 +83,103 @@
           }
         },
         {
-          "q": "\\( \\frac{d}{dx}[\\sqrt{x}]= \\)",
-          "answer": "Power rule: x^{1/2} -> 1/(2sqrt(x)). [M1][A1]",
+          "q": "Based on the turbine profile visual model shown (ASLEVEL-G631413039) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** B. At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
           "choices": [
-            "\\(\\frac{1}{\\sqrt{x}}\\)",
-            "\\(\\frac{1}{2\\sqrt{x}}\\)",
-            "\\(2\\sqrt{x}\\)",
-            "\\(\\frac{-1}{2\\sqrt{x}}\\)"
+            "\\(-1\\)",
+            "\\(-2\\)",
+            "\\(3\\)",
+            "\\(4\\)"
           ],
           "correct": 1,
+          "explain": "At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 1,
+                "y": 3,
+                "label": "P(1, 3)"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (ASLEVEL-G631413039)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G631413039)"
           }
         },
         {
-          "q": "\\( \\int_0^3 2x\\,dx= \\)",
-          "answer": "Applying Differentiation & Integration principles, [x^2]_0^3=9. Therefore, the verified correct option is 9. [M1][A1]",
+          "q": "The accompanying figure illustrates a specimen plot configuration (ASLEVEL-G581080189); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** D. At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "choices": [
-            "18",
-            "6",
-            "3",
-            "9"
+            "\\(2\\)",
+            "\\(1\\)",
+            "\\(8\\)",
+            "\\(0\\)"
           ],
           "correct": 3,
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
             "xl": [
-              -3,
-              3
+              -1,
+              4
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              5
             ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "step": 1,
+            "pts": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (ASLEVEL-G581080189)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G581080189)"
           }
         },
         {
-          "q": "A curve is defined parametrically by \\(x=t^2+1\\), \\(y=2t^3-3t\\). Find \\(\\frac{dy}{dx}\\) in terms of \\(t\\) and the value at \\(t=1\\).",
+          "q": "Given the structured survey trial observations displayed in the table (ASLEVEL-597856801), approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-          "answer": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=6t^2-3\\). \\(\\frac{dy}{dx}=\\frac{6t^2-3}{2t}\\). At \\(t=1\\): \\(\\frac{3}{2}\\).",
+          "answer": "**Answer:** \\(47\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{4}{2}(7 + 11) = 11 + 36 = 47\\).",
           "explanation": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=6t^2-3\\). \\(\\frac{dy}{dx}=\\frac{6t^2-3}{2t}\\). At \\(t=1\\): \\(\\frac{3}{2}\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{4}{2}(7 + 11) = 11 + 36 = 47\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "7"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
+                "\\(R(t)\\)",
                 "4",
-                "6",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 7] (survey trial, ASLEVEL-597856801)",
+            "caption_ar": "جدول المعدل (تجربة المسح، ASLEVEL-597856801)"
           }
         },
         {
@@ -251,35 +210,38 @@
           }
         },
         {
-          "q": "Find \\( \\dfrac{dy}{dx} \\) given \\( y=3x^{2}+x-8 \\).",
-          "answer": "Differentiating term by term: \\( \\dfrac{dy}{dx}=6x+1 \\) [M1][A1]",
+          "q": "Based on the fluid channel visual model shown (ASLEVEL-G564302563) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** C. At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "choices": [
-            "\\(6x^{2}+x\\)",
-            "-6x-1",
-            "6x+1",
-            "3x+1"
+            "\\(2\\)",
+            "\\(1\\)",
+            "\\(0\\)",
+            "\\(8\\)"
           ],
           "correct": 2,
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
+              -1,
               4
             ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
               }
             ],
-            "title": "Coordinate Graph (#8)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (ASLEVEL-G564302563)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G564302563)"
           }
         }
       ]
@@ -288,275 +250,303 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate \\( \\displaystyle\\int_{0}^{4} \\left(6x\\right)\\,dx \\).",
-          "answer": "\\( \\displaystyle\\int \\left(6x\\right)dx=3x^{2} \\). Evaluating from \\( 0 \\) to \\( 4 \\): \\( \\left[3x^{2}\\right]_{0}^{4}=48 \\) [M1][A1]",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (ASLEVEL-G513969713); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** A. At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "choices": [
-            "48",
-            "-48",
-            "96",
-            "51"
+            "\\(-3\\)",
+            "\\(0\\)",
+            "\\(4\\)",
+            "\\(21\\)"
           ],
           "correct": 0,
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "caption": "Real-Line Scale (#9)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ASLEVEL-G513969713)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G513969713)"
           }
         },
         {
-          "q": "Find \\( \\displaystyle\\int \\left(4x^{2}-x\\right)\\,dx \\).",
-          "answer": "Integrating term by term: \\( 4/3x^{3}-1/2x^{2}+C \\) [M1][A1]",
+          "q": "The table summarizes measurements from a quality audit evaluation (ASLEVEL-530746325); using these entries, where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(3) = \\dfrac{f'(3)g(3) - f(3)g'(3)}{[g(3)]^2}\\)?",
+          "answer": "**Answer:** A. Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (2)(4) - (2)(-3) = 14\\).",
           "choices": [
-            "\\(4/3x^{3}-1/2x^{2}+C\\)",
-            "4/3x-1/2+C",
-            "\\(4/3x^{3}-1/2x^{2}\\)",
-            "\\(4x^{3}-x^{2}+C\\)"
+            "\\(14\\)",
+            "\\(2\\)",
+            "\\(-14\\)",
+            "\\(-6\\)"
           ],
           "correct": 0,
+          "explain": "Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (2)(4) - (2)(-3) = 14\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "2",
+              "\\(x\\)",
               "3",
-              "4"
+              "5"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
+                "\\(f(x)\\)",
+                "2",
+                "5"
               ],
               [
-                "f'(x)",
+                "\\(f'(x)\\)",
                 "2",
-                "0",
-                "2",
+                "4"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
                 "0"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#10)",
-            "caption_ar": "جدول القيم المختارة (#10)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (quality audit, ASLEVEL-530746325)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (تدقيق الجودة، ASLEVEL-530746325)"
           }
         },
         {
-          "q": "Find the area enclosed between the curve \\( y=x \\), the \\( x \\)-axis, and the lines \\( x=0 \\) and \\( x=3 \\).",
-          "answer": "Area \\( =\\displaystyle\\int_{0}^{3}\\left(x\\right)dx=\\left[1/2x^{2}\\right]_{0}^{3}=9/2 \\) [M1][A1]",
+          "q": "The accompanying figure illustrates a specimen plot configuration (ASLEVEL-G300534799); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** D. At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "choices": [
-            "9",
-            "7/2",
-            "19/2",
-            "9/2"
+            "\\(2\\)",
+            "\\(1\\)",
+            "\\(8\\)",
+            "\\(0\\)"
           ],
           "correct": 3,
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
             "xl": [
-              -4,
+              -1,
               4
             ],
             "yl": [
-              -5,
+              -1,
               5
             ],
-            "xStep": 2,
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (ASLEVEL-G300534799)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G300534799)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a turbine profile configuration (ASLEVEL-G283757187); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** D. From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "choices": [
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)",
+            "\\(3\\)"
+          ],
+          "correct": 3,
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "-0.5*x^2 + 3",
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#11)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ASLEVEL-G283757187)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ASLEVEL-G283757187)"
           }
         },
         {
-          "q": "Given \\( y=2x^{2}+5 \\), find \\( \\dfrac{dy}{dx} \\) when \\( x=3 \\).",
-          "answer": "\\( \\dfrac{dy}{dx}=4x \\). At \\( x=3 \\): \\( \\dfrac{dy}{dx}=12 \\) [M1][A1]",
+          "q": "Selected numerical readings from aerodynamics run (ASLEVEL-334089037) appear in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+          "answer": "**Answer:** B. From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(3) = 7\\).",
           "choices": [
-            "9",
-            "13",
-            "14",
-            "12"
+            "\\(5\\)",
+            "\\(7\\)",
+            "\\(6\\)",
+            "\\(9\\)"
           ],
-          "correct": 3,
+          "correct": 1,
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(3) = 7\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
+            ],
+            "rows": [
+              [
+                "0",
+                "1",
+                "3",
+                "1"
+              ],
+              [
+                "1",
+                "2",
+                "4",
+                "3"
+              ],
+              [
+                "2",
+                "3",
+                "?",
+                "\\(\\dots\\)"
+              ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (aerodynamics, ASLEVEL-334089037)",
+            "caption_ar": "جدول خطوات أويلر (الديناميكا الهوائية، ASLEVEL-334089037)"
+          }
+        },
+        {
+          "q": "From the plotted harmonic trace figure above (ASLEVEL-G317312418) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** B. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "choices": [
+            "\\(-1\\)",
+            "\\(5\\)",
+            "\\(6\\)",
+            "\\(7\\)"
+          ],
+          "correct": 1,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -1,
+              7
             ],
             "yl": [
-              -5,
+              -3,
               7
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 2"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 4,
+                "label": "(4, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (ASLEVEL-G317312418)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (ASLEVEL-G317312418)"
           }
         },
         {
-          "q": "Determine the numerical value of \\( \\displaystyle\\int_{0}^{4} \\left(2x\\right)\\,dx \\).",
-          "answer": "\\( \\displaystyle\\int \\left(2x\\right)dx=x^{2} \\). Evaluating from \\( 0 \\) to \\( 4 \\): \\( \\left[x^{2}\\right]_{0}^{4}=16 \\) [M1][A1]",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (ASLEVEL-G233424323); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** A. At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "choices": [
-            "-16",
-            "16",
-            "19",
-            "32"
-          ],
-          "correct": 1,
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "5",
-                "7",
-                "9",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "7",
-                "9",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Find the gradient of the tangent to \\( y=3x^{2}-6x \\) at \\( x=3 \\).",
-          "answer": "\\( \\dfrac{dy}{dx}=6x-6 \\). At \\( x=3 \\): gradient \\( =12 \\) [M1][A1]",
-          "choices": [
-            "13",
-            "12",
-            "-12",
-            "11"
-          ],
-          "correct": 1,
-          "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
-          }
-        },
-        {
-          "q": "Find the \\( x \\)-coordinate of the stationary point of \\( y=3(x+1)^2-2 \\).",
-          "answer": "\\( \\dfrac{dy}{dx}=6(x+1)=0 \\Rightarrow x=-1 \\) [M1][A1]",
-          "choices": [
-            "-1",
-            "0",
-            "-2",
-            "1"
+            "\\(-3\\)",
+            "\\(0\\)",
+            "\\(4\\)",
+            "\\(21\\)"
           ],
           "correct": 0,
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
+              -1,
               4
             ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ASLEVEL-G233424323)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ASLEVEL-G233424323)"
           }
         }
       ]
@@ -565,66 +555,45 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Find the area enclosed between the curve \\( y=2x \\), the \\( x \\)-axis, and the lines \\( x=0 \\) and \\( x=2 \\).",
-          "answer": "Area \\( =\\displaystyle\\int_{0}^{2}\\left(2x\\right)dx=\\left[x^{2}\\right]_{0}^{2}=4 \\) [M1][A1]",
+          "q": "In assessment dataset (ASLEVEL-216645704) for acoustics lab, the table reports key quantities; evaluate \\(f(g(1)) + 2\\).",
+          "answer": "**Answer:** C. From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
           "choices": [
-            "3",
-            "8",
-            "4",
-            "9"
+            "\\(3\\)",
+            "\\(9\\)",
+            "\\(15\\)",
+            "\\(13\\)"
           ],
           "correct": 2,
+          "explain": "From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "4",
+                "1",
                 "2",
-                "4",
-                "2"
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#16)",
-            "caption_ar": "جدول القيم المختارة (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (acoustics lab, ASLEVEL-216645704)",
+            "caption_ar": "قيم مختارة للدالتين (مختبر الصوت، ASLEVEL-216645704)"
           }
         },
         {

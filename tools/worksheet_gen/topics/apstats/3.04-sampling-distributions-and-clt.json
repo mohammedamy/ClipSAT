@@ -9,55 +9,46 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Explain the difference between a population distribution and the sampling distribution of a sample mean \\(\\bar{x}\\).",
+          "q": "Selected numerical readings from logistics run (APSTATS-297037638) appear in the table; for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "What is a sampling distribution?",
-          "answer": "The population distribution describes the values of individual members of the entire population. The sampling distribution of \\(\\bar{x}\\) describes the values that the sample mean would take if you repeatedly took many samples of the same size from that population and computed the mean of each sample — it describes variability between different samples' means, not between individuals.",
+          "answer": "**Answer:** \\(\\frac{3}{5}\\). There are \\(10\\) participants in Lab 1 (\\(6 + 4\\)), of whom \\(6\\) recorded Positive, giving \\(\\frac{3}{5}\\).",
           "explanation": "The population distribution describes the values of individual members of the entire population. The sampling distribution of \\(\\bar{x}\\) describes the values that the sample mean would take if you repeatedly took many samples of the same size from that population and computed the mean of each sample — it describes variability between different samples' means, not between individuals.",
+          "explain": "There are \\(10\\) participants in Lab 1 (\\(6 + 4\\)), of whom \\(6\\) recorded Positive, giving \\(\\frac{3}{5}\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "two_way_table",
             "corner": "",
             "rows": [
-              "Group I",
-              "Group II",
+              "Lab 1",
+              "Lab 2",
               "Total"
             ],
             "cols": [
-              "Outcome A",
-              "Outcome B",
+              "Positive",
+              "Negative",
               "Total"
             ],
             "data": [
               [
-                "22",
-                "21",
-                43
+                "6",
+                "4",
+                10
               ],
               [
                 "8",
-                "27",
-                35
+                "11",
+                19
               ],
               [
-                30,
-                48,
-                78
+                14,
+                15,
+                29
               ]
             ],
-            "caption": "Reference Summary Table (#2)",
-            "caption_ar": "جدول ملخص البيانات (#2)",
-            "_totals": {
-              "rowTotals": [
-                43,
-                35
-              ],
-              "colTotals": [
-                30,
-                48
-              ],
-              "grandTotal": 78
-            }
+            "caption": "Assay Trials Summary (APSTATS-297037638)",
+            "caption_ar": "ملخص النتائج (APSTATS-297037638)"
           }
         },
         {
@@ -79,160 +70,175 @@
           }
         },
         {
-          "q": "A population has mean \\(\\mu=60\\) and standard deviation \\(\\sigma=12\\). For samples of size \\(n=36\\), find the mean and standard deviation of the sampling distribution of \\(\\bar{x}\\).",
+          "q": "Based on the harmonic trace visual model shown (APSTATS-G263483400) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Mean and standard deviation of the sampling distribution",
-          "answer": "Mean of \\(\\bar{x}\\): \\(\\mu_{\\bar{x}}=\\mu=60\\) (unbiased — the sampling distribution's mean equals the population mean). Standard deviation of \\(\\bar{x}\\) (standard error): \\(\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{n}}=\\frac{12}{\\sqrt{36}}=\\frac{12}{6}=2\\).",
+          "answer": "**Answer:** \\(12\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 17\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 17 = 12\\).",
           "explanation": "Mean of \\(\\bar{x}\\): \\(\\mu_{\\bar{x}}=\\mu=60\\) (unbiased — the sampling distribution's mean equals the population mean). Standard deviation of \\(\\bar{x}\\) (standard error): \\(\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{n}}=\\frac{12}{\\sqrt{36}}=\\frac{12}{6}=2\\).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 17\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 17 = 12\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "boxplot",
+            "boxes": [
+              {
+                "label": "Sample",
+                "min": 13,
+                "q1": 17,
+                "med": 23,
+                "q3": 29,
+                "max": 34
+              }
+            ],
+            "range": [
+              9,
+              38
+            ],
+            "caption": "Five-number summary box plot (APSTATS-G263483400)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G263483400)"
+          }
+        },
+        {
+          "q": "Referring to the harmonic trace figure (APSTATS-G380926740) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 50, \\sigma = 4)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Mean and standard deviation of the sampling distribution",
+          "answer": "**Answer:** \\(58\\). Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(4) = 58\\).",
+          "explanation": "\\(\\sigma_{\\bar{x}}=\\frac{12}{\\sqrt{144}}=\\frac{12}{12}=1\\). As sample size increases, the standard error decreases (specifically, it decreases proportionally to \\(\\frac{1}{\\sqrt{n}}\\)) — larger samples give more precise (less variable) estimates of the population mean.",
+          "explain": "Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(4) = 58\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 60,
-            "sd": 12,
+            "mean": 50,
+            "sd": 4,
             "shadeRange": [
-              48,
-              72
+              42,
+              58
             ],
             "showRule": true,
-            "caption": "Normal Distribution Model (#4)"
+            "caption": "Normal bell curve with mean 50 and SD 4 (APSTATS-G380926740)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 50 وانحراف 4 (APSTATS-G380926740)"
           }
         },
         {
-          "q": "Using the same population, find the standard error for a larger sample of size \\(n=144\\), and explain what happens to the standard error as sample size increases.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Mean and standard deviation of the sampling distribution",
-          "answer": "\\(\\sigma_{\\bar{x}}=\\frac{12}{\\sqrt{144}}=\\frac{12}{12}=1\\). As sample size increases, the standard error decreases (specifically, it decreases proportionally to \\(\\frac{1}{\\sqrt{n}}\\)) — larger samples give more precise (less variable) estimates of the population mean.",
-          "explanation": "\\(\\sigma_{\\bar{x}}=\\frac{12}{\\sqrt{144}}=\\frac{12}{12}=1\\). As sample size increases, the standard error decreases (specifically, it decreases proportionally to \\(\\frac{1}{\\sqrt{n}}\\)) — larger samples give more precise (less variable) estimates of the population mean.",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#5)"
-          }
-        },
-        {
-          "q": "State the Central Limit Theorem in your own words, including what happens to the shape of the sampling distribution of \\(\\bar{x}\\) as sample size \\(n\\) increases.",
+          "q": "The table summarizes measurements from a grid assay evaluation (APSTATS-364148114); using these entries, showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Central Limit Theorem",
-          "answer": "The Central Limit Theorem states that as sample size \\(n\\) increases, the sampling distribution of the sample mean \\(\\bar{x}\\) becomes approximately normal, regardless of the shape of the original population distribution — even if the population itself is skewed or unusual in shape. A commonly used guideline is that \\(n\\geq30\\) is generally large enough for this approximation to be reasonable.",
+          "answer": "**Answer:** \\(4\\). Weighted sum \\(= 2(4) + 4(4) + 6(2) + 8(1) = 44\\) across \\(11\\) observations, so mean \\(= \\frac{44}{11} = 4\\).",
           "explanation": "The Central Limit Theorem states that as sample size \\(n\\) increases, the sampling distribution of the sample mean \\(\\bar{x}\\) becomes approximately normal, regardless of the shape of the original population distribution — even if the population itself is skewed or unusual in shape. A commonly used guideline is that \\(n\\geq30\\) is generally large enough for this approximation to be reasonable.",
+          "explain": "Weighted sum \\(= 2(4) + 4(4) + 6(2) + 8(1) = 44\\) across \\(11\\) observations, so mean \\(= \\frac{44}{11} = 4\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "27",
-                "13",
-                40
+                "2",
+                "4"
               ],
               [
-                "15",
-                "21",
-                36
+                "4",
+                "4"
               ],
               [
-                42,
-                34,
-                76
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "1"
               ]
             ],
-            "caption": "Reference Summary Table (#6)",
-            "caption_ar": "جدول ملخص البيانات (#6)",
-            "_totals": {
-              "rowTotals": [
-                40,
-                36
+            "caption": "Frequency distribution summary (grid assay, APSTATS-364148114)",
+            "caption_ar": "جدول التوزيع التكراري (فحص الشبكة، APSTATS-364148114)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "4"
               ],
-              "colTotals": [
-                42,
-                34
+              [
+                "4",
+                "4"
               ],
-              "grandTotal": 76
-            }
+              [
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "1"
+              ]
+            ]
           }
         },
         {
-          "q": "Explain why the Central Limit Theorem is considered one of the most important results in statistics, referencing its practical usefulness.",
+          "q": "The accompanying figure illustrates a reservoir profile configuration (APSTATS-G347371502); using it representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Central Limit Theorem",
-          "answer": "The Central Limit Theorem is powerful because it allows statisticians to use normal-distribution-based methods (like \\(z\\)-scores and confidence intervals) for the sample mean even when the underlying population distribution is unknown or clearly not normal — as long as the sample size is reasonably large, this makes a huge range of inference procedures broadly applicable.",
+          "answer": "**Answer:** \\(7\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 23\\), so \\(\\text{IQR} = 23 - 16 = 7\\).",
           "explanation": "The Central Limit Theorem is powerful because it allows statisticians to use normal-distribution-based methods (like \\(z\\)-scores and confidence intervals) for the sample mean even when the underlying population distribution is unknown or clearly not normal — as long as the sample size is reasonably large, this makes a huge range of inference procedures broadly applicable.",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 23\\), so \\(\\text{IQR} = 23 - 16 = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "Sample",
+                "min": 10,
+                "q1": 16,
+                "med": 19,
+                "q3": 23,
+                "max": 30
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "range": [
+              6,
+              34
+            ],
+            "caption": "Five-number summary box plot (APSTATS-G347371502)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G347371502)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Starting from \\(P(A \\cap B) = 0.07\\) and \\(P(B) = 0.35\\), find \\(P(A \\mid B)\\).",
-          "answer": "**Answer:** D. \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.07}{0.35}=0.2\\).",
+          "q": "Based on the calibration curve visual model shown (APSTATS-G330593876) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
+          "answer": "**Answer:** D. Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 18 = 8\\).",
           "explanation": "\\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.07}{0.35}=0.2\\).",
           "choices": [
-            "0.35",
-            "0.45",
-            "0.28",
-            "0.2"
+            "\\(19\\)",
+            "\\(4\\)",
+            "\\(11\\)",
+            "\\(8\\)"
           ],
           "correct": 3,
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 18 = 8\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "Sample",
+                "min": 12,
+                "q1": 18,
+                "med": 22,
+                "q3": 26,
+                "max": 31
               }
             ],
-            "caption": "Real-Line Scale (#8)"
+            "range": [
+              8,
+              35
+            ],
+            "caption": "Five-number summary box plot (APSTATS-G330593876)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G330593876)"
           }
         }
       ]
@@ -241,179 +247,140 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "A population has a true proportion \\(p=0.4\\) favoring a proposal. For samples of size \\(n=100\\), find the mean and standard deviation of the sampling distribution of the sample proportion \\(\\hat{p}\\), using \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{p(1-p)}{n}}\\).",
+          "q": "The table summarizes measurements from a optics evaluation (APSTATS-448036209); using these entries, for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Sampling distribution of a sample proportion",
-          "answer": "Mean: \\(\\mu_{\\hat{p}}=p=0.4\\). Standard deviation: \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{0.4(0.6)}{100}}=\\sqrt{\\frac{0.24}{100}}=\\sqrt{0.0024}\\approx0.049\\).",
+          "answer": "**Answer:** \\(\\frac{6}{11}\\). There are \\(11\\) participants in North (\\(6 + 5\\)), of whom \\(6\\) recorded Transit, giving \\(\\frac{6}{11}\\).",
           "explanation": "Mean: \\(\\mu_{\\hat{p}}=p=0.4\\). Standard deviation: \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{0.4(0.6)}{100}}=\\sqrt{\\frac{0.24}{100}}=\\sqrt{0.0024}\\approx0.049\\).",
+          "explain": "There are \\(11\\) participants in North (\\(6 + 5\\)), of whom \\(6\\) recorded Transit, giving \\(\\frac{6}{11}\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "two_way_table",
             "corner": "",
             "rows": [
-              "Group I",
-              "Group II",
+              "North",
+              "South",
               "Total"
             ],
             "cols": [
-              "Outcome A",
-              "Outcome B",
+              "Transit",
+              "Drive",
               "Total"
             ],
             "data": [
               [
-                "24",
-                "17",
-                41
+                "6",
+                "5",
+                11
               ],
               [
-                "11",
-                "22",
-                33
+                "5",
+                "6",
+                11
               ],
               [
-                35,
-                39,
-                74
+                11,
+                11,
+                22
               ]
             ],
-            "caption": "Reference Summary Table (#9)",
-            "caption_ar": "جدول ملخص البيانات (#9)",
-            "_totals": {
-              "rowTotals": [
-                41,
-                33
-              ],
-              "colTotals": [
-                35,
-                39
-              ],
-              "grandTotal": 74
-            }
+            "caption": "Commuter Survey Summary (APSTATS-448036209)",
+            "caption_ar": "ملخص النتائج (APSTATS-448036209)"
           }
         },
         {
-          "q": "State the two conditions typically required to treat the sampling distribution of \\(\\hat{p}\\) as approximately normal.",
+          "q": "Using the labeled measurements in the acoustic chamber diagram (APSTATS-G431259590) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 50, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Sampling distribution of a sample proportion",
-          "answer": "Both \\(np\\geq10\\) and \\(n(1-p)\\geq10\\) must hold (sometimes stated as needing at least 10 expected successes and 10 expected failures) — this ensures the sampling distribution of \\(\\hat{p}\\) is not too skewed to approximate with a normal curve.",
+          "answer": "**Answer:** \\(66\\). Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(8) = 66\\).",
           "explanation": "Both \\(np\\geq10\\) and \\(n(1-p)\\geq10\\) must hold (sometimes stated as needing at least 10 expected successes and 10 expected failures) — this ensures the sampling distribution of \\(\\hat{p}\\) is not too skewed to approximate with a normal curve.",
+          "explain": "Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(8) = 66\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#10)"
+            "type": "normal_curve",
+            "mean": 50,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 50 and standard deviation 8"
           }
         },
         {
-          "q": "Explain, in the context of opinion polling, why a poll of 1000 people gives a more reliable estimate of a population proportion than a poll of 50 people, connecting your answer to the formula for \\(\\sigma_{\\hat{p}}\\).",
+          "q": "Refer to the geometric/analytic cad blueprint figure (APSTATS-G620666602) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparing sampling variability across sample sizes",
-          "answer": "Since \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{p(1-p)}{n}}\\) decreases as \\(n\\) increases, a larger sample size produces a smaller standard error for the sample proportion — meaning the sample proportion from a poll of 1000 people tends to land closer to the true population proportion, on average, than a poll of only 50 people, which is subject to much more sample-to-sample variability.",
+          "answer": "**Answer:** \\(86\\). Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "explanation": "Since \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{p(1-p)}{n}}\\) decreases as \\(n\\) increases, a larger sample size produces a smaller standard error for the sample proportion — meaning the sample proportion from a poll of 1000 people tends to land closer to the true population proportion, on average, than a poll of only 50 people, which is subject to much more sample-to-sample variability.",
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#11)"
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 70 and standard deviation 8"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Knowing that \\(P(A \\cap B) = 0.25\\) and \\(P(B) = 0.38\\), find \\(P(A \\mid B)\\).",
-          "answer": "**Answer:** B. \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.25}{0.38}=0.6579\\).",
+          "q": "Given the measurements marked directly on the bridge arch schematic (APSTATS-G637444221) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+          "answer": "**Answer:** B. Summing bar heights directly from the histogram gives \\(4 + 6 + 11 + 7 = 28\\).",
           "explanation": "\\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.25}{0.38}=0.6579\\).",
           "choices": [
-            "0.5779",
-            "0.6579",
-            "0.7379",
-            "0.9079"
+            "\\(30\\)",
+            "\\(28\\)",
+            "\\(25\\)",
+            "\\(11\\)"
           ],
           "correct": 1,
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#12)",
-            "caption_ar": "جدول نمط مرجعي (#12)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "A population of insurance claim amounts is strongly right-skewed. Explain why a sample of size \\(n=15\\) might not be large enough to safely use CLT-based normal methods, but a sample of size \\(n=200\\) likely would be.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Sample size and the CLT threshold",
-          "answer": "The Central Limit Theorem's normal approximation improves as sample size increases, and it takes a larger sample size to overcome a strongly skewed population shape. With only \\(n=15\\), the sampling distribution of \\(\\bar{x}\\) may still noticeably reflect the skewness of the original population, making normal-based methods unreliable. With \\(n=200\\) (well beyond the common \\(n\\geq30\\) guideline), the sampling distribution of \\(\\bar{x}\\) is much more likely to be close to normal, even though the original population itself is skewed.",
-          "explanation": "The Central Limit Theorem's normal approximation improves as sample size increases, and it takes a larger sample size to overcome a strongly skewed population shape. With only \\(n=15\\), the sampling distribution of \\(\\bar{x}\\) may still noticeably reflect the skewness of the original population, making normal-based methods unreliable. With \\(n=200\\) (well beyond the common \\(n\\geq30\\) guideline), the sampling distribution of \\(\\bar{x}\\) is much more likely to be close to normal, even though the original population itself is skewed.",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 6 + 11 + 7 = 28\\).",
           "figure": {
             "type": "histogram",
             "bins": [
               {
                 "label": "0-9",
-                "count": 3
+                "count": 4
               },
               {
                 "label": "10-19",
-                "count": 10
+                "count": 6
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 7
+              }
+            ],
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (APSTATS-G637444221)",
+            "caption_ar": "المدرج التكراري للفئات (APSTATS-G637444221)"
+          }
+        },
+        {
+          "q": "From the plotted fluid channel figure above (APSTATS-G587111371) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sample size and the CLT threshold",
+          "answer": "**Answer:** \\(27\\). Summing bar heights directly from the histogram gives \\(6 + 6 + 10 + 5 = 27\\).",
+          "explanation": "The Central Limit Theorem's normal approximation improves as sample size increases, and it takes a larger sample size to overcome a strongly skewed population shape. With only \\(n=15\\), the sampling distribution of \\(\\bar{x}\\) may still noticeably reflect the skewness of the original population, making normal-based methods unreliable. With \\(n=200\\) (well beyond the common \\(n\\geq30\\) guideline), the sampling distribution of \\(\\bar{x}\\) is much more likely to be close to normal, even though the original population itself is skewed.",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 6 + 10 + 5 = 27\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 6
+              },
+              {
+                "label": "10-19",
+                "count": 6
               },
               {
                 "label": "20-29",
@@ -421,87 +388,67 @@
               },
               {
                 "label": "30-39",
-                "count": 6
-              },
-              {
-                "label": "40-49",
-                "count": 3
+                "count": 5
               }
             ],
-            "xLabel": "Class Interval",
+            "xLabel": "Interval",
             "yLabel": "Frequency",
-            "caption": "Histogram Summary (#13)"
+            "caption": "Frequency histogram of measured intervals (APSTATS-G587111371)",
+            "caption_ar": "المدرج التكراري للفئات (APSTATS-G587111371)"
           }
         },
         {
-          "q": "Explain the difference between the standard deviation of an individual population value and the standard error of a sample mean \\(\\bar{x}\\).",
+          "q": "Selected numerical readings from circuit trial run (APSTATS-603887983) appear in the table; for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Standard error vs. standard deviation",
-          "answer": "The standard deviation (\\(\\sigma\\)) measures the spread of individual values within the population. The standard error (\\(\\sigma_{\\bar{x}}=\\sigma/\\sqrt{n}\\)) measures the spread of sample means across many hypothetical samples of the same size — it is always smaller than \\(\\sigma\\) (for \\(n>1\\)), since averaging reduces variability.",
+          "answer": "**Answer:** \\(\\frac{3}{10}\\). Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+2+3}{10} = \\frac{3}{10}\\).",
           "explanation": "The standard deviation (\\(\\sigma\\)) measures the spread of individual values within the population. The standard error (\\(\\sigma_{\\bar{x}}=\\sigma/\\sqrt{n}\\)) measures the spread of sample means across many hypothetical samples of the same size — it is always smaller than \\(\\sigma\\) (for \\(n>1\\)), since averaging reduces variability.",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+2+3}{10} = \\frac{3}{10}\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 3,
-            "sd": 4,
-            "shadeRange": [
-              -1,
-              7
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#14)"
-          }
-        },
-        {
-          "q": "A quality control engineer at a bottling plant knows that individual bottle fill volumes are approximately normal with mean \\(500\\) mL and standard deviation \\(8\\) mL. Every hour, the engineer measures a sample of 16 bottles and computes the sample mean fill volume. Describe the shape, mean, and standard deviation of the sampling distribution of this hourly sample mean, and explain whether the Central Limit Theorem's usual \\(n\\geq30\\) guideline is even needed to justify treating this sampling distribution as normal.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Standard error vs. standard deviation",
-          "answer": "Shape: approximately normal. Mean: \\(\\mu_{\\bar{x}}=500\\) mL (same as the population mean). Standard deviation: \\(\\sigma_{\\bar{x}}=\\frac{8}{\\sqrt{16}}=\\frac{8}{4}=2\\) mL. The \\(n\\geq30\\) CLT guideline is not needed here, because the underlying population of individual fill volumes is already stated to be approximately normal — when the population itself is normal, the sampling distribution of \\(\\bar{x}\\) is exactly normal for any sample size, including small ones like \\(n=16\\).",
-          "explanation": "Shape: approximately normal. Mean: \\(\\mu_{\\bar{x}}=500\\) mL (same as the population mean). Standard deviation: \\(\\sigma_{\\bar{x}}=\\frac{8}{\\sqrt{16}}=\\frac{8}{4}=2\\) mL. The \\(n\\geq30\\) CLT guideline is not needed here, because the underlying population of individual fill volumes is already stated to be approximately normal — when the population itself is normal, the sampling distribution of \\(\\bar{x}\\) is exactly normal for any sample size, including small ones like \\(n=16\\).",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "21",
-                "17",
-                38
-              ],
-              [
-                "18",
-                "24",
-                42
-              ],
-              [
-                39,
-                41,
-                80
+                "\\(P(X=x)\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(c\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#15)",
-            "caption_ar": "جدول ملخص البيانات (#15)",
-            "_totals": {
-              "rowTotals": [
-                38,
-                42
-              ],
-              "colTotals": [
-                39,
-                41
-              ],
-              "grandTotal": 80
-            }
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (circuit trial, APSTATS-603887983)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (تجربة الدائرة، APSTATS-603887983)"
+          }
+        },
+        {
+          "q": "Based on the acoustic chamber visual model shown (APSTATS-G553556126) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Standard error vs. standard deviation",
+          "answer": "**Answer:** \\(76\\). Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "explanation": "Shape: approximately normal. Mean: \\(\\mu_{\\bar{x}}=500\\) mL (same as the population mean). Standard deviation: \\(\\sigma_{\\bar{x}}=\\frac{8}{\\sqrt{16}}=\\frac{8}{4}=2\\) mL. The \\(n\\geq30\\) CLT guideline is not needed here, because the underlying population of individual fill volumes is already stated to be approximately normal — when the population itself is normal, the sampling distribution of \\(\\bar{x}\\) is exactly normal for any sample size, including small ones like \\(n=16\\).",
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 60,
+            "sd": 8,
+            "shadeRange": [
+              44,
+              76
+            ],
+            "showRule": true,
+            "caption": "Normal bell curve with mean 60 and SD 8 (APSTATS-G553556126)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 60 وانحراف 8 (APSTATS-G553556126)"
           }
         }
       ]
@@ -510,23 +457,26 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A political pollster samples 900 voters and calculates a sample proportion \\(\\hat{p}=0.53\\) supporting a ballot measure, from a true population proportion of \\(p=0.50\\). Verify that both conditions (\\(np\\geq10\\) and \\(n(1-p)\\geq10\\)) are satisfied for treating the sampling distribution of \\(\\hat{p}\\) as approximately normal, then find the standard deviation of this sampling distribution, to four decimal places.",
+          "q": "The accompanying figure illustrates a calibration curve configuration (APSTATS-G570333752); using it depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 4)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Standard error vs. standard deviation",
           "cross_lesson": "1.03 Describing Distributions & Linear Regression",
-          "answer": "\\(np=900(0.50)=450\\geq10\\) ✓. \\(n(1-p)=900(0.50)=450\\geq10\\) ✓. Both conditions are satisfied. Standard deviation: \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{p(1-p)}{n}}=\\sqrt{\\frac{(0.50)(0.50)}{900}}=\\sqrt{\\frac{0.25}{900}}\\approx0.0167\\).",
+          "answer": "**Answer:** \\(78\\). Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(4) = 78\\).",
           "explanation": "\\(np=900(0.50)=450\\geq10\\) ✓. \\(n(1-p)=900(0.50)=450\\geq10\\) ✓. Both conditions are satisfied. Standard deviation: \\(\\sigma_{\\hat{p}}=\\sqrt{\\frac{p(1-p)}{n}}=\\sqrt{\\frac{(0.50)(0.50)}{900}}=\\sqrt{\\frac{0.25}{900}}\\approx0.0167\\).",
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(4) = 78\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 900,
-            "sd": 1,
+            "mean": 70,
+            "sd": 4,
             "shadeRange": [
-              899,
-              901
+              62,
+              78
             ],
             "showRule": true,
-            "caption": "Normal Distribution Model (#16)"
+            "caption": "Normal bell curve with mean 70 and SD 4 (APSTATS-G570333752)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 70 وانحراف 4 (APSTATS-G570333752)"
           }
         },
         {
@@ -550,34 +500,65 @@
         },
         {
           "qtype": "MCQ",
-          "q": "From the given relation \\(P(A \\cap B) = 0.12\\) and \\(P(B) = 0.24\\), find \\(P(A \\mid B)\\).",
-          "answer": "**Answer:** B. \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.12}{0.24}=0.5\\).",
+          "q": "The table summarizes measurements from a robotics evaluation (APSTATS-536777507); using these entries, showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
+          "answer": "**Answer:** B. Weighted sum \\(= 2(4) + 4(5) + 6(4) + 8(1) = 60\\).",
           "explanation": "\\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0.12}{0.24}=0.5\\).",
           "choices": [
-            "0.75",
-            "0.5",
-            "0.25",
-            "0.42"
+            "\\(64\\)",
+            "\\(60\\)",
+            "\\(56\\)",
+            "\\(14\\)"
           ],
           "correct": 1,
+          "explain": "Weighted sum \\(= 2(4) + 4(5) + 6(4) + 8(1) = 60\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
             ],
-            "caption": "Real-Line Scale (#18)"
+            "rows": [
+              [
+                "2",
+                "4"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "4"
+              ],
+              [
+                "8",
+                "1"
+              ]
+            ],
+            "caption": "Frequency distribution summary (robotics, APSTATS-536777507)",
+            "caption_ar": "جدول التوزيع التكراري (الروبوتات، APSTATS-536777507)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "4"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "4"
+              ],
+              [
+                "8",
+                "1"
+              ]
+            ]
           }
         },
         {

@@ -47,225 +47,278 @@
           }
         },
         {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 62 \\), \\( \\lambda_2 = 24 \\), and \\( \\lambda_3 = 14 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
+          "q": "The table summarizes measurements from a reactor bench evaluation (MATHAI-781149982); using these entries, for the two-way table above. If one participant from Model X is chosen at random, what fraction corresponds to outcome In-Spec?",
           "choices": [
-            "\\( 62.0\\% \\)",
-            "\\( 86.0\\% \\)",
-            "\\( 24.0\\% \\)",
-            "\\( 72.1\\% \\)"
+            "\\(\\frac{5}{9}\\)",
+            "\\(\\frac{10}{37}\\)",
+            "\\(\\frac{5}{11}\\)",
+            "\\(\\frac{4}{9}\\)"
           ],
           "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 62 + 24 + 14 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{62}{100} = 62.0\\% \\).",
+          "answer": "**Answer:** A. There are \\(18\\) participants in Model X (\\(10 + 8\\)), of whom \\(10\\) recorded In-Spec, giving \\(\\frac{5}{9}\\).",
+          "explain": "There are \\(18\\) participants in Model X (\\(10 + 8\\)), of whom \\(10\\) recorded In-Spec, giving \\(\\frac{5}{9}\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Model X",
+              "Model Y",
+              "Total"
+            ],
+            "cols": [
+              "In-Spec",
+              "Rework",
+              "Total"
+            ],
+            "data": [
+              [
+                "10",
+                "8",
+                18
+              ],
+              [
+                "12",
+                "7",
+                19
+              ],
+              [
+                22,
+                15,
+                37
+              ]
+            ],
+            "caption": "Batch Inspection Summary (MATHAI-781149982)",
+            "caption_ar": "ملخص النتائج (MATHAI-781149982)"
+          }
+        },
+        {
+          "q": "Based on the specimen plot visual model shown (MATHAI-G797928601), determine the missing leg length \\(AC\\) using the labeled side lengths on right triangle \\(ABC\\).",
+          "choices": [
+            "\\(12\\)",
+            "\\(18\\)",
+            "\\(8\\)",
+            "\\(14\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. By the Pythagorean theorem using hypotenuse \\(13\\) and leg \\(5\\) shown, \\(AC = \\sqrt{13^2 - 5^2} = 12\\).",
+          "explain": "By the Pythagorean theorem using hypotenuse \\(13\\) and leg \\(5\\) shown, \\(AC = \\sqrt{13^2 - 5^2} = 12\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "triangle",
+            "verts": [
+              "C",
+              "B",
+              "A"
+            ],
+            "labels": [
+              "C",
+              "B",
+              "A"
+            ],
+            "rightAngle": "C",
+            "rightAt": "C",
+            "sides": [
+              "13",
+              "?",
+              "5"
+            ],
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                0,
+                12
+              ]
+            ],
+            "coords": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                0,
+                12
+              ]
+            ],
+            "notToScale": true,
+            "caption": "Right triangle ABC with angle C = 90 deg (MATHAI-G797928601)",
+            "caption_ar": "مثلث قائم الزاوية (MATHAI-G797928601)"
+          }
+        },
+        {
+          "q": "Using the labeled measurements in the structural truss diagram (MATHAI-G814706227) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "choices": [
+            "\\(8\\)",
+            "\\(10\\)",
+            "\\(4\\)",
+            "\\(6\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (MATHAI-G814706227)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (MATHAI-G814706227)"
+          }
+        },
+        {
+          "q": "During optical bench experiment (MATHAI-831482839), observers compiled the following table; determine \\(3\\,h^{-1}(14)\\) for the invertible function \\(h\\).",
+          "choices": [
+            "\\(24\\)",
+            "\\(8\\)",
+            "\\(42\\)",
+            "\\(18\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Because \\(h(8) = 14\\), we have \\(h^{-1}(14) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
+          "explain": "Because \\(h(8) = 14\\), we have \\(h^{-1}(14) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "Basis Vector",
-              "e₁",
-              "e₂"
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
             ],
             "rows": [
               [
-                "x-comp",
-                "2",
-                "1"
-              ],
-              [
-                "y-comp",
-                "1",
-                "6"
+                "\\(h(x)\\)",
+                "8",
+                "11",
+                "14",
+                "17"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Component & Basis Table (#3)",
-            "caption_ar": "جدول المركبات والمتجهات (#3)",
-            "headers_ar": [
-              "متجه الأساس",
-              "e₁",
-              "e₂"
-            ],
-            "rows_ar": [
-              [
-                "المركبة x",
-                "2",
-                "1"
-              ],
-              [
-                "المركبة y",
-                "1",
-                "6"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (optical bench, MATHAI-831482839)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (المنضدة البصرية، MATHAI-831482839)"
           }
         },
         {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 64 \\), \\( \\lambda_2 = 23 \\), and \\( \\lambda_3 = 13 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
+          "q": "Referring to the lab apparatus figure (MATHAI-G848261465) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "choices": [
-            "\\( 64.0\\% \\)",
-            "\\( 87.0\\% \\)",
-            "\\( 23.0\\% \\)",
-            "\\( 73.6\\% \\)"
+            "\\(10\\)",
+            "\\(22\\)",
+            "\\(5\\)",
+            "\\(13\\)"
           ],
           "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 64 + 23 + 13 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{64}{100} = 64.0\\% \\).",
+          "answer": "**Answer:** A. Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 16 = 10\\).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 16 = 10\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "Sample",
+                "min": 10,
+                "q1": 16,
+                "med": 21,
+                "q3": 26,
+                "max": 32
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "range": [
+              6,
+              36
+            ],
+            "caption": "Five-number summary box plot (MATHAI-G848261465)",
+            "caption_ar": "مخطط الصندوق والعارضتين (MATHAI-G848261465)"
           }
         },
         {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 66 \\), \\( \\lambda_2 = 22 \\), and \\( \\lambda_3 = 12 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
+          "q": "Based on the field geometry visual model shown (MATHAI-G865039077) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "choices": [
-            "\\( 66.0\\% \\)",
-            "\\( 88.0\\% \\)",
-            "\\( 22.0\\% \\)",
-            "\\( 75.0\\% \\)"
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)"
           ],
           "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 66 + 22 + 12 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{66}{100} = 66.0\\% \\).",
+          "answer": "**Answer:** A. From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "caption": "Real-Line Scale (#5)"
-          }
-        },
-        {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 68 \\), \\( \\lambda_2 = 21 \\), and \\( \\lambda_3 = 11 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
-          "choices": [
-            "\\( 68.0\\% \\)",
-            "\\( 89.0\\% \\)",
-            "\\( 21.0\\% \\)",
-            "\\( 76.4\\% \\)"
-          ],
-          "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 68 + 21 + 11 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{68}{100} = 68.0\\% \\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "Basis Vector",
-              "e₁",
-              "e₂"
-            ],
-            "rows": [
-              [
-                "x-comp",
-                "4",
-                "-1"
-              ],
-              [
-                "y-comp",
-                "4",
-                "4"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Component & Basis Table (#6)",
-            "caption_ar": "جدول المركبات والمتجهات (#6)",
-            "headers_ar": [
-              "متجه الأساس",
-              "e₁",
-              "e₂"
-            ],
-            "rows_ar": [
-              [
-                "المركبة x",
-                "4",
-                "-1"
-              ],
-              [
-                "المركبة y",
-                "4",
-                "4"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 70 \\), \\( \\lambda_2 = 20 \\), and \\( \\lambda_3 = 10 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
-          "choices": [
-            "\\( 70.0\\% \\)",
-            "\\( 90.0\\% \\)",
-            "\\( 20.0\\% \\)",
-            "\\( 77.8\\% \\)"
-          ],
-          "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 70 + 20 + 10 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{70}{100} = 70.0\\% \\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
               },
               {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
               }
             ],
-            "caption": "Real-Line Scale (#7)"
-          }
-        },
-        {
-          "q": "A 3D dataset has covariance matrix eigenvalues \\( \\lambda_1 = 72 \\), \\( \\lambda_2 = 19 \\), and \\( \\lambda_3 = 9 \\). What percentage of total variance is explained by the first principal component \\( PC_1 \\)?",
-          "choices": [
-            "\\( 72.0\\% \\)",
-            "\\( 91.0\\% \\)",
-            "\\( 19.0\\% \\)",
-            "\\( 79.1\\% \\)"
-          ],
-          "correct": 0,
-          "answer": "Total variance is \\( \\sum \\lambda_i = 72 + 19 + 9 = 100 \\). The proportion explained by \\( PC_1 \\) is \\( \\frac{\\lambda_1}{\\sum \\lambda_i} = \\frac{72}{100} = 72.0\\% \\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#8)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (MATHAI-G865039077)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (MATHAI-G865039077)"
           }
         },
         {

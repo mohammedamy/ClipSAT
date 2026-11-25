@@ -5,50 +5,45 @@
       "number": 1,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Simplify \\(\\dfrac{x^2 - 9}{x^2 - x - 6}\\).",
-        "ar": "بسّط \\(\\dfrac{x^2 - 9}{x^2 - x - 6}\\)."
+        "en": "The table summarizes measurements from a telemetry evaluation (EST2-700); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة القياس عن بُعد (EST2-700). بالاعتماد على القيم المعطاة، للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Factor the numerator:</strong> Difference of two squares: \\(x^2 - 9 = (x - 3)(x + 3)\\).</p><p><strong>Step 2: Factor the denominator:</strong> Find two integers with product \\(-6\\) and sum \\(-1\\), which are \\(-3\\) and \\(+2\\): \\(x^2 - x - 6 = (x - 3)(x + 2)\\).</p><p><strong>Step 3: Cancel common factor \\((x - 3)\\):</strong> Under domain restrictions \\(x \\neq 3\\) and \\(x \\neq -2\\): \\[\\dfrac{(x - 3)(x + 3)}{(x - 3)(x + 2)} = \\mathbf{\\dfrac{x + 3}{x + 2}}.\\]</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(13 + 4\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "2",
+            "13",
+            "4",
+            17
+          ],
+          [
             "11",
-            "20",
-            "29"
+            "11",
+            22
+          ],
+          [
+            24,
+            15,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#1)",
-        "caption_ar": "جدول نمط مرجعي (#1)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "11",
-            "20",
-            "29"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (EST2-700)",
+        "caption_ar": "ملخص النتائج (EST2-700)"
       }
     },
     {
@@ -85,11 +80,261 @@
       "number": 3,
       "difficulty": "Advanced",
       "question": {
-        "en": "Is \\((x - 1)\\) a factor of \\(x^3 - 3x + 2\\)?",
-        "ar": "Is \\((x - 1)\\) a حلّل of \\(x^3 - 3x + 2\\)?"
+        "en": "From the plotted thermal profile figure above (EST2-G766) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+        "ar": "تأمّل الرسم البياني لـ المنحنى الحراري أعلاه (EST2-G766) للمدرج التكراري المكون من أربع فئات. ما العدد الكلي للمشاهدات؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Apply Factor Theorem:</strong> A binomial \\((x - c)\\) is a factor of \\(P(x)\\) if and only if \\(P(c) = 0\\). Here, \\(c = 1\\).</p><p><strong>Step 2: Evaluate polynomial at \\(x = 1\\):</strong> \\[P(1) = (1)^3 - 3(1) + 2 = 1 - 3 + 2 = 0.\\]</p><p><strong>Step 3: Conclusion:</strong> Since \\(P(1) = 0\\), the remainder is zero, confirming that \\(\\mathbf{(x - 1)}\\) is indeed a factor.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(5 + 9 + 11 + 7 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 5
+          },
+          {
+            "label": "10-19",
+            "count": 9
+          },
+          {
+            "label": "20-29",
+            "count": 11
+          },
+          {
+            "label": "30-39",
+            "count": 7
+          }
+        ],
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (EST2-G766)",
+        "caption_ar": "المدرج التكراري للفئات (EST2-G766)"
+      }
+    },
+    {
+      "number": 4,
+      "difficulty": "Advanced",
+      "question": {
+        "en": "Referring to the thermal profile figure (EST2-G802) showing a sinusoidal wave with dashed midline \\(y = 3\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
+        "ar": "بالرجوع إلى رسم المنحنى الحراري (EST2-G802) لموجة جيبية مع خط الوسط المتقطع \\(y = 3\\) والقمة المحددة. ما المدى الرأسي الكلي بين القمة والقاع؟"
+      },
+      "solution": {
+        "en": "<p>From midline \\(3\\) to peak \\(7\\), amplitude is \\(A = 7 - 3 = 4\\), so peak-to-trough range equals \\(2A = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "sinusoid",
+        "amp": 4,
+        "freq": 1,
+        "phase": 0,
+        "midline": 3,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
+        ],
+        "yl": [
+          -2,
+          8
+        ],
+        "pts": [
+          {
+            "x": 1.57,
+            "y": 7,
+            "label": "max=7"
+          }
+        ],
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 3 (EST2-G802)",
+        "caption_ar": "موجة جيبية مع خط الوسط (EST2-G802)"
+      }
+    },
+    {
+      "number": 5,
+      "difficulty": "Intermediate",
+      "question": {
+        "en": "An engineering team logged optical bench measurements in the accompanying table (EST2-831); using these data, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "سجّل فريق دراسة المنضدة البصرية القياسات في الجدول المرفق (EST2-831). مستخدمًا هذه البيانات، الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
+      },
+      "solution": {
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "3",
+            "6",
+            "12"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (optical bench, EST2-831)",
+        "caption_ar": "جدول قيم نمو أسي (المنضدة البصرية، EST2-831)"
+      }
+    },
+    {
+      "number": 6,
+      "difficulty": "Intermediate",
+      "question": {
+        "en": "The accompanying figure illustrates a thermal profile configuration (EST2-G874); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(3)\\).",
+        "ar": "يوضّح الشكل المرفق نموذج المنحنى الحراري (EST2-G874) للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(3)\\) ."
+      },
+      "solution": {
+        "en": "<p>From vertex \\((1, 0)\\) and point \\((2, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(3) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "fn",
+        "xl": [
+          -2,
+          4
+        ],
+        "yl": [
+          -2,
+          10
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (1))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 1,
+            "y": 0,
+            "label": "(1, 0)"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "label": "(2, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (EST2-G874)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (EST2-G874)"
+      }
+    },
+    {
+      "number": 7,
+      "difficulty": "Intermediate",
+      "question": {
+        "en": "From the plotted thermal profile figure above (EST2-G910), compute the hypotenuse length \\(AB\\) from the side lengths labeled on right triangle \\(ABC\\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>By the Pythagorean theorem using legs \\(36\\) and \\(48\\) shown, \\(AB = \\sqrt{36^2 + 48^2} = 60\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(60\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "triangle",
+        "verts": [
+          "C",
+          "B",
+          "A"
+        ],
+        "labels": [
+          "C",
+          "B",
+          "A"
+        ],
+        "rightAngle": "C",
+        "rightAt": "C",
+        "sides": [
+          "?",
+          "48",
+          "36"
+        ],
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            36,
+            0
+          ],
+          [
+            0,
+            48
+          ]
+        ],
+        "coords": [
+          [
+            0,
+            0
+          ],
+          [
+            36,
+            0
+          ],
+          [
+            0,
+            48
+          ]
+        ],
+        "notToScale": true,
+        "caption": "Right triangle ABC with angle C = 90 deg (EST2-G910)",
+        "caption_ar": "مثلث قائم الزاوية (EST2-G910)"
+      }
+    },
+    {
+      "number": 8,
+      "difficulty": "Intermediate",
+      "question": {
+        "en": "Inspect the cartography values listed across the table (EST2-939); modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "تأمل مدخلات رسم الخرائط في الجدول (EST2-939) لتحديد الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
+      },
+      "solution": {
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{10}{5} = 2\\), so \\(E(3) = 20 \\cdot 2 = 40\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(40\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "5",
+            "10",
+            "20"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (cartography, EST2-939)",
+        "caption_ar": "جدول قيم نمو أسي (رسم الخرائط، EST2-939)"
+      }
+    },
+    {
+      "number": 9,
+      "difficulty": "Intermediate",
+      "question": {
+        "en": "Based on the turbine profile visual model shown (EST2-G975) showing a rectangle with labeled side lengths. Compute its area.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Reading length \\(12\\) and width \\(6\\) from the rectangle, area \\(= 12 \\times 6 = 72\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(72\\)</strong></p>",
         "ar": null
       },
       "fig": {
@@ -101,349 +346,98 @@
             0
           ],
           [
-            4,
+            12,
             0
           ],
           [
-            4,
-            4
+            12,
+            6
           ],
           [
             0,
-            4
+            6
           ]
         ],
-        "w": 4,
-        "h": 4,
+        "w": 12,
+        "h": 6,
         "sides": [
-          "a",
-          "b",
-          "a",
-          "b"
+          "12",
+          "6",
+          "12",
+          "6"
         ],
         "notToScale": true,
-        "caption": "Planar Region Schematic (#3)",
-        "caption_ar": "مخطط المنطقة المستوية (#3)"
-      }
-    },
-    {
-      "number": 4,
-      "difficulty": "Advanced",
-      "question": {
-        "en": "Solve the system \\(x^2 + y = 5\\), \\(x + y = 3\\).",
-        "ar": "حل the system \\(x^2 + y = 5\\), \\(x + y = 3\\)."
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Express \\(y\\) in terms of \\(x\\):</strong> From the linear equation: \\(y = 3 - x\\).</p><p><strong>Step 2: Substitute into quadratic equation:</strong> \\[x^2 + (3 - x) = 5 \\implies x^2 - x - 2 = 0.\\]</p><p><strong>Step 3: Factor and solve for \\(x\\):</strong> \\[(x - 2)(x + 1) = 0 \\implies x_1 = 2,\\quad x_2 = -1.\\]</p><p><strong>Step 4: Compute corresponding \\(y\\) coordinates:</strong></p><ul><li>For \\(x = 2\\): \\(y = 3 - 2 = 1 \\implies (2, 1)\\).</li><li>For \\(x = -1\\): \\(y = 3 - (-1) = 4 \\implies (-1, 4)\\).</li></ul><p>Solution pairs: \\[\\mathbf{(2, 1)\\quad\\text{and}\\quad (-1, 4)}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#4)",
-        "caption_ar": "جدول نمط مرجعي (#4)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
-      }
-    },
-    {
-      "number": 5,
-      "difficulty": "Intermediate",
-      "question": {
-        "en": "Let \\(f(x) = 2x - 1\\) and \\(g(x) = x + 3\\). Find \\((f \\circ g)(x)\\).",
-        "ar": "ليكن \\(f(x) = 2x - 1\\) و \\(g(x) = x + 3\\). أوجد \\((f \\circ g)(x)\\)."
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Use composite function definition:</strong> \\((f \\circ g)(x) = f(g(x))\\).</p><p><strong>Step 2: Substitute expression for \\(g(x)\\):</strong> \\[f(g(x)) = f(x + 3).\\]</p><p><strong>Step 3: Evaluate \\(f\\) at the input \\((x + 3)\\):</strong> \\[f(x + 3) = 2(x + 3) - 1 = 2x + 6 - 1 = \\mathbf{2x + 5}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
-        ],
-        "yl": [
-          -2,
-          7
-        ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "2^(x) - 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#5)",
-        "caption": "Reference graph y = f(x)"
-      }
-    },
-    {
-      "number": 6,
-      "difficulty": "Intermediate",
-      "question": {
-        "en": "Find \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{x + 2}{3}\\).",
-        "ar": "أوجد \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{x + 2}{3}\\)."
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Replace \\(f(x)\\) with \\(y\\):</strong> \\[y = \\dfrac{x + 2}{3}.\\]</p><p><strong>Step 2: Swap \\(x\\) and \\(y\\) to invert the relation:</strong> \\[x = \\dfrac{y + 2}{3}.\\]</p><p><strong>Step 3: Solve for \\(y\\):</strong> Multiply by 3 and subtract 2: \\[3x = y + 2 \\implies y = 3x - 2.\\]</p><p>Therefore: \\[\\mathbf{f^{-1}(x) = 3x - 2}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "fn",
-        "xl": [
-          -4,
-          4
-        ],
-        "yl": [
-          -5,
-          7
-        ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "1.5*x + 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#6)",
-        "caption": "Reference graph y = f(x)"
-      }
-    },
-    {
-      "number": 7,
-      "difficulty": "Intermediate",
-      "question": {
-        "en": "Find the 15th term of the arithmetic sequence \\(4,\\,7,\\,10,\\dots\\)",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Identify sequence parameters:</strong> First term \\(a_1 = 4\\), common difference \\(d = 7 - 4 = 3\\).</p><p><strong>Step 2: Apply general term formula:</strong> \\(a_n = a_1 + (n - 1)d\\).</p><p><strong>Step 3: Evaluate for \\(n = 15\\):</strong> \\[a_{15} = 4 + (15 - 1)(3) = 4 + 14(3) = 4 + 42 = \\mathbf{46}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows": [
-          [
-            "f(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ],
-          [
-            "f'(x)",
-            "4",
-            "2",
-            "4",
-            "2"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#7)",
-        "caption_ar": "جدول القيم المختارة (#7)",
-        "headers_ar": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ],
-          [
-            "f'(x)",
-            "4",
-            "2",
-            "4",
-            "2"
-          ]
-        ]
-      }
-    },
-    {
-      "number": 8,
-      "difficulty": "Intermediate",
-      "question": {
-        "en": "Find the sum of the first 20 terms of \\(2 + 5 + 8 + \\dots\\)",
-        "ar": "أوجد مجموع أول 20 terms of \\(2 + 5 + 8 + \\dots\\)"
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Identify parameters:</strong> Arithmetic progression with \\(a_1 = 2\\), \\(d = 5 - 2 = 3\\), and \\(n = 20\\).</p><p><strong>Step 2: Find the 20th term:</strong> \\[a_{20} = a_1 + (20 - 1)d = 2 + 19(3) = 2 + 57 = 59.\\]</p><p><strong>Step 3: Apply arithmetic series sum formula:</strong> \\[S_{20} = \\dfrac{n}{2}(a_1 + a_{20}) = \\dfrac{20}{2}(2 + 59) = 10 \\times 61 = \\mathbf{610}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
-        ],
-        "values": [
-          3,
-          6,
-          9,
-          11
-        ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#8)"
-      }
-    },
-    {
-      "number": 9,
-      "difficulty": "Intermediate",
-      "question": {
-        "en": "Find the 6th term of the geometric sequence \\(3,\\,6,\\,12,\\dots\\)",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p><strong>Step 1: Identify parameters:</strong> First term \\(a_1 = 3\\), common ratio \\(r = \\dfrac{6}{3} = 2\\).</p><p><strong>Step 2: Apply geometric term formula:</strong> \\(a_n = a_1 r^{n-1}\\).</p><p><strong>Step 3: Evaluate for \\(n = 6\\):</strong> \\[a_6 = 3 \\cdot (2)^{6 - 1} = 3 \\cdot 2^5 = 3 \\times 32 = \\mathbf{96}.\\]</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
-        ],
-        "values": [
-          4,
-          6,
-          9,
-          11
-        ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#9)"
+        "caption": "Rectangle with labeled dimensions (EST2-G975)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (EST2-G975)"
       }
     },
     {
       "number": 10,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the sum to infinity of \\(8 + 4 + 2 + \\dots\\)",
-        "ar": "أوجد sum to infinity of \\(8 + 4 + 2 + \\dots\\)"
+        "en": "The accompanying figure illustrates a thermal profile configuration (EST2-G1018); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+        "ar": "يوضّح الشكل المرفق نموذج المنحنى الحراري (EST2-G1018) للمدرج التكراري المكون من أربع فئات. ما العدد الكلي للمشاهدات؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify geometric series parameters:</strong> First term \\(a = 8\\), common ratio \\(r = \\dfrac{4}{8} = \\dfrac{1}{2}\\).</p><p><strong>Step 2: Verify convergence condition:</strong> Since \\(|r| = \\left|\\dfrac{1}{2}\\right| \\lt 1\\), the infinite series converges.</p><p><strong>Step 3: Apply infinite sum formula:</strong> \\[S_\\infty = \\dfrac{a}{1 - r} = \\dfrac{8}{1 - 1/2} = \\dfrac{8}{1/2} = 8 \\times 2 = \\mathbf{16}.\\]</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(5 + 10 + 10 + 7 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 5
+          },
+          {
+            "label": "10-19",
+            "count": 10
+          },
+          {
+            "label": "20-29",
+            "count": 10
+          },
+          {
+            "label": "30-39",
+            "count": 7
+          }
         ],
-        "rows": [
-          [
-            "g(x)",
-            "8",
-            "12",
-            "16",
-            "20"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#10)",
-        "caption_ar": "جدول نمط مرجعي (#10)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "8",
-            "12",
-            "16",
-            "20"
-          ]
-        ]
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (EST2-G1018)",
+        "caption_ar": "المدرج التكراري للفئات (EST2-G1018)"
       }
     },
     {
       "number": 11,
       "difficulty": "Advanced",
       "question": {
-        "en": "An arithmetic sequence has \\(a_1 = 5\\) and common difference 4. Find the sum of the first 10 terms.",
+        "en": "The table summarizes measurements from a seismology evaluation (EST2-1047); using these entries, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify sequence parameters:</strong> \\(a_1 = 5\\), \\(d = 4\\), \\(n = 10\\).</p><p><strong>Step 2: Apply direct sum formula:</strong> \\[S_n = \\dfrac{n}{2}[2a_1 + (n - 1)d].\\]</p><p><strong>Step 3: Substitute values:</strong> \\[S_{10} = \\dfrac{10}{2}[2(5) + (10 - 1)(4)] = 5[10 + 9(4)] = 5[10 + 36] = 5 \\times 46 = \\mathbf{230}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{4}{2} = 2\\), so \\(E(3) = 8 \\cdot 2 = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
         ],
-        "values": [
-          2,
-          6,
-          9,
-          13
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "2",
+            "4",
+            "8"
+          ]
         ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#11)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (seismology, EST2-1047)",
+        "caption_ar": "جدول قيم نمو أسي (علم الزلازل، EST2-1047)"
       }
     },
     {
@@ -486,400 +480,272 @@
       "number": 14,
       "difficulty": "Intermediate",
       "question": {
-        "en": "In a right triangle, \\(\\sin\\theta = \\dfrac{5}{13}\\). Find \\(\\cos\\theta\\).",
-        "ar": "In a right triangle, \\(\\sin\\theta = \\dfrac{5}{13}\\). أوجد \\(\\cos\\theta\\)."
+        "en": "Examine the aerodynamics dataset arranged in the table below (EST2-1129); determine \\(3\\,h^{-1}(11)\\) for the invertible function \\(h\\).",
+        "ar": "ادرس بيانات الديناميكا الهوائية المرتبة في الجدول أدناه (EST2-1129) ثم لإيجاد قيمة \\(3\\,h^{-1}(11)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Use Pythagorean identity:</strong> For an acute angle \\(\\theta\\) in a right triangle, \\(\\cos\\theta \\gt 0\\): \\[\\cos\\theta = \\sqrt{1 - \\sin^2\\theta}.\\]</p><p><strong>Step 2: Substitute and simplify:</strong> \\[\\cos\\theta = \\sqrt{1 - \\left(\\dfrac{5}{13}\\right)^2} = \\sqrt{1 - \\dfrac{25}{169}} = \\sqrt{\\dfrac{144}{169}} = \\mathbf{\\dfrac{12}{13}}.\\]</p>",
+        "en": "<p>Because \\(h(4) = 11\\), we have \\(h^{-1}(11) = 4\\). Multiplying by \\(3\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
         "rows": [
           [
-            "g(x)",
+            "\\(h(x)\\)",
             "5",
-            "14",
-            "23",
-            "32"
+            "8",
+            "11",
+            "15"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#14)",
-        "caption_ar": "جدول نمط مرجعي (#14)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "14",
-            "23",
-            "32"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (aerodynamics, EST2-1129)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (الديناميكا الهوائية، EST2-1129)"
       }
     },
     {
       "number": 15,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the exact value of \\(\\tan 45^\\circ + \\sin 90^\\circ\\).",
-        "ar": "أوجد القيمة الدقيقة لـ \\(\\tan 45^\\circ + \\sin 90^\\circ\\)."
+        "en": "An engineering team logged survey trial measurements in the accompanying table (EST2-1165); using these data, determine \\(3\\,h^{-1}(12)\\) for the invertible function \\(h\\).",
+        "ar": "سجّل فريق دراسة تجربة المسح القياسات في الجدول المرفق (EST2-1165). مستخدمًا هذه البيانات، لإيجاد قيمة \\(3\\,h^{-1}(12)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Determine exact trigonometric values:</strong></p><ul><li>In a \\(45^\\circ-45^\\circ-90^\\circ\\) triangle, opposite and adjacent legs are equal: \\(\\tan 45^\\circ = 1\\).</li><li>On the unit circle, at angle \\(90^\\circ\\) the point is \\((0, 1)\\): \\(\\sin 90^\\circ = 1\\).</li></ul><p><strong>Step 2: Sum the values:</strong> \\[1 + 1 = \\mathbf{2}.\\]</p>",
+        "en": "<p>Because \\(h(6) = 12\\), we have \\(h^{-1}(12) = 6\\). Multiplying by \\(3\\) gives \\(18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "4",
+          "6",
+          "8"
         ],
         "rows": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "\\(h(x)\\)",
+            "6",
+            "9",
+            "12",
+            "17"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#15)",
-        "caption_ar": "جدول نمط مرجعي (#15)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (survey trial, EST2-1165)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (تجربة المسح، EST2-1165)"
       }
     },
     {
       "number": 16,
       "difficulty": "Intermediate",
       "question": {
-        "en": "In triangle \\(ABC\\), \\(AB = 6\\), \\(BC = 8\\), and angle \\(B = 90^\\circ\\). Find \\(AC\\).",
-        "ar": "In triangle \\(ABC\\), \\(AB = 6\\), \\(BC = 8\\), و angle \\(B = 90^\\circ\\). أوجد \\(AC\\)."
+        "en": "Referring to the quality audit table above (EST2-1201), determine \\(3\\,h^{-1}(13)\\) for the invertible function \\(h\\).",
+        "ar": "بالرجوع إلى جدول تدقيق الجودة أعلاه (EST2-1201)، لإيجاد قيمة \\(3\\,h^{-1}(13)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify sides of right triangle:</strong> Since \\(\\angle B = 90^\\circ\\), side \\(AC\\) is the hypotenuse opposite the right angle, while \\(AB\\) and \\(BC\\) are perpendicular legs.</p><p><strong>Step 2: Apply Pythagorean theorem:</strong> \\[AC^2 = AB^2 + BC^2 = 6^2 + 8^2 = 36 + 64 = 100.\\]</p><p><strong>Step 3: Solve for hypotenuse length:</strong> \\[AC = \\sqrt{100} = \\mathbf{10}.\\]</p>",
+        "en": "<p>Because \\(h(4) = 13\\), we have \\(h^{-1}(13) = 4\\). Multiplying by \\(3\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
         "rows": [
           [
-            "g(x)",
-            "6",
-            "14",
-            "22",
-            "30"
+            "\\(h(x)\\)",
+            "7",
+            "10",
+            "13",
+            "15"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#16)",
-        "caption_ar": "جدول نمط مرجعي (#16)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "6",
-            "14",
-            "22",
-            "30"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (quality audit, EST2-1201)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (تدقيق الجودة، EST2-1201)"
       }
     },
     {
       "number": 17,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the area of a triangle with sides 5, 7, and included angle \\(60^\\circ\\).",
+        "en": "Given the structured optics observations displayed in the table (EST2-1237), determine \\(3\\,h^{-1}(14)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: State SAS trigonometric area formula:</strong> \\[\\text{Area} = \\dfrac{1}{2} a b \\sin C.\\]</p><p><strong>Step 2: Substitute side lengths and angle:</strong> \\[\\text{Area} = \\dfrac{1}{2} (5)(7) \\sin(60^\\circ).\\]</p><p><strong>Step 3: Evaluate using exact value \\(\\sin(60^\\circ) = \\dfrac{\\sqrt{3}}{2}\\):</strong> \\[\\text{Area} = \\dfrac{35}{2} \\times \\dfrac{\\sqrt{3}}{2} = \\mathbf{\\dfrac{35\\sqrt{3}}{4}} \\approx 15.155.\\]</p>",
+        "en": "<p>Because \\(h(6) = 14\\), we have \\(h^{-1}(14) = 6\\). Multiplying by \\(3\\) gives \\(18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "4",
+          "6",
+          "8"
         ],
         "rows": [
           [
-            "g(x)",
-            "5",
-            "12",
-            "19",
-            "26"
+            "\\(h(x)\\)",
+            "8",
+            "11",
+            "14",
+            "17"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#17)",
-        "caption_ar": "جدول نمط مرجعي (#17)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "12",
-            "19",
-            "26"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (optics, EST2-1237)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (البصريات، EST2-1237)"
       }
     },
     {
       "number": 18,
       "difficulty": "Advanced",
       "question": {
-        "en": "Use the law of cosines to find \\(c\\) when \\(a = 5\\), \\(b = 7\\), \\(C = 90^\\circ\\).",
-        "ar": "Use the law of cosines to أوجد \\(c\\) عندما \\(a = 5\\), \\(b = 7\\), \\(C = 90^\\circ\\)."
+        "en": "Inspect the biometrics values listed across the table (EST2-1273); determine \\(3\\,h^{-1}(15)\\) for the invertible function \\(h\\).",
+        "ar": "تأمل مدخلات القياسات الحيوية في الجدول (EST2-1273) لتحديد لإيجاد قيمة \\(3\\,h^{-1}(15)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: State the Law of Cosines:</strong> \\[c^2 = a^2 + b^2 - 2ab \\cos C.\\]</p><p><strong>Step 2: Substitute values:</strong> With \\(C = 90^\\circ\\), \\(\\cos 90^\\circ = 0\\): \\[c^2 = 5^2 + 7^2 - 2(5)(7)(0) = 25 + 49 - 0 = 74.\\]</p><p><strong>Step 3: Solve for side length \\(c\\):</strong> \\[c = \\mathbf{\\sqrt{74}} \\approx 8.602.\\]</p>",
+        "en": "<p>Because \\(h(4) = 15\\), we have \\(h^{-1}(15) = 4\\). Multiplying by \\(3\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
         "rows": [
           [
-            "g(x)",
-            "5",
+            "\\(h(x)\\)",
+            "9",
             "12",
-            "19",
-            "26"
+            "15",
+            "19"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#18)",
-        "caption_ar": "جدول نمط مرجعي (#18)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "12",
-            "19",
-            "26"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (biometrics, EST2-1273)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (القياسات الحيوية، EST2-1273)"
       }
     },
     {
       "number": 19,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the equation of a circle centred at \\((2, -3)\\) with radius 5.",
+        "en": "In assessment dataset (EST2-1309) for transit study, the table reports key quantities; determine \\(3\\,h^{-1}(9)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: State standard circle equation:</strong> Circle with center \\((h, k)\\) and radius \\(r\\): \\[(x - h)^2 + (y - k)^2 = r^2.\\]</p><p><strong>Step 2: Substitute parameters \\(h = 2\\), \\(k = -3\\), \\(r = 5\\):</strong> \\[(x - 2)^2 + (y - (-3))^2 = 5^2.\\]</p><p><strong>Step 3: Simplify:</strong> \\[\\mathbf{(x - 2)^2 + (y + 3)^2 = 25}.\\]</p>",
+        "en": "<p>Because \\(h(6) = 9\\), we have \\(h^{-1}(9) = 6\\). Multiplying by \\(3\\) gives \\(18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "4",
+          "6",
+          "8"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
+            "\\(h(x)\\)",
+            "3",
+            "6",
+            "9",
+            "14"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#19)",
-        "caption_ar": "جدول نمط مرجعي (#19)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (transit study, EST2-1309)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (دراسة النقل، EST2-1309)"
       }
     },
     {
       "number": 20,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the centre and radius of \\(x^2 + y^2 - 4x + 6y - 12 = 0\\).",
-        "ar": "أوجد centre و radius of \\(x^2 + y^2 - 4x + 6y - 12 = 0\\)."
+        "en": "In the calorimetry record (EST2-1345), using the table values, determine \\(3\\,h^{-1}(10)\\) for the invertible function \\(h\\).",
+        "ar": "في سجل قياس السعرات (EST2-1345)، استخدم القيم الواردة في الجدول لإيجاد قيمة \\(3\\,h^{-1}(10)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Group \\(x\\) and \\(y\\) terms and move constant:</strong> \\[(x^2 - 4x) + (y^2 + 6y) = 12.\\]</p><p><strong>Step 2: Complete the square:</strong> Add \\((-4/2)^2 = 4\\) and \\((6/2)^2 = 9\\) to both sides: \\[(x^2 - 4x + 4) + (y^2 + 6y + 9) = 12 + 4 + 9 = 25.\\]</p><p><strong>Step 3: Write in standard form:</strong> \\[(x - 2)^2 + (y + 3)^2 = 5^2.\\]</p><p>Conclusion: \\[\\mathbf{\\text{Centre }(2, -3),\\quad \\text{radius }r = 5}.\\]</p>",
+        "en": "<p>Because \\(h(4) = 10\\), we have \\(h^{-1}(10) = 4\\). Multiplying by \\(3\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "6",
+            "\\(h(x)\\)",
+            "4",
+            "7",
             "10",
-            "14"
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#20)",
-        "caption_ar": "جدول نمط مرجعي (#20)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "6",
-            "10",
-            "14"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (calorimetry, EST2-1345)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (قياس السعرات، EST2-1345)"
       }
     },
     {
       "number": 21,
       "difficulty": "Intermediate",
       "question": {
-        "en": "An arc of a circle with radius 6 subtends an angle of \\(2\\) radians. Find the arc length.",
+        "en": "The table summarizes measurements from a aerodynamics evaluation (EST2-1381); using these entries, determine \\(3\\,h^{-1}(11)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: State radian arc length formula:</strong> For a central angle \\(\\theta\\) measured in radians: \\[s = r \\theta.\\]</p><p><strong>Step 2: Substitute radius and angle:</strong> \\[s = 6 \\times 2 = \\mathbf{12}.\\]</p>",
+        "en": "<p>Because \\(h(6) = 11\\), we have \\(h^{-1}(11) = 6\\). Multiplying by \\(3\\) gives \\(18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "4",
+          "6",
+          "8"
         ],
         "rows": [
           [
-            "g(x)",
-            "6",
+            "\\(h(x)\\)",
+            "5",
             "8",
-            "10",
-            "12"
+            "11",
+            "14"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#21)",
-        "caption_ar": "جدول نمط مرجعي (#21)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "6",
-            "8",
-            "10",
-            "12"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (aerodynamics, EST2-1381)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (الديناميكا الهوائية، EST2-1381)"
       }
     },
     {

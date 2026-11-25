@@ -8,19 +8,21 @@
       "heading": "Integration & Kinematics Practice Exercises",
       "questions": [
         {
-          "q": "Evaluate the definite integral: \\( \\int_0^1 (2x + 1)^3 \\, dx \\).",
+          "q": "In assessment dataset (ADDMATH-10018814) for grid assay, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
           "choices": [
-            "\\( \\frac{80}{2} \\)",
-            "\\( \\frac{84}{8} \\)",
-            "\\( \\frac{80}{4} \\)",
-            "\\( \\frac{80}{8} \\)"
+            "\\(5\\)",
+            "\\(18\\)",
+            "\\(9\\)",
+            "\\(13\\)"
           ],
           "correct": 3,
-          "answer": "Substitute \\( u = 2x + 1 \\implies du = 2\\,dx \\). Integral: \\( \\frac{1}{2}\\left[\\frac{u^4}{4}\\right]_1^{3} = \\frac{(3)^4 - 1^{4}}{8} = \\frac{80}{8} \\). [M1][A1]",
+          "answer": "**Answer:** D. From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+          "explain": "From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
               "2",
               "3",
@@ -28,78 +30,58 @@
             ],
             "rows": [
               [
-                "f(x)",
-                "6",
+                "\\(f(x)\\)",
                 "7",
-                "8",
-                "9"
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
+                "4",
+                "1",
                 "2",
-                "0",
-                "2",
-                "0"
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "7",
-                "8",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (grid assay, ADDMATH-10018814)",
+            "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، ADDMATH-10018814)"
           }
         },
         {
-          "q": "Evaluate the definite integral: \\( \\int_0^1 (3x + 1)^3 \\, dx \\).",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (ADDMATH-G993242195); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "choices": [
-            "\\( \\frac{255}{4} \\)",
-            "\\( \\frac{255}{3} \\)",
-            "\\( \\frac{259}{12} \\)",
-            "\\( \\frac{255}{12} \\)"
+            "\\(0\\)",
+            "\\(4\\)",
+            "\\(21\\)",
+            "\\(-3\\)"
           ],
           "correct": 3,
-          "answer": "Substitute \\( u = 3x + 1 \\implies du = 3\\,dx \\). Integral: \\( \\frac{1}{3}\\left[\\frac{u^4}{4}\\right]_1^{4} = \\frac{(4)^4 - 1^{4}}{12} = \\frac{255}{12} \\). [M1][A1]",
+          "answer": "**Answer:** D. At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
             "xl": [
-              -3,
-              3
+              -1,
+              4
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              5
             ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "step": 1,
+            "pts": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ADDMATH-G993242195)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ADDMATH-G993242195)"
           }
         },
         {

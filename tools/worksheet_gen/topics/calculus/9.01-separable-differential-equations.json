@@ -9,67 +9,37 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Solve the differential equation \\(\\frac{dy}{dx} = \\frac{x}{y}\\), given \\(y(0) = 3\\).",
+          "q": "In assessment dataset (CALCULUS-491275641) for survey trial, the table reports key quantities; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Solving by separation of variables",
-          "answer": "\\(y\\,dy = x\\,dx\\), so \\(\\frac{y^2}{2} = \\frac{x^2}{2} + C\\). Using \\(y(0)=3\\): \\(C = \\frac{9}{2}\\). Solution: \\(y^2 = x^2 + 9\\), i.e. \\(y = \\sqrt{x^2+9}\\) (taking the positive root since \\(y(0)=3>0\\)).",
+          "answer": "**Answer:** \\(42\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
           "explanation": "\\(y\\,dy = x\\,dx\\), so \\(\\frac{y^2}{2} = \\frac{x^2}{2} + C\\). Using \\(y(0)=3\\): \\(C = \\frac{9}{2}\\). Solution: \\(y^2 = x^2 + 9\\), i.e. \\(y = \\sqrt{x^2+9}\\) (taking the positive root since \\(y(0)=3>0\\)).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "4",
-              "6",
-              "8"
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (survey trial, CALCULUS-491275641)",
+            "caption_ar": "جدول المعدل (تجربة المسح، CALCULUS-491275641)"
           }
         },
         {
-          "q": "A population grows according to \\(\\frac{dP}{dt} = 0.05P\\), with \\(P(0) = 2000\\).",
+          "q": "Given the measurements marked directly on the harmonic trace schematic (CALCULUS-G440943798) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Growth, decay, and applications",
@@ -82,117 +52,133 @@
             "\\(P(t) = 2000e^{0.05t}\\).",
             "\\(P(20) = 2000e^1 \\approx 5437\\)."
           ],
-          "answer": "(a) \\(P(t) = 2000e^{0.05t}\\).; (b) \\(P(20) = 2000e^1 \\approx 5437\\).",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
           "explanation": "(a) \\(P(t) = 2000e^{0.05t}\\).; (b) \\(P(20) = 2000e^1 \\approx 5437\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              17
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "caption": "Real-Line Scale (#3)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (CALCULUS-G440943798)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (CALCULUS-G440943798)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A particle moves along the x-axis such that its position \\( x(t) \\) satisfies the differential equation \\( x''(t) + x'(t) = 0 \\) with initial conditions \\( x(0) = 3 \\) and \\( x'(0) = -2 \\). Find the value of \\( x(1) \\).",
-          "answer": "**Answer:** C. The characteristic equation for \\( x'' + x' = 0 \\) is \\( r^2 + r = 0 \\), which has roots \\( r = 0 \\) and \\( r = -1 \\). Thus the general solution is \\( x(t) = c_1 + c_2 e^{-t} \\).\nUsing the initial conditions:\n1. \\( x'(t) = -c_2 e^{-t} \\implies x'(0) = -c_2 = -2 \\implies c_2 = 2 \\).\n2. \\( x(0) = c_1 + 2 = 3 \\implies c_1 = 1 \\).\nTherefore, \\( x(t) = 1 + 2e^{-t} \\), and evaluating at \\( t = 1 \\) gives \\( x(1) = 2e^{-1} + 1 \\).",
+          "q": "Based on the bridge arch visual model shown (CALCULUS-G457721403) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** C. From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "The characteristic equation for \\( x'' + x' = 0 \\) is \\( r^2 + r = 0 \\), which has roots \\( r = 0 \\) and \\( r = -1 \\). Thus the general solution is \\( x(t) = c_1 + c_2 e^{-t} \\).\nUsing the initial conditions:\n1. \\( x'(t) = -c_2 e^{-t} \\implies x'(0) = -c_2 = -2 \\implies c_2 = 2 \\).\n2. \\( x(0) = c_1 + 2 = 3 \\implies c_1 = 1 \\).\nTherefore, \\( x(t) = 1 + 2e^{-t} \\), and evaluating at \\( t = 1 \\) gives \\( x(1) = 2e^{-1} + 1 \\).",
           "choices": [
-            "\\(e^{-1} + 1\\)",
-            "\\(e^{-1} - 1\\)",
-            "\\(2e^{-1} + 1\\)",
-            "\\(2 - e^{-1}\\)"
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(3\\)",
+            "\\(6\\)"
           ],
           "correct": 2,
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x - y",
+            "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
               -3,
-              3
+              6
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x - y (#4)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G457721403)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G457721403)"
           }
         },
         {
-          "q": "Solve \\(\\frac{dy}{dx} = y(1-y)\\) (logistic-type equation), given \\(y(0)=\\frac{1}{2}\\), using partial fractions \\(\\frac{1}{y(1-y)}=\\frac{1}{y}+\\frac{1}{1-y}\\).",
+          "q": "In the reactor bench record (CALCULUS-541608498), using the table values, determine \\(2\\,h^{-1}(9)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "More separable equations",
-          "answer": "\\(\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx\\): \\(\\ln|y|-\\ln|1-y|=x+C\\), i.e. \\(\\ln\\left|\\frac{y}{1-y}\\right|=x+C\\). Using \\(y(0)=\\frac{1}{2}\\): \\(\\frac{y}{1-y}=1\\) at \\(x=0\\), so \\(C=0\\): \\(\\frac{y}{1-y}=e^x\\), giving \\(y=\\frac{e^x}{1+e^x}\\).",
+          "answer": "**Answer:** \\(8\\). Because \\(h(4) = 9\\), we have \\(h^{-1}(9) = 4\\). Multiplying by \\(2\\) gives \\(8\\).",
           "explanation": "\\(\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx\\): \\(\\ln|y|-\\ln|1-y|=x+C\\), i.e. \\(\\ln\\left|\\frac{y}{1-y}\\right|=x+C\\). Using \\(y(0)=\\frac{1}{2}\\): \\(\\frac{y}{1-y}=1\\) at \\(x=0\\), so \\(C=0\\): \\(\\frac{y}{1-y}=e^x\\), giving \\(y=\\frac{e^x}{1+e^x}\\).",
+          "explain": "Because \\(h(4) = 9\\), we have \\(h^{-1}(9) = 4\\). Multiplying by \\(2\\) gives \\(8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
+              "\\(x\\)",
+              "3",
               "4",
-              "6",
-              "8"
+              "5",
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "\\(h(x)\\)",
+                "7",
+                "9",
+                "12",
+                "14"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#5)",
-            "caption_ar": "جدول القيم المختارة (#5)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (reactor bench, CALCULUS-541608498)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (منصة المفاعل، CALCULUS-541608498)"
           }
         },
         {
-          "q": "A tank has 100 L of pure water. Brine with concentration 2 kg/L flows in at 3 L/min, and the well-mixed solution drains at the same rate, so the volume stays constant. Let \\(y(t)\\) be the amount of salt (kg) at time \\(t\\). The differential equation is \\(\\frac{dy}{dt} = 6 - \\frac{3y}{100}\\).",
+          "q": "From the plotted cad blueprint figure above (CALCULUS-G558387124) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Mixing and applied models",
@@ -205,21 +191,47 @@
             "\\(6=\\frac{3y}{100}\\) gives \\(y=200\\) kg.",
             "In the long run, the salt content approaches \\(200\\) kg, at which point the rate of salt entering equals the rate leaving, keeping the amount constant."
           ],
-          "answer": "(a) \\(6=\\frac{3y}{100}\\) gives \\(y=200\\) kg.; (b) In the long run, the salt content approaches \\(200\\) kg, at which point the rate of salt entering equals the rate leaving, keeping the amount constant.",
+          "answer": "**Answer:** \\(13\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
           "explanation": "(a) \\(6=\\frac{3y}{100}\\) gives \\(y=200\\) kg.; (b) In the long run, the salt content approaches \\(200\\) kg, at which point the rate of salt entering equals the rate leaving, keeping the amount constant.",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "y*(1 - y/4)",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              0,
+              15
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = y*(1 - y/4) (#6)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (CALCULUS-G558387124)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (CALCULUS-G558387124)"
           }
         },
         {
@@ -241,32 +253,49 @@
           }
         },
         {
-          "q": "Verify that \\(y=x-1+2e^{-x}\\) is a solution to \\(\\frac{dy}{dx}=x-y\\), by substituting into both sides.",
+          "q": "Based on the orbital sector visual model shown (CALCULUS-G524831879) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative behavior",
-          "answer": "\\(\\frac{dy}{dx}=1-2e^{-x}\\). Right side: \\(x-y=x-(x-1+2e^{-x})=1-2e^{-x}\\). Both sides equal \\(1-2e^{-x}\\), confirming the solution.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(\\frac{dy}{dx}=1-2e^{-x}\\). Right side: \\(x-y=x-(x-1+2e^{-x})=1-2e^{-x}\\). Both sides equal \\(1-2e^{-x}\\), confirming the solution.",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#8)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G524831879)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G524831879)"
           }
         }
       ]
@@ -294,213 +323,250 @@
           }
         },
         {
-          "q": "Radioactive decay follows \\(\\frac{dA}{dt}=-kA\\). If a sample decays from \\(80\\) g to \\(20\\) g in \\(30\\) days, find \\(k\\) and the half-life of the substance.",
+          "q": "In the calorimetry record (CALCULUS-625496593), using the table values, determine \\(3\\,h^{-1}(10)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Another applied separable equation",
-          "answer": "\\(A(t)=80e^{-kt}\\). Using \\(A(30)=20\\): \\(\\frac{20}{80}=\\frac{1}{4}=e^{-30k}\\), so \\(k=\\frac{\\ln4}{30}\\approx0.0462\\)/day. Half-life: \\(e^{-kt_{1/2}}=\\frac{1}{2}\\) gives \\(t_{1/2}=\\frac{\\ln2}{k}=\\frac{30\\ln2}{\\ln4}=15\\) days.",
+          "answer": "**Answer:** \\(12\\). Because \\(h(4) = 10\\), we have \\(h^{-1}(10) = 4\\). Multiplying by \\(3\\) gives \\(12\\).",
           "explanation": "\\(A(t)=80e^{-kt}\\). Using \\(A(30)=20\\): \\(\\frac{20}{80}=\\frac{1}{4}=e^{-30k}\\), so \\(k=\\frac{\\ln4}{30}\\approx0.0462\\)/day. Half-life: \\(e^{-kt_{1/2}}=\\frac{1}{2}\\) gives \\(t_{1/2}=\\frac{\\ln2}{k}=\\frac{30\\ln2}{\\ln4}=15\\) days.",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "19",
-                "15",
-                34
-              ],
-              [
-                "16",
-                "26",
-                42
-              ],
-              [
-                35,
-                41,
-                76
-              ]
-            ],
-            "caption": "Reference Summary Table (#10)",
-            "caption_ar": "جدول ملخص البيانات (#10)",
-            "_totals": {
-              "rowTotals": [
-                34,
-                42
-              ],
-              "colTotals": [
-                35,
-                41
-              ],
-              "grandTotal": 76
-            }
-          }
-        },
-        {
-          "q": "For the mixing problem \\(\\frac{dy}{dt}=6-\\frac{3y}{100}\\) with \\(y(0)=0\\), verify that \\(y(t)=200\\left(1-e^{-0.03t}\\right)\\) is a solution, and confirm it approaches the equilibrium \\(200\\) found earlier as \\(t\\rightarrow\\infty\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Verifying a solution to an applied model",
-          "answer": "\\(\\frac{dy}{dt}=200(0.03)e^{-0.03t}=6e^{-0.03t}\\). Right side: \\(6-\\frac{3}{100}\\cdot200(1-e^{-0.03t})=6-6(1-e^{-0.03t})=6e^{-0.03t}\\). Both sides match. As \\(t\\rightarrow\\infty\\), \\(e^{-0.03t}\\rightarrow0\\), so \\(y(t)\\rightarrow200\\), confirming the equilibrium.",
-          "explanation": "\\(\\frac{dy}{dt}=200(0.03)e^{-0.03t}=6e^{-0.03t}\\). Right side: \\(6-\\frac{3}{100}\\cdot200(1-e^{-0.03t})=6-6(1-e^{-0.03t})=6e^{-0.03t}\\). Both sides match. As \\(t\\rightarrow\\infty\\), \\(e^{-0.03t}\\rightarrow0\\), so \\(y(t)\\rightarrow200\\), confirming the equilibrium.",
-          "figure": {
-            "type": "bars",
-            "labels": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ],
-            "values": [
-              5,
-              8,
-              6,
-              11
-            ],
-            "xLabel": "Component",
-            "yLabel": "Value",
-            "caption": "Quantity Comparison Chart (#11)"
-          }
-        },
-        {
-          "q": "Solve \\(\\frac{dy}{dx}=e^{x-y}\\), given \\(y(0)=0\\), using the fact that \\(e^{x-y}=e^x\\cdot e^{-y}\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Verifying a solution to an applied model",
-          "answer": "\\(e^y\\,dy=e^x\\,dx\\): \\(e^y=e^x+C\\). Using \\(y(0)=0\\): \\(1=1+C\\), so \\(C=0\\): \\(e^y=e^x\\), giving \\(y=x\\).",
-          "explanation": "\\(e^y\\,dy=e^x\\,dx\\): \\(e^y=e^x+C\\). Using \\(y(0)=0\\): \\(1=1+C\\), so \\(C=0\\): \\(e^y=e^x\\), giving \\(y=x\\).",
-          "figure": {
-            "type": "bars",
-            "labels": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ],
-            "values": [
-              3,
-              6,
-              5,
-              12
-            ],
-            "xLabel": "Component",
-            "yLabel": "Value",
-            "caption": "Quantity Comparison Chart (#12)"
-          }
-        },
-        {
-          "q": "A pond's fish population \\(P\\) grows according to \\(\\frac{dP}{dt}=0.08P\\left(1-\\frac{P}{500}\\right)\\), a logistic model with carrying capacity \\(500\\). Without solving the equation explicitly, determine the equilibrium population levels (where \\(\\frac{dP}{dt}=0\\)), and state which one is realistic for a growing population starting from \\(P(0)=50\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Verifying a solution to an applied model",
-          "answer": "Setting \\(\\frac{dP}{dt}=0\\): \\(P=0\\) or \\(P=500\\). Starting from \\(P(0)=50>0\\), the population will grow toward the stable equilibrium \\(P=500\\) (the carrying capacity), since \\(P=0\\) is an unstable equilibrium for any positive starting population.",
-          "explanation": "Setting \\(\\frac{dP}{dt}=0\\): \\(P=0\\) or \\(P=500\\). Starting from \\(P(0)=50>0\\), the population will grow toward the stable equilibrium \\(P=500\\) (the carrying capacity), since \\(P=0\\) is an unstable equilibrium for any positive starting population.",
+          "explain": "Because \\(h(4) = 10\\), we have \\(h^{-1}(10) = 4\\). Multiplying by \\(3\\) gives \\(12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "2",
+              "3",
               "4",
-              "6"
+              "5"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
+                "\\(h(x)\\)",
                 "4",
-                "2",
-                "4",
-                "2"
+                "7",
+                "10",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (calorimetry, CALCULUS-625496593)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (قياس السعرات، CALCULUS-625496593)"
           }
         },
         {
-          "q": "Solve \\(\\frac{dy}{dx}=\\frac{\\cos x}{y}\\), given \\(y(0)=-2\\), and state why the negative root must be chosen.",
+          "q": "Referring to the field geometry figure (CALCULUS-G981692307) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Verifying a solution to an applied model",
-          "answer": "\\(y\\,dy=\\cos x\\,dx\\): \\(\\frac{y^2}{2}=\\sin x+C\\). Using \\(y(0)=-2\\): \\(2=0+C\\), so \\(C=2\\): \\(y^2=2\\sin x+4\\), giving \\(y=-\\sqrt{2\\sin x+4}\\). The negative root is required because \\(y(0)=-2<0\\), and \\(y\\) must vary continuously from that starting sign.",
-          "explanation": "\\(y\\,dy=\\cos x\\,dx\\): \\(\\frac{y^2}{2}=\\sin x+C\\). Using \\(y(0)=-2\\): \\(2=0+C\\), so \\(C=2\\): \\(y^2=2\\sin x+4\\), giving \\(y=-\\sqrt{2\\sin x+4}\\). The negative root is required because \\(y(0)=-2<0\\), and \\(y\\) must vary continuously from that starting sign.",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(\\frac{dy}{dt}=200(0.03)e^{-0.03t}=6e^{-0.03t}\\). Right side: \\(6-\\frac{3}{100}\\cdot200(1-e^{-0.03t})=6-6(1-e^{-0.03t})=6e^{-0.03t}\\). Both sides match. As \\(t\\rightarrow\\infty\\), \\(e^{-0.03t}\\rightarrow0\\), so \\(y(t)\\rightarrow200\\), confirming the equilibrium.",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 210,
-                "label": "θ"
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#14)"
-          }
-        },
-        {
-          "q": "A drug is eliminated from the bloodstream according to \\(\\frac{dC}{dt}=-0.2C\\), where \\(C\\) is concentration (mg/L) and \\(t\\) is hours. If the initial dose gives \\(C(0)=50\\) mg/L, find \\(C(t)\\), then find how many hours it takes for the concentration to drop below \\(5\\) mg/L, to one decimal place.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "A final applied separable model",
-          "answer": "\\(C(t)=50e^{-0.2t}\\). Setting \\(50e^{-0.2t}=5\\): \\(e^{-0.2t}=0.1\\), so \\(t=\\frac{\\ln0.1}{-0.2}=\\frac{-2.3026}{-0.2}\\approx11.5\\) hours.",
-          "explanation": "\\(C(t)=50e^{-0.2t}\\). Setting \\(50e^{-0.2t}=5\\): \\(e^{-0.2t}=0.1\\), so \\(t=\\frac{\\ln0.1}{-0.2}=\\frac{-2.3026}{-0.2}\\approx11.5\\) hours.",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 0,
+                "label": "(3, 0)"
               }
             ],
-            "caption": "Real-Line Scale (#15)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G981692307)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G981692307)"
+          }
+        },
+        {
+          "q": "From the plotted thermal profile figure above (CALCULUS-G964914688) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Verifying a solution to an applied model",
+          "answer": "**Answer:** \\(-4\\). At highlighted coordinates \\((2, 4)\\), \\(\\frac{dy}{dx} = 2(2 - 4) = -4\\).",
+          "explanation": "\\(e^y\\,dy=e^x\\,dx\\): \\(e^y=e^x+C\\). Using \\(y(0)=0\\): \\(1=1+C\\), so \\(C=0\\): \\(e^y=e^x\\), giving \\(y=x\\).",
+          "explain": "At highlighted coordinates \\((2, 4)\\), \\(\\frac{dy}{dx} = 2(2 - 4) = -4\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 4,
+                "label": "P(2, 4)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (CALCULUS-G964914688)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G964914688)"
+          }
+        },
+        {
+          "q": "Selected numerical readings from biometrics run (CALCULUS-15246545) appear in the table; where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(3) = \\dfrac{f'(3)g(3) - f(3)g'(3)}{[g(3)]^2}\\)?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Verifying a solution to an applied model",
+          "answer": "**Answer:** \\(10\\). Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (1)(4) - (2)(-3) = 10\\).",
+          "explanation": "Setting \\(\\frac{dP}{dt}=0\\): \\(P=0\\) or \\(P=500\\). Starting from \\(P(0)=50>0\\), the population will grow toward the stable equilibrium \\(P=500\\) (the carrying capacity), since \\(P=0\\) is an unstable equilibrium for any positive starting population.",
+          "explain": "Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (1)(4) - (2)(-3) = 10\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "2",
+                "5"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "1",
+                "3"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Differentiable function & derivative values (biometrics, CALCULUS-15246545)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (القياسات الحيوية، CALCULUS-15246545)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the calibration curve schematic (CALCULUS-G998469926) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Verifying a solution to an applied model",
+          "answer": "**Answer:** \\(11\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "explanation": "\\(y\\,dy=\\cos x\\,dx\\): \\(\\frac{y^2}{2}=\\sin x+C\\). Using \\(y(0)=-2\\): \\(2=0+C\\), so \\(C=2\\): \\(y^2=2\\sin x+4\\), giving \\(y=-\\sqrt{2\\sin x+4}\\). The negative root is required because \\(y(0)=-2<0\\), and \\(y\\) must vary continuously from that starting sign.",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              13
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (CALCULUS-G998469926)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (CALCULUS-G998469926)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a specimen plot configuration (CALCULUS-G48802783); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A final applied separable model",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "explanation": "\\(C(t)=50e^{-0.2t}\\). Setting \\(50e^{-0.2t}=5\\): \\(e^{-0.2t}=0.1\\), so \\(t=\\frac{\\ln0.1}{-0.2}=\\frac{-2.3026}{-0.2}\\approx11.5\\) hours.",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G48802783)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G48802783)"
           }
         }
       ]
@@ -509,64 +575,43 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Level 2 · MediumFind the particular solution to the differential equation \\(\\frac{dy}{dx} = \\frac{x}{y}\\) with initial condition \\(y(0) = -4\\). State the domain of the solution.",
+          "q": "In the hydraulics record (CALCULUS-32024164), using the table values, evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative behavior",
           "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
-          "answer": "1. Separate variables: \\(y\\,dy = x\\,dx\\) 2. Integrate both sides: \\(\\int y\\,dy = \\int x\\,dx \\Rightarrow \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\Rightarrow y^2 = x^2 + C\\) 3. Substitute initial condition \\(x = 0, y = -4\\): \\((-4)^2 = 0^2 + C \\Rightarrow C = 16 \\Rightarrow y^2 = x^2 + 16\\) 4. Solve for \\(y\\): Since \\(y(0) = -4 0\\) for all \\(x\\), \\(y\\) is strictly negative and never zero. The domain is \\((-\\infty, \\infty)\\).",
+          "answer": "**Answer:** \\(16\\). From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
           "explanation": "1. Separate variables: \\(y\\,dy = x\\,dx\\) 2. Integrate both sides: \\(\\int y\\,dy = \\int x\\,dx \\Rightarrow \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\Rightarrow y^2 = x^2 + C\\) 3. Substitute initial condition \\(x = 0, y = -4\\): \\((-4)^2 = 0^2 + C \\Rightarrow C = 16 \\Rightarrow y^2 = x^2 + 16\\) 4. Solve for \\(y\\): Since \\(y(0) = -4 0\\) for all \\(x\\), \\(y\\) is strictly negative and never zero. The domain is \\((-\\infty, \\infty)\\).",
+          "explain": "From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
+              "1",
               "2",
-              "4",
-              "6"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "\\(g(x)\\)",
+                "3",
+                "4",
+                "1",
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#16)",
-            "caption_ar": "جدول القيم المختارة (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (hydraulics, CALCULUS-32024164)",
+            "caption_ar": "قيم مختارة للدالتين (الهيدروليك، CALCULUS-32024164)"
           }
         },
         {

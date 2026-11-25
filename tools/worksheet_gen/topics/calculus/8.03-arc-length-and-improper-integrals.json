@@ -61,90 +61,65 @@
           }
         },
         {
-          "q": "Evaluate \\(\\int_1^\\infty \\frac{1}{x^2}\\,dx\\), or state that it diverges.",
+          "q": "Given the structured cohort study observations displayed in the table (CALCULUS-70741351), approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Improper integrals",
-          "answer": "\\(\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{b}\\right) = 1\\): converges to \\(1\\).",
+          "answer": "**Answer:** \\(47\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{4}{2}(7 + 11) = 11 + 36 = 47\\).",
           "explanation": "\\(\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{b}\\right) = 1\\): converges to \\(1\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{4}{2}(7 + 11) = 11 + 36 = 47\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "\\(t\\)",
+              "1",
+              "3",
+              "7"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
+                "\\(R(t)\\)",
+                "4",
                 "7",
-                "11",
-                "15"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#4)",
-            "caption_ar": "جدول القيم المختارة (#4)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "7",
-                "11",
-                "15"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 7] (cohort study, CALCULUS-70741351)",
+            "caption_ar": "جدول المعدل (دراسة الفوج، CALCULUS-70741351)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\) (improper at the lower limit).",
+          "q": "Based on the turbine profile visual model shown (CALCULUS-G20409501) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Improper integrals",
-          "answer": "\\(\\lim_{a\\rightarrow 0^+}\\left[2\\sqrt{x}\\right]_a^1 = 2 - 0 = 2\\): converges to \\(2\\).",
+          "answer": "**Answer:** \\(-2\\). At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
           "explanation": "\\(\\lim_{a\\rightarrow 0^+}\\left[2\\sqrt{x}\\right]_a^1 = 2 - 0 = 2\\): converges to \\(2\\).",
+          "explain": "At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 1,
+                "y": 3,
+                "label": "P(1, 3)"
               }
             ],
-            "caption": "Real-Line Scale (#5)"
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (CALCULUS-G20409501)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G20409501)"
           }
         },
         {
@@ -177,92 +152,79 @@
           }
         },
         {
-          "q": "For \\(\\int_1^\\infty \\frac{1}{x^p}\\,dx\\), state the condition on \\(p\\) for convergence, and explain why using the antiderivative \\(\\frac{x^{1-p}}{1-p}\\) (for \\(p\\neq1\\)).",
+          "q": "Referring to the bridge arch figure (CALCULUS-G986854263) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The p-integral test",
-          "answer": "Converges when \\(p>1\\). As \\(b\\rightarrow\\infty\\), \\(b^{1-p}\\rightarrow0\\) only when \\(1-p<0\\), i.e. \\(p>1\\); otherwise the limit is infinite (or, for \\(p=1\\), the antiderivative is \\(\\ln x\\), which also diverges).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Converges when \\(p>1\\). As \\(b\\rightarrow\\infty\\), \\(b^{1-p}\\rightarrow0\\) only when \\(1-p<0\\), i.e. \\(p>1\\); otherwise the limit is infinite (or, for \\(p=1\\), the antiderivative is \\(\\ln x\\), which also diverges).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G986854263)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G986854263)"
           }
         },
         {
-          "q": "Use the \\(p\\)-integral result to quickly determine whether \\(\\int_1^\\infty \\frac{1}{x^{0.9}}\\,dx\\) converges.",
+          "q": "Based strictly on the tabulated metallurgy observations (CALCULUS-3630882), approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The p-integral test",
-          "answer": "\\(p=0.9<1\\): diverges.",
+          "answer": "**Answer:** \\(30\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 12 + 18 = 30\\).",
           "explanation": "\\(p=0.9<1\\): diverges.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 12 + 18 = 30\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "3",
-              "4",
-              "5"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "6",
-                "9",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "\\(R(t)\\)",
+                "5",
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#8)",
-            "caption_ar": "جدول القيم المختارة (#8)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "6",
-                "9",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (metallurgy, CALCULUS-3630882)",
+            "caption_ar": "جدول المعدل (علم المعادن، CALCULUS-3630882)"
           }
         }
       ]
@@ -271,67 +233,88 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate \\(\\int_0^2 \\frac{1}{(x-1)^2}\\,dx\\), or explain why it diverges (note the integrand is undefined at \\(x=1\\), inside the interval).",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (CALCULUS-G953299025); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Improper integrals with infinite discontinuities inside the interval",
-          "answer": "Split at \\(x=1\\): \\(\\int_0^1\\frac{1}{(x-1)^2}dx + \\int_1^2\\frac{1}{(x-1)^2}dx\\). Near \\(x=1\\) from either side, \\(\\lim_{b\\rightarrow1}\\left[-\\frac{1}{x-1}\\right]\\) blows up to \\(\\pm\\infty\\): both pieces diverge, so the full integral diverges.",
+          "answer": "**Answer:** \\(-3\\). At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "explanation": "Split at \\(x=1\\): \\(\\int_0^1\\frac{1}{(x-1)^2}dx + \\int_1^2\\frac{1}{(x-1)^2}dx\\). Near \\(x=1\\) from either side, \\(\\lim_{b\\rightarrow1}\\left[-\\frac{1}{x-1}\\right]\\) blows up to \\(\\pm\\infty\\): both pieces diverge, so the full integral diverges.",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -3,
-                "to": 3,
-                "openLeft": true,
-                "openRight": false
-              }
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
             ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
             "pts": [
               {
-                "x": -3,
-                "open": true,
-                "label": "a"
-              },
-              {
                 "x": 3,
-                "open": false,
-                "label": "b"
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "caption": "Number Line Interval (#9)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G953299025)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G953299025)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_{-1}^{1} \\frac{1}{x^{1/3}}\\,dx\\) (an odd function with a discontinuity at \\(x=0\\)), splitting at \\(x=0\\).",
+          "q": "From the plotted cad blueprint figure above (CALCULUS-G970076644) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Improper integrals with infinite discontinuities inside the interval",
-          "answer": "By symmetry (odd integrand), \\(\\int_{-1}^0 x^{-1/3}dx = -\\int_0^1 x^{-1/3}dx\\) (each piece converges since \\(p=\\frac{1}{3}<1\\) for this type of integrand near a finite discontinuity). The two pieces cancel: the integral equals \\(0\\).",
+          "answer": "**Answer:** \\(4\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
           "explanation": "By symmetry (odd integrand), \\(\\int_{-1}^0 x^{-1/3}dx = -\\int_0^1 x^{-1/3}dx\\) (each piece converges since \\(p=\\frac{1}{3}<1\\) for this type of integrand near a finite discontinuity). The two pieces cancel: the integral equals \\(0\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -3,
+              5
             ],
             "yl": [
-              -3,
-              6
+              -2,
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "4/(x - 1) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 1) + 3"
               }
             ],
-            "title": "Coordinate Graph (#10)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 7,
+                "label": "(2, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 3 (CALCULUS-G970076644)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G970076644)"
           }
         },
         {
@@ -373,119 +356,118 @@
           }
         },
         {
-          "q": "Use a comparison with \\(\\int_1^\\infty \\frac{1}{x^2}\\,dx\\) (known to converge) to argue that \\(\\int_1^\\infty \\frac{1}{x^2+1}\\,dx\\) also converges, without evaluating it.",
+          "q": "During aerodynamics experiment (CALCULUS-594361581), observers compiled the following table; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
-          "answer": "For \\(x\\geq1\\), \\(\\frac{1}{x^2+1}<\\frac{1}{x^2}\\). Since \\(\\int_1^\\infty\\frac{1}{x^2}\\,dx\\) converges (to \\(1\\)), and the integrand of interest is smaller and positive everywhere on \\([1,\\infty)\\), the comparison test guarantees \\(\\int_1^\\infty\\frac{1}{x^2+1}\\,dx\\) also converges.",
+          "answer": "**Answer:** \\(42\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
           "explanation": "For \\(x\\geq1\\), \\(\\frac{1}{x^2+1}<\\frac{1}{x^2}\\). Since \\(\\int_1^\\infty\\frac{1}{x^2}\\,dx\\) converges (to \\(1\\)), and the integrand of interest is smaller and positive everywhere on \\([1,\\infty)\\), the comparison test guarantees \\(\\int_1^\\infty\\frac{1}{x^2+1}\\,dx\\) also converges.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
               "2",
-              "4",
               "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
+                "\\(R(t)\\)",
                 "4",
-                "2",
-                "4",
-                "2"
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (aerodynamics, CALCULUS-594361581)",
+            "caption_ar": "جدول المعدل (الديناميكا الهوائية، CALCULUS-594361581)"
           }
         },
         {
-          "q": "Use a comparison with \\(\\int_1^\\infty\\frac{1}{x}\\,dx\\) (known to diverge) to argue that \\(\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx\\) also diverges.",
+          "q": "Referring to the calibration curve figure (CALCULUS-G577584962) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
-          "answer": "For \\(x\\geq1\\), \\(\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}\\) (since \\(\\sqrt{x}\\leq x\\)). Since \\(\\int_1^\\infty\\frac{1}{x}\\,dx\\) diverges and the integrand of interest is even larger, the comparison test guarantees \\(\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx\\) also diverges.",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "For \\(x\\geq1\\), \\(\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}\\) (since \\(\\sqrt{x}\\leq x\\)). Since \\(\\int_1^\\infty\\frac{1}{x}\\,dx\\) diverges and the integrand of interest is even larger, the comparison test guarantees \\(\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx\\) also diverges.",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#14)"
-          }
-        },
-        {
-          "q": "A cable hangs in the shape \\(y=\\frac{x^2}{8}\\) between the towers at \\(x=-4\\) and \\(x=4\\). Set up the integral for the length of the cable (do not evaluate).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "A capstone arc-length application",
-          "answer": "\\(y'=\\frac{x}{4}\\): \\(L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx\\).",
-          "explanation": "\\(y'=\\frac{x}{4}\\): \\(L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
+              -1,
               7
             ],
-            "xStep": 1,
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "6/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 2"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 8,
+                "label": "(4, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G577584962)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G577584962)"
+          }
+        },
+        {
+          "q": "From the plotted specimen plot figure above (CALCULUS-G493696867) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A capstone arc-length application",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "explanation": "\\(y'=\\frac{x}{4}\\): \\(L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx\\).",
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (CALCULUS-G493696867)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G493696867)"
           }
         }
       ]
@@ -515,97 +497,90 @@
         },
         {
           "qtype": "MCQ",
-          "q": "\\(\\int_0^1\\int_0^1 1\\,dy\\,dx=\\)",
-          "answer": "**Answer:** C. Applying Multiple Integrals principles, Area of unit square = 1. Therefore, the verified correct option is \\(1\\).",
+          "q": "Given the structured sensor array observations displayed in the table (CALCULUS-527251112), approximate \\(\\int_{2}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** C. Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{2}{2}(9 + 13) = 14 + 22 = 36\\).",
           "explanation": "Applying Multiple Integrals principles, Area of unit square = 1. Therefore, the verified correct option is \\(1\\).",
           "choices": [
-            "\\(0\\)",
-            "\\(2\\)",
-            "\\(1\\)",
-            "\\(4\\)"
+            "\\(28\\)",
+            "\\(44\\)",
+            "\\(36\\)",
+            "\\(72\\)"
           ],
           "correct": 2,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{2}{2}(9 + 13) = 14 + 22 = 36\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "6",
-                "8",
-                "10"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "\\(R(t)\\)",
+                "5",
+                "9",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#17)",
-            "caption_ar": "جدول القيم المختارة (#17)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "6",
-                "8",
-                "10"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 6] (sensor array, CALCULUS-527251112)",
+            "caption_ar": "جدول المعدل (مصفوفة الحساسات، CALCULUS-527251112)"
           }
         },
         {
-          "q": "If \\(F'(x)=f(x)\\), then \\(\\int_a^b f(x)\\,dx =\\)",
+          "q": "Referring to the harmonic trace figure (CALCULUS-G510474486) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing an improper integral as a limiting area",
           "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
-          "answer": "Final Answer: \\(F(b)-F(a)\\). Fundamental Theorem Part 2: \\(\\int_a^bf(x)dx=F(b)-F(a)\\).",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
           "explanation": "Fundamental Theorem Part 2: \\(\\int_a^bf(x)dx=F(b)-F(a)\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -1,
+              7
             ],
             "yl": [
-              -3,
-              6
+              -2,
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 3) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 3"
               }
             ],
-            "title": "Coordinate Graph (#18)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 5,
+                "label": "(4, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 3 (CALCULUS-G510474486)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G510474486)"
           }
         },
         {

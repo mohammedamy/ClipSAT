@@ -27,52 +27,36 @@
           }
         },
         {
-          "q": "Using the definition, \\( \\mathcal L\\{e^{2 t}\\}=\\int_0^\\infty e^{-(s-2)t}\\,dt \\) equals (for \\( s>2 \\)):",
+          "q": "The table summarizes measurements from a optics evaluation (ODES-641034273); using these entries, approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "choices": [
-            "\\( \\frac{s}{s - 2} \\)",
-            "\\( \\frac{1}{s - 2} \\)",
-            "\\( \\frac{1}{s + 2} \\)",
-            "\\( - \\frac{1}{s - 2} \\)"
+            "\\(44\\)",
+            "\\(54\\)",
+            "\\(64\\)",
+            "\\(108\\)"
           ],
           "correct": 1,
-          "answer": "Evaluate the improper integral; the boundary term at infinity vanishes for \\( s>2 \\), leaving \\( \\frac{1}{s - 2} \\).",
+          "answer": "**Answer:** B. Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{4}{2}(8 + 12) = 14 + 40 = 54\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{4}{2}(8 + 12) = 14 + 40 = 54\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "6"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "4",
+                "\\(R(t)\\)",
                 "6",
-                "8"
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#3)",
-            "caption_ar": "جدول نمط مرجعي (#3)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (optics, ODES-641034273)",
+            "caption_ar": "جدول المعدل (البصريات، ODES-641034273)"
           }
         },
         {
@@ -106,33 +90,38 @@
           }
         },
         {
-          "q": "Find \\( \\mathcal L\\{t^{4}\\} \\).",
+          "q": "From the graphical features displayed in the optical assembly figure (ODES-G674590518) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "choices": [
-            "\\( \\frac{24}{s^{4}} \\)",
-            "\\( \\frac{24}{s^{5}} \\)",
-            "\\( \\frac{4}{s^{5}} \\)",
-            "\\( \\frac{24}{s^{6}} \\)"
+            "\\(0\\)",
+            "\\(-1\\)",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           "correct": 1,
-          "answer": "Use the table (and linearity): \\( \\mathcal L\\{t^{4}\\}=\\frac{24}{s^{5}} \\).",
+          "answer": "**Answer:** B. At highlighted coordinates \\((1, 2)\\), \\(\\frac{dy}{dx} = 1(1 - 2) = -1\\).",
+          "explain": "At highlighted coordinates \\((1, 2)\\), \\(\\frac{dy}{dx} = 1(1 - 2) = -1\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 1,
+                "y": 2,
+                "label": "P(1, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#5)"
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (ODES-G674590518)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ODES-G674590518)"
           }
         },
         {

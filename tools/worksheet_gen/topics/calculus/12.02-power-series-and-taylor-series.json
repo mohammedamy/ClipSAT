@@ -25,266 +25,114 @@
           }
         },
         {
-          "q": "Find the third-degree Taylor polynomial for \\(f(x) = \\cos x\\) centered at \\(x = 0\\).",
+          "q": "A benchmark aerodynamics log (CALCULUS-392272925) provides the entries shown in the table; where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(3) = \\dfrac{f'(3)g(3) - f(3)g'(3)}{[g(3)]^2}\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Taylor and Maclaurin series",
-          "answer": "\\(f(0)=1\\), \\(f'(0)=0\\), \\(f''(0)=-1\\), \\(f'''(0)=0\\): \\(T_3(x) = 1 - \\frac{x^2}{2}\\).",
+          "answer": "**Answer:** \\(22\\). Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (4)(4) - (2)(-3) = 22\\).",
           "explanation": "\\(f(0)=1\\), \\(f'(0)=0\\), \\(f''(0)=-1\\), \\(f'''(0)=0\\): \\(T_3(x) = 1 - \\frac{x^2}{2}\\).",
+          "explain": "Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (4)(4) - (2)(-3) = 22\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "2",
+              "\\(x\\)",
               "3",
-              "4"
+              "5"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "\\(f(x)\\)",
+                "2",
+                "5"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "\\(f'(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#3)",
-            "caption_ar": "جدول القيم المختارة (#3)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (aerodynamics, CALCULUS-392272925)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الديناميكا الهوائية، CALCULUS-392272925)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Limit comparison: \\(a_n=1/(n^2+1)\\), compare to \\(b_n=1/n^2\\). \\(\\lim a_n/b_n=\\)",
-          "answer": "**Answer:** D. Applying Convergence Tests and Power Series principles, \\((n^2)/(n^2+1)\\to1\\). Therefore, the verified correct option is \\(1\\).",
+          "q": "The accompanying figure illustrates a cad blueprint configuration (CALCULUS-G375496306); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** D. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "Applying Convergence Tests and Power Series principles, \\((n^2)/(n^2+1)\\to1\\). Therefore, the verified correct option is \\(1\\).",
           "choices": [
-            "\\(0\\)",
-            "\\(1/2\\)",
-            "\\(\\infty\\)",
-            "\\(1\\)"
+            "\\(-1\\)",
+            "\\(6\\)",
+            "\\(7\\)",
+            "\\(5\\)"
           ],
           "correct": 3,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "figure": {
-            "type": "triangle",
-            "verts": [
-              "C",
-              "B",
-              "A"
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "labels": [
-              "C",
-              "B",
-              "A"
+            "yl": [
+              -3,
+              7
             ],
-            "rightAngle": "C",
-            "rightAt": "C",
-            "sides": [
-              "R",
-              "F_y",
-              "F_x"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 2"
+              }
             ],
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
             ],
-            "coords": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
             ],
-            "notToScale": true,
-            "caption": "Component Triangle (not drawn to scale).",
-            "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G375496306)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G375496306)"
           }
         },
         {
-          "q": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n}\\), checking both endpoints.",
+          "q": "Using the labeled measurements in the lab apparatus diagram (CALCULUS-G291608225) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Interval of convergence (including endpoints)",
-          "answer": "Ratio test gives radius \\(R=1\\), centered at \\(x=2\\): \\(1<x<3\\) tentatively. At \\(x=3\\): \\(\\sum\\frac{1}{n}\\) diverges (harmonic). At \\(x=1\\): \\(\\sum\\frac{(-1)^n}{n}\\) converges (alternating). Interval of convergence: \\([1,3)\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Ratio test gives radius \\(R=1\\), centered at \\(x=2\\): \\(1<x<3\\) tentatively. At \\(x=3\\): \\(\\sum\\frac{1}{n}\\) diverges (harmonic). At \\(x=1\\): \\(\\sum\\frac{(-1)^n}{n}\\) converges (alternating). Interval of convergence: \\([1,3)\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -3,
-                "to": 5,
-                "openLeft": true,
-                "openRight": false
-              }
-            ],
-            "pts": [
-              {
-                "x": -3,
-                "open": true,
-                "label": "a"
-              },
-              {
-                "x": 5,
-                "open": false,
-                "label": "b"
-              }
-            ],
-            "caption": "Number Line Interval (#5)"
-          }
-        },
-        {
-          "q": "Using the known Maclaurin series \\(e^x = \\sum_{n=0}^{\\infty}\\frac{x^n}{n!}\\), write the Maclaurin series for \\(e^{-x^2}\\) (substitute \\(-x^2\\) for \\(x\\)), giving the first three terms.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Using known series",
-          "answer": "\\(e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots\\).",
-          "explanation": "\\(e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Using \\(\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n\\) for \\(|x|<1\\), write the power series for \\(\\frac{1}{1+x^2}\\) (substitute \\(-x^2\\) for \\(x\\)).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Using known series",
-          "answer": "\\(\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots\\).",
-          "explanation": "\\(\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -3,
-                "to": 2,
-                "openLeft": true,
-                "openRight": false
-              }
-            ],
-            "pts": [
-              {
-                "x": -3,
-                "open": true,
-                "label": "a"
-              },
-              {
-                "x": 2,
-                "open": false,
-                "label": "b"
-              }
-            ],
-            "caption": "Number Line Interval (#7)"
-          }
-        },
-        {
-          "q": "Find the first three terms of the Taylor series for \\(f(x)=\\ln x\\) centered at \\(x=1\\), using \\(f(1)=0\\), \\(f'(1)=1\\), \\(f''(1)=-1\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Taylor series centered at a nonzero point",
-          "answer": "\\(T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots\\).",
-          "explanation": "\\(T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots\\).",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -292,19 +140,151 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#8)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G291608225)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G291608225)"
+          }
+        },
+        {
+          "q": "Based strictly on the tabulated cohort study observations (CALCULUS-274829599), determine \\(3\\,h^{-1}(11)\\) for the invertible function \\(h\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Using known series",
+          "answer": "**Answer:** \\(24\\). Because \\(h(8) = 11\\), we have \\(h^{-1}(11) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
+          "explanation": "\\(e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots\\).",
+          "explain": "Because \\(h(8) = 11\\), we have \\(h^{-1}(11) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
+            ],
+            "rows": [
+              [
+                "\\(h(x)\\)",
+                "5",
+                "8",
+                "11",
+                "16"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Monotone function values of invertible h (cohort study, CALCULUS-274829599)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (دراسة الفوج، CALCULUS-274829599)"
+          }
+        },
+        {
+          "q": "Referring to the calibration curve figure (CALCULUS-G325163456) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Using known series",
+          "answer": "**Answer:** \\(3\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "explanation": "\\(\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "6/(x - 1) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 1) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 2 (CALCULUS-G325163456)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G325163456)"
+          }
+        },
+        {
+          "q": "From the plotted field geometry figure above (CALCULUS-G308385837) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Taylor series centered at a nonzero point",
+          "answer": "**Answer:** \\(-2\\). At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "explanation": "\\(T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots\\).",
+          "explain": "At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 1,
+                "y": 3,
+                "label": "P(1, 3)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (CALCULUS-G308385837)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G308385837)"
           }
         }
       ]
@@ -313,97 +293,92 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Find the second-degree Taylor polynomial for \\(f(x)=\\sqrt{x}\\) centered at \\(x=4\\), given \\(f(4)=2\\), \\(f'(4)=\\frac{1}{4}\\), \\(f''(4)=-\\frac{1}{32}\\).",
+          "q": "In the cartography record (CALCULUS-224496735), using the table values, where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(1) = \\dfrac{f'(1)g(1) - f(1)g'(1)}{[g(1)]^2}\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Taylor series centered at a nonzero point",
-          "answer": "\\(T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2\\).",
+          "answer": "**Answer:** \\(14\\). Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (4)(3) - (2)(-1) = 14\\).",
           "explanation": "\\(T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2\\).",
+          "explain": "Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (4)(3) - (2)(-1) = 14\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
-              "2",
               "3"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
+                "\\(f(x)\\)",
+                "2",
+                "5"
               ],
               [
-                "f'(x)",
+                "\\(f'(x)\\)",
                 "4",
-                "2",
-                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
                 "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#9)",
-            "caption_ar": "جدول القيم المختارة (#9)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (cartography, CALCULUS-224496735)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (رسم الخرائط، CALCULUS-224496735)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Integral test on \\(\\sum 1/n^2\\): \\(\\int_1^\\infty x^{-2}dx=\\)",
-          "answer": "**Answer:** C. \\([-x^{-1}]_1^\\infty=1<\\infty\\Rightarrow\\) converges.",
+          "q": "Based on the calibration curve visual model shown (CALCULUS-G207720116) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
+          "answer": "**Answer:** C. Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
           "explanation": "\\([-x^{-1}]_1^\\infty=1<\\infty\\Rightarrow\\) converges.",
           "choices": [
-            "\\(0\\)",
-            "\\(\\infty\\)",
-            "\\(1\\)",
-            "\\(2\\)"
+            "\\(38\\)",
+            "\\(23\\)",
+            "\\(26\\)",
+            "\\(32\\)"
           ],
           "correct": 2,
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              0,
+              4.5
             ],
             "yl": [
-              -3,
-              6
+              0,
+              16
             ],
-            "xStep": 2,
-            "yStep": 2,
+            "xStep": 1,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "3*x + 2",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 2"
               }
             ],
-            "title": "Coordinate Graph (#10)",
-            "caption": "Reference graph y = f(x)"
+            "riemann": {
+              "expr": "3*x + 2",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (CALCULUS-G207720116)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (CALCULUS-G207720116)"
           }
         },
         {
@@ -427,181 +402,175 @@
           }
         },
         {
-          "q": "Given \\(\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n\\) for \\(|x|<1\\), differentiate both sides term-by-term to find a power series for \\(\\frac{1}{(1-x)^2}\\).",
+          "q": "From the graphical features displayed in the lab apparatus figure (CALCULUS-G949560965) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Differentiating and integrating power series",
-          "answer": "\\(\\frac{d}{dx}\\left[\\frac{1}{1-x}\\right]=\\frac{1}{(1-x)^2}\\). Differentiating the series: \\(\\sum_{n=1}^{\\infty}nx^{n-1}\\). So \\(\\frac{1}{(1-x)^2}=\\sum_{n=1}^{\\infty}nx^{n-1}=1+2x+3x^2+\\cdots\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(\\frac{d}{dx}\\left[\\frac{1}{1-x}\\right]=\\frac{1}{(1-x)^2}\\). Differentiating the series: \\(\\sum_{n=1}^{\\infty}nx^{n-1}\\). So \\(\\frac{1}{(1-x)^2}=\\sum_{n=1}^{\\infty}nx^{n-1}=1+2x+3x^2+\\cdots\\).",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
               {
-                "from": -1,
-                "to": 4,
-                "openLeft": true,
-                "openRight": false
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
             "pts": [
               {
-                "x": -1,
-                "open": true,
-                "label": "a"
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
               },
               {
-                "x": 4,
-                "open": false,
-                "label": "b"
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
               }
             ],
-            "caption": "Number Line Interval (#12)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G949560965)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G949560965)"
           }
         },
         {
-          "q": "Using the Maclaurin series \\(\\sin x=\\sum_{n=0}^{\\infty}\\frac{(-1)^nx^{2n+1}}{(2n+1)!}\\), integrate term-by-term to find the first three terms of the power series for \\(\\int\\sin x\\,dx=-\\cos x+C\\), and confirm they match the known Maclaurin series for \\(-\\cos x\\).",
+          "q": "Given the structured aerodynamics observations displayed in the table (CALCULUS-966337577), approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Differentiating and integrating power series",
-          "answer": "\\(\\int\\left(x-\\frac{x^3}{6}+\\cdots\\right)dx=\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots+C\\). Comparing to \\(-\\cos x=-1+\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots\\): matching term-by-term (aside from the constant \\(-1\\), absorbed into \\(C\\)) confirms consistency.",
+          "answer": "**Answer:** \\(58\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{4}{2}(9 + 13) = 14 + 44 = 58\\).",
           "explanation": "\\(\\int\\left(x-\\frac{x^3}{6}+\\cdots\\right)dx=\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots+C\\). Comparing to \\(-\\cos x=-1+\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots\\): matching term-by-term (aside from the constant \\(-1\\), absorbed into \\(C\\)) confirms consistency.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{4}{2}(9 + 13) = 14 + 44 = 58\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "2",
               "4",
-              "6"
+              "8"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
+                "\\(R(t)\\)",
                 "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "9",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 8] (aerodynamics, CALCULUS-966337577)",
+            "caption_ar": "جدول المعدل (الديناميكا الهوائية، CALCULUS-966337577)"
           }
         },
         {
-          "q": "Use the Maclaurin series \\(\\sin x=x-\\frac{x^3}{6}+\\cdots\\) to evaluate \\(\\lim_{x\\rightarrow0}\\frac{\\sin x-x}{x^3}\\).",
+          "q": "Based on the structural truss visual model shown (CALCULUS-G983116189) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Using Taylor series to evaluate a limit",
-          "answer": "\\(\\sin x-x=-\\frac{x^3}{6}+\\frac{x^5}{120}-\\cdots\\), so \\(\\frac{\\sin x-x}{x^3}=-\\frac{1}{6}+\\frac{x^2}{120}-\\cdots\\rightarrow-\\frac{1}{6}\\) as \\(x\\rightarrow0\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "\\(\\sin x-x=-\\frac{x^3}{6}+\\frac{x^5}{120}-\\cdots\\), so \\(\\frac{\\sin x-x}{x^3}=-\\frac{1}{6}+\\frac{x^2}{120}-\\cdots\\rightarrow-\\frac{1}{6}\\) as \\(x\\rightarrow0\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 210,
-                "label": "θ"
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#14)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G983116189)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G983116189)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Alternating test: \\(a_n=1/n!\\): does \\(a_n\\to0\\)? Does \\(a_{n+1}<a_n\\)?",
-          "answer": "**Answer:** B. \\(1/n!\\to0\\) and is decreasing: both conditions met.",
+          "q": "The accompanying figure illustrates a bridge arch configuration (CALCULUS-G865672863); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** B. From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(1/n!\\to0\\) and is decreasing: both conditions met.",
           "choices": [
-            "Neither",
-            "Both \\(a_n\\to0\\) and \\(a_{n+1}<a_n\\)",
-            "\\(a_n\\to0\\) only",
-            "\\(a_{n+1}>a_n\\)"
+            "\\(4\\)",
+            "\\(3\\)",
+            "\\(1\\)",
+            "\\(6\\)"
           ],
           "correct": 1,
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "figure": {
-            "type": "triangle",
-            "verts": [
-              "C",
-              "B",
-              "A"
+            "type": "fn",
+            "xl": [
+              -1,
+              5
             ],
-            "labels": [
-              "C",
-              "B",
-              "A"
+            "yl": [
+              -3,
+              6
             ],
-            "rightAngle": "C",
-            "rightAt": "C",
-            "sides": [
-              "R",
-              "F_y",
-              "F_x"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
             ],
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
             ],
-            "coords": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
-            ],
-            "notToScale": true,
-            "caption": "Component Triangle (not drawn to scale).",
-            "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G865672863)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G865672863)"
           }
         }
       ]
@@ -611,67 +580,36 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Which test determines \\(\\sum n^2/e^n\\)? Answer: by ratio test \\(L=\\)",
-          "answer": "**Answer:** A. \\(L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow\\) converges.",
+          "q": "Given the structured flow bench observations displayed in the table (CALCULUS-882449482), approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** A. Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
           "explanation": "\\(L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow\\) converges.",
           "choices": [
-            "\\(1/e<1\\)",
-            "\\(e^2\\)",
-            "\\(e\\)",
-            "\\(1\\)"
+            "\\(33\\)",
+            "\\(26\\)",
+            "\\(40\\)",
+            "\\(66\\)"
           ],
           "correct": 0,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
+                "\\(R(t)\\)",
                 "5",
-                "6",
-                "7"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#16)",
-            "caption_ar": "جدول القيم المختارة (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 5] (flow bench, CALCULUS-882449482)",
+            "caption_ar": "جدول المعدل (مختبر التدفق، CALCULUS-882449482)"
           }
         },
         {
@@ -697,63 +635,50 @@
           }
         },
         {
-          "q": "Root test with \\(L=0.5<1\\):",
+          "q": "Based on the waveguide design visual model shown (CALCULUS-G916005713) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Differentiating and integrating power series",
           "cross_lesson": "8.02 Volumes of Revolution",
-          "answer": "Final Answer: converges. Root test: \\(L<1\\Rightarrow\\) converges.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Root test: \\(L<1\\Rightarrow\\) converges.",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "triangle",
-            "verts": [
-              "C",
-              "B",
-              "A"
+            "type": "fn",
+            "xl": [
+              -3,
+              3
             ],
-            "labels": [
-              "C",
-              "B",
-              "A"
+            "yl": [
+              -1,
+              15
             ],
-            "rightAngle": "C",
-            "rightAt": "C",
-            "sides": [
-              "R",
-              "F_y",
-              "F_x"
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
             ],
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
             ],
-            "coords": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                0,
-                3
-              ]
-            ],
-            "notToScale": true,
-            "caption": "Component Triangle (not drawn to scale).",
-            "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G916005713)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G916005713)"
           }
         },
         {

@@ -9,313 +9,311 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A circular oil spill is expanding so that its radius increases at \\(3\\) m/min. How fast is the area increasing when the radius is \\(50\\) m?",
+          "q": "Referring to the cartography table above (CALCULUS-222959367), approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Setting up related-rates problems",
-          "answer": "\\(A = \\pi r^2\\), so \\(\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt} = 2\\pi(50)(3) = 300\\pi \\approx 942.5\\) m\\(^2\\)/min.",
+          "answer": "**Answer:** \\(48\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{4}{2}(7 + 11) = 12 + 36 = 48\\).",
           "explanation": "\\(A = \\pi r^2\\), so \\(\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt} = 2\\pi(50)(3) = 300\\pi \\approx 942.5\\) m\\(^2\\)/min.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{4}{2}(7 + 11) = 12 + 36 = 48\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "4",
-              "6",
-              "8"
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
+                "\\(R(t)\\)",
                 "5",
                 "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (cartography, CALCULUS-222959367)",
+            "caption_ar": "جدول المعدل (رسم الخرائط، CALCULUS-222959367)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "\\(\\nabla\\cdot\\mathbf{F}\\) for \\(\\mathbf{F}=(P,Q,R)\\) is:",
-          "answer": "**Answer:** C. Divergence: \\(\\partial P/\\partial x+\\partial Q/\\partial y+\\partial R/\\partial z\\).",
+          "q": "Referring to the cad blueprint figure (CALCULUS-G273293224) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** C. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
           "explanation": "Divergence: \\(\\partial P/\\partial x+\\partial Q/\\partial y+\\partial R/\\partial z\\).",
           "choices": [
-            "\\((P_y-Q_x,Q_z-R_y,R_x-P_z)\\)",
-            "\\(|\\mathbf{F}|\\)",
-            "\\(P_x+Q_y+R_z\\)",
-            "\\(0\\)"
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(5\\)",
+            "\\(7\\)"
           ],
           "correct": 2,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "4/(x - 1) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 1) + 4"
               }
             ],
-            "caption": "Real-Line Scale (#3)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 4 (CALCULUS-G273293224)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G273293224)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "\\(\\nabla\\times\\mathbf{F}\\) is called the:",
-          "answer": "**Answer:** C. Applying Vector Calculus principles, \\(\\nabla\\times\\mathbf{F}\\) = curl. Therefore, the verified correct option is curl.",
+          "q": "From the plotted lab apparatus figure above (CALCULUS-G256515605) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** C. At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "explanation": "Applying Vector Calculus principles, \\(\\nabla\\times\\mathbf{F}\\) = curl. Therefore, the verified correct option is curl.",
           "choices": [
-            "divergence",
-            "gradient",
-            "curl",
-            "Laplacian"
+            "\\(0\\)",
+            "\\(4\\)",
+            "\\(-3\\)",
+            "\\(21\\)"
           ],
           "correct": 2,
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G256515605)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G256515605)"
           }
         },
         {
-          "q": "Water drains from a conical tank (vertex down) with radius 4 m and height 10 m at the top, at a rate of \\(2\\) m\\(^3\\)/min. Using similar triangles \\(r = \\frac{2h}{5}\\), find how fast the water level is dropping when \\(h = 5\\) m.",
+          "q": "An engineering team logged optical bench measurements in the accompanying table (CALCULUS-306847455); using these data, where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(1) = \\dfrac{f'(1)g(1) - f(1)g'(1)}{[g(1)]^2}\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Volume and other rates",
-          "answer": "\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2 h = \\frac{4\\pi}{75}h^3\\). So \\(\\frac{dV}{dt} = \\frac{12\\pi}{75}h^2\\frac{dh}{dt}\\). At \\(h=5\\): \\(-2 = \\frac{12\\pi}{75}(25)\\frac{dh}{dt}\\), giving \\(\\frac{dh}{dt} = -\\frac{2 \\times 75}{300\\pi} = -\\frac{1}{2\\pi} \\approx -0.159\\) m/min.",
+          "answer": "**Answer:** \\(14\\). Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (4)(3) - (2)(-1) = 14\\).",
           "explanation": "\\(V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2 h = \\frac{4\\pi}{75}h^3\\). So \\(\\frac{dV}{dt} = \\frac{12\\pi}{75}h^2\\frac{dh}{dt}\\). At \\(h=5\\): \\(-2 = \\frac{12\\pi}{75}(25)\\frac{dh}{dt}\\), giving \\(\\frac{dh}{dt} = -\\frac{2 \\times 75}{300\\pi} = -\\frac{1}{2\\pi} \\approx -0.159\\) m/min.",
+          "explain": "Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (4)(3) - (2)(-1) = 14\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
+              "\\(x\\)",
+              "1",
+              "3"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(f(x)\\)",
                 "2",
-                "5",
-                "8",
-                "11"
+                "5"
               ],
               [
-                "f'(x)",
+                "\\(f'(x)\\)",
                 "4",
-                "2",
-                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
                 "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#5)",
-            "caption_ar": "جدول القيم المختارة (#5)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (optical bench, CALCULUS-306847455)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (المنضدة البصرية، CALCULUS-306847455)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Let \\( \\mathbf{E} = \\langle 21, 26 \\rangle \\) and \\( \\mathbf{L} = \\langle 20, 18 \\rangle \\) be vectors in \\( \\mathbb{R}^2 \\). Determine the dot product \\( p = \\mathbf{E} \\cdot \\mathbf{L} \\).",
-          "answer": "**Answer:** A. The dot product is \\( (21)(20) + (26)(18) = 888 \\).",
+          "q": "Based on the calibration curve visual model shown (CALCULUS-G290070836) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
+          "answer": "**Answer:** A. Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
           "explanation": "The dot product is \\( (21)(20) + (26)(18) = 888 \\).",
           "choices": [
-            "888",
-            "898",
-            "862",
-            "909"
+            "\\(26\\)",
+            "\\(38\\)",
+            "\\(23\\)",
+            "\\(32\\)"
           ],
           "correct": 0,
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                4
-              ],
-              [
-                2,
-                7
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#6)"
+            "yl": [
+              0,
+              16
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*x + 2",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 2"
+              }
+            ],
+            "riemann": {
+              "expr": "3*x + 2",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (CALCULUS-G290070836)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (CALCULUS-G290070836)"
           }
         },
         {
-          "q": "Two cars leave an intersection at the same time, one heading north at 40 mph and the other heading east at 30 mph. How fast is the distance between them increasing after 2 hours?",
+          "q": "Referring to the harmonic trace figure (CALCULUS-G340403700) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Angle and distance rates",
-          "answer": "\\(x=60\\) mi, \\(y=80\\) mi (east, north after 2 h). \\(s^2=x^2+y^2\\): \\(2s\\frac{ds}{dt}=2x\\frac{dx}{dt}+2y\\frac{dy}{dt}\\). \\(s=100\\): \\(100\\frac{ds}{dt}=60(30)+80(40)=1800+3200=5000\\), so \\(\\frac{ds}{dt}=50\\) mph.",
+          "answer": "**Answer:** \\(4\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
           "explanation": "\\(x=60\\) mi, \\(y=80\\) mi (east, north after 2 h). \\(s^2=x^2+y^2\\): \\(2s\\frac{ds}{dt}=2x\\frac{dx}{dt}+2y\\frac{dy}{dt}\\). \\(s=100\\): \\(100\\frac{ds}{dt}=60(30)+80(40)=1800+3200=5000\\), so \\(\\frac{ds}{dt}=50\\) mph.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "venn",
-            "sets": [
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -2,
+              8
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "label": "A",
-                "only": 16
-              },
-              {
-                "label": "B",
-                "only": 13
+                "fn": "2/(x - 1) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 3"
               }
             ],
-            "both": 6,
-            "outside": 5,
-            "caption": "Set Relationship Diagram (#7)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 5,
+                "label": "(2, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 3 (CALCULUS-G340403700)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G340403700)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A vector field \\(\\mathbf{F}\\) is conservative if \\(\\mathbf{F}=\\)",
-          "answer": "**Answer:** A. Conservative = gradient field: \\(\\mathbf{F}=\\nabla f\\).",
+          "q": "In assessment dataset (CALCULUS-323625074) for metallurgy, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
+          "answer": "**Answer:** A. From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
           "explanation": "Conservative = gradient field: \\(\\mathbf{F}=\\nabla f\\).",
           "choices": [
-            "\\(\\nabla f\\)",
-            "\\(\\nabla\\times\\mathbf{G}\\)",
-            "\\(\\nabla\\cdot\\mathbf{G}\\)",
-            "\\(0\\)"
+            "\\(13\\)",
+            "\\(5\\)",
+            "\\(18\\)",
+            "\\(9\\)"
           ],
           "correct": 0,
+          "explain": "From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
+              "1",
               "2",
               "3",
-              "4",
-              "5"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "6",
+                "\\(f(x)\\)",
+                "7",
                 "9",
-                "12"
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "4",
+                "1",
                 "2",
-                "4",
-                "2"
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#8)",
-            "caption_ar": "جدول القيم المختارة (#8)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "6",
-                "9",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (metallurgy, CALCULUS-323625074)",
+            "caption_ar": "قيم مختارة للدالتين (علم المعادن، CALCULUS-323625074)"
           }
         }
       ]
@@ -324,110 +322,134 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "The volume of a cube is increasing at \\(12\\) cm\\(^3\\)/s. Find the rate of change of the side length when the side is \\(3\\) cm.",
+          "q": "Using the labeled measurements in the lab apparatus diagram (CALCULUS-G373958945) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "More related rates",
-          "answer": "\\(V=s^3\\), \\(\\frac{dV}{dt}=3s^2\\frac{ds}{dt}\\). \\(12=3(9)\\frac{ds}{dt}\\), so \\(\\frac{ds}{dt}=\\frac{12}{27}=\\frac{4}{9}\\) cm/s.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(V=s^3\\), \\(\\frac{dV}{dt}=3s^2\\frac{ds}{dt}\\). \\(12=3(9)\\frac{ds}{dt}\\), so \\(\\frac{ds}{dt}=\\frac{12}{27}=\\frac{4}{9}\\) cm/s.",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "solid",
-            "shape": "cylinder",
-            "r": 12,
-            "h": 4,
-            "labels": {
-              "r": "r",
-              "h": "h"
-            },
-            "notToScale": true,
-            "caption": "Cylinder Schematic (#9)"
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G373958945)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G373958945)"
           }
         },
         {
-          "q": "A kite is flying at a constant height of 40 m, moving horizontally away from the person holding the string at 3 m/s. Find the rate at which the string length is increasing when the kite is 30 m horizontally from the person.",
+          "q": "Given the measurements marked directly on the orbital sector schematic (CALCULUS-G357181319) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Rates involving trigonometric relationships",
-          "answer": "\\(L^2=40^2+x^2\\): \\(2L\\frac{dL}{dt}=2x\\frac{dx}{dt}\\). At \\(x=30\\): \\(L=\\sqrt{1600+900}=50\\). \\(50\\frac{dL}{dt}=30(3)=90\\), so \\(\\frac{dL}{dt}=1.8\\) m/s.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(L^2=40^2+x^2\\): \\(2L\\frac{dL}{dt}=2x\\frac{dx}{dt}\\). At \\(x=30\\): \\(L=\\sqrt{1600+900}=50\\). \\(50\\frac{dL}{dt}=30(3)=90\\), so \\(\\frac{dL}{dt}=1.8\\) m/s.",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 4,
+                "label": "(3, 4)"
               }
             ],
-            "caption": "Real-Line Scale (#10)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G357181319)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G357181319)"
           }
         },
         {
-          "q": "A conical pile of sand has its height always equal to its base radius. Sand is added at \\(10\\) m\\(^3\\)/min. Find the rate of change of the height when \\(h=5\\) m, using \\(V=\\frac{1}{3}\\pi r^2h=\\frac{1}{3}\\pi h^3\\).",
+          "q": "Inspect the wind tunnel values listed across the table (CALCULUS-771675344); evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Rates involving trigonometric relationships",
-          "answer": "\\(\\frac{dV}{dt}=\\pi h^2\\frac{dh}{dt}\\). At \\(h=5\\): \\(10=\\pi(25)\\frac{dh}{dt}\\), so \\(\\frac{dh}{dt}=\\frac{10}{25\\pi}=\\frac{2}{5\\pi}\\approx0.127\\) m/min.",
+          "answer": "**Answer:** \\(15\\). From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
           "explanation": "\\(\\frac{dV}{dt}=\\pi h^2\\frac{dh}{dt}\\). At \\(h=5\\): \\(10=\\pi(25)\\frac{dh}{dt}\\), so \\(\\frac{dh}{dt}=\\frac{10}{25\\pi}=\\frac{2}{5\\pi}\\approx0.127\\) m/min.",
+          "explain": "From the table, \\(g(1) = 4\\) and \\(f(4) = 13\\). Adding \\(2\\) yields \\(13 + 2 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
+              "2",
               "3",
-              "5",
-              "7"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
+                "\\(g(x)\\)",
+                "4",
+                "1",
+                "2",
                 "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#11)",
-            "caption_ar": "جدول القيم المختارة (#11)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (wind tunnel, CALCULUS-771675344)",
+            "caption_ar": "قيم مختارة للدالتين (نفق الرياح، CALCULUS-771675344)"
           }
         },
         {
@@ -450,143 +472,145 @@
           }
         },
         {
-          "q": "A rectangle's length is always twice its width. If the width is increasing at \\(3\\) cm/s, find the rate of change of the area when the width is \\(5\\) cm.",
+          "q": "Given the measurements marked directly on the cad blueprint schematic (CALCULUS-G805231582) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Related rates with area and perimeter together",
-          "answer": "\\(A=w(2w)=2w^2\\). \\(\\frac{dA}{dt}=4w\\frac{dw}{dt}\\). At \\(w=5\\): \\(\\frac{dA}{dt}=4(5)(3)=60\\) cm\\(^2\\)/s.",
+          "answer": "**Answer:** \\(8\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
           "explanation": "\\(A=w(2w)=2w^2\\). \\(\\frac{dA}{dt}=4w\\frac{dw}{dt}\\). At \\(w=5\\): \\(\\frac{dA}{dt}=4(5)(3)=60\\) cm\\(^2\\)/s.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                8,
-                0
-              ],
-              [
-                8,
-                5
-              ],
-              [
-                0,
-                5
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "w": 8,
-            "h": 5,
-            "sides": [
-              "w",
-              "h",
-              "w",
-              "h"
+            "yl": [
+              0,
+              10
             ],
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale."
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 9,
+                "label": "(4, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (CALCULUS-G805231582)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G805231582)"
           }
         },
         {
-          "q": "For the same rectangle (length \\(=2\\times\\) width), find the rate of change of the perimeter when the width is increasing at \\(3\\) cm/s.",
+          "q": "The accompanying figure illustrates a bridge arch configuration (CALCULUS-G822009201); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Related rates with area and perimeter together",
-          "answer": "\\(P=2(w+2w)=6w\\). \\(\\frac{dP}{dt}=6\\frac{dw}{dt}=6(3)=18\\) cm/s (constant, independent of \\(w\\), since \\(P\\) is linear in \\(w\\)).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(P=2(w+2w)=6w\\). \\(\\frac{dP}{dt}=6\\frac{dw}{dt}=6(3)=18\\) cm/s (constant, independent of \\(w\\), since \\(P\\) is linear in \\(w\\)).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                8,
-                0
-              ],
-              [
-                8,
-                5
-              ],
-              [
-                0,
-                5
-              ]
+            "type": "fn",
+            "xl": [
+              -3,
+              3
             ],
-            "w": 8,
-            "h": 5,
-            "sides": [
-              "w",
-              "h",
-              "w",
-              "h"
+            "yl": [
+              -3,
+              6
             ],
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale."
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G822009201)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G822009201)"
           }
         },
         {
-          "q": "A spherical balloon is being inflated so that its surface area \\(S=4\\pi r^2\\) increases at \\(12\\pi\\) cm\\(^2\\)/s. Find \\(\\frac{dr}{dt}\\) when \\(r=3\\) cm, then use it to find \\(\\frac{dV}{dt}\\) at that instant.",
+          "q": "Examine the thermodynamics dataset arranged in the table below (CALCULUS-838785820); where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(2)\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A two-stage related-rates problem",
-          "answer": "\\(\\frac{dS}{dt}=8\\pi r\\frac{dr}{dt}\\): \\(12\\pi=8\\pi(3)\\frac{dr}{dt}\\), so \\(\\frac{dr}{dt}=\\frac{1}{2}\\) cm/s. Then \\(\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(9)\\left(\\frac{1}{2}\\right)=18\\pi\\) cm\\(^3\\)/s.",
+          "answer": "**Answer:** \\(12\\). By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (4)(4) + (2)(-2) = 12\\).",
           "explanation": "\\(\\frac{dS}{dt}=8\\pi r\\frac{dr}{dt}\\): \\(12\\pi=8\\pi(3)\\frac{dr}{dt}\\), so \\(\\frac{dr}{dt}=\\frac{1}{2}\\) cm/s. Then \\(\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(9)\\left(\\frac{1}{2}\\right)=18\\pi\\) cm\\(^3\\)/s.",
+          "explain": "By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (4)(4) + (2)(-2) = 12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "2",
-              "4",
-              "6"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(f(x)\\)",
                 "2",
-                "6",
-                "10",
-                "14"
+                "5"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "\\(f'(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-2",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#15)",
-            "caption_ar": "جدول القيم المختارة (#15)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (thermodynamics, CALCULUS-838785820)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الديناميكا الحرارية، CALCULUS-838785820)"
           }
         }
       ]
@@ -596,80 +620,95 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "For conservative \\(\\mathbf{F}=\\nabla f\\): \\(\\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\)",
-          "answer": "**Answer:** B. Conservative: closed-loop line integral = 0.",
+          "q": "Referring to the specimen plot figure (CALCULUS-G855564439) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** B. At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "explanation": "Conservative: closed-loop line integral = 0.",
           "choices": [
-            "\\(f(B)-f(A)\\)",
-            "\\(0\\) always",
-            "\\(f(B)+f(A)\\)",
-            "\\(|\\mathbf{F}|\\)"
+            "\\(2\\)",
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(8\\)"
           ],
           "correct": 1,
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#16)"
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (CALCULUS-G855564439)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G855564439)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Green's theorem: \\(\\oint_C(P\\,dx+Q\\,dy)=\\iint_D\\left(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\right)dA\\). This requires \\(C\\) to be:",
-          "answer": "**Answer:** A. Green's theorem: closed positively oriented curve.",
+          "q": "Given the measurements marked directly on the harmonic trace schematic (CALCULUS-G872342058) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** A. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "Green's theorem: closed positively oriented curve.",
           "choices": [
-            "a closed curve oriented counterclockwise",
-            "a straight line",
-            "any curve",
-            "an open curve"
+            "\\(7\\)",
+            "\\(1\\)",
+            "\\(12\\)",
+            "\\(9\\)"
           ],
           "correct": 0,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                3,
-                0
-              ],
-              [
-                3,
-                4
-              ],
-              [
-                0,
-                4
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "w": 3,
-            "h": 4,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              -1,
+              9
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#17)",
-            "caption_ar": "مخطط المنطقة المستوية (#17)"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 4"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G872342058)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G872342058)"
           }
         },
         {

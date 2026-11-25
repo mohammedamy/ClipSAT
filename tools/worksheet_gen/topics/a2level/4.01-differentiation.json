@@ -9,217 +9,293 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find \\(\\frac{dy}{dx}\\) given \\(x^3+y^3=6xy\\), and evaluate it at the point \\((3,3)\\).",
+          "q": "An engineering team logged genetics measurements in the accompanying table (A2LEVEL-131856962); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Implicit differentiation",
-          "answer": "Differentiate: \\(3x^2+3y^2\\frac{dy}{dx}=6y+6x\\frac{dy}{dx}\\). Rearranging: \\(\\frac{dy}{dx}(3y^2-6x)=6y-3x^2\\), so \\(\\frac{dy}{dx}=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}\\). At \\((3,3)\\): \\(\\frac{2(3)-9}{9-2(3)}=\\frac{-3}{3}=-1\\).",
+          "answer": "**Answer:** \\(5\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(2) = 5\\).",
           "explanation": "Differentiate: \\(3x^2+3y^2\\frac{dy}{dx}=6y+6x\\frac{dy}{dx}\\). Rearranging: \\(\\frac{dy}{dx}(3y^2-6x)=6y-3x^2\\), so \\(\\frac{dy}{dx}=\\frac{6y-3x^2}{3y^2-6x}=\\frac{2y-x^2}{y^2-2x}\\). At \\((3,3)\\): \\(\\frac{2(3)-9}{9-2(3)}=\\frac{-3}{3}=-1\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(2) = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "6",
-                "8",
-                "10",
-                "12"
+                "0",
+                "2",
+                "2",
+                "1"
               ],
               [
-                "f'(x)",
-                "3",
                 "1",
                 "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "8",
-                "10",
-                "12"
+                "3",
+                "2"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (genetics, A2LEVEL-131856962)",
+            "caption_ar": "جدول خطوات أويلر (الوراثة، A2LEVEL-131856962)"
           }
         },
         {
-          "q": "Find \\(\\frac{dy}{dx}\\) given \\(\\sin(xy)=x\\), using implicit differentiation.",
+          "q": "The accompanying figure illustrates a reservoir profile configuration (A2LEVEL-G115080350); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(3)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Implicit differentiation",
-          "answer": "Differentiate both sides: \\(\\cos(xy)\\left(y+x\\frac{dy}{dx}\\right)=1\\). Expanding: \\(y\\cos(xy)+x\\cos(xy)\\frac{dy}{dx}=1\\). Rearranging: \\(\\frac{dy}{dx}=\\frac{1-y\\cos(xy)}{x\\cos(xy)}\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((1, 1)\\) and point \\((2, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(3) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Differentiate both sides: \\(\\cos(xy)\\left(y+x\\frac{dy}{dx}\\right)=1\\). Expanding: \\(y\\cos(xy)+x\\cos(xy)\\frac{dy}{dx}=1\\). Rearranging: \\(\\frac{dy}{dx}=\\frac{1-y\\cos(xy)}{x\\cos(xy)}\\).",
-          "figure": {
-            "type": "sinusoid",
-            "amp": 4,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#3)"
-          }
-        },
-        {
-          "q": "A curve is defined parametrically by \\(x=t^2\\), \\(y=2t^3\\). Find \\(\\frac{dy}{dx}\\) in terms of \\(t\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Parametric differentiation",
-          "answer": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=6t^2\\). \\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{6t^2}{2t}=3t\\) (for \\(t\\neq0\\)).",
-          "explanation": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=6t^2\\). \\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{6t^2}{2t}=3t\\) (for \\(t\\neq0\\)).",
+          "explain": "From vertex \\((1, 1)\\) and point \\((2, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(3) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -2,
+              4
             ],
             "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (1))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 1,
+                "y": 1,
+                "label": "(1, 1)"
+              },
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (A2LEVEL-G115080350)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (A2LEVEL-G115080350)"
+          }
+        },
+        {
+          "q": "Based on the calibration curve visual model shown (A2LEVEL-G98302724) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(1)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Parametric differentiation",
+          "answer": "**Answer:** \\(13\\). From vertex \\((-1, 1)\\) and point \\((0, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(1) = 3(2)^2 + (1) = 13\\).",
+          "explanation": "\\(\\frac{dx}{dt}=2t\\), \\(\\frac{dy}{dt}=6t^2\\). \\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{6t^2}{2t}=3t\\) (for \\(t\\neq0\\)).",
+          "explain": "From vertex \\((-1, 1)\\) and point \\((0, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(1) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
               -4,
-              4
+              2
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (-1))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": -1,
+                "y": 1,
+                "label": "(-1, 1)"
+              },
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (A2LEVEL-G98302724)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (A2LEVEL-G98302724)"
+          }
+        },
+        {
+          "q": "During optics experiment (A2LEVEL-81524105), observers compiled the following table; where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(3) = \\dfrac{f'(3)g(3) - f(3)g'(3)}{[g(3)]^2}\\)?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Parametric differentiation",
+          "answer": "**Answer:** \\(18\\). Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (3)(4) - (2)(-3) = 18\\).",
+          "explanation": "\\(\\frac{dx}{dt}=-3\\sin t\\), \\(\\frac{dy}{dt}=3\\cos t\\). \\(\\frac{dy}{dx}=\\frac{3\\cos t}{-3\\sin t}=-\\cot t\\). At \\(t=\\frac{\\pi}{4}\\): \\(-\\cot\\left(\\frac{\\pi}{4}\\right)=-1\\), since \\(\\cos\\left(\\frac{\\pi}{4}\\right)=\\sin\\left(\\frac{\\pi}{4}\\right)\\).",
+          "explain": "Using the quotient rule numerator, \\(f'(3)g(3) - f(3)g'(3) = (3)(4) - (2)(-3) = 18\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "2",
+                "5"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Differentiable function & derivative values (optics, A2LEVEL-81524105)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (البصريات، A2LEVEL-81524105)"
+          }
+        },
+        {
+          "q": "Referring to the antenna pattern figure (A2LEVEL-G64747500) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(1)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Related rates",
+          "answer": "**Answer:** \\(3\\). From vertex \\((-1, -1)\\) and point \\((0, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(1) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(\\frac{dV}{dr}=4\\pi r^2\\). At \\(r=5\\): \\(\\frac{dV}{dr}=4\\pi(25)=100\\pi\\). \\(\\frac{dr}{dt}=\\frac{dV/dt}{dV/dr}=\\frac{100}{100\\pi}=\\frac{1}{\\pi}\\approx0.318\\) cm/s.",
+          "explain": "From vertex \\((-1, -1)\\) and point \\((0, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(1) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              2
+            ],
+            "yl": [
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
+                "fn": "1*(x - (-1))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": -1,
+                "y": -1,
+                "label": "(-1, -1)"
+              },
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (A2LEVEL-G64747500)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (A2LEVEL-G64747500)"
           }
         },
         {
-          "q": "A curve is defined by \\(x=3\\cos t\\), \\(y=3\\sin t\\). Find \\(\\frac{dy}{dx}\\) in terms of \\(t\\), and find the gradient at \\(t=\\frac{\\pi}{4}\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Parametric differentiation",
-          "answer": "\\(\\frac{dx}{dt}=-3\\sin t\\), \\(\\frac{dy}{dt}=3\\cos t\\). \\(\\frac{dy}{dx}=\\frac{3\\cos t}{-3\\sin t}=-\\cot t\\). At \\(t=\\frac{\\pi}{4}\\): \\(-\\cot\\left(\\frac{\\pi}{4}\\right)=-1\\), since \\(\\cos\\left(\\frac{\\pi}{4}\\right)=\\sin\\left(\\frac{\\pi}{4}\\right)\\).",
-          "explanation": "\\(\\frac{dx}{dt}=-3\\sin t\\), \\(\\frac{dy}{dt}=3\\cos t\\). \\(\\frac{dy}{dx}=\\frac{3\\cos t}{-3\\sin t}=-\\cot t\\). At \\(t=\\frac{\\pi}{4}\\): \\(-\\cot\\left(\\frac{\\pi}{4}\\right)=-1\\), since \\(\\cos\\left(\\frac{\\pi}{4}\\right)=\\sin\\left(\\frac{\\pi}{4}\\right)\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "6",
-                "7",
-                "8",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#5)",
-            "caption_ar": "جدول القيم المختارة (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "7",
-                "8",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "A spherical balloon is inflated so its volume increases at a constant rate of \\(100\\) cm\\(^3\\)/s. Find the rate of increase of the radius when \\(r=5\\) cm, using \\(V=\\frac{4}{3}\\pi r^3\\), to three decimal places.",
+          "q": "From the plotted fluid channel figure above (A2LEVEL-G47969881) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Related rates",
-          "answer": "\\(\\frac{dV}{dr}=4\\pi r^2\\). At \\(r=5\\): \\(\\frac{dV}{dr}=4\\pi(25)=100\\pi\\). \\(\\frac{dr}{dt}=\\frac{dV/dt}{dV/dr}=\\frac{100}{100\\pi}=\\frac{1}{\\pi}\\approx0.318\\) cm/s.",
-          "explanation": "\\(\\frac{dV}{dr}=4\\pi r^2\\). At \\(r=5\\): \\(\\frac{dV}{dr}=4\\pi(25)=100\\pi\\). \\(\\frac{dr}{dt}=\\frac{dV/dt}{dV/dr}=\\frac{100}{100\\pi}=\\frac{1}{\\pi}\\approx0.318\\) cm/s.",
-          "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
-          }
-        },
-        {
-          "q": "The area of a circular ripple increases at \\(8\\pi\\) cm\\(^2\\)/s. Find the rate of change of the radius when \\(r=4\\) cm, using \\(A=\\pi r^2\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Related rates",
-          "answer": "\\(\\frac{dA}{dr}=2\\pi r\\). At \\(r=4\\): \\(\\frac{dA}{dr}=8\\pi\\). \\(\\frac{dr}{dt}=\\frac{dA/dt}{dA/dr}=\\frac{8\\pi}{8\\pi}=1\\) cm/s.",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
           "explanation": "\\(\\frac{dA}{dr}=2\\pi r\\). At \\(r=4\\): \\(\\frac{dA}{dr}=8\\pi\\). \\(\\frac{dr}{dt}=\\frac{dA/dt}{dA/dr}=\\frac{8\\pi}{8\\pi}=1\\) cm/s.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+            "type": "fn",
+            "xl": [
+              -2,
+              6
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 2) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 2) + 4"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 8,
+                "label": "(3, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 2 and y = 4 (A2LEVEL-G47969881)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (A2LEVEL-G47969881)"
           }
         },
         {
-          "q": "A cone-shaped tank (vertex down) has height \\(10\\) cm and top radius \\(4\\) cm, so at water depth \\(h\\) the radius is \\(r=\\frac{2h}{5}\\). Water is poured in at \\(12\\) cm\\(^3\\)/s. Find the rate of rise of the water level when \\(h=5\\) cm, using \\(V=\\frac{1}{3}\\pi r^2h\\).",
+          "q": "The table summarizes measurements from a hydraulics evaluation (A2LEVEL-31191248); using these entries, determine \\(4\\,h^{-1}(17)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Related rates",
-          "answer": "Substitute \\(r=\\frac{2h}{5}\\): \\(V=\\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2h=\\frac{4\\pi}{75}h^3\\). \\(\\frac{dV}{dh}=\\frac{12\\pi}{75}h^2=\\frac{4\\pi}{25}h^2\\). At \\(h=5\\): \\(\\frac{dV}{dh}=\\frac{4\\pi}{25}(25)=4\\pi\\). \\(\\frac{dh}{dt}=\\frac{dV/dt}{dV/dh}=\\frac{12}{4\\pi}=\\frac{3}{\\pi}\\approx0.955\\) cm/s.",
+          "answer": "**Answer:** \\(16\\). Because \\(h(4) = 17\\), we have \\(h^{-1}(17) = 4\\). Multiplying by \\(4\\) gives \\(16\\).",
           "explanation": "Substitute \\(r=\\frac{2h}{5}\\): \\(V=\\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2h=\\frac{4\\pi}{75}h^3\\). \\(\\frac{dV}{dh}=\\frac{12\\pi}{75}h^2=\\frac{4\\pi}{25}h^2\\). At \\(h=5\\): \\(\\frac{dV}{dh}=\\frac{4\\pi}{25}(25)=4\\pi\\). \\(\\frac{dh}{dt}=\\frac{dV/dt}{dV/dh}=\\frac{12}{4\\pi}=\\frac{3}{\\pi}\\approx0.955\\) cm/s.",
+          "explain": "Because \\(h(4) = 17\\), we have \\(h^{-1}(17) = 4\\). Multiplying by \\(4\\) gives \\(16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
               "2",
               "3",
@@ -227,46 +303,16 @@
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
+                "\\(h(x)\\)",
                 "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "11",
+                "15",
+                "17"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#8)",
-            "caption_ar": "جدول القيم المختارة (#8)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (hydraulics, A2LEVEL-31191248)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (الهيدروليك، A2LEVEL-31191248)"
           }
         }
       ]
@@ -276,254 +322,322 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Given \\( y=5e^{2x} \\), find the coefficient of \\( e^{2x} \\) in \\( \\dfrac{dy}{dx} \\).",
-          "answer": "**Answer:** C. \\( \\dfrac{dy}{dx}=5\\times 2\\,e^{2x}=10e^{2x} \\). Coefficient: 10. [M1][A1]",
+          "q": "From the plotted bridge arch figure above (A2LEVEL-G282856533) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** C. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 5\\).",
           "explanation": "\\( \\dfrac{dy}{dx}=5\\times 2\\,e^{2x}=10e^{2x} \\). Coefficient: 10. [M1][A1]",
           "choices": [
-            "11",
-            "2",
-            "10",
-            "7"
+            "\\(1\\)",
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(7\\)"
           ],
           "correct": 2,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 5\\).",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -2,
+              6
             ],
             "yl": [
               -2,
-              7
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Find the equation of the tangent to \\(y=xe^{-x}\\) at \\(x=1\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Applying the rules: tangents and second derivatives",
-          "answer": "By the product rule: \\(\\frac{dy}{dx}=e^{-x}+x(-e^{-x})=e^{-x}(1-x)\\). At \\(x=1\\): \\(\\frac{dy}{dx}=e^{-1}(0)=0\\). Since \\(y(1)=e^{-1}\\), the tangent is horizontal: \\(y=\\frac{1}{e}\\).",
-          "explanation": "By the product rule: \\(\\frac{dy}{dx}=e^{-x}+x(-e^{-x})=e^{-x}(1-x)\\). At \\(x=1\\): \\(\\frac{dy}{dx}=e^{-1}(0)=0\\). Since \\(y(1)=e^{-1}\\), the tangent is horizontal: \\(y=\\frac{1}{e}\\).",
-          "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
-          }
-        },
-        {
-          "q": "Find \\(\\frac{d^2y}{dx^2}\\) for \\(y=\\ln(x^2+1)\\), and evaluate it at \\(x=1\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Applying the rules: tangents and second derivatives",
-          "answer": "\\(\\frac{dy}{dx}=\\frac{2x}{x^2+1}\\). By the quotient rule: \\(\\frac{d^2y}{dx^2}=\\frac{2(x^2+1)-2x(2x)}{(x^2+1)^2}=\\frac{2-2x^2}{(x^2+1)^2}\\). At \\(x=1\\): \\(\\frac{2-2}{4}=0\\).",
-          "explanation": "\\(\\frac{dy}{dx}=\\frac{2x}{x^2+1}\\). By the quotient rule: \\(\\frac{d^2y}{dx^2}=\\frac{2(x^2+1)-2x(2x)}{(x^2+1)^2}=\\frac{2-2x^2}{(x^2+1)^2}\\). At \\(x=1\\): \\(\\frac{2-2}{4}=0\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "6",
-                "8",
-                "10",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#11)",
-            "caption_ar": "جدول القيم المختارة (#11)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "8",
-                "10",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
-          }
-        },
-        {
-          "qtype": "MCQ",
-          "q": "A curve is defined parametrically by \\( x=2t^2 \\), \\( y=3t^3 \\). Find \\( \\dfrac{dy}{dx} \\) at \\( t=1 \\).",
-          "answer": "**Answer:** A. \\( \\dfrac{dx}{dt}=4t \\), \\( \\dfrac{dy}{dt}=9t^2 \\). \\( \\dfrac{dy}{dx}=\\dfrac{9t^2}{4t}=\\dfrac{9t}{4} \\). At \\( t=1 \\): \\( \\dfrac{9}{4} \\). [M1][A1]",
-          "explanation": "\\( \\dfrac{dx}{dt}=4t \\), \\( \\dfrac{dy}{dt}=9t^2 \\). \\( \\dfrac{dy}{dx}=\\dfrac{9t^2}{4t}=\\dfrac{9t}{4} \\). At \\( t=1 \\): \\( \\dfrac{9}{4} \\). [M1][A1]",
-          "choices": [
-            "\\(\\dfrac{9}{4}\\)",
-            "\\(\\dfrac{7}{3}\\)",
-            "\\(-\\dfrac{9}{4}\\)",
-            "\\(\\dfrac{4}{9}\\)"
-          ],
-          "correct": 0,
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
-              7
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Level 2 · MediumFind the derivative \\(\\frac{dy}{dx}\\) of \\(y = x^{\\sin x}\\) for \\(x > 0\\) using logarithmic differentiation.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The quotient rule",
-          "answer": "Take natural logarithms of both sides: \\(\\ln y = \\ln(x^{\\sin x}) = \\sin x \\cdot \\ln x.\\) Differentiate implicitly with respect to \\(x\\) using the Product Rule on the right: \\(\\frac{1}{y}\\frac{dy}{dx} = (\\cos x)(\\ln x) + (\\sin x)\\left(\\frac{1}{x}\\right).\\) Multiply both sides by \\(y = x^{\\sin x}\\): \\(\\frac{dy}{dx} = x^{\\sin x} \\left( \\cos x \\ln x + \\frac{\\sin x}{x} \\right).\\)",
-          "explanation": "Take natural logarithms of both sides: \\(\\ln y = \\ln(x^{\\sin x}) = \\sin x \\cdot \\ln x.\\) Differentiate implicitly with respect to \\(x\\) using the Product Rule on the right: \\(\\frac{1}{y}\\frac{dy}{dx} = (\\cos x)(\\ln x) + (\\sin x)\\left(\\frac{1}{x}\\right).\\) Multiply both sides by \\(y = x^{\\sin x}\\): \\(\\frac{dy}{dx} = x^{\\sin x} \\left( \\cos x \\ln x + \\frac{\\sin x}{x} \\right).\\)",
-          "figure": {
-            "type": "sinusoid",
-            "amp": 3,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#13)"
-          }
-        },
-        {
-          "q": "Level 1 · FoundationsFind the derivative of \\(y = \\sqrt{x^4 + 3x^2 + 7}\\) using the Chain Rule, and compute \\(y'(1)\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Implicit differentiation",
-          "answer": "Express \\(y = (x^4 + 3x^2 + 7)^{1/2}\\). By the Chain Rule: \\(y' = \\frac{1}{2}(x^4 + 3x^2 + 7)^{-1/2} \\cdot \\frac{d}{dx}(x^4 + 3x^2 + 7) = \\frac{4x^3 + 6x}{2\\sqrt{x^4 + 3x^2 + 7}} = \\frac{2x^3 + 3x}{\\sqrt{x^4 + 3x^2 + 7}}.\\) Evaluate at \\(x = 1\\): \\(y'(1) = \\frac{2(1)^3 + 3(1)}{\\sqrt{1^4 + 3(1)^2 + 7}} = \\frac{5}{\\sqrt{11}} = \\mathbf{\\frac{5\\sqrt{11}}{11}}.\\)",
-          "explanation": "Express \\(y = (x^4 + 3x^2 + 7)^{1/2}\\). By the Chain Rule: \\(y' = \\frac{1}{2}(x^4 + 3x^2 + 7)^{-1/2} \\cdot \\frac{d}{dx}(x^4 + 3x^2 + 7) = \\frac{4x^3 + 6x}{2\\sqrt{x^4 + 3x^2 + 7}} = \\frac{2x^3 + 3x}{\\sqrt{x^4 + 3x^2 + 7}}.\\) Evaluate at \\(x = 1\\): \\(y'(1) = \\frac{2(1)^3 + 3(1)}{\\sqrt{1^4 + 3(1)^2 + 7}} = \\frac{5}{\\sqrt{11}} = \\mathbf{\\frac{5\\sqrt{11}}{11}}.\\)",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#14)",
-            "caption_ar": "جدول القيم المختارة (#14)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Level 3 · Advanced A particle moves along a curve defined parametrically by \\(x = t^2 + 1\\) and \\(y = t^3 - 3t\\). Find the value of \\(\\frac{d^2y}{dx^2}\\) at \\(t = 2\\) and determine whether the curve is concave up or concave down at this point.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Parametric differentiation",
-          "answer": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\). The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\). Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\). Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\). At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\). Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\). Because \\(\\frac{d^2y}{dx^2} = \\frac{15}{32} > 0\\), the trajectory is strictly concave up at \\(t = 2\\).",
-          "explanation": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\). The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\). Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\). Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\). At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\). Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\). Because \\(\\frac{d^2y}{dx^2} = \\frac{15}{32} > 0\\), the trajectory is strictly concave up at \\(t = 2\\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -4,
-              4
-            ],
-            "yl": [
-              -5,
-              7
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
+                "fn": "2/(x - 2) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 2) + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 5,
+                "label": "(3, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 2 and y = 3 (A2LEVEL-G282856533)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (A2LEVEL-G282856533)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a cad blueprint configuration (A2LEVEL-G266078914); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Applying the rules: tangents and second derivatives",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "explanation": "By the product rule: \\(\\frac{dy}{dx}=e^{-x}+x(-e^{-x})=e^{-x}(1-x)\\). At \\(x=1\\): \\(\\frac{dy}{dx}=e^{-1}(0)=0\\). Since \\(y(1)=e^{-1}\\), the tangent is horizontal: \\(y=\\frac{1}{e}\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              21
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (A2LEVEL-G266078914)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (A2LEVEL-G266078914)"
+          }
+        },
+        {
+          "q": "The table summarizes measurements from a flow bench evaluation (A2LEVEL-705221046); using these entries, approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Applying the rules: tangents and second derivatives",
+          "answer": "**Answer:** \\(26\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "explanation": "\\(\\frac{dy}{dx}=\\frac{2x}{x^2+1}\\). By the quotient rule: \\(\\frac{d^2y}{dx^2}=\\frac{2(x^2+1)-2x(2x)}{(x^2+1)^2}=\\frac{2-2x^2}{(x^2+1)^2}\\). At \\(x=1\\): \\(\\frac{2-2}{4}=0\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "0",
+              "2",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Sampled rate table R(t) on [0, 4] (flow bench, A2LEVEL-705221046)",
+            "caption_ar": "جدول المعدل (مختبر التدفق، A2LEVEL-705221046)"
+          }
+        },
+        {
+          "qtype": "MCQ",
+          "q": "Referring to the cad blueprint figure (A2LEVEL-G721999672) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "answer": "**Answer:** A. From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "explanation": "\\( \\dfrac{dx}{dt}=4t \\), \\( \\dfrac{dy}{dt}=9t^2 \\). \\( \\dfrac{dy}{dx}=\\dfrac{9t^2}{4t}=\\dfrac{9t}{4} \\). At \\( t=1 \\): \\( \\dfrac{9}{4} \\). [M1][A1]",
+          "choices": [
+            "\\(13\\)",
+            "\\(7\\)",
+            "\\(8\\)",
+            "\\(17\\)"
+          ],
+          "correct": 0,
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (A2LEVEL-G721999672)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (A2LEVEL-G721999672)"
+          }
+        },
+        {
+          "q": "Based on the harmonic trace visual model shown (A2LEVEL-G671666808) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(1)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The quotient rule",
+          "answer": "**Answer:** \\(3\\). From vertex \\((-1, -1)\\) and point \\((0, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(1) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "Take natural logarithms of both sides: \\(\\ln y = \\ln(x^{\\sin x}) = \\sin x \\cdot \\ln x.\\) Differentiate implicitly with respect to \\(x\\) using the Product Rule on the right: \\(\\frac{1}{y}\\frac{dy}{dx} = (\\cos x)(\\ln x) + (\\sin x)\\left(\\frac{1}{x}\\right).\\) Multiply both sides by \\(y = x^{\\sin x}\\): \\(\\frac{dy}{dx} = x^{\\sin x} \\left( \\cos x \\ln x + \\frac{\\sin x}{x} \\right).\\)",
+          "explain": "From vertex \\((-1, -1)\\) and point \\((0, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(1) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              2
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (-1))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": -1,
+                "y": -1,
+                "label": "(-1, -1)"
+              },
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (A2LEVEL-G671666808)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (A2LEVEL-G671666808)"
+          }
+        },
+        {
+          "q": "Inspect the robotics values listed across the table (A2LEVEL-688443427); tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Implicit differentiation",
+          "answer": "**Answer:** \\(6\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(2) = 6\\).",
+          "explanation": "Express \\(y = (x^4 + 3x^2 + 7)^{1/2}\\). By the Chain Rule: \\(y' = \\frac{1}{2}(x^4 + 3x^2 + 7)^{-1/2} \\cdot \\frac{d}{dx}(x^4 + 3x^2 + 7) = \\frac{4x^3 + 6x}{2\\sqrt{x^4 + 3x^2 + 7}} = \\frac{2x^3 + 3x}{\\sqrt{x^4 + 3x^2 + 7}}.\\) Evaluate at \\(x = 1\\): \\(y'(1) = \\frac{2(1)^3 + 3(1)}{\\sqrt{1^4 + 3(1)^2 + 7}} = \\frac{5}{\\sqrt{11}} = \\mathbf{\\frac{5\\sqrt{11}}{11}}.\\)",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(2) = 6\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
+            ],
+            "rows": [
+              [
+                "0",
+                "1",
+                "2",
+                "2"
+              ],
+              [
+                "1",
+                "2",
+                "4",
+                "2"
+              ],
+              [
+                "2",
+                "3",
+                "?",
+                "\\(\\dots\\)"
+              ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (robotics, A2LEVEL-688443427)",
+            "caption_ar": "جدول خطوات أويلر (الروبوتات، A2LEVEL-688443427)"
+          }
+        },
+        {
+          "q": "Referring to the acoustic chamber figure (A2LEVEL-G772332536) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(1)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Parametric differentiation",
+          "answer": "**Answer:** \\(13\\). From vertex \\((-1, 1)\\) and point \\((0, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(1) = 3(2)^2 + (1) = 13\\).",
+          "explanation": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\). The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\). Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\). Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\). At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\). Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\). Because \\(\\frac{d^2y}{dx^2} = \\frac{15}{32} > 0\\), the trajectory is strictly concave up at \\(t = 2\\).",
+          "explain": "From vertex \\((-1, 1)\\) and point \\((0, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(1) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -4,
+              2
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (-1))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": -1,
+                "y": 1,
+                "label": "(-1, 1)"
+              },
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (A2LEVEL-G772332536)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (A2LEVEL-G772332536)"
           }
         }
       ]
@@ -532,84 +646,92 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Level 3 · AdvancedEvaluate the indeterminate limit using repeated applications of L'Hôpital's Rule with complete hypothesis verification: \\(\\lim_{x \\rightarrow 0} \\frac{x - \\arctan x}{x^3}.\\)",
+          "q": "Referring to the harmonic trace figure (A2LEVEL-G789110148) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Related rates",
           "cross_lesson": "5.01 Integration",
-          "answer": "Step 1 · Initial Verification: As \\(x \\rightarrow 0\\), numerator $0 - 0 = 0\\( and denominator \\)0^3 = 0\\(. Form \\)\\frac{0}{0}\\(. Differentiating numerator and denominator: \\)\\lim_{x\\rightarrow 0} \\frac{1 - \\frac{1}{1 + x^2}}{3x^2} = \\lim_{x\\rightarrow 0} \\frac{\\frac{(1 + x^2) - 1}{1 + x^2}}{3x^2} = \\lim_{x\\rightarrow 0} \\frac{x^2}{3x^2(1 + x^2)}.\\( Step 2 · Algebraic Simplification: For \\)x eq 0\\(, cancel the common factor \\)x^2\\(: \\)= \\lim_{x\\rightarrow 0} \\frac{1}{3(1 + x^2)} = \\frac{1}{3(1 + 0)} = \\mathbf{\\frac{1}{3}}.$",
+          "answer": "**Answer:** \\(9\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 3)\\), \\(a = 3 - 1 = 2\\), so \\(g(2) = 2(2^2) + 1 = 9\\).",
           "explanation": "Step 1 · Initial Verification: As \\(x \\rightarrow 0\\), numerator $0 - 0 = 0\\( and denominator \\)0^3 = 0\\(. Form \\)\\frac{0}{0}\\(. Differentiating numerator and denominator: \\)\\lim_{x\\rightarrow 0} \\frac{1 - \\frac{1}{1 + x^2}}{3x^2} = \\lim_{x\\rightarrow 0} \\frac{\\frac{(1 + x^2) - 1}{1 + x^2}}{3x^2} = \\lim_{x\\rightarrow 0} \\frac{x^2}{3x^2(1 + x^2)}.\\( Step 2 · Algebraic Simplification: For \\)x eq 0\\(, cancel the common factor \\)x^2\\(: \\)= \\lim_{x\\rightarrow 0} \\frac{1}{3(1 + x^2)} = \\frac{1}{3(1 + 0)} = \\mathbf{\\frac{1}{3}}.$",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 3)\\), \\(a = 3 - 1 = 2\\), so \\(g(2) = 2(2^2) + 1 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 3,
-            "sd": 4,
-            "shadeRange": [
-              -1,
-              7
+            "type": "fn",
+            "xl": [
+              -2,
+              3
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#16)"
+            "yl": [
+              0,
+              11
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 3,
+                "label": "(0, 3)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (A2LEVEL-G789110148)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (A2LEVEL-G789110148)"
           }
         },
         {
-          "q": "Solve the logarithmic equation \\(\\log_3(x + 6) + \\log_3(x) = 3\\) and eliminate any extraneous solutions.",
+          "q": "A benchmark photonics log (A2LEVEL-738776284) provides the entries shown in the table; evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Differentiating trigonometric, exponential and logarithmic composites",
           "cross_lesson": "6.01 Sequences & Series",
-          "answer": "Combine the logarithms on the left-hand side using the product rule: \\(\\log_3[x(x + 6)] = 3.\\) Convert to exponential form: \\(x(x + 6) = 3^3 = 27 \\Rightarrow x^2 + 6x - 27 = 0.\\) Factor the quadratic: \\((x + 9)(x - 3) = 0 \\Rightarrow x = -9 \\mathrm{\\ or\\ } x = 3.\\) Check the domain restrictions in the original equation:For \\(x = -9\\): \\(\\log_3(-9)\\) is undefined, so \\(x = -9\\) is an extraneous solution.For \\(x = 3\\): \\(\\log_3(9) + \\log_3(3) = 2 + 1 = 3\\). Valid \\(\\checkmark\\).Therefore, the unique solution is \\(x = 3\\).",
+          "answer": "**Answer:** \\(16\\). From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
           "explanation": "Combine the logarithms on the left-hand side using the product rule: \\(\\log_3[x(x + 6)] = 3.\\) Convert to exponential form: \\(x(x + 6) = 3^3 = 27 \\Rightarrow x^2 + 6x - 27 = 0.\\) Factor the quadratic: \\((x + 9)(x - 3) = 0 \\Rightarrow x = -9 \\mathrm{\\ or\\ } x = 3.\\) Check the domain restrictions in the original equation:For \\(x = -9\\): \\(\\log_3(-9)\\) is undefined, so \\(x = -9\\) is an extraneous solution.For \\(x = 3\\): \\(\\log_3(9) + \\log_3(3) = 2 + 1 = 3\\). Valid \\(\\checkmark\\).Therefore, the unique solution is \\(x = 3\\).",
+          "explain": "From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
+              "2",
               "3",
-              "5",
-              "7"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "6",
+                "\\(f(x)\\)",
                 "7",
-                "8"
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "\\(g(x)\\)",
+                "3",
+                "4",
+                "1",
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#17)",
-            "caption_ar": "جدول القيم المختارة (#17)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (photonics, A2LEVEL-738776284)",
+            "caption_ar": "قيم مختارة للدالتين (الفوتونيات، A2LEVEL-738776284)"
           }
         },
         {

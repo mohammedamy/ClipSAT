@@ -10,267 +10,249 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Which parameter describes spread in a Normal distribution?",
-          "answer": "**Answer:** B. Standard deviation σ measures spread.",
+          "q": "An engineering team logged flow bench measurements in the accompanying table (APSTATS-646035094); using these data, showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
+          "answer": "**Answer:** B. Weighted sum \\(= 2(3) + 4(5) + 6(4) + 8(11) = 138\\) across \\(23\\) observations, so mean \\(= \\frac{138}{23} = 6\\).",
           "explanation": "Standard deviation σ measures spread.",
           "choices": [
-            "Variance only",
-            "Standard deviation",
-            "Mean",
-            "Median"
+            "\\(7\\)",
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(138\\)"
           ],
           "correct": 1,
+          "explain": "Weighted sum \\(= 2(3) + 4(5) + 6(4) + 8(11) = 138\\) across \\(23\\) observations, so mean \\(= \\frac{138}{23} = 6\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "22",
-                "21",
-                43
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "4"
               ],
               [
                 "8",
-                "27",
-                35
-              ],
-              [
-                30,
-                48,
-                78
+                "11"
               ]
             ],
-            "caption": "Reference Summary Table (#2)",
-            "caption_ar": "جدول ملخص البيانات (#2)",
-            "_totals": {
-              "rowTotals": [
-                43,
-                35
+            "caption": "Frequency distribution summary (flow bench, APSTATS-646035094)",
+            "caption_ar": "جدول التوزيع التكراري (مختبر التدفق، APSTATS-646035094)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "3"
               ],
-              "colTotals": [
-                30,
-                48
+              [
+                "4",
+                "5"
               ],
-              "grandTotal": 78
-            }
+              [
+                "6",
+                "4"
+              ],
+              [
+                "8",
+                "11"
+              ]
+            ]
           }
         },
         {
-          "q": "Find the standard deviation of the profit \\(X\\) from the previous problem, to two decimal places.",
+          "q": "Referring to the thermal profile figure (APSTATS-G629258482) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Probability distributions and expected value",
-          "answer": "Variance \\(=\\sum(x-\\mu)^2P(x)=(8-(-1))^2(0.1)+(-2-(-1))^2(0.9)=(81)(0.1)+(1)(0.9)=8.1+0.9=9\\). Standard deviation \\(=\\sqrt{9}=3\\).",
+          "answer": "**Answer:** \\(9\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 19\\) and \\(Q_3 = 28\\), so \\(\\text{IQR} = 28 - 19 = 9\\).",
           "explanation": "Variance \\(=\\sum(x-\\mu)^2P(x)=(8-(-1))^2(0.1)+(-2-(-1))^2(0.9)=(81)(0.1)+(1)(0.9)=8.1+0.9=9\\). Standard deviation \\(=\\sqrt{9}=3\\).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 19\\) and \\(Q_3 = 28\\), so \\(\\text{IQR} = 28 - 19 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 3,
-            "sd": 4,
-            "shadeRange": [
-              -1,
-              7
+            "type": "boxplot",
+            "boxes": [
+              {
+                "label": "Sample",
+                "min": 14,
+                "q1": 19,
+                "med": 23,
+                "q3": 28,
+                "max": 35
+              }
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#3)"
+            "range": [
+              10,
+              39
+            ],
+            "caption": "Five-number summary box plot (APSTATS-G629258482)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G629258482)"
           }
         },
         {
-          "q": "State the four conditions required for a random variable to follow a binomial distribution (sometimes remembered as BINS: Binary, Independent, Number fixed, Same probability).",
+          "q": "From the plotted orbital sector figure above (APSTATS-G612480863) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Binomial setting and conditions",
-          "answer": "(1) Each trial has only two possible outcomes (success/failure). (2) Trials are independent. (3) There is a fixed number of trials, \\(n\\). (4) The probability of success, \\(p\\), is the same for every trial.",
+          "answer": "**Answer:** \\(31\\). Summing bar heights directly from the histogram gives \\(6 + 7 + 11 + 7 = 31\\).",
           "explanation": "(1) Each trial has only two possible outcomes (success/failure). (2) Trials are independent. (3) There is a fixed number of trials, \\(n\\). (4) The probability of success, \\(p\\), is the same for every trial.",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 7 + 11 + 7 = 31\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                3
-              ],
-              [
-                2,
-                6
-              ],
-              [
-                3,
-                12
-              ],
-              [
-                4,
-                17
-              ]
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 6
+              },
+              {
+                "label": "10-19",
+                "count": 7
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 7
+              }
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#4)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (APSTATS-G612480863)",
+            "caption_ar": "المدرج التكراري للفئات (APSTATS-G612480863)"
           }
         },
         {
-          "q": "A survey randomly selects 20 people (without replacement) from a small town of 50 people and records how many support a proposal. Explain why this technically violates the independence condition, and why it is often still treated as approximately binomial.",
+          "q": "An engineering team logged aerodynamics measurements in the accompanying table (APSTATS-729923189); using these data, for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Binomial setting and conditions",
-          "answer": "Sampling without replacement from a small population means each selection slightly changes the probabilities for the next draw, violating strict independence. However, when the sample size is small relative to the population (a common guideline is the sample being less than 10% of the population), the effect is negligible, and the situation is treated as approximately binomial — though here \\(20\\) out of \\(50\\) is \\(40\\%\\), so this would NOT satisfy the 10% condition and should be treated with caution.",
+          "answer": "**Answer:** \\(\\frac{11}{17}\\). There are \\(17\\) participants in North (\\(11 + 6\\)), of whom \\(11\\) recorded Transit, giving \\(\\frac{11}{17}\\).",
           "explanation": "Sampling without replacement from a small population means each selection slightly changes the probabilities for the next draw, violating strict independence. However, when the sample size is small relative to the population (a common guideline is the sample being less than 10% of the population), the effect is negligible, and the situation is treated as approximately binomial — though here \\(20\\) out of \\(50\\) is \\(40\\%\\), so this would NOT satisfy the 10% condition and should be treated with caution.",
+          "explain": "There are \\(17\\) participants in North (\\(11 + 6\\)), of whom \\(11\\) recorded Transit, giving \\(\\frac{11}{17}\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "two_way_table",
             "corner": "",
             "rows": [
-              "Group I",
-              "Group II",
+              "North",
+              "South",
               "Total"
             ],
             "cols": [
-              "Outcome A",
-              "Outcome B",
+              "Transit",
+              "Drive",
               "Total"
             ],
             "data": [
               [
-                "12",
-                "21",
-                33
+                "11",
+                "6",
+                17
               ],
               [
-                "15",
-                "24",
-                39
+                "7",
+                "5",
+                12
               ],
               [
-                27,
-                45,
-                72
+                18,
+                11,
+                29
               ]
             ],
-            "caption": "Reference Summary Table (#5)",
-            "caption_ar": "جدول ملخص البيانات (#5)",
-            "_totals": {
-              "rowTotals": [
-                33,
-                39
-              ],
-              "colTotals": [
-                27,
-                45
-              ],
-              "grandTotal": 72
-            }
+            "caption": "Commuter Survey Summary (APSTATS-729923189)",
+            "caption_ar": "ملخص النتائج (APSTATS-729923189)"
           }
         },
         {
-          "q": "A basketball player makes 70% of free throws. Find the probability she makes exactly 4 out of 6 attempts, using \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).",
+          "q": "Refer to the geometric/analytic cad blueprint figure (APSTATS-G713146570) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 50, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Binomial probability formula",
-          "answer": "\\(P(X=4)=\\binom{6}{4}(0.7)^4(0.3)^2=15(0.2401)(0.09)\\approx0.324\\).",
+          "answer": "**Answer:** \\(66\\). Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(8) = 66\\).",
           "explanation": "\\(P(X=4)=\\binom{6}{4}(0.7)^4(0.3)^2=15(0.2401)(0.09)\\approx0.324\\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#6)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Using the same free-throw shooter, find the mean and standard deviation of the number of makes out of 6 attempts, using \\(\\mu=np\\) and \\(\\sigma=\\sqrt{np(1-p)}\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Binomial probability formula",
-          "answer": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes.",
-          "explanation": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes.",
+          "explain": "Reading two tick steps to the right of mean \\(50\\) gives \\(\\mu + 2\\sigma = 50 + 2(8) = 66\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 6,
-            "sd": 1,
-            "shadeRange": [
-              5,
-              7
-            ],
+            "mean": 50,
+            "sd": 8,
             "showRule": true,
-            "caption": "Normal Distribution Model (#7)"
+            "caption": "Normal distribution with mean 50 and standard deviation 8"
+          }
+        },
+        {
+          "q": "From the plotted lab apparatus figure above (APSTATS-G696368951) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Binomial probability formula",
+          "answer": "**Answer:** \\(26\\). Counting each disjoint region once yields \\(|A \\cup B| = 12 + 4 + 10 = 26\\).",
+          "explanation": "\\(\\mu=np=6(0.7)=4.2\\) makes. \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{6(0.7)(0.3)}=\\sqrt{1.26}\\approx1.12\\) makes.",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 12 + 4 + 10 = 26\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 12
+              },
+              {
+                "label": "B",
+                "only": 10
+              }
+            ],
+            "both": 4,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (APSTATS-G696368951)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G696368951)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Mean of Binomial(n,p) is:",
-          "answer": "**Answer:** A. Applying Unit 3 · Probability, Random Variables & Distributions principles, E(X)=np. Therefore, the verified correct option is np.",
+          "q": "Using the labeled measurements in the optical assembly diagram (APSTATS-G679591332) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
+          "answer": "**Answer:** A. Reading the left and right edges of the box on the scale gives \\(Q_1 = 12\\) and \\(Q_3 = 18\\), so \\(\\text{IQR} = 18 - 12 = 6\\).",
           "explanation": "Applying Unit 3 · Probability, Random Variables & Distributions principles, E(X)=np. Therefore, the verified correct option is np.",
           "choices": [
-            "np",
-            "np(1-p)",
-            "\\(\\sqrt{np}\\)",
-            "n+p"
+            "\\(6\\)",
+            "\\(15\\)",
+            "\\(3\\)",
+            "\\(9\\)"
           ],
           "correct": 0,
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 12\\) and \\(Q_3 = 18\\), so \\(\\text{IQR} = 18 - 12 = 6\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
+            "type": "boxplot",
+            "boxes": [
+              {
+                "label": "Sample",
+                "min": 8,
+                "q1": 12,
+                "med": 15,
+                "q3": 18,
+                "max": 23
+              }
             ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
+            "range": [
+              4,
+              27
             ],
-            "data": [
-              [
-                "17",
-                "22",
-                39
-              ],
-              [
-                "8",
-                "23",
-                31
-              ],
-              [
-                25,
-                45,
-                70
-              ]
-            ],
-            "caption": "Reference Summary Table (#8)",
-            "caption_ar": "جدول ملخص البيانات (#8)",
-            "_totals": {
-              "rowTotals": [
-                39,
-                31
-              ],
-              "colTotals": [
-                25,
-                45
-              ],
-              "grandTotal": 70
-            }
+            "caption": "Five-number summary box plot (APSTATS-G679591332)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G679591332)"
           }
         }
       ]
@@ -280,234 +262,250 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Standard deviation of Binomial(n,p) is:",
-          "answer": "**Answer:** B. Applying Unit 3 · Probability, Random Variables & Distributions principles, σ=√(np(1-p)). Therefore, the verified correct option is \\(\\sqrt{np(1-p)}\\).",
+          "q": "In the calorimetry record (APSTATS-797033665), using the table values, showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
+          "answer": "**Answer:** B. Weighted sum \\(= 2(3) + 4(3) + 6(2) + 8(9) = 102\\) across \\(17\\) observations, so mean \\(= \\frac{102}{17} = 6\\).",
           "explanation": "Applying Unit 3 · Probability, Random Variables & Distributions principles, σ=√(np(1-p)). Therefore, the verified correct option is \\(\\sqrt{np(1-p)}\\).",
           "choices": [
-            "\\(np\\)",
-            "\\(\\sqrt{np(1-p)}\\)",
-            "\\(np(1-p)\\)",
-            "\\(\\sqrt{np}\\)"
+            "\\(7\\)",
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(102\\)"
           ],
           "correct": 1,
+          "explain": "Weighted sum \\(= 2(3) + 4(3) + 6(2) + 8(9) = 102\\) across \\(17\\) observations, so mean \\(= \\frac{102}{17} = 6\\).",
           "figure": {
-            "type": "normal_curve",
-            "mean": 3,
-            "sd": 4,
-            "shadeRange": [
-              -1,
-              7
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#9)"
+            "rows": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "3"
+              ],
+              [
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "9"
+              ]
+            ],
+            "caption": "Frequency distribution summary (calorimetry, APSTATS-797033665)",
+            "caption_ar": "جدول التوزيع التكراري (قياس السعرات، APSTATS-797033665)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "3"
+              ],
+              [
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "9"
+              ]
+            ]
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Expected value E(X) for discrete X:",
-          "answer": "**Answer:** B. Applying Unit 3 · Probability, Random Variables & Distributions principles, Weighted average of outcomes. Therefore, the verified correct option is \\(\\sum x_i P(x_i)\\).",
+          "q": "Refer to the geometric/analytic harmonic trace figure (APSTATS-G780257046) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "answer": "**Answer:** B. Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
           "explanation": "Applying Unit 3 · Probability, Random Variables & Distributions principles, Weighted average of outcomes. Therefore, the verified correct option is \\(\\sum x_i P(x_i)\\).",
           "choices": [
-            "The most frequent value",
-            "\\(\\sum x_i P(x_i)\\)",
-            "The median",
-            "\\(n\\cdot p\\) always"
+            "\\(68\\)",
+            "\\(76\\)",
+            "\\(44\\)",
+            "\\(84\\)"
           ],
           "correct": 1,
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                3,
-                12
-              ],
-              [
-                4,
-                17
-              ]
-            ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#10)"
+            "type": "normal_curve",
+            "mean": 60,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 60 and standard deviation 8"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "z-score formula:",
-          "answer": "**Answer:** D. Applying Unit 3 · Probability, Random Variables & Distributions principles, \\(z=\\frac{x-\\mu}{\\sigma}\\). Therefore, the verified correct option is \\(\\frac{x-\\mu}{\\sigma}\\).",
+          "q": "Referring to the optical assembly figure (APSTATS-G758623482) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "answer": "**Answer:** D. Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "explanation": "Applying Unit 3 · Probability, Random Variables & Distributions principles, \\(z=\\frac{x-\\mu}{\\sigma}\\). Therefore, the verified correct option is \\(\\frac{x-\\mu}{\\sigma}\\).",
           "choices": [
-            "\\(\\frac{x-\\sigma}{\\mu}\\)",
-            "\\(\\frac{\\mu-x}{\\sigma}\\)",
-            "\\(\\frac{x}{\\sigma}\\)",
-            "\\(\\frac{x-\\mu}{\\sigma}\\)"
+            "\\(78\\)",
+            "\\(54\\)",
+            "\\(94\\)",
+            "\\(86\\)"
           ],
           "correct": 3,
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 8,
+            "shadeRange": [
+              54,
+              86
             ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "29",
-                "16",
-                45
-              ],
-              [
-                "17",
-                "22",
-                39
-              ],
-              [
-                46,
-                38,
-                84
-              ]
-            ],
-            "caption": "Reference Summary Table (#11)",
-            "caption_ar": "جدول ملخص البيانات (#11)",
-            "_totals": {
-              "rowTotals": [
-                45,
-                39
-              ],
-              "colTotals": [
-                46,
-                38
-              ],
-              "grandTotal": 84
-            }
+            "showRule": true,
+            "caption": "Normal bell curve with mean 70 and SD 8 (APSTATS-G758623482)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 70 وانحراف 8 (APSTATS-G758623482)"
           }
         },
         {
-          "q": "Using the mean and standard deviation formulas \\(\\mu=np\\) and \\(\\sigma=\\sqrt{np(1-p)}\\), find the mean and standard deviation of the number of defective items in a batch of 20, with \\(p=0.05\\).",
+          "q": "Based on the lab apparatus visual model shown (APSTATS-G775401101) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Binomial probability of at least one success",
-          "answer": "\\(\\mu=np=20(0.05)=1\\). \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{20(0.05)(0.95)}=\\sqrt{0.95}\\approx0.975\\).",
+          "answer": "**Answer:** \\(26\\). Summing bar heights directly from the histogram gives \\(4 + 6 + 11 + 5 = 26\\).",
           "explanation": "\\(\\mu=np=20(0.05)=1\\). \\(\\sigma=\\sqrt{np(1-p)}=\\sqrt{20(0.05)(0.95)}=\\sqrt{0.95}\\approx0.975\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 6 + 11 + 5 = 26\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 1,
-            "sd": 20,
-            "shadeRange": [
-              -19,
-              21
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 4
+              },
+              {
+                "label": "10-19",
+                "count": 6
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 5
+              }
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#12)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (APSTATS-G775401101)",
+            "caption_ar": "المدرج التكراري للفئات (APSTATS-G775401101)"
           }
         },
         {
-          "q": "Explain why a binomial model would NOT be appropriate for counting the number of aces dealt when drawing 5 cards without replacement from a standard 52-card deck, and name the distribution that would be more appropriate instead.",
+          "q": "Based strictly on the tabulated wind tunnel observations (APSTATS-725067244), showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparing binomial scenarios",
-          "answer": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population.",
+          "answer": "**Answer:** \\(6\\). Weighted sum \\(= 2(3) + 4(5) + 6(3) + 8(11) = 132\\) across \\(22\\) observations, so mean \\(= \\frac{132}{22} = 6\\).",
           "explanation": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population.",
+          "explain": "Weighted sum \\(= 2(3) + 4(5) + 6(3) + 8(11) = 132\\) across \\(22\\) observations, so mean \\(= \\frac{132}{22} = 6\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
+            ],
+            "rows": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "11"
+              ]
+            ],
+            "caption": "Frequency distribution summary (wind tunnel, APSTATS-725067244)",
+            "caption_ar": "جدول التوزيع التكراري (نفق الرياح، APSTATS-725067244)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "11"
+              ]
+            ]
+          }
+        },
+        {
+          "q": "From the plotted structural truss figure above (APSTATS-G741845863) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Geometric distribution (brief introduction)",
+          "answer": "**Answer:** \\(20\\). Counting each disjoint region once yields \\(|A \\cup B| = 8 + 4 + 8 = 20\\).",
+          "explanation": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 8 + 4 + 8 = 20\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "venn",
             "sets": [
               {
                 "label": "A",
-                "only": 16
+                "only": 8
               },
               {
                 "label": "B",
-                "only": 12
+                "only": 8
               }
             ],
             "both": 4,
             "outside": 5,
-            "caption": "Set Relationship Diagram (#13)"
+            "caption": "Venn count diagram of sets A and B (APSTATS-G741845863)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G741845863)"
           }
         },
         {
-          "q": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\mathrm{Var}(X)\\) and \\(\\sigma_X\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Geometric distribution (brief introduction)",
-          "answer": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)",
-          "explanation": "(a) Expected Value: \\(E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\) (b) Expected Value of \\(X^2\\): \\(E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\) (c) Variance & SD: \\(\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\) \\(\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\)",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "28",
-                "24",
-                52
-              ],
-              [
-                "15",
-                "17",
-                32
-              ],
-              [
-                43,
-                41,
-                84
-              ]
-            ],
-            "caption": "Reference Summary Table (#14)",
-            "caption_ar": "جدول ملخص البيانات (#14)",
-            "_totals": {
-              "rowTotals": [
-                52,
-                32
-              ],
-              "colTotals": [
-                43,
-                41
-              ],
-              "grandTotal": 84
-            }
-          }
-        },
-        {
-          "q": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\).",
+          "q": "Refer to the geometric/analytic survey layout figure (APSTATS-G691513006) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Applying the binomial distribution in context",
-          "answer": "Mean: \\(\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\) Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: \\(\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\) Standard Deviation: \\(\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\)",
+          "answer": "**Answer:** \\(76\\). Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
           "explanation": "Mean: \\(\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\) Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: \\(\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\) Standard Deviation: \\(\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\)",
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 50,
-            "sd": 6,
-            "shadeRange": [
-              44,
-              56
-            ],
+            "mean": 60,
+            "sd": 8,
             "showRule": true,
-            "caption": "Normal Distribution Model (#15)"
+            "caption": "Normal distribution with mean 60 and standard deviation 8"
           }
         }
       ]
@@ -516,99 +514,100 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Level 1 · FoundationsThe temperatures (in °C) during a science experiment have median \\(M = 22.0^{\\circ}\\mathrm{C}\\) and \\(\\mathrm{IQR} = 4.5^{\\circ}\\mathrm{C}\\). Convert the temperatures to Fahrenheit using the formula \\(F = 1.8C + 32\\). What are the median and IQR of the temperatures in °F?",
+          "q": "Given the measurements marked directly on the turbine profile schematic (APSTATS-G708290625) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Binomial probability of at least one success",
           "cross_lesson": "1.01 Measures of Center & Spread",
-          "answer": "Median in °F: Scaled by 1.8 and shifted by 32: \\(M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.\\) IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\(\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.\\)",
+          "answer": "**Answer:** \\(24\\). Summing bar heights directly from the histogram gives \\(4 + 8 + 8 + 4 = 24\\).",
           "explanation": "Median in °F: Scaled by 1.8 and shifted by 32: \\(M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.\\) IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\(\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.\\)",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 8 + 8 + 4 = 24\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "boxplot",
-            "boxes": [
+            "type": "histogram",
+            "bins": [
               {
-                "label": "Data",
-                "min": 23,
-                "q1": 29,
-                "med": 35,
-                "q3": 42,
-                "max": 50
+                "label": "0-9",
+                "count": 4
+              },
+              {
+                "label": "10-19",
+                "count": 8
+              },
+              {
+                "label": "20-29",
+                "count": 8
+              },
+              {
+                "label": "30-39",
+                "count": 4
               }
             ],
-            "caption": "Distribution Box Plot (#16)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (APSTATS-G708290625)",
+            "caption_ar": "المدرج التكراري للفئات (APSTATS-G708290625)"
           }
         },
         {
-          "q": "The number of accidents on a highway follows a Poisson distribution with mean 1.6 per week. (a) Find the probability of at least 3 accidents in a 2-week period. (b) Given that at least one accident occurs in a week, find the probability that there are exactly 2 accidents in that week.",
+          "q": "Given the structured robotics observations displayed in the table (APSTATS-657956775), for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Comparing binomial scenarios",
           "cross_lesson": "1.02 Z-Scores & Linear Transformations",
-          "answer": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
+          "answer": "**Answer:** \\(\\frac{3}{10}\\). Total probability sums to \\(1\\), so \\(c = 1 - \\frac{1+3+3}{10} = \\frac{3}{10}\\).",
           "explanation": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{1+3+3}{10} = \\frac{3}{10}\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "16",
-                "22",
-                38
-              ],
-              [
-                "8",
-                "28",
-                36
-              ],
-              [
-                24,
-                50,
-                74
+                "\\(P(X=x)\\)",
+                "\\(\\frac{1}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(c\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#17)",
-            "caption_ar": "جدول ملخص البيانات (#17)",
-            "_totals": {
-              "rowTotals": [
-                38,
-                36
-              ],
-              "colTotals": [
-                24,
-                50
-              ],
-              "grandTotal": 74
-            }
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (robotics, APSTATS-657956775)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (الروبوتات، APSTATS-657956775)"
           }
         },
         {
-          "q": "A discrete random variable \\(X\\) follows a binomial distribution \\(X \\sim B(15, 0.35)\\). (a) Find \\(P(X = 5)\\). (b) Find \\(P(X \\geq 4)\\). (c) Calculate the mean \\(E(X)\\) and standard deviation \\(\\sigma\\) of \\(X\\).",
+          "q": "From the plotted waveguide design figure above (APSTATS-G674735387) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Probability distributions and expected value",
           "cross_lesson": "1.03 Describing Distributions & Linear Regression",
-          "answer": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
+          "answer": "**Answer:** \\(27\\). Counting each disjoint region once yields \\(|A \\cup B| = 12 + 5 + 10 = 27\\).",
           "explanation": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 12 + 5 + 10 = 27\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 15,
-            "sd": 10,
-            "shadeRange": [
-              5,
-              25
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 12
+              },
+              {
+                "label": "B",
+                "only": 10
+              }
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#18)"
+            "both": 5,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (APSTATS-G674735387)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G674735387)"
           }
         },
         {

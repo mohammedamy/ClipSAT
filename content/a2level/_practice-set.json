@@ -5,50 +5,45 @@
       "number": 1,
       "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\(\\int_0^{3} 2x(x^2+9)^{4}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\int_0^{3} 2x(x^2+9)^{4}\\,dx\\)."
+        "en": "The table summarizes measurements from a telemetry evaluation (A2LEVEL-700); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة القياس عن بُعد (A2LEVEL-700). بالاعتماد على القيم المعطاة، للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p>Let \\(u=x^2+9\\), \\(du=2x\\,dx\\). \\(\\int u^{4}du=\\dfrac{u^{5}}{5}\\). At \\(x=3\\): \\(u=18\\), giving \\(1889568\\). At \\(x=0\\): \\(u=9\\), giving \\(59049\\). Result: \\(\\dfrac{1889568-59049}{5}=\\dfrac{1830519}{5}\\).</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(13 + 4\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
+            "13",
+            "4",
+            17
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            15,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#1)",
-        "caption_ar": "جدول نمط مرجعي (#1)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (A2LEVEL-700)",
+        "caption_ar": "ملخص النتائج (A2LEVEL-700)"
       }
     },
     {
@@ -172,80 +167,82 @@
       "number": 6,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the exact real solution to the equation\n\\[2e^{2x} + 5e^x - 12 = 0.\\]",
+        "en": "Based on the optical assembly visual model shown (A2LEVEL-G828) showing a rectangle with labeled side lengths. Find its perimeter.",
         "ar": null
       },
       "solution": {
-        "en": "<p>We recognize that the equation is quadratic in terms of \\(e^x\\):<br>\\[2(e^x)^2 + 5(e^x) - 12 = 0.\\]</p><p>Let \\(u = e^x\\). Then the equation becomes:<br>\\[2u^2 + 5u - 12 = 0.\\]</p><p>Factoring the quadratic expression:<br>\\[(2u - 3)(u + 4) = 0.\\]</p><p>This gives two possible values for \\(u\\):<br>\\[u = \\frac{3}{2} \\quad \\text{or} \\quad u = -4.\\]</p><p>Since \\(u = e^x\\):<br>1. For \\(e^x = \\frac{3}{2}\\), taking the natural logarithm of both sides yields:<br>\\[x = \\ln\\left(\\frac{3}{2}\\right).\\]</p><p>2. For \\(e^x = -4\\), since \\(e^x \\gt 0\\) for all real numbers \\(x\\), there are no real solutions.</p><p>Thus, the only real solution is \\(x = \\ln\\left(\\frac{3}{2}\\right)\\).</p><p>Common errors include:<br>- Factoring with incorrect signs as \\((2u + 3)(u - 4) = 0\\), which leads to the incorrect root \\(x = \\ln 4\\).<br>- Forgetting to take the logarithm of \\(u\\), giving \\(x = \\frac{3}{2}\\).<br>- Failing to discard the negative root \\(u = -4\\) and falsely combining signs.</p>",
+        "en": "<p>Reading length \\(9\\) and width \\(6\\) from the rectangle, perimeter \\(= 2(9 + 6) = 30\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(30\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "A",
-          "B",
-          "C",
-          "D"
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            9,
+            0
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            0,
+            6
+          ]
         ],
-        "values": [
-          3,
-          6,
-          5,
-          12
+        "w": 9,
+        "h": 6,
+        "sides": [
+          "9",
+          "6",
+          "9",
+          "6"
         ],
-        "xLabel": "Component",
-        "yLabel": "Value",
-        "caption": "Quantity Comparison Chart (#6)"
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (A2LEVEL-G828)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (A2LEVEL-G828)"
       }
     },
     {
       "number": 7,
       "difficulty": "Basic",
       "question": {
-        "en": "What are the values of \\(x\\) that satisfy the equation\n\\[|3x - 2| = 2|x + 1| \\,?\\]",
+        "en": "The accompanying figure illustrates a fluid channel configuration (A2LEVEL-G871); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>To solve the modulus equation \\(|3x - 2| = 2|x + 1|\\), we can either consider the linear cases or square both sides.</p><p><strong>Method 1: Considering linear cases</strong><br>The equation \\(|A| = |B|\\) (where \\(B = 2(x+1)\\)) is equivalent to \\(A = B\\) or \\(A = -B\\):<br>- Case 1:<br>\\[3x - 2 = 2(x + 1) \\implies 3x - 2 = 2x + 2 \\implies x = 4\\]<br>- Case 2:<br>\\[3x - 2 = -2(x + 1) \\implies 3x - 2 = -2x - 2 \\implies 5x = 0 \\implies x = 0\\]</p><p><strong>Method 2: Squaring both sides</strong><br>Since both sides are non-negative, we can square both sides:<br>\\[(3x - 2)^2 = [2(x + 1)]^2\\]<br>\\[9x^2 - 12x + 4 = 4(x^2 + 2x + 1)\\]<br>\\[9x^2 - 12x + 4 = 4x^2 + 8x + 4\\]<br>Subtracting \\(4x^2 + 8x + 4\\) from both sides gives:<br>\\[5x^2 - 20x = 0 \\implies 5x(x - 4) = 0\\]<br>Thus, \\(x = 0\\) or \\(x = 4\\).</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(25\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "rows": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#7)",
-        "caption_ar": "جدول نمط مرجعي (#7)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (A2LEVEL-G871)",
+        "caption_ar": "المدرج التكراري للفئات (A2LEVEL-G871)"
       }
     },
     {
@@ -460,26 +457,61 @@
       "number": 15,
       "difficulty": "Basic",
       "question": {
-        "en": "Relative to a fixed origin \\(O\\), the position vectors of the points \\(A\\) and \\(B\\) are given by\n\\[\\vec{OA} = \\mathbf{i} - 2\\mathbf{j} + 4\\mathbf{k} \\quad \\text{and} \\quad \\vec{OB} = 4\\mathbf{i} + 2\\mathbf{j} - 8\\mathbf{k}.\\]\nFind the unit vector in the direction of \\(\\vec{AB}\\).",
+        "en": "The table summarizes measurements from a quality audit evaluation (A2LEVEL-1061); using these entries, showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
         "ar": null
       },
       "solution": {
-        "en": "<p>First, find the displacement vector \\(\\vec{AB}\\):<br>\\[\\vec{AB} = \\vec{OB} - \\vec{OA} = (4 - 1)\\mathbf{i} + (2 - (-2))\\mathbf{j} + (-8 - 4)\\mathbf{k} = 3\\mathbf{i} + 4\\mathbf{j} - 12\\mathbf{k}.\\]</p><p>Next, calculate the magnitude of \\(\\vec{AB}\\):<br>\\[|\\vec{AB}| = \\sqrt{3^2 + 4^2 + (-12)^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13.\\]</p><p>The unit vector in the direction of \\(\\vec{AB}\\) is given by \\(\\frac{\\vec{AB}}{|\\vec{AB}|}\\):<br>\\[\\frac{1}{13}(3\\mathbf{i} + 4\\mathbf{j} - 12\\mathbf{k}).\\]</p><p>Common misconceptions:<br>- Reversing the subtraction (calculating \\(\\vec{OA} - \\vec{OB}\\)) gives the vector \\(\\vec{BA} = -3\\mathbf{i} - 4\\mathbf{j} + 12\\mathbf{k}\\), leading to \\(\\frac{1}{13}(-3\\mathbf{i} - 4\\mathbf{j} + 12\\mathbf{k})\\).<br>- Forgetting to take the square root of the sum of squares yields the factor \\(\\frac{1}{169}\\).<br>- Adding the absolute values of the components (\\(3 + 4 + 12 = 19\\)) instead of using the Euclidean norm gives \\(\\frac{1}{19}\\).</p>",
+        "en": "<p>Weighted sum \\(= 2(4) + 4(5) + 6(3) + 8(1) = 54\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(54\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "table",
+        "headers": [
+          "Value \\(x\\)",
+          "Frequency"
+        ],
+        "rows": [
           [
-            2,
-            1
+            "2",
+            "4"
           ],
           [
-            0,
-            1
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
           ]
         ],
-        "title": "Linear Transformation Action (#15)"
+        "caption": "Frequency distribution summary (quality audit, A2LEVEL-1061)",
+        "caption_ar": "جدول التوزيع التكراري (تدقيق الجودة، A2LEVEL-1061)",
+        "headers_ar": [
+          "القيمة \\(x\\)",
+          "التكرار"
+        ],
+        "rows_ar": [
+          [
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
+          ]
+        ]
       }
     },
     {
@@ -601,50 +633,38 @@
       "number": 19,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the set of all real solutions to the equation\n\\[\\log_2(x - 1) - \\log_4(x + 14) = 1\\]",
+        "en": "Using the labeled measurements in the turbine profile diagram (A2LEVEL-G1173) showing a sinusoidal wave with dashed midline \\(y = 4\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>To solve the equation, we first express all logarithms in the same base using the change of base formula:<br>\\[\\log_4(x + 14) = \\frac{\\log_2(x + 14)}{\\log_2 4} = \\frac{\\log_2(x + 14)}{2} = \\frac{1}{2}\\log_2(x + 14)\\]</p><p>Substitute this back into the original equation:<br>\\[\\log_2(x - 1) - \\frac{1}{2}\\log_2(x + 14) = 1\\]</p><p>Multiply through by \\(2\\):<br>\\[2\\log_2(x - 1) - \\log_2(x + 14) = 2\\]</p><p>Apply the power law and the quotient law of logarithms:<br>\\[\\log_2\\left((x - 1)^2\\right) - \\log_2(x + 14) = 2 \\implies \\log_2\\left(\\frac{(x - 1)^2}{x + 14}\\right) = 2\\]</p><p>Convert from logarithmic form to exponential form:<br>\\[\\frac{(x - 1)^2}{x + 14} = 2^2 = 4\\]</p><p>Clear the denominator and expand:<br>\\[(x - 1)^2 = 4(x + 14)\\]<br>\\[x^2 - 2x + 1 = 4x + 56\\]<br>\\[x^2 - 6x - 55 = 0\\]</p><p>Factor the quadratic equation:<br>\\[(x - 11)(x + 5) = 0 \\implies x = 11 \\quad \\text{or} \\quad x = -5\\]</p><p>Now, we must consider the domain of the original logarithmic expressions:<br>- For \\(\\log_2(x - 1)\\) to be defined, \\(x - 1 \\gt 0 \\implies x \\gt 1\\).<br>- For \\(\\log_4(x + 14)\\) to be defined, \\(x + 14 \\gt 0 \\implies x \\gt -14\\).</p><p>Thus, the domain requires \\(x \\gt 1\\).<br>- For \\(x = -5\\), the term \\(\\log_2(-5 - 1) = \\log_2(-6)\\) is undefined in the real numbers. Hence, \\(x = -5\\) is an extraneous solution introduced by squaring.<br>- For \\(x = 11\\), \\(\\log_2(10) - \\log_4(25) = \\log_2(10) - \\log_2(5) = \\log_2(2) = 1\\), which is valid.</p><p>Therefore, the only real solution is \\(x = 11\\).</p>",
+        "en": "<p>From midline \\(4\\) to peak \\(7\\), amplitude is \\(A = 7 - 4 = 3\\), so peak-to-trough range equals \\(2A = 6\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(6\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "sinusoid",
+        "amp": 3,
+        "freq": 2,
+        "phase": 0,
+        "midline": 4,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "rows": [
-          [
-            "g(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ]
+        "yl": [
+          0,
+          8
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#19)",
-        "caption_ar": "جدول نمط مرجعي (#19)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "pts": [
+          {
+            "x": 0.785,
+            "y": 7,
+            "label": "max=7"
+          }
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ]
-        ]
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 4 (A2LEVEL-G1173)",
+        "caption_ar": "موجة جيبية مع خط الوسط (A2LEVEL-G1173)"
       }
     },
     {
@@ -726,599 +746,530 @@
       "number": 22,
       "difficulty": "Basic",
       "question": {
-        "en": "The continuous function \\(f\\) is defined for all \\(x \\in \\mathbb{R}\\) by\n\\[f(x) = 2^x + 3x - 11.\\]\nBetween which pair of consecutive integers does a root of the equation \\(f(x) = 0\\) lie?",
+        "en": "Referring to the antenna pattern figure (A2LEVEL-G1248) showing a rectangle with labeled side lengths. Find its perimeter.",
         "ar": null
       },
       "solution": {
-        "en": "<p>To determine the interval containing a root of a continuous function \\(f(x)\\), we use the change-of-sign rule (Intermediate Value Theorem). If \\(f(a)\\) and \\(f(b)\\) have opposite signs, then at least one real root of \\(f(x) = 0\\) lies in the interval \\((a, b)\\).</p><p>Evaluate \\(f(x)\\) at consecutive integers:<br>- For \\(x = 0\\):<br>  \\[f(0) = 2^0 + 3(0) - 11 = 1 + 0 - 11 = -10  \\lt  0\\]<br>- For \\(x = 1\\):<br>  \\[f(1) = 2^1 + 3(1) - 11 = 2 + 3 - 11 = -6  \\lt  0\\]<br>- For \\(x = 2\\):<br>  \\[f(2) = 2^2 + 3(2) - 11 = 4 + 6 - 11 = -1  \\lt  0\\]<br>- For \\(x = 3\\):<br>  \\[f(3) = 2^3 + 3(3) - 11 = 8 + 9 - 11 = 6  \\gt  0\\]<br>- For \\(x = 4\\):<br>  \\[f(4) = 2^4 + 3(4) - 11 = 16 + 12 - 11 = 17  \\gt  0\\]</p><p>Since \\(f(2) = -1 \\lt 0\\) and \\(f(3) = 6 \\gt 0\\), there is a change of sign between \\(x = 2\\) and \\(x = 3\\). Because \\(f\\) is continuous, a root of \\(f(x) = 0\\) lies between \\(2\\) and \\(3\\).</p><p>Common misconception:<br>In the interval \\([1, 2]\\), \\(f(1) = -6\\) and \\(f(2) = -1\\). Although the value increases significantly, both values remain negative, so no root is guaranteed in \\([1, 2]\\).</p>",
+        "en": "<p>Reading length \\(5\\) and width \\(3\\) from the rectangle, perimeter \\(= 2(5 + 3) = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows": [
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
           [
-            "f(x)",
-            "3",
-            "4",
-            "5",
-            "6"
+            0,
+            0
           ],
           [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#22)",
-        "caption_ar": "جدول القيم المختارة (#22)",
-        "headers_ar": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "4",
-            "5",
-            "6"
+            5,
+            0
           ],
           [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
+            5,
+            3
+          ],
+          [
+            0,
+            3
           ]
-        ]
+        ],
+        "w": 5,
+        "h": 3,
+        "sides": [
+          "5",
+          "3",
+          "5",
+          "3"
+        ],
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (A2LEVEL-G1248)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (A2LEVEL-G1248)"
       }
     },
     {
       "number": 23,
       "difficulty": "Basic",
       "question": {
-        "en": "The random variable \\(X\\) has a Poisson distribution with mean \\(\\lambda \\gt 0\\). Given that\n\\[3\\,\\mathrm{P}(X = 2) = \\mathrm{P}(X = 4),\\]\nfind the value of \\(\\lambda\\).",
+        "en": "Inspect the sensor array values listed across the table (A2LEVEL-1284); evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>For a Poisson distribution \\(X \\sim \\mathrm{Po}(\\lambda)\\), the probability mass function is given by:<br>\\[\\mathrm{P}(X = r) = \\frac{e^{-\\lambda} \\lambda^r}{r!}\\]</p><p>Substitute \\(r = 2\\) and \\(r = 4\\) into the given equation \\(3\\,\\mathrm{P}(X = 2) = \\mathrm{P}(X = 4)\\):<br>\\[3 \\left(\\frac{e^{-\\lambda} \\lambda^2}{2!}\\right) = \\frac{e^{-\\lambda} \\lambda^4}{4!}\\]</p><p>Since \\(e^{-\\lambda} \\gt 0\\) and \\(\\lambda \\gt 0\\), divide both sides by \\(e^{-\\lambda} \\lambda^2\\):<br>\\[\\frac{3}{2} = \\frac{\\lambda^2}{24}\\]</p><p>Multiply both sides by 24:<br>\\[\\lambda^2 = 36\\]</p><p>Since \\(\\lambda \\gt 0\\), we take the positive square root:<br>\\[\\lambda = 6\\]</p><p>Common pitfalls:<br>- Forgetting to take the square root of \\(\\lambda^2 = 36\\) leads to \\(36\\).<br>- Incorrectly evaluating \\(4!\\) as \\(4\\) or \\(8\\) leads to erroneous values such as \\(12\\).</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(11\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "yl": [
-          -2,
-          7
+        "rows": [
+          [
+            "\\(f(x)\\)",
+            "7",
+            "9",
+            "14",
+            "13"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
+          ]
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "2^(x) - 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#23)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (sensor array, A2LEVEL-1284)",
+        "caption_ar": "قيم مختارة للدالتين (مصفوفة الحساسات، A2LEVEL-1284)"
       }
     },
     {
       "number": 24,
       "difficulty": "Basic",
       "question": {
-        "en": "A random sample of \\(n = 50\\) observations is taken from a population. The sample values are summarised as follows:\n\\[\\sum x = 450, \\quad \\sum x^2 = 4295.\\]\nFind an unbiased estimate of the population variance.",
+        "en": "The accompanying figure illustrates a antenna pattern configuration (A2LEVEL-G1320); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The unbiased estimate of the population variance, denoted \\(s^2\\), is calculated using the formula:<br>\\[s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)\\]</p><p>Substitute the given values \\(n = 50\\), \\(\\sum x = 450\\), and \\(\\sum x^2 = 4295\\):<br>\\[s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right)\\]<br>\\[s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right)\\]<br>\\[s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0\\]</p><p>Why other choices fail:<br>- \\(4.9\\) is the biased sample variance obtained by dividing by \\(n = 50\\) instead of \\(n - 1 = 49\\).<br>- \\(2.24\\) is the unbiased estimate of the standard deviation, \\(\\sqrt{5.0} \\approx 2.24\\).<br>- \\(9.0\\) is the sample mean \\(\\bar{x} = \\frac{450}{50}\\).</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(3 + 6 + 10 + 5 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -4,
-          4
-        ],
-        "yl": [
-          -5,
-          5
-        ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
+        "type": "histogram",
+        "bins": [
           {
-            "fn": "-0.5*x^2 + 3",
-            "label": "y = f(x)"
+            "label": "0-9",
+            "count": 3
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 10
+          },
+          {
+            "label": "30-39",
+            "count": 5
           }
         ],
-        "title": "Coordinate Graph (#24)",
-        "caption": "Reference graph y = f(x)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (A2LEVEL-G1320)",
+        "caption_ar": "المدرج التكراري للفئات (A2LEVEL-G1320)"
       }
     },
     {
       "number": 25,
       "difficulty": "Basic",
       "question": {
-        "en": "The first three terms of a geometric progression are \\(32\\), \\(24\\), and \\(18\\). Find the sum to infinity, \\(S_\\infty\\), of the progression.",
+        "en": "From the plotted antenna pattern figure above (A2LEVEL-G1356) showing a sinusoidal wave with dashed midline \\(y = 6\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The first term of the geometric progression is \\(a = 32\\).</p><p>The common ratio \\(r\\) is found by dividing any term by the preceding term:<br>\\[r = \\frac{24}{32} = \\frac{3}{4}\\]</p><p>Since \\(|r| = \\left|\\frac{3}{4}\\right| \\lt 1\\), the geometric progression converges and the sum to infinity exists.</p><p>The sum to infinity is given by:<br>\\[S_\\infty = \\frac{a}{1 - r}\\]</p><p>Substituting \\(a = 32\\) and \\(r = \\frac{3}{4}\\):<br>\\[S_\\infty = \\frac{32}{1 - \\frac{3}{4}} = \\frac{32}{\\frac{1}{4}} = 32 \\times 4 = 128\\]</p>",
+        "en": "<p>From midline \\(6\\) to peak \\(8\\), amplitude is \\(A = 8 - 6 = 2\\), so peak-to-trough range equals \\(2A = 4\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(4\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "sinusoid",
+        "amp": 2,
+        "freq": 1,
+        "phase": 0,
+        "midline": 6,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "rows": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
+        "yl": [
+          3,
+          9
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#25)",
-        "caption_ar": "جدول نمط مرجعي (#25)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "pts": [
+          {
+            "x": 1.57,
+            "y": 8,
+            "label": "max=8"
+          }
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 6 (A2LEVEL-G1356)",
+        "caption_ar": "موجة جيبية مع خط الوسط (A2LEVEL-G1356)"
       }
     },
     {
       "number": 26,
       "difficulty": "Basic",
       "question": {
-        "en": "Given that \\(\\cot \\theta = -\\dfrac{3}{4}\\) and \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\), find the exact value of \\(\\operatorname{cosec} \\theta\\).",
-        "ar": "إذا علمت أن \\(\\cot \\theta = -\\dfrac{3}{4}\\) و \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\), أوجد القيمة الدقيقة لـ \\(\\operatorname{cosec} \\theta\\)."
+        "en": "The table summarizes measurements from a wind tunnel evaluation (A2LEVEL-1392); using these entries, evaluate \\(f(g(1)) + 2\\).",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة نفق الرياح (A2LEVEL-1392). بالاعتماد على القيم المعطاة، لحساب قيمة \\(f(g(1)) + 2\\) ."
       },
       "solution": {
-        "en": "<p>We use the standard Pythagorean identity relating \\(\\cot \\theta\\) and \\(\\operatorname{cosec} \\theta\\):<br>\\[1 + \\cot^2 \\theta = \\operatorname{cosec}^2 \\theta.\\]</p><p>Substitute \\(\\cot \\theta = -\\dfrac{3}{4}\\):<br>\\[\\operatorname{cosec}^2 \\theta = 1 + \\left(-\\dfrac{3}{4}\\right)^2 = 1 + \\dfrac{9}{16} = \\dfrac{25}{16}.\\]</p><p>Taking the square root gives:<br>\\[\\operatorname{cosec} \\theta = \\pm \\dfrac{5}{4}.\\]</p><p>Since \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\) (the second quadrant), \\(\\sin \\theta \\gt 0\\), and therefore \\(\\operatorname{cosec} \\theta = \\dfrac{1}{\\sin \\theta} \\gt 0\\).</p><p>Hence, \\(\\operatorname{cosec} \\theta = \\dfrac{5}{4}\\).</p><p>Common misconceptions:<br>- Choosing \\(-\\dfrac{5}{4}\\) results from forgetting that the sine function (and therefore cosecant) is strictly positive in the second quadrant.<br>- Choosing \\(\\dfrac{5}{3}\\) confuses \\(\\operatorname{cosec} \\theta\\) with \\(-\\sec \\theta\\).<br>- Choosing \\(-\\dfrac{4}{3}\\) mistakenly computes \\(\\tan \\theta = \\dfrac{1}{\\cot \\theta}\\).</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 7\\). Adding \\(2\\) yields \\(7 + 2 = 9\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(9\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "unit_circle",
-        "angles": [
-          {
-            "deg": 315,
-            "label": "θ"
-          }
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "showQuadrants": true,
-        "caption": "Unit Circle Reference (#26)"
+        "rows": [
+          [
+            "\\(f(x)\\)",
+            "5",
+            "7",
+            "12",
+            "11"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (wind tunnel, A2LEVEL-1392)",
+        "caption_ar": "قيم مختارة للدالتين (نفق الرياح، A2LEVEL-1392)"
       }
     },
     {
       "number": 27,
       "difficulty": "Basic",
       "question": {
-        "en": "Relative to a fixed origin \\(O\\), the points \\(A\\) and \\(B\\) have position vectors\n\\[\\overrightarrow{OA} = \\mathbf{i} + 5\\mathbf{j} - 2\\mathbf{k} \\quad \\text{and} \\quad \\overrightarrow{OB} = 3\\mathbf{i} + 2\\mathbf{j} + 4\\mathbf{k}.\\]\nFind the length of the vector \\(\\overrightarrow{AB}\\).",
+        "en": "During telemetry experiment (A2LEVEL-1428), observers compiled the following table; evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the vector \\(\\overrightarrow{AB}\\), subtract the position vector of \\(A\\) from that of \\(B\\):<br>\\[\\overrightarrow{AB} = \\overrightarrow{OB} - \\overrightarrow{OA} = (3 - 1)\\mathbf{i} + (2 - 5)\\mathbf{j} + (4 - (-2))\\mathbf{k} = 2\\mathbf{i} - 3\\mathbf{j} + 6\\mathbf{k}.\\]<br>The magnitude (length) of \\(\\overrightarrow{AB}\\) is:<br>\\[|\\overrightarrow{AB}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7.\\]<br>Common misconceptions:<br>- Incorrectly taking \\((-3)^2 = -9\\) leads to \\(\\sqrt{4 - 9 + 36} = \\sqrt{31}\\).<br>- Adding the position vectors instead of subtracting yields \\(\\sqrt{4^2 + 7^2 + 2^2} = \\sqrt{69}\\).<br>- Forgetting to take the square root gives \\(49\\).</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 8\\). Adding \\(2\\) yields \\(8 + 2 = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "rows": [
           [
-            2,
-            1
+            "\\(f(x)\\)",
+            "6",
+            "8",
+            "13",
+            "12"
           ],
           [
-            0,
-            1
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
-        "title": "Linear Transformation Action (#27)"
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (telemetry, A2LEVEL-1428)",
+        "caption_ar": "قيم مختارة للدالتين (القياس عن بُعد، A2LEVEL-1428)"
       }
     },
     {
       "number": 28,
       "difficulty": "Basic",
       "question": {
-        "en": "The complex number \\(z\\) is given by\n\\[z = \\frac{4 + 3\\mathrm{i}}{2 - \\mathrm{i}}.\\]\nExpress \\(z\\) in the Cartesian form \\(x + \\mathrm{i}y\\), where \\(x\\) and \\(y\\) are real numbers.",
+        "en": "Examine the photonics dataset arranged in the table below (A2LEVEL-1464); evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To express \\(z\\) in the form \\(x + \\mathrm{i}y\\), multiply the numerator and the denominator by the complex conjugate of the denominator.</p><p>The denominator is \\(2 - \\mathrm{i}\\), so its complex conjugate is \\(2 + \\mathrm{i}\\).</p><p>Multiply numerator and denominator:<br>\\[z = \\frac{(4 + 3\\mathrm{i})(2 + \\mathrm{i})}{(2 - \\mathrm{i})(2 + \\mathrm{i})}\\]</p><p>Expand the numerator:<br>\\[(4 + 3\\mathrm{i})(2 + \\mathrm{i}) = 8 + 4\\mathrm{i} + 6\\mathrm{i} + 3\\mathrm{i}^2 = 8 + 10\\mathrm{i} - 3 = 5 + 10\\mathrm{i}\\]</p><p>Expand the denominator:<br>\\[(2 - \\mathrm{i})(2 + \\mathrm{i}) = 2^2 - \\mathrm{i}^2 = 4 - (-1) = 5\\]</p><p>Divide the numerator by the denominator:<br>\\[z = \\frac{5 + 10\\mathrm{i}}{5} = 1 + 2\\mathrm{i}\\]</p><p>Common errors:<br>- \\(1 - 2\\mathrm{i}\\) results from an inadvertent sign flip in the imaginary term (taking the conjugate of the answer).<br>- \\(\\frac{11}{5} + \\frac{2}{5}\\mathrm{i}\\) results from mistakenly multiplying the numerator by \\(2 - \\mathrm{i}\\) instead of the conjugate \\(2 + \\mathrm{i}\\).<br>- \\(5 + 10\\mathrm{i}\\) results from expanding the numerator correctly but omitting the division by the real denominator \\(5\\).</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(11\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "4",
+            "\\(f(x)\\)",
             "7",
-            "10",
+            "9",
+            "14",
             "13"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#28)",
-        "caption_ar": "جدول نمط مرجعي (#28)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "4",
-            "7",
-            "10",
-            "13"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (photonics, A2LEVEL-1464)",
+        "caption_ar": "قيم مختارة للدالتين (الفوتونيات، A2LEVEL-1464)"
       }
     },
     {
       "number": 29,
       "difficulty": "Basic",
       "question": {
-        "en": "A curve has equation \\(y = x^2 e^{3x}\\). Find the gradient of the curve at the point where \\(x = 1\\).",
+        "en": "An engineering team logged acoustics lab measurements in the accompanying table (A2LEVEL-1500); using these data, evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the gradient of the curve, differentiate \\(y = x^2 e^{3x}\\) with respect to \\(x\\) using the product rule:<br>\\[\\frac{\\mathrm{d}}{\\mathrm{d}x}[u v] = u \\frac{\\mathrm{d}v}{\\mathrm{d}x} + v \\frac{\\mathrm{d}u}{\\mathrm{d}x}\\]<br>Let \\(u = x^2\\) and \\(v = e^{3x}\\).<br>Then \\(\\frac{\\mathrm{d}u}{\\mathrm{d}x} = 2x\\) and, by the chain rule, \\(\\frac{\\mathrm{d}v}{\\mathrm{d}x} = 3e^{3x}\\).</p><p>Applying the product rule:<br>\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = x^2(3e^{3x}) + 2x(e^{3x}) = (3x^2 + 2x)e^{3x}\\]</p><p>Substitute \\(x = 1\\):<br>\\[\\left. \\frac{\\mathrm{d}y}{\\mathrm{d}x} \\right|_{x=1} = (3(1)^2 + 2(1))e^{3(1)} = (3 + 2)e^3 = 5e^3\\]</p><p>Common misconceptions:<br>- \\(6e^3\\) arises from mistakenly differentiating a product by multiplying the individual derivatives: \\((2x)(3e^{3x}) = 6x e^{3x} \\to 6e^3\\).<br>- \\(3e^3\\) arises from forgetting the chain rule factor when differentiating \\(e^{3x}\\), treating \\(\\frac{\\mathrm{d}}{\\mathrm{d}x}(e^{3x})\\) as \\(e^{3x}\\).<br>- \\(2e^3\\) arises from differentiating only \\(x^2\\) while treating \\(e^{3x}\\) as a constant.</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
+            "\\(f(x)\\)",
+            "3",
             "5",
-            "8",
-            "11"
+            "10",
+            "9"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#29)",
-        "caption_ar": "جدول نمط مرجعي (#29)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (acoustics lab, A2LEVEL-1500)",
+        "caption_ar": "قيم مختارة للدالتين (مختبر الصوت، A2LEVEL-1500)"
       }
     },
     {
       "number": 30,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A curve satisfies the differential equation\n\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{k - y}{2x + 1}\\]\nfor \\(x \\gt -\\frac{1}{2}\\), where \\(k\\) is a real constant. The curve passes through the points \\((0, 8)\\) and \\((4, 2)\\).\n\nFind the value of \\(k\\).",
+        "en": "Referring to the sensor array table above (A2LEVEL-1536), evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the constant \\(k\\), we solve the differential equation by separation of variables:<br>\\[\\int \\frac{1}{k - y} \\,\\mathrm{d}y = \\int \\frac{1}{2x + 1} \\,\\mathrm{d}x\\]</p><p>Integrating both sides (paying close attention to the chain rule):<br>\\[-\\ln |k - y| = \\frac{1}{2} \\ln (2x + 1) + C\\]</p><p>Multiplying by \\(-1\\) and exponentiating:<br>\\[\\ln |k - y| = -\\frac{1}{2} \\ln (2x + 1) - C = \\ln\\left((2x + 1)^{-1/2}\\right) - C\\]<br>\\[|k - y| = \\frac{A}{\\sqrt{2x + 1}} \\quad \\text{where } A = \\mathrm{e}^{-C}  \\gt  0\\]</p><p>Removing the absolute value gives the general form:<br>\\[k - y = \\frac{B}{\\sqrt{2x + 1}} \\implies y = k - \\frac{B}{\\sqrt{2x + 1}}\\]<br>where \\(B\\) is an arbitrary non-zero constant.</p><p>Now, apply the given boundary conditions:<br>1. At \\((0, 8)\\):<br>\\[8 = k - \\frac{B}{\\sqrt{2(0) + 1}} = k - B \\implies B = k - 8\\]</p><p>2. At \\((4, 2)\\):<br>\\[2 = k - \\frac{B}{\\sqrt{2(4) + 1}} = k - \\frac{B}{\\sqrt{9}} = k - \\frac{B}{3}\\]</p><p>Substitute \\(B = k - 8\\) into this equation:<br>\\[2 = k - \\frac{k - 8}{3}\\]<br>\\[6 = 3k - (k - 8)\\]<br>\\[6 = 2k + 8\\]<br>\\[2k = -2 \\implies k = -1\\]</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
+          "1",
           "2",
           "3",
-          "4",
-          "5"
+          "4"
         ],
         "rows": [
           [
-            "f(x)",
+            "\\(f(x)\\)",
+            "4",
             "6",
-            "9",
-            "12",
-            "15"
+            "11",
+            "10"
           ],
           [
-            "f'(x)",
-            "4",
+            "\\(g(x)\\)",
             "2",
+            "3",
             "4",
-            "2"
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#30)",
-        "caption_ar": "جدول القيم المختارة (#30)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "6",
-            "9",
-            "12",
-            "15"
-          ],
-          [
-            "f'(x)",
-            "4",
-            "2",
-            "4",
-            "2"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (sensor array, A2LEVEL-1536)",
+        "caption_ar": "قيم مختارة للدالتين (مصفوفة الحساسات، A2LEVEL-1536)"
       }
     },
     {
       "number": 31,
       "difficulty": "Basic",
       "question": {
-        "en": "Solve the equation\n\\[\\ln(3x + 1) - 2\\ln 2 = \\ln(x - 1).\\]",
-        "ar": "حل المعادلة\n\\[\\ln(3x + 1) - 2\\ln 2 = \\ln(x - 1).\\]"
+        "en": "Given the structured hydraulics observations displayed in the table (A2LEVEL-1572), evaluate \\(f(g(1)) + 2\\).",
+        "ar": "بالنظر إلى قيم الهيدروليك المعروضة في الجدول (A2LEVEL-1572)، لحساب قيمة \\(f(g(1)) + 2\\) ."
       },
       "solution": {
-        "en": "<p>Using the power law of logarithms on the second term:<br>\\[2\\ln 2 = \\ln(2^2) = \\ln 4.\\]</p><p>Substitute this back into the equation:<br>\\[\\ln(3x + 1) - \\ln 4 = \\ln(x - 1).\\]</p><p>Apply the quotient rule for logarithms, \\(\\ln A - \\ln B = \\ln\\left(\\frac{A}{B}\\right)\\):<br>\\[\\ln\\left(\\frac{3x + 1}{4}\\right) = \\ln(x - 1).\\]</p><p>Since the natural logarithm function is one-to-one, we equate the arguments:<br>\\[\\frac{3x + 1}{4} = x - 1.\\]</p><p>Multiply both sides by \\(4\\):<br>\\[3x + 1 = 4(x - 1),\\]<br>\\[3x + 1 = 4x - 4.\\]</p><p>Rearranging gives:<br>\\[4x - 3x = 1 + 4 \\implies x = 5.\\]</p><p>Checking domain restrictions:<br>- For \\(\\ln(3x + 1)\\): \\(3(5) + 1 = 16 \\gt 0\\).<br>- For \\(\\ln(x - 1)\\): \\(5 - 1 = 4 \\gt 0\\).</p><p>Both arguments are positive, so \\(x = 5\\) is the valid solution.</p><p>Common errors:<br>- \\(x = 1\\) results from falsely assuming \\(\\ln A - \\ln B = \\ln(A - B)\\), yielding \\((3x + 1) - 4 = x - 1 \\implies 2x = 2\\).<br>- \\(x = 2\\) results from an expansion error \\(4(x - 1) = 4x - 1\\).<br>- \\(x = 3\\) results from omitting the power law and treating \\(2\\ln 2\\) simply as \\(\\ln 2\\), along with a sign error.</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 7\\). Adding \\(2\\) yields \\(7 + 2 = 9\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(9\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
+            "\\(f(x)\\)",
             "5",
             "7",
-            "9"
+            "12",
+            "11"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#31)",
-        "caption_ar": "جدول نمط مرجعي (#31)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (hydraulics, A2LEVEL-1572)",
+        "caption_ar": "قيم مختارة للدالتين (الهيدروليك، A2LEVEL-1572)"
       }
     },
     {
       "number": 32,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\(\\int_{-2}^{1} (5x+8)^{4}\\,dx\\).",
-        "ar": "احسب قيمة \\(\\int_{-2}^{1} (5x+8)^{4}\\,dx\\)."
+        "en": "Inspect the thermodynamics values listed across the table (A2LEVEL-1608); evaluate \\(f(g(1)) + 2\\).",
+        "ar": "تأمل مدخلات الديناميكا الحرارية في الجدول (A2LEVEL-1608) لتحديد لحساب قيمة \\(f(g(1)) + 2\\) ."
       },
       "solution": {
-        "en": "<p>\\(\\int (5x+8)^{4}dx=\\dfrac{(5x+8)^{5}}{5(5)}\\). At \\(x=1\\): base \\(=13\\), giving \\(371293\\). At \\(x=-2\\): base \\(=-2\\), giving \\(-32\\). Result: \\(\\dfrac{371293+32}{25}=14853\\).</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 8\\). Adding \\(2\\) yields \\(8 + 2 = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "4",
+            "\\(f(x)\\)",
             "6",
-            "8"
+            "8",
+            "13",
+            "12"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#32)",
-        "caption_ar": "جدول نمط مرجعي (#32)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (thermodynamics, A2LEVEL-1608)",
+        "caption_ar": "قيم مختارة للدالتين (الديناميكا الحرارية، A2LEVEL-1608)"
       }
     },
     {
       "number": 33,
       "difficulty": "Intermediate",
       "question": {
-        "en": "The region \\(R\\) in the first quadrant is bounded by the curve \\(y = \\frac{6}{\\sqrt{3x + 4}}\\), the coordinate axes, and the vertical line \\(x = k\\), where \\(k \\gt 0\\).\n\nGiven that the total area of \\(R\\) is \\(8\\), and the vertical line \\(x = c\\) (where \\(0 \\lt c \\lt k\\)) divides \\(R\\) into two regions of equal area, find the exact value of \\(c\\).",
+        "en": "In assessment dataset (A2LEVEL-1644) for wind tunnel, the table reports key quantities; evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1:</strong> Integrate the function using the reverse chain rule.<br>\\[\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}\\]</p><p><strong>Step 2:</strong> Find the parameter \\(k\\) using the given total area of \\(8\\).<br>\\[\\text{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8\\]<br>Setting this equal to \\(8\\):<br>\\[4\\sqrt{3k + 4} - 8 = 8 \\implies 4\\sqrt{3k + 4} = 16 \\implies \\sqrt{3k + 4} = 4\\]<br>Squaring both sides:<br>\\[3k + 4 = 16 \\implies 3k = 12 \\implies k = 4\\]</p><p><strong>Step 3:</strong> Determine the value of \\(c\\) that divides the area into two equal halves.<br>Each half has an area of \\(\\frac{8}{2} = 4\\):<br>\\[\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4\\]<br>\\[4\\sqrt{3c + 4} = 12 \\implies \\sqrt{3c + 4} = 3\\]<br>Squaring both sides:<br>\\[3c + 4 = 9 \\implies 3c = 5 \\implies c = \\frac{5}{3}\\]</p><p>Common Misconceptions:<br>- \\(2\\): Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, \\(c = \\frac{k}{2} = 2\\), which does not hold for non-constant functions.<br>- \\(\\frac{7}{3}\\): Mistakenly calculates the width of the second region \\(k - c = 4 - \\frac{5}{3} = \\frac{7}{3}\\) instead of the coordinate \\(c\\).<br>- \\(\\frac{13}{27}\\): Forgets to divide by the inner derivative \\(3\\) during integration, leading to an incorrect antiderivative.</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(11\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "6",
+            "\\(f(x)\\)",
+            "7",
             "9",
-            "12",
-            "15"
+            "14",
+            "13"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#33)",
-        "caption_ar": "جدول نمط مرجعي (#33)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "6",
-            "9",
-            "12",
-            "15"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (wind tunnel, A2LEVEL-1644)",
+        "caption_ar": "قيم مختارة للدالتين (نفق الرياح، A2LEVEL-1644)"
       }
     },
     {
       "number": 34,
       "difficulty": "Intermediate",
       "question": {
-        "en": "The function \\(f\\) is defined for all \\(x \\in \\mathbb{R}\\) by\n\\[f(x) = x^3 - 2x^2 - kx + 12,\\]\nwhere \\(k\\) is a real constant.\n\nThe Newton-Raphson method is used to find an approximation to a root of the equation \\(f(x) = 0\\).\n\nGiven that an initial approximation \\(x_0 = 2\\) produces a first approximation \\(x_1 = 4\\), find the value of the constant \\(k\\) and the exact value of the second approximation \\(x_2\\).",
+        "en": "In the telemetry record (A2LEVEL-1680), using the table values, evaluate \\(f(g(1)) + 2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>We solve the problem in two steps:</p><p><strong>Step 1: Find the value of \\(k\\)</strong></p><p>The Newton-Raphson iteration formula is:<br>\\[x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\\]</p><p>Differentiating \\(f(x) = x^3 - 2x^2 - kx + 12\\) with respect to \\(x\\):<br>\\[f'(x) = 3x^2 - 4x - k\\]</p><p>Evaluating \\(f(x)\\) and \\(f'(x)\\) at \\(x_0 = 2\\):<br>\\[f(2) = 2^3 - 2(2^2) - 2k + 12 = 8 - 8 - 2k + 12 = 12 - 2k\\]<br>\\[f'(2) = 3(2^2) - 4(2) - k = 12 - 8 - k = 4 - k\\]</p><p>Using the iteration formula for \\(x_1\\):<br>\\[x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} \\implies 4 = 2 - \\frac{12 - 2k}{4 - k}\\]</p><p>Rearranging to solve for \\(k\\):<br>\\[2 = -\\frac{12 - 2k}{4 - k} = \\frac{2k - 12}{4 - k}\\]<br>\\[2(4 - k) = 2k - 12\\]<br>\\[8 - 2k = 2k - 12 \\implies 4k = 20 \\implies k = 5\\]</p><p><strong>Step 2: Find the second approximation \\(x_2\\)</strong></p><p>With \\(k = 5\\), the function and its derivative are:<br>\\[f(x) = x^3 - 2x^2 - 5x + 12\\]<br>\\[f'(x) = 3x^2 - 4x - 5\\]</p><p>Now apply the iteration starting from \\(x_1 = 4\\):<br>\\[f(4) = 4^3 - 2(4^2) - 5(4) + 12 = 64 - 32 - 20 + 12 = 24\\]<br>\\[f'(4) = 3(4^2) - 4(4) - 5 = 48 - 16 - 5 = 27\\]</p><p>Therefore:<br>\\[x_2 = 4 - \\frac{f(4)}{f'(4)} = 4 - \\frac{24}{27} = 4 - \\frac{8}{9} = \\frac{28}{9}\\]</p>",
+        "en": "<p>From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
         "rows": [
-          "Group I",
-          "Group II",
-          "Total"
-        ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
           [
-            "13",
-            "14",
-            27
-          ],
-          [
+            "\\(f(x)\\)",
+            "3",
+            "5",
             "10",
-            "29",
-            39
+            "9"
           ],
           [
-            23,
-            43,
-            66
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
-        "caption": "Reference Summary Table (#34)",
-        "caption_ar": "جدول ملخص البيانات (#34)",
-        "_totals": {
-          "rowTotals": [
-            27,
-            39
-          ],
-          "colTotals": [
-            23,
-            43
-          ],
-          "grandTotal": 66
-        }
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (telemetry, A2LEVEL-1680)",
+        "caption_ar": "قيم مختارة للدالتين (القياس عن بُعد، A2LEVEL-1680)"
       }
     },
     {

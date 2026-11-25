@@ -9,7 +9,7 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Evaluate each definite integral:",
+          "q": "A benchmark aerodynamics log (CALCULUS-60426557) provides the entries shown in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "evaluating definite integrals",
@@ -24,266 +24,311 @@
             "\\(\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2\\).",
             "\\(\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}\\)."
           ],
-          "answer": "(a) \\(\\left[x^2+x\\right]_1^3 = 12 - 2 = 10\\).; (b) \\(\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2\\).; (c) \\(\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}\\).",
+          "answer": "**Answer:** \\(10\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
           "explanation": "(a) \\(\\left[x^2+x\\right]_1^3 = 12 - 2 = 10\\).; (b) \\(\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2\\).; (c) \\(\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
+                "0",
+                "2",
                 "3",
-                "5",
-                "7",
-                "9"
+                "2"
               ],
               [
-                "f'(x)",
-                "3",
                 "1",
-                "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
                 "3",
                 "5",
-                "7",
-                "9"
+                "5"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (aerodynamics, CALCULUS-60426557)",
+            "caption_ar": "جدول خطوات أويلر (الديناميكا الهوائية، CALCULUS-60426557)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^1 e^{2x}\\,dx\\), to three decimal places.",
+          "q": "From the plotted calibration curve figure above (CALCULUS-G10094714) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "evaluating definite integrals",
-          "answer": "\\(\\left[\\frac{1}{2}e^{2x}\\right]_0^1 = \\frac{1}{2}(e^2 - 1) \\approx 3.195\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "\\(\\left[\\frac{1}{2}e^{2x}\\right]_0^1 = \\frac{1}{2}(e^2 - 1) \\approx 3.195\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#3)"
-          }
-        },
-        {
-          "q": "Use the Fundamental Theorem, Part 1, to find \\(\\frac{d}{dx}\\int_2^x (t^3 + 1)\\,dt\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "differentiating an integral",
-          "answer": "\\(= x^3 + 1\\) (directly, by FTC Part 1).",
-          "explanation": "\\(= x^3 + 1\\) (directly, by FTC Part 1).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#4)"
-          }
-        },
-        {
-          "q": "Find \\(\\frac{d}{dx}\\int_1^{x^2} \\sin(t)\\,dt\\) using the chain rule with FTC.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "differentiating an integral",
-          "answer": "\\(= \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)\\).",
-          "explanation": "\\(= \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "1",
-                "3",
-                "5",
-                "7"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "3",
-                "5",
-                "7"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Find the average value of \\(f(x) = x^2\\) on \\([0, 3]\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Average value and applications",
-          "answer": "\\(\\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\cdot 9 = 3\\).",
-          "explanation": "\\(\\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\cdot 9 = 3\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -1,
+              7
             ],
             "yl": [
-              -3,
-              6
+              -1,
+              9
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
               }
             ],
-            "title": "Coordinate Graph (#6)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G10094714)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G10094714)"
+          }
+        },
+        {
+          "q": "From the graphical features displayed in the optical assembly figure (CALCULUS-G26872326) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "differentiating an integral",
+          "answer": "**Answer:** \\(10\\). Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), giving total area \\(10\\).",
+          "explanation": "\\(= x^3 + 1\\) (directly, by FTC Part 1).",
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), giving total area \\(10\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              4.5
+            ],
+            "yl": [
+              0,
+              7
+            ],
+            "xStep": 1,
+            "yStep": 1,
+            "fns": [
+              {
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
+              }
+            ],
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (CALCULUS-G26872326)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (CALCULUS-G26872326)"
+          }
+        },
+        {
+          "q": "An engineering team logged reactor bench measurements in the accompanying table (CALCULUS-976538462); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "differentiating an integral",
+          "answer": "**Answer:** \\(10\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
+          "explanation": "\\(= \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
+            ],
+            "rows": [
+              [
+                "0",
+                "2",
+                "4",
+                "1"
+              ],
+              [
+                "1",
+                "3",
+                "5",
+                "5"
+              ],
+              [
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
+              ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (reactor bench, CALCULUS-976538462)",
+            "caption_ar": "جدول خطوات أويلر (منصة المفاعل، CALCULUS-976538462)"
+          }
+        },
+        {
+          "q": "From the plotted harmonic trace figure above (CALCULUS-G993317088) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Average value and applications",
+          "answer": "**Answer:** \\(3\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "explanation": "\\(\\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\cdot 9 = 3\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 1) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 2 (CALCULUS-G993317088)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G993317088)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "The gradient of \\(f=x^2+y^2\\) is:",
-          "answer": "**Answer:** D. Applying Vector Calculus principles, \\(\\nabla f=(f_x,f_y)=(2x,2y)\\). Therefore, the verified correct option is \\((2x,2y)\\).",
+          "q": "Referring to the bridge arch figure (CALCULUS-G942984231) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** D. From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Applying Vector Calculus principles, \\(\\nabla f=(f_x,f_y)=(2x,2y)\\). Therefore, the verified correct option is \\((2x,2y)\\).",
           "choices": [
-            "\\((x,y)\\)",
-            "\\((2x^2,2y^2)\\)",
-            "\\((x^2,y^2)\\)",
-            "\\((2x,2y)\\)"
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)",
+            "\\(3\\)"
           ],
           "correct": 3,
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 0,
+                "label": "(3, 0)"
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G942984231)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G942984231)"
           }
         },
         {
-          "q": "Find \\(\\frac{d}{dx}\\int_x^5 \\cos(t^2)\\,dt\\), using the property \\(\\int_a^b = -\\int_b^a\\) before applying FTC Part 1.",
+          "q": "In the circuit trial record (CALCULUS-959760843), using the table values, determine \\(2\\,h^{-1}(11)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Further FTC practice",
-          "answer": "\\(\\int_x^5 \\cos(t^2)\\,dt = -\\int_5^x \\cos(t^2)\\,dt\\), so the derivative is \\(-\\cos(x^2)\\).",
+          "answer": "**Answer:** \\(10\\). Because \\(h(5) = 11\\), we have \\(h^{-1}(11) = 5\\). Multiplying by \\(2\\) gives \\(10\\).",
           "explanation": "\\(\\int_x^5 \\cos(t^2)\\,dt = -\\int_5^x \\cos(t^2)\\,dt\\), so the derivative is \\(-\\cos(x^2)\\).",
+          "explain": "Because \\(h(5) = 11\\), we have \\(h^{-1}(11) = 5\\). Multiplying by \\(2\\) gives \\(10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "4",
+              "5",
+              "6",
+              "7"
             ],
             "rows": [
               [
-                "g(x)",
-                "5",
-                "7",
+                "\\(h(x)\\)",
                 "9",
-                "11"
+                "11",
+                "15",
+                "19"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "5",
-                "7",
-                "9",
-                "11"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (circuit trial, CALCULUS-959760843)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (تجربة الدائرة، CALCULUS-959760843)"
           }
         }
       ]
@@ -292,240 +337,292 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Find the average value of \\(f(x)=\\sin x\\) on \\([0,\\pi]\\), to three decimal places.",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (CALCULUS-G909428993); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Further FTC practice",
-          "answer": "\\(\\frac{1}{\\pi}\\int_0^\\pi \\sin x\\,dx = \\frac{1}{\\pi}\\left[-\\cos x\\right]_0^\\pi = \\frac{2}{\\pi} \\approx 0.637\\).",
+          "answer": "**Answer:** \\(-3\\). At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "explanation": "\\(\\frac{1}{\\pi}\\int_0^\\pi \\sin x\\,dx = \\frac{1}{\\pi}\\left[-\\cos x\\right]_0^\\pi = \\frac{2}{\\pi} \\approx 0.637\\).",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
               {
-                "deg": 225,
-                "label": "θ"
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#9)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G909428993)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G909428993)"
           }
         },
         {
-          "q": "Find the value(s) of \\(c\\) guaranteed by the Mean Value Theorem for Integrals for \\(f(x)=x^2\\) on \\([0,3]\\) (where \\(f(c)\\) equals the average value of \\(f\\)).",
+          "q": "From the plotted cad blueprint figure above (CALCULUS-G926206612) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Mean Value Theorem for integrals",
-          "answer": "Average value \\(=\\frac{1}{3}\\int_0^3x^2\\,dx=3\\) (found earlier). Solve \\(c^2=3\\): \\(c=\\sqrt{3}\\) (taking the positive root within \\([0,3]\\)).",
+          "answer": "**Answer:** \\(4\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
           "explanation": "Average value \\(=\\frac{1}{3}\\int_0^3x^2\\,dx=3\\) (found earlier). Solve \\(c^2=3\\): \\(c=\\sqrt{3}\\) (taking the positive root within \\([0,3]\\)).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -3,
+              5
             ],
             "yl": [
-              -3,
-              6
+              -2,
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#10)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Evaluate \\(\\int_2^5 f(x)\\,dx\\) given that the average value of \\(f\\) on \\([2,5]\\) is \\(7\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Mean Value Theorem for integrals",
-          "answer": "Average value \\(=\\frac{1}{5-2}\\int_2^5 f(x)\\,dx = 7\\), so \\(\\int_2^5 f(x)\\,dx = 7(3)=21\\).",
-          "explanation": "Average value \\(=\\frac{1}{5-2}\\int_2^5 f(x)\\,dx = 7\\), so \\(\\int_2^5 f(x)\\,dx = 7(3)=21\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#11)",
-            "caption_ar": "جدول نمط مرجعي (#11)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Evaluate \\(\\int_0^4 f(x)\\,dx\\) where \\(f(x)=x\\) for \\(x\\leq2\\) and \\(f(x)=2x-2\\) for \\(x>2\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Integrals of piecewise functions",
-          "answer": "\\(\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10\\).",
-          "explanation": "\\(\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -1,
-                "to": 4,
-                "openLeft": true,
-                "openRight": false
+                "fn": "4/(x - 1) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 1) + 3"
               }
             ],
             "pts": [
               {
-                "x": -1,
-                "open": true,
-                "label": "a"
-              },
-              {
-                "x": 4,
-                "open": false,
-                "label": "b"
+                "x": 2,
+                "y": 7,
+                "label": "(2, 7)"
               }
             ],
-            "caption": "Number Line Interval (#12)"
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 3 (CALCULUS-G926206612)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G926206612)"
           }
         },
         {
-          "q": "For \\(g(x)=\\int_0^x(t^2-2)\\,dt\\), find \\(g'(x)\\) using FTC Part 1, then find where \\(g\\) has a local minimum by analyzing the sign of \\(g'(x)\\).",
+          "q": "Given the structured robotics observations displayed in the table (CALCULUS-982684983), determine \\(2\\,h^{-1}(5)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Visualizing the two parts of FTC together",
-          "answer": "\\(g'(x)=x^2-2\\) (FTC Part 1). Setting \\(g'(x)=0\\): \\(x=\\pm\\sqrt{2}\\). Since \\(g'\\) changes from negative to positive at \\(x=\\sqrt{2}\\) (for \\(x>0\\)), \\(g\\) has a local minimum at \\(x=\\sqrt{2}\\).",
-          "explanation": "\\(g'(x)=x^2-2\\) (FTC Part 1). Setting \\(g'(x)=0\\): \\(x=\\pm\\sqrt{2}\\). Since \\(g'\\) changes from negative to positive at \\(x=\\sqrt{2}\\) (for \\(x>0\\)), \\(g\\) has a local minimum at \\(x=\\sqrt{2}\\).",
+          "target": "Mean Value Theorem for integrals",
+          "answer": "**Answer:** \\(12\\). Because \\(h(6) = 5\\), we have \\(h^{-1}(5) = 6\\). Multiplying by \\(2\\) gives \\(12\\).",
+          "explanation": "Average value \\(=\\frac{1}{5-2}\\int_2^5 f(x)\\,dx = 7\\), so \\(\\int_2^5 f(x)\\,dx = 7(3)=21\\).",
+          "explain": "Because \\(h(6) = 5\\), we have \\(h^{-1}(5) = 6\\). Multiplying by \\(2\\) gives \\(12\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
+            ],
+            "rows": [
+              [
+                "\\(h(x)\\)",
+                "3",
+                "5",
+                "9",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Monotone function values of invertible h (robotics, CALCULUS-982684983)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (الروبوتات، CALCULUS-982684983)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a turbine profile configuration (CALCULUS-G965908371); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integrals of piecewise functions",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10\\).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G965908371)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G965908371)"
           }
         },
         {
-          "q": "The rate of water flowing into a tank is \\(r(t)=5+2\\sin(t)\\) liters/minute. Find the total volume that flows in during \\([0,\\pi]\\) minutes, using FTC.",
+          "q": "From the plotted calibration curve figure above (CALCULUS-G16241228) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing the two parts of FTC together",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
+          "explanation": "\\(g'(x)=x^2-2\\) (FTC Part 1). Setting \\(g'(x)=0\\): \\(x=\\pm\\sqrt{2}\\). Since \\(g'\\) changes from negative to positive at \\(x=\\sqrt{2}\\) (for \\(x>0\\)), \\(g\\) has a local minimum at \\(x=\\sqrt{2}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "6/(x - 1) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 1) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 11,
+                "label": "(2, 11)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 5 (CALCULUS-G16241228)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G16241228)"
+          }
+        },
+        {
+          "q": "In the flow bench record (CALCULUS-999462602), using the table values, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A capstone FTC application",
-          "answer": "Volume \\(=\\int_0^\\pi\\left(5+2\\sin t\\right)dt=\\left[5t-2\\cos t\\right]_0^\\pi=(5\\pi+2)-(0-2)=5\\pi+4\\approx19.71\\) liters.",
+          "answer": "**Answer:** \\(6\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
           "explanation": "Volume \\(=\\int_0^\\pi\\left(5+2\\sin t\\right)dt=\\left[5t-2\\cos t\\right]_0^\\pi=(5\\pi+2)-(0-2)=5\\pi+4\\approx19.71\\) liters.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "7",
-                "9",
-                "11"
+                "0",
+                "2",
+                "2",
+                "1"
               ],
               [
-                "f'(x)",
-                "3",
                 "1",
                 "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#14)",
-            "caption_ar": "جدول القيم المختارة (#14)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "7",
-                "9",
-                "11"
+                "3",
+                "3"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (flow bench, CALCULUS-999462602)",
+            "caption_ar": "جدول خطوات أويلر (مختبر التدفق، CALCULUS-999462602)"
           }
         },
         {
-          "q": "Find \\(\\frac{d}{dx}\\int_{x^2}^{5}\\cos(t)\\,dt\\), using \\(\\int_{x^2}^5=-\\int_5^{x^2}\\) before differentiating.",
+          "q": "The accompanying figure illustrates a lab apparatus configuration (CALCULUS-G915575507); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "FTC Part 1 with more complex upper limits",
-          "answer": "\\(\\int_{x^2}^5\\cos t\\,dt=-\\int_5^{x^2}\\cos t\\,dt\\), so the derivative is \\(-\\cos(x^2)\\cdot2x=-2x\\cos(x^2)\\).",
+          "answer": "**Answer:** \\(-3\\). At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "explanation": "\\(\\int_{x^2}^5\\cos t\\,dt=-\\int_5^{x^2}\\cos t\\,dt\\), so the derivative is \\(-\\cos(x^2)\\cdot2x=-2x\\cos(x^2)\\).",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
               {
-                "deg": 315,
-                "label": "θ"
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#15)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G915575507)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G915575507)"
           }
         }
       ]
@@ -534,31 +631,50 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A tank starts with 200 liters of water. Water flows out at rate \\(r(t)=3t+2\\) liters/minute for the first 5 minutes. Use FTC to find the amount of water in the tank at \\(t=5\\).",
+          "q": "The accompanying figure illustrates a fluid channel configuration (CALCULUS-G898797895); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Net change and the FTC",
           "cross_lesson": "14.01 Partial Derivatives and the Gradient",
-          "answer": "Net change \\(=-\\int_0^5(3t+2)\\,dt=-\\left[\\frac{3t^2}{2}+2t\\right]_0^5=-(37.5+10)=-47.5\\) liters. Amount remaining \\(=200-47.5=152.5\\) liters.",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Net change \\(=-\\int_0^5(3t+2)\\,dt=-\\left[\\frac{3t^2}{2}+2t\\right]_0^5=-(37.5+10)=-47.5\\) liters. Amount remaining \\(=200-47.5=152.5\\) liters.",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 2,
+                "label": "(3, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#16)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G898797895)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G898797895)"
           }
         },
         {
@@ -582,50 +698,34 @@
           }
         },
         {
-          "q": "Let \\(F(x)=\\int_1^x(3t^2-2)\\,dt\\). Find \\(F(2)\\) using Part 2, then verify \\(F'(2)\\) using Part 1 and confirm it matches direct substitution into the integrand.",
+          "q": "Referring to the genetics table above (CALCULUS-932352126), approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Combining FTC Part 1 and Part 2 in one problem",
           "cross_lesson": "16.01 Vector Fields and Line Integrals",
-          "answer": "\\(F(2)=\\left[t^3-2t\\right]_1^2=(8-4)-(1-2)=4-(-1)=5\\). By Part 1, \\(F'(x)=3x^2-2\\), so \\(F'(2)=12-2=10\\), which matches the integrand \\(3t^2-2\\) evaluated at \\(t=2\\): \\(3(4)-2=10\\) ✓.",
+          "answer": "**Answer:** \\(26\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
           "explanation": "\\(F(2)=\\left[t^3-2t\\right]_1^2=(8-4)-(1-2)=4-(-1)=5\\). By Part 1, \\(F'(x)=3x^2-2\\), so \\(F'(2)=12-2=10\\), which matches the integrand \\(3t^2-2\\) evaluated at \\(t=2\\): \\(3(4)-2=10\\) ✓.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "1",
+                "\\(R(t)\\)",
                 "4",
-                "7",
+                "6",
                 "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#18)",
-            "caption_ar": "جدول نمط مرجعي (#18)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (genetics, CALCULUS-932352126)",
+            "caption_ar": "جدول المعدل (الوراثة، CALCULUS-932352126)"
           }
         },
         {

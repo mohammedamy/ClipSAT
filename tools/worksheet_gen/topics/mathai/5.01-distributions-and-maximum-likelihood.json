@@ -8,296 +8,281 @@
       "heading": "Distributions & Maximum Likelihood Practice Exercises",
       "questions": [
         {
-          "q": "A feature in an AI vision model follows a normal distribution \\( X \\sim \\mathcal{N}(25, 36) \\). What is the mean \\( \\mu \\) and variance \\( \\sigma^2 \\) of this feature?",
+          "q": "Referring to the wind tunnel table above (MATHAI-30150140), for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
           "choices": [
-            "\\( \\mu = 25, \\; \\sigma^2 = 36 \\)",
-            "\\( \\mu = 36, \\; \\sigma^2 = 25 \\)",
-            "\\( \\mu = 25, \\; \\sigma^2 = 6 \\)",
-            "\\( \\mu = 6, \\; \\sigma^2 = 36 \\)"
+            "\\(\\frac{11}{20}\\)",
+            "\\(\\frac{1}{4}\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(\\frac{9}{20}\\)"
           ],
           "correct": 0,
-          "answer": "The notation \\( \\mathcal{N}(\\mu, \\sigma^2) \\) directly specifies the mean \\( \\mu = 25 \\) and variance \\( \\sigma^2 = 36 \\) (with standard deviation \\( \\sigma = 6 \\)).",
+          "answer": "**Answer:** A. There are \\(20\\) participants in Plan A (\\(11 + 9\\)), of whom \\(11\\) recorded Pass, giving \\(\\frac{11}{20}\\).",
+          "explain": "There are \\(20\\) participants in Plan A (\\(11 + 9\\)), of whom \\(11\\) recorded Pass, giving \\(\\frac{11}{20}\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Plan A",
+              "Plan B",
+              "Total"
+            ],
+            "cols": [
+              "Pass",
+              "Retake",
+              "Total"
+            ],
+            "data": [
+              [
+                "11",
+                "9",
+                20
+              ],
+              [
+                "11",
+                "13",
+                24
+              ],
+              [
+                22,
+                22,
+                44
+              ]
+            ],
+            "caption": "Cohort Outcomes Summary (MATHAI-30150140)",
+            "caption_ar": "ملخص النتائج (MATHAI-30150140)"
+          }
+        },
+        {
+          "q": "Based on the structural truss visual model shown (MATHAI-G979818283) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+          "choices": [
+            "\\(28\\)",
+            "\\(30\\)",
+            "\\(25\\)",
+            "\\(10\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Summing bar heights directly from the histogram gives \\(6 + 7 + 10 + 5 = 28\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 7 + 10 + 5 = 28\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 6
+              },
+              {
+                "label": "10-19",
+                "count": 7
+              },
+              {
+                "label": "20-29",
+                "count": 10
+              },
+              {
+                "label": "30-39",
+                "count": 5
+              }
+            ],
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (MATHAI-G979818283)",
+            "caption_ar": "المدرج التكراري للفئات (MATHAI-G979818283)"
+          }
+        },
+        {
+          "q": "Based on the orbital sector visual model shown (MATHAI-G996595895) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "choices": [
+            "\\(26\\)",
+            "\\(31\\)",
+            "\\(22\\)",
+            "\\(30\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Counting each disjoint region once yields \\(|A \\cup B| = 12 + 4 + 10 = 26\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 12 + 4 + 10 = 26\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 12
+              },
+              {
+                "label": "B",
+                "only": 10
+              }
+            ],
+            "both": 4,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (MATHAI-G996595895)",
+            "caption_ar": "مخطط فن للمجموعتين (MATHAI-G996595895)"
+          }
+        },
+        {
+          "q": "In the grid assay record (MATHAI-946262038), using the table values, for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
+          "choices": [
+            "\\(\\frac{1}{10}\\)",
+            "\\(\\frac{9}{10}\\)",
+            "\\(\\frac{1}{5}\\)",
+            "\\(\\frac{1}{4}\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+4+3}{10} = \\frac{1}{10}\\).",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+4+3}{10} = \\frac{1}{10}\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(X = x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "6",
-                "9",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "\\(P(X=x)\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{4}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(c\\)"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "6",
-                "9",
-                "12"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Discrete probability distribution of X (grid assay, MATHAI-946262038)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (فحص الشبكة، MATHAI-946262038)"
           }
         },
         {
-          "q": "Given \\( n = 4 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{4} x_i = 12 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
+          "q": "From the graphical features displayed in the acoustic chamber figure (MATHAI-G963040664) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 90, \\sigma = 4)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 12 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
+            "\\(98\\)",
+            "\\(94\\)",
+            "\\(82\\)",
+            "\\(102\\)"
           ],
           "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3 \\).",
+          "answer": "**Answer:** A. Reading two tick steps to the right of mean \\(90\\) gives \\(\\mu + 2\\sigma = 90 + 2(4) = 98\\).",
+          "explain": "Reading two tick steps to the right of mean \\(90\\) gives \\(\\mu + 2\\sigma = 90 + 2(4) = 98\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 4,
-            "sd": 1,
+            "mean": 90,
+            "sd": 4,
             "shadeRange": [
-              3,
-              5
+              82,
+              98
             ],
             "showRule": true,
-            "caption": "Normal Distribution Model (#3)"
+            "caption": "Normal bell curve with mean 90 and SD 4 (MATHAI-G963040664)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 90 وانحراف 4 (MATHAI-G963040664)"
           }
         },
         {
-          "q": "Given \\( n = 8 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{8} x_i = 24 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
+          "q": "Based on the waveguide design visual model shown (MATHAI-G912707807) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 24 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
+            "\\(33\\)",
+            "\\(35\\)",
+            "\\(30\\)",
+            "\\(11\\)"
           ],
           "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{24}{8} = 3 \\).",
+          "answer": "**Answer:** A. Summing bar heights directly from the histogram gives \\(6 + 9 + 11 + 7 = 33\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 9 + 11 + 7 = 33\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 8,
-            "sd": 1,
-            "shadeRange": [
-              7,
-              9
-            ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#4)"
-          }
-        },
-        {
-          "q": "Given \\( n = 12 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{12} x_i = 36 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
-          "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 36 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
-          ],
-          "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{36}{12} = 3 \\).",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "22",
-                "17",
-                39
-              ],
-              [
-                "9",
-                "14",
-                23
-              ],
-              [
-                31,
-                31,
-                62
-              ]
-            ],
-            "caption": "Reference Summary Table (#5)",
-            "caption_ar": "جدول ملخص البيانات (#5)",
-            "_totals": {
-              "rowTotals": [
-                39,
-                23
-              ],
-              "colTotals": [
-                31,
-                31
-              ],
-              "grandTotal": 62
-            }
-          }
-        },
-        {
-          "q": "Given \\( n = 16 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{16} x_i = 48 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
-          "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 48 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
-          ],
-          "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{48}{16} = 3 \\).",
-          "figure": {
-            "type": "normal_curve",
-            "mean": 16,
-            "sd": 1,
-            "shadeRange": [
-              15,
-              17
-            ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#6)"
-          }
-        },
-        {
-          "q": "Given \\( n = 20 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{20} x_i = 60 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
-          "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 60 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
-          ],
-          "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{60}{20} = 3 \\).",
-          "figure": {
-            "type": "normal_curve",
-            "mean": 20,
-            "sd": 1,
-            "shadeRange": [
-              19,
-              21
-            ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#7)"
-          }
-        },
-        {
-          "q": "Given \\( n = 24 \\) independent observations from a normal distribution with sum \\( \\sum_{i=1}^{24} x_i = 72 \\), what is the Maximum Likelihood Estimate (MLE) \\( \\hat{\\mu}_{\\text{MLE}} \\)?",
-          "choices": [
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 3 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 6 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 72 \\)",
-            "\\( \\hat{\\mu}_{\\text{MLE}} = 1.5 \\)"
-          ],
-          "correct": 0,
-          "answer": "The log-likelihood \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2 \\). Setting \\( \\frac{\\partial \\ln L}{\\partial \\mu} = 0 \\) yields the sample mean \\( \\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{72}{24} = 3 \\).",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "19",
-                "22",
-                41
-              ],
-              [
-                "20",
-                "20",
-                40
-              ],
-              [
-                39,
-                42,
-                81
-              ]
-            ],
-            "caption": "Reference Summary Table (#8)",
-            "caption_ar": "جدول ملخص البيانات (#8)",
-            "_totals": {
-              "rowTotals": [
-                41,
-                40
-              ],
-              "colTotals": [
-                39,
-                42
-              ],
-              "grandTotal": 81
-            }
-          }
-        },
-        {
-          "q": "In training a language model token predictor, a binary token occurs \\( k = 3 \\) times across \\( n = 10 \\) independent trials. What is the Maximum Likelihood Estimate \\( \\hat{p}_{\\text{MLE}} \\) of the token probability?",
-          "choices": [
-            "\\( \\hat{p}_{\\text{MLE}} = 0.300 \\)",
-            "\\( \\hat{p}_{\\text{MLE}} = 0.450 \\)",
-            "\\( \\hat{p}_{\\text{MLE}} = 0.150 \\)",
-            "\\( \\hat{p}_{\\text{MLE}} = 0.700 \\)"
-          ],
-          "correct": 0,
-          "answer": "For a Bernoulli likelihood \\( L(p) = p^k (1-p)^{n-k} \\), the log-likelihood is \\( \\ln L = k\\ln p + (n-k)\\ln(1-p) \\). Setting derivative to zero: \\( \\frac{k}{p} - \\frac{n-k}{1-p} = 0 \\implies \\hat{p} = \\frac{k}{n} = \\frac{3}{10} = 0.300 \\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
+            "type": "histogram",
+            "bins": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "label": "0-9",
+                "count": 6
+              },
+              {
+                "label": "10-19",
+                "count": 9
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 7
               }
             ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (MATHAI-G912707807)",
+            "caption_ar": "المدرج التكراري للفئات (MATHAI-G912707807)"
+          }
+        },
+        {
+          "q": "Given the structured metallurgy observations displayed in the table (MATHAI-929484426), for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
+          "choices": [
+            "\\(\\frac{3}{5}\\)",
+            "\\(\\frac{9}{38}\\)",
+            "\\(\\frac{9}{19}\\)",
+            "\\(\\frac{2}{5}\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. There are \\(15\\) participants in Morning (\\(9 + 6\\)), of whom \\(9\\) recorded Standard, giving \\(\\frac{3}{5}\\).",
+          "explain": "There are \\(15\\) participants in Morning (\\(9 + 6\\)), of whom \\(9\\) recorded Standard, giving \\(\\frac{3}{5}\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "two_way_table",
+            "corner": "",
+            "rows": [
+              "Morning",
+              "Evening",
+              "Total"
+            ],
+            "cols": [
+              "Standard",
+              "Honors",
+              "Total"
+            ],
+            "data": [
+              [
+                "9",
+                "6",
+                15
+              ],
+              [
+                "10",
+                "13",
+                23
+              ],
+              [
+                19,
+                19,
+                38
+              ]
+            ],
+            "caption": "Session Roster Summary (MATHAI-929484426)",
+            "caption_ar": "ملخص النتائج (MATHAI-929484426)"
+          }
+        },
+        {
+          "q": "From the graphical features displayed in the thermal profile figure (MATHAI-G147594466) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "choices": [
+            "\\(76\\)",
+            "\\(68\\)",
+            "\\(44\\)",
+            "\\(84\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 60,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 60 and standard deviation 8"
           }
         },
         {

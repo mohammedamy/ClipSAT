@@ -36,216 +36,266 @@
           }
         },
         {
-          "q": "Solve \\(\\frac{dy}{dx}=2xy\\), given that \\(y=5\\) when \\(x=0\\).",
+          "q": "Given the structured metallurgy observations displayed in the table (IBHL-730965882), approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Solving by separation of variables",
-          "answer": "Separate: \\(\\frac{dy}{y}=2x\\,dx\\). Integrate: \\(\\ln|y|=x^2+C\\). So \\(y=Ae^{x^2}\\) for some constant \\(A\\). Using \\(y=5,x=0\\): \\(A=5\\). Solution: \\(y=5e^{x^2}\\).",
+          "answer": "**Answer:** \\(30\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 12 + 18 = 30\\).",
           "explanation": "Separate: \\(\\frac{dy}{y}=2x\\,dx\\). Integrate: \\(\\ln|y|=x^2+C\\). So \\(y=Ae^{x^2}\\) for some constant \\(A\\). Using \\(y=5,x=0\\): \\(A=5\\). Solution: \\(y=5e^{x^2}\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{2}{2}(7 + 11) = 12 + 18 = 30\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "3",
-              "4",
-              "5"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(R(t)\\)",
                 "5",
-                "9",
-                "13",
-                "17"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#3)",
-            "caption_ar": "جدول القيم المختارة (#3)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (metallurgy, IBHL-730965882)",
+            "caption_ar": "جدول المعدل (علم المعادن، IBHL-730965882)"
           }
         },
         {
-          "q": "A population \\(P\\) grows at a rate proportional to its current size, modeled by \\(\\frac{dP}{dt}=kP\\). If the population doubles every 5 years, find \\(k\\), to three decimal places.",
+          "q": "Given the measurements marked directly on the harmonic trace schematic (IBHL-G714189270) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Modeling with differential equations",
-          "answer": "Solving the DE: \\(P(t)=P_0e^{kt}\\). Doubling: \\(2P_0=P_0e^{5k}\\), so \\(e^{5k}=2\\), giving \\(5k=\\ln2\\), \\(k=\\frac{\\ln2}{5}\\approx0.139\\).",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
           "explanation": "Solving the DE: \\(P(t)=P_0e^{kt}\\). Doubling: \\(2P_0=P_0e^{5k}\\), so \\(e^{5k}=2\\), giving \\(5k=\\ln2\\), \\(k=\\frac{\\ln2}{5}\\approx0.139\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#4)"
-          }
-        },
-        {
-          "q": "Newton's law of cooling states \\(\\frac{dT}{dt}=-k(T-T_a)\\), where \\(T_a\\) is ambient temperature. Solve this differential equation for \\(T(t)\\) in terms of the initial temperature \\(T_0\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Modeling with differential equations",
-          "answer": "Separate: \\(\\frac{dT}{T-T_a}=-k\\,dt\\). Integrate: \\(\\ln|T-T_a|=-kt+C\\). So \\(T-T_a=Ae^{-kt}\\). At \\(t=0\\), \\(T=T_0\\), so \\(A=T_0-T_a\\). Solution: \\(T(t)=T_a+(T_0-T_a)e^{-kt}\\).",
-          "explanation": "Separate: \\(\\frac{dT}{T-T_a}=-k\\,dt\\). Integrate: \\(\\ln|T-T_a|=-kt+C\\). So \\(T-T_a=Ae^{-kt}\\). At \\(t=0\\), \\(T=T_0\\), so \\(A=T_0-T_a\\). Solution: \\(T(t)=T_a+(T_0-T_a)e^{-kt}\\).",
-          "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              2,
+              17
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#5)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (IBHL-G714189270)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (IBHL-G714189270)"
           }
         },
         {
-          "q": "Solve \\(\\frac{dy}{dx}+2y=6\\) using an integrating factor, given \\(y=1\\) when \\(x=0\\).",
+          "q": "From the plotted cad blueprint figure above (IBHL-G831632596) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Modeling with differential equations",
+          "answer": "**Answer:** \\(13\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "explanation": "Separate: \\(\\frac{dT}{T-T_a}=-k\\,dt\\). Integrate: \\(\\ln|T-T_a|=-kt+C\\). So \\(T-T_a=Ae^{-kt}\\). At \\(t=0\\), \\(T=T_0\\), so \\(A=T_0-T_a\\). Solution: \\(T(t)=T_a+(T_0-T_a)e^{-kt}\\).",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              0,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (IBHL-G831632596)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (IBHL-G831632596)"
+          }
+        },
+        {
+          "q": "Selected numerical readings from navigation run (IBHL-814853970) appear in the table; where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(1)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "First-order linear differential equations",
-          "answer": "Integrating factor: \\(e^{\\int2\\,dx}=e^{2x}\\). Multiply through: \\(e^{2x}\\frac{dy}{dx}+2e^{2x}y=6e^{2x}\\), i.e. \\(\\frac{d}{dx}(ye^{2x})=6e^{2x}\\). Integrate: \\(ye^{2x}=3e^{2x}+C\\), so \\(y=3+Ce^{-2x}\\). Using \\(y=1,x=0\\): \\(1=3+C\\), so \\(C=-2\\). Solution: \\(y=3-2e^{-2x}\\).",
+          "answer": "**Answer:** \\(0\\). By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (1)(2) + (2)(-1) = 0\\).",
           "explanation": "Integrating factor: \\(e^{\\int2\\,dx}=e^{2x}\\). Multiply through: \\(e^{2x}\\frac{dy}{dx}+2e^{2x}y=6e^{2x}\\), i.e. \\(\\frac{d}{dx}(ye^{2x})=6e^{2x}\\). Integrate: \\(ye^{2x}=3e^{2x}+C\\), so \\(y=3+Ce^{-2x}\\). Using \\(y=1,x=0\\): \\(1=3+C\\), so \\(C=-2\\). Solution: \\(y=3-2e^{-2x}\\).",
+          "explain": "By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (1)(2) + (2)(-1) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
-              "3",
-              "5",
-              "7"
+              "3"
             ],
             "rows": [
               [
-                "f(x)",
-                "6",
-                "7",
-                "8",
-                "9"
+                "\\(f(x)\\)",
+                "2",
+                "5"
               ],
               [
-                "f'(x)",
+                "\\(f'(x)\\)",
+                "1",
+                "3"
+              ],
+              [
+                "\\(g(x)\\)",
                 "2",
-                "0",
-                "2",
-                "0"
+                "4"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "7",
-                "8",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (navigation, IBHL-814853970)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الملاحة، IBHL-814853970)"
           }
         },
         {
-          "q": "Use Euler's method with step size \\(h=0.5\\) to estimate \\(y(1)\\) for \\(\\frac{dy}{dx}=x+y\\), given \\(y(0)=1\\), showing each step.",
+          "q": "Based on the orbital sector visual model shown (IBHL-G798077351) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Euler's method for numerical solutions",
-          "answer": "Euler's method: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\). Step 1 (\\(x_0=0,y_0=1\\)): \\(y_1=1+0.5(0+1)=1.5\\). Step 2 (\\(x_1=0.5,y_1=1.5\\)): \\(y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5\\). Estimate: \\(y(1)\\approx2.5\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Euler's method: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\). Step 1 (\\(x_0=0,y_0=1\\)): \\(y_1=1+0.5(0+1)=1.5\\). Step 2 (\\(x_1=0.5,y_1=1.5\\)): \\(y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5\\). Estimate: \\(y(1)\\approx2.5\\).",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -3,
-              3
+              -1,
+              15
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#7)"
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G798077351)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G798077351)"
           }
         },
         {
-          "q": "The differential equation \\(\\frac{d^2x}{dt^2}=-\\omega^2x\\) describes simple harmonic motion. Verify that \\(x(t)=A\\cos(\\omega t)\\) is a solution.",
+          "q": "Given the measurements marked directly on the calibration curve schematic (IBHL-G781299746) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Second-order context: simple harmonic motion",
-          "answer": "\\(\\frac{dx}{dt}=-A\\omega\\sin(\\omega t)\\). \\(\\frac{d^2x}{dt^2}=-A\\omega^2\\cos(\\omega t)=-\\omega^2\\left(A\\cos(\\omega t)\\right)=-\\omega^2x\\), confirming \\(x(t)=A\\cos(\\omega t)\\) satisfies the differential equation.",
+          "answer": "**Answer:** \\(11\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
           "explanation": "\\(\\frac{dx}{dt}=-A\\omega\\sin(\\omega t)\\). \\(\\frac{d^2x}{dt^2}=-A\\omega^2\\cos(\\omega t)=-\\omega^2\\left(A\\cos(\\omega t)\\right)=-\\omega^2x\\), confirming \\(x(t)=A\\cos(\\omega t)\\) satisfies the differential equation.",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              2,
+              13
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#8)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (IBHL-G781299746)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (IBHL-G781299746)"
           }
         }
       ]
@@ -254,263 +304,278 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Find the general solution of \\(\\frac{dy}{dx}=3x^2\\), and explain what the arbitrary constant represents geometrically.",
+          "q": "Selected numerical readings from hydraulics run (IBHL-898742072) appear in the table; approximate \\(\\int_{2}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Family of solution curves and particular solutions",
-          "answer": "Integrating directly: \\(y=x^3+C\\). The constant \\(C\\) represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative \\(3x^2\\) at every \\(x\\)), just shifted up or down by different amounts.",
+          "answer": "**Answer:** \\(36\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{2}{2}(9 + 13) = 14 + 22 = 36\\).",
           "explanation": "Integrating directly: \\(y=x^3+C\\). The constant \\(C\\) represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative \\(3x^2\\) at every \\(x\\)), just shifted up or down by different amounts.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{2}{2}(9 + 13) = 14 + 22 = 36\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "7",
-                "11",
-                "15"
-              ],
-              [
-                "f'(x)",
+                "\\(R(t)\\)",
                 "5",
-                "3",
-                "5",
-                "3"
+                "9",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#9)",
-            "caption_ar": "جدول القيم المختارة (#9)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "7",
-                "11",
-                "15"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 6] (hydraulics, IBHL-898742072)",
+            "caption_ar": "جدول المعدل (الهيدروليك، IBHL-898742072)"
           }
         },
         {
-          "q": "A tank drains such that \\(\\frac{dV}{dt}=-k\\sqrt{V}\\) for some constant \\(k>0\\), where \\(V\\) is the volume of water. Solve this differential equation for \\(V(t)\\), given \\(V(0)=V_0\\).",
+          "q": "The accompanying figure illustrates a specimen plot configuration (IBHL-G881965453); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Family of solution curves and particular solutions",
-          "answer": "Separate: \\(\\frac{dV}{\\sqrt{V}}=-k\\,dt\\), i.e. \\(V^{-1/2}\\,dV=-k\\,dt\\). Integrate: \\(2\\sqrt{V}=-kt+C\\). Using \\(V(0)=V_0\\): \\(2\\sqrt{V_0}=C\\). So \\(2\\sqrt{V}=-kt+2\\sqrt{V_0}\\), giving \\(\\sqrt{V}=\\sqrt{V_0}-\\frac{kt}{2}\\), so \\(V(t)=\\left(\\sqrt{V_0}-\\frac{kt}{2}\\right)^2\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Separate: \\(\\frac{dV}{\\sqrt{V}}=-k\\,dt\\), i.e. \\(V^{-1/2}\\,dV=-k\\,dt\\). Integrate: \\(2\\sqrt{V}=-kt+C\\). Using \\(V(0)=V_0\\): \\(2\\sqrt{V_0}=C\\). So \\(2\\sqrt{V}=-kt+2\\sqrt{V_0}\\), giving \\(\\sqrt{V}=\\sqrt{V_0}-\\frac{kt}{2}\\), so \\(V(t)=\\left(\\sqrt{V_0}-\\frac{kt}{2}\\right)^2\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
               -3,
               3
             ],
             "yl": [
-              -3,
-              3
+              -2,
+              10
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#10)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G881965453)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G881965453)"
           }
         },
         {
-          "q": "Verify that \\(y=e^{2x}\\) is a solution of the differential equation \\(\\frac{d^2y}{dx^2}-5\\frac{dy}{dx}+6y=0\\).",
+          "q": "Given the measurements marked directly on the harmonic trace schematic (IBHL-G906948138) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Verifying a solution to a second-order differential equation",
-          "answer": "\\(\\frac{dy}{dx}=2e^{2x}\\). \\(\\frac{d^2y}{dx^2}=4e^{2x}\\). Substituting: \\(4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0\\), confirming \\(y=e^{2x}\\) is a solution.",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
           "explanation": "\\(\\frac{dy}{dx}=2e^{2x}\\). \\(\\frac{d^2y}{dx^2}=4e^{2x}\\). Substituting: \\(4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0\\), confirming \\(y=e^{2x}\\) is a solution.",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              2,
+              17
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#11)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (IBHL-G906948138)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (IBHL-G906948138)"
           }
         },
         {
-          "q": "A differential equation is given by \\(\\frac{dy}{dx}=x-y\\). Find the gradient of the solution curve at the points \\((0,0)\\), \\((1,0)\\), and \\((1,1)\\), and explain what a slope field represents.",
+          "q": "Inspect the quality audit values listed across the table (IBHL-923724757); tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative solutions",
-          "answer": "At \\((0,0)\\): gradient \\(=0-0=0\\). At \\((1,0)\\): gradient \\(=1-0=1\\). At \\((1,1)\\): gradient \\(=1-1=0\\). A slope field is a diagram that plots a short line segment of the correct gradient at many points in the plane, without solving the equation explicitly — sketching a solution curve then amounts to drawing a curve that follows the direction of the segments at every point it passes through.",
+          "answer": "**Answer:** \\(8\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(4) = 8\\).",
           "explanation": "At \\((0,0)\\): gradient \\(=0-0=0\\). At \\((1,0)\\): gradient \\(=1-0=1\\). At \\((1,1)\\): gradient \\(=1-1=0\\). A slope field is a diagram that plots a short line segment of the correct gradient at many points in the plane, without solving the equation explicitly — sketching a solution curve then amounts to drawing a curve that follows the direction of the segments at every point it passes through.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 4 + 1(4) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
+                "0",
+                "1",
+                "3",
+                "1"
               ],
               [
-                "f'(x)",
+                "1",
                 "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#12)",
-            "caption_ar": "جدول القيم المختارة (#12)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
                 "4",
-                "5",
-                "6",
-                "7"
+                "4"
               ],
               [
-                "f'(x)",
                 "2",
-                "0",
-                "2",
-                "0"
+                "3",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (quality audit, IBHL-923724757)",
+            "caption_ar": "جدول خطوات أويلر (تدقيق الجودة، IBHL-923724757)"
           }
         },
         {
-          "q": "A population \\(P\\) grows according to the logistic differential equation \\(\\frac{dP}{dt}=kP(10-P)\\). Using the partial fraction decomposition \\(\\frac{1}{P(10-P)}=\\frac{1}{10P}+\\frac{1}{10(10-P)}\\), solve for \\(P\\) in terms of \\(t\\), given \\(P(0)=1\\) and leaving \\(k\\) as an unknown constant.",
+          "q": "From the plotted reservoir profile figure above (IBHL-G873392900) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A logistic growth model",
-          "answer": "Separate: \\(\\frac{dP}{P(10-P)}=k\\,dt\\). Integrate the left side using the given decomposition: \\(\\frac{1}{10}\\ln|P|-\\frac{1}{10}\\ln|10-P|=kt+C\\), i.e. \\(\\frac{1}{10}\\ln\\left|\\frac{P}{10-P}\\right|=kt+C\\). Using \\(P(0)=1\\): \\(\\frac{1}{10}\\ln\\left(\\frac{1}{9}\\right)=C\\). So \\(\\ln\\left|\\frac{P}{10-P}\\right|=10kt+\\ln\\left(\\frac{1}{9}\\right)\\), giving \\(\\frac{P}{10-P}=\\frac{1}{9}e^{10kt}\\). Solving for \\(P\\): \\(9P=(10-P)e^{10kt}\\), so \\(P(9+e^{10kt})=10e^{10kt}\\), giving \\(P=\\frac{10e^{10kt}}{9+e^{10kt}}\\).",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\).",
           "explanation": "Separate: \\(\\frac{dP}{P(10-P)}=k\\,dt\\). Integrate the left side using the given decomposition: \\(\\frac{1}{10}\\ln|P|-\\frac{1}{10}\\ln|10-P|=kt+C\\), i.e. \\(\\frac{1}{10}\\ln\\left|\\frac{P}{10-P}\\right|=kt+C\\). Using \\(P(0)=1\\): \\(\\frac{1}{10}\\ln\\left(\\frac{1}{9}\\right)=C\\). So \\(\\ln\\left|\\frac{P}{10-P}\\right|=10kt+\\ln\\left(\\frac{1}{9}\\right)\\), giving \\(\\frac{P}{10-P}=\\frac{1}{9}e^{10kt}\\). Solving for \\(P\\): \\(9P=(10-P)e^{10kt}\\), so \\(P(9+e^{10kt})=10e^{10kt}\\), giving \\(P=\\frac{10e^{10kt}}{9+e^{10kt}}\\).",
+          "explain": "At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "slope_field",
-            "dydx": "-x/y",
+            "dydx": "3*(x - y)",
             "xl": [
-              -3,
-              3
+              -1,
+              4
             ],
             "yl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#13)"
+            "pts": [
+              {
+                "x": 3,
+                "y": 3,
+                "label": "P(3, 3)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (IBHL-G873392900)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (IBHL-G873392900)"
           }
         },
         {
-          "q": "State the order of each of the following differential equations: (a) \\(\\frac{dy}{dx}=3x^2-2y\\), (b) \\(\\frac{d^2y}{dx^2}+4\\frac{dy}{dx}-y=0\\), (c) \\(\\frac{d^3y}{dx^3}=\\sin x\\).",
+          "q": "Referring to the specimen plot figure (IBHL-G890170519) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Checking the order and degree of a differential equation",
-          "answer": "The order of a differential equation is the order of the highest derivative present. (a) Only a first derivative appears, so this is a first-order differential equation. (b) The highest derivative is \\(\\frac{d^2y}{dx^2}\\), so this is second-order. (c) The highest derivative is \\(\\frac{d^3y}{dx^3}\\), so this is third-order.",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "The order of a differential equation is the order of the highest derivative present. (a) Only a first derivative appears, so this is a first-order differential equation. (b) The highest derivative is \\(\\frac{d^2y}{dx^2}\\), so this is second-order. (c) The highest derivative is \\(\\frac{d^3y}{dx^3}\\), so this is third-order.",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -3,
-              3
+              -2,
+              10
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#14)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G890170519)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G890170519)"
           }
         },
         {
-          "q": "Use Euler's method with step size \\(h=0.25\\) to estimate \\(y(0.5)\\) for \\(\\frac{dy}{dx}=2x\\), given \\(y(0)=1\\), showing each step, and compare with the exact solution \\(y=x^2+1\\).",
+          "q": "In assessment dataset (IBHL-839836669) for transit study, the table reports key quantities; determine \\(3\\,h^{-1}(9)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Using Euler's method with a smaller step size",
-          "answer": "Euler's method: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\). Step 1 (\\(x_0=0,y_0=1\\)): \\(y_1=1+0.25(2\\cdot0)=1+0=1\\). Step 2 (\\(x_1=0.25,y_1=1\\)): \\(y_2=1+0.25(2\\cdot0.25)=1+0.125=1.125\\). Estimate: \\(y(0.5)\\approx1.125\\). Exact solution: \\(y(0.5)=(0.5)^2+1=1.25\\). The Euler estimate underestimates the true value, since the method uses the derivative only at the start of each interval rather than accounting for how the derivative changes within it.",
+          "answer": "**Answer:** \\(18\\). Because \\(h(6) = 9\\), we have \\(h^{-1}(9) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
           "explanation": "Euler's method: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\). Step 1 (\\(x_0=0,y_0=1\\)): \\(y_1=1+0.25(2\\cdot0)=1+0=1\\). Step 2 (\\(x_1=0.25,y_1=1\\)): \\(y_2=1+0.25(2\\cdot0.25)=1+0.125=1.125\\). Estimate: \\(y(0.5)\\approx1.125\\). Exact solution: \\(y(0.5)=(0.5)^2+1=1.25\\). The Euler estimate underestimates the true value, since the method uses the derivative only at the start of each interval rather than accounting for how the derivative changes within it.",
+          "explain": "Because \\(h(6) = 9\\), we have \\(h^{-1}(9) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "2",
+              "4",
+              "6",
+              "8"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "17",
-                "23",
-                40
-              ],
-              [
-                "15",
-                "21",
-                36
-              ],
-              [
-                32,
-                44,
-                76
+                "\\(h(x)\\)",
+                "3",
+                "6",
+                "9",
+                "14"
               ]
             ],
-            "caption": "Reference Summary Table (#15)",
-            "caption_ar": "جدول ملخص البيانات (#15)",
-            "_totals": {
-              "rowTotals": [
-                40,
-                36
-              ],
-              "colTotals": [
-                32,
-                44
-              ],
-              "grandTotal": 76
-            }
+            "orientation": "horizontal",
+            "caption": "Monotone function values of invertible h (transit study, IBHL-839836669)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (دراسة النقل، IBHL-839836669)"
           }
         }
       ]
@@ -519,26 +584,52 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Solve the differential equation \\(\\frac{dy}{dx}=\\frac{y}{x}\\) for \\(x>0\\), given \\(y=6\\) when \\(x=2\\), and describe the family of curves this represents.",
+          "q": "From the plotted survey layout figure above (IBHL-G856615288) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Using Euler's method with a smaller step size",
           "cross_lesson": "4.01 Unbiased Estimators & Confidence Intervals",
-          "answer": "Separate: \\(\\frac{dy}{y}=\\frac{dx}{x}\\). Integrate: \\(\\ln|y|=\\ln|x|+C\\), so \\(y=Ax\\) for some constant \\(A\\). Using \\(y=6,x=2\\): \\(6=2A\\), so \\(A=3\\). Solution: \\(y=3x\\). This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope \\(3\\).",
+          "answer": "**Answer:** \\(13\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
           "explanation": "Separate: \\(\\frac{dy}{y}=\\frac{dx}{x}\\). Integrate: \\(\\ln|y|=\\ln|x|+C\\), so \\(y=Ax\\) for some constant \\(A\\). Using \\(y=6,x=2\\): \\(6=2A\\), so \\(A=3\\). Solution: \\(y=3x\\). This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope \\(3\\).",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "x + y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              0,
+              15
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = x + y (#16)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 4,
+                "label": "(0, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (IBHL-G856615288)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (IBHL-G856615288)"
           }
         },
         {

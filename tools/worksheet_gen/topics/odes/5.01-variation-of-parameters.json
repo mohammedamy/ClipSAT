@@ -36,204 +36,246 @@
           }
         },
         {
-          "q": "For \\(y_1=e^{3x}\\), \\(y_2=xe^{3x}\\) (solutions of a repeated-root equation), compute \\(W\\).",
+          "q": "Examine the circuit trial dataset arranged in the table below (ODES-895103803); modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Wronskian",
-          "answer": "\\(y_1'=3e^{3x}\\), \\(y_2'=e^{3x}+3xe^{3x}\\). \\(W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}\\).",
+          "answer": "**Answer:** \\(27\\). Constant ratio per unit step is \\(b = \\frac{3}{1} = 3\\), so \\(E(3) = 9 \\cdot 3 = 27\\).",
           "explanation": "\\(y_1'=3e^{3x}\\), \\(y_2'=e^{3x}+3xe^{3x}\\). \\(W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}\\).",
+          "explain": "Constant ratio per unit step is \\(b = \\frac{3}{1} = 3\\), so \\(E(3) = 9 \\cdot 3 = 27\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "0",
               "1",
-              "2",
-              "3"
+              "2"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(E(x)\\)",
                 "1",
-                "4",
-                "7",
-                "10"
+                "3",
+                "9"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#3)",
-            "caption_ar": "جدول نمط مرجعي (#3)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
-              ]
-            ]
+            "caption": "Exponential growth values table (circuit trial, ODES-895103803)",
+            "caption_ar": "جدول قيم نمو أسي (تجربة الدائرة، ODES-895103803)"
           }
         },
         {
-          "q": "State the variation of parameters formula for a particular solution of \\(y'' + p(x)y' + q(x)y = g(x)\\), given independent solutions \\(y_1,y_2\\) of the homogeneous equation with Wronskian \\(W\\).",
+          "q": "From the graphical features displayed in the structural truss figure (ODES-G878327191) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The variation of parameters formula",
-          "answer": "\\(y_p = -y_1\\int \\frac{y_2\\,g}{W}\\,dx + y_2\\int \\frac{y_1\\,g}{W}\\,dx\\).",
+          "answer": "**Answer:** \\(16\\). Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), giving total area \\(16\\).",
           "explanation": "\\(y_p = -y_1\\int \\frac{y_2\\,g}{W}\\,dx + y_2\\int \\frac{y_1\\,g}{W}\\,dx\\).",
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 3, 5, 7\\), giving total area \\(16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              0,
+              4.5
             ],
             "yl": [
-              -5,
-              5
+              0,
+              11
             ],
-            "xStep": 2,
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "-0.5*x^2 + 3",
-                "label": "y = f(x)"
+                "fn": "2*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 1"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "riemann": {
+              "expr": "2*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (ODES-G878327191)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (ODES-G878327191)"
           }
         },
         {
-          "q": "Explain why the ODE must first be written in standard form \\(y''+p(x)y'+q(x)y=g(x)\\) (leading coefficient \\(1\\)) before applying the variation of parameters formula.",
+          "q": "The accompanying figure illustrates a harmonic trace configuration (ODES-G995770524); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The variation of parameters formula",
-          "answer": "The formula's Wronskian and integrals are derived under the assumption that \\(g(x)\\) is exactly the right side once the leading coefficient of \\(y''\\) is \\(1\\). If the equation is given as \\(a(x)y''+b(x)y'+c(x)y=f(x)\\) with \\(a(x)\\neq1\\), using \\(f(x)\\) directly in place of \\(g(x)\\) would introduce an extra factor of \\(a(x)\\) and give a wrong particular solution — the equation must first be divided by \\(a(x)\\), giving \\(g(x)=f(x)/a(x)\\).",
+          "answer": "**Answer:** \\(9\\). From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 3)\\), \\(a = 3 - 1 = 2\\), so \\(g(2) = 2(2^2) + 1 = 9\\).",
           "explanation": "The formula's Wronskian and integrals are derived under the assumption that \\(g(x)\\) is exactly the right side once the leading coefficient of \\(y''\\) is \\(1\\). If the equation is given as \\(a(x)y''+b(x)y'+c(x)y=f(x)\\) with \\(a(x)\\neq1\\), using \\(f(x)\\) directly in place of \\(g(x)\\) would introduce an extra factor of \\(a(x)\\) and give a wrong particular solution — the equation must first be divided by \\(a(x)\\), giving \\(g(x)=f(x)/a(x)\\).",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 3)\\), \\(a = 3 - 1 = 2\\), so \\(g(2) = 2(2^2) + 1 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
+            "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -3,
-              3
+              0,
+              11
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#5)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 3,
+                "label": "(0, 3)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (ODES-G995770524)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G995770524)"
           }
         },
         {
-          "q": "Solve \\(y'' + y = \\tan x\\) for \\(-\\frac{\\pi}{2}<x<\\frac{\\pi}{2}\\) using variation of parameters.",
+          "q": "Examine the metallurgy dataset arranged in the table below (ODES-978991898); where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(3)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "A forcing term with no undetermined-coefficients trial form",
-          "answer": "Here \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\), \\(g=\\tan x\\). Since \\(\\int\\cos x\\tan x\\,dx=\\int\\sin x\\,dx=-\\cos x\\) and \\(\\int\\sin x\\tan x\\,dx=\\int\\sec x\\,dx-\\int\\cos x\\,dx=\\ln|\\sec x+\\tan x|-\\sin x\\), we get \\(y_p=-\\cos x\\left[\\ln|\\sec x+\\tan x|-\\sin x\\right]+\\sin x(-\\cos x)=-\\cos x\\ln|\\sec x+\\tan x|\\). General solution: \\(y = C_1\\cos x + C_2\\sin x - \\cos x\\ln|\\sec x+\\tan x|\\).",
+          "answer": "**Answer:** \\(-6\\). By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (5)(-3) = -6\\).",
           "explanation": "Here \\(y_1=\\cos x\\), \\(y_2=\\sin x\\), \\(W=1\\), \\(g=\\tan x\\). Since \\(\\int\\cos x\\tan x\\,dx=\\int\\sin x\\,dx=-\\cos x\\) and \\(\\int\\sin x\\tan x\\,dx=\\int\\sec x\\,dx-\\int\\cos x\\,dx=\\ln|\\sec x+\\tan x|-\\sin x\\), we get \\(y_p=-\\cos x\\left[\\ln|\\sec x+\\tan x|-\\sin x\\right]+\\sin x(-\\cos x)=-\\cos x\\ln|\\sec x+\\tan x|\\). General solution: \\(y = C_1\\cos x + C_2\\sin x - \\cos x\\ln|\\sec x+\\tan x|\\).",
+          "explain": "By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (5)(-3) = -6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
+                "\\(f(x)\\)",
+                "5",
+                "8"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#6)",
-            "caption_ar": "جدول نمط مرجعي (#6)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (metallurgy, ODES-978991898)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (علم المعادن، ODES-978991898)"
           }
         },
         {
-          "q": "Solve \\(y'' - y = e^{2x}\\) by variation of parameters, then check the particular solution using undetermined coefficients.",
+          "q": "Referring to the reservoir profile figure (ODES-G962215286) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Comparing with undetermined coefficients",
-          "answer": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\). With \\(g=e^{2x}\\): \\(\\frac{y_2g}{W}=-\\frac{1}{2}e^x\\), integral \\(-\\frac{1}{2}e^x\\); \\(\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}\\), integral \\(-\\frac{1}{6}e^{3x}\\). So \\(y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}\\). Check by undetermined coefficients: try \\(Ae^{2x}\\) (no resonance, since \\(2\\) is not a root of \\(r^2-1=0\\)): \\(4A-A=1 \\Rightarrow A=\\frac{1}{3}\\). Matches. General solution: \\(y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}\\).",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\).",
           "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\). With \\(g=e^{2x}\\): \\(\\frac{y_2g}{W}=-\\frac{1}{2}e^x\\), integral \\(-\\frac{1}{2}e^x\\); \\(\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}\\), integral \\(-\\frac{1}{6}e^{3x}\\). So \\(y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}\\). Check by undetermined coefficients: try \\(Ae^{2x}\\) (no resonance, since \\(2\\) is not a root of \\(r^2-1=0\\)): \\(4A-A=1 \\Rightarrow A=\\frac{1}{3}\\). Matches. General solution: \\(y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}\\).",
+          "explain": "At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "fn",
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
             "xl": [
-              -4,
+              -1,
               4
             ],
             "yl": [
-              -5,
+              -1,
               5
             ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
+            "step": 1,
+            "pts": [
               {
-                "fn": "-0.5*x^2 + 3",
-                "label": "y = f(x)"
+                "x": 3,
+                "y": 3,
+                "label": "P(3, 3)"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ODES-G962215286)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ODES-G962215286)"
           }
         },
         {
-          "q": "Solve \\(y''-y=4\\) (a constant forcing) by variation of parameters, and check against the obvious undetermined-coefficients guess \\(y_p=A\\).",
+          "q": "Referring to the survey layout figure (ODES-G945437674) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Comparing with undetermined coefficients",
-          "answer": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\), \\(g=4\\). \\(\\frac{y_2g}{W}=-2e^{-x}\\), integral \\(2e^{-x}\\); \\(\\frac{y_1g}{W}=-2e^{x}\\), integral \\(-2e^{x}\\). So \\(y_p=-e^x(2e^{-x})+e^{-x}(-2e^{x})=-2-2=-4\\). Undetermined coefficients: try \\(y_p=A\\), giving \\(-A=4 \\Rightarrow A=-4\\). Matches. General solution: \\(y=C_1e^x+C_2e^{-x}-4\\).",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
           "explanation": "\\(y_1=e^x\\), \\(y_2=e^{-x}\\), \\(W=-2\\), \\(g=4\\). \\(\\frac{y_2g}{W}=-2e^{-x}\\), integral \\(2e^{-x}\\); \\(\\frac{y_1g}{W}=-2e^{x}\\), integral \\(-2e^{x}\\). So \\(y_p=-e^x(2e^{-x})+e^{-x}(-2e^{x})=-2-2=-4\\). Undetermined coefficients: try \\(y_p=A\\), giving \\(-A=4 \\Rightarrow A=-4\\). Matches. General solution: \\(y=C_1e^x+C_2e^{-x}-4\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -2,
+              3
             ],
             "yl": [
-              -5,
-              7
+              2,
+              21
             ],
-            "xStep": 2,
-            "yStep": 2,
+            "xStep": 1,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "title": "Coordinate Graph (#8)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G945437674)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G945437674)"
           }
         }
       ]
@@ -242,73 +284,81 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "For \\(y''+4y=x^3-2x\\), which method is more efficient: undetermined coefficients or variation of parameters? Explain.",
+          "q": "In the quality audit record (ODES-794438089), using the table values, approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "When to prefer each method",
-          "answer": "Undetermined coefficients is far more efficient here: the forcing is a plain polynomial (no resonance issues), so a simple trial \\(y_p=Ax^3+Bx^2+Cx+D\\) solves it by matching coefficients — no integration required. Variation of parameters would work too, but requires computing \\(W\\) and two integrals unnecessarily.",
+          "answer": "**Answer:** \\(65\\). Trapezoidal sum \\(= \\frac{2}{2}(7 + 10) + \\frac{4}{2}(10 + 14) = 17 + 48 = 65\\).",
           "explanation": "Undetermined coefficients is far more efficient here: the forcing is a plain polynomial (no resonance issues), so a simple trial \\(y_p=Ax^3+Bx^2+Cx+D\\) solves it by matching coefficients — no integration required. Variation of parameters would work too, but requires computing \\(W\\) and two integrals unnecessarily.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(7 + 10) + \\frac{4}{2}(10 + 14) = 17 + 48 = 65\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "7"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "13",
-                "16",
-                29
-              ],
-              [
-                "19",
-                "26",
-                45
-              ],
-              [
-                32,
-                42,
-                74
+                "\\(R(t)\\)",
+                "7",
+                "10",
+                "14"
               ]
             ],
-            "caption": "Reference Summary Table (#9)",
-            "caption_ar": "جدول ملخص البيانات (#9)",
-            "_totals": {
-              "rowTotals": [
-                29,
-                45
-              ],
-              "colTotals": [
-                32,
-                42
-              ],
-              "grandTotal": 74
-            }
+            "orientation": "horizontal",
+            "caption": "Sampled rate table R(t) on [1, 7] (quality audit, ODES-794438089)",
+            "caption_ar": "جدول المعدل (تدقيق الجودة، ODES-794438089)"
           }
         },
         {
-          "q": "For \\(y''+y=\\csc x\\) (for \\(0<x<\\pi\\)), which method must be used, and why?",
+          "q": "Given the measurements marked directly on the optical assembly schematic (ODES-G777661470) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "When to prefer each method",
-          "answer": "Variation of parameters is required. \\(\\csc x=1/\\sin x\\) is not a polynomial, exponential, sine/cosine, or a finite product of these, so undetermined coefficients has no valid trial form; only variation of parameters, which places no restriction on the forcing term, can produce a particular solution.",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
           "explanation": "Variation of parameters is required. \\(\\csc x=1/\\sin x\\) is not a polynomial, exponential, sine/cosine, or a finite product of these, so undetermined coefficients has no valid trial form; only variation of parameters, which places no restriction on the forcing term, can produce a particular solution.",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "sinusoid",
-            "amp": 4,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#10)"
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              17
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G777661470)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G777661470)"
           }
         },
         {
@@ -330,137 +380,173 @@
           }
         },
         {
-          "q": "Verify (by checking the coefficient of the leading term only) that \\(y_p=-x\\cos x\\) contributes a term of the correct order when substituted into \\(y''+y\\).",
+          "q": "Referring to the specimen plot figure (ODES-G593087395) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Solving \\(y''+y=\\csc x\\) in full",
-          "answer": "For \\(y_p=-x\\cos x\\): \\(y_p'=-\\cos x+x\\sin x\\), \\(y_p''=\\sin x+\\sin x+x\\cos x=2\\sin x+x\\cos x\\). So \\(y_p''+y_p=2\\sin x+x\\cos x-x\\cos x=2\\sin x\\) — this piece alone contributes \\(2\\sin x\\), which combines with the contribution from \\(\\sin x\\ln|\\sin x|\\) to produce the required \\(\\csc x\\) on the right side (a full check of the second piece is a longer computation, but this confirms the \\(-x\\cos x\\) term is doing real work, not just decoration).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "For \\(y_p=-x\\cos x\\): \\(y_p'=-\\cos x+x\\sin x\\), \\(y_p''=\\sin x+\\sin x+x\\cos x=2\\sin x+x\\cos x\\). So \\(y_p''+y_p=2\\sin x+x\\cos x-x\\cos x=2\\sin x\\) — this piece alone contributes \\(2\\sin x\\), which combines with the contribution from \\(\\sin x\\ln|\\sin x|\\) to produce the required \\(\\csc x\\) on the right side (a full check of the second piece is a longer computation, but this confirms the \\(-x\\cos x\\) term is doing real work, not just decoration).",
-          "figure": {
-            "type": "sinusoid",
-            "amp": 3,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#12)"
-          }
-        },
-        {
-          "q": "For the Cauchy–Euler-type substitution used in some ODE courses, \\(y_1=x\\), \\(y_2=x^{-1}\\) solve \\(x^2y''+xy'-y=0\\) for \\(x>0\\). Rewrite this equation in the standard form \\(y''+p(x)y'+q(x)y=g(x)\\) needed for variation of parameters when the right side is \\(x^2\\cdot 3x=3x^3\\) (i.e., solve \\(x^2y''+xy'-y=3x^3\\)).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Variation of parameters with a shifted independent variable",
-          "answer": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about).",
-          "explanation": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Continue the problem above: with \\(y_1=x\\), \\(y_2=x^{-1}\\), compute \\(W=y_1y_2'-y_1'y_2\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Variation of parameters with a shifted independent variable",
-          "answer": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\).",
-          "explanation": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#14)"
-          }
-        },
-        {
-          "q": "Finish solving \\(x^2y''+xy'-y=3x^3\\) (\\(x>0\\)) using \\(y_1=x\\), \\(y_2=x^{-1}\\), \\(W=-2x^{-1}\\), and \\(g(x)=3x\\) (from the two questions above).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Variation of parameters with a shifted independent variable",
-          "answer": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\).",
-          "explanation": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\).",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G593087395)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G593087395)"
+          }
+        },
+        {
+          "q": "In assessment dataset (ODES-542753531) for optical bench, the table reports key quantities; approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Variation of parameters with a shifted independent variable",
+          "answer": "**Answer:** \\(52\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
+          "explanation": "Dividing by \\(x^2\\): \\(y''+\\frac{1}{x}y'-\\frac{1}{x^2}y=3x\\), so \\(g(x)=3x\\) (NOT \\(3x^3\\) — the division by the leading coefficient \\(x^2\\) is exactly the step the earlier question about standard form warns about).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "2",
+              "4",
+              "8"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Sampled rate table R(t) on [2, 8] (optical bench, ODES-542753531)",
+            "caption_ar": "جدول المعدل (المنضدة البصرية، ODES-542753531)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the structural truss schematic (ODES-G559532143) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Variation of parameters with a shifted independent variable",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "explanation": "\\(y_1'=1\\), \\(y_2'=-x^{-2}\\). \\(W=x(-x^{-2})-1(x^{-1})=-x^{-1}-x^{-1}=-2x^{-1}\\).",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G559532143)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G559532143)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a survey layout configuration (ODES-G509199286); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Variation of parameters with a shifted independent variable",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "explanation": "\\(\\frac{y_2g}{W}=\\frac{x^{-1}(3x)}{-2x^{-1}}=-\\frac{3x}{2}\\), so \\(\\int=-\\frac{3x^2}{4}\\). \\(\\frac{y_1g}{W}=\\frac{x(3x)}{-2x^{-1}}=-\\frac{3x^3}{2}\\), so \\(\\int=-\\frac{3x^4}{8}\\). Then \\(y_p=-x\\left(-\\frac{3x^2}{4}\\right)+x^{-1}\\left(-\\frac{3x^4}{8}\\right)=\\frac{3x^3}{4}-\\frac{3x^3}{8}=\\frac{3x^3}{8}\\). General solution: \\(y=C_1x+C_2x^{-1}+\\frac{3x^3}{8}\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              21
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G509199286)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G509199286)"
           }
         }
       ]
@@ -469,50 +555,34 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Check the particular solution \\(y_p=\\frac{3}{8}x^3\\) found above by substituting directly into \\(x^2y''+xy'-y=3x^3\\).",
+          "q": "An engineering team logged transit study measurements in the accompanying table (ODES-525975905); using these data, approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Variation of parameters with a shifted independent variable",
           "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations",
-          "answer": "\\(y_p'=\\frac{9}{8}x^2\\), \\(y_p''=\\frac{9}{4}x\\). Then \\(x^2y_p''+xy_p'-y_p = x^2\\left(\\frac{9}{4}x\\right)+x\\left(\\frac{9}{8}x^2\\right)-\\frac{3}{8}x^3 = \\frac{9}{4}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3 = \\frac{18}{8}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3=\\frac{24}{8}x^3=3x^3\\). Matches.",
+          "answer": "**Answer:** \\(46\\). Trapezoidal sum \\(= \\frac{2}{2}(3 + 7) + \\frac{4}{2}(7 + 11) = 10 + 36 = 46\\).",
           "explanation": "\\(y_p'=\\frac{9}{8}x^2\\), \\(y_p''=\\frac{9}{4}x\\). Then \\(x^2y_p''+xy_p'-y_p = x^2\\left(\\frac{9}{4}x\\right)+x\\left(\\frac{9}{8}x^2\\right)-\\frac{3}{8}x^3 = \\frac{9}{4}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3 = \\frac{18}{8}x^3+\\frac{9}{8}x^3-\\frac{3}{8}x^3=\\frac{24}{8}x^3=3x^3\\). Matches.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(3 + 7) + \\frac{4}{2}(7 + 11) = 10 + 36 = 46\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(t\\)",
               "2",
-              "3"
+              "4",
+              "8"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(R(t)\\)",
                 "3",
-                "11",
-                "19",
-                "27"
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#16)",
-            "caption_ar": "جدول نمط مرجعي (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "3",
-                "11",
-                "19",
-                "27"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 8] (transit study, ODES-525975905)",
+            "caption_ar": "جدول المعدل (دراسة النقل، ODES-525975905)"
           }
         },
         {

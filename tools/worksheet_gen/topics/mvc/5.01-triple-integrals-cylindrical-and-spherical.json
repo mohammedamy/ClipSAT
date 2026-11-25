@@ -8,321 +8,330 @@
       "heading": "Triple Integrals, Cylindrical & Spherical Coordinates Practice Exercises",
       "questions": [
         {
-          "q": "Evaluate \\( \\iiint_B x y z\\,dV \\) over the box \\( B=[0,3]\\times[0,1]\\times[0,3] \\).",
+          "q": "A benchmark optical bench log (MVC-379019751) provides the entries shown in the table; where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(1) = \\dfrac{f'(1)g(1) - f(1)g'(1)}{[g(1)]^2}\\)?",
           "choices": [
-            "\\( \\frac{81}{4} \\)",
-            "\\( \\frac{81}{16} \\)",
-            "\\( \\frac{81}{8} \\)",
-            "\\( \\frac{153}{8} \\)"
+            "\\(3\\)",
+            "\\(-9\\)",
+            "\\(9\\)",
+            "\\(-2\\)"
           ],
           "correct": 2,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{3}\\int\\limits_{0}^{1}\\int\\limits_{0}^{3} x y z\\, dx\\, dy\\, dz \\) \\( = \\) \\( \\frac{81}{8} \\).",
+          "answer": "**Answer:** C. Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (2)(3) - (3)(-1) = 9\\).",
+          "explain": "Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (2)(3) - (3)(-1) = 9\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "\\(x\\)",
+              "1",
+              "3"
             ],
             "rows": [
               [
-                "f(x)",
-                "6",
-                "10",
-                "14",
-                "18"
+                "\\(f(x)\\)",
+                "3",
+                "6"
               ],
               [
-                "f'(x)",
-                "5",
+                "\\(f'(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g(x)\\)",
                 "3",
-                "5",
-                "3"
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "10",
-                "14",
-                "18"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (optical bench, MVC-379019751)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (المنضدة البصرية، MVC-379019751)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B x + y + z\\,dV \\) over the box \\( B=[0,3]\\times[0,2]\\times[0,1] \\).",
+          "q": "Based on the antenna pattern visual model shown (MVC-G395798370) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "choices": [
-            "\\( 36 \\)",
-            "\\( 9 \\)",
-            "\\( 18 \\)",
-            "\\( 24 \\)"
+            "\\(-1\\)",
+            "\\(6\\)",
+            "\\(5\\)",
+            "\\(7\\)"
           ],
           "correct": 2,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{1}\\int\\limits_{0}^{2}\\int\\limits_{0}^{3} \\left(x + y + z\\right)\\, dx\\, dy\\, dz \\) \\( = \\) \\( 18 \\).",
+          "answer": "**Answer:** C. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                4,
-                3
-              ],
-              [
-                0,
-                3
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "w": 4,
-            "h": 3,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              -3,
+              7
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#3)",
-            "caption_ar": "مخطط المنطقة المستوية (#3)"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 4,
+                "label": "(4, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (MVC-G395798370)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G395798370)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B x y z\\,dV \\) over the box \\( B=[0,2]\\times[0,1]\\times[0,2] \\).",
+          "q": "The accompanying figure illustrates a harmonic trace configuration (MVC-G412575996); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "choices": [
-            "\\( 4 \\)",
-            "\\( 1 \\)",
-            "\\( 6 \\)",
-            "\\( 2 \\)"
+            "\\(4\\)",
+            "\\(5\\)",
+            "\\(8\\)",
+            "\\(6\\)"
           ],
           "correct": 3,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{2}\\int\\limits_{0}^{1}\\int\\limits_{0}^{2} x y z\\, dx\\, dy\\, dz \\) \\( = \\) \\( 2 \\).",
+          "answer": "**Answer:** D. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                4,
-                4
-              ],
-              [
-                0,
-                4
-              ]
+            "type": "fn",
+            "xl": [
+              -3,
+              5
             ],
-            "w": 4,
-            "h": 4,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              0,
+              10
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#4)",
-            "caption_ar": "مخطط المنطقة المستوية (#4)"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 1) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 7,
+                "label": "(2, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 5 (MVC-G412575996)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G412575996)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B y z^{2}\\,dV \\) over the box \\( B=[0,1]\\times[0,1]\\times[0,3] \\).",
+          "q": "In the photonics record (MVC-295131656), using the table values, where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(3)\\)?",
           "choices": [
-            "\\( 9 \\)",
-            "\\( \\frac{9}{4} \\)",
-            "\\( \\frac{15}{2} \\)",
-            "\\( \\frac{9}{2} \\)"
+            "\\(-9\\)",
+            "\\(18\\)",
+            "\\(9\\)",
+            "\\(0\\)"
           ],
           "correct": 3,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{3}\\int\\limits_{0}^{1}\\int\\limits_{0}^{1} y z^{2}\\, dx\\, dy\\, dz \\) \\( = \\) \\( \\frac{9}{2} \\).",
+          "answer": "**Answer:** D. By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (3)(-3) = 0\\).",
+          "explain": "By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (3)(-3) = 0\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "\\(x\\)",
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
+                "\\(f(x)\\)",
+                "3",
+                "6"
               ],
               [
-                "f'(x)",
-                "5",
+                "\\(f'(x)\\)",
                 "3",
-                "5",
-                "3"
+                "5"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#5)",
-            "caption_ar": "جدول القيم المختارة (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (photonics, MVC-295131656)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الفوتونيات، MVC-295131656)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B x^{2} z\\,dV \\) over the box \\( B=[0,1]\\times[0,1]\\times[0,3] \\).",
+          "q": "Given the measurements marked directly on the fluid channel schematic (MVC-G311910289) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "choices": [
-            "\\( 3 \\)",
-            "\\( \\frac{3}{4} \\)",
-            "\\( \\frac{3}{2} \\)",
-            "\\( \\frac{9}{2} \\)"
+            "\\(10\\)",
+            "\\(4\\)",
+            "\\(8\\)",
+            "\\(6\\)"
           ],
           "correct": 2,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{3}\\int\\limits_{0}^{1}\\int\\limits_{0}^{1} x^{2} z\\, dx\\, dy\\, dz \\) \\( = \\) \\( \\frac{3}{2} \\).",
+          "answer": "**Answer:** C. From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                4,
-                3
-              ],
-              [
-                0,
-                3
-              ]
+            "type": "fn",
+            "xl": [
+              -3,
+              3
             ],
-            "w": 4,
-            "h": 3,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              -2,
+              10
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#6)",
-            "caption_ar": "مخطط المنطقة المستوية (#6)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (MVC-G311910289)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (MVC-G311910289)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B x y + z\\,dV \\) over the box \\( B=[0,1]\\times[0,1]\\times[0,3] \\).",
+          "q": "Based on the thermal profile visual model shown (MVC-G328687894) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "choices": [
-            "\\( \\frac{21}{4} \\)",
-            "\\( \\frac{21}{2} \\)",
-            "\\( \\frac{21}{8} \\)",
-            "\\( \\frac{33}{4} \\)"
+            "\\(6\\)",
+            "\\(0\\)",
+            "\\(9\\)",
+            "\\(8\\)"
           ],
           "correct": 0,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{3}\\int\\limits_{0}^{1}\\int\\limits_{0}^{1} \\left(x y + z\\right)\\, dx\\, dy\\, dz \\) \\( = \\) \\( \\frac{21}{4} \\).",
+          "answer": "**Answer:** A. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                4,
-                0
-              ],
-              [
-                4,
-                2
-              ],
-              [
-                0,
-                2
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "w": 4,
-            "h": 2,
-            "sides": [
-              "a",
-              "b",
-              "a",
-              "b"
+            "yl": [
+              -2,
+              8
             ],
-            "notToScale": true,
-            "caption": "Planar Region Schematic (#7)",
-            "caption_ar": "مخطط المنطقة المستوية (#7)"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 3) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 7,
+                "label": "(4, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 3 (MVC-G328687894)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G328687894)"
           }
         },
         {
-          "q": "Evaluate \\( \\iiint_B x y + z\\,dV \\) over the box \\( B=[0,1]\\times[0,3]\\times[0,3] \\).",
+          "q": "Based strictly on the tabulated acoustics lab observations (MVC-345464520), evaluate \\(f(g(1)) + 2\\).",
           "choices": [
-            "\\( \\frac{81}{2} \\)",
-            "\\( \\frac{81}{8} \\)",
-            "\\( \\frac{81}{4} \\)",
-            "\\( \\frac{117}{4} \\)"
+            "\\(5\\)",
+            "\\(9\\)",
+            "\\(7\\)",
+            "\\(10\\)"
           ],
           "correct": 2,
-          "answer": "Iterate: \\( \\int\\limits_{0}^{3}\\int\\limits_{0}^{3}\\int\\limits_{0}^{1} \\left(x y + z\\right)\\, dx\\, dy\\, dz \\) \\( = \\) \\( \\frac{81}{4} \\).",
+          "answer": "**Answer:** C. From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\).",
+          "explain": "From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
               "2",
               "3",
@@ -330,46 +339,23 @@
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(f(x)\\)",
+                "3",
                 "5",
-                "6",
-                "7",
-                "8"
+                "10",
+                "9"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "2",
-                "0",
-                "2",
-                "0"
+                "3",
+                "4",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#8)",
-            "caption_ar": "جدول القيم المختارة (#8)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (acoustics lab, MVC-345464520)",
+            "caption_ar": "قيم مختارة للدالتين (مختبر الصوت، MVC-345464520)"
           }
         },
         {

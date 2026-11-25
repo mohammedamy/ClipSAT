@@ -25,85 +25,106 @@
           }
         },
         {
-          "q": "Evaluate \\(\\int x^2 e^x\\,dx\\), applying integration by parts twice.",
+          "q": "Selected numerical readings from calorimetry run (CALCULUS-261229109) appear in the table; evaluate \\(f(g(2)) + 3\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Repeated and definite applications",
-          "answer": "First pass (\\(u=x^2\\)): \\(x^2e^x - 2\\int xe^x\\,dx\\). Second pass gives \\(\\int xe^x\\,dx = xe^x - e^x\\). Total: \\(x^2e^x - 2xe^x + 2e^x + C\\).",
+          "answer": "**Answer:** \\(10\\). From the table, \\(g(2) = 1\\) and \\(f(1) = 7\\). Adding \\(3\\) yields \\(7 + 3 = 10\\).",
           "explanation": "First pass (\\(u=x^2\\)): \\(x^2e^x - 2\\int xe^x\\,dx\\). Second pass gives \\(\\int xe^x\\,dx = xe^x - e^x\\). Total: \\(x^2e^x - 2xe^x + 2e^x + C\\).",
+          "explain": "From the table, \\(g(2) = 1\\) and \\(f(1) = 7\\). Adding \\(3\\) yields \\(7 + 3 = 10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(f(x)\\)",
                 "7",
-                "12",
-                "17"
+                "9",
+                "14",
+                "13"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "1",
+                "2",
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#3)",
-            "caption_ar": "جدول نمط مرجعي (#3)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (calorimetry, CALCULUS-261229109)",
+            "caption_ar": "قيم مختارة للدالتين (قياس السعرات، CALCULUS-261229109)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^1 xe^{2x}\\,dx\\) exactly.",
+          "q": "Referring to the cad blueprint figure (CALCULUS-G244452490) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Repeated and definite applications",
-          "answer": "Let \\(u=x\\), \\(dv = e^{2x}dx\\): \\(\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "Let \\(u=x\\), \\(dv = e^{2x}dx\\): \\(\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "4/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 4"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 8,
+                "label": "(4, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G244452490)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G244452490)"
           }
         },
         {
-          "q": "Evaluate \\(\\int x\\ln x\\,dx\\), choosing \\(u=\\ln x\\) (logarithmic functions are prioritized as \\(u\\) under the LIATE rule).",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G160564409) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Choosing u and dv wisely (LIATE)",
-          "answer": "\\(u=\\ln x\\), \\(dv=x\\,dx\\), so \\(du=\\frac{1}{x}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(u=\\ln x\\), \\(dv=x\\,dx\\), so \\(du=\\frac{1}{x}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C\\).",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -111,135 +132,170 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G160564409)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G160564409)"
           }
         },
         {
-          "q": "Evaluate \\(\\int e^x\\sin x\\,dx\\) using the technique of applying integration by parts twice and solving algebraically for the original integral.",
+          "q": "In assessment dataset (CALCULUS-143785776) for photonics, the table reports key quantities; approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The recurring-integral trick",
-          "answer": "Let \\(I=\\int e^x\\sin x\\,dx\\). First pass (\\(u=\\sin x\\), \\(dv=e^x dx\\)): \\(I = e^x\\sin x - \\int e^x\\cos x\\,dx\\). Second pass on the new integral (\\(u=\\cos x\\)): \\(\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I\\). So \\(I = e^x\\sin x - e^x\\cos x - I\\), giving \\(2I = e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x(\\sin x-\\cos x)}{2}+C\\).",
+          "answer": "**Answer:** \\(26\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
           "explanation": "Let \\(I=\\int e^x\\sin x\\,dx\\). First pass (\\(u=\\sin x\\), \\(dv=e^x dx\\)): \\(I = e^x\\sin x - \\int e^x\\cos x\\,dx\\). Second pass on the new integral (\\(u=\\cos x\\)): \\(\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I\\). So \\(I = e^x\\sin x - e^x\\cos x - I\\), giving \\(2I = e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x(\\sin x-\\cos x)}{2}+C\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "\\(t\\)",
+              "0",
+              "2",
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(R(t)\\)",
                 "4",
-                "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (photonics, CALCULUS-143785776)",
+            "caption_ar": "جدول المعدل (الفوتونيات، CALCULUS-143785776)"
           }
         },
         {
-          "q": "Use integration by parts with \\(u=x^n\\), \\(dv=e^x dx\\) to derive the reduction formula \\(\\int x^ne^x\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
+          "q": "The accompanying figure illustrates a calibration curve configuration (CALCULUS-G194119640); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Reduction formulas",
-          "answer": "\\(du=nx^{n-1}dx\\), \\(v=e^x\\): \\(\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
           "explanation": "\\(du=nx^{n-1}dx\\), \\(v=e^x\\): \\(\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
               -3,
-              3
+              5
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              9
             ],
-            "xStep": 1,
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "6/(x - 1) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 1) + 4"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 10,
+                "label": "(2, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 4 (CALCULUS-G194119640)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G194119640)"
           }
         },
         {
-          "q": "Use the reduction formula above (applied twice) to evaluate \\(\\int x^2e^x\\,dx\\), confirming it matches an earlier result.",
+          "q": "Based on the acoustic chamber visual model shown (CALCULUS-G177342014) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Reduction formulas",
-          "answer": "\\(\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx\\). Applying again: \\(\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x\\). Total: \\(x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C\\), matching the earlier double-integration-by-parts result.",
+          "answer": "**Answer:** \\(8\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
           "explanation": "\\(\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx\\). Applying again: \\(\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x\\). Total: \\(x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C\\), matching the earlier double-integration-by-parts result.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "6/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 5"
               }
             ],
-            "caption": "Real-Line Scale (#8)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 11,
+                "label": "(4, 11)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (CALCULUS-G177342014)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G177342014)"
           }
         }
       ]
@@ -248,82 +304,88 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate \\(\\int x\\sin^{-1}x\\,dx\\) using \\(u=\\sin^{-1}x\\), \\(dv=x\\,dx\\) (the resulting integral can be left in terms of a known antiderivative form).",
+          "q": "A benchmark acoustics log (CALCULUS-361894823) provides the entries shown in the table; determine \\(4\\,h^{-1}(18)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Integration by parts with inverse trig functions",
-          "answer": "\\(du=\\frac{1}{\\sqrt{1-x^2}}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx\\), which requires a further trigonometric substitution to complete.",
+          "answer": "**Answer:** \\(40\\). Because \\(h(10) = 18\\), we have \\(h^{-1}(18) = 10\\). Multiplying by \\(4\\) gives \\(40\\).",
           "explanation": "\\(du=\\frac{1}{\\sqrt{1-x^2}}dx\\), \\(v=\\frac{x^2}{2}\\): \\(=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx\\), which requires a further trigonometric substitution to complete.",
+          "explain": "Because \\(h(10) = 18\\), we have \\(h^{-1}(18) = 10\\). Multiplying by \\(4\\) gives \\(40\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "\\(h(x)\\)",
+                "6",
+                "10",
+                "15",
+                "18"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#9)",
-            "caption_ar": "جدول القيم المختارة (#9)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (acoustics, CALCULUS-361894823)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (الصوتيات، CALCULUS-361894823)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^{\\pi/2}x\\cos(2x)\\,dx\\) exactly, using integration by parts.",
+          "q": "From the graphical features displayed in the antenna pattern figure (CALCULUS-G345118218) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A capstone mixed-technique problem",
-          "answer": "\\(u=x\\), \\(dv=\\cos(2x)dx\\), \\(v=\\frac{1}{2}\\sin(2x)\\): \\(\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "\\(u=x\\), \\(dv=\\cos(2x)dx\\), \\(v=\\frac{1}{2}\\sin(2x)\\): \\(\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 150,
-                "label": "θ"
+                "fn": "2/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 4"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#10)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G345118218)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G345118218)"
           }
         },
         {
@@ -346,12 +408,14 @@
           }
         },
         {
-          "q": "For each integral, state whether substitution or integration by parts is the appropriate technique, and identify the key choice (\\(u\\)-substitution variable, or \\(u\\)/\\(dv\\) for parts) without fully evaluating: (a) \\(\\int xe^{x^2}\\,dx\\); (b) \\(\\int xe^{2x}\\,dx\\).",
+          "q": "Given the measurements marked directly on the turbine profile schematic (CALCULUS-G725057517) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
-          "answer": "(a) Substitution — \\(u=x^2\\) makes \\(du=2x\\,dx\\) appear directly, no product rule needed. (b) Integration by parts — \\(x\\) and \\(e^{2x}\\) are genuinely different function types with no simplifying substitution; use \\(u=x\\), \\(dv=e^{2x}dx\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "(a) Substitution — \\(u=x^2\\) makes \\(du=2x\\,dx\\) appear directly, no product rule needed. (b) Integration by parts — \\(x\\) and \\(e^{2x}\\) are genuinely different function types with no simplifying substitution; use \\(u=x\\), \\(dv=e^{2x}dx\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -359,108 +423,128 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G725057517)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G725057517)"
           }
         },
         {
-          "q": "Evaluate \\(\\int \\sec^3x\\,dx\\) using integration by parts with \\(u=\\sec x\\), \\(dv=\\sec^2x\\,dx\\), and the identity \\(\\tan^2x=\\sec^2x-1\\) to solve the resulting equation for the original integral.",
+          "q": "Selected numerical readings from grid assay run (CALCULUS-741834122) appear in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
-          "answer": "\\(du=\\sec x\\tan x\\,dx\\), \\(v=\\tan x\\): \\(I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx\\). So \\(2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\), giving \\(I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C\\).",
+          "answer": "**Answer:** \\(6\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
           "explanation": "\\(du=\\sec x\\tan x\\,dx\\), \\(v=\\tan x\\): \\(I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx\\). So \\(2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\), giving \\(I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
+                "0",
                 "2",
-                "5",
-                "8",
-                "11"
+                "2",
+                "1"
               ],
               [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
+                "1",
+                "3",
+                "3",
+                "3"
               ],
               [
-                "f'(x)",
-                "4",
                 "2",
                 "4",
-                "2"
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (grid assay, CALCULUS-741834122)",
+            "caption_ar": "جدول خطوات أويلر (فحص الشبكة، CALCULUS-741834122)"
           }
         },
         {
-          "q": "A city's population growth rate is modeled by \\(r(t)=t\\ln(t+1)\\) thousand people per year, for \\(0\\leq t\\leq5\\). Set up and evaluate the definite integral for the total population growth over these 5 years using integration by parts, giving your answer to two decimal places.",
+          "q": "The accompanying figure illustrates a harmonic trace configuration (CALCULUS-G758612748); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Choosing between substitution and parts",
-          "answer": "Total growth \\(=\\int_0^5 t\\ln(t+1)\\,dt\\). This does not integrate cleanly with \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\) alone; using \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\), \\(v=\\frac{t^2}{2}\\): \\(\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt\\). Dividing \\(\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}\\): \\(\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65\\). So total growth \\(\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76\\) thousand people.",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
           "explanation": "Total growth \\(=\\int_0^5 t\\ln(t+1)\\,dt\\). This does not integrate cleanly with \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\) alone; using \\(u=\\ln(t+1)\\), \\(dv=t\\,dt\\), \\(v=\\frac{t^2}{2}\\): \\(\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt\\). Dividing \\(\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}\\): \\(\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65\\). So total growth \\(\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76\\) thousand people.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -3,
+              5
             ],
             "yl": [
-              -3,
-              6
+              0,
+              10
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 1) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 5"
               }
             ],
-            "title": "Coordinate Graph (#14)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 7,
+                "label": "(2, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 5 (CALCULUS-G758612748)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G758612748)"
           }
         },
         {
@@ -496,81 +580,83 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "\\(\\int x e^x\\,dx\\) uses:",
-          "answer": "**Answer:** B. Applying Techniques of Integration principles, IBP with \\(u=x\\), \\(dv=e^x dx\\). Therefore, the verified correct option is IBP.",
+          "q": "Given the measurements marked directly on the fluid channel schematic (CALCULUS-G657947041) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "answer": "**Answer:** B. From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Applying Techniques of Integration principles, IBP with \\(u=x\\), \\(dv=e^x dx\\). Therefore, the verified correct option is IBP.",
           "choices": [
-            "trig sub",
-            "IBP",
-            "partial fractions",
-            "u-sub"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(6\\)"
           ],
           "correct": 1,
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "caption": "Real-Line Scale (#16)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G657947041)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G657947041)"
           }
         },
         {
-          "q": "\\(\\int e^x\\cos x\\,dx\\) requires IBP:",
+          "q": "The table summarizes measurements from a logistics evaluation (CALCULUS-674723646); using these entries, approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Reduction formulas",
           "cross_lesson": "3.01 The Derivative from First Principles",
-          "answer": "Final Answer: twice, then solve for the integral. After two IBP applications, solve algebraically.",
+          "answer": "**Answer:** \\(26\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
           "explanation": "After two IBP applications, solve algebraically.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{2}{2}(6 + 10) = 10 + 16 = 26\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
+                "\\(R(t)\\)",
+                "4",
+                "6",
+                "10"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#17)",
-            "caption_ar": "جدول نمط مرجعي (#17)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (logistics, CALCULUS-674723646)",
+            "caption_ar": "جدول المعدل (العمليات اللوجستية، CALCULUS-674723646)"
           }
         },
         {

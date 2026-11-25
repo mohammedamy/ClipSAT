@@ -8,209 +8,101 @@
       "heading": "Multivariable Chain Rule, Directional Derivatives & Gradients Practice Exercises",
       "questions": [
         {
-          "q": "Find \\( \\nabla f(-5,3) \\) for \\( f(x,y)=4 x^{2} + 3 y^{2} \\).",
+          "q": "Based strictly on the tabulated metallurgy observations (MVC-629261538), approximate \\(\\int_{0}^{4} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "choices": [
-            "(18, -40)",
-            "(-20, 9)",
-            "(-40, 18)",
-            "(40, -18)"
+            "\\(28\\)",
+            "\\(40\\)",
+            "\\(34\\)",
+            "\\(68\\)"
           ],
           "correct": 2,
-          "answer": "\\( \\nabla f=(8 x,6 y) \\), so \\( \\nabla f(-5,3)=(-40, 18) \\).",
+          "answer": "**Answer:** C. Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 14 + 20 = 34\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{2}{2}(8 + 12) = 14 + 20 = 34\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "5",
+                "\\(R(t)\\)",
+                "6",
                 "8",
-                "11",
-                "14"
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 4] (metallurgy, MVC-629261538)",
+            "caption_ar": "جدول المعدل (علم المعادن، MVC-629261538)"
           }
         },
         {
-          "q": "Find \\( \\nabla f(-6,3) \\) for \\( f(x,y)=3 x^{2} + y^{2} \\).",
+          "q": "Given the measurements marked directly on the calibration curve schematic (MVC-G646040150) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "choices": [
-            "(6, -36)",
-            "(-18, 3)",
-            "(-36, 6)",
-            "(36, -6)"
+            "\\(7\\)",
+            "\\(10\\)",
+            "\\(11\\)",
+            "\\(15\\)"
           ],
           "correct": 2,
-          "answer": "\\( \\nabla f=(6 x,2 y) \\), so \\( \\nabla f(-6,3)=(-36, 6) \\).",
+          "answer": "**Answer:** C. From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
+              -2,
               3
             ],
             "yl": [
-              -4,
-              4
+              2,
+              13
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "fn": "2*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (MVC-G646040150)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (MVC-G646040150)"
           }
         },
         {
-          "q": "Find \\( \\nabla f(5,-1) \\) for \\( f(x,y)=3 x^{2} + 5 y^{2} \\).",
+          "q": "The accompanying figure illustrates a fluid channel configuration (MVC-G662817769); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "choices": [
-            "(-10, 30)",
-            "(30, -10)",
-            "(15, -5)",
-            "(-30, 10)"
+            "\\(2\\)",
+            "\\(6\\)",
+            "\\(8\\)",
+            "\\(4\\)"
           ],
           "correct": 1,
-          "answer": "\\( \\nabla f=(6 x,10 y) \\), so \\( \\nabla f(5,-1)=(30, -10) \\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
-              4
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Find \\( \\nabla f(-5,-5) \\) for \\( f(x,y)=9 x^{2} + 6 y^{2} \\).",
-          "choices": [
-            "(-90, -60)",
-            "(-60, -90)",
-            "(-45, -30)",
-            "(90, 60)"
-          ],
-          "correct": 0,
-          "answer": "\\( \\nabla f=(18 x,12 y) \\), so \\( \\nabla f(-5,-5)=(-90, -60) \\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "5",
-                "14",
-                "23",
-                "32"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "5",
-                "14",
-                "23",
-                "32"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Find \\( \\nabla f(-2,2) \\) for \\( f(x,y)=2 x^{2} + 7 y^{2} \\).",
-          "choices": [
-            "(28, -8)",
-            "(-4, 14)",
-            "(8, -28)",
-            "(-8, 28)"
-          ],
-          "correct": 3,
-          "answer": "\\( \\nabla f=(4 x,14 y) \\), so \\( \\nabla f(-2,2)=(-8, 28) \\).",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
-              7
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#6)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "Find \\( \\nabla f(-2,-1) \\) for \\( f(x,y)=4 x^{2} + 8 y^{2} \\).",
-          "choices": [
-            "(-8, -8)",
-            "(16, 16)",
-            "(-16, -16)",
-            "(-16, -14)"
-          ],
-          "correct": 2,
-          "answer": "\\( \\nabla f=(8 x,16 y) \\), so \\( \\nabla f(-2,-1)=(-16, -16) \\).",
+          "answer": "**Answer:** B. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -218,100 +110,279 @@
               6
             ],
             "yl": [
-              -3,
-              6
+              -1,
+              9
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "4/(x - 2) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 2) + 4"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 3,
+                "y": 8,
+                "label": "(3, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 2 and y = 4 (MVC-G662817769)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G662817769)"
           }
         },
         {
-          "q": "Find \\( \\nabla f(-2,-4) \\) for \\( f(x,y)=2 x^{2} + 6 y^{2} \\).",
+          "q": "Examine the hydraulics dataset arranged in the table below (MVC-679594388); showing the column images \\(T(\\mathbf{e}_1)\\) and \\(T(\\mathbf{e}_2)\\) of a linear map \\(T:\\mathbb{R}^2 \\to \\mathbb{R}^2\\). Compute \\(\\det(T)\\).",
           "choices": [
-            "(-48, -8)",
-            "(-8, -48)",
-            "(-4, -24)",
-            "(8, 48)"
+            "\\(2\\)",
+            "\\(6\\)",
+            "\\(-7\\)",
+            "\\(4\\)"
           ],
-          "correct": 1,
-          "answer": "\\( \\nabla f=(4 x,12 y) \\), so \\( \\nabla f(-2,-4)=(-8, -48) \\).",
+          "correct": 0,
+          "answer": "**Answer:** A. The matrix representation has columns \\((1, 2)^T\\) and \\((1, 4)^T\\), so \\(\\det(T) = (1)(4) - (1)(2) = 2\\).",
+          "explain": "The matrix representation has columns \\((1, 2)^T\\) and \\((1, 4)^T\\), so \\(\\det(T) = (1)(4) - (1)(2) = 2\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Basis",
+              "\\(\\mathbf{e}_1\\)",
+              "\\(\\mathbf{e}_2\\)"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(x\\)-comp of \\(T\\)",
+                "1",
+                "1"
+              ],
+              [
+                "\\(y\\)-comp of \\(T\\)",
                 "2",
-                "6",
-                "10",
-                "14"
+                "4"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ]
-            ]
+            "caption": "Linear transformation T images on standard basis (hydraulics, MVC-679594388)",
+            "caption_ar": "صور متجهات الأساس القياسية (الهيدروليك، MVC-679594388)"
           }
         },
         {
-          "q": "Find \\( \\nabla f(-1,-4) \\) for \\( f(x,y)=4 x^{2} + 8 y^{2} \\).",
+          "q": "Based on the harmonic trace visual model shown (MVC-G696373014) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(3)\\).",
           "choices": [
-            "(-64, -8)",
-            "(-4, -32)",
-            "(-8, -64)",
-            "(8, 64)"
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)",
+            "\\(3\\)"
           ],
-          "correct": 2,
-          "answer": "\\( \\nabla f=(8 x,16 y) \\), so \\( \\nabla f(-1,-4)=(-8, -64) \\).",
+          "correct": 3,
+          "answer": "**Answer:** D. From vertex \\((1, -1)\\) and point \\((2, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(3) = 1(2)^2 + (-1) = 3\\).",
+          "explain": "From vertex \\((1, -1)\\) and point \\((2, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(3) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -2,
+              4
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (1))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 1,
+                "y": -1,
+                "label": "(1, -1)"
+              },
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (MVC-G696373014)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (MVC-G696373014)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the survey layout schematic (MVC-G713150626) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "choices": [
+            "\\(11\\)",
+            "\\(14\\)",
+            "\\(19\\)",
+            "\\(23\\)"
+          ],
+          "correct": 2,
+          "answer": "**Answer:** C. From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              21
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (MVC-G713150626)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (MVC-G713150626)"
+          }
+        },
+        {
+          "q": "Referring to the thermodynamics table above (MVC-729927252), where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(1)\\)?",
+          "choices": [
+            "\\(-2\\)",
+            "\\(0\\)",
+            "\\(8\\)",
+            "\\(3\\)"
+          ],
+          "correct": 1,
+          "answer": "**Answer:** B. By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (2)(2) + (4)(-1) = 0\\).",
+          "explain": "By the product rule, \\(P'(1) = f'(1)g(1) + f(1)g'(1) = (2)(2) + (4)(-1) = 0\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "3"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "4",
+                "7"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-1",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Differentiable function & derivative values (thermodynamics, MVC-729927252)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الديناميكا الحرارية، MVC-729927252)"
+          }
+        },
+        {
+          "q": "Referring to the fluid channel figure (MVC-G478263967) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "choices": [
+            "\\(1\\)",
+            "\\(20\\)",
+            "\\(9\\)",
+            "\\(11\\)"
+          ],
+          "correct": 2,
+          "answer": "**Answer:** C. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 4 \\implies h = 4\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 9\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 4 \\implies h = 4\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 9\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              0,
+              8
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 4) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 4) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 5,
+                "y": 9,
+                "label": "(5, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 4,
+                "label": "x = 4"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 4 and y = 5 (MVC-G478263967)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G478263967)"
           }
         },
         {

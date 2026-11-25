@@ -9,49 +9,35 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "State two key properties of the normal distribution curve.",
+          "q": "In assessment dataset (ASLEVEL-207679544) for acoustics lab, the table reports key quantities; for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Properties of the normal distribution",
-          "answer": "The normal distribution curve is symmetric (bell-shaped) about its mean \\(\\mu\\), and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
+          "answer": "**Answer:** \\(\\frac{1}{5}\\). Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
           "explanation": "The normal distribution curve is symmetric (bell-shaped) about its mean \\(\\mu\\), and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(X = x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
+                "\\(P(X=x)\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(c\\)"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Discrete probability distribution of X (acoustics lab, ASLEVEL-207679544)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (مختبر الصوت، ASLEVEL-207679544)"
           }
         },
         {
@@ -87,165 +73,168 @@
           }
         },
         {
-          "q": "State one similarity and one difference between the normal distribution and the discrete uniform distribution.",
+          "q": "From the plotted specimen plot figure above (ASLEVEL-G174125299) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Properties of the normal distribution",
-          "answer": "Similarity: both are probability distributions in which the total probability sums (or integrates) to 1. Difference: the normal distribution is continuous and bell-shaped, with values clustering near the mean, while the discrete uniform distribution is discrete and every outcome has equal probability.",
+          "answer": "**Answer:** \\(19\\). Counting each disjoint region once yields \\(|A \\cup B| = 8 + 3 + 8 = 19\\).",
           "explanation": "Similarity: both are probability distributions in which the total probability sums (or integrates) to 1. Difference: the normal distribution is continuous and bell-shaped, with values clustering near the mean, while the discrete uniform distribution is discrete and every outcome has equal probability.",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 8 + 3 + 8 = 19\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 8
+              },
+              {
+                "label": "B",
+                "only": 8
+              }
+            ],
+            "both": 3,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (ASLEVEL-G174125299)",
+            "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G174125299)"
+          }
+        },
+        {
+          "q": "Refer to the geometric/analytic calibration curve figure (ASLEVEL-G258013394) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 90, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Standardizing a normal variable",
+          "answer": "**Answer:** \\(106\\). Reading two tick steps to the right of mean \\(90\\) gives \\(\\mu + 2\\sigma = 90 + 2(8) = 106\\).",
+          "explanation": "\\(\\sigma=\\sqrt{64}=8\\). \\(z=\\frac{62-50}{8}=\\frac{12}{8}=1.5\\).",
+          "explain": "Reading two tick steps to the right of mean \\(90\\) gives \\(\\mu + 2\\sigma = 90 + 2(8) = 106\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "normal_curve",
-            "mean": 3,
-            "sd": 4,
-            "shadeRange": [
-              -1,
-              7
-            ],
+            "mean": 90,
+            "sd": 8,
             "showRule": true,
-            "caption": "Normal Distribution Model (#4)"
+            "caption": "Normal distribution with mean 90 and standard deviation 8"
           }
         },
         {
-          "q": "A random variable \\(X\\sim N(50,64)\\). Find the \\(z\\)-score corresponding to \\(x=62\\), using \\(z=\\frac{x-\\mu}{\\sigma}\\).",
+          "q": "Given the measurements marked directly on the fluid channel schematic (ASLEVEL-G274791013) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Standardizing a normal variable",
-          "answer": "\\(\\sigma=\\sqrt{64}=8\\). \\(z=\\frac{62-50}{8}=\\frac{12}{8}=1.5\\).",
-          "explanation": "\\(\\sigma=\\sqrt{64}=8\\). \\(z=\\frac{62-50}{8}=\\frac{12}{8}=1.5\\).",
+          "answer": "**Answer:** \\(24\\). Summing bar heights directly from the histogram gives \\(4 + 7 + 9 + 4 = 24\\).",
+          "explanation": "\\(\\sigma=\\sqrt{25}=5\\). \\(z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 7 + 9 + 4 = 24\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -2,
-              7
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "type": "histogram",
+            "bins": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "label": "0-9",
+                "count": 4
+              },
+              {
+                "label": "10-19",
+                "count": 7
+              },
+              {
+                "label": "20-29",
+                "count": 9
+              },
+              {
+                "label": "30-39",
+                "count": 4
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (ASLEVEL-G274791013)",
+            "caption_ar": "المدرج التكراري للفئات (ASLEVEL-G274791013)"
           }
         },
         {
-          "q": "A random variable \\(X\\sim N(30,25)\\). Find the \\(z\\)-score corresponding to \\(x=23\\).",
+          "q": "During telemetry experiment (ASLEVEL-224457156), observers compiled the following table; showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Standardizing a normal variable",
-          "answer": "\\(\\sigma=\\sqrt{25}=5\\). \\(z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4\\).",
-          "explanation": "\\(\\sigma=\\sqrt{25}=5\\). \\(z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4\\).",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "**Answer:** \\(6\\). Weighted sum \\(= 2(2) + 4(3) + 6(2) + 8(7) = 84\\) across \\(14\\) observations, so mean \\(= \\frac{84}{14} = 6\\).",
+          "explanation": "\\(\\sigma=\\sqrt{225}=15\\). \\(z=\\frac{115-100}{15}=1\\). \\(P(X<115)=\\Phi(1)\\approx0.8413\\).",
+          "explain": "Weighted sum \\(= 2(2) + 4(3) + 6(2) + 8(7) = 84\\) across \\(14\\) observations, so mean \\(= \\frac{84}{14} = 6\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "19",
-                "10",
-                29
+                "2",
+                "2"
               ],
               [
-                "16",
-                "20",
-                36
+                "4",
+                "3"
               ],
               [
-                35,
-                30,
-                65
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "7"
               ]
             ],
-            "caption": "Reference Summary Table (#6)",
-            "caption_ar": "جدول ملخص البيانات (#6)",
-            "_totals": {
-              "rowTotals": [
-                29,
-                36
-              ],
-              "colTotals": [
-                35,
-                30
-              ],
-              "grandTotal": 65
-            }
-          }
-        },
-        {
-          "q": "A random variable \\(X\\sim N(100,225)\\). Find \\(P(X<115)\\), given that \\(\\Phi(1)\\approx0.8413\\).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Finding probabilities using the standard normal table",
-          "answer": "\\(\\sigma=\\sqrt{225}=15\\). \\(z=\\frac{115-100}{15}=1\\). \\(P(X<115)=\\Phi(1)\\approx0.8413\\).",
-          "explanation": "\\(\\sigma=\\sqrt{225}=15\\). \\(z=\\frac{115-100}{15}=1\\). \\(P(X<115)=\\Phi(1)\\approx0.8413\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
+            "caption": "Frequency distribution summary (telemetry, ASLEVEL-224457156)",
+            "caption_ar": "جدول التوزيع التكراري (القياس عن بُعد، ASLEVEL-224457156)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
             ],
-            "caption": "Real-Line Scale (#7)"
+            "rows_ar": [
+              [
+                "2",
+                "2"
+              ],
+              [
+                "4",
+                "3"
+              ],
+              [
+                "6",
+                "2"
+              ],
+              [
+                "8",
+                "7"
+              ]
+            ]
           }
         },
         {
-          "q": "Using the same distribution \\(X\\sim N(100,225)\\), find \\(P(X>130)\\), given that \\(\\Phi(2)\\approx0.9772\\).",
+          "q": "From the plotted field geometry figure above (ASLEVEL-G241235775) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Finding probabilities using the standard normal table",
-          "answer": "\\(z=\\frac{130-100}{15}=2\\). \\(P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228\\).",
+          "answer": "**Answer:** \\(22\\). Counting each disjoint region once yields \\(|A \\cup B| = 10 + 6 + 6 = 22\\).",
           "explanation": "\\(z=\\frac{130-100}{15}=2\\). \\(P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 10 + 6 + 6 = 22\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
+            "type": "venn",
+            "sets": [
               {
-                "from": -3,
-                "to": 2,
-                "openLeft": true,
-                "openRight": false
-              }
-            ],
-            "pts": [
-              {
-                "x": -3,
-                "open": true,
-                "label": "a"
+                "label": "A",
+                "only": 10
               },
               {
-                "x": 2,
-                "open": false,
-                "label": "b"
+                "label": "B",
+                "only": 6
               }
             ],
-            "caption": "Number Line Interval (#8)"
+            "both": 6,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (ASLEVEL-G241235775)",
+            "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G241235775)"
           }
         }
       ]
@@ -255,91 +244,114 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Based on the condition \\( X\\sim B(6,3/10) \\), find \\( P(X\\leq 2) \\), correct to 4 decimal places.",
-          "answer": "**Answer:** C. \\( P(X\\leq 2)=\\displaystyle\\sum_{k=0}^{2}\\dbinom{6}{k}\\left(3/10\\right)^k\\left(1-3/10\\right)^{6-k}=0.7443 \\) [M1][A1]",
+          "q": "Based on the acoustic chamber visual model shown (ASLEVEL-G56681966) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "answer": "**Answer:** C. Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
           "explanation": "\\( P(X\\leq 2)=\\displaystyle\\sum_{k=0}^{2}\\dbinom{6}{k}\\left(3/10\\right)^k\\left(1-3/10\\right)^{6-k}=0.7443 \\) [M1][A1]",
           "choices": [
-            "0.4202",
-            "0.2557",
-            "0.7443",
-            "0.9295"
+            "\\(68\\)",
+            "\\(44\\)",
+            "\\(76\\)",
+            "\\(84\\)"
           ],
           "correct": 2,
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 60,
+            "sd": 8,
+            "shadeRange": [
+              44,
+              76
+            ],
+            "showRule": true,
+            "caption": "Normal bell curve with mean 60 and SD 8 (ASLEVEL-G56681966)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 60 وانحراف 8 (ASLEVEL-G56681966)"
+          }
+        },
+        {
+          "q": "Given the structured quality audit observations displayed in the table (ASLEVEL-73458585), showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "answer": "**Answer:** \\(5\\). Weighted sum \\(= 2(2) + 4(4) + 6(4) + 8(2) = 60\\) across \\(12\\) observations, so mean \\(= \\frac{60}{12} = 5\\).",
+          "explanation": "\\(np=200(0.4)=80\\) and \\(n(1-p)=200(0.6)=120\\), both exceed 5, so the approximation is valid. Use \\(X\\approx N(80,48)\\), since \\(\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48\\).",
+          "explain": "Weighted sum \\(= 2(2) + 4(4) + 6(4) + 8(2) = 60\\) across \\(12\\) observations, so mean \\(= \\frac{60}{12} = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "Value \\(x\\)",
+              "Frequency"
             ],
             "rows": [
               [
-                "g(x)",
+                "2",
+                "2"
+              ],
+              [
+                "4",
+                "4"
+              ],
+              [
                 "6",
-                "9",
-                "12",
-                "15"
+                "4"
+              ],
+              [
+                "8",
+                "2"
               ]
             ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#9)",
-            "caption_ar": "جدول نمط مرجعي (#9)",
+            "caption": "Frequency distribution summary (quality audit, ASLEVEL-73458585)",
+            "caption_ar": "جدول التوزيع التكراري (تدقيق الجودة، ASLEVEL-73458585)",
             "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "القيمة \\(x\\)",
+              "التكرار"
             ],
             "rows_ar": [
               [
-                "g(x)",
+                "2",
+                "2"
+              ],
+              [
+                "4",
+                "4"
+              ],
+              [
                 "6",
-                "9",
-                "12",
-                "15"
+                "4"
+              ],
+              [
+                "8",
+                "2"
               ]
             ]
           }
         },
         {
-          "q": "A random variable \\(X\\sim B(200,0.4)\\) is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid (both \\(np\\) and \\(n(1-p)\\) should exceed 5).",
+          "q": "From the plotted waveguide design figure above (ASLEVEL-G994768187) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The normal approximation to the binomial distribution",
-          "answer": "\\(np=200(0.4)=80\\) and \\(n(1-p)=200(0.6)=120\\), both exceed 5, so the approximation is valid. Use \\(X\\approx N(80,48)\\), since \\(\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48\\).",
-          "explanation": "\\(np=200(0.4)=80\\) and \\(n(1-p)=200(0.6)=120\\), both exceed 5, so the approximation is valid. Use \\(X\\approx N(80,48)\\), since \\(\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48\\).",
-          "figure": {
-            "type": "normal_curve",
-            "mean": 200,
-            "sd": 10,
-            "shadeRange": [
-              190,
-              210
-            ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#10)"
-          }
-        },
-        {
-          "q": "A random variable \\(X\\sim B(150,0.5)\\) is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The normal approximation to the binomial distribution",
-          "answer": "\\(np=150(0.5)=75\\) and \\(n(1-p)=150(0.5)=75\\), both exceed 5, so the approximation is valid. Use \\(X\\approx N(75,37.5)\\), since \\(\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5\\).",
+          "answer": "**Answer:** \\(27\\). Counting each disjoint region once yields \\(|A \\cup B| = 12 + 5 + 10 = 27\\).",
           "explanation": "\\(np=150(0.5)=75\\) and \\(n(1-p)=150(0.5)=75\\), both exceed 5, so the approximation is valid. Use \\(X\\approx N(75,37.5)\\), since \\(\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 12 + 5 + 10 = 27\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "normal_curve",
-            "mean": 150,
-            "sd": 1,
-            "shadeRange": [
-              149,
-              151
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 12
+              },
+              {
+                "label": "B",
+                "only": 10
+              }
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#11)"
+            "both": 5,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (ASLEVEL-G994768187)",
+            "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G994768187)"
           }
         },
         {
@@ -353,45 +365,7 @@
             "0.6836",
             "0.3164"
           ],
-          "correct": 2,
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "4",
-                "6",
-                "8",
-                "10"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#12)",
-            "caption_ar": "جدول نمط مرجعي (#12)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "4",
-                "6",
-                "8",
-                "10"
-              ]
-            ]
-          }
+          "correct": 2
         },
         {
           "q": "This question has two parts. Scores on a standardized exam are normally distributed with mean \\(\\mu=68\\) and standard deviation \\(\\sigma=12\\). The exam board wants to set a pass mark so that exactly the top \\(10\\%\\) of students pass, and is told that the \\(z\\)-value corresponding to the top \\(10\\%\\) (i.e. \\(P(Z>z)=0.10\\)) is \\(z\\approx1.2816\\). (a) Find the pass mark, to the nearest whole number. (b) A student scores 90 on the exam. Find their \\(z\\)-score, and state whether they are in the top 10%.",
@@ -399,7 +373,14 @@
           "question_type": "FRQ",
           "target": "A well-designed word problem: setting a pass mark for an exam",
           "answer": "(a) \\(x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83\\) (to the nearest whole number). (b) \\(z=\\frac{90-68}{12}=\\frac{22}{12}\\approx1.833\\). Since a score of 90 exceeds the pass mark of approximately 83 (and \\(z\\approx1.833>1.2816\\)), this student IS in the top 10%.",
-          "explanation": "(a) \\(x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83\\) (to the nearest whole number). (b) \\(z=\\frac{90-68}{12}=\\frac{22}{12}\\approx1.833\\). Since a score of 90 exceeds the pass mark of approximately 83 (and \\(z\\approx1.833>1.2816\\)), this student IS in the top 10%."
+          "explanation": "(a) \\(x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83\\) (to the nearest whole number). (b) \\(z=\\frac{90-68}{12}=\\frac{22}{12}\\approx1.833\\). Since a score of 90 exceeds the pass mark of approximately 83 (and \\(z\\approx1.833>1.2816\\)), this student IS in the top 10%.",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 68,
+            "sd": 12,
+            "showRule": true,
+            "caption": "Normal distribution with mean 68 and standard deviation 12"
+          }
         },
         {
           "q": "Given \\(X\\sim N(\\mu,10^2)\\) and \\(P(X<51)=0.9\\), find \\(\\mu\\), correct to the nearest integer.",

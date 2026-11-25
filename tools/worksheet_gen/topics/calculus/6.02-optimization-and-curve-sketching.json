@@ -9,269 +9,301 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the critical points of \\(f(x) = x^3 - 6x^2 + 9x\\), and classify each as a local max or min using the second derivative test.",
+          "q": "An engineering team logged genetics measurements in the accompanying table (CALCULUS-27231602); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Critical points and the first/second derivative tests",
-          "answer": "\\(f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3)\\), critical points \\(x=1,3\\). \\(f''(x) = 6x - 12\\): \\(f''(1) = -6 < 0\\) (local max); \\(f''(3) = 6 > 0\\) (local min).",
+          "answer": "**Answer:** \\(7\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(4) = 7\\).",
           "explanation": "\\(f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3)\\), critical points \\(x=1,3\\). \\(f''(x) = 6x - 12\\): \\(f''(1) = -6 < 0\\) (local max); \\(f''(3) = 6 > 0\\) (local min).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(4) = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "0",
+                "2",
+                "2",
+                "1"
               ],
               [
-                "f'(x)",
-                "3",
                 "1",
                 "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
                 "3",
-                "5",
-                "7",
-                "9"
+                "4"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (genetics, CALCULUS-27231602)",
+            "caption_ar": "جدول خطوات أويلر (الوراثة، CALCULUS-27231602)"
           }
         },
         {
-          "q": "For \\(f(x) = x^4 - 4x^3\\), find the intervals of concavity and any inflection points.",
+          "q": "From the plotted turbine profile figure above (CALCULUS-G10454997) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Critical points and the first/second derivative tests",
-          "answer": "\\(f''(x) = 12x^2 - 24x = 12x(x-2)\\). \\(f'' > 0\\) (concave up) on \\((-\\infty,0)\\cup(2,\\infty)\\); \\(f'' < 0\\) (concave down) on \\((0,2)\\). Inflection points at \\(x=0\\) and \\(x=2\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(f''(x) = 12x^2 - 24x = 12x(x-2)\\). \\(f'' > 0\\) (concave up) on \\((-\\infty,0)\\cup(2,\\infty)\\); \\(f'' < 0\\) (concave down) on \\((0,2)\\). Inflection points at \\(x=0\\) and \\(x=2\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "from": -3,
-                "to": 2,
-                "openLeft": true,
-                "openRight": false
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
             "pts": [
               {
-                "x": -3,
-                "open": true,
-                "label": "a"
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
               },
               {
-                "x": 2,
-                "open": false,
-                "label": "b"
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
               }
             ],
-            "caption": "Number Line Interval (#3)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G10454997)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G10454997)"
           }
         },
         {
-          "q": "A farmer has 200 m of fencing to enclose a rectangular field against an existing wall (so only 3 sides need fencing). Find the dimensions that maximize the enclosed area.",
+          "q": "From the plotted fluid channel figure above (CALCULUS-G993677371) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Optimization applications",
-          "answer": "Let \\(x\\) = width (two sides), \\(y\\) = length (one side): \\(2x + y = 200\\), so \\(y = 200 - 2x\\). Area \\(A = xy = x(200-2x) = 200x - 2x^2\\). \\(A' = 200 - 4x = 0\\) gives \\(x = 50\\), \\(y = 100\\). Maximum area \\(5000\\) m\\(^2\\) at width \\(50\\) m, length \\(100\\) m.",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Let \\(x\\) = width (two sides), \\(y\\) = length (one side): \\(2x + y = 200\\), so \\(y = 200 - 2x\\). Area \\(A = xy = x(200-2x) = 200x - 2x^2\\). \\(A' = 200 - 4x = 0\\) gives \\(x = 50\\), \\(y = 100\\). Maximum area \\(5000\\) m\\(^2\\) at width \\(50\\) m, length \\(100\\) m.",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 2,
+                "label": "(3, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G993677371)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G993677371)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "The work done by \\(\\mathbf{F}\\) along \\(C\\) is:",
-          "answer": "**Answer:** C. Work = \\(\\int_C\\mathbf{F}\\cdot T\\,ds=\\int_C\\mathbf{F}\\cdot d\\mathbf{r}\\).",
+          "q": "Inspect the hydraulics values listed across the table (CALCULUS-976898752); approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** C. Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
           "explanation": "Work = \\(\\int_C\\mathbf{F}\\cdot T\\,ds=\\int_C\\mathbf{F}\\cdot d\\mathbf{r}\\).",
           "choices": [
-            "\\(\\iint\\mathbf{F}\\cdot dA\\)",
-            "\\(|\\mathbf{F}|\\cdot|C|\\)",
-            "\\(\\int_C\\mathbf{F}\\cdot d\\mathbf{r}\\)",
-            "\\(\\nabla f\\)"
+            "\\(26\\)",
+            "\\(40\\)",
+            "\\(33\\)",
+            "\\(66\\)"
           ],
           "correct": 2,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
+                "\\(R(t)\\)",
+                "5",
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 5] (hydraulics, CALCULUS-976898752)",
+            "caption_ar": "جدول المعدل (الهيدروليك، CALCULUS-976898752)"
           }
         },
         {
-          "q": "A cylindrical can must have volume \\(500\\pi\\) cm\\(^3\\). Using \\(V=\\pi r^2h\\) and surface area \\(S=2\\pi r^2+2\\pi rh\\), find the radius that minimizes the material used (surface area).",
+          "q": "Based on the acoustic chamber visual model shown (CALCULUS-G960122126) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "More optimization",
-          "answer": "From \\(V\\): \\(h=\\frac{500}{r^2}\\). \\(S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{500}{r^2}=2\\pi r^2+\\frac{1000\\pi}{r}\\). \\(S'(r)=4\\pi r-\\frac{1000\\pi}{r^2}=0\\): \\(4r^3=1000\\), \\(r^3=250\\), \\(r=\\sqrt[3]{250}\\approx6.30\\) cm.",
+          "answer": "**Answer:** \\(8\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
           "explanation": "From \\(V\\): \\(h=\\frac{500}{r^2}\\). \\(S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{500}{r^2}=2\\pi r^2+\\frac{1000\\pi}{r}\\). \\(S'(r)=4\\pi r-\\frac{1000\\pi}{r^2}=0\\): \\(4r^3=1000\\), \\(r^3=250\\), \\(r=\\sqrt[3]{250}\\approx6.30\\) cm.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "solid",
-            "shape": "cylinder",
-            "r": 12,
-            "h": 4,
-            "labels": {
-              "r": "r",
-              "h": "h"
-            },
-            "notToScale": true,
-            "caption": "Cylinder Schematic (#6)"
-          }
-        },
-        {
-          "q": "Find two positive numbers whose sum is 20 and whose product is as large as possible.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "More optimization",
-          "answer": "Let the numbers be \\(x\\) and \\(20-x\\): \\(P(x)=x(20-x)=20x-x^2\\). \\(P'(x)=20-2x=0\\) gives \\(x=10\\). Both numbers are \\(10\\), maximum product \\(100\\).",
-          "explanation": "Let the numbers be \\(x\\) and \\(20-x\\): \\(P(x)=x(20-x)=20x-x^2\\). \\(P'(x)=20-2x=0\\) gives \\(x=10\\). Both numbers are \\(10\\), maximum product \\(100\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "6/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 5"
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 11,
+                "label": "(4, 11)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (CALCULUS-G960122126)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G960122126)"
           }
         },
         {
-          "q": "For \\(f(x) = \\frac{1}{3}x^3 - x^2 - 3x + 2\\), find the intervals of increase and decrease.",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G943344521) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "More optimization",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "explanation": "Let the numbers be \\(x\\) and \\(20-x\\): \\(P(x)=x(20-x)=20x-x^2\\). \\(P'(x)=20-2x=0\\) gives \\(x=10\\). Both numbers are \\(10\\), maximum product \\(100\\).",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G943344521)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G943344521)"
+          }
+        },
+        {
+          "q": "Referring to the sensor array table above (CALCULUS-926565888), determine \\(2\\,h^{-1}(8)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Curve sketching",
-          "answer": "\\(f'(x)=x^2-2x-3=(x-3)(x+1)\\). Critical points \\(x=-1,3\\). Testing: increasing on \\((-\\infty,-1)\\), decreasing on \\((-1,3)\\), increasing on \\((3,\\infty)\\).",
+          "answer": "**Answer:** \\(4\\). Because \\(h(2) = 8\\), we have \\(h^{-1}(8) = 2\\). Multiplying by \\(2\\) gives \\(4\\).",
           "explanation": "\\(f'(x)=x^2-2x-3=(x-3)(x+1)\\). Critical points \\(x=-1,3\\). Testing: increasing on \\((-\\infty,-1)\\), decreasing on \\((-1,3)\\), increasing on \\((3,\\infty)\\).",
+          "explain": "Because \\(h(2) = 8\\), we have \\(h^{-1}(8) = 2\\). Multiplying by \\(2\\) gives \\(4\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
+                "\\(h(x)\\)",
+                "6",
+                "8",
+                "11",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "4",
-                "7",
-                "10"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (sensor array, CALCULUS-926565888)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (مصفوفة الحساسات، CALCULUS-926565888)"
           }
         }
       ]
@@ -280,32 +312,49 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Using the results above, classify \\(x=-1\\) and \\(x=3\\) as local maxima or minima via the first derivative test.",
+          "q": "From the plotted bridge arch figure above (CALCULUS-G178231173) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Curve sketching",
-          "answer": "\\(f\\) changes from increasing to decreasing at \\(x=-1\\): local maximum. \\(f\\) changes from decreasing to increasing at \\(x=3\\): local minimum.",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(f\\) changes from increasing to decreasing at \\(x=-1\\): local maximum. \\(f\\) changes from decreasing to increasing at \\(x=3\\): local minimum.",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -3,
+              3
             ],
             "yl": [
-              -5,
-              7
+              -3,
+              6
             ],
-            "xStep": 2,
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G178231173)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G178231173)"
           }
         },
         {
@@ -334,112 +383,141 @@
           }
         },
         {
-          "q": "A rectangular box with a square base and open top must have volume \\(32\\) m\\(^3\\). Find the base side length that minimizes the surface area, using \\(S=x^2+\\frac{128}{x}\\) (derived from \\(V=x^2h=32\\)).",
+          "q": "The accompanying figure illustrates a harmonic trace configuration (CALCULUS-G652287630); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Minimizing distance and cost",
-          "answer": "\\(S'(x)=2x-\\frac{128}{x^2}=0\\): \\(2x^3=128\\), \\(x^3=64\\), \\(x=4\\) m.",
+          "answer": "**Answer:** \\(8\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
           "explanation": "\\(S'(x)=2x-\\frac{128}{x^2}=0\\): \\(2x^3=128\\), \\(x^3=64\\), \\(x=4\\) m.",
-          "figure": {
-            "type": "solid",
-            "shape": "cylinder",
-            "r": 12,
-            "h": 4,
-            "labels": {
-              "r": "r",
-              "h": "h"
-            },
-            "notToScale": true,
-            "caption": "Cylinder Schematic (#11)"
-          }
-        },
-        {
-          "q": "For \\(f(x)=3x^4-4x^3\\), find all critical points and classify each using the second derivative test.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Sketching using derivative information",
-          "answer": "\\(f'(x)=12x^3-12x^2=12x^2(x-1)\\): critical points \\(x=0,1\\). \\(f''(x)=36x^2-24x\\): \\(f''(0)=0\\) (test inconclusive, needs first derivative test — \\(f'\\) doesn't change sign at \\(x=0\\), so it's neither a max nor min); \\(f''(1)=36-24=12>0\\): local minimum at \\(x=1\\).",
-          "explanation": "\\(f'(x)=12x^3-12x^2=12x^2(x-1)\\): critical points \\(x=0,1\\). \\(f''(x)=36x^2-24x\\): \\(f''(0)=0\\) (test inconclusive, needs first derivative test — \\(f'\\) doesn't change sign at \\(x=0\\), so it's neither a max nor min); \\(f''(1)=36-24=12>0\\): local minimum at \\(x=1\\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#12)",
-            "caption_ar": "جدول القيم المختارة (#12)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "For \\(f(x)=xe^{-x}\\), find the critical point and determine whether it is a maximum or minimum.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Sketching using derivative information",
-          "answer": "\\(f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0\\) gives \\(x=1\\). \\(f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)\\); \\(f''(1)=e^{-1}(-1)<0\\): local maximum at \\(x=1\\).",
-          "explanation": "\\(f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0\\) gives \\(x=1\\). \\(f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)\\); \\(f''(1)=e^{-1}(-1)<0\\): local maximum at \\(x=1\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              7
             ],
             "yl": [
-              -2,
-              7
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 7,
+                "label": "(4, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (CALCULUS-G652287630)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G652287630)"
+          }
+        },
+        {
+          "q": "Selected numerical readings from transit study run (CALCULUS-669064249) appear in the table; evaluate \\(f(g(2)) + 3\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sketching using derivative information",
+          "answer": "**Answer:** \\(16\\). From the table, \\(g(2) = 4\\) and \\(f(4) = 13\\). Adding \\(3\\) yields \\(13 + 3 = 16\\).",
+          "explanation": "\\(f'(x)=12x^3-12x^2=12x^2(x-1)\\): critical points \\(x=0,1\\). \\(f''(x)=36x^2-24x\\): \\(f''(0)=0\\) (test inconclusive, needs first derivative test — \\(f'\\) doesn't change sign at \\(x=0\\), so it's neither a max nor min); \\(f''(1)=36-24=12>0\\): local minimum at \\(x=1\\).",
+          "explain": "From the table, \\(g(2) = 4\\) and \\(f(4) = 13\\). Adding \\(3\\) yields \\(13 + 3 = 16\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "4",
+                "1",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (transit study, CALCULUS-669064249)",
+            "caption_ar": "قيم مختارة للدالتين (دراسة النقل، CALCULUS-669064249)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the turbine profile schematic (CALCULUS-G618732399) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sketching using derivative information",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0\\) gives \\(x=1\\). \\(f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)\\); \\(f''(1)=e^{-1}(-1)<0\\): local maximum at \\(x=1\\).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G618732399)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G618732399)"
           }
         },
         {
@@ -462,43 +540,56 @@
           }
         },
         {
-          "q": "A rectangular garden must have a perimeter of 80 m. Find the dimensions that maximize its area.",
+          "q": "The accompanying figure illustrates a calibration curve configuration (CALCULUS-G719398106); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Optimization with a fixed perimeter",
-          "answer": "\\(2x+2y=80\\), so \\(y=40-x\\). \\(A(x)=x(40-x)=40x-x^2\\). \\(A'(x)=40-2x=0\\) gives \\(x=20\\), \\(y=20\\). The maximum-area rectangle is a \\(20\\times20\\) square, area \\(400\\) m\\(^2\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "\\(2x+2y=80\\), so \\(y=40-x\\). \\(A(x)=x(40-x)=40x-x^2\\). \\(A'(x)=40-2x=0\\) gives \\(x=20\\), \\(y=20\\). The maximum-area rectangle is a \\(20\\times20\\) square, area \\(400\\) m\\(^2\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "polygon",
-            "shape": "rectangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                8,
-                0
-              ],
-              [
-                8,
-                5
-              ],
-              [
-                0,
-                5
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              7
             ],
-            "w": 8,
-            "h": 5,
-            "sides": [
-              "w",
-              "h",
-              "w",
-              "h"
+            "yl": [
+              -1,
+              9
             ],
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale."
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G719398106)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G719398106)"
           }
         }
       ]
@@ -507,80 +598,81 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A Norman window (a rectangle topped by a semicircle) has perimeter 10 m, with rectangle width \\(x\\) and height \\(y\\): \\(2y+x+\\pi\\frac{x}{2}=10\\). Express the total area \\(A=xy+\\frac{\\pi}{8}x^2\\) in terms of \\(x\\) alone, and state the equation you would set \\(A'(x)=0\\) to solve (do not solve).",
+          "q": "Based strictly on the tabulated wind tunnel observations (CALCULUS-736174732), approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Optimization with a fixed perimeter",
           "cross_lesson": "16.01 Vector Fields and Line Integrals",
-          "answer": "From the constraint: \\(y=\\frac{10-x-\\frac{\\pi x}{2}}{2}=5-\\frac{x}{2}-\\frac{\\pi x}{4}\\). Substituting: \\(A(x)=x\\left(5-\\frac{x}{2}-\\frac{\\pi x}{4}\\right)+\\frac{\\pi}{8}x^2=5x-\\frac{x^2}{2}-\\frac{\\pi x^2}{4}+\\frac{\\pi x^2}{8}\\). Setting \\(A'(x)=5-x-\\frac{\\pi x}{2}+\\frac{\\pi x}{4}=0\\) would give the optimal \\(x\\).",
+          "answer": "**Answer:** \\(33\\). Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
           "explanation": "From the constraint: \\(y=\\frac{10-x-\\frac{\\pi x}{2}}{2}=5-\\frac{x}{2}-\\frac{\\pi x}{4}\\). Substituting: \\(A(x)=x\\left(5-\\frac{x}{2}-\\frac{\\pi x}{4}\\right)+\\frac{\\pi}{8}x^2=5x-\\frac{x^2}{2}-\\frac{\\pi x^2}{4}+\\frac{\\pi x^2}{8}\\). Setting \\(A'(x)=5-x-\\frac{\\pi x}{2}+\\frac{\\pi x}{4}=0\\) would give the optimal \\(x\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "10",
-                "12",
-                "14",
-                "16"
+                "\\(R(t)\\)",
+                "5",
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#16)",
-            "caption_ar": "جدول نمط مرجعي (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "10",
-                "12",
-                "14",
-                "16"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 5] (wind tunnel, CALCULUS-736174732)",
+            "caption_ar": "جدول المعدل (نفق الرياح، CALCULUS-736174732)"
           }
         },
         {
-          "q": "A company's profit is modeled by \\(P(x)=-2x^2+80x-300\\), where \\(x\\) is units sold (hundreds). Find the production level that maximizes profit, and verify it is a maximum using the second derivative.",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G685842875) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Concavity and the second derivative test in context",
           "cross_lesson": "2.01 Evaluating Limits",
-          "answer": "\\(P'(x)=-4x+80=0\\) gives \\(x=20\\). \\(P''(x)=-4<0\\) for all \\(x\\), confirming a maximum at \\(x=20\\) (2000 units), with maximum profit \\(P(20)=-800+1600-300=500\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(P'(x)=-4x+80=0\\) gives \\(x=20\\). \\(P''(x)=-4<0\\) for all \\(x\\), confirming a maximum at \\(x=20\\) (2000 units), with maximum profit \\(P(20)=-800+1600-300=500\\).",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#17)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G685842875)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G685842875)"
           }
         },
         {

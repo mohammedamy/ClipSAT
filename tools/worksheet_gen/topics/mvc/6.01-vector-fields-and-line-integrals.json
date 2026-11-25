@@ -8,265 +8,145 @@
       "heading": "Vector Fields, Conservative Fields & Line Integrals Practice Exercises",
       "questions": [
         {
-          "q": "Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). Evaluate the vector field at the point \\( (2, 4) \\).",
+          "q": "Given the structured calorimetry observations displayed in the table (MVC-74789457), approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "choices": [
-            "\\( \\langle 6, 8 \\rangle \\)",
-            "\\( \\langle 8, 6 \\rangle \\)",
-            "\\( \\langle 5, 6 \\rangle \\)",
-            "\\( \\langle 6, 5 \\rangle \\)"
+            "\\(48\\)",
+            "\\(38\\)",
+            "\\(58\\)",
+            "\\(96\\)"
           ],
           "correct": 0,
-          "answer": "The vector field is given by \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). To evaluate the vector field at the point \\( (2, 4) \\), we substitute \\( x=2 \\) and \\( y=4 \\) into the components of the vector field.\n\nFirst component: \\( 3x = 3(2) = 6 \\).\nSecond component: \\( 2y = 2(4) = 8 \\).\n\nTherefore, \\( \\mathbf{F}(2,4) = \\langle 6, 8 \\rangle \\).",
+          "answer": "**Answer:** A. Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{4}{2}(7 + 11) = 12 + 36 = 48\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(5 + 7) + \\frac{4}{2}(7 + 11) = 12 + 36 = 48\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
               "2",
-              "4",
               "6"
             ],
             "rows": [
               [
-                "f(x)",
-                "6",
-                "10",
-                "14",
-                "18"
-              ],
-              [
-                "f'(x)",
+                "\\(R(t)\\)",
                 "5",
-                "3",
-                "5",
-                "3"
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "6",
-                "10",
-                "14",
-                "18"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (calorimetry, MVC-74789457)",
+            "caption_ar": "جدول المعدل (قياس السعرات، MVC-74789457)"
           }
         },
         {
-          "q": "Consider the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\). Which of the following options best represents the vector field at the point (1, 1)?",
+          "q": "Based on the antenna pattern visual model shown (MVC-G24457614) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "choices": [
-            "\\(\\langle 2, 3 \\rangle\\)",
-            "\\(\\langle 1, 1 \\rangle\\)",
-            "\\(\\langle 4, 6 \\rangle\\)",
-            "\\(\\langle 2, 6 \\rangle\\)"
+            "\\(8\\)",
+            "\\(2\\)",
+            "\\(15\\)",
+            "\\(10\\)"
           ],
           "correct": 0,
-          "answer": "To find the representation of the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\) at a specific point, we substitute the coordinates of the point into the components of the vector field. At the point (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\). Therefore, the vector field at the point (1, 1) is \\( \\langle 2, 3 \\rangle \\). Option B is incorrect as it represents the position vector at (1,1). Option C is incorrect as it represents the vector field at (2,2). Option D is incorrect as it uses the x-component from (2,y) and the y-component from (x,2).",
+          "answer": "**Answer:** A. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "2/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 5"
               }
             ],
-            "caption": "Real-Line Scale (#3)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 7,
+                "label": "(4, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (MVC-G24457614)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G24457614)"
           }
         },
         {
-          "q": "Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\). What is the value of the vector field at the point \\( (3, -1) \\)?",
+          "q": "Referring to the field geometry figure (MVC-G41235219) displaying the slope field for \\(\\dfrac{dy}{dx} = 1(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "choices": [
-            "\\( \\langle 5, 6 \\rangle \\)",
-            "\\( \\langle 5, 0 \\rangle \\)",
-            "\\( \\langle 7, 6 \\rangle \\)",
-            "\\( \\langle 7, 0 \\rangle \\)"
+            "\\(-1\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(-2\\)"
           ],
           "correct": 3,
-          "answer": "To find the value of the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\) at the point \\( (3, -1) \\), we substitute \\( x=3 \\) and \\( y=-1 \\) into the components of the vector field.\n\nThe first component is \\( 2x+y = 2(3) + (-1) = 6 - 1 = 5 \\).\n\nThe second component is \\( x-3y = 3 - 3(-1) = 3 + 3 = 6 \\).\n\nTherefore, the vector field at \\( (3, -1) \\) is \\( \\langle 5, 6 \\rangle \\).",
+          "answer": "**Answer:** D. At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "explain": "At highlighted coordinates \\((1, 3)\\), \\(\\frac{dy}{dx} = 1(1 - 3) = -2\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "1*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 1,
+                "y": 3,
+                "label": "P(1, 3)"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "caption": "Direction slope field for dy/dx = 1(x - y) with point P (MVC-G41235219)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (MVC-G41235219)"
           }
         },
         {
-          "q": "Evaluate \\( \\int_C x^{2}\\,ds \\) where \\( C \\) is the segment from \\( \\left( 0, \\  0\\right) \\) to \\( \\left( 5, \\  12\\right) \\).",
+          "q": "In assessment dataset (MVC-125122314) for logistics, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
           "choices": [
-            "\\( \\frac{25}{3} \\)",
-            "\\( \\frac{4225}{3} \\)",
-            "\\( \\frac{328}{3} \\)",
-            "\\( \\frac{325}{3} \\)"
+            "\\(7\\)",
+            "\\(18\\)",
+            "\\(13\\)",
+            "\\(17\\)"
           ],
           "correct": 3,
-          "answer": "\\( \\mathbf r(t)=\\langle 5 t, 12 t \\rangle,\\ ds=13\\,dt \\). \\( \\int\\limits_{0}^{1} 325 t^{2}\\, dt \\) \\( = \\) \\( \\frac{325}{3} \\).",
+          "answer": "**Answer:** D. From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+          "explain": "From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#5)",
-            "caption_ar": "جدول القيم المختارة (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Which vector field is conservative on all of \\( \\mathbb R^2 \\)?",
-          "choices": [
-            "\\( \\langle e^{y}, x e^{y} \\rangle \\)",
-            "\\( \\langle x y, x \\rangle \\)",
-            "\\( \\langle x + y, - x + y \\rangle \\)",
-            "\\( \\langle x^{2} y, x y^{2} \\rangle \\)"
-          ],
-          "correct": 0,
-          "answer": "On \\( \\mathbb R^2 \\), \\( \\langle P,Q\\rangle \\) is conservative iff \\( P_y=Q_x \\). For \\( \\langle e^{y}, x e^{y} \\rangle \\): \\( P_y=e^{y}=Q_x \\); each other field has \\( P_y\\ne Q_x \\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#6)"
-          }
-        },
-        {
-          "q": "Evaluate \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\) for \\( \\mathbf F=\\langle y^{2}, 2 x \\rangle \\) along the segment from \\( \\left( -2, \\  -2\\right) \\) to \\( \\left( -2, \\  3\\right) \\).",
-          "choices": [
-            "\\( 20 \\)",
-            "\\( -19 \\)",
-            "\\( -40 \\)",
-            "\\( -20 \\)"
-          ],
-          "correct": 3,
-          "answer": "Parametrize \\( \\mathbf r(t)=\\langle -2, 5 t - 2 \\rangle,\\ 0\\le t\\le1 \\). Then \\( \\int_0^1\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)\\,dt=\\int\\limits_{0}^{1} \\left(-20\\right)\\, dt=-20 \\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#7)"
-          }
-        },
-        {
-          "q": "Evaluate \\( \\int_C x + y\\,ds \\) where \\( C \\) is the segment from \\( \\left( 0, \\  0\\right) \\) to \\( \\left( 4, \\  3\\right) \\).",
-          "choices": [
-            "\\( \\frac{35}{2} \\)",
-            "\\( \\frac{7}{2} \\)",
-            "\\( \\frac{175}{2} \\)",
-            "\\( \\frac{37}{2} \\)"
-          ],
-          "correct": 0,
-          "answer": "\\( \\mathbf r(t)=\\langle 4 t, 3 t \\rangle,\\ ds=5\\,dt \\). \\( \\int\\limits_{0}^{1} 35 t\\, dt \\) \\( = \\) \\( \\frac{35}{2} \\).",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
+              "\\(x\\)",
               "1",
               "2",
               "3",
@@ -274,76 +154,223 @@
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "6",
+                "\\(f(x)\\)",
                 "7",
-                "8"
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "2",
-                "0",
-                "2",
-                "0"
+                "3",
+                "4",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#8)",
-            "caption_ar": "جدول القيم المختارة (#8)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (logistics, MVC-125122314)",
+            "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، MVC-125122314)"
           }
         },
         {
-          "q": "Evaluate \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\) for \\( \\mathbf F=\\langle x y, y \\rangle \\) along the segment from \\( \\left( 1, \\  1\\right) \\) to \\( \\left( 1, \\  -2\\right) \\).",
+          "q": "The accompanying figure illustrates a turbine profile configuration (MVC-G141900933); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "choices": [
-            "\\( - \\frac{3}{2} \\)",
-            "\\( \\frac{5}{2} \\)",
-            "\\( \\frac{3}{2} \\)",
-            "\\( 3 \\)"
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (MVC-G141900933)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (MVC-G141900933)"
+          }
+        },
+        {
+          "q": "Based on the acoustic chamber visual model shown (MVC-G91568090) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "choices": [
+            "\\(1\\)",
+            "\\(12\\)",
+            "\\(9\\)",
+            "\\(7\\)"
+          ],
+          "correct": 3,
+          "answer": "**Answer:** D. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (MVC-G91568090)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G91568090)"
+          }
+        },
+        {
+          "q": "An engineering team logged seismology measurements in the accompanying table (MVC-108344695); using these data, listing selected values of a smooth function \\(f(x, y)\\). Using a central difference quotient with \\(\\Delta x = 2\\), estimate \\(\\dfrac{\\partial f}{\\partial x}(2, y_0)\\).",
+          "choices": [
+            "\\(4\\)",
+            "\\(8\\)",
+            "\\(6\\)",
+            "\\(2\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Central difference along \\(y = y_0\\): \\(\\frac{f(3, y_0) - f(1, y_0)}{(3) - (1)} = \\frac{11 - 3}{2} = 4\\).",
+          "explain": "Central difference along \\(y = y_0\\): \\(\\frac{f(3, y_0) - f(1, y_0)}{(3) - (1)} = \\frac{11 - 3}{2} = 4\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3"
+            ],
+            "rows": [
+              [
+                "\\(f(x, y_0)\\)",
+                "3",
+                "5",
+                "11"
+              ],
+              [
+                "\\(f(x, y_0+1)\\)",
+                "5",
+                "8",
+                "15"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Grid surface values f(x, y) around (2, y₀) (seismology, MVC-108344695)",
+            "caption_ar": "جدول قيم السطح (علم الزلازل، MVC-108344695)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the cad blueprint schematic (MVC-G218759182) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "choices": [
+            "\\(2\\)",
+            "\\(15\\)",
+            "\\(8\\)",
+            "\\(10\\)"
           ],
           "correct": 2,
-          "answer": "Parametrize \\( \\mathbf r(t)=\\langle 1, 1 - 3 t \\rangle,\\ 0\\le t\\le1 \\). Then \\( \\int_0^1\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)\\,dt=\\int\\limits_{0}^{1} \\left(9 t - 3\\right)\\, dt=\\frac{3}{2} \\).",
+          "answer": "**Answer:** C. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "4/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 5"
               }
             ],
-            "caption": "Real-Line Scale (#9)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 9,
+                "label": "(4, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (MVC-G218759182)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (MVC-G218759182)"
           }
         },
         {

@@ -57,58 +57,38 @@
           }
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.20 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "Inspect the navigation values listed across the table (MATHAI-79145738); for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
           "choices": [
-            "\\( 0.80 \\)",
-            "\\( 0.90 \\)",
-            "\\( 0.10 \\)",
-            "\\( 1.20 \\)"
+            "\\(\\frac{1}{5}\\)",
+            "\\(\\frac{4}{5}\\)",
+            "\\(\\frac{3}{10}\\)",
+            "\\(\\frac{1}{10}\\)"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.20 = 0.80 \\).",
+          "answer": "**Answer:** A. Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "15",
-                "21",
-                36
-              ],
-              [
-                "19",
-                "27",
-                46
-              ],
-              [
-                34,
-                48,
-                82
+                "\\(P(X=x)\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(c\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#3)",
-            "caption_ar": "جدول ملخص البيانات (#3)",
-            "_totals": {
-              "rowTotals": [
-                36,
-                46
-              ],
-              "colTotals": [
-                34,
-                48
-              ],
-              "grandTotal": 82
-            }
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (navigation, MATHAI-79145738)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (الملاحة، MATHAI-79145738)"
           }
         },
         {
@@ -161,30 +141,41 @@
           }
         },
         {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.05 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "q": "Using the labeled measurements in the waveguide design diagram (MATHAI-G978481031) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "choices": [
-            "\\( 0.0450 \\)",
-            "\\( 0.9500 \\)",
-            "\\( 0.8500 \\)",
-            "\\( 0.0050 \\)"
+            "\\(25\\)",
+            "\\(27\\)",
+            "\\(22\\)",
+            "\\(9\\)"
           ],
           "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.05 \\times 0.90 = 0.0450 \\).",
+          "answer": "**Answer:** A. Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "venn",
-            "sets": [
+            "type": "histogram",
+            "bins": [
               {
-                "label": "A",
-                "only": 16
+                "label": "0-9",
+                "count": 6
               },
               {
-                "label": "B",
-                "only": 12
+                "label": "10-19",
+                "count": 6
+              },
+              {
+                "label": "20-29",
+                "count": 9
+              },
+              {
+                "label": "30-39",
+                "count": 4
               }
             ],
-            "both": 6,
-            "outside": 5,
-            "caption": "Set Relationship Diagram (#5)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (MATHAI-G978481031)",
+            "caption_ar": "المدرج التكراري للفئات (MATHAI-G978481031)"
           }
         },
         {
@@ -237,112 +228,123 @@
           }
         },
         {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.15 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "q": "The accompanying figure illustrates a survey layout configuration (MATHAI-G12036262) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "choices": [
-            "\\( 0.1350 \\)",
-            "\\( 1.0500 \\)",
-            "\\( 0.7500 \\)",
-            "\\( 0.0150 \\)"
+            "\\(86\\)",
+            "\\(78\\)",
+            "\\(54\\)",
+            "\\(94\\)"
           ],
           "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.15 \\times 0.90 = 0.1350 \\).",
+          "answer": "**Answer:** A. Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "venn",
-            "sets": [
-              {
-                "label": "A",
-                "only": 12
-              },
-              {
-                "label": "B",
-                "only": 13
-              }
-            ],
-            "both": 6,
-            "outside": 5,
-            "caption": "Set Relationship Diagram (#7)"
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 70 and standard deviation 8"
           }
         },
         {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.20 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "q": "From the plotted turbine profile figure above (MATHAI-G28813881) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "choices": [
-            "\\( 0.1800 \\)",
-            "\\( 1.1000 \\)",
-            "\\( 0.7000 \\)",
-            "\\( 0.0200 \\)"
+            "\\(27\\)",
+            "\\(29\\)",
+            "\\(24\\)",
+            "\\(10\\)"
           ],
           "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.20 \\times 0.90 = 0.1800 \\).",
+          "answer": "**Answer:** A. Summing bar heights directly from the histogram gives \\(4 + 6 + 10 + 7 = 27\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 6 + 10 + 7 = 27\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 4
+              },
+              {
+                "label": "10-19",
+                "count": 6
+              },
+              {
+                "label": "20-29",
+                "count": 10
+              },
+              {
+                "label": "30-39",
+                "count": 7
+              }
+            ],
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (MATHAI-G28813881)",
+            "caption_ar": "المدرج التكراري للفئات (MATHAI-G28813881)"
+          }
+        },
+        {
+          "q": "Examine the thermodynamics dataset arranged in the table below (MATHAI-911369548); showing recorded frequency counts. Compute the arithmetic mean of the dataset.",
+          "choices": [
+            "\\(6\\)",
+            "\\(7\\)",
+            "\\(5\\)",
+            "\\(132\\)"
+          ],
+          "correct": 0,
+          "answer": "**Answer:** A. Weighted sum \\(= 2(3) + 4(5) + 6(3) + 8(11) = 132\\) across \\(22\\) observations, so mean \\(= \\frac{132}{22} = 6\\).",
+          "explain": "Weighted sum \\(= 2(3) + 4(5) + 6(3) + 8(11) = 132\\) across \\(22\\) observations, so mean \\(= \\frac{132}{22} = 6\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "19",
-                "22",
-                41
+                "2",
+                "3"
               ],
               [
-                "20",
-                "20",
-                40
+                "4",
+                "5"
               ],
               [
-                39,
-                42,
-                81
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "11"
               ]
             ],
-            "caption": "Reference Summary Table (#8)",
-            "caption_ar": "جدول ملخص البيانات (#8)",
-            "_totals": {
-              "rowTotals": [
-                41,
-                40
-              ],
-              "colTotals": [
-                39,
-                42
-              ],
-              "grandTotal": 81
-            }
-          }
-        },
-        {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.25 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
-          "choices": [
-            "\\( 0.2250 \\)",
-            "\\( 1.1500 \\)",
-            "\\( 0.6500 \\)",
-            "\\( 0.0250 \\)"
-          ],
-          "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.25 \\times 0.90 = 0.2250 \\).",
-          "figure": {
-            "type": "venn",
-            "sets": [
-              {
-                "label": "A",
-                "only": 14
-              },
-              {
-                "label": "B",
-                "only": 9
-              }
+            "caption": "Frequency distribution summary (thermodynamics, MATHAI-911369548)",
+            "caption_ar": "جدول التوزيع التكراري (الديناميكا الحرارية، MATHAI-911369548)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
             ],
-            "both": 6,
-            "outside": 5,
-            "caption": "Set Relationship Diagram (#9)"
+            "rows_ar": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "11"
+              ]
+            ]
           }
         },
         {

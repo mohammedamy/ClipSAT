@@ -10,288 +10,211 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "A bag contains marbles of different colors. The probability of drawing a red marble is \\( P(\\text{Red}) = \\frac{2}{5} \\) and the probability of drawing a blue marble is \\( P(\\text{Blue}) = \\frac{1}{3} \\). If the draws are independent, what is the probability of drawing a red marble followed by a blue marble?",
-          "answer": "**Answer:** A. Since the draws are independent, the probability of two independent events occurring in sequence is the product of their individual probabilities.\n\nLet R be the event of drawing a red marble and B be the event of drawing a blue marble.\nWe are given:\n\\( P(R) = \\frac{2}{5} \\)\n\\( P(B) = \\frac{1}{3} \\)\n\nThe probability of drawing a red marble followed by a blue marble is \\( P(R \\text{ and } B) = P(R) \\times P(B) \\).\n\n\\( P(R \\text{ and } B) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2 \\times 1}{5 \\times 3} = \\frac{2}{15} \\).\n\nTherefore, the probability of drawing a red marble followed by a blue marble is \\( \\frac{2}{15} \\).",
+          "q": "An engineering team logged navigation measurements in the accompanying table (APSTATS-661567354); using these data, for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
+          "answer": "**Answer:** A. Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+4+2}{10} = \\frac{1}{5}\\).",
           "explanation": "Since the draws are independent, the probability of two independent events occurring in sequence is the product of their individual probabilities.\n\nLet R be the event of drawing a red marble and B be the event of drawing a blue marble.\nWe are given:\n\\( P(R) = \\frac{2}{5} \\)\n\\( P(B) = \\frac{1}{3} \\)\n\nThe probability of drawing a red marble followed by a blue marble is \\( P(R \\text{ and } B) = P(R) \\times P(B) \\).\n\n\\( P(R \\text{ and } B) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2 \\times 1}{5 \\times 3} = \\frac{2}{15} \\).\n\nTherefore, the probability of drawing a red marble followed by a blue marble is \\( \\frac{2}{15} \\).",
           "choices": [
-            "\\(\\frac{2}{15}\\)",
-            "\\(\\frac{3}{8}\\)",
-            "\\(\\frac{1}{2}\\)",
-            "\\(\\frac{11}{15}\\)"
+            "\\(\\frac{1}{5}\\)",
+            "\\(\\frac{4}{5}\\)",
+            "\\(\\frac{3}{10}\\)",
+            "\\(\\frac{1}{10}\\)"
           ],
           "correct": 0,
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+4+2}{10} = \\frac{1}{5}\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "22",
-                "21",
-                43
-              ],
-              [
-                "8",
-                "27",
-                35
-              ],
-              [
-                30,
-                48,
-                78
+                "\\(P(X=x)\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{4}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(c\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#2)",
-            "caption_ar": "جدول ملخص البيانات (#2)",
-            "_totals": {
-              "rowTotals": [
-                43,
-                35
-              ],
-              "colTotals": [
-                30,
-                48
-              ],
-              "grandTotal": 78
-            }
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (navigation, APSTATS-661567354)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (الملاحة، APSTATS-661567354)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable, \\(X\\), represents the number of successful trials in a sequence of independent Bernoulli trials. The probability of success on any given trial is \\(p = 0.6\\). The expected value of \\(X\\) is \\(E[X] = 18\\). We are interested in a new random variable, \\(Y\\), defined as \\(Y = aX + b\\), where \\(a\\) and \\(b\\) are constants. If the variance of \\(Y\\) is \\(Var(Y) = 7.2\\), what is the value of \\(a^2\\)?",
-          "answer": "**Answer:** C. The random variable \\(X\\) follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by \\(E[X] = np\\), where \\(n\\) is the number of trials and \\(p\\) is the probability of success. We are given \\(E[X] = 18\\) and \\(p = 0.6\\).\n\nTherefore, \\(np = 18\\) implies \\(n(0.6) = 18\\). Solving for \\(n\\), we get \\(n = \\frac{18}{0.6} = 30\\). So, there are 30 trials.\n\nThe variance of a binomial random variable is given by \\(Var(X) = np(1-p)\\). Substituting the values we found:\n\\(Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2\\).\n\nNow, we consider the random variable \\(Y = aX + b\\). The properties of expectation and variance for linear transformations of random variables are:\n\\(E[Y] = E[aX + b] = aE[X] + b\\)\n\\(Var(Y) = Var(aX + b) = a^2 Var(X)\\)\n\nWe are given \\(Var(Y) = 7.2\\) and we calculated \\(Var(X) = 7.2\\). Using the formula for \\(Var(Y)\\):\n\\(7.2 = a^2 (7.2)\\)\n\nDividing both sides by 7.2, we get:\n\\(a^2 = \\frac{7.2}{7.2} = 1\\).",
+          "q": "From the plotted field geometry figure above (APSTATS-G644790735) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "answer": "**Answer:** C. Counting each disjoint region once yields \\(|A \\cup B| = 10 + 6 + 6 = 22\\).",
           "explanation": "The random variable \\(X\\) follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by \\(E[X] = np\\), where \\(n\\) is the number of trials and \\(p\\) is the probability of success. We are given \\(E[X] = 18\\) and \\(p = 0.6\\).\n\nTherefore, \\(np = 18\\) implies \\(n(0.6) = 18\\). Solving for \\(n\\), we get \\(n = \\frac{18}{0.6} = 30\\). So, there are 30 trials.\n\nThe variance of a binomial random variable is given by \\(Var(X) = np(1-p)\\). Substituting the values we found:\n\\(Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2\\).\n\nNow, we consider the random variable \\(Y = aX + b\\). The properties of expectation and variance for linear transformations of random variables are:\n\\(E[Y] = E[aX + b] = aE[X] + b\\)\n\\(Var(Y) = Var(aX + b) = a^2 Var(X)\\)\n\nWe are given \\(Var(Y) = 7.2\\) and we calculated \\(Var(X) = 7.2\\). Using the formula for \\(Var(Y)\\):\n\\(7.2 = a^2 (7.2)\\)\n\nDividing both sides by 7.2, we get:\n\\(a^2 = \\frac{7.2}{7.2} = 1\\).",
           "choices": [
-            "0.16",
-            "0.36",
-            "1.00",
-            "2.50"
+            "\\(27\\)",
+            "\\(16\\)",
+            "\\(22\\)",
+            "\\(28\\)"
           ],
           "correct": 2,
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 10 + 6 + 6 = 22\\).",
           "figure": {
-            "type": "fn",
-            "xl": [
-              -4,
-              4
-            ],
-            "yl": [
-              -5,
-              7
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
+            "type": "venn",
+            "sets": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
+                "label": "A",
+                "only": 10
+              },
+              {
+                "label": "B",
+                "only": 6
               }
             ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
+            "both": 6,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (APSTATS-G644790735)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G644790735)"
           }
         },
         {
-          "q": "Explain the difference between mutually exclusive events and independent events, and give a brief example of each.",
+          "q": "The accompanying figure illustrates a thermal profile configuration (APSTATS-G628013116); using it representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Mutually exclusive and independent events",
-          "answer": "Mutually exclusive events cannot happen at the same time (e.g. rolling a 2 and rolling a 5 on the same single die roll — \\(P(A\\cap B)=0\\)). Independent events do not affect each other's probability of occurring (e.g. flipping heads on one coin and rolling a 6 on a separate die — knowing one outcome tells you nothing about the other).",
+          "answer": "**Answer:** \\(11\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 27\\), so \\(\\text{IQR} = 27 - 16 = 11\\).",
           "explanation": "Mutually exclusive events cannot happen at the same time (e.g. rolling a 2 and rolling a 5 on the same single die roll — \\(P(A\\cap B)=0\\)). Independent events do not affect each other's probability of occurring (e.g. flipping heads on one coin and rolling a 6 on a separate die — knowing one outcome tells you nothing about the other).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 27\\), so \\(\\text{IQR} = 27 - 16 = 11\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "Sample",
+                "min": 11,
+                "q1": 16,
+                "med": 21,
+                "q3": 27,
+                "max": 32
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "range": [
+              7,
+              36
+            ],
+            "caption": "Five-number summary box plot (APSTATS-G628013116)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G628013116)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A fair six-sided die is rolled. What is the probability of rolling a number greater than 4?",
-          "answer": "**Answer:** B. The possible outcomes when rolling a fair six-sided die are {1, 2, 3, 4, 5, 6}. There are 6 equally likely outcomes in total. The outcomes that are greater than 4 are {5, 6}. There are 2 favorable outcomes. The probability of an event is the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of rolling a number greater than 4 is \\( \\frac{2}{6} = \\frac{1}{3} \\). <strong>[M1] [A1]</strong>",
+          "q": "During biometrics experiment (APSTATS-611234497), observers compiled the following table; for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
+          "answer": "**Answer:** B. Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+2+2}{10} = \\frac{2}{5}\\).",
           "explanation": "The possible outcomes when rolling a fair six-sided die are {1, 2, 3, 4, 5, 6}. There are 6 equally likely outcomes in total. The outcomes that are greater than 4 are {5, 6}. There are 2 favorable outcomes. The probability of an event is the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of rolling a number greater than 4 is \\( \\frac{2}{6} = \\frac{1}{3} \\). <strong>[M1] [A1]</strong>",
           "choices": [
-            "1/6",
-            "1/3",
-            "1/2",
-            "2/3"
+            "\\(\\frac{3}{5}\\)",
+            "\\(\\frac{2}{5}\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(\\frac{3}{10}\\)"
           ],
           "correct": 1,
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+2+2}{10} = \\frac{2}{5}\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "12",
-                "21",
-                33
-              ],
-              [
-                "15",
-                "24",
-                39
-              ],
-              [
-                27,
-                45,
-                72
+                "\\(P(X=x)\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(c\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#5)",
-            "caption_ar": "جدول ملخص البيانات (#5)",
-            "_totals": {
-              "rowTotals": [
-                33,
-                39
-              ],
-              "colTotals": [
-                27,
-                45
-              ],
-              "grandTotal": 72
-            }
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (biometrics, APSTATS-611234497)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (القياسات الحيوية، APSTATS-611234497)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "In a probability space, two events \\( A \\) and \\( B \\) satisfy \\( P(A) = 0.6 \\), \\( P(A \\cap B) = 0.2 \\), and \\( P(A \\cup B) = 1.0 \\). What is the value of \\( P(B \\setminus A) \\)?",
-          "answer": "**Answer:** C. By the addition rule of probability, \\( P(A \\cup B) = P(A) + P(B \\setminus A) \\). Substituting \\( P(A \\cup B) = 1.0 \\) and \\( P(A) = 0.6 \\) gives:\n\\[ 1.0 = 0.6 + P(B \\setminus A) \\implies P(B \\setminus A) = 0.4. \\]",
+          "q": "Refer to the geometric/analytic harmonic trace figure (APSTATS-G594457878) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 80, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "answer": "**Answer:** C. Reading two tick steps to the right of mean \\(80\\) gives \\(\\mu + 2\\sigma = 80 + 2(8) = 96\\).",
           "explanation": "By the addition rule of probability, \\( P(A \\cup B) = P(A) + P(B \\setminus A) \\). Substituting \\( P(A \\cup B) = 1.0 \\) and \\( P(A) = 0.6 \\) gives:\n\\[ 1.0 = 0.6 + P(B \\setminus A) \\implies P(B \\setminus A) = 0.4. \\]",
           "choices": [
-            "0.2",
-            "0.8",
-            "0.4",
-            "0.6"
+            "\\(88\\)",
+            "\\(64\\)",
+            "\\(96\\)",
+            "\\(104\\)"
           ],
           "correct": 2,
+          "explain": "Reading two tick steps to the right of mean \\(80\\) gives \\(\\mu + 2\\sigma = 80 + 2(8) = 96\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#6)"
+            "type": "normal_curve",
+            "mean": 80,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 80 and standard deviation 8"
           }
         },
         {
-          "q": "Use the multiplication rule to find \\(P(A\\cap B)\\) if \\(P(A)=0.5\\) and \\(P(B\\mid A)=0.4\\).",
+          "q": "From the plotted specimen plot figure above (APSTATS-G577680259) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Conditional probability",
-          "answer": "Multiplication rule: \\(P(A\\cap B)=P(A)\\times P(B\\mid A)=0.5\\times0.4=0.2\\).",
+          "answer": "**Answer:** \\(19\\). Counting each disjoint region once yields \\(|A \\cup B| = 8 + 3 + 8 = 19\\).",
           "explanation": "Multiplication rule: \\(P(A\\cap B)=P(A)\\times P(B\\mid A)=0.5\\times0.4=0.2\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 8 + 3 + 8 = 19\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "venn",
+            "sets": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "label": "A",
+                "only": 8
               },
               {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "B",
+                "only": 8
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "both": 3,
+            "outside": 5,
+            "caption": "Venn count diagram of sets A and B (APSTATS-G577680259)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G577680259)"
           }
         },
         {
-          "q": "A survey of 200 students finds 90 own a car, 120 have a part-time job, and 60 both own a car and have a job. Find the probability a randomly selected student has a job, given that they own a car.",
+          "q": "The accompanying figure illustrates a reservoir profile configuration (APSTATS-G560902640); using it representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Two-way tables and conditional probability",
-          "answer": "\\(P(\\mathrm{job\\ given\\ car})=\\frac{P(\\mathrm{car\\ and\\ job})}{P(\\mathrm{car})}=\\frac{60/200}{90/200}=\\frac{60}{90}=\\frac{2}{3}\\approx0.667\\).",
+          "answer": "**Answer:** \\(8\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 18 = 8\\).",
           "explanation": "\\(P(\\mathrm{job\\ given\\ car})=\\frac{P(\\mathrm{car\\ and\\ job})}{P(\\mathrm{car})}=\\frac{60/200}{90/200}=\\frac{60}{90}=\\frac{2}{3}\\approx0.667\\).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 18 = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
+            "type": "boxplot",
+            "boxes": [
+              {
+                "label": "Sample",
+                "min": 12,
+                "q1": 18,
+                "med": 22,
+                "q3": 26,
+                "max": 31
+              }
             ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
+            "range": [
+              8,
+              35
             ],
-            "data": [
-              [
-                "17",
-                "22",
-                39
-              ],
-              [
-                "8",
-                "23",
-                31
-              ],
-              [
-                25,
-                45,
-                70
-              ]
-            ],
-            "caption": "Reference Summary Table (#8)",
-            "caption_ar": "جدول ملخص البيانات (#8)",
-            "_totals": {
-              "rowTotals": [
-                39,
-                31
-              ],
-              "colTotals": [
-                25,
-                45
-              ],
-              "grandTotal": 70
-            }
+            "caption": "Five-number summary box plot (APSTATS-G560902640)",
+            "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G560902640)"
           }
         }
       ]
@@ -301,248 +224,206 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "A machine dispenses liquid into containers with a historical standard deviation of \\( \\sigma_0 = 2.00\\text{ mL} \\). After a recalibration, an inspector claims the new standard deviation is \\( \\sigma_1 = 0.63\\text{ mL} \\). By how much has the standard deviation decreased, \\( \\sigma_{\\text{dev}} = \\sigma_0 - \\sigma_1 \\)?",
-          "answer": "**Answer:** A. The decrease in the standard deviation from the initial calibration (\\( \\sigma_0 = 2.00\\text{ mL} \\)) to the new calibration (\\( \\sigma_1 = 0.63\\text{ mL} \\)) is:\n\\[ \\sigma_{\\text{dev}} = \\sigma_0 - \\sigma_1 = 2.00 - 0.63 = 1.37\\text{ mL}. \\]",
+          "q": "Given the structured transit study observations displayed in the table (APSTATS-544124021), showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
+          "answer": "**Answer:** A. Weighted sum \\(= 2(4) + 4(5) + 6(3) + 8(1) = 54\\).",
           "explanation": "The decrease in the standard deviation from the initial calibration (\\( \\sigma_0 = 2.00\\text{ mL} \\)) to the new calibration (\\( \\sigma_1 = 0.63\\text{ mL} \\)) is:\n\\[ \\sigma_{\\text{dev}} = \\sigma_0 - \\sigma_1 = 2.00 - 0.63 = 1.37\\text{ mL}. \\]",
           "choices": [
-            "Approximately \\( 1.37 \\)",
-            "Approximately \\( 2.00 \\)",
-            "The probability cannot be determined without knowing the specific value of \\( \\delta \\).",
-            "Approximately \\( 1.01 \\)"
+            "\\(54\\)",
+            "\\(58\\)",
+            "\\(50\\)",
+            "\\(13\\)"
           ],
           "correct": 0,
+          "explain": "Weighted sum \\(= 2(4) + 4(5) + 6(3) + 8(1) = 54\\).",
           "figure": {
-            "type": "normal_curve",
-            "mean": 2,
-            "sd": 1,
-            "shadeRange": [
-              1,
-              3
+            "type": "table",
+            "headers": [
+              "Value \\(x\\)",
+              "Frequency"
             ],
-            "showRule": true,
-            "caption": "Normal Distribution Model (#9)"
+            "rows": [
+              [
+                "2",
+                "4"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "1"
+              ]
+            ],
+            "caption": "Frequency distribution summary (transit study, APSTATS-544124021)",
+            "caption_ar": "جدول التوزيع التكراري (دراسة النقل، APSTATS-544124021)",
+            "headers_ar": [
+              "القيمة \\(x\\)",
+              "التكرار"
+            ],
+            "rows_ar": [
+              [
+                "2",
+                "4"
+              ],
+              [
+                "4",
+                "5"
+              ],
+              [
+                "6",
+                "3"
+              ],
+              [
+                "8",
+                "1"
+              ]
+            ]
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Consider a continuous random variable \\( X \\) with a uniform distribution over the interval \\( [2, 8] \\). What is the probability that \\( X \\) is between 4 and 7, i.e., \\( P(4 < X < 7) \\)?",
-          "answer": "**Answer:** D. For a continuous uniform distribution over the interval \\( [a, b] \\), the probability density function (PDF) is \\( f(x) = \\frac{1}{b-a} \\) for \\( a \\le x \\le b \\), and 0 otherwise. In this case, \\( a=2 \\) and \\( b=8 \\), so the length of the interval is \\( b-a = 8-2 = 6 \\). The PDF is \\( f(x) = \\frac{1}{6} \\) for \\( 2 \\le x \\le 8 \\).\n\nThe probability \\( P(4 < X < 7) \\) is the integral of the PDF from 4 to 7, or equivalently, the area under the PDF curve between 4 and 7.\n\n\\( P(4 < X < 7) = \\int_{4}^{7} \\frac{1}{6} dx \\)\n\nSince the PDF is constant, this is simply the height of the PDF multiplied by the width of the interval \\( [4, 7] \\).\n\nWidth = \\( 7 - 4 = 3 \\).\n\n\\( P(4 < X < 7) = \\frac{1}{6} \\times 3 = \\frac{3}{6} = \\frac{1}{2} = 0.50 \\).",
+          "q": "Refer to the geometric/analytic cad blueprint figure (APSTATS-G527347402) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
+          "answer": "**Answer:** D. Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "explanation": "For a continuous uniform distribution over the interval \\( [a, b] \\), the probability density function (PDF) is \\( f(x) = \\frac{1}{b-a} \\) for \\( a \\le x \\le b \\), and 0 otherwise. In this case, \\( a=2 \\) and \\( b=8 \\), so the length of the interval is \\( b-a = 8-2 = 6 \\). The PDF is \\( f(x) = \\frac{1}{6} \\) for \\( 2 \\le x \\le 8 \\).\n\nThe probability \\( P(4 < X < 7) \\) is the integral of the PDF from 4 to 7, or equivalently, the area under the PDF curve between 4 and 7.\n\n\\( P(4 < X < 7) = \\int_{4}^{7} \\frac{1}{6} dx \\)\n\nSince the PDF is constant, this is simply the height of the PDF multiplied by the width of the interval \\( [4, 7] \\).\n\nWidth = \\( 7 - 4 = 3 \\).\n\n\\( P(4 < X < 7) = \\frac{1}{6} \\times 3 = \\frac{3}{6} = \\frac{1}{2} = 0.50 \\).",
           "choices": [
-            "0.17",
-            "0.25",
-            "0.75",
-            "0.50"
+            "\\(78\\)",
+            "\\(54\\)",
+            "\\(94\\)",
+            "\\(86\\)"
           ],
           "correct": 3,
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -1,
-                "to": 3,
-                "openLeft": true,
-                "openRight": false
-              }
-            ],
-            "pts": [
-              {
-                "x": -1,
-                "open": true,
-                "label": "a"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "b"
-              }
-            ],
-            "caption": "Number Line Interval (#10)"
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 70 and standard deviation 8"
           }
         },
         {
-          "q": "A weather forecaster states there is a 30% chance of rain on Saturday and a 30% chance of rain on Sunday, and treats the two days as independent. Find the probability it rains on both days, and the probability it rains on at least one of the two days.",
+          "q": "Based on the thermal profile visual model shown (APSTATS-G906553126) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 60, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Applying probability rules to real contexts",
-          "answer": "Both days: \\(P(\\mathrm{Sat\\ and\\ Sun})=0.3\\times0.3=0.09\\). At least one day: using the complement, \\(P(\\mathrm{neither\\ day})=(1-0.3)(1-0.3)=0.7\\times0.7=0.49\\), so \\(P(\\mathrm{at\\ least\\ one})=1-0.49=0.51\\).",
+          "answer": "**Answer:** \\(76\\). Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
           "explanation": "Both days: \\(P(\\mathrm{Sat\\ and\\ Sun})=0.3\\times0.3=0.09\\). At least one day: using the complement, \\(P(\\mathrm{neither\\ day})=(1-0.3)(1-0.3)=0.7\\times0.7=0.49\\), so \\(P(\\mathrm{at\\ least\\ one})=1-0.49=0.51\\).",
+          "explain": "Reading two tick steps to the right of mean \\(60\\) gives \\(\\mu + 2\\sigma = 60 + 2(8) = 76\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
+            "type": "normal_curve",
+            "mean": 60,
+            "sd": 8,
+            "shadeRange": [
+              44,
+              76
             ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "29",
-                "16",
-                45
-              ],
-              [
-                "17",
-                "22",
-                39
-              ],
-              [
-                46,
-                38,
-                84
-              ]
-            ],
-            "caption": "Reference Summary Table (#11)",
-            "caption_ar": "جدول ملخص البيانات (#11)",
-            "_totals": {
-              "rowTotals": [
-                45,
-                39
-              ],
-              "colTotals": [
-                46,
-                38
-              ],
-              "grandTotal": 84
-            }
+            "showRule": true,
+            "caption": "Normal bell curve with mean 60 and SD 8 (APSTATS-G906553126)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 60 وانحراف 8 (APSTATS-G906553126)"
           }
         },
         {
-          "q": "A box of 50 light bulbs contains 6 defective bulbs. If one bulb is selected at random, find the probability it is NOT defective, using the complement rule.",
+          "q": "The accompanying figure illustrates a cad blueprint configuration (APSTATS-G923330752); using it depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 4)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The complement rule",
-          "answer": "\\(P(\\mathrm{defective})=\\frac{6}{50}=0.12\\). \\(P(\\mathrm{not\\ defective})=1-0.12=0.88\\).",
+          "answer": "**Answer:** \\(78\\). Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(4) = 78\\).",
           "explanation": "\\(P(\\mathrm{defective})=\\frac{6}{50}=0.12\\). \\(P(\\mathrm{not\\ defective})=1-0.12=0.88\\).",
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(4) = 78\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 4,
+            "shadeRange": [
+              62,
+              78
+            ],
+            "showRule": true,
+            "caption": "Normal bell curve with mean 70 and SD 4 (APSTATS-G923330752)",
+            "caption_ar": "منحنى التوزيع الطبيعي بمتوسط 70 وانحراف 4 (APSTATS-G923330752)"
+          }
+        },
+        {
+          "q": "In the photonics record (APSTATS-872996888), using the table values, for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The complement rule",
+          "answer": "**Answer:** \\(\\frac{1}{5}\\). Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
+          "explanation": "\\(P(\\mathrm{at\\ least\\ one\\ rainy\\ day})=1-(1-p)^3=0.65\\), so \\((1-p)^3=0.35\\). Taking the cube root: \\(1-p=(0.35)^{1/3}\\approx0.705\\), giving \\(p\\approx0.295\\).",
+          "explain": "Total probability sums to \\(1\\), so \\(c = 1 - \\frac{3+3+2}{10} = \\frac{1}{5}\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(X = x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(P(X=x)\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{3}{10}\\)",
+                "\\(\\frac{2}{10}\\)",
+                "\\(c\\)"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Discrete probability distribution of X (photonics, APSTATS-872996888)",
+            "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (الفوتونيات، APSTATS-872996888)"
+          }
+        },
+        {
+          "q": "From the graphical features displayed in the orbital sector figure (APSTATS-G889775507) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combining independence and conditional probability",
+          "answer": "**Answer:** \\(25\\). Counting each disjoint region once yields \\(|A \\cup B| = 12 + 3 + 10 = 25\\).",
+          "explanation": "Since the tests are independent: \\(P(\\mathrm{both\\ correct})=0.9\\times0.9=0.81\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 12 + 3 + 10 = 25\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "venn",
             "sets": [
               {
                 "label": "A",
-                "only": 14
+                "only": 12
               },
               {
                 "label": "B",
-                "only": 9
+                "only": 10
               }
             ],
-            "both": 6,
+            "both": 3,
             "outside": 5,
-            "caption": "Set Relationship Diagram (#12)"
+            "caption": "Venn count diagram of sets A and B (APSTATS-G889775507)",
+            "caption_ar": "مخطط فن للمجموعتين (APSTATS-G889775507)"
           }
         },
         {
-          "q": "A student estimates there is a 65% chance of rain at least once during a 3-day trip, assuming each day is independent with the same daily rain probability \\(p\\). Find \\(p\\), to three decimal places, using \\(P(\\mathrm{no\\ rain\\ all\\ 3\\ days})=(1-p)^3\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The complement rule",
-          "answer": "\\(P(\\mathrm{at\\ least\\ one\\ rainy\\ day})=1-(1-p)^3=0.65\\), so \\((1-p)^3=0.35\\). Taking the cube root: \\(1-p=(0.35)^{1/3}\\approx0.705\\), giving \\(p\\approx0.295\\).",
-          "explanation": "\\(P(\\mathrm{at\\ least\\ one\\ rainy\\ day})=1-(1-p)^3=0.65\\), so \\((1-p)^3=0.35\\). Taking the cube root: \\(1-p=(0.35)^{1/3}\\approx0.705\\), giving \\(p\\approx0.295\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#13)"
-          }
-        },
-        {
-          "q": "Two lie detector tests are given to a suspect, each correctly detecting deception 90% of the time (independently of each other). If the suspect is actually lying, find the probability both tests correctly detect it.",
+          "q": "Consider the antenna pattern visual model shown (APSTATS-G973663602) depicting a symmetric normal distribution \\(\\mathcal{N}(\\mu = 70, \\sigma = 8)\\) with tick marks spaced one standard deviation apart. What data value lies two standard deviations above the mean?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Combining independence and conditional probability",
-          "answer": "Since the tests are independent: \\(P(\\mathrm{both\\ correct})=0.9\\times0.9=0.81\\).",
-          "explanation": "Since the tests are independent: \\(P(\\mathrm{both\\ correct})=0.9\\times0.9=0.81\\).",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "28",
-                "24",
-                52
-              ],
-              [
-                "15",
-                "17",
-                32
-              ],
-              [
-                43,
-                41,
-                84
-              ]
-            ],
-            "caption": "Reference Summary Table (#14)",
-            "caption_ar": "جدول ملخص البيانات (#14)",
-            "_totals": {
-              "rowTotals": [
-                52,
-                32
-              ],
-              "colTotals": [
-                43,
-                41
-              ],
-              "grandTotal": 84
-            }
-          }
-        },
-        {
-          "q": "A bag contains 5 red marbles and 3 blue marbles. Two marbles are drawn without replacement. Find the probability both are red.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Combining independence and conditional probability",
-          "answer": "\\(P(\\mathrm{first\\ red})=\\frac{5}{8}\\). Given the first is red, \\(P(\\mathrm{second\\ red}\\mid\\mathrm{first\\ red})=\\frac{4}{7}\\). \\(P(\\mathrm{both\\ red})=\\frac{5}{8}\\times\\frac{4}{7}=\\frac{20}{56}=\\frac{5}{14}\\approx0.357\\).",
+          "answer": "**Answer:** \\(86\\). Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
           "explanation": "\\(P(\\mathrm{first\\ red})=\\frac{5}{8}\\). Given the first is red, \\(P(\\mathrm{second\\ red}\\mid\\mathrm{first\\ red})=\\frac{4}{7}\\). \\(P(\\mathrm{both\\ red})=\\frac{5}{8}\\times\\frac{4}{7}=\\frac{20}{56}=\\frac{5}{14}\\approx0.357\\).",
+          "explain": "Reading two tick steps to the right of mean \\(70\\) gives \\(\\mu + 2\\sigma = 70 + 2(8) = 86\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#15)"
+            "type": "normal_curve",
+            "mean": 70,
+            "sd": 8,
+            "showRule": true,
+            "caption": "Normal distribution with mean 70 and standard deviation 8"
           }
         }
       ]

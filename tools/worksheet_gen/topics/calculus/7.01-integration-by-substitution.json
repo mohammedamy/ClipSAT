@@ -36,96 +36,101 @@
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^2 x\\sqrt{x^2+1}\\,dx\\) exactly, changing the limits with \\(u = x^2+1\\).",
+          "q": "During optical bench experiment (CALCULUS-215560567), observers compiled the following table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Definite integrals with substitution",
-          "answer": "\\(u\\) goes from \\(1\\) to \\(5\\): \\(\\frac{1}{2}\\int_1^5 \\sqrt{u}\\,du = \\frac{1}{2}\\left[\\frac{2}{3}u^{3/2}\\right]_1^5 = \\frac{1}{3}(5\\sqrt{5} - 1)\\).",
+          "answer": "**Answer:** \\(10\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(4) = 10\\).",
           "explanation": "\\(u\\) goes from \\(1\\) to \\(5\\): \\(\\frac{1}{2}\\int_1^5 \\sqrt{u}\\,du = \\frac{1}{2}\\left[\\frac{2}{3}u^{3/2}\\right]_1^5 = \\frac{1}{3}(5\\sqrt{5} - 1)\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(4) = 10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "0",
+                "1",
+                "4",
+                "2"
               ],
               [
-                "f'(x)",
-                "3",
                 "1",
-                "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#3)",
-            "caption_ar": "جدول القيم المختارة (#3)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "2",
+                "6",
+                "4"
               ],
               [
-                "f'(x)",
+                "2",
                 "3",
-                "1",
-                "3",
-                "1"
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (optical bench, CALCULUS-215560567)",
+            "caption_ar": "جدول خطوات أويلر (المنضدة البصرية، CALCULUS-215560567)"
           }
         },
         {
-          "q": "Evaluate \\(\\int \\frac{2x+3}{x^2+3x+1}\\,dx\\), recognizing the numerator as the derivative of the denominator.",
+          "q": "From the plotted calibration curve figure above (CALCULUS-G198783962) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Substitution with trigonometric and exponential integrands",
-          "answer": "\\(u=x^2+3x+1\\), \\(du=(2x+3)\\,dx\\): \\(=\\ln|x^2+3x+1|+C\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "\\(u=x^2+3x+1\\), \\(du=(2x+3)\\,dx\\): \\(=\\ln|x^2+3x+1|+C\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              7
             ],
             "yl": [
-              -4,
-              4
+              -1,
+              9
             ],
-            "xStep": 1,
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (CALCULUS-G198783962)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G198783962)"
           }
         },
         {
-          "q": "For each integral, state a suitable substitution \\(u\\) and evaluate:",
+          "q": "Based on the specimen plot visual model shown (CALCULUS-G182006329) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Choosing the substitution",
@@ -138,8 +143,10 @@
             "\\(u=x^3-1\\), \\(du=3x^2dx\\): \\(=\\frac{1}{3}\\int u^7\\,du = \\frac{(x^3-1)^8}{24}+C\\).",
             "\\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\): \\(=-\\ln|\\cos x|+C = \\ln|\\sec x|+C\\)."
           ],
-          "answer": "(a) \\(u=x^3-1\\), \\(du=3x^2dx\\): \\(=\\frac{1}{3}\\int u^7\\,du = \\frac{(x^3-1)^8}{24}+C\\).; (b) \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\): \\(=-\\ln|\\cos x|+C = \\ln|\\sec x|+C\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "(a) \\(u=x^3-1\\), \\(du=3x^2dx\\): \\(=\\frac{1}{3}\\int u^7\\,du = \\frac{(x^3-1)^8}{24}+C\\).; (b) \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\): \\(=-\\ln|\\cos x|+C = \\ln|\\sec x|+C\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -148,93 +155,118 @@
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G182006329)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G182006329)"
           }
         },
         {
-          "q": "Evaluate \\(\\int x\\sqrt{2-x}\\,dx\\) using the substitution \\(u=2-x\\) (so \\(x=2-u\\)).",
+          "q": "The table summarizes measurements from a reactor bench evaluation (CALCULUS-165227710); using these entries, where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(2)\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Substitution with radicals",
-          "answer": "\\(u=2-x\\), \\(x=2-u\\), \\(dx=-du\\): \\(\\int(2-u)\\sqrt{u}(-du) = \\int(u-2)\\sqrt{u}\\,du = \\int\\left(u^{3/2}-2u^{1/2}\\right)du = \\frac{2}{5}u^{5/2}-\\frac{4}{3}u^{3/2}+C = \\frac{2}{5}(2-x)^{5/2}-\\frac{4}{3}(2-x)^{3/2}+C\\).",
+          "answer": "**Answer:** \\(12\\). By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (4)(4) + (2)(-2) = 12\\).",
           "explanation": "\\(u=2-x\\), \\(x=2-u\\), \\(dx=-du\\): \\(\\int(2-u)\\sqrt{u}(-du) = \\int(u-2)\\sqrt{u}\\,du = \\int\\left(u^{3/2}-2u^{1/2}\\right)du = \\frac{2}{5}u^{5/2}-\\frac{4}{3}u^{3/2}+C = \\frac{2}{5}(2-x)^{5/2}-\\frac{4}{3}(2-x)^{3/2}+C\\).",
+          "explain": "By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (4)(4) + (2)(-2) = 12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(x\\)",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(f(x)\\)",
                 "2",
-                "7",
-                "12",
-                "17"
+                "5"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-2",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#6)",
-            "caption_ar": "جدول نمط مرجعي (#6)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (reactor bench, CALCULUS-165227710)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (منصة المفاعل، CALCULUS-165227710)"
           }
         },
         {
-          "q": "Evaluate \\(\\int_0^3 \\frac{x}{\\sqrt{x+1}}\\,dx\\) using \\(u=x+1\\) (so \\(x=u-1\\)), changing the limits.",
+          "q": "From the graphical features displayed in the survey layout figure (CALCULUS-G148451098) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Substitution with radicals",
-          "answer": "\\(u\\) goes from \\(1\\) to \\(4\\): \\(\\int_1^4 \\frac{u-1}{\\sqrt{u}}\\,du = \\int_1^4\\left(u^{1/2}-u^{-1/2}\\right)du = \\left[\\frac{2}{3}u^{3/2}-2u^{1/2}\\right]_1^4 = \\left(\\frac{16}{3}-4\\right)-\\left(\\frac{2}{3}-2\\right) = \\frac{4}{3}+\\frac{4}{3}=\\frac{8}{3}\\).",
+          "answer": "**Answer:** \\(24\\). Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(3, 5, 7, 9\\), giving total area \\(24\\).",
           "explanation": "\\(u\\) goes from \\(1\\) to \\(4\\): \\(\\int_1^4 \\frac{u-1}{\\sqrt{u}}\\,du = \\int_1^4\\left(u^{1/2}-u^{-1/2}\\right)du = \\left[\\frac{2}{3}u^{3/2}-2u^{1/2}\\right]_1^4 = \\left(\\frac{16}{3}-4\\right)-\\left(\\frac{2}{3}-2\\right) = \\frac{4}{3}+\\frac{4}{3}=\\frac{8}{3}\\).",
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(3, 5, 7, 9\\), giving total area \\(24\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              0,
+              4.5
             ],
             "yl": [
-              -2,
-              7
+              0,
+              13
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "2*x + 3",
+                "color": "#2563eb",
+                "label": "f(x) = 2x + 3"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "riemann": {
+              "expr": "2*x + 3",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (CALCULUS-G148451098)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (CALCULUS-G148451098)"
           }
         },
         {
@@ -262,96 +294,237 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate \\(\\int \\sin x\\cos x\\,dx\\) two ways: (a) using \\(u=\\sin x\\), and (b) using the identity \\(\\sin x\\cos x=\\frac{1}{2}\\sin(2x)\\). Confirm both give equivalent answers.",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G114895853) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Substitution with double angle and reciprocal forms",
-          "answer": "(a) \\(u=\\sin x\\): \\(\\int u\\,du=\\frac{\\sin^2x}{2}+C\\). (b) \\(\\int\\frac{1}{2}\\sin(2x)\\,dx=-\\frac{1}{4}\\cos(2x)+C\\). Using \\(\\cos(2x)=1-2\\sin^2x\\): \\(-\\frac{1}{4}(1-2\\sin^2x)+C=\\frac{\\sin^2x}{2}+C'\\) — the same family, differing only by the constant.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "(a) \\(u=\\sin x\\): \\(\\int u\\,du=\\frac{\\sin^2x}{2}+C\\). (b) \\(\\int\\frac{1}{2}\\sin(2x)\\,dx=-\\frac{1}{4}\\cos(2x)+C\\). Using \\(\\cos(2x)=1-2\\sin^2x\\): \\(-\\frac{1}{4}(1-2\\sin^2x)+C=\\frac{\\sin^2x}{2}+C'\\) — the same family, differing only by the constant.",
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
               {
-                "deg": 225,
-                "label": "θ"
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#9)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G114895853)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G114895853)"
           }
         },
         {
-          "q": "Evaluate \\(\\int\\frac{1}{x\\ln x}\\,dx\\) using \\(u=\\ln x\\).",
+          "q": "Referring to the flow bench table above (CALCULUS-98117234), evaluate \\(f(g(3)) + 4\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Substitution with double angle and reciprocal forms",
-          "answer": "\\(u=\\ln x\\), \\(du=\\frac{1}{x}dx\\): \\(\\int\\frac{1}{u}\\,du=\\ln|u|+C=\\ln|\\ln x|+C\\).",
+          "answer": "**Answer:** \\(13\\). From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
           "explanation": "\\(u=\\ln x\\), \\(du=\\frac{1}{x}dx\\): \\(\\int\\frac{1}{u}\\,du=\\ln|u|+C=\\ln|\\ln x|+C\\).",
+          "explain": "From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
                 "1",
-                "6",
-                "11",
-                "16"
+                "2",
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#10)",
-            "caption_ar": "جدول نمط مرجعي (#10)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "6",
-                "11",
-                "16"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (flow bench, CALCULUS-98117234)",
+            "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، CALCULUS-98117234)"
           }
         },
         {
-          "q": "A particle's velocity is \\(v(t)=t\\sin(t^2)\\) m/s. Find its displacement from \\(t=0\\) to \\(t=\\sqrt{\\pi}\\), using \\(u=t^2\\).",
+          "q": "Based on the thermal profile visual model shown (CALCULUS-G424148086) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Substitution in motion and rate problems",
-          "answer": "\\(u=t^2\\), \\(du=2t\\,dt\\), limits \\(0\\) to \\(\\pi\\): \\(\\frac{1}{2}\\int_0^\\pi\\sin u\\,du=\\frac{1}{2}\\left[-\\cos u\\right]_0^\\pi=\\frac{1}{2}(1+1)=1\\) m.",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
           "explanation": "\\(u=t^2\\), \\(du=2t\\,dt\\), limits \\(0\\) to \\(\\pi\\): \\(\\frac{1}{2}\\int_0^\\pi\\sin u\\,du=\\frac{1}{2}\\left[-\\cos u\\right]_0^\\pi=\\frac{1}{2}(1+1)=1\\) m.",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -2,
+              8
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 210,
-                "label": "θ"
+                "fn": "4/(x - 3) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 3"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#11)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 7,
+                "label": "(4, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 3 (CALCULUS-G424148086)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G424148086)"
           }
         },
         {
-          "q": "Evaluate \\(\\int(x+1)\\sqrt{x^2+2x+5}\\,dx\\) by noticing the numerator is (up to a constant) the derivative of the expression under the root.",
+          "q": "The accompanying figure illustrates a cad blueprint configuration (CALCULUS-G440925712); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Recognizing when substitution simplifies a problem",
-          "answer": "\\(u=x^2+2x+5\\), \\(du=(2x+2)dx=2(x+1)dx\\): \\(\\frac{1}{2}\\int\\sqrt{u}\\,du=\\frac{1}{2}\\cdot\\frac{2}{3}u^{3/2}+C=\\frac{1}{3}(x^2+2x+5)^{3/2}+C\\).",
+          "answer": "**Answer:** \\(3\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
           "explanation": "\\(u=x^2+2x+5\\), \\(du=(2x+2)dx=2(x+1)dx\\): \\(\\frac{1}{2}\\int\\sqrt{u}\\,du=\\frac{1}{2}\\cdot\\frac{2}{3}u^{3/2}+C=\\frac{1}{3}(x^2+2x+5)^{3/2}+C\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              5
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 1) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 1) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 6,
+                "label": "(2, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 2 (CALCULUS-G440925712)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G440925712)"
+          }
+        },
+        {
+          "q": "Given the structured sensor array observations displayed in the table (CALCULUS-390591848), determine \\(4\\,h^{-1}(18)\\) for the invertible function \\(h\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Substitution with trigonometric and exponential integrands",
+          "answer": "**Answer:** \\(16\\). Because \\(h(4) = 18\\), we have \\(h^{-1}(18) = 4\\). Multiplying by \\(4\\) gives \\(16\\).",
+          "explanation": "Applying Techniques of Integration principles, IBP with \\(u=x\\), \\(dv=e^x dx\\). Therefore, the verified correct option is IBP.",
+          "explain": "Because \\(h(4) = 18\\), we have \\(h^{-1}(18) = 4\\). Multiplying by \\(4\\) gives \\(16\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(h(x)\\)",
+                "6",
+                "10",
+                "14",
+                "18"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Monotone function values of invertible h (sensor array, CALCULUS-390591848)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (مصفوفة الحساسات، CALCULUS-390591848)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the fluid channel schematic (CALCULUS-G407370481) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Choosing the substitution",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "explanation": "Applying Techniques of Integration principles, Half-angle identity. Therefore, the verified correct option is \\(\\sin^2x=\\frac{1-\\cos2x}{2}\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -360,102 +533,86 @@
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "\\(\\int x e^x\\,dx\\) uses:",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Substitution with trigonometric and exponential integrands",
-          "answer": "Final Answer: IBP. Applying Techniques of Integration principles, IBP with \\(u=x\\), \\(dv=e^x dx\\). Therefore, the verified correct option is IBP.",
-          "explanation": "Applying Techniques of Integration principles, IBP with \\(u=x\\), \\(dv=e^x dx\\). Therefore, the verified correct option is IBP.",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#13)",
-            "caption_ar": "جدول نمط مرجعي (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "\\(\\int \\sin^2x\\,dx\\) uses the identity:",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Choosing the substitution",
-          "answer": "Final Answer: \\(\\sin^2x=\\frac{1-\\cos2x}{2}\\). Applying Techniques of Integration principles, Half-angle identity. Therefore, the verified correct option is \\(\\sin^2x=\\frac{1-\\cos2x}{2}\\).",
-          "explanation": "Applying Techniques of Integration principles, Half-angle identity. Therefore, the verified correct option is \\(\\sin^2x=\\frac{1-\\cos2x}{2}\\).",
-          "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "pts": [
               {
-                "deg": 210,
-                "label": "θ"
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#14)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G407370481)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G407370481)"
           }
         },
         {
-          "q": "Use the substitution \\(x = 2\\sin\\theta\\) to evaluate the exact definite integral \\(\\int_0^1 \\sqrt{4 - x^2}\\,dx\\).",
+          "q": "Based on the antenna pattern visual model shown (CALCULUS-G491258562) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Substitution with radicals",
-          "answer": "1. Substitute \\(x = 2\\sin\\theta \\Rightarrow dx = 2\\cos\\theta\\,d\\theta\\). When \\(x = 0\\), \\(\\theta = 0\\). When \\(x = 1\\), \\(2\\sin\\theta = 1 \\Rightarrow \\sin\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{6}\\). 2. Rewrite integrand: \\(\\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\mathrm{since\\ } \\cos\\theta > 0 \\mathrm{\\ on\\ } [0, \\pi/6]).\\) 3. Substitute into the integral: \\(\\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta.\\) 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\(= 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}.\\)",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "1. Substitute \\(x = 2\\sin\\theta \\Rightarrow dx = 2\\cos\\theta\\,d\\theta\\). When \\(x = 0\\), \\(\\theta = 0\\). When \\(x = 1\\), \\(2\\sin\\theta = 1 \\Rightarrow \\sin\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{6}\\). 2. Rewrite integrand: \\(\\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\mathrm{since\\ } \\cos\\theta > 0 \\mathrm{\\ on\\ } [0, \\pi/6]).\\) 3. Substitute into the integral: \\(\\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta.\\) 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\(= 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}.\\)",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 315,
-                "label": "θ"
+                "fn": "2/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 2"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#15)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 4,
+                "label": "(4, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G491258562)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G491258562)"
           }
         }
       ]
@@ -492,92 +649,90 @@
           "correct": 0
         },
         {
-          "q": "Level 2 · MediumA 13-foot ladder leans against a vertical wall. The base of the ladder slides away from the wall at a constant rate of 2 ft/s. How fast is the top of the ladder sliding down the wall when the base is 5 feet from the wall?",
+          "q": "During acoustics lab experiment (CALCULUS-457702324), observers compiled the following table; evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Substitution with double angle and reciprocal forms",
           "cross_lesson": "2.02 Continuity",
-          "answer": "Let \\(x\\) be the distance from the base to the wall and \\(y\\) be the height on the wall. By the Pythagorean theorem: \\(x^2 + y^2 = 13^2 = 169\\) At the instant \\(x = 5\\): \\(y = \\sqrt{169 - 25} = \\sqrt{144} = 12\\mathrm{\\ ft}\\). Differentiating implicitly with respect to time \\(t\\): \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\Rightarrow x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0\\) Substitute \\(x = 5\\), \\(y = 12\\), and \\(\\frac{dx}{dt} = 2\\mathrm{\\ ft/s}\\): \\((5)(2) + (12)\\frac{dy}{dt} = 0 \\Rightarrow 10 + 12\\frac{dy}{dt} = 0 \\Rightarrow \\frac{dy}{dt} = -\\frac{10}{12} = -\\mathbf{\\frac{5}{6}\\mathrm{\\ ft/s}}.\\) The top of the ladder is sliding down at a rate of \\(\\frac{5}{6}\\mathrm{\\ ft/s}\\) (approx. 0.833 ft/s).",
+          "answer": "**Answer:** \\(16\\). From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
           "explanation": "Let \\(x\\) be the distance from the base to the wall and \\(y\\) be the height on the wall. By the Pythagorean theorem: \\(x^2 + y^2 = 13^2 = 169\\) At the instant \\(x = 5\\): \\(y = \\sqrt{169 - 25} = \\sqrt{144} = 12\\mathrm{\\ ft}\\). Differentiating implicitly with respect to time \\(t\\): \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\Rightarrow x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0\\) Substitute \\(x = 5\\), \\(y = 12\\), and \\(\\frac{dx}{dt} = 2\\mathrm{\\ ft/s}\\): \\((5)(2) + (12)\\frac{dy}{dt} = 0 \\Rightarrow 10 + 12\\frac{dy}{dt} = 0 \\Rightarrow \\frac{dy}{dt} = -\\frac{10}{12} = -\\mathbf{\\frac{5}{6}\\mathrm{\\ ft/s}}.\\) The top of the ladder is sliding down at a rate of \\(\\frac{5}{6}\\mathrm{\\ ft/s}\\) (approx. 0.833 ft/s).",
+          "explain": "From the table, \\(g(1) = 3\\) and \\(f(3) = 14\\). Adding \\(2\\) yields \\(14 + 2 = 16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "1",
+              "2",
               "3",
-              "5",
-              "7"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "6",
-                "8",
-                "10"
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "3",
+                "4",
                 "1",
-                "3",
-                "1"
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#17)",
-            "caption_ar": "جدول القيم المختارة (#17)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "6",
-                "8",
-                "10"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (acoustics lab, CALCULUS-457702324)",
+            "caption_ar": "قيم مختارة للدالتين (مختبر الصوت، CALCULUS-457702324)"
           }
         },
         {
-          "q": "Use the substitution \\(u = 2x + 1\\) to find the exact value of \\(\\int_0^4 \\frac{x}{\\sqrt{2x+1}}\\,dx\\).",
+          "q": "Given the measurements marked directly on the turbine profile schematic (CALCULUS-G474480957) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Substitution in motion and rate problems",
           "cross_lesson": "3.01 The Derivative from First Principles",
-          "answer": "Let \\(u = 2x + 1\\), so \\(du = 2\\,dx \\Rightarrow dx = \\frac{1}{2}\\,du\\), and \\(x = \\frac{u - 1}{2}\\). Change limits: \\(x = 0 \\Rightarrow u = 1,\\quad x = 4 \\Rightarrow u = 9\\) Transform the integral: \\(\\int_0^4 \\frac{x}{\\sqrt{2x+1}}\\,dx = \\int_1^9 \\frac{\\frac{u - 1}{2}}{\\sqrt{u}}\\cdot\\frac{1}{2}\\,du = \\frac{1}{4}\\int_1^9 \\left(u^{1/2} - u^{-1/2}\\right)\\,du\\) \\(= \\frac{1}{4}\\left[ \\frac{2}{3}u^{3/2} - 2u^{1/2} \\right]_1^9 = \\frac{1}{4}\\left( \\left(\\frac{2}{3}(27) - 2(3)\\right) - \\left(\\frac{2}{3}(1) - 2(1)\\right) \\right)\\) \\(= \\frac{1}{4}\\left( (18 - 6) - \\left(-\\frac{4}{3}\\right) \\right) = \\frac{1}{4}\\left(12 + \\frac{4}{3}\\right) = \\frac{1}{4}\\left(\\frac{40}{3}\\right) = \\frac{10}{3}\\)",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Let \\(u = 2x + 1\\), so \\(du = 2\\,dx \\Rightarrow dx = \\frac{1}{2}\\,du\\), and \\(x = \\frac{u - 1}{2}\\). Change limits: \\(x = 0 \\Rightarrow u = 1,\\quad x = 4 \\Rightarrow u = 9\\) Transform the integral: \\(\\int_0^4 \\frac{x}{\\sqrt{2x+1}}\\,dx = \\int_1^9 \\frac{\\frac{u - 1}{2}}{\\sqrt{u}}\\cdot\\frac{1}{2}\\,du = \\frac{1}{4}\\int_1^9 \\left(u^{1/2} - u^{-1/2}\\right)\\,du\\) \\(= \\frac{1}{4}\\left[ \\frac{2}{3}u^{3/2} - 2u^{1/2} \\right]_1^9 = \\frac{1}{4}\\left( \\left(\\frac{2}{3}(27) - 2(3)\\right) - \\left(\\frac{2}{3}(1) - 2(1)\\right) \\right)\\) \\(= \\frac{1}{4}\\left( (18 - 6) - \\left(-\\frac{4}{3}\\right) \\right) = \\frac{1}{4}\\left(12 + \\frac{4}{3}\\right) = \\frac{1}{4}\\left(\\frac{40}{3}\\right) = \\frac{10}{3}\\)",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "caption": "Real-Line Scale (#18)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G474480957)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G474480957)"
           }
         },
         {

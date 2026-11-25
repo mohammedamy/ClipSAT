@@ -45,6 +45,20 @@ figSandbox.window = figSandbox;
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'src', 'scripts', 'modules', '02c-figures.js'), 'utf8'), figSandbox);
 
 const TABLE_TYPES = new Set(['table', 'two_way_table', 'twoWayTable', 'twowaytable']);
+const NEW_ROLLOUT_SET = new Set([
+  'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2',
+  'apstats', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level', 'ibsl', 'ibhl',
+  'olympiad', 'algebra', 'alg2', 'geo', 'calculus', 'mvc', 'linalg', 'odes', 'mathai',
+]);
+const BANNED_GENERIC_FIG_RE = /Reference Pattern Table|Reference Summary Table|Selected Values Table \(#|Component & Basis Table \(#|Reference graph y = f\(x\)|Real-Line Scale \(#|Discrete Term Plot \(#|Discrete Sequence Profile \(#|Quantity Comparison Chart \(#|Coordinate Sample Plot \(#|Unit Circle Reference \(#|Periodic Model \(#|Set Relationship Diagram \(#|Planar Region Schematic \(#|Number Line Interval \(#|Recorded Sample Observations \(#|Normal Distribution Model \(#|Distribution Box Plot \(#|Scatterplot Data \(#|Histogram Summary \(#|Dot Plot Distribution \(#|Conic Section \(#|(?:Cylinder|Cone|Sphere|Pyramid|Prism) Schematic \(#|Linear Transformation Action \(#|Complex Plane z \(#|Probability Tree \(#|Component Triangle \(not drawn to scale\)|Slope field dy\/dx = .* \(#\d+\)|Polar Curve \(#/i;
+const TABLE_STEM_REF_RE = /table|tabulated|shown|below|above|data|values|survey|distribution|schedule|grid|entries|recorded|frequency|matrix|components|counts|probabilities|observations|summary|batch|جدول|البيانات|القيم|التكرار/i;
+const LEGACY_TABLE_CAPTION_RE = /^(?:Sample Surface Values|Given (?:Motion Parameters|Vector Components|Mathematical Parameters|Relation )|Euler's Numerical Steps)/i;
+
+function isGenericFallbackFig(fig) {
+  if (!fig || typeof fig !== 'object') return false;
+  const label = `${fig.caption || ''} ${fig.title || ''}`.trim();
+  return BANNED_GENERIC_FIG_RE.test(label);
+}
 
 function classifyVisual(item) {
   const fig = item && (item.figure || item.fig);
@@ -112,13 +126,14 @@ function readJson(relPath) {
 
 function loadTrackWorksheets(track) {
   const dir = path.join(ROOT, 'tools', 'worksheet_gen', 'topics', track);
-  if (!fs.existsSync(dir)) return { files: 0, qCount: 0, svgCount: 0, tableCount: 0, badFigures: [], rawDollarHits: 0 };
+  if (!fs.existsSync(dir)) return { files: 0, qCount: 0, svgCount: 0, tableCount: 0, badFigures: [], genericFigures: [], rawDollarHits: 0 };
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort();
   let qCount = 0;
   let svgCount = 0;
   let tableCount = 0;
   let rawDollarHits = 0;
   const badFigures = [];
+  const genericFigures = [];
 
   for (const f of files) {
     const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
@@ -131,6 +146,9 @@ function loadTrackWorksheets(track) {
           const ft = q.figure.type;
           if (TABLE_TYPES.has(ft)) tableCount++;
           else svgCount++;
+          if (isGenericFallbackFig(q.figure)) {
+            genericFigures.push(`${f} Q${qCount}: ${q.figure.caption || q.figure.title}`);
+          }
           const errs = validateFigureSpec(q.figure);
           if (errs.length) badFigures.push(`${f}: ${errs.join(', ')}`);
         } else if (/<table\b/i.test(qTxt)) {
@@ -139,7 +157,7 @@ function loadTrackWorksheets(track) {
       }
     }
   }
-  return { files: files.length, qCount, svgCount, tableCount, badFigures, rawDollarHits };
+  return { files: files.length, qCount, svgCount, tableCount, badFigures, genericFigures, rawDollarHits };
 }
 
 function auditTrack(track) {
@@ -159,6 +177,8 @@ function auditTrack(track) {
   let structuredCount = 0;
   let legacyFrqCount = 0;
   let badFigCount = 0;
+  let genericFigCount = 0;
+  let uncoupledTblCount = 0;
   let missingCalcBool = 0;
   let arMathTextLeak = 0;
   const skeletonMap = new Map();
@@ -188,6 +208,19 @@ function auditTrack(track) {
     const vis = classifyVisual(q);
     if (vis.hasSvg) { svgCount++; cStat.svg++; }
     if (vis.hasTable) { tableCount++; cStat.table++; }
+    const figObj = q.figure || q.fig;
+    if (isGenericFallbackFig(figObj)) {
+      genericFigCount++;
+      if (genericFigCount <= 5) errors.push(`Generic fallback figure in ${q.id}: ${figObj.caption || figObj.title}`);
+    }
+    if (NEW_ROLLOUT_SET.has(track) && figObj && TABLE_TYPES.has(figObj.type)) {
+      const capLbl = `${figObj.caption || ''} ${figObj.title || ''}`.trim();
+      const stemEn = String(q.text || q.q || '');
+      if (!LEGACY_TABLE_CAPTION_RE.test(capLbl) && !TABLE_STEM_REF_RE.test(stemEn)) {
+        uncoupledTblCount++;
+        if (uncoupledTblCount <= 5) errors.push(`Uncoupled table (stem does not reference table/data/values) in ${q.id}`);
+      }
+    }
     if (vis.figRenderErr) {
       badFigCount++;
       if (badFigCount <= 5) errors.push(`Broken figure in ${q.id}: ${vis.figRenderErr}`);
@@ -218,21 +251,25 @@ function auditTrack(track) {
   const qcPct = pool.length ? (qcCount / pool.length) * 100 : 0;
 
   if (badFigCount > 0) errors.push(`${badFigCount} broken or unrenderable figures in bank`);
+  if (genericFigCount > 0) errors.push(`${genericFigCount} generic fallback figures/tables remain in bank`);
   if (missingCalcBool > 0) errors.push(`${missingCalcBool} items missing boolean 'calc' field`);
   if (arMathTextLeak > 0) errors.push(`${arMathTextLeak} items contain forbidden \\text{Arabic} inside math delimiters`);
   if (ws.badFigures.length > 0) errors.push(`${ws.badFigures.length} broken worksheet figures (first: ${ws.badFigures[0]})`);
+  if (ws.genericFigures.length > 0) errors.push(`${ws.genericFigures.length} generic fallback figures in worksheets (first: ${ws.genericFigures[0]})`);
 
   // Check all chapter JSON files exist & count Practice Set stats
   const chapterMissing = (meta.chapterOrder || []).filter((slug) => !fs.existsSync(path.join(ROOT, 'content', track, `${slug}.json`)));
   if (chapterMissing.length) errors.push(`Missing chapter JSON files: ${chapterMissing.join(', ')}`);
 
-  let psetSvg = 0, psetTable = 0;
+  let psetSvg = 0, psetTable = 0, psetGeneric = 0;
   for (const item of (pset.items || pset.questions || [])) {
     const vis = classifyVisual(item);
     if (vis.hasSvg) psetSvg++;
     if (vis.hasTable) psetTable++;
+    if (isGenericFallbackFig(item.fig || item.figure)) psetGeneric++;
     if (vis.figRenderErr) errors.push(`Broken practice-set figure (${item.id || '?'}): ${vis.figRenderErr}`);
   }
+  if (psetGeneric > 0) errors.push(`${psetGeneric} generic fallback figures in _practice-set.json`);
   const psetCount = (pset.items || pset.questions || []).length;
 
   // ── Track-specific authenticity gates ──────────────────────────────────────
@@ -353,16 +390,12 @@ function auditTrack(track) {
     }
   }
 
-  const NEW_ROLLOUT_SET = new Set([
-    'act', 'act2', 'act2l2', 'est', 'est2', 'est2l2',
-    'apstats', 'igcse', 'edexcel', 'addmath', 'aslevel', 'a2level', 'ibsl', 'ibhl',
-    'olympiad', 'algebra', 'alg2', 'geo', 'calculus', 'mvc', 'linalg', 'odes', 'mathai',
-  ]);
-  const STRUCT_MINS = {
-    apstats: 66, igcse: 98, edexcel: 120, addmath: 96, aslevel: 88, a2level: 60,
-    ibsl: 157, ibhl: 150, olympiad: 120, mathai: 58, calculus: 32, mvc: 24, linalg: 24, odes: 27,
-  };
-  if (NEW_ROLLOUT_SET.has(track)) {
+const STRUCT_MINS = {
+  apstats: 66, igcse: 98, edexcel: 120, addmath: 96, aslevel: 88, a2level: 60,
+  ibsl: 157, ibhl: 150, olympiad: 120, mathai: 58, calculus: 32, mvc: 24, linalg: 24, odes: 27,
+};
+if (NEW_ROLLOUT_SET.has(track)) {
+    if (uncoupledTblCount > 0) errors.push(`${track} has ${uncoupledTblCount} uncoupled tables whose stems do not reference tabular data`);
     if (legacyFrqCount > 0) errors.push(`${track} still contains ${legacyFrqCount} legacy 'frq' items instead of 'structured'`);
     const minSvg = track === 'geo' ? 45.0 : 35.0;
     if (svgPct < minSvg) errors.push(`${track} SVG figure ratio ${svgPct.toFixed(1)}% < ${minSvg.toFixed(1)}%`);

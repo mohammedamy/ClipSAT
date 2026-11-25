@@ -10,95 +10,99 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Consider the vector field \\( \\mathbf{P}(r, y, z) = \\langle 10r,\\, 26y,\\, 20z \\rangle \\) on \\( \\mathbb{R}^3 \\). Determine the scalar divergence \\( \\nabla \\cdot \\mathbf{P} \\).",
-          "answer": "**Answer:** D. The divergence is \\( 10 + 26 + 20 = 56 \\).",
+          "q": "Inspect the metallurgy values listed across the table (CALCULUS-954259750); where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(2)\\)?",
+          "answer": "**Answer:** D. By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (2)(4) + (2)(-2) = 4\\).",
           "explanation": "The divergence is \\( 10 + 26 + 20 = 56 \\).",
           "choices": [
-            "60",
-            "30",
-            "66",
-            "56"
+            "\\(-4\\)",
+            "\\(12\\)",
+            "\\(8\\)",
+            "\\(4\\)"
           ],
           "correct": 3,
+          "explain": "By the product rule, \\(P'(2) = f'(2)g(2) + f(2)g'(2) = (2)(4) + (2)(-2) = 4\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "2",
-              "4",
-              "6",
-              "8"
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "\\(f(x)\\)",
+                "2",
+                "5"
               ],
               [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
+                "\\(f'(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "6"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-2",
                 "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (metallurgy, CALCULUS-954259750)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (علم المعادن، CALCULUS-954259750)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Converting to polar: \\(\\iint_D f(x,y)\\,dA=\\int\\int f(r\\cos\\theta,r\\sin\\theta)\\,r\\,dr\\,d\\theta\\). The extra factor \\(r\\) is the:",
-          "answer": "**Answer:** A. Jacobian of polar coordinates: \\(r\\).",
+          "q": "Based on the lab apparatus visual model shown (CALCULUS-G937483145) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "answer": "**Answer:** A. From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Jacobian of polar coordinates: \\(r\\).",
           "choices": [
-            "Jacobian",
-            "area element",
-            "integrand",
-            "radius"
+            "\\(13\\)",
+            "\\(16\\)",
+            "\\(7\\)",
+            "\\(11\\)"
           ],
           "correct": 0,
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "figure": {
-            "type": "polar_graph",
-            "curves": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
               {
-                "rExpr": "3*cos(2*t)",
+                "fn": "3*(x - (0))^2 + (1)",
                 "color": "#2563eb",
-                "tMin": 0,
-                "tMax": 6.2832
+                "label": "y = f(x)"
               }
             ],
-            "rMax": 7,
-            "thetaStepDeg": 30,
-            "caption": "Polar Curve (#3)",
-            "caption_ar": "منحنى قطبي (#3)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G937483145)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G937483145)"
           }
         },
         {
@@ -121,111 +125,105 @@
           }
         },
         {
-          "q": "Evaluate \\(\\int_{-2}^{2} (x^3 - 4x)\\,dx\\) by recognizing the integrand's symmetry, without computing an antiderivative.",
+          "q": "Referring to the harmonic trace figure (CALCULUS-G38148852) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The definite integral and its properties",
-          "answer": "The integrand is odd (\\(f(-x) = -f(x)\\)), and the interval is symmetric about \\(0\\), so the integral is \\(0\\).",
+          "answer": "**Answer:** \\(4\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
           "explanation": "The integrand is odd (\\(f(-x) = -f(x)\\)), and the interval is symmetric about \\(0\\), so the integral is \\(0\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
               -3,
-              3
+              5
             ],
             "yl": [
               -2,
-              7
+              8
             ],
-            "xStep": 1,
+            "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 1) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 3"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 5,
+                "label": "(2, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 3 (CALCULUS-G38148852)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G38148852)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Area of disk \\(x^2+y^2\\le R^2\\) by polar coordinates:",
-          "answer": "**Answer:** B. \\(\\int_0^{2\\pi}\\int_0^R r\\,dr\\,d\\theta=2\\pi\\cdot R^2/2=\\pi R^2\\).",
+          "q": "In assessment dataset (CALCULUS-21370226) for metallurgy, the table reports key quantities; approximate \\(\\int_{2}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** B. Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{2}{2}(8 + 12) = 12 + 20 = 32\\).",
           "explanation": "\\(\\int_0^{2\\pi}\\int_0^R r\\,dr\\,d\\theta=2\\pi\\cdot R^2/2=\\pi R^2\\).",
           "choices": [
-            "\\(\\pi R\\)",
-            "\\(\\pi R^2\\)",
-            "\\(2\\pi R\\)",
-            "\\(4\\pi R^2\\)"
+            "\\(24\\)",
+            "\\(32\\)",
+            "\\(40\\)",
+            "\\(64\\)"
           ],
           "correct": 1,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{2}{2}(8 + 12) = 12 + 20 = 32\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "\\(t\\)",
+              "2",
+              "4",
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(R(t)\\)",
                 "4",
                 "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#6)",
-            "caption_ar": "جدول القيم المختارة (#6)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
-              ],
-              [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 6] (metallurgy, CALCULUS-21370226)",
+            "caption_ar": "جدول المعدل (علم المعادن، CALCULUS-21370226)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Volume under \\(z=f(x,y)\\) over region \\(D\\) equals:",
-          "answer": "**Answer:** C. Volume = double integral of height.",
+          "q": "From the plotted turbine profile figure above (CALCULUS-G4593621) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "answer": "**Answer:** C. From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Volume = double integral of height.",
           "choices": [
-            "\\(\\iint_D f^2\\,dA\\)",
-            "\\(\\oint_D f\\,ds\\)",
-            "\\(\\iint_D f\\,dA\\)",
-            "\\(\\iint_D\\nabla f\\,dA\\)"
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(3\\)",
+            "\\(6\\)"
           ],
           "correct": 2,
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "figure": {
             "type": "fn",
             "xl": [
@@ -233,19 +231,34 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#7)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G4593621)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G4593621)"
           }
         },
         {
@@ -273,259 +286,223 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Find the total (unsigned) area between \\(f(x)=x-2\\) and the \\(x\\)-axis on \\([0,4]\\), splitting the integral at the sign change \\(x=2\\).",
+          "q": "Referring to the calibration curve figure (CALCULUS-G105259328) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Signed area",
-          "answer": "\\(\\left|\\int_0^2(x-2)\\,dx\\right| + \\left|\\int_2^4(x-2)\\,dx\\right|\\). \\(\\int_0^2(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_0^2 = (2-4)-0=-2\\), so \\(|-2|=2\\). \\(\\int_2^4(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_2^4 = (8-8)-(2-4)=0-(-2)=2\\). Total area \\(=2+2=4\\).",
+          "answer": "**Answer:** \\(3\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
           "explanation": "\\(\\left|\\int_0^2(x-2)\\,dx\\right| + \\left|\\int_2^4(x-2)\\,dx\\right|\\). \\(\\int_0^2(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_0^2 = (2-4)-0=-2\\), so \\(|-2|=2\\). \\(\\int_2^4(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_2^4 = (8-8)-(2-4)=0-(-2)=2\\). Total area \\(=2+2=4\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -3,
+              5
             ],
             "yl": [
-              -5,
+              -3,
               7
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "For the increasing function \\(f(x)=x^2\\) on \\([0,4]\\), will the left-endpoint sum overestimate or underestimate the true area? Justify your answer.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Comparing Riemann sum estimates",
-          "answer": "Underestimate — since \\(f\\) is increasing, the left endpoint of each subinterval gives the smallest function value on that subinterval, so each rectangle sits below the curve.",
-          "explanation": "Underestimate — since \\(f\\) is increasing, the left endpoint of each subinterval gives the smallest function value on that subinterval, so each rectangle sits below the curve.",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows": [
-              [
-                "f(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#10)",
-            "caption_ar": "جدول القيم المختارة (#10)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Using the right-endpoint result (\\(30\\)) and left-endpoint result (\\(24\\), computed earlier for a different function) is not directly comparable — instead, compare the right-endpoint estimate (\\(30\\)) for \\(\\int_0^4x^2dx\\) to the exact value \\(\\frac{64}{3}\\approx21.33\\), and explain the direction of the error.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Comparing Riemann sum estimates",
-          "answer": "The right-endpoint estimate (\\(30\\)) overestimates the true value (\\(\\approx21.33\\)), consistent with \\(f(x)=x^2\\) being increasing — right endpoints give the largest function value on each subinterval, so the rectangles sit above the curve.",
-          "explanation": "The right-endpoint estimate (\\(30\\)) overestimates the true value (\\(\\approx21.33\\)), consistent with \\(f(x)=x^2\\) being increasing — right endpoints give the largest function value on each subinterval, so the rectangles sit above the curve.",
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#11)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "A table gives \\(f(0)=2\\), \\(f(1)=5\\), \\(f(2)=9\\), \\(f(3)=14\\), \\(f(4)=20\\). Use a right-endpoint Riemann sum with these 4 equal subintervals of width 1 to approximate \\(\\int_0^4f(x)\\,dx\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Riemann sums from a table of values",
-          "answer": "\\(R_4=1[f(1)+f(2)+f(3)+f(4)]=5+9+14+20=48\\).",
-          "explanation": "\\(R_4=1[f(1)+f(2)+f(3)+f(4)]=5+9+14+20=48\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
-              {
-                "from": -1,
-                "to": 4,
-                "openLeft": true,
-                "openRight": false
+                "fn": "6/(x - 1) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 1) + 2"
               }
             ],
             "pts": [
               {
-                "x": -1,
-                "open": true,
-                "label": "a"
-              },
-              {
-                "x": 4,
-                "open": false,
-                "label": "b"
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
               }
             ],
-            "caption": "Number Line Interval (#12)"
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 2 (CALCULUS-G105259328)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G105259328)"
           }
         },
         {
-          "q": "Write the formal limit definition of the definite integral \\(\\int_a^b f(x)\\,dx\\) in terms of a Riemann sum, and explain the role of \\(n\\rightarrow\\infty\\).",
+          "q": "An engineering team logged logistics measurements in the accompanying table (CALCULUS-88480702); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "The definite integral as a limit of Riemann sums",
-          "answer": "\\(\\int_a^b f(x)\\,dx=\\lim_{n\\rightarrow\\infty}\\sum_{i=1}^n f(x_i^*)\\Delta x\\), where \\(\\Delta x=\\frac{b-a}{n}\\). As \\(n\\rightarrow\\infty\\), the rectangles become infinitely thin, and the sum converges to the exact signed area under the curve, regardless of which sample point \\(x_i^*\\) (left, right, midpoint) is used within each subinterval.",
-          "explanation": "\\(\\int_a^b f(x)\\,dx=\\lim_{n\\rightarrow\\infty}\\sum_{i=1}^n f(x_i^*)\\Delta x\\), where \\(\\Delta x=\\frac{b-a}{n}\\). As \\(n\\rightarrow\\infty\\), the rectangles become infinitely thin, and the sum converges to the exact signed area under the curve, regardless of which sample point \\(x_i^*\\) (left, right, midpoint) is used within each subinterval.",
+          "target": "Comparing Riemann sum estimates",
+          "answer": "**Answer:** \\(12\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 7 + 1(5) = 12\\).",
+          "explanation": "Underestimate — since \\(f\\) is increasing, the left endpoint of each subinterval gives the smallest function value on that subinterval, so each rectangle sits below the curve.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 7 + 1(5) = 12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
+                "0",
+                "1",
+                "4",
+                "3"
               ],
               [
-                "f'(x)",
-                "4",
+                "1",
                 "2",
-                "4",
-                "2"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#13)",
-            "caption_ar": "جدول القيم المختارة (#13)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "2",
-                "5",
-                "8",
-                "11"
+                "7",
+                "5"
               ],
               [
-                "f'(x)",
-                "4",
                 "2",
-                "4",
-                "2"
+                "3",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (logistics, CALCULUS-88480702)",
+            "caption_ar": "جدول خطوات أويلر (العمليات اللوجستية، CALCULUS-88480702)"
           }
         },
         {
-          "q": "Write the right-endpoint Riemann sum \\(R_n\\) for \\(\\int_1^3 x^2\\,dx\\) using sigma notation, with \\(\\Delta x=\\frac{2}{n}\\) and \\(x_i=1+i\\Delta x\\). Do not evaluate the sum.",
+          "q": "From the plotted specimen plot figure above (CALCULUS-G844291921) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Riemann sums with sigma notation",
-          "answer": "\\(R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}\\).",
-          "explanation": "\\(R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}\\).",
+          "target": "Comparing Riemann sum estimates",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "explanation": "The right-endpoint estimate (\\(30\\)) overestimates the true value (\\(\\approx21.33\\)), consistent with \\(f(x)=x^2\\) being increasing — right endpoints give the largest function value on each subinterval, so the rectangles sit above the curve.",
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (CALCULUS-G844291921)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G844291921)"
+          }
+        },
+        {
+          "q": "Referring to the harmonic trace figure (CALCULUS-G861069540) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Riemann sums from a table of values",
+          "answer": "**Answer:** \\(4\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "explanation": "\\(R_4=1[f(1)+f(2)+f(3)+f(4)]=5+9+14+20=48\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 4\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -3,
+              5
             ],
             "yl": [
-              -3,
-              6
+              -2,
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "2/(x - 1) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 1) + 3"
               }
             ],
-            "title": "Coordinate Graph (#14)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 5,
+                "label": "(2, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 3 (CALCULUS-G861069540)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G861069540)"
           }
         },
         {
-          "qtype": "MCQ",
-          "q": "Let the linear scalar potential be \\( h(u, y) = 21u + 17y - 10 \\). Determine the squared gradient norm \\( \\|\\nabla h\\|^2 \\).",
-          "answer": "**Answer:** D. Since \\( \\nabla h = \\langle 21, 17 \\rangle \\), \\( \\|\\nabla h\\|^2 = 21^2 + 17^2 = 730 \\).",
-          "explanation": "Since \\( \\nabla h = \\langle 21, 17 \\rangle \\), \\( \\|\\nabla h\\|^2 = 21^2 + 17^2 = 730 \\).",
-          "choices": [
-            "734",
-            "751",
-            "713",
-            "730"
-          ],
-          "correct": 3,
+          "q": "Inspect the acoustics lab values listed across the table (CALCULUS-810735676); approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The definite integral as a limit of Riemann sums",
+          "answer": "**Answer:** \\(29\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{2}{2}(7 + 11) = 11 + 18 = 29\\).",
+          "explanation": "\\(\\int_a^b f(x)\\,dx=\\lim_{n\\rightarrow\\infty}\\sum_{i=1}^n f(x_i^*)\\Delta x\\), where \\(\\Delta x=\\frac{b-a}{n}\\). As \\(n\\rightarrow\\infty\\), the rectangles become infinitely thin, and the sum converges to the exact signed area under the curve, regardless of which sample point \\(x_i^*\\) (left, right, midpoint) is used within each subinterval.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{2}{2}(7 + 11) = 11 + 18 = 29\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "1",
+              "3",
+              "5"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "4",
+                "7",
+                "11"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Sampled rate table R(t) on [1, 5] (acoustics lab, CALCULUS-810735676)",
+            "caption_ar": "جدول المعدل (مختبر الصوت، CALCULUS-810735676)"
+          }
+        },
+        {
+          "q": "From the plotted turbine profile figure above (CALCULUS-G827514309) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Riemann sums with sigma notation",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -533,19 +510,70 @@
               3
             ],
             "yl": [
-              -2,
-              7
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G827514309)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G827514309)"
+          }
+        },
+        {
+          "qtype": "MCQ",
+          "q": "From the plotted lab apparatus figure above (CALCULUS-G777181445) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
+          "answer": "**Answer:** D. At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "explanation": "Since \\( \\nabla h = \\langle 21, 17 \\rangle \\), \\( \\|\\nabla h\\|^2 = 21^2 + 17^2 = 730 \\).",
+          "choices": [
+            "\\(0\\)",
+            "\\(4\\)",
+            "\\(21\\)",
+            "\\(-3\\)"
+          ],
+          "correct": 3,
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "figure": {
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (CALCULUS-G777181445)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G777181445)"
           }
         }
       ]
@@ -554,126 +582,149 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "For a concave-down function on \\([a,b]\\), which is larger: the trapezoidal estimate or the midpoint estimate? Justify briefly, and state which one overestimates the true area.",
+          "q": "Examine the quality audit dataset arranged in the table below (CALCULUS-793958057); tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Comparing approximation methods on a concave function",
           "cross_lesson": "13.01 Vectors and Vector-Valued Functions",
-          "answer": "For concave-down \\(f\\), the trapezoids lie below the curve (underestimate), while midpoint rectangles' tops cross above the curve on average (overestimate). So the midpoint estimate is larger, and the trapezoidal estimate underestimates the true area.",
+          "answer": "**Answer:** \\(6\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
           "explanation": "For concave-down \\(f\\), the trapezoids lie below the curve (underestimate), while midpoint rectangles' tops cross above the curve on average (overestimate). So the midpoint estimate is larger, and the trapezoidal estimate underestimates the true area.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(3) = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
-              ],
-              [
-                "f'(x)",
-                "2",
                 "0",
                 "2",
-                "0"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#16)",
-            "caption_ar": "جدول القيم المختارة (#16)",
-            "headers_ar": [
-              "x",
-              "0",
-              "2",
-              "4",
-              "6"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "5",
-                "6",
-                "7"
+                "1",
+                "2"
               ],
               [
-                "f'(x)",
+                "1",
+                "3",
+                "3",
+                "3"
+              ],
+              [
                 "2",
-                "0",
-                "2",
-                "0"
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (quality audit, CALCULUS-793958057)",
+            "caption_ar": "جدول خطوات أويلر (تدقيق الجودة، CALCULUS-793958057)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Cylindrical coordinates: \\(dV=\\)",
-          "answer": "**Answer:** B. Cylindrical: \\(dV=r\\,dr\\,d\\theta\\,dz\\).",
+          "q": "The accompanying figure illustrates a calibration curve configuration (CALCULUS-G743626214); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** B. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
           "explanation": "Cylindrical: \\(dV=r\\,dr\\,d\\theta\\,dz\\).",
           "choices": [
-            "\\(r^2\\,dr\\,d\\theta\\,dz\\)",
-            "\\(r\\,dr\\,d\\theta\\,dz\\)",
-            "\\(r\\sin\\phi\\,dr\\,d\\theta\\,d\\phi\\)",
-            "\\(dr\\,d\\theta\\,dz\\)"
+            "\\(0\\)",
+            "\\(6\\)",
+            "\\(9\\)",
+            "\\(8\\)"
           ],
           "correct": 1,
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#17)"
-          }
-        },
-        {
-          "q": "Level 1 · FoundationsExpress the following limit as a definite integral with lower limit \\(a = 0\\), and evaluate it: \\(\\lim_{n\\rightarrow\\infty} \\sum_{i=1}^n \\frac{2}{n} \\sqrt{4 - \\left(\\frac{2i}{n}\\right)^2}\\)",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Riemann sums with sigma notation",
-          "cross_lesson": "15.01 Double Integrals",
-          "answer": "Identify components: \\(\\Delta x = \\frac{2}{n}\\), so with \\(a = 0\\), the upper limit is \\(b = 2\\). Sample points are \\(x_i = \\frac{2i}{n}\\). The integrand is \\(f(x) = \\sqrt{4 - x^2}\\). The limit becomes: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx\\) Geometrically, \\(y = \\sqrt{4 - x^2}\\) represents the upper half of a circle of radius \\(r = 2\\) centered at the origin. The interval \\([0, 2]\\) represents one quarter of the circle: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx = \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2)^2 = \\mathbf{\\pi} \\approx 3.1416.\\)",
-          "explanation": "Identify components: \\(\\Delta x = \\frac{2}{n}\\), so with \\(a = 0\\), the upper limit is \\(b = 2\\). Sample points are \\(x_i = \\frac{2i}{n}\\). The integrand is \\(f(x) = \\sqrt{4 - x^2}\\). The limit becomes: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx\\) Geometrically, \\(y = \\sqrt{4 - x^2}\\) represents the upper half of a circle of radius \\(r = 2\\) centered at the origin. The interval \\([0, 2]\\) represents one quarter of the circle: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx = \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2)^2 = \\mathbf{\\pi} \\approx 3.1416.\\)",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -1,
+              7
             ],
             "yl": [
-              -3,
-              6
+              -2,
+              8
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
+                "fn": "6/(x - 3) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 3"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 9,
+                "label": "(4, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 3 (CALCULUS-G743626214)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G743626214)"
+          }
+        },
+        {
+          "q": "From the plotted fluid channel figure above (CALCULUS-G760403833) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Riemann sums with sigma notation",
+          "cross_lesson": "15.01 Double Integrals",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "explanation": "Identify components: \\(\\Delta x = \\frac{2}{n}\\), so with \\(a = 0\\), the upper limit is \\(b = 2\\). Sample points are \\(x_i = \\frac{2i}{n}\\). The integrand is \\(f(x) = \\sqrt{4 - x^2}\\). The limit becomes: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx\\) Geometrically, \\(y = \\sqrt{4 - x^2}\\) represents the upper half of a circle of radius \\(r = 2\\) centered at the origin. The interval \\([0, 2]\\) represents one quarter of the circle: \\(\\int_0^2 \\sqrt{4 - x^2}\\,dx = \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2)^2 = \\mathbf{\\pi} \\approx 3.1416.\\)",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#18)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G760403833)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G760403833)"
           }
         },
         {

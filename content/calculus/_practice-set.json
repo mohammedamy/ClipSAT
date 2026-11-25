@@ -72,31 +72,32 @@
       "number": "P3",
       "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\(\\displaystyle \\int\\limits_{1}^{5} \\frac{1}{\\left(x + 1\\right) \\left(x + 4\\right)}\\, dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle \\int\\limits_{1}^{5} \\frac{1}{\\left(x + 1\\right) \\left(x + 4\\right)}\\, dx\\)."
+        "en": "Based strictly on the tabulated reactor bench observations (CALCULUS-746), approximate \\(\\int_{2}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+        "ar": "استنادًا إلى بيانات منصة المفاعل المجدولة (CALCULUS-746)، لتقريب التكامل \\(\\int_{2}^{6} R(t)\\,dt\\) باستخدام قاعدة شبه المنحرف."
       },
       "solution": {
-        "en": "<p>Decompose \\(\\frac{1}{\\left(x + 1\\right) \\left(x + 4\\right)} = - \\frac{1}{3 \\left(x + 4\\right)} + \\frac{1}{3 \\left(x + 1\\right)}\\), integrate to logarithms, and evaluate: \\(- \\frac{\\ln{\\left(3 \\right)}}{3} + \\frac{\\ln{\\left(5 \\right)}}{3}\\).</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{2}{2}(8 + 12) = 12 + 20 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "6"
         ],
-        "caption": "Real-Line Scale (#3)"
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "4",
+            "8",
+            "12"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 6] (reactor bench, CALCULUS-746)",
+        "caption_ar": "جدول المعدل (منصة المفاعل، CALCULUS-746)"
       }
     },
     {
@@ -140,39 +141,55 @@
       "number": "P5",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the interval of convergence of \\(\\displaystyle \\sum_{n=1}^{\\infty} \\frac{3^{- n} \\left(x - 3\\right)^{n}}{n}\\).",
-        "ar": "أوجد فترة التقارب من \\(\\displaystyle \\sum_{n=1}^{\\infty} \\frac{3^{- n} \\left(x - 3\\right)^{n}}{n}\\)."
+        "en": "Based on the acoustic chamber visual model shown (CALCULUS-G812) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+        "ar": "ادرس التمثيل المرئي لـ غرفة الصوتيات المعروض (CALCULUS-G812) للدالة الكسرية وخطي التقارب المتقطعين. احسب مجموع \\(h + c\\) ."
       },
       "solution": {
-        "en": "<p>The radius is 3 (ratio test). At \\(x = 6\\) the series is \\(\\sum_{n=1}^{\\infty} \\frac{1}{n}\\); at \\(x = 0\\) it is \\(\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n}\\). Checking each endpoint gives \\(\\left[0, 6\\right)\\).</p>",
+        "en": "<p>Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 6\\). <strong>Final Answer: \\(6\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -6,
-        "max": 6,
-        "step": 1,
-        "intervals": [
+        "type": "fn",
+        "xl": [
+          -3,
+          5
+        ],
+        "yl": [
+          0,
+          10
+        ],
+        "xStep": 2,
+        "yStep": 2,
+        "fns": [
           {
-            "from": -3,
-            "to": 5,
-            "openLeft": true,
-            "openRight": false
+            "fn": "6/(x - 1) + 5",
+            "color": "#2563eb",
+            "label": "r(x) = 6/(x - 1) + 5"
           }
         ],
         "pts": [
           {
-            "x": -3,
-            "open": true,
-            "label": "a"
-          },
-          {
-            "x": 5,
-            "open": false,
-            "label": "b"
+            "x": 2,
+            "y": 11,
+            "label": "(2, 11)"
           }
         ],
-        "caption": "Number Line Interval (#5)"
+        "asymptotes": [
+          {
+            "type": "v",
+            "v": 1,
+            "label": "x = 1"
+          },
+          {
+            "type": "h",
+            "v": 5,
+            "label": "y = 5"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "r(x)",
+        "caption": "Rational curve with asymptotes x = 1 and y = 5 (CALCULUS-G812)",
+        "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G812)"
       }
     },
     {
@@ -216,50 +233,48 @@
       "number": "P7",
       "difficulty": "Advanced",
       "question": {
-        "en": "Using Stokes' Theorem, evaluate \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r}\\) where \\(\\mathbf{F}=\\langle -y^2,x,z^2\\rangle\\) and \\(C\\) is the intersection of \\(z=y\\) and the cylinder \\(x^2+y^2=1\\) (oriented counterclockwise from above).",
+        "en": "The accompanying figure illustrates a fluid channel configuration (CALCULUS-G871); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1 · Compute the Curl:</strong> For \\(\\mathbf{F} = \\langle -y^2, x, z^2 \\rangle\\), we compute \\(\\nabla \\times \\mathbf{F} = \\left\\langle \\frac{\\partial(z^2)}{\\partial y} - \\frac{\\partial x}{\\partial z},\\; \\frac{\\partial(-y^2)}{\\partial z} - \\frac{\\partial(z^2)}{\\partial x},\\; \\frac{\\partial x}{\\partial x} - \\frac{\\partial(-y^2)}{\\partial y} \\right\\rangle = \\langle 0, 0, 1 + 2y \\rangle\\).</p><p><strong>Step 2 · Surface Element & Orientation:</strong> Let \\(S\\) be the elliptic planar disk \\(z = y\\) above the unit disk \\(D: x^2 + y^2 \\le 1\\), oriented upward to match counterclockwise traversal of \\(C\\) from above. Using \\(g(x,y) = y\\), the oriented area vector is \\(d\\mathbf{S} = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 0, -1, 1 \\rangle\\,dA\\).</p><p><strong>Step 3 · Evaluate the Surface Integral:</strong> By Stokes' Theorem, \\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S} = \\iint_D (1 + 2y)\\,dA = \\iint_D 1\\,dA + 2\\iint_D y\\,dA = \\pi(1)^2 + 0 = \\pi. \\]</p>",
+        "en": "<p>From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "g(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ]
+        "yl": [
+          -2,
+          10
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#7)",
-        "caption_ar": "جدول نمط مرجعي (#7)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (2))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2, 0)"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "label": "(3, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G871)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G871)"
       }
     },
     {
@@ -382,63 +397,41 @@
       "number": "P11",
       "difficulty": "Basic",
       "question": {
-        "en": "A particle's position in the xy-plane is given by the parametric equations \\(x(t) = 2t + 1\\) and \\(y(t) = t^2 - 3\\), where \\(t\\) is time.  What is the Cartesian equation of the path traced by the particle?",
+        "en": "In assessment dataset (CALCULUS-969) for survey trial, the table reports key quantities; evaluate \\(f(g(2)) + 3\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the Cartesian equation, we need to eliminate the parameter \\(t\\) from the given parametric equations.</p><p>Given:<br>\\(x(t) = 2t + 1\\)<br>\\(y(t) = t^2 - 3\\)</p><p>From the first equation, we can solve for \\(t\\) in terms of \\(x\\):<br>\\(x - 1 = 2t\\)<br>\\(t = \\frac{x-1}{2}\\)</p><p>Now, substitute this expression for \\(t\\) into the second equation:<br>\\(y = \\left(\\frac{x-1}{2}\\right)^2 - 3\\)</p><p>This is the Cartesian equation of the path traced by the particle.</p>",
+        "en": "<p>From the table, \\(g(2) = 3\\) and \\(f(3) = 14\\). Adding \\(3\\) yields \\(14 + 3 = 17\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(17\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "triangle",
-        "verts": [
-          "C",
-          "B",
-          "A"
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "labels": [
-          "C",
-          "B",
-          "A"
-        ],
-        "rightAngle": "C",
-        "rightAt": "C",
-        "sides": [
-          "R",
-          "F_y",
-          "F_x"
-        ],
-        "vertices": [
+        "rows": [
           [
-            0,
-            0
+            "\\(f(x)\\)",
+            "7",
+            "9",
+            "14",
+            "13"
           ],
           [
-            4,
-            0
-          ],
-          [
-            0,
-            3
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
-        "coords": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "notToScale": true,
-        "caption": "Component Triangle (not drawn to scale).",
-        "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (survey trial, CALCULUS-969)",
+        "caption_ar": "قيم مختارة للدالتين (تجربة المسح، CALCULUS-969)"
       }
     },
     {
@@ -519,26 +512,48 @@
       "number": "P14",
       "difficulty": "Basic",
       "question": {
-        "en": "Consider the vector \\(\\mathbf{v}\\) with initial point \\(P = (1, 2)\\) and terminal point \\(Q = (4, 6)\\). What are the components of \\(\\mathbf{v}\\)?",
+        "en": "Referring to the turbine profile figure (CALCULUS-G1065) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the components of a vector \\(\\mathbf{v}\\) with initial point \\((x_1, y_1)\\) and terminal point \\((x_2, y_2)\\), we subtract the coordinates of the initial point from the coordinates of the terminal point.  That is, \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, the initial point is \\(P = (1, 2)\\) and the terminal point is \\(Q = (4, 6)\\). Therefore, the components of \\(\\mathbf{v}\\) are \\(\\langle 4 - 1, 6 - 2 \\rangle = \\langle 3, 4 \\rangle\\).</p>",
+        "en": "<p>From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(3\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
-          [
-            1,
-            -1
-          ],
-          [
-            1,
-            1
-          ]
+        "type": "fn",
+        "xl": [
+          -3,
+          3
         ],
-        "title": "Linear Transformation Action (#14)"
+        "yl": [
+          -3,
+          6
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "1*(x - (0))^2 + (-1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 0,
+            "y": -1,
+            "label": "(0, -1)"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "label": "(1, 0)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G1065)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G1065)"
       }
     },
     {
@@ -624,33 +639,48 @@
       "number": "P17",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the directional derivative of \\(f{\\left(x,y \\right)} = \\sqrt{x^{2} + y^{2} + 4}\\) at \\(\\left( 1, \\ 3\\right)\\) in the direction of \\(\\langle 4, -3 \\rangle\\).",
-        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل الجامعي) بالاعتماد على العلاقات الرياضية \\(f{\\left(x,y \\right)} = \\sqrt{x^{2} + y^{2} + 4}\\) ، \\(\\left( 1, \\ 3\\right)\\) ، \\(\\langle 4, -3 \\rangle\\)، احسب معدل التغير أو الميل المطلوب."
+        "en": "Based on the lab apparatus visual model shown (CALCULUS-G1133) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+        "ar": "ادرس التمثيل المرئي لـ جهاز المختبر المعروض (CALCULUS-G1133) للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(2)\\) ."
       },
       "solution": {
-        "en": "<p>\\(\\nabla f\\left( 1, \\ 3\\right)=\\langle \\frac{\\sqrt{14}}{14}, \\frac{3 \\sqrt{14}}{14} \\rangle\\) and the unit vector is \\(\\langle \\frac{4}{5}, - \\frac{3}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{\\sqrt{14}}{14}\\).</p>",
-        "ar": "<p>\\(\\nabla f\\left( 1, \\ 3\\right)=\\langle \\frac{\\sqrt{14}}{14}, \\frac{3 \\sqrt{14}}{14} \\rangle\\) و الوحدة المتجه يساوي \\(\\langle \\frac{4}{5}, - \\frac{3}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{\\sqrt{14}}{14}\\).</p>"
+        "en": "<p>From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
+        "ar": "<p>من الرأس والنقطة المعطاة نجد المعامل \\(a = 3\\) ، وبالتعويض عند \\(x = 2\\) نحصل على \\(13\\) . تحقّق: تأكد من قراءة الصف وتدريج المحور والقيم الحدية من الشكل مع مراجعة الحساب. <strong>الإجابة النهائية: \\(13\\)</strong></p>"
       },
       "fig": {
         "type": "fn",
         "xl": [
-          -4,
-          4
+          -3,
+          3
         ],
         "yl": [
-          -5,
-          7
+          -1,
+          15
         ],
-        "xStep": 2,
-        "yStep": 2,
+        "xStep": 1,
+        "yStep": 5,
         "fns": [
           {
-            "fn": "1.5*x + 1",
+            "fn": "3*(x - (0))^2 + (1)",
+            "color": "#2563eb",
             "label": "y = f(x)"
           }
         ],
-        "title": "Coordinate Graph (#17)",
-        "caption": "Reference graph y = f(x)"
+        "pts": [
+          {
+            "x": 0,
+            "y": 1,
+            "label": "(0, 1)"
+          },
+          {
+            "x": 1,
+            "y": 4,
+            "label": "(1, 4)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G1133)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G1133)"
       }
     },
     {
@@ -698,145 +728,130 @@
       "number": "P19",
       "difficulty": "Advanced",
       "question": {
-        "en": "Coffee at 70°C is placed in a 20°C room and cools to 60°C in 10 min (Newton's law of cooling). How long (min) until it reaches 40°C?",
+        "en": "Referring to the cohort study table above (CALCULUS-1199), determine \\(4\\,h^{-1}(19)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(T - 20 = 50 e^{- k t}\\) with \\(k = \\frac{\\ln{\\left(\\frac{5}{4} \\right)}}{10}\\). Solve \\(50 e^{- k t} = 20\\): \\(t = \\frac{10 \\ln{\\left(\\frac{5}{2} \\right)}}{\\ln{\\left(\\frac{5}{4} \\right)}}\\).</p>",
-        "ar": "<p>\\(T - 20 = 50 e^{- k t}\\) مع \\(k = \\frac{\\ln{\\left(\\frac{5}{4} \\right)}}{10}\\). حل \\(50 e^{- k t} = 20\\): \\(t = \\frac{10 \\ln{\\left(\\frac{5}{2} \\right)}}{\\ln{\\left(\\frac{5}{4} \\right)}}\\).</p>"
+        "en": "<p>Because \\(h(10) = 19\\), we have \\(h^{-1}(19) = 10\\). Multiplying by \\(4\\) gives \\(40\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(40\\)</strong></p>",
+        "ar": "<p>بما أن \\(h(10) = 19\\) فإن \\(h^{-1}(19) = 10\\) ، وبضربها في \\(4\\) يكون الناتج \\(40\\) . تحقّق: تأكد من قراءة الصف وتدريج المحور والقيم الحدية من الشكل مع مراجعة الحساب. <strong>الإجابة النهائية: \\(40\\)</strong></p>"
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "\\(x\\)",
+          "4",
+          "6",
+          "8",
+          "10"
         ],
         "rows": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "\\(h(x)\\)",
+            "5",
+            "9",
+            "14",
+            "19"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#19)",
-        "caption_ar": "جدول نمط مرجعي (#19)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (cohort study, CALCULUS-1199)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (دراسة الفوج، CALCULUS-1199)"
       }
     },
     {
       "number": "P20",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\(\\displaystyle \\int\\limits_{2}^{5} \\frac{2 x + 1}{\\left(x - 1\\right) \\left(x + 4\\right)}\\, dx\\).",
-        "ar": "احسب قيمة \\(\\displaystyle \\int\\limits_{2}^{5} \\frac{2 x + 1}{\\left(x - 1\\right) \\left(x + 4\\right)}\\, dx\\)."
+        "en": "Referring to the orbital sector figure (CALCULUS-G1235) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+        "ar": "بالرجوع إلى رسم القطاع المداري (CALCULUS-G1235) للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(4)\\) ."
       },
       "solution": {
-        "en": "<p>Decompose \\(\\frac{2 x + 1}{\\left(x - 1\\right) \\left(x + 4\\right)} = \\frac{7}{5 \\left(x + 4\\right)} + \\frac{3}{5 \\left(x - 1\\right)}\\), integrate to logarithms, and evaluate: \\(- \\frac{\\ln{\\left(2 \\right)}}{5} + \\frac{7 \\ln{\\left(3 \\right)}}{5}\\).</p>",
+        "en": "<p>From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
+        "type": "fn",
+        "xl": [
+          -1,
+          5
+        ],
+        "yl": [
+          -1,
+          15
+        ],
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "3*(x - (2))^2 + (1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
         "pts": [
           {
-            "x": -2,
-            "open": false,
-            "label": "p"
+            "x": 2,
+            "y": 1,
+            "label": "(2, 1)"
           },
           {
             "x": 3,
-            "open": false,
-            "label": "q"
+            "y": 4,
+            "label": "(3, 4)"
           }
         ],
-        "caption": "Real-Line Scale (#20)"
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G1235)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G1235)"
       }
     },
     {
       "number": "P21",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the directional derivative of \\(f{\\left(x,y \\right)} = x \\cos{\\left(y \\right)} - y\\) at \\(\\left( -2, \\ -2\\right)\\) in the direction of \\(\\langle -3, 4 \\rangle\\).",
-        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل الجامعي) بالاعتماد على العلاقات الرياضية \\(f{\\left(x,y \\right)} = x \\cos{\\left(y \\right)} - y\\) ، \\(\\left( -2, \\ -2\\right)\\) ، \\(\\langle -3, 4 \\rangle\\)، احسب معدل التغير أو الميل المطلوب."
+        "en": "Given the measurements marked directly on the orbital sector schematic (CALCULUS-G1271) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+        "ar": "القيم على رسم القطاع المداري (CALCULUS-G1271) موضحة مباشرة على الشكل للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(4)\\) ."
       },
       "solution": {
-        "en": "<p>\\(\\nabla f\\left( -2, \\ -2\\right)=\\langle \\cos{\\left(2 \\right)}, - 2 \\sin{\\left(2 \\right)} - 1 \\rangle\\) and the unit vector is \\(\\langle - \\frac{3}{5}, \\frac{4}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{8 \\sin{\\left(2 \\right)}}{5} - \\frac{4}{5} - \\frac{3 \\cos{\\left(2 \\right)}}{5}\\).</p>",
-        "ar": "<p>\\(\\nabla f\\left( -2, \\ -2\\right)=\\langle \\cos{\\left(2 \\right)}, - 2 \\sin{\\left(2 \\right)} - 1 \\rangle\\) و الوحدة المتجه يساوي \\(\\langle - \\frac{3}{5}, \\frac{4}{5} \\rangle\\). \\(D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u=- \\frac{8 \\sin{\\left(2 \\right)}}{5} - \\frac{4}{5} - \\frac{3 \\cos{\\left(2 \\right)}}{5}\\).</p>"
+        "en": "<p>From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
+        "ar": "<p>من الرأس والنقطة المعطاة نجد المعامل \\(a = 3\\) ، وبالتعويض عند \\(x = 4\\) نحصل على \\(13\\) . تحقّق: تأكد من قراءة الصف وتدريج المحور والقيم الحدية من الشكل مع مراجعة الحساب. <strong>الإجابة النهائية: \\(13\\)</strong></p>"
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "f(x)",
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
+        "yl": [
+          -1,
+          15
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#21)",
-        "caption_ar": "جدول القيم المختارة (#21)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "3*(x - (2))^2 + (1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 1,
+            "label": "(2, 1)"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "label": "(3, 4)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G1271)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G1271)"
       }
     },
     {
@@ -880,442 +895,302 @@
       "number": "P23",
       "difficulty": "Advanced",
       "question": {
-        "en": "If \\(y = x^{\\sin{\\left(x \\right)}}\\), find \\(\\dfrac{dy}{dx}\\) at \\(x = 4\\).",
-        "ar": "إذا كان \\(y = x^{\\sin{\\left(x \\right)}}\\), أوجد \\(\\dfrac{dy}{dx}\\) عند \\(x = 4\\)."
+        "en": "A benchmark robotics log (CALCULUS-1323) provides the entries shown in the table; determine \\(2\\,h^{-1}(5)\\) for the invertible function \\(h\\).",
+        "ar": "يقدّم سجل الروبوتات (CALCULUS-1323) القياسات الموضحة في الجدول: لإيجاد قيمة \\(2\\,h^{-1}(5)\\) للدالة العكسية \\(h\\) ."
       },
       "solution": {
-        "en": "<p>Take logs: \\(\\ln{\\left(y \\right)} = \\ln{\\left(x \\right)} \\sin{\\left(x \\right)}\\), differentiate, and multiply by \\(y\\). Substituting \\(x = 4\\) gives \\(\\frac{8 \\ln{\\left(2 \\right)} \\cos{\\left(4 \\right)} + \\sin{\\left(4 \\right)}}{2^{2 - 2 \\sin{\\left(4 \\right)}}}\\).</p>",
+        "en": "<p>Because \\(h(5) = 5\\), we have \\(h^{-1}(5) = 5\\). Multiplying by \\(2\\) gives \\(10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "\\(x\\)",
+          "4",
+          "5",
+          "6",
+          "7"
         ],
         "rows": [
           [
-            "g(x)",
-            "4",
+            "\\(h(x)\\)",
+            "3",
+            "5",
             "9",
-            "14",
-            "19"
+            "13"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#23)",
-        "caption_ar": "جدول نمط مرجعي (#23)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "4",
-            "9",
-            "14",
-            "19"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (robotics, CALCULUS-1323)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (الروبوتات، CALCULUS-1323)"
       }
     },
     {
       "number": "P24",
       "difficulty": "Basic",
       "question": {
-        "en": "A particle's position is described by the parametric equations \\(x(t) = 3t + 1\\) and \\(y(t) = 2t - 2\\). What are the coordinates of the particle when \\(t=3\\)?",
+        "en": "In the cartography record (CALCULUS-1359), using the table values, evaluate \\(f(g(4)) + 5\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the coordinates of the particle at a specific time \\(t\\), substitute the value of \\(t\\) into the parametric equations for \\(x\\) and \\(y\\).</p><p>Given \\(x(t) = 3t + 1\\) and \\(y(t) = 2t - 2\\).<br>We need to find the coordinates when \\(t=3\\).</p><p>For the x-coordinate:<br>\\(x(3) = 3(3) + 1 = 9 + 1 = 10\\)</p><p>For the y-coordinate:<br>\\(y(3) = 2(3) - 2 = 6 - 2 = 4\\)</p><p>Therefore, the coordinates of the particle when \\(t=3\\) are (10, 4).</p>",
+        "en": "<p>From the table, \\(g(4) = 1\\) and \\(f(1) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
-            "5",
+            "\\(f(x)\\)",
             "7",
-            "9"
+            "9",
+            "14",
+            "13"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#24)",
-        "caption_ar": "جدول نمط مرجعي (#24)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (cartography, CALCULUS-1359)",
+        "caption_ar": "قيم مختارة للدالتين (رسم الخرائط، CALCULUS-1359)"
       }
     },
     {
       "number": "P25",
       "difficulty": "Basic",
       "question": {
-        "en": "Consider the function \\(z = f(x, y) = x^2 - 3xy + 2y^2\\). What is the partial derivative of \\(f\\) with respect to \\(y\\), denoted as \\(\\frac{{\\partial f}}{{\\partial y}}\\)?",
+        "en": "The table summarizes measurements from a cohort study evaluation (CALCULUS-1395); using these entries, where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(1) = \\dfrac{f'(1)g(1) - f(1)g'(1)}{[g(1)]^2}\\)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>To find the partial derivative of \\(f(x, y) = x^2 - 3xy + 2y^2\\) with respect to \\(y\\), we treat \\(x\\) as a constant. <br><br>The derivative of \\(x^2\\) with respect to \\(y\\) is 0, as \\(x\\) is considered constant. <br><br>The derivative of \\(-3xy\\) with respect to \\(y\\) is \\(-3x \\cdot 1 = -3x\\). <br><br>The derivative of \\(2y^2\\) with respect to \\(y\\) is \\(2 \\cdot 2y = 4y\\). <br><br>Therefore, the partial derivative \\(\\frac{{\\partial f}}{{\\partial y}}\\) is \\(0 - 3x + 4y = -3x + 4y\\).</p>",
+        "en": "<p>Using the quotient rule numerator, \\(f'(1)g(1) - f(1)g'(1) = (1)(3) - (2)(-1) = 5\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(5\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
-          "2",
           "3"
         ],
         "rows": [
           [
-            "f(x)",
-            "5",
-            "9",
-            "13",
-            "17"
+            "\\(f(x)\\)",
+            "2",
+            "5"
           ],
           [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
+            "\\(f'(x)\\)",
+            "1",
             "3"
+          ],
+          [
+            "\\(g(x)\\)",
+            "3",
+            "5"
+          ],
+          [
+            "\\(g'(x)\\)",
+            "-1",
+            "2"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#25)",
-        "caption_ar": "جدول القيم المختارة (#25)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "5",
-            "9",
-            "13",
-            "17"
-          ],
-          [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
-            "3"
-          ]
-        ]
+        "caption": "Differentiable function & derivative values (cohort study, CALCULUS-1395)",
+        "caption_ar": "قيم الدالتين ومشتقتيهما (دراسة الفوج، CALCULUS-1395)"
       }
     },
     {
       "number": "P26",
       "difficulty": "Advanced",
       "question": {
-        "en": "For parametric \\(x=e^t\\cos t\\), \\(y=e^t\\sin t\\), find \\(\\dfrac{d^2y}{dx^2}\\) at \\(t=0\\).",
-        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل الجامعي) بالاعتماد على العلاقات الرياضية \\(x=e^t\\cos t\\) ، \\(y=e^t\\sin t\\) ، \\(\\dfrac{d^2y}{dx^2}\\) ، \\(t=0\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
+        "en": "During acoustics experiment (CALCULUS-1431), observers compiled the following table; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+        "ar": "خلال تجربة الصوتيات (CALCULUS-1431) تم تجميع الجدول التالي. من الجدول، لتقريب التكامل \\(\\int_{0}^{6} R(t)\\,dt\\) باستخدام قاعدة شبه المنحرف."
       },
       "solution": {
-        "en": "<p>First, \\(\\frac{dy}{dx} = \\frac{\\sin t+\\cos t}{\\cos t-\\sin t}\\). Then \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{2}{(\\cos t-\\sin t)^2}\\). Dividing by \\(\\frac{dx}{dt}=e^t(\\cos t-\\sin t)\\) at \\(t=0\\) gives \\(\\frac{d^2y}{dx^2}\\big|_{t=0} = 2\\).</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(4 + 6) + \\frac{4}{2}(6 + 10) = 10 + 32 = 42\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(42\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(t\\)",
           "0",
-          "1",
           "2",
-          "3"
+          "6"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
+            "\\(R(t)\\)",
+            "4",
+            "6",
+            "10"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#26)",
-        "caption_ar": "جدول نمط مرجعي (#26)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
+        "caption": "Sampled rate table R(t) on [0, 6] (acoustics, CALCULUS-1431)",
+        "caption_ar": "جدول المعدل (الصوتيات، CALCULUS-1431)"
       }
     },
     {
       "number": "P27",
       "difficulty": "Advanced",
       "question": {
-        "en": "If \\(\\sin{\\left(\\theta \\right)} = - \\frac{24}{25}\\) and \\(\\theta\\) lies in quadrant III, find \\(\\sin 2\\theta\\).",
-        "ar": "في مسألة رياضية ضمن (التفاضل والتكامل الجامعي) بالاعتماد على العلاقات الرياضية \\(\\sin{\\left(\\theta \\right)} = - \\frac{24}{25}\\) ، \\(\\theta\\) ، \\(\\sin 2\\theta\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
+        "en": "Examine the seismology dataset arranged in the table below (CALCULUS-1467); tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+        "ar": "ادرس بيانات علم الزلازل المرتبة في الجدول أدناه (CALCULUS-1467) ثم لتتبع طريقة أويلر بخطوة \\(h = 1\\) . أوجد القيمة التقريبية المفقودة \\(y_2\\) ."
       },
       "solution": {
-        "en": "<p>In quadrant III, \\(\\cos{\\left(\\theta \\right)} = - \\frac{7}{25}\\) (from \\(\\sin^2\\theta+\\cos^2\\theta=1\\) with the quadrant's sign). Then \\(\\sin 2\\theta\\) \\(=\\) \\(\\frac{336}{625}\\) using the double-angle formula.</p>",
+        "en": "<p>From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(5) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "Step \\(n\\)",
+          "\\(x_n\\)",
+          "\\(y_n\\)",
+          "\\(dy/dx\\)"
         ],
         "rows": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#27)",
-        "caption_ar": "جدول نمط مرجعي (#27)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
+            "0",
+            "0",
+            "2",
+            "1"
+          ],
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "1",
+            "1",
+            "3",
+            "5"
+          ],
+          [
+            "2",
+            "2",
+            "?",
+            "\\(\\dots\\)"
           ]
-        ]
+        ],
+        "caption": "Euler integration schedule with step h = 1 (seismology, CALCULUS-1467)",
+        "caption_ar": "جدول خطوات أويلر (علم الزلازل، CALCULUS-1467)"
       }
     },
     {
       "number": "P28",
       "difficulty": "Advanced",
       "question": {
-        "en": "By the alternating series estimation theorem, what is the fewest number of terms of \\(\\sum_{n=0}^\\infty\\tfrac{(-1)^{n}}{n!}\\) needed to guarantee an error less than \\(\\frac{1}{1000}\\)?",
+        "en": "An engineering team logged optical bench measurements in the accompanying table (CALCULUS-1503); using these data, determine \\(2\\,h^{-1}(10)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The error after summing up to \\(n=6\\) is at most the next term, \\(\\frac{1}{5040}\\) \\(\\lt\\) \\(\\frac{1}{1000}\\), while stopping one term earlier leaves a bound \\(\\frac{1}{720}\\) \\(\\ge\\) \\(\\frac{1}{1000}\\). So 7 terms are needed.</p>",
+        "en": "<p>Because \\(h(6) = 10\\), we have \\(h^{-1}(10) = 6\\). Multiplying by \\(2\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "1",
-          "3",
-          "5",
-          "7"
+          "\\(x\\)",
+          "4",
+          "6",
+          "8",
+          "10"
         ],
         "rows": [
           [
-            "f(x)",
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
+            "\\(h(x)\\)",
+            "8",
+            "10",
+            "14",
+            "19"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#28)",
-        "caption_ar": "جدول القيم المختارة (#28)",
-        "headers_ar": [
-          "x",
-          "1",
-          "3",
-          "5",
-          "7"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (optical bench, CALCULUS-1503)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (المنضدة البصرية، CALCULUS-1503)"
       }
     },
     {
       "number": "P29",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Reduction formula: \\(\\int\\sin^n x\\,dx=-\\frac{\\sin^{n-1}x\\cos x}{n}+\\frac{n-1}{n}\\int\\sin^{n-2}x\\,dx\\). Then \\(\\int_0^{\\pi/2}\\sin^6x\\,dx=\\)",
+        "en": "Referring to the circuit trial table above (CALCULUS-1539), evaluate \\(f(g(4)) + 5\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Wallis: \\(\\frac{5}{6}\\cdot\\frac{3}{4}\\cdot\\frac{1}{2}\\cdot\\frac{\\pi}{2}=\\frac{5\\pi\\cdot3}{6\\cdot4\\cdot2\\cdot2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}\\). Actually Wallis: \\(\\int_0^{\\pi/2}\\sin^{2n}x\\,dx=\\frac{(2n-1)!!}{(2n)!!}\\frac{\\pi}{2}\\). For \\(n=3\\): \\(\\frac{5\\cdot3\\cdot1}{6\\cdot4\\cdot2}\\frac{\\pi}{2}=\\frac{15}{48}\\frac{\\pi}{2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}\\).</p>",
+        "en": "<p>From the table, \\(g(4) = 1\\) and \\(f(1) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(x\\)",
           "1",
           "2",
-          "3"
+          "3",
+          "4"
         ],
         "rows": [
           [
-            "g(x)",
-            "1",
+            "\\(f(x)\\)",
+            "7",
+            "9",
+            "14",
+            "13"
+          ],
+          [
+            "\\(g(x)\\)",
+            "2",
             "3",
-            "5",
-            "7"
+            "4",
+            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#29)",
-        "caption_ar": "جدول نمط مرجعي (#29)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "3",
-            "5",
-            "7"
-          ]
-        ]
+        "caption": "Selected values of functions f and g (circuit trial, CALCULUS-1539)",
+        "caption_ar": "قيم مختارة للدالتين (تجربة الدائرة، CALCULUS-1539)"
       }
     },
     {
       "number": "P30",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the coefficient of \\(x^3\\) in the Maclaurin series of \\(f(x) = \\dfrac{\\sin(x)}{1 - x}\\).",
+        "en": "Given the structured navigation observations displayed in the table (CALCULUS-1582), approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p>Multiply known Maclaurin series: \\(\\sin(x) = x - \\dfrac{x^3}{6} + \\cdot s\\) and \\(\\dfrac{1}{1-x} = 1 + x + x^2 + \\cdot s\\). Collecting terms up to degree 3: \\(x(1 + x + x^2) - \\dfrac{x^3}{6}(1) = x + x^2 + \\left(1 - \\dfrac{1}{6}\\right)x^3 = x + x^2 + \\dfrac{5}{6}x^3\\). The coefficient of \\(x^3\\) is \\(\\dfrac{5}{6}\\).</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(5 + 8) + \\frac{2}{2}(8 + 12) = 13 + 20 = 33\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(33\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "2",
-          "4",
-          "6",
-          "8"
+          "\\(t\\)",
+          "1",
+          "3",
+          "5"
         ],
         "rows": [
           [
-            "f(x)",
+            "\\(R(t)\\)",
             "5",
-            "7",
-            "9",
-            "11"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
+            "8",
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#30)",
-        "caption_ar": "جدول القيم المختارة (#30)",
-        "headers_ar": [
-          "x",
-          "2",
-          "4",
-          "6",
-          "8"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "5",
-            "7",
-            "9",
-            "11"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "caption": "Sampled rate table R(t) on [1, 5] (navigation, CALCULUS-1582)",
+        "caption_ar": "جدول المعدل (الملاحة، CALCULUS-1582)"
       }
     },
     {
@@ -1380,64 +1255,43 @@
       "number": "P33",
       "difficulty": "Basic",
       "question": {
-        "en": "Let \\(F(x) = \\int_{2}^{x} (t^2 - 1) dt\\). According to the Fundamental Theorem of Calculus, what is the derivative of \\(F(x)\\) with respect to \\(x\\)?",
+        "en": "A benchmark optics log (CALCULUS-1657) provides the entries shown in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The Fundamental Theorem of Calculus, Part 1, states that if \\(F(x) = \\int_{a}^{x} f(t) dt\\), then \\(F'(x) = f(x)\\). In this problem, \\(f(t) = t^2 - 1\\) and the lower limit of integration is \\(a=2\\). Therefore, \\(F'(x) = x^2 - 1\\).</p>",
+        "en": "<p>From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 2 + 1(5) = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+          "Step \\(n\\)",
+          "\\(x_n\\)",
+          "\\(y_n\\)",
+          "\\(dy/dx\\)"
         ],
         "rows": [
           [
-            "f(x)",
-            "4",
-            "6",
-            "8",
-            "10"
+            "0",
+            "1",
+            "1",
+            "1"
           ],
           [
-            "f'(x)",
-            "3",
             "1",
-            "3",
-            "1"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#33)",
-        "caption_ar": "جدول القيم المختارة (#33)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "4",
-            "6",
-            "8",
-            "10"
+            "2",
+            "2",
+            "5"
           ],
           [
-            "f'(x)",
+            "2",
             "3",
-            "1",
-            "3",
-            "1"
+            "?",
+            "\\(\\dots\\)"
           ]
-        ]
+        ],
+        "caption": "Euler integration schedule with step h = 1 (optics, CALCULUS-1657)",
+        "caption_ar": "جدول خطوات أويلر (البصريات، CALCULUS-1657)"
       }
     },
     {

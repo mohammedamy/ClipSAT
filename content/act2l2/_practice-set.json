@@ -81,50 +81,34 @@
       "number": 4,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the modulus and principal argument of \\(z = -2\\sqrt{3} + 2i\\), and express \\(z\\) in polar form \\(r(\\cos\\theta + i\\sin\\theta)\\).",
+        "en": "During biometrics experiment (ACT2L2-769), observers compiled the following table; determine \\(3\\,h^{-1}(15)\\) for the invertible function \\(h\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute modulus \\(r\\):</strong><br>\\[r = \\sqrt{(-2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = \\sqrt{16} = 4.\\]</p><p><strong>Step 2: Determine argument \\(\\theta\\):</strong><br>Since \\(a = -2\\sqrt{3} \\lt 0\\) and \\(b = 2 \\gt 0\\), \\(z\\) lies in Quadrant II.<br>Reference angle: \\(\\tan\\alpha = \\left|\\frac{2}{-2\\sqrt{3}}\\right| = \\frac{1}{\\sqrt{3}} \\implies \\alpha = \\frac{\\pi}{6}\\) (or \\(30^\\circ\\)).<br>Quadrant II angle: \\(\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\) (or \\(150^\\circ\\)).</p><p><strong>Step 3: Write polar form:</strong><br>\\[z = \\mathbf{4\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)}.\\]</p>",
+        "en": "<p>Because \\(h(4) = 15\\), we have \\(h^{-1}(15) = 4\\). Multiplying by \\(3\\) gives \\(12\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(12\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(x\\)",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
         "rows": [
           [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
+            "\\(h(x)\\)",
+            "9",
+            "12",
+            "15",
+            "17"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#4)",
-        "caption_ar": "جدول نمط مرجعي (#4)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ]
-        ]
+        "caption": "Monotone function values of invertible h (biometrics, ACT2L2-769)",
+        "caption_ar": "قيم دالة رتيبة قابلة للعكس (القياسات الحيوية، ACT2L2-769)"
       }
     },
     {
@@ -454,26 +438,38 @@
       "number": 14,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the inverse of the matrix \\(A = \\begin{pmatrix} 4 & 7 \\\\ 1 & 2 \\end{pmatrix}\\).",
-        "ar": "أوجد معكوس the matrix \\(A = \\begin{pmatrix} 4 & 7 \\\\ 1 & 2 \\end{pmatrix}\\)."
+        "en": "The accompanying figure illustrates a orbital sector configuration (ACT2L2-G1019); using it showing a sinusoidal wave with dashed midline \\(y = 5\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
+        "ar": "يوضّح الشكل المرفق نموذج القطاع المداري (ACT2L2-G1019) لموجة جيبية مع خط الوسط المتقطع \\(y = 5\\) والقمة المحددة. ما المدى الرأسي الكلي بين القمة والقاع؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute determinant:</strong><br>\\[\\det(A) = (4)(2) - (7)(1) = 8 - 7 = 1.\\]</p><p><strong>Step 2: Apply the inverse formula:</strong><br>\\[A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{1} \\begin{pmatrix} 2 & -7 \\\\ -1 & 4 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 & -7 \\\\ -1 & 4 \\end{pmatrix}}.\\]</p><p>Check: \\(A A^{-1} = \\begin{pmatrix} 8-7 & -28+28 \\\\ 2-2 & -7+8 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I\\) ✓.</p>",
+        "en": "<p>From midline \\(5\\) to peak \\(10\\), amplitude is \\(A = 10 - 5 = 5\\), so peak-to-trough range equals \\(2A = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
-          [
-            1,
-            -1
-          ],
-          [
-            1,
-            1
-          ]
+        "type": "sinusoid",
+        "amp": 5,
+        "freq": 2,
+        "phase": 0,
+        "midline": 5,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "title": "Linear Transformation Action (#14)"
+        "yl": [
+          -1,
+          11
+        ],
+        "pts": [
+          {
+            "x": 0.785,
+            "y": 10,
+            "label": "max=10"
+          }
+        ],
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 5 (ACT2L2-G1019)",
+        "caption_ar": "موجة جيبية مع خط الوسط (ACT2L2-G1019)"
       }
     },
     {
@@ -538,682 +534,537 @@
       "number": 16,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the magnitude and direction angle \\(\\theta\\) (in degrees, \\(0^\\circ \\leq \\theta \\lt 360^\\circ\\)) of the vector \\(\\mathbf{v} = \\langle -5, 5\\sqrt{3} \\rangle\\).",
+        "en": "From the plotted field geometry figure above (ACT2L2-G1071) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute magnitude:</strong><br>\\[|\\mathbf{v}| = \\sqrt{(-5)^2 + (5\\sqrt{3})^2} = \\sqrt{25 + 75} = \\sqrt{100} = \\mathbf{10}.\\]</p><p><strong>Step 2: Direction angle:</strong><br>Since \\(v_x = -5 \\lt 0\\) and \\(v_y = 5\\sqrt{3} \\gt 0\\), the vector lies in Quadrant II.<br>Reference angle: \\(\\alpha = \\tan^{-1}\\left(\\frac{5\\sqrt{3}}{5}\\right) = \\tan^{-1}(\\sqrt{3}) = 60^\\circ\\).<br>\\[\\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}.\\]</p>",
+        "en": "<p>From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(3\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "Basis Vector",
-          "e₁",
-          "e₂"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "x-comp",
-            "1",
-            "0"
-          ],
-          [
-            "y-comp",
-            "1",
-            "4"
-          ]
+        "yl": [
+          -3,
+          6
         ],
-        "orientation": "horizontal",
-        "caption": "Component & Basis Table (#16)",
-        "caption_ar": "جدول المركبات والمتجهات (#16)",
-        "headers_ar": [
-          "متجه الأساس",
-          "e₁",
-          "e₂"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "1*(x - (2))^2 + (-1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "المركبة x",
-            "1",
-            "0"
-          ],
-          [
-            "المركبة y",
-            "1",
-            "4"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": -1,
+            "label": "(2, -1)"
+          },
+          {
+            "x": 3,
+            "y": 0,
+            "label": "(3, 0)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ACT2L2-G1071)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ACT2L2-G1071)"
       }
     },
     {
       "number": 17,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Vectors \\(\\mathbf{u} = \\langle 3, -2, 5 \\rangle\\) and \\(\\mathbf{v} = \\langle 4, k, -2 \\rangle\\) are orthogonal in \\(\\mathbb{R}^3\\). Find the value of \\(k\\).",
-        "ar": "Vectors \\(\\mathbf{u} = \\langle 3, -2, 5 \\rangle\\) و \\(\\mathbf{v} = \\langle 4, k, -2 \\rangle\\) are orthogonal in \\(\\mathbb{R}^3\\). أوجد قيمة \\(k\\)."
+        "en": "During cartography experiment (ACT2L2-1107), observers compiled the following table; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "خلال تجربة رسم الخرائط (ACT2L2-1107) تم تجميع الجدول التالي. من الجدول، الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Orthogonality criterion:</strong><br>Two nonzero vectors are orthogonal if and only if their dot product equals 0:<br>\\[\\mathbf{u}\\cdot\\mathbf{v} = 0\\]</p><p><strong>Step 2: Compute dot product:</strong><br>\\[(3)(4) + (-2)(k) + (5)(-2) = 0\\] \\[12 - 2k - 10 = 0 \\implies 2 - 2k = 0 \\implies 2k = 2 \\implies \\mathbf{k = 1}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{4}{2} = 2\\), so \\(E(3) = 8 \\cdot 2 = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
+        "rows": [
           [
-            1,
-            -1
-          ],
-          [
-            1,
-            1
+            "\\(E(x)\\)",
+            "2",
+            "4",
+            "8"
           ]
         ],
-        "title": "Linear Transformation Action (#17)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (cartography, ACT2L2-1107)",
+        "caption_ar": "جدول قيم نمو أسي (رسم الخرائط، ACT2L2-1107)"
       }
     },
     {
       "number": 18,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the angle \\(\\theta\\) between the vectors \\(\\mathbf{a} = \\langle 1, 2, 2 \\rangle\\) and \\(\\mathbf{b} = \\langle 2, -2, 1 \\rangle\\).",
+        "en": "Given the measurements marked directly on the field geometry schematic (ACT2L2-G1143) showing a rectangle with labeled side lengths. Compute its area.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute dot product:</strong><br>\\[\\mathbf{a}\\cdot\\mathbf{b} = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0.\\]</p><p><strong>Step 2: Conclude angle:</strong><br>Since \\(\\mathbf{a}\\cdot\\mathbf{b} = 0\\) and both vectors have non-zero magnitude (\\(|\\mathbf{a}| = 3, |\\mathbf{b}| = 3\\)):<br>\\[\\cos\\theta = 0 \\implies \\theta = \\mathbf{90^\\circ} \\quad \\left(\\text{or } \\frac{\\pi}{2}\\text{ rad}\\right).\\]</p>",
+        "en": "<p>Reading length \\(12\\) and width \\(6\\) from the rectangle, area \\(= 12 \\times 6 = 72\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(72\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
           [
-            1,
-            -1
+            0,
+            0
           ],
           [
-            1,
-            1
+            12,
+            0
+          ],
+          [
+            12,
+            6
+          ],
+          [
+            0,
+            6
           ]
         ],
-        "title": "Linear Transformation Action (#18)"
+        "w": 12,
+        "h": 6,
+        "sides": [
+          "12",
+          "6",
+          "12",
+          "6"
+        ],
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (ACT2L2-G1143)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (ACT2L2-G1143)"
       }
     },
     {
       "number": 19,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the scalar projection of \\(\\mathbf{u} = \\langle 4, 3 \\rangle\\) onto \\(\\mathbf{v} = \\langle 12, 5 \\rangle\\).",
+        "en": "The accompanying figure illustrates a field geometry configuration (ACT2L2-G1179); using it representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Formula:</strong> \\(\\operatorname{comp}_{\\mathbf{v}}\\mathbf{u} = \\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}\\).</p><p><strong>Step 1: Compute \\(\\mathbf{u}\\cdot\\mathbf{v}\\):</strong><br>\\[\\mathbf{u}\\cdot\\mathbf{v} = (4)(12) + (3)(5) = 48 + 15 = 63.\\]</p><p><strong>Step 2: Compute \\(|\\mathbf{v}|\\):</strong><br>\\[|\\mathbf{v}| = \\sqrt{12^2 + 5^2} = \\sqrt{144 + 25} = \\sqrt{169} = 13.\\]</p><p><strong>Step 3: Calculate scalar projection:</strong><br>\\[\\operatorname{comp}_{\\mathbf{v}}\\mathbf{u} = \\mathbf{\\frac{63}{13}}.\\]</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 15\\) and \\(Q_3 = 22\\), so \\(\\text{IQR} = 22 - 15 = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "boxplot",
+        "boxes": [
+          {
+            "label": "Sample",
+            "min": 11,
+            "q1": 15,
+            "med": 18,
+            "q3": 22,
+            "max": 30
+          }
         ],
-        "rows": [
-          [
-            "g(x)",
-            "4",
-            "7",
-            "10",
-            "13"
-          ]
+        "range": [
+          7,
+          34
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#19)",
-        "caption_ar": "جدول نمط مرجعي (#19)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "4",
-            "7",
-            "10",
-            "13"
-          ]
-        ]
+        "caption": "Five-number summary box plot (ACT2L2-G1179)",
+        "caption_ar": "مخطط الصندوق والعارضتين (ACT2L2-G1179)"
       }
     },
     {
       "number": 20,
       "difficulty": "Advanced",
       "question": {
-        "en": "A constant force vector \\(\\mathbf{F} = \\langle 8, -3 \\rangle\\) (in newtons) moves an object along the displacement vector \\(\\mathbf{d} = \\langle 5, 2 \\rangle\\) (in meters). Calculate the work done by the force.",
+        "en": "Selected numerical readings from seismology run (ACT2L2-1215) appear in the table; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Definition of Work:</strong> \\(W = \\mathbf{F}\\cdot\\mathbf{d}\\).</p><p><strong>Step 1: Evaluate the dot product:</strong><br>\\[W = (8)(5) + (-3)(2) = 40 - 6 = \\mathbf{34\\text{ J}}.\\]</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{8}{4} = 2\\), so \\(E(3) = 16 \\cdot 2 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
+        "rows": [
           [
-            1,
-            -1
-          ],
-          [
-            1,
-            1
+            "\\(E(x)\\)",
+            "4",
+            "8",
+            "16"
           ]
         ],
-        "title": "Linear Transformation Action (#20)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (seismology, ACT2L2-1215)",
+        "caption_ar": "جدول قيم نمو أسي (علم الزلازل، ACT2L2-1215)"
       }
     },
     {
       "number": 21,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the 25th term of the arithmetic sequence: \\(7, 12, 17, 22, \\dots\\)",
+        "en": "Referring to the field geometry figure (ACT2L2-G1251) showing a sinusoidal wave with dashed midline \\(y = 3\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify \\(a_1\\) and \\(d\\):</strong><br>\\(a_1 = 7\\), \\(d = 12 - 7 = 5\\).</p><p><strong>Step 2: Apply the arithmetic formula:</strong><br>\\[a_n = a_1 + (n - 1)d\\] \\[a_{25} = 7 + (25 - 1)(5) = 7 + 24(5) = 7 + 120 = \\mathbf{127}.\\]</p>",
+        "en": "<p>From midline \\(3\\) to peak \\(8\\), amplitude is \\(A = 8 - 3 = 5\\), so peak-to-trough range equals \\(2A = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
+        "type": "sinusoid",
+        "amp": 5,
+        "freq": 2,
+        "phase": 0,
+        "midline": 3,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "values": [
-          2,
-          4,
-          7,
-          11
+        "yl": [
+          -3,
+          9
         ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#21)"
+        "pts": [
+          {
+            "x": 0.785,
+            "y": 8,
+            "label": "max=8"
+          }
+        ],
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 3 (ACT2L2-G1251)",
+        "caption_ar": "موجة جيبية مع خط الوسط (ACT2L2-G1251)"
       }
     },
     {
       "number": 22,
       "difficulty": "Basic",
       "question": {
-        "en": "In a geometric sequence, \\(a_1 = 5\\) and \\(a_4 = 40\\). Find the common ratio \\(r\\) and the 7th term \\(a_7\\).",
+        "en": "Given the measurements marked directly on the field geometry schematic (ACT2L2-G1287) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Find \\(r\\):</strong><br>\\[a_4 = a_1 r^3 \\implies 40 = 5r^3 \\implies r^3 = 8 \\implies \\mathbf{r = 2}.\\]</p><p><strong>Step 2: Find \\(a_7\\):</strong><br>\\[a_7 = a_1 r^6 = 5(2^6) = 5(64) = \\mathbf{320}.\\]</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>Counting each disjoint region once yields \\(|A \\cup B| = 10 + 4 + 6 = 20\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(20\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "type": "venn",
+        "sets": [
+          {
+            "label": "A",
+            "only": 10
+          },
+          {
+            "label": "B",
+            "only": 6
+          }
         ],
-        "rows": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#22)",
-        "caption_ar": "جدول القيم المختارة (#22)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "both": 4,
+        "outside": 5,
+        "caption": "Venn count diagram of sets A and B (ACT2L2-G1287)",
+        "caption_ar": "مخطط فن للمجموعتين (ACT2L2-G1287)"
       }
     },
     {
       "number": 23,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate the finite geometric sum: \\[\\sum_{k=1}^{8} 3\\cdot 2^{k-1}\\]",
-        "ar": "احسب قيمة the finite geometric sum: \\[\\sum_{k=1}^{8} 3\\cdot 2^{k-1}\\]"
+        "en": "A benchmark robotics log (ACT2L2-1323) provides the entries shown in the table; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "يقدّم سجل الروبوتات (ACT2L2-1323) القياسات الموضحة في الجدول: الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify components:</strong><br>Initial term \\(a_1 = 3(2^0) = 3\\), ratio \\(r = 2\\), number of terms \\(n = 8\\).</p><p><strong>Step 2: Apply finite geometric sum formula:</strong><br>\\[S_8 = \\frac{a_1(r^8 - 1)}{r - 1} = \\frac{3(2^8 - 1)}{2 - 1} = 3(256 - 1) = 3(255) = \\mathbf{765}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{2}{1} = 2\\), so \\(E(3) = 4 \\cdot 2 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
         ],
-        "values": [
-          2,
-          4,
-          7,
-          11
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "1",
+            "2",
+            "4"
+          ]
         ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#23)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (robotics, ACT2L2-1323)",
+        "caption_ar": "جدول قيم نمو أسي (الروبوتات، ACT2L2-1323)"
       }
     },
     {
       "number": 24,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate the sum of the convergent infinite series: \\[24 - 12 + 6 - 3 + \\cdots\\]",
+        "en": "In the cartography record (ACT2L2-1359), using the table values, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify parameters:</strong><br>\\(a_1 = 24\\), \\(r = \\frac{-12}{24} = -\\frac{1}{2}\\).<br>Since \\(|r| = \\frac{1}{2} \\lt 1\\), the series converges.</p><p><strong>Step 2: Apply infinite sum formula:</strong><br>\\[S_\\infty = \\frac{a_1}{1 - r} = \\frac{24}{1 - (-1/2)} = \\frac{24}{3/2} = 24 \\times \\frac{2}{3} = \\mathbf{16}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{10}{5} = 2\\), so \\(E(3) = 20 \\cdot 2 = 40\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(40\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "f(x)",
+            "\\(E(x)\\)",
             "5",
-            "6",
-            "7",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
+            "10",
+            "20"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#24)",
-        "caption_ar": "جدول القيم المختارة (#24)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ]
+        "caption": "Exponential growth values table (cartography, ACT2L2-1359)",
+        "caption_ar": "جدول قيم نمو أسي (رسم الخرائط، ACT2L2-1359)"
       }
     },
     {
       "number": 25,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Convert the repeating decimal \\(0.\\overline{45}\\) to an irreducible common fraction.",
+        "en": "The table summarizes measurements from a cohort study evaluation (ACT2L2-1395); using these entries, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Express as an infinite geometric series:</strong><br>\\[0.454545\\dots = \\frac{45}{100} + \\frac{45}{10000} + \\cdot s\\]<br>where \\(a_1 = \\frac{45}{100}\\) and \\(r = \\frac{1}{100}\\).</p><p><strong>Step 2: Sum the series:</strong><br>\\[S_\\infty = \\frac{\\frac{45}{100}}{1 - \\frac{1}{100}} = \\frac{\\frac{45}{100}}{\\frac{99}{100}} = \\frac{45}{99} = \\mathbf{\\frac{5}{11}}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{8}{4} = 2\\), so \\(E(3) = 16 \\cdot 2 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "20",
-            "25",
-            "30",
-            "35"
+            "\\(E(x)\\)",
+            "4",
+            "8",
+            "16"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#25)",
-        "caption_ar": "جدول نمط مرجعي (#25)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "25",
-            "30",
-            "35"
-          ]
-        ]
+        "caption": "Exponential growth values table (cohort study, ACT2L2-1395)",
+        "caption_ar": "جدول قيم نمو أسي (دراسة الفوج، ACT2L2-1395)"
       }
     },
     {
       "number": 26,
       "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate the sum: \\[\\sum_{n=1}^{99} \\frac{1}{n(n+1)}\\]",
-        "ar": "احسب قيمة the sum: \\[\\sum_{n=1}^{99} \\frac{1}{n(n+1)}\\]"
+        "en": "During acoustics experiment (ACT2L2-1431), observers compiled the following table; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "خلال تجربة الصوتيات (ACT2L2-1431) تم تجميع الجدول التالي. من الجدول، الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Decompose into partial fractions:</strong><br>\\[\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}\\]</p><p><strong>Step 2: Expand the telescoping series:</strong><br>\\[\\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\cdot s + \\left(\\frac{1}{99} - \\frac{1}{100}\\right)\\]</p><p><strong>Step 3: Intermediate cancellation:</strong><br>All intermediate terms cancel out, leaving:<br>\\[1 - \\frac{1}{100} = \\mathbf{\\frac{99}{100}}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "1",
-            "10",
-            "19",
-            "28"
+            "\\(E(x)\\)",
+            "3",
+            "6",
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#26)",
-        "caption_ar": "جدول نمط مرجعي (#26)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "10",
-            "19",
-            "28"
-          ]
-        ]
+        "caption": "Exponential growth values table (acoustics, ACT2L2-1431)",
+        "caption_ar": "جدول قيم نمو أسي (الصوتيات، ACT2L2-1431)"
       }
     },
     {
       "number": 27,
       "difficulty": "Advanced",
       "question": {
-        "en": "An arithmetic sequence has first term \\(a_1 = 4\\) and common difference \\(d = 3\\). If the sum of the first \\(n\\) terms is \\(175\\), find the value of \\(n\\).",
+        "en": "Examine the seismology dataset arranged in the table below (ACT2L2-1467); modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Set up the sum formula:</strong><br>\\[S_n = \\frac{n}{2}\\big(2a_1 + (n - 1)d\\big) = 175\\] \\[\\frac{n}{2}\\big(2(4) + (n - 1)(3)\\big) = 175 \\implies n(8 + 3n - 3) = 350\\] \\[n(3n + 5) = 350 \\implies 3n^2 + 5n - 350 = 0.\\]</p><p><strong>Step 2: Factor the quadratic equation:</strong><br>\\[(3n + 35)(n - 10) = 0\\]</p><p><strong>Step 3: Reject non-integer solution:</strong><br>Since \\(n\\) must be a positive integer, \\(n = -35/3\\) is rejected, leaving \\(\\mathbf{n = 10}\\).</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{4}{2} = 2\\), so \\(E(3) = 8 \\cdot 2 = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
-          "2",
-          "4",
-          "6"
+          "1",
+          "2"
         ],
         "rows": [
           [
-            "f(x)",
+            "\\(E(x)\\)",
             "2",
             "4",
-            "6",
             "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#27)",
-        "caption_ar": "جدول القيم المختارة (#27)",
-        "headers_ar": [
-          "x",
-          "0",
-          "2",
-          "4",
-          "6"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "caption": "Exponential growth values table (seismology, ACT2L2-1467)",
+        "caption_ar": "جدول قيم نمو أسي (علم الزلازل، ACT2L2-1467)"
       }
     },
     {
       "number": 28,
       "difficulty": "Basic",
       "question": {
-        "en": "Let \\(f(x) = 3x - 1\\) and \\(g(x) = 2x^2 + 5\\). Find \\(f(g(3))\\).",
-        "ar": "ليكن \\(f(x) = 3x - 1\\) و \\(g(x) = 2x^2 + 5\\). أوجد \\(f(g(3))\\)."
+        "en": "An engineering team logged optical bench measurements in the accompanying table (ACT2L2-1503); using these data, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "سجّل فريق دراسة المنضدة البصرية القياسات في الجدول المرفق (ACT2L2-1503). مستخدمًا هذه البيانات، الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Evaluate inner function \\(g(3)\\):</strong><br>\\[g(3) = 2(3^2) + 5 = 2(9) + 5 = 18 + 5 = 23.\\]</p><p><strong>Step 2: Evaluate outer function \\(f(23)\\):</strong><br>\\[f(23) = 3(23) - 1 = 69 - 1 = \\mathbf{68}.\\]</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{2}{1} = 2\\), so \\(E(3) = 4 \\cdot 2 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
+            "\\(E(x)\\)",
+            "1",
+            "2",
+            "4"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#28)",
-        "caption_ar": "جدول نمط مرجعي (#28)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "caption": "Exponential growth values table (optical bench, ACT2L2-1503)",
+        "caption_ar": "جدول قيم نمو أسي (المنضدة البصرية، ACT2L2-1503)"
       }
     },
     {
       "number": 29,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the inverse function \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{2x + 3}{x - 5}\\) where \\(x \\neq 5\\).",
-        "ar": "أوجد الدالة العكسية \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{2x + 3}{x - 5}\\) حيث \\(x \\neq 5\\)."
+        "en": "Selected numerical readings from genetics run (ACT2L2-1546) appear in the table; for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
+        "ar": "تظهر قراءات الوراثة المختارة (ACT2L2-1546) في الجدول التالي؛ استخدم الجدول لإيجاد للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Swap \\(x\\) and \\(y\\):</strong><br>\\[x = \\frac{2y + 3}{y - 5}\\]</p><p><strong>Step 2: Clear fraction and solve for \\(y\\):</strong><br>\\[x(y - 5) = 2y + 3 \\implies xy - 5x = 2y + 3\\] \\[xy - 2y = 5x + 3 \\implies y(x - 2) = 5x + 3\\] \\[y = \\mathbf{\\frac{5x + 3}{x - 2}} \\quad (x \\neq 2).\\]</p>",
+        "en": "<p>There are \\(18\\) participants in Morning (\\(13 + 5\\)), of whom \\(13\\) recorded Standard, giving \\(\\frac{13}{18}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{18}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "cols": [
+          "Standard",
+          "Honors",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "1",
-            "3",
+            "13",
             "5",
-            "7"
+            18
+          ],
+          [
+            "10",
+            "9",
+            19
+          ],
+          [
+            23,
+            14,
+            37
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#29)",
-        "caption_ar": "جدول نمط مرجعي (#29)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "3",
-            "5",
-            "7"
-          ]
-        ]
+        "caption": "Session Roster Summary (ACT2L2-1546)",
+        "caption_ar": "ملخص النتائج (ACT2L2-1546)"
       }
     },
     {
       "number": 30,
       "difficulty": "Basic",
       "question": {
-        "en": "Use the Remainder Theorem to find the remainder when \\(P(x) = 3x^4 - 2x^3 + 5x - 7\\) is divided by \\(x + 2\\).",
-        "ar": "Use the Remainder Theorem to أوجد باقي القسمة عندما \\(P(x) = 3x^4 - 2x^3 + 5x - 7\\) يُقسم على \\(x + 2\\)."
+        "en": "Given the structured navigation observations displayed in the table (ACT2L2-1582), for the two-way table above. If one participant from Model X is chosen at random, what fraction corresponds to outcome In-Spec?",
+        "ar": "بالنظر إلى قيم الملاحة المعروضة في الجدول (ACT2L2-1582)، للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Remainder Theorem:</strong> The remainder upon division by \\(x - c\\) is \\(P(c)\\). Here \\(c = -2\\):</p><p>\\[P(-2) = 3(-2)^4 - 2(-2)^3 + 5(-2) - 7\\] \\[= 3(16) - 2(-8) - 10 - 7 = 48 + 16 - 10 - 7 = 64 - 17 = \\mathbf{47}.\\]</p>",
+        "en": "<p>There are \\(20\\) participants in Model X (\\(13 + 7\\)), of whom \\(13\\) recorded In-Spec, giving \\(\\frac{13}{20}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{20}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Model X",
+          "Model Y",
+          "Total"
+        ],
+        "cols": [
+          "In-Spec",
+          "Rework",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "3",
+            "13",
             "7",
-            "11",
-            "15"
+            20
+          ],
+          [
+            "12",
+            "13",
+            25
+          ],
+          [
+            25,
+            20,
+            45
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#30)",
-        "caption_ar": "جدول نمط مرجعي (#30)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ]
-        ]
+        "caption": "Batch Inspection Summary (ACT2L2-1582)",
+        "caption_ar": "ملخص النتائج (ACT2L2-1582)"
       }
     },
     {
@@ -1249,50 +1100,32 @@
       "number": 32,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Solve the rational equation: \\[\\frac{2}{x - 3} + \\frac{1}{x} = \\frac{x - 1}{x - 3}\\]",
-        "ar": "حل the rational equation: \\[\\frac{2}{x - 3} + \\frac{1}{x} = \\frac{x - 1}{x - 3}\\]"
+        "en": "In assessment dataset (ACT2L2-1641) for survey trial, the table reports key quantities; modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "في مجموعة بيانات تجربة المسح (ACT2L2-1641) يعرض الجدول القيم الأساسية؛ الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Domain restrictions:</strong> \\(x \\neq 0\\) and \\(x \\neq 3\\).</p><p><strong>Step 2: Multiply by \\(x(x - 3)\\):</strong><br>\\[2x + (x - 3) = x(x - 1)\\] \\[3x - 3 = x^2 - x \\implies x^2 - 4x + 3 = 0.\\]</p><p><strong>Step 3: Factor:</strong><br>\\[(x - 3)(x - 1) = 0 \\implies x = 3 \\quad\\text{or}\\quad x = 1.\\]</p><p><strong>Step 4: Check domain:</strong><br>\\(x = 3\\) makes denominators zero (extraneous, rejected).<br>Therefore, the only valid solution is \\(\\mathbf{x = 1}\\).</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{2}{1} = 2\\), so \\(E(3) = 4 \\cdot 2 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
+            "\\(E(x)\\)",
+            "1",
             "2",
-            "5",
-            "8",
-            "11"
+            "4"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#32)",
-        "caption_ar": "جدول نمط مرجعي (#32)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "5",
-            "8",
-            "11"
-          ]
-        ]
+        "caption": "Exponential growth values table (survey trial, ACT2L2-1641)",
+        "caption_ar": "جدول قيم نمو أسي (تجربة المسح، ACT2L2-1641)"
       }
     },
     {

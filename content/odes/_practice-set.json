@@ -97,90 +97,82 @@
       "number": "D4",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Solve the first-order linear initial value problem \\(x \\dfrac{dy}{dx} + 3y = \\dfrac{\\sin x}{x^2}\\) for \\(x \\gt 0\\) with \\(y(\\pi) = 0\\). Find \\(\\lim_{x\\to 0^+} y(x)\\).",
+        "en": "During biometrics experiment (ODES-769), observers compiled the following table; approximate \\(\\int_{1}^{7} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Standard form:</strong> Divide by \\(x\\): \\[\\frac{dy}{dx} + \\frac{3}{x}y = \\frac{\\sin x}{x^3}.\\] <strong>Step 2: Integrating factor:</strong> \\(\\mu(x) = \\exp\\left(\\int \\frac{3}{x}\\,dx\\right) = e^{3\\ln x} = x^3\\).<br><strong>Step 3: Multiply and integrate:</strong> \\[\\frac{d}{dx}\\big[x^3 y\\big] = x^3 \\left(\\frac{\\sin x}{x^3}\\right) = \\sin x \\implies x^3 y = -\\cos x + C.\\] <strong>Step 4: Initial condition \\(y(\\pi) = 0\\):</strong> \\(\\pi^3 (0) = -\\cos\\pi + C \\implies 0 = -(-1) + C \\implies C = -1\\).<br>Thus: \\[y(x) = \\frac{-\\cos x - 1}{x^3} = -\\frac{1 + \\cos x}{x^3}.\\]<br><strong>Step 5: Limit as \\(x \\to 0^+\\):</strong> By Taylor expansion, \\(1 + \\cos x = 1 + (1 - x^2/2 + \\dots) = 2 - x^2/2 + \\dots\\).<br>Hence: \\[\\lim_{x\\to 0^+} y(x) = \\lim_{x\\to 0^+} -\\frac{2}{x^3} = -\\infty.\\]</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(7 + 10) + \\frac{4}{2}(10 + 14) = 17 + 48 = 65\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(65\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
+          "\\(t\\)",
           "1",
-          "2",
-          "3"
+          "3",
+          "7"
         ],
         "rows": [
           [
-            "f(x)",
-            "4",
-            "6",
-            "8",
-            "10"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
+            "\\(R(t)\\)",
+            "7",
+            "10",
+            "14"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#4)",
-        "caption_ar": "جدول القيم المختارة (#4)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "4",
-            "6",
-            "8",
-            "10"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "caption": "Sampled rate table R(t) on [1, 7] (biometrics, ODES-769)",
+        "caption_ar": "جدول المعدل (القياسات الحيوية، ODES-769)"
       }
     },
     {
       "number": "D5",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve the nonlinear Bernoulli differential equation \\(\\dfrac{dy}{dx} - \\dfrac{1}{x}y = 2x^2 y^3\\) for \\(x \\gt 0\\) with \\(y(1) = 1\\). Find \\(y(2)\\).",
+        "en": "Based on the acoustic chamber visual model shown (ODES-G812) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Bernoulli transformation:</strong> Here \\(n = 3\\). Divide by \\(y^3\\): \\(y^{-3}y' - \\frac{1}{x}y^{-2} = 2x^2\\).<br>Substitute \\(v = y^{1-n} = y^{-2} \\implies v' = -2y^{-3}y' \\implies y^{-3}y' = -\\frac{1}{2}v'\\).<br>Substituting yields: \\[-\\frac{1}{2}v' - \\frac{1}{x}v = 2x^2 \\implies v' + \\frac{2}{x}v = -4x^2.\\] <strong>Step 2: Integrating factor for \\(v\\):</strong> \\(\\mu(x) = e^{\\int 2/x\\,dx} = x^2\\).<br>Multiply and integrate: \\[\\frac{d}{dx}\\big[x^2 v\\big] = x^2(-4x^2) = -4x^4 \\implies x^2 v = -\\frac{4}{5}x^5 + C \\implies v(x) = -\\frac{4}{5}x^3 + \\frac{C}{x^2}.\\] <strong>Step 3: Initial condition \\(y(1) = 1 \\implies v(1) = 1\\):</strong> \\[1 = -\\frac{4}{5}(1) + C \\implies C = \\frac{9}{5}.\\] Thus: \\(v(x) = \\frac{9 - 4x^5}{5x^2} \\implies y(x) = \\dfrac{1}{\\sqrt{v(x)}} = \\sqrt{\\frac{5x^2}{9 - 4x^5}}\\).<br>At \\(x = 1\\), \\(y(1) = 1\\). Note that at \\(x = 2\\), \\(9 - 4(32) = 9 - 128 = -119 \\lt 0\\), so the solution ceases to exist before \\(x = 2\\); the singularity occurs at \\(x = (9/4)^{1/5} \\approx 1.176\\).</p>",
+        "en": "<p>From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 1 = 4\\), so \\(g(2) = 4(2^2) + 1 = 17\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(17\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "slope_field",
-        "dydx": "x - y",
+        "type": "fn",
         "xl": [
-          -3,
+          -2,
           3
         ],
         "yl": [
-          -3,
-          3
+          0,
+          19
         ],
-        "step": 1,
-        "caption": "Slope field dy/dx = x - y (#5)"
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "4*2^x + 1",
+            "color": "#2563eb",
+            "label": "y = g(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 0,
+            "y": 5,
+            "label": "(0, 5)"
+          }
+        ],
+        "asymptotes": [
+          {
+            "type": "h",
+            "v": 1,
+            "label": "y = 1"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Exponential growth curve with asymptote y = 1 (ODES-G812)",
+        "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G812)"
       }
     },
     {
@@ -335,87 +327,82 @@
       "number": "D10",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the general solution of \\(y'' - 4y' + 3y = 2x + e^{2x}\\).",
-        "ar": "أوجد الحل العام لـ \\(y'' - 4y' + 3y = 2x + e^{2x}\\)."
+        "en": "Referring to the survey layout figure (ODES-G940) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+        "ar": "بالرجوع إلى رسم مخطط المساحة (ODES-G940) للدالة الأسية مع خط التقارب الأفقي ونقطة التقاطع الصادي. احسب \\(g(2)\\) ."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Homogeneous:</strong> \\(r^2 - 4r + 3 = (r - 1)(r - 3) = 0 \\implies y_c = C_1 e^x + C_2 e^{3x}\\).<br><strong>Step 2: Particular trial form:</strong> Neither \\(2x\\) nor \\(e^{2x}\\) is in \\(y_c\\), so trial is \\(y_p = (Ax + B) + C e^{2x}\\).<br><strong>Step 3: Match polynomial coefficients:</strong> \\(y_{p1} = Ax + B \\implies y_{p1}' = A, y_{p1}'' = 0\\). \\[0 - 4A + 3(Ax + B) = 3Ax + (3B - 4A) = 2x \\implies 3A = 2 \\implies A = 2/3,\\] \\[3B - 4(2/3) = 0 \\implies 3B = 8/3 \\implies B = 8/9.\\] <strong>Step 4: Match exponential:</strong> \\(y_{p2} = C e^{2x} \\implies y_{p2}'' - 4y_{p2}' + 3y_{p2} = (4 - 8 + 3)C e^{2x} = -C e^{2x} = e^{2x} \\implies C = -1\\).<br><strong>Step 5: General solution:</strong> \\[y(x) = C_1 e^x + C_2 e^{3x} + \\frac{2}{3}x + \\frac{8}{9} - e^{2x}.\\]</p>",
+        "en": "<p>From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 4)\\), \\(a = 4 - 1 = 3\\), so \\(g(2) = 3(2^2) + 1 = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "fn",
+        "xl": [
+          -2,
+          3
         ],
-        "rows": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
+        "yl": [
+          0,
+          15
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#10)",
-        "caption_ar": "جدول القيم المختارة (#10)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "3*2^x + 1",
+            "color": "#2563eb",
+            "label": "y = g(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0, 4)"
+          }
+        ],
+        "asymptotes": [
+          {
+            "type": "h",
+            "v": 1,
+            "label": "y = 1"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Exponential growth curve with asymptote y = 1 (ODES-G940)",
+        "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G940)"
       }
     },
     {
       "number": "D11",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve the undamped resonant initial value problem \\(y'' + 9y = 6\\cos(3t)\\) with \\(y(0) = 0\\) and \\(y'(0) = 1\\). Identify the secular growth term.",
+        "en": "In assessment dataset (ODES-969) for survey trial, the table reports key quantities; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Homogeneous:</strong> \\(r^2 + 9 = 0 \\implies y_c = C_1 \\cos 3t + C_2 \\sin 3t\\).<br><strong>Step 2: Trial with resonance:</strong> Forcing \\(6\\cos 3t\\) matches \\(y_c\\) (multiplicity \\(s=1\\)). Trial: \\[y_p(t) = t(A\\cos 3t + B\\sin 3t).\\] Differentiating and substituting: \\[y_p'' + 9y_p = -6A\\sin 3t + 6B\\cos 3t = 6\\cos 3t \\implies B = 1, \\quad A = 0.\\] Thus \\(y_p(t) = t\\sin(3t)\\).<br><strong>Step 3: Apply initial conditions:</strong> \\(y(t) = C_1 \\cos 3t + C_2 \\sin 3t + t\\sin 3t\\).<br>\\(y(0) = C_1 = 0\\).<br>\\(y'(t) = 3C_2 \\cos 3t + \\sin 3t + 3t\\cos 3t \\implies y'(0) = 3C_2 = 1 \\implies C_2 = 1/3\\).<br><strong>Step 4: Particular solution:</strong> \\[y(t) = \\frac{1}{3}\\sin(3t) + t\\sin(3t).\\] The term \\(t\\sin(3t)\\) is the secular growth term whose amplitude increases linearly with \\(t\\).</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(7 + 9) + \\frac{4}{2}(9 + 13) = 16 + 44 = 60\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(60\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "unit_circle",
-        "angles": [
-          {
-            "deg": 30,
-            "label": "θ"
-          }
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "0",
+          "2",
+          "6"
         ],
-        "showQuadrants": true,
-        "caption": "Unit Circle Reference (#11)"
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "7",
+            "9",
+            "13"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [0, 6] (survey trial, ODES-969)",
+        "caption_ar": "جدول المعدل (تجربة المسح، ODES-969)"
       }
     },
     {
@@ -459,64 +446,34 @@
       "number": "D13",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find a particular solution of \\(y'' + 4y = \\sec(2x)\\) for \\(x \\in (-\\pi/4, \\pi/4)\\) using Variation of Parameters.",
+        "en": "The accompanying figure illustrates a acoustic chamber configuration (ODES-G1028); using it displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Basis & Wronskian:</strong> \\(y_1 = \\cos 2x, \\, y_2 = \\sin 2x\\).<br>\\(W = \\cos 2x(2\\cos 2x) - (-2\\sin 2x)\\sin 2x = 2\\).<br><strong>Step 2: Parameter integrals:</strong> \\[u_1'(x) = -\\frac{y_2(x)g(x)}{W} = -\\frac{\\sin 2x \\sec 2x}{2} = -\\frac{1}{2}\\tan 2x \\implies u_1(x) = \\frac{1}{4}\\ln|\\cos 2x|.\\] \\[u_2'(x) = \\frac{y_1(x)g(x)}{W} = \\frac{\\cos 2x \\sec 2x}{2} = \\frac{1}{2} \\implies u_2(x) = \\frac{x}{2}.\\] <strong>Step 3: Particular solution:</strong> \\[y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\cos(2x)\\ln|\\cos 2x| + \\frac{x}{2}\\sin(2x).\\]</p>",
+        "en": "<p>At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(0\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "type": "slope_field",
+        "dydx": "3*(x - y)",
+        "xl": [
+          -1,
+          4
         ],
-        "rows": [
-          [
-            "f(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ],
-          [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
-            "3"
-          ]
+        "yl": [
+          -1,
+          5
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#13)",
-        "caption_ar": "جدول القيم المختارة (#13)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "step": 1,
+        "pts": [
+          {
+            "x": 3,
+            "y": 3,
+            "label": "P(3, 3)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ],
-          [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
-            "3"
-          ]
-        ]
+        "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ODES-G1028)",
+        "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ODES-G1028)"
       }
     },
     {
@@ -560,33 +517,34 @@
       "number": "D15",
       "difficulty": "Advanced",
       "question": {
-        "en": "Construct the Green's kernel \\(G(x, t)\\) for \\(L[y] = y'' - y\\), and express the particular solution of \\(y'' - y = \\dfrac{1}{e^x + 1}\\) satisfying \\(y(0) = 0, y'(0) = 0\\) as an explicit definite integral.",
+        "en": "Referring to the reservoir profile figure (ODES-G1094) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Basis & Wronskian:</strong> \\(y_1(x) = e^x, \\, y_2(x) = e^{-x}\\). \\(W(t) = e^t(-e^{-t}) - e^t(e^{-t}) = -2\\).<br><strong>Step 2: Green's kernel:</strong> \\[G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t e^{-x} - e^x e^{-t}}{-2} = \\frac{e^{x - t} - e^{-(x - t)}}{2} = \\sinh(x - t).\\] <strong>Step 3: Integral representation:</strong> \\[y(x) = \\int_0^x \\sinh(x - t) \\cdot \\frac{1}{e^t + 1}\\,dt.\\] Verifying: \\(G(t, t) = \\sinh(0) = 0\\), and \\(\\left.\\frac{\\partial G}{\\partial x}\\right|_{x=t} = \\cosh(0) = 1\\), satisfying the universal Cauchy impulse properties.</p>",
+        "en": "<p>At highlighted coordinates \\((3, 3)\\), \\(\\frac{dy}{dx} = 3(3 - 3) = 0\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(0\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
+        "type": "slope_field",
+        "dydx": "3*(x - y)",
         "xl": [
-          -3,
-          3
+          -1,
+          4
         ],
         "yl": [
-          -2,
-          7
+          -1,
+          5
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
+        "step": 1,
+        "pts": [
           {
-            "fn": "2^(x) - 1",
-            "label": "y = f(x)"
+            "x": 3,
+            "y": 3,
+            "label": "P(3, 3)"
           }
         ],
-        "title": "Coordinate Graph (#15)",
-        "caption": "Reference graph y = f(x)"
+        "caption": "Direction slope field for dy/dx = 3(x - y) with point P (ODES-G1094)",
+        "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (ODES-G1094)"
       }
     },
     {
@@ -667,430 +625,402 @@
       "number": "D18",
       "difficulty": "Advanced",
       "question": {
-        "en": "Use the Laplace transform and the Convolution Theorem to solve the integral equation \\[y(t) = t^2 + \\int_0^t e^{t - \\tau} y(\\tau)\\,d\\tau.\\]",
+        "en": "An engineering team logged transit study measurements in the accompanying table (ODES-1169); using these data, approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Recognize convolution:</strong> The equation is \\(y(t) = t^2 + e^t * y(t)\\).<br><strong>Step 2: Transform both sides:</strong> \\[Y(s) = \\frac{2}{s^3} + \\left(\\frac{1}{s - 1}\\right)Y(s) \\implies Y(s)\\left(1 - \\frac{1}{s - 1}\\right) = \\frac{2}{s^3}.\\] \\[Y(s)\\left(\\frac{s - 2}{s - 1}\\right) = \\frac{2}{s^3} \\implies Y(s) = \\frac{2(s - 1)}{s^3(s - 2)}.\\] <strong>Step 3: Partial fractions:</strong> \\[\\frac{2(s - 1)}{s^3(s - 2)} = \\frac{A}{s} + \\frac{B}{s^2} + \\frac{C}{s^3} + \\frac{D}{s - 2}.\\] By cover-up, \\(D = \\frac{2(2 - 1)}{2^3} = \\frac{2}{8} = \\frac{1}{4}\\).<br>\\(C = \\frac{2(0 - 1)}{0 - 2} = 1\\).<br>Matching terms gives \\(A = -1/4\\), \\(B = -1/2\\).<br>Thus: \\[Y(s) = -\\frac{1/4}{s} - \\frac{1/2}{s^2} + \\frac{1}{s^3} + \\frac{1/4}{s - 2}.\\] <strong>Step 4: Inverse transform:</strong> \\[y(t) = -\\frac{1}{4} - \\frac{1}{2}t + \\frac{1}{2}t^2 + \\frac{1}{4}e^{2t}.\\]</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(7 + 11) + \\frac{4}{2}(11 + 15) = 18 + 52 = 70\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(70\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -4,
-          4
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
         ],
-        "yl": [
-          -5,
-          7
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "7",
+            "11",
+            "15"
+          ]
         ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "1.5*x + 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#18)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (transit study, ODES-1169)",
+        "caption_ar": "جدول المعدل (دراسة النقل، ODES-1169)"
       }
     },
     {
       "number": "D19",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the general solution of the linear system \\(\\mathbf{x}' = \\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix}\\mathbf{x}\\). Classify the equilibrium at the origin and determine the cartesian equation of the stable separatrix line.",
+        "en": "Referring to the specimen plot figure (ODES-G1219) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Characteristic polynomial:</strong> \\[\\det\\begin{pmatrix} 1 - \\lambda & 3 \\\\ 3 & 1 - \\lambda \\end{pmatrix} = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0.\\] \\[\\lambda_1 = 4, \\qquad \\lambda_2 = -2.\\] Since \\(\\Delta = \\det(A) = -8 \\lt 0\\), the origin is a <strong>saddle point</strong>.<br><strong>Step 2: Eigenvectors:</strong><br>For \\(\\lambda_1 = 4\\): \\(\\begin{pmatrix} -3 & 3 \\\\ 3 & -3 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\).<br>For \\(\\lambda_2 = -2\\): \\(\\begin{pmatrix} 3 & 3 \\\\ 3 & 3 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\).<br><strong>Step 3: General solution:</strong> \\[\\mathbf{x}(t) = C_1 e^{4t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + C_2 e^{-2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}.\\] The stable separatrix corresponds to \\(C_1 = 0\\), lying along the line spanned by \\((1, -1)^T\\): \\[y = -x.\\]</p>",
+        "en": "<p>From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "f(x)",
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
+        "yl": [
+          -2,
+          10
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#19)",
-        "caption_ar": "جدول القيم المختارة (#19)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (2))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2, 0)"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "label": "(3, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ODES-G1219)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G1219)"
       }
     },
     {
       "number": "D20",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Find the general real solution of \\(\\mathbf{x}' = \\begin{pmatrix} -2 & -5 \\\\ 1 & 0 \\end{pmatrix}\\mathbf{x}\\), classify the origin, and determine whether trajectories rotate clockwise or counterclockwise.",
+        "en": "Based on the antenna pattern visual model shown (ODES-G1248) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Characteristic polynomial:</strong> \\[\\det\\begin{pmatrix} -2 - \\lambda & -5 \\\\ 1 & -\\lambda \\end{pmatrix} = \\lambda(\\lambda + 2) + 5 = \\lambda^2 + 2\\lambda + 5 = 0 \\implies \\lambda = -1 \\pm 2i.\\] Since \\(\\alpha = -1 \\lt 0\\), the origin is an <strong>asymptotically stable spiral sink</strong>.<br><strong>Step 2: Eigenvector for \\(\\lambda = -1 + 2i\\):</strong> \\[\\begin{pmatrix} -1 - 2i & -5 \\\\ 1 & 1 - 2i \\end{pmatrix}\\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\mathbf{0} \\implies v_1 + (1 - 2i)v_2 = 0 \\implies \\mathbf{v} = \\begin{pmatrix} -1 + 2i \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + i \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}.\\] <strong>Step 3: Real and imaginary parts:</strong> \\[e^{(-1 + 2i)t}\\mathbf{v} = e^{-t}(\\cos 2t + i\\sin 2t)\\left[\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + i \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right]\\] \\[= e^{-t}\\left[\\cos 2t \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} - \\sin 2t \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right] + i e^{-t}\\left[\\sin 2t \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + \\cos 2t \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right].\\] Fundamental real solutions: \\[\\mathbf{x}_1(t) = e^{-t}\\begin{pmatrix} -\\cos 2t - 2\\sin 2t \\\\ \\cos 2t \\end{pmatrix}, \\qquad \\mathbf{x}_2(t) = e^{-t}\\begin{pmatrix} -\\sin 2t + 2\\cos 2t \\\\ \\sin 2t \\end{pmatrix}.\\] \\[\\mathbf{x}(t) = C_1 \\mathbf{x}_1(t) + C_2 \\mathbf{x}_2(t).\\] <strong>Step 4: Rotational sense:</strong> At \\((1, 0)\\): \\(\\mathbf{x}' = A(1, 0)^T = (-2, 1)^T\\). Since \\(x_2' = +1 \\gt 0\\), rotation is <strong>counterclockwise</strong>.</p>",
+        "en": "<p>From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 3)\\), \\(a = 3 - 1 = 2\\), so \\(g(2) = 2(2^2) + 1 = 9\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(9\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
-          [
-            2,
-            1
-          ],
-          [
-            0,
-            1
-          ]
+        "type": "fn",
+        "xl": [
+          -2,
+          3
         ],
-        "title": "Linear Transformation Action (#20)"
+        "yl": [
+          0,
+          11
+        ],
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*2^x + 1",
+            "color": "#2563eb",
+            "label": "y = g(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 0,
+            "y": 3,
+            "label": "(0, 3)"
+          }
+        ],
+        "asymptotes": [
+          {
+            "type": "h",
+            "v": 1,
+            "label": "y = 1"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Exponential growth curve with asymptote y = 1 (ODES-G1248)",
+        "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G1248)"
       }
     },
     {
       "number": "D21",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve the defective linear system \\(\\mathbf{x}' = \\begin{pmatrix} 1 & -1 \\\\ 1 & 3 \\end{pmatrix}\\mathbf{x}\\) with \\(\\mathbf{x}(0) = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}\\).",
+        "en": "Inspect the survey trial values listed across the table (ODES-1277); approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Eigenvalues:</strong> \\[\\det\\begin{pmatrix} 1 - \\lambda & -1 \\\\ 1 & 3 - \\lambda \\end{pmatrix} = (1 - \\lambda)(3 - \\lambda) + 1 = \\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2 = 0 \\implies \\lambda = 2.\\] <strong>Step 2: Eigenvector:</strong> \\[(A - 2I)\\mathbf{v}_1 = \\begin{pmatrix} -1 & -1 \\\\ 1 & 1 \\end{pmatrix}\\mathbf{v}_1 = \\mathbf{0} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}.\\] <strong>Step 3: Generalized eigenvector:</strong> Solve \\((A - 2I)\\mathbf{v}_2 = \\mathbf{v}_1\\): \\[\\begin{pmatrix} -1 & -1 \\\\ 1 & 1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies -v_{21} - v_{22} = 1 \\implies \\mathbf{v}_2 = \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}.\\] <strong>Step 4: General solution:</strong> \\[\\mathbf{x}(t) = C_1 e^{2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{2t}\\left[\\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right].\\] Apply \\(\\mathbf{x}(0) = (2, 1)^T\\): \\[C_1 \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\implies C_1 = 2, \\quad -C_1 - C_2 = 1 \\implies C_2 = -3.\\] Particular solution: \\[\\mathbf{x}(t) = 2e^{2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} - 3e^{2t}\\begin{pmatrix} t \\\\ -1 - t \\end{pmatrix} = e^{2t}\\begin{pmatrix} 2 - 3t \\\\ 1 + 3t \\end{pmatrix}.\\]</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{4}{2}(9 + 13) = 14 + 44 = 58\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(58\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
+        ],
+        "rows": [
           [
-            2,
-            1
-          ],
-          [
-            0,
-            1
+            "\\(R(t)\\)",
+            "5",
+            "9",
+            "13"
           ]
         ],
-        "title": "Linear Transformation Action (#21)"
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (survey trial, ODES-1277)",
+        "caption_ar": "جدول المعدل (تجربة المسح، ODES-1277)"
       }
     },
     {
       "number": "D22",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the power series recurrence relation about \\(x_0 = 0\\) for Hermite's differential equation with parameter 2: \\[y'' - 2x y' + 4y = 0, \\qquad y(0) = 1, \\quad y'(0) = 0.\\] Prove that the solution terminates to a quadratic polynomial and state the polynomial.",
+        "en": "From the plotted specimen plot figure above (ODES-G1327) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Series substitution:</strong> \\[\\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2\\sum_{n=1}^\\infty n a_n x^n + 4\\sum_{n=0}^\\infty a_n x^n = 0.\\] Shift first index: \\[\\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 4a_k x^k = 0.\\] <strong>Step 2: Recurrence relation:</strong> \\[(k+2)(k+1)a_{k+2} - 2(k - 2)a_k = 0 \\implies a_{k+2} = \\frac{2(k - 2)}{(k+2)(k+1)} a_k.\\] <strong>Step 3: Initial conditions:</strong> \\(a_0 = 1, \\, a_1 = 0\\).<br>Since \\(a_1 = 0\\), all odd coefficients vanish: \\(a_3 = a_5 = a_7 = \\dots = 0\\).<br>For \\(k = 0\\): \\(a_2 = \\frac{2(0 - 2)}{(2)(1)} a_0 = -2(1) = -2\\).<br>For \\(k = 2\\): \\(a_4 = \\frac{2(2 - 2)}{(4)(3)} a_2 = 0\\).<br>Since \\(a_4 = 0\\), the recurrence terminates identically: \\(a_6 = a_8 = \\dots = 0\\).<br><strong>Step 4: Exact solution:</strong> \\[y(x) = 1 - 2x^2.\\] (Up to scaling, this is the 2nd Hermite polynomial \\(H_2(x) = 4x^2 - 2 = -2(1 - 2x^2)\\)).</p>",
+        "en": "<p>From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "4",
-          "6",
-          "8"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
+        "yl": [
+          -2,
+          10
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#22)",
-        "caption_ar": "جدول القيم المختارة (#22)",
-        "headers_ar": [
-          "x",
-          "2",
-          "4",
-          "6",
-          "8"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (2))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2, 0)"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "label": "(3, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ODES-G1327)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G1327)"
       }
     },
     {
       "number": "D23",
       "difficulty": "Advanced",
       "question": {
-        "en": "For the differential equation with a regular singular point at \\(x_0 = 0\\): \\[2x^2 y'' + x y' - (x + 1)y = 0,\\] find the indicial equation, determine the two roots \\(r_1 \\ge r_2\\), and find the first three non-zero terms of the Frobenius series solution corresponding to \\(r_1\\).",
+        "en": "Referring to the specimen plot figure (ODES-G1363) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Indicial equation:</strong> \\[p_0 = \\lim_{x\\to 0} x P(x) = \\lim_{x\\to 0} x \\left(\\frac{x}{2x^2}\\right) = \\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = \\lim_{x\\to 0} x^2 \\left(-\\frac{x + 1}{2x^2}\\right) = -\\frac{1}{2}.\\] \\[F(r) = r(r - 1) + \\frac{1}{2}r - \\frac{1}{2} = r^2 - \\frac{1}{2}r - \\frac{1}{2} = 0 \\implies 2r^2 - r - 1 = (2r + 1)(r - 1) = 0.\\] Roots: \\(r_1 = 1, \\, r_2 = -1/2\\). Difference \\(r_1 - r_2 = 3/2 \\notin \\mathbb{Z}\\).<br><strong>Step 2: Frobenius series for \\(r_1 = 1\\):</strong> \\(y(x) = \\sum_{n=0}^\\infty a_n x^{n+1}\\).<br>Substituting into \\(2x^2 y'' + x y' - y = x y\\): \\[\\sum_{n=0}^\\infty \\big[2(n+1)n + (n+1) - 1\\big]a_n x^{n+1} = \\sum_{n=0}^\\infty a_n x^{n+2}\\] \\[\\sum_{n=0}^\\infty n(2n + 3)a_n x^{n+1} = \\sum_{k=1}^\\infty a_{k-1} x^{k+1}.\\] For \\(n = 0\\): \\(0 \\cdot 3 a_0 = 0\\) (satisfied for arbitrary \\(a_0 \\neq 0\\)).<br>For \\(n \\ge 1\\): \\[a_n = \\frac{a_{n-1}}{n(2n + 3)}.\\] <strong>Step 3: Coefficients:</strong><br>\\(n = 1\\): \\(a_1 = \\frac{a_0}{1(5)} = \\frac{a_0}{5}\\).<br>\\(n = 2\\): \\(a_2 = \\frac{a_1}{2(7)} = \\frac{a_0}{5 \\cdot 14} = \\frac{a_0}{70}\\).<br><strong>Step 4: Series solution:</strong> \\[y_1(x) = x\\left(1 + \\frac{x}{5} + \\frac{x^2}{70} + \\dots\\right).\\]</p>",
+        "en": "<p>From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "slope_field",
-        "dydx": "y*(1 - y/4)",
+        "type": "fn",
         "xl": [
-          -3,
-          3
+          -1,
+          5
         ],
         "yl": [
-          -3,
-          3
+          -2,
+          10
         ],
-        "step": 1,
-        "caption": "Slope field dy/dx = y*(1 - y/4) (#23)"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (2))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
+        ],
+        "pts": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2, 0)"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "label": "(3, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ODES-G1363)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G1363)"
       }
     },
     {
       "number": "D24",
       "difficulty": "Advanced",
       "question": {
-        "en": "Consider the stiff decay equation \\(\\dfrac{dy}{dt} = -100y\\) with \\(y(0) = 1\\). Determine the stability threshold \\(h_{\\text{crit}}\\) for Forward Euler, and compute the value of \\(y(0.1)\\) using Backward (Implicit) Euler with step size \\(h = 0.05\\).",
+        "en": "The table summarizes measurements from a biometrics evaluation (ODES-1385); using these entries, approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Forward Euler stability threshold:</strong> For \\(y' = \\lambda y\\) with \\(\\lambda = -100\\), the amplification factor is \\(1 + h\\lambda = 1 - 100h\\). Stability requires: \\[|1 - 100h|  \\lt  1 \\implies -1  \\lt  1 - 100h  \\lt  1 \\implies h  \\lt  \\frac{2}{100} = 0.02.\\] Thus \\(h_{\\text{crit}} = 0.02\\). If \\(h \\gt 0.02\\), Forward Euler explodes uncontrollably.<br><strong>Step 2: Backward (Implicit) Euler formula:</strong> \\[y_{n+1} = y_n + h(-100y_{n+1}) \\implies (1 + 100h)y_{n+1} = y_n \\implies y_{n+1} = \\frac{1}{1 + 100h}y_n.\\] With \\(h = 0.05\\): \\(1 + 100(0.05) = 1 + 5 = 6\\).<br>Amplification factor per step is \\(\\frac{1}{6} \\lt 1\\).<br><strong>Step 3: Two steps to \\(t = 0.1\\):</strong><br>Step 1 (\\(t = 0.05\\)): \\(y_1 = \\frac{1}{6}(1) = \\frac{1}{6} \\approx 0.1667\\).<br>Step 2 (\\(t = 0.10\\)): \\(y_2 = \\frac{1}{6}\\left(\\frac{1}{6}\\right) = \\frac{1}{36} \\approx 0.0278\\).<br>Notice that while Forward Euler with \\(h = 0.05\\) produces \\(y_2 = (1 - 5)^2 = (-4)^2 = 16\\) (false physical explosion), Backward Euler stably and monotonically decays to \\(1/36\\), remaining unconditionally stable.</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(3 + 7) + \\frac{4}{2}(7 + 11) = 10 + 36 = 46\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(46\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "k1",
-          "k2",
-          "k3",
-          "k4"
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
         ],
-        "values": [
-          3,
-          4,
-          7,
-          15
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "3",
+            "7",
+            "11"
+          ]
         ],
-        "xLabel": "Index n",
-        "yLabel": "Magnitude",
-        "caption": "Discrete Sequence Profile (#24)"
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (biometrics, ODES-1385)",
+        "caption_ar": "جدول المعدل (القياسات الحيوية، ODES-1385)"
       }
     },
     {
       "number": "D25",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Consider the separable differential equation \\(\\dfrac{dy}{dx} = ky\\) where \\(k\\) is a positive constant. A solution curve passes through the points \\((0, 5)\\) and \\((2, 20)\\). Determine the value of \\(k\\) and then find the value of \\(y\\) when \\(x = 3\\).",
+        "en": "The accompanying figure illustrates a specimen plot configuration (ODES-G1435); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The differential equation \\(\\dfrac{dy}{dx} = ky\\) is separable. Separating variables gives \\(\\frac{dy}{y} = k \\, dx\\). Integrating both sides, we get \\(\\int \\frac{dy}{y} = \\int k \\, dx\\), which yields \\(\\ln|y| = kx + C_1\\). Exponentiating both sides gives \\(|y| = e^{kx+C_1} = e^{C_1}e^{kx}\\). Let \\(C = \\pm e^{C_1}\\), so \\(y = Ce^{kx}\\). \n\\nWe are given that the solution curve passes through \\((0, 5)\\). Substituting these values into \\(y = Ce^{kx}\\): \\(5 = Ce^{k(0)} \\Rightarrow 5 = C\\). Thus, the particular solution is \\(y = 5e^{kx}\\). \n\\nWe are also given that the solution curve passes through \\((2, 20)\\). Substituting these values into \\(y = 5e^{kx}\\): \\(20 = 5e^{k(2)} \\Rightarrow 4 = e^{2k}\\). Taking the natural logarithm of both sides: \\(\\ln 4 = \\ln(e^{2k}) \\Rightarrow \\ln 4 = 2k \\Rightarrow k = \\dfrac{\\ln 4}{2} = \\dfrac{2 \\ln 2}{2} = \\ln 2\\). \n\\nSo, the value of \\(k\\) is \\(\\ln 2\\). The particular solution is \\(y = 5e^{(\\ln 2)x} = 5(e^{\\ln 2})^x = 5(2^x)\\). \n\\nFinally, we need to find the value of \\(y\\) when \\(x = 3\\). Substituting \\(x = 3\\) into \\(y = 5(2^x)\\): \\(y(3) = 5(2^3) = 5(8) = 40\\). \n\\nTherefore, \\(k = \\ln 2\\) and \\(y(3) = 40\\).</p><p><strong>Final Answer:</strong> \\(k = \\ln 2,\\; y(3) = 40\\)</p>",
+        "en": "<p>From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "f(x)",
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
+        "yl": [
+          -2,
+          10
         ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#25)",
-        "caption_ar": "جدول القيم المختارة (#25)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+        "xStep": 1,
+        "yStep": 2,
+        "fns": [
+          {
+            "fn": "2*(x - (2))^2 + (0)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 0,
+            "label": "(2, 0)"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "label": "(3, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ODES-G1435)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G1435)"
       }
     },
     {
       "number": "D26",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve \\(y'+4y=4 e^{- t}\\), \\(y(0)=3\\) with the Laplace transform. Find \\(y(1)\\).",
+        "en": "Examine the calorimetry dataset arranged in the table below (ODES-1457); approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(Y(s)=\\frac{3 s + 7}{\\left(s + 1\\right) \\left(s + 4\\right)}=\\frac{5}{3 \\left(s + 4\\right)} + \\frac{4}{3 \\left(s + 1\\right)}\\). Inverting, \\(y(t)=\\left(\\frac{4}{3} + \\frac{5 e^{- 3 t}}{3}\\right) e^{- t}\\), so \\(y(1)=\\frac{5 + 4 e^{3}}{3 e^{4}}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{5 + 4 e^{3}}{3 e^{4}}\\)</p>",
-        "ar": "بتطبيق القوانين الرياضية المعتمدة في قسم (المعادلات التفاضلية العادية) بالاعتماد على العلاقات الرياضية \\(Y(s)=\\frac{3 s + 7}{\\left(s + 1\\right) \\left(s + 4\\right)}=\\frac{5}{3 \\left(s + 4\\right)} + \\frac{4}{3 \\left(s + 1\\right)}\\) ، \\(y(t)=\\left(\\frac{4}{3} + \\frac{5 e^{- 3 t}}{3}\\right) e^{- t}\\) ، \\(y(1)=\\frac{5 + 4 e^{3}}{3 e^{4}}\\) ، \\(\\frac{5 + 4 e^{3}}{3 e^{4}}\\)، وبإجراء التبسيط الجبري والعددي خطوة بخطوة نصل إلى النتيجة الدقيقة المطلوبة."
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(5 + 9) + \\frac{4}{2}(9 + 13) = 14 + 44 = 58\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(58\\)</strong></p>",
+        "ar": "<p>مجموع مساحتي شبهي المنحرف هو \\(14 + 44 = 58\\) . تحقّق: تأكد من قراءة الصف وتدريج المحور والقيم الحدية من الشكل مع مراجعة الحساب. <strong>الإجابة النهائية: \\(58\\)</strong></p>"
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -4,
-          4
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
         ],
-        "yl": [
-          -5,
-          7
+        "rows": [
+          [
+            "\\(R(t)\\)",
+            "5",
+            "9",
+            "13"
+          ]
         ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "1.5*x + 1",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#26)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (calorimetry, ODES-1457)",
+        "caption_ar": "جدول المعدل (قياس السعرات، ODES-1457)"
       }
     },
     {
       "number": "D27",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve \\(x^2 y' + x y = \\frac{1}{x^2 + 1}\\) for \\(x \\gt 0\\), with \\(y(1) = \\frac{\\pi}{4}\\). What is \\(y(\\sqrt{3})\\)?",
-        "ar": "في مسألة رياضية ضمن (المعادلات التفاضلية العادية) بالاعتماد على العلاقات الرياضية \\(x^2 y' + x y = \\frac{1}{x^2 + 1}\\) ، \\(x \\gt 0\\) ، \\(y(1) = \\frac{\\pi}{4}\\) ، \\(y(\\sqrt{3})\\)، أوجد القيمة الرياضية المطلوبة في أبسط صورة."
+        "en": "An engineering team logged aerodynamics measurements in the accompanying table (ODES-1493); using these data, approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+        "ar": "سجّل فريق دراسة الديناميكا الهوائية القياسات في الجدول المرفق (ODES-1493). مستخدمًا هذه البيانات، لتقريب التكامل \\(\\int_{2}^{8} R(t)\\,dt\\) باستخدام قاعدة شبه المنحرف."
       },
       "solution": {
-        "en": "<p>Standard form: \\(y' + \\frac{1}{x}y = \\frac{1}{x(x^2 + 1)}\\). \\(\\mu = x\\). Multiplying gives \\((x y)' = \\frac{1}{x(x^2 + 1)} = \\frac{1}{x} - \\frac{x}{x^2 + 1}\\). Integrating gives \\(x y = \\ln x - \\frac{1}{2}\\ln(x^2 + 1) + C\\). Using \\(y(1) = \\pi/4\\) yields \\(\\pi/4 = -\\frac{1}{2}\\ln 2 + C \\implies C = \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2\\). At \\(x = \\sqrt{3}\\), \\(\\sqrt{3}y = \\frac{1}{2}\\ln 3 - \\frac{1}{2}\\ln 4 + \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2 = \\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\). Thus \\(y(\\sqrt{3}) = \\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\).</p><p><strong>Final Answer:</strong> \\(\\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\)</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(6 + 10) + \\frac{4}{2}(10 + 14) = 16 + 48 = 64\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(64\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
+          "\\(t\\)",
           "2",
-          "3"
+          "4",
+          "8"
         ],
         "rows": [
           [
-            "f(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ],
-          [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
-            "3"
+            "\\(R(t)\\)",
+            "6",
+            "10",
+            "14"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#27)",
-        "caption_ar": "جدول القيم المختارة (#27)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ],
-          [
-            "f'(x)",
-            "5",
-            "3",
-            "5",
-            "3"
-          ]
-        ]
+        "caption": "Sampled rate table R(t) on [2, 8] (aerodynamics, ODES-1493)",
+        "caption_ar": "جدول المعدل (الديناميكا الهوائية، ODES-1493)"
       }
     },
     {
@@ -1122,296 +1052,193 @@
       "number": "D29",
       "difficulty": "Advanced",
       "question": {
-        "en": "Solve \\(y''+3y'+2y=20e^{3x}-4x\\), \\(y(0)=-1\\), \\(y'(0)=8\\). Find \\(y(1)\\).",
-        "ar": "حل \\(y''+3y'+2y=20e^{3x}-4x\\), \\(y(0)=-1\\), \\(y'(0)=8\\). أوجد \\(y(1)\\)."
+        "en": "Selected numerical readings from thermodynamics run (ODES-1552) appear in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
+        "ar": "تظهر قراءات الديناميكا الحرارية المختارة (ODES-1552) في الجدول التالي؛ استخدم الجدول لإيجاد لتتبع طريقة أويلر بخطوة \\(h = 1\\) . أوجد القيمة التقريبية المفقودة \\(y_2\\) ."
       },
       "solution": {
-        "en": "<p>Homogeneous: \\(r^2+3r+2=0\\) has roots \\(r=-1,-2\\), so \\(y_c=C_1e^{-x}+C_2e^{-2x}\\). Split the forcing (the superposition note): for \\(20e^{3x}\\), \\(3\\) isn't a root, trial \\(Ae^{3x}\\); for \\(-4x\\), trial \\(Bx+C\\) (or just \\(C\\)). Adding the two pieces: \\(y_p=-2x+e^{3x}+3\\). With \\(C_1=-3\\), \\(C_2=-2\\) (matching the stated initial conditions), \\(y=y_c+y_p\\), and \\(y(1)\\) follows by substitution.</p><p><strong>Final Answer:</strong> \\(-\\frac{3}{e}-\\frac{2}{e^{2}}+1+e^{3}\\)</p>",
+        "en": "<p>From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(4) = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+          "Step \\(n\\)",
+          "\\(x_n\\)",
+          "\\(y_n\\)",
+          "\\(dy/dx\\)"
         ],
         "rows": [
           [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
+            "0",
+            "1",
+            "1",
+            "2"
           ],
           [
-            "f'(x)",
-            "3",
             "1",
-            "3",
-            "1"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#29)",
-        "caption_ar": "جدول القيم المختارة (#29)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
             "2",
-            "4",
-            "6",
-            "8"
+            "3",
+            "4"
           ],
           [
-            "f'(x)",
+            "2",
             "3",
-            "1",
-            "3",
-            "1"
+            "?",
+            "\\(\\dots\\)"
           ]
-        ]
+        ],
+        "caption": "Euler integration schedule with step h = 1 (thermodynamics, ODES-1552)",
+        "caption_ar": "جدول خطوات أويلر (الديناميكا الحرارية، ODES-1552)"
       }
     },
     {
       "number": "D30",
       "difficulty": "Advanced",
       "question": {
-        "en": "Consider the second-order nonhomogeneous linear differential equation \\(y'' - 2y' + y = e^x \\sin(x)\\). Let \\(y_p(x)\\) be a particular solution obtained using the method of undetermined coefficients. Determine the value of \\(y_p''(\\pi) - 2y_p'(\\pi) + y_p(\\pi)\\).",
+        "en": "Given the structured circuit trial observations displayed in the table (ODES-1595), approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p>The problem asks for the value of the left-hand side of the differential equation \\(y'' - 2y' + y = e^x \\sin(x)\\) when evaluated at a particular solution \\(y_p(x)\\). By definition, a particular solution \\(y_p(x)\\) must satisfy the nonhomogeneous differential equation for all \\(x\\). Therefore, when we substitute \\(y_p(x)\\) into the differential equation, the left-hand side must equal the right-hand side.</p><p>Specifically, for any particular solution \\(y_p(x)\\), it must be true that \\(y_p''(x) - 2y_p'(x) + y_p(x) = e^x \\sin(x)\\) for all \\(x\\).</p><p>The question asks for the value of \\(y_p''(\\pi) - 2y_p'(\\pi) + y_p(\\pi)\\). This is simply the evaluation of the left-hand side of the differential equation at \\(x = \\pi\\). Since \\(y_p(x)\\) is a particular solution, this expression must be equal to the right-hand side of the differential equation evaluated at \\(x = \\pi\\).</p><p>So, \\(y_p''(\\pi) - 2y_p'(\\pi) + y_p(\\pi) = e^\\pi \\sin(\\pi)\\).</p><p>We know that \\(\\sin(\\pi) = 0\\).</p><p>Therefore, \\(y_p''(\\pi) - 2y_p'(\\pi) + y_p(\\pi) = e^\\pi \\times 0 = 0\\).</p><p><strong>Final Answer:</strong> \\(0\\)</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(3 + 7) + \\frac{4}{2}(7 + 11) = 10 + 36 = 46\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(46\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
+        ],
         "rows": [
-          "Group I",
-          "Group II",
-          "Total"
-        ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
           [
-            "18",
-            "14",
-            32
-          ],
-          [
-            "18",
-            "20",
-            38
-          ],
-          [
-            36,
-            34,
-            70
+            "\\(R(t)\\)",
+            "3",
+            "7",
+            "11"
           ]
         ],
-        "caption": "Reference Summary Table (#30)",
-        "caption_ar": "جدول ملخص البيانات (#30)",
-        "_totals": {
-          "rowTotals": [
-            32,
-            38
-          ],
-          "colTotals": [
-            36,
-            34
-          ],
-          "grandTotal": 70
-        }
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (circuit trial, ODES-1595)",
+        "caption_ar": "جدول المعدل (تجربة الدائرة، ODES-1595)"
       }
     },
     {
       "number": "D31",
       "difficulty": "Intermediate",
       "question": {
-        "en": "On \\([0,1]\\), Euler's method with \\(h=0.1\\) gives an error of about \\(\\frac{1}{50}\\). Roughly how many steps are needed for an error of \\(\\frac{1}{5000}\\)?",
+        "en": "In assessment dataset (ODES-1631) for robotics, the table reports key quantities; approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Global Truncation Error Scaling of Forward Euler:</strong> Forward Euler has local truncation error \\(\\mathcal{O}(h^2)\\) per step and global truncation error \\(E(h) \\approx C h^1\\) at \\(x = 1\\) over \\(N = \\frac{1 - 0}{h} = \\frac{1}{h}\\) steps.</p><p>Given \\(E(0.1) \\approx \\frac{1}{50}\\), reducing the global error by a factor of \\(100\\) to \\(E(h_{\\text{new}}) \\approx \\frac{1}{5000}\\) requires reducing \\(h\\) by a factor of \\(100\\): \\[ h_{\\text{new}} = \\frac{0.1}{100} = 0.001 = \\frac{1}{1000} \\implies N = \\frac{1}{h_{\\text{new}}} = 1000 \\text{ steps}. \\]</p><p><strong>Final Answer:</strong> \\(1000\\)</p>",
+        "en": "<p>Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(52\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
+        "type": "table",
+        "headers": [
+          "\\(t\\)",
+          "2",
+          "4",
+          "8"
+        ],
         "rows": [
-          "Group I",
-          "Group II",
-          "Total"
-        ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
           [
-            "28",
-            "20",
-            48
-          ],
-          [
-            "11",
-            "18",
-            29
-          ],
-          [
-            39,
-            38,
-            77
+            "\\(R(t)\\)",
+            "4",
+            "8",
+            "12"
           ]
         ],
-        "caption": "Reference Summary Table (#31)",
-        "caption_ar": "جدول ملخص البيانات (#31)",
-        "_totals": {
-          "rowTotals": [
-            48,
-            29
-          ],
-          "colTotals": [
-            39,
-            38
-          ],
-          "grandTotal": 77
-        }
+        "orientation": "horizontal",
+        "caption": "Sampled rate table R(t) on [2, 8] (robotics, ODES-1631)",
+        "caption_ar": "جدول المعدل (الروبوتات، ODES-1631)"
       }
     },
     {
       "number": "D32",
       "difficulty": "Intermediate",
       "question": {
-        "en": "Consider the differential equation \\(\\dfrac{dy}{dx} = x + y\\) with the initial condition \\(y(0) = 1\\). You are asked to approximate \\(y(0.2)\\) using Euler's method. If the step size \\(h = 0.1\\) is used, and it is known that the exact solution at \\(x=0.2\\) is \\(y(0.2) = 1.24\\), determine the value of \\(k\\) such that \\(y(0.2)_{\\text{Euler}} = 1.24 - k\\).",
+        "en": "A benchmark photonics log (ODES-1660) provides the entries shown in the table; tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Euler's method for approximating the solution to \\(\\dfrac{dy}{dx} = f(x, y)\\) with initial condition \\(y(x_0) = y_0\\) and step size \\(h\\) is given by \\(y_{n+1} = y_n + h f(x_n, y_n)\\).</p><p>In this problem, \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).</p><p>We want to approximate \\(y(0.2)\\) with \\(h=0.1\\). This requires two steps:</p><p>Step 1: From \\(x_0 = 0\\) to \\(x_1 = 0.1\\).<br>\\(y_1 = y_0 + h f(x_0, y_0)\\)<br>\\(y_1 = 1 + 0.1 (0 + 1)\\)<br>\\(y_1 = 1 + 0.1 (1)\\)<br>\\(y_1 = 1 + 0.1\\)<br>\\(y_1 = 1.1\\)</p><p>Step 2: From \\(x_1 = 0.1\\) to \\(x_2 = 0.2\\).<br>\\(y_2 = y_1 + h f(x_1, y_1)\\)<br>\\(y_2 = 1.1 + 0.1 (0.1 + 1.1)\\)<br>\\(y_2 = 1.1 + 0.1 (1.2)\\)<br>\\(y_2 = 1.1 + 0.12\\)<br>\\(y_2 = 1.22\\)</p><p>So, the approximation using Euler's method is \\(y(0.2)_{\\text{Euler}} = 1.22\\).</p><p>We are given that the exact solution is \\(y(0.2) = 1.24\\) and \\(y(0.2)_{\\text{Euler}} = 1.24 - k\\).<br>Substituting the value of \\(y(0.2)_{\\text{Euler}}\\), we get:<br>\\(1.22 = 1.24 - k\\)<br>\\(k = 1.24 - 1.22\\)<br>\\(k = 0.02\\)</p><p>Therefore, the value of \\(k\\) is 0.02.</p>",
+        "en": "<p>From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(5) = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
+        "type": "table",
+        "headers": [
+          "Step \\(n\\)",
+          "\\(x_n\\)",
+          "\\(y_n\\)",
+          "\\(dy/dx\\)"
+        ],
         "rows": [
-          "Group I",
-          "Group II",
-          "Total"
-        ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
           [
-            "27",
-            "14",
-            41
+            "0",
+            "1",
+            "3",
+            "2"
           ],
           [
-            "19",
-            "14",
-            33
+            "1",
+            "2",
+            "5",
+            "5"
           ],
           [
-            46,
-            28,
-            74
+            "2",
+            "3",
+            "?",
+            "\\(\\dots\\)"
           ]
         ],
-        "caption": "Reference Summary Table (#32)",
-        "caption_ar": "جدول ملخص البيانات (#32)",
-        "_totals": {
-          "rowTotals": [
-            41,
-            33
-          ],
-          "colTotals": [
-            46,
-            28
-          ],
-          "grandTotal": 74
-        }
+        "caption": "Euler integration schedule with step h = 1 (photonics, ODES-1660)",
+        "caption_ar": "جدول خطوات أويلر (الفوتونيات، ODES-1660)"
       }
     },
     {
       "number": "D33",
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the coefficient \\(a_5\\) of the power series solution \\(y=\\sum a_nx^n\\) of \\(y''-xy'-y=0\\) with \\(y(0)=1\\), \\(y'(0)=2\\).",
+        "en": "In the acoustics lab record (ODES-1696), using the table values, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Substitute the series and match powers of \\(x\\) to get a recurrence; with \\(a_0=1,\\ a_1=2\\) the coefficients are \\(a_0=1, a_1=2, a_2=\\frac{1}{2}, a_3=\\frac{2}{3}, a_4=\\frac{1}{8}, a_5=\\frac{2}{15}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{2}{15}\\)</p>",
+        "en": "<p>From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(2) = 5\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(5\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
+          "Step \\(n\\)",
+          "\\(x_n\\)",
+          "\\(y_n\\)",
+          "\\(dy/dx\\)"
         ],
         "rows": [
           [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
+            "0",
+            "1",
+            "1",
+            "2"
           ],
           [
-            "f'(x)",
-            "3",
             "1",
-            "3",
-            "1"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#33)",
-        "caption_ar": "جدول القيم المختارة (#33)",
-        "headers_ar": [
-          "x",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
             "2",
-            "4",
-            "6",
-            "8"
+            "3",
+            "2"
           ],
           [
-            "f'(x)",
+            "2",
             "3",
-            "1",
-            "3",
-            "1"
+            "?",
+            "\\(\\dots\\)"
           ]
-        ]
+        ],
+        "caption": "Euler integration schedule with step h = 1 (acoustics lab, ODES-1696)",
+        "caption_ar": "جدول خطوات أويلر (مختبر الصوت، ODES-1696)"
       }
     },
     {

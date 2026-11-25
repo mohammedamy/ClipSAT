@@ -7,83 +7,90 @@
       "number": 1,
       "difficulty": "Advanced",
       "question": {
-        "en": "Let \\(z_1 = 2 + 3i\\) and \\(z_2 = 1 - i\\). Consider the complex number \\(w\\) such that \\(w = \\frac{z_1^2}{z_2}\\). If \\(w = a + bi\\), where \\(a\\) and \\(b\\) are real numbers, find the value of \\(b\\).",
+        "en": "The table summarizes measurements from a telemetry evaluation (EST2L2-700); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
         "ar": null
       },
       "solution": {
-        "en": "<p>First, calculate \\(z_1^2\\): \\(z_1^2 = (2 + 3i)^2 = 2^2 + 2(2)(3i) + (3i)^2 = 4 + 12i + 9i^2 = 4 + 12i - 9 = -5 + 12i\\).</p><p>Next, divide \\(z_1^2\\) by \\(z_2\\): \\(w = \\frac{-5 + 12i}{1 - i}\\).</p><p>To simplify this division, multiply the numerator and the denominator by the conjugate of the denominator, which is \\(1 + i\\):<br>\\(w = \\frac{-5 + 12i}{1 - i} \\times \\frac{1 + i}{1 + i} = \\frac{(-5 + 12i)(1 + i)}{(1 - i)(1 + i)}\\).</p><p>The numerator is: \\((-5)(1) + (-5)(i) + (12i)(1) + (12i)(i) = -5 - 5i + 12i + 12i^2 = -5 + 7i - 12 = -17 + 7i\\).</p><p>The denominator is: \\((1)^2 - (i)^2 = 1 - (-1) = 1 + 1 = 2\\).</p><p>So, \\(w = \\frac{-17 + 7i}{2} = -\\frac{17}{2} + \\frac{7}{2}i\\).</p><p>Given that \\(w = a + bi\\), we have \\(a = -\\frac{17}{2}\\) and \\(b = \\frac{7}{2}\\). The question asks for the value of \\(b\\). Therefore, \\(b = \\frac{7}{2}\\).</p><p><strong>Final Answer:</strong> \\(-\\frac{17}{2}\\)</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(13 + 4\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "1",
-            "3",
-            "5",
-            "7"
+            "13",
+            "4",
+            17
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            15,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#1)",
-        "caption_ar": "جدول نمط مرجعي (#1)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "3",
-            "5",
-            "7"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (EST2L2-700)",
+        "caption_ar": "ملخص النتائج (EST2L2-700)"
       }
     },
     {
       "number": 2,
       "difficulty": "Advanced",
       "question": {
-        "en": "Find the domain of \\(f(x)=\\sqrt{x-9}+\\dfrac{1}{x-11}\\).",
-        "ar": "أوجد مجال \\(f(x)=\\sqrt{x-9}+\\dfrac{1}{x-11}\\)."
+        "en": "Using the labeled measurements in the waveguide design diagram (EST2L2-G743) showing a rectangle with labeled side lengths. Compute its area.",
+        "ar": "باستخدام القياسات المثبّتة على شكل تصميم الموجه الموجي (EST2L2-G743) لمستطيل بأبعاد مرسومة على أضلاعه. أوجد مساحة المستطيل."
       },
       "solution": {
-        "en": "<p>The square root needs \\(x\\geq9\\); the fraction needs \\(x\\neq11\\) — both together (and \\(9\\neq11\\) so neither condition swallows the other).</p><p><strong>Final Answer:</strong> \\(x\\geq9,\\ x\\neq11\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>Reading length \\(12\\) and width \\(8\\) from the rectangle, area \\(= 12 \\times 8 = 96\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(96\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            0,
+            8
+          ]
         ],
-        "yl": [
-          -4,
-          4
+        "w": 12,
+        "h": 8,
+        "sides": [
+          "12",
+          "8",
+          "12",
+          "8"
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "x^3 - 3*x",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#2)",
-        "caption": "Reference graph y = f(x)"
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (EST2L2-G743)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (EST2L2-G743)"
       }
     },
     {
@@ -132,448 +139,349 @@
       "number": 4,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A manufacturer produces light bulbs. The probability that a randomly selected light bulb is defective is \\(p\\). The production process is designed such that the probability of producing exactly \\(k\\) defective bulbs in a batch of \\(n=5\\) bulbs follows the binomial probability formula: \\(P(X=k) = \\binom{n}{k} p^k (1-p)^{n-k}\\).  It is known that the probability of finding exactly 2 defective bulbs in a batch of 5 is \\(\\frac{10}{32}\\). Find the value of \\(p\\).",
+        "en": "Referring to the thermal profile figure (EST2L2-G802) showing a sinusoidal wave with dashed midline \\(y = 3\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>Let \\(X\\) be the number of defective bulbs in a batch of \\(n=5\\). We are given that \\(X\\) follows a binomial distribution with parameters \\(n=5\\) and probability of success (a bulb being defective) \\(p\\). The probability of exactly \\(k\\) defective bulbs is \\(P(X=k) = \\binom{n}{k} p^k (1-p)^{n-k}\\).</p><p>We are given that the probability of finding exactly 2 defective bulbs in a batch of 5 is \\(\\frac{10}{32}\\). Therefore, \\(P(X=2) = \\binom{5}{2} p^2 (1-p)^{5-2} = \\frac{10}{32}\\).</p><p>First, calculate the binomial coefficient: \\(\\binom{5}{2} = \\frac{5!}{2!(5-2)!} = \\frac{5!}{2!3!} = \\frac{5 \\times 4}{2 \\times 1} = 10\\).</p><p>So, the equation becomes: \\(10 p^2 (1-p)^3 = \\frac{10}{32}\\).</p><p>Divide both sides by 10: \\(p^2 (1-p)^3 = \\frac{1}{32}\\).</p><p>We need to find a value of \\(p\\) that satisfies this equation. Let's test the given options:</p><p>If \\(p = 0.2\\):<br>\\((0.2)^2 (1-0.2)^3 = (0.04) (0.8)^3 = 0.04 \\times 0.512 = 0.02048\\). \\(\\frac{1}{32} = 0.03125\\). This is not correct.</p><p>If \\(p = 0.5\\):<br>\\((0.5)^2 (1-0.5)^3 = (0.25) (0.5)^3 = 0.25 \\times 0.125 = 0.03125\\). \\(\\frac{1}{32} = 0.03125\\). This is correct.</p><p>If \\(p = 0.8\\):<br>\\((0.8)^2 (1-0.8)^3 = (0.64) (0.2)^3 = 0.64 \\times 0.008 = 0.00512\\). This is not correct.</p><p>If \\(p = 0.75\\):<br>\\((0.75)^2 (1-0.75)^3 = (0.5625) (0.25)^3 = 0.5625 \\times 0.015625 = 0.0087890625\\). This is not correct.</p><p>Thus, the value of \\(p\\) is \\(0.5\\).</p>",
+        "en": "<p>From midline \\(3\\) to peak \\(7\\), amplitude is \\(A = 7 - 3 = 4\\), so peak-to-trough range equals \\(2A = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "sinusoid",
+        "amp": 4,
+        "freq": 1,
+        "phase": 0,
+        "midline": 3,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
+        "yl": [
+          -2,
+          8
         ],
-        "data": [
-          [
-            "30",
-            "16",
-            46
-          ],
-          [
-            "20",
-            "15",
-            35
-          ],
-          [
-            50,
-            31,
-            81
-          ]
+        "pts": [
+          {
+            "x": 1.57,
+            "y": 7,
+            "label": "max=7"
+          }
         ],
-        "caption": "Reference Summary Table (#4)",
-        "caption_ar": "جدول ملخص البيانات (#4)",
-        "_totals": {
-          "rowTotals": [
-            46,
-            35
-          ],
-          "colTotals": [
-            50,
-            31
-          ],
-          "grandTotal": 81
-        }
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 3 (EST2L2-G802)",
+        "caption_ar": "موجة جيبية مع خط الوسط (EST2L2-G802)"
       }
     },
     {
       "number": 5,
       "difficulty": "Advanced",
       "question": {
-        "en": "Let \\(z_1\\) and \\(z_2\\) be the roots of the quadratic equation \\(x^2 - 4x + 5 = 0\\). Consider a complex number \\(w\\) such that \\(w = z_1^2 + z_2^2\\). If \\(w\\) is expressed in the form \\(a + bi\\), where \\(a\\) and \\(b\\) are real numbers, find the value of \\(a - b\\).",
+        "en": "An engineering team logged optical bench measurements in the accompanying table (EST2L2-831); using these data, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The quadratic equation is \\(x^2 - 4x + 5 = 0\\). By Vieta's formulas, the sum of the roots is \\(z_1 + z_2 = -(-4)/1 = 4\\) and the product of the roots is \\(z_1 z_2 = 5/1 = 5\\).<br>We are interested in \\(w = z_1^2 + z_2^2\\). We can rewrite this as \\(w = (z_1 + z_2)^2 - 2z_1 z_2\\).<br>Substituting the values from Vieta's formulas:<br>\\(w = (4)^2 - 2(5)\\)<br>\\(w = 16 - 10\\)<br>\\(w = 6\\).<br>So, \\(w = 6\\). When expressed in the form \\(a + bi\\), we have \\(a = 6\\) and \\(b = 0\\).<br>The question asks for \\(a - b\\).<br>\\(a - b = 6 - 0 = 6\\).</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "argand",
-        "points": [
-          {
-            "re": -1,
-            "im": 1,
-            "label": "z"
-          },
-          {
-            "re": -1,
-            "im": -1,
-            "label": "z̄"
-          }
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
         ],
-        "vectors": [
-          {
-            "re": -1,
-            "im": 1,
-            "label": "z"
-          }
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "3",
+            "6",
+            "12"
+          ]
         ],
-        "title": "Complex Plane z (#5)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (optical bench, EST2L2-831)",
+        "caption_ar": "جدول قيم نمو أسي (المنضدة البصرية، EST2L2-831)"
       }
     },
     {
       "number": 6,
       "difficulty": "Advanced",
       "question": {
-        "en": "Does \\(y=6x^2+9\\) solve \\(\\dfrac{dy}{dx}=12x\\)?",
-        "ar": "Does \\(y=6x^2+9\\) حل \\(\\dfrac{dy}{dx}=12x\\)?"
+        "en": "The accompanying figure illustrates a thermal profile configuration (EST2L2-G874); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(3)\\).",
+        "ar": "يوضّح الشكل المرفق نموذج المنحنى الحراري (EST2L2-G874) للقطع المكافئ مع الرأس ونقطة إضافية عليه. أوجد قيمة \\(f(3)\\) ."
       },
       "solution": {
-        "en": "<p>By Theorem 5.1, the derivative of a constant times \\(x^2\\) scales by that constant, and a constant term's derivative is 0 — compare the result to the right-hand side of the equation.</p><p><strong>Final Answer:</strong> Yes — \\(\\dfrac{dy}{dx}=12x\\), matching the equation.</p>",
+        "en": "<p>From vertex \\((1, 0)\\) and point \\((2, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(3) = 2(2)^2 + (0) = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "fn",
         "xl": [
           -2,
-          6
+          4
         ],
         "yl": [
-          -3,
-          6
+          -2,
+          10
         ],
-        "xStep": 2,
+        "xStep": 1,
         "yStep": 2,
         "fns": [
           {
-            "fn": "0.5*x^2 - 2*x + 1",
+            "fn": "2*(x - (1))^2 + (0)",
+            "color": "#2563eb",
             "label": "y = f(x)"
           }
         ],
-        "title": "Coordinate Graph (#6)",
-        "caption": "Reference graph y = f(x)"
+        "pts": [
+          {
+            "x": 1,
+            "y": 0,
+            "label": "(1, 0)"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "label": "(2, 2)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (EST2L2-G874)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (EST2L2-G874)"
       }
     },
     {
       "number": 7,
       "difficulty": "Advanced",
       "question": {
-        "en": "Consider a linear transformation \\(T\\) represented by the matrix \\(A = \\begin{pmatrix} 2 & 1 \\ 1 & 3 \\end{pmatrix}\\). Let \\(P = \\begin{pmatrix} x \\\\ y \\end{pmatrix}\\) be a point in the plane. The transformation maps \\(P\\) to \\(P'\\). If the area of the region transformed by \\(T\\) from a unit square in the \\(xy\\)-plane is \\(A\\), and the determinant of \\(A\\) is \\(\\det(A)\\), find the value of \\(\\det(A)\\) if the area of the transformed region is \\(5\\).",
+        "en": "Given the structured navigation observations displayed in the table (EST2L2-910), for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The area of the region transformed by a linear transformation \\(T\\) represented by a matrix \\(A\\) from a unit square is given by the absolute value of the determinant of \\(A\\), i.e., Area \\(= |\\det(A)|\\). In this problem, we are given that the matrix representing the transformation is \\(A = \\begin{pmatrix} 2 & 1 \\ 1 & 3 \\end{pmatrix}\\). The determinant of \\(A\\) is calculated as: \\(\\det(A) = (2 \\times 3) - (1 \\times 1) = 6 - 1 = 5\\). We are also given that the area of the transformed region is \\(5\\). Thus, \\(|\\det(A)| = 5\\). Since we calculated \\(\\det(A) = 5\\), which is positive, the condition is satisfied. Therefore, the value of \\(\\det(A)\\) is \\(5\\).</p>",
-        "ar": null
-      },
-      "fig": {
-        "type": "table",
-        "headers": [
-          "Basis Vector",
-          "e₁",
-          "e₂"
-        ],
-        "rows": [
-          [
-            "x-comp",
-            "2",
-            "-1"
-          ],
-          [
-            "y-comp",
-            "4",
-            "5"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Component & Basis Table (#7)",
-        "caption_ar": "جدول المركبات والمتجهات (#7)",
-        "headers_ar": [
-          "متجه الأساس",
-          "e₁",
-          "e₂"
-        ],
-        "rows_ar": [
-          [
-            "المركبة x",
-            "2",
-            "-1"
-          ],
-          [
-            "المركبة y",
-            "4",
-            "5"
-          ]
-        ]
-      }
-    },
-    {
-      "number": 8,
-      "difficulty": "Advanced",
-      "question": {
-        "en": "A factory produces two types of components, A and B. Components of type A have a defect rate of \\(3\\%\\), and components of type B have a defect rate of \\(5\\%\\). A batch of 100 components is produced, consisting of \\(N\\) components of type A and \\(100-N\\) components of type B. Let \\(X\\) be the random variable representing the total number of defective components in the batch. If the expected number of defective components is \\(E[X] = 4.2\\), find the probability that a randomly selected component from this batch is defective, given that it is of type A.",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p>Let \\(X_A\\) be the number of defective components of type A, and \\(X_B\\) be the number of defective components of type B. The total number of defective components is \\(X = X_A + X_B\\).</p><p>The expected number of defective components of type A is \\(E[X_A] = N \\times 0.03\\).<br>The expected number of defective components of type B is \\(E[X_B] = (100-N) \\times 0.05\\).<br>The total expected number of defective components is \\(E[X] = E[X_A] + E[X_B]\\).<br>We are given \\(E[X] = 4.2\\).<br>So, \\(N \\times 0.03 + (100-N) \\times 0.05 = 4.2\\).<br>\\(0.03N + 5 - 0.05N = 4.2\\).<br>\\(5 - 0.02N = 4.2\\).<br>\\(0.02N = 5 - 4.2\\).<br>\\(0.02N = 0.8\\).<br>\\(N = \\frac{0.8}{0.02} = 40\\).</p><p>Therefore, there are 40 components of type A and \\(100 - 40 = 60\\) components of type B.</p><p>The question asks for the probability that a randomly selected component from this batch is defective, given that it is of type A. This is simply the defect rate of type A components.</p><p>Probability (Defective | Type A) = Defect rate of Type A = \\(0.03\\).</p><p><strong>Final Answer:</strong> 0.030</p>",
+        "en": "<p>There are \\(14\\) participants in Plan A (\\(7 + 7\\)), of whom \\(7\\) recorded Pass, giving \\(\\frac{1}{2}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{1}{2}\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "two_way_table",
         "corner": "",
         "rows": [
-          "Group I",
-          "Group II",
+          "Plan A",
+          "Plan B",
           "Total"
         ],
         "cols": [
-          "Outcome A",
-          "Outcome B",
+          "Pass",
+          "Retake",
           "Total"
         ],
         "data": [
           [
-            "21",
-            "24",
-            45
+            "7",
+            "7",
+            14
           ],
           [
-            "17",
-            "26",
-            43
+            "12",
+            "10",
+            22
           ],
           [
-            38,
-            50,
-            88
+            19,
+            17,
+            36
           ]
         ],
-        "caption": "Reference Summary Table (#8)",
-        "caption_ar": "جدول ملخص البيانات (#8)",
-        "_totals": {
-          "rowTotals": [
-            45,
-            43
-          ],
-          "colTotals": [
-            38,
-            50
-          ],
-          "grandTotal": 88
-        }
+        "caption": "Cohort Outcomes Summary (EST2L2-910)",
+        "caption_ar": "ملخص النتائج (EST2L2-910)"
+      }
+    },
+    {
+      "number": 8,
+      "difficulty": "Advanced",
+      "question": {
+        "en": "Inspect the cartography values listed across the table (EST2L2-939); modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{10}{5} = 2\\), so \\(E(3) = 20 \\cdot 2 = 40\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(40\\)</strong></p>",
+        "ar": null
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "5",
+            "10",
+            "20"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (cartography, EST2L2-939)",
+        "caption_ar": "جدول قيم نمو أسي (رسم الخرائط، EST2L2-939)"
       }
     },
     {
       "number": 9,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A geometric sequence has its first term \\(a_1\\) and a common ratio \\(r\\). The sum of the first three terms is 26, and the sum of the first six terms is 728. If \\(a_1 = 2\\), find the value of \\(r\\).",
+        "en": "A benchmark logistics log (EST2L2-982) provides the entries shown in the table; for the two-way table above. If one participant from Model X is chosen at random, what fraction corresponds to outcome In-Spec?",
         "ar": null
       },
       "solution": {
-        "en": "<p>Let the first term of the geometric sequence be \\(a_1\\) and the common ratio be \\(r\\). \\nThe sum of the first \\(n\\) terms of a geometric sequence is given by \\(S_n = a_1 \\frac{1 - r^n}{1 - r}\\) (for \\(r \\neq 1\\)). \\nWe are given that \\(a_1 = 2\\). \\nThe sum of the first three terms is \\(S_3 = 26\\). So, \\(2 \\frac{1 - r^3}{1 - r} = 26\\). \\nThis simplifies to \\(\\frac{1 - r^3}{1 - r} = 13\\). \\nUsing the difference of cubes formula, \\(1 - r^3 = (1 - r)(1 + r + r^2)\\). \\nThus, \\(1 + r + r^2 = 13\\). \\nRearranging this, we get a quadratic equation: \\(r^2 + r - 12 = 0\\). \\nFactoring the quadratic, we have \\((r + 4)(r - 3) = 0\\). \\nThis gives possible values for \\(r\\) as \\(r = 3\\) or \\(r = -4\\). \\nNow consider the sum of the first six terms, \\(S_6 = 728\\). So, \\(2 \\frac{1 - r^6}{1 - r} = 728\\). \\nThis simplifies to \\(\\frac{1 - r^6}{1 - r} = 364\\). \\nWe can rewrite \\(1 - r^6\\) as \\((1 - r^3)(1 + r^3)\\). \\nSo, \\(\\frac{(1 - r^3)(1 + r^3)}{1 - r} = 364\\). \\nWe know that \\(\\frac{1 - r^3}{1 - r} = 13\\). \\nSubstituting this into the equation, we get \\(13 (1 + r^3) = 364\\). \\nDividing by 13, we have \\(1 + r^3 = \\frac{364}{13} = 28\\). \\nSo, \\(r^3 = 27\\). \\nThis implies \\(r = 3\\). \\nBoth conditions are satisfied when \\(r = 3\\). \\nIf we had chosen \\(r = -4\\) from the first condition, \\(S_6 = 2 \\frac{1 - (-4)^6}{1 - (-4)} = 2 \\frac{1 - 4096}{5} = 2 \\frac{-4095}{5} = 2(-819) = -1638\\), which is not 728. \\nTherefore, the common ratio is 3.</p>",
+        "en": "<p>There are \\(11\\) participants in Model X (\\(7 + 4\\)), of whom \\(7\\) recorded In-Spec, giving \\(\\frac{7}{11}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{7}{11}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Model X",
+          "Model Y",
+          "Total"
+        ],
+        "cols": [
+          "In-Spec",
+          "Rework",
+          "Total"
+        ],
+        "data": [
           [
-            "f(x)",
-            "3",
+            "7",
             "4",
-            "5",
-            "6"
+            11
           ],
           [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#9)",
-        "caption_ar": "جدول القيم المختارة (#9)",
-        "headers_ar": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "4",
-            "5",
-            "6"
+            "8",
+            "10",
+            18
           ],
           [
-            "f'(x)",
-            "2",
-            "0",
-            "2",
-            "0"
+            15,
+            14,
+            29
           ]
-        ]
+        ],
+        "caption": "Batch Inspection Summary (EST2L2-982)",
+        "caption_ar": "ملخص النتائج (EST2L2-982)"
       }
     },
     {
       "number": 10,
       "difficulty": "Basic",
       "question": {
-        "en": "Let \\(z = 3 - 4i\\). What is the real part of \\(z\\)?",
+        "en": "In the acoustics record (EST2L2-1011), using the table values, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>A complex number is generally expressed in the form \\(a + bi\\), where \\(a\\) is the real part and \\(b\\) is the imaginary part. In the given complex number \\(z = 3 - 4i\\), the real part is the term that does not have \\(i\\) multiplied by it. Therefore, the real part of \\(z\\) is 3.</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
+            "\\(E(x)\\)",
             "3",
-            "7",
-            "11",
-            "15"
+            "6",
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#10)",
-        "caption_ar": "جدول نمط مرجعي (#10)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ]
-        ]
+        "caption": "Exponential growth values table (acoustics, EST2L2-1011)",
+        "caption_ar": "جدول قيم نمو أسي (الصوتيات، EST2L2-1011)"
       }
     },
     {
       "number": 11,
       "difficulty": "Advanced",
       "question": {
-        "en": "Does \\(y=5x^2-8\\) solve \\(\\dfrac{dy}{dx}=10x\\)?",
-        "ar": "Does \\(y=5x^2-8\\) حل \\(\\dfrac{dy}{dx}=10x\\)?"
+        "en": "The table summarizes measurements from a seismology evaluation (EST2L2-1047); using these entries, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة علم الزلازل (EST2L2-1047). بالاعتماد على القيم المعطاة، الذي ينمذج دالة أسية \\(E(x) = a \\cdot b^x\\) . أوجد قيمة \\(E(3)\\) ."
       },
       "solution": {
-        "en": "<p>By Theorem 5.1, the derivative of a constant times \\(x^2\\) scales by that constant, and a constant term's derivative is 0 — compare the result to the right-hand side of the equation.</p><p><strong>Final Answer:</strong> Yes — \\(\\dfrac{dy}{dx}=10x\\), matching the equation.</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{4}{2} = 2\\), so \\(E(3) = 8 \\cdot 2 = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "5",
-            "7",
-            "9",
-            "11"
+            "\\(E(x)\\)",
+            "2",
+            "4",
+            "8"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#11)",
-        "caption_ar": "جدول نمط مرجعي (#11)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "7",
-            "9",
-            "11"
-          ]
-        ]
+        "caption": "Exponential growth values table (seismology, EST2L2-1047)",
+        "caption_ar": "جدول قيم نمو أسي (علم الزلازل، EST2L2-1047)"
       }
     },
     {
       "number": 12,
       "difficulty": "Basic",
       "question": {
-        "en": "Consider the matrix \\(A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}\\). When the matrix \\(A\\) is applied to the vector \\(\\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}\\), the resulting vector is \\(A\\mathbf{v} = \\begin{pmatrix} 6 \\\\ 9 \\end{pmatrix}\\). What is the original vector \\(\\mathbf{v}\\)?",
+        "en": "Based strictly on the tabulated flow bench observations (EST2L2-1090), for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The matrix multiplication is given by:<br>\\[\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2x \\\\ 3y \\end{pmatrix}\\]<br>We are given that this result is \\(\\begin{pmatrix} 6 \\\\ 9 \\end{pmatrix}\\). Therefore, we have the system of equations:<br>\\[2x = 6\\]<br>\\[3y = 9\\]<br>Solving for \\(x\\) and \\(y\\):<br>\\[x = \\frac{6}{2} = 3\\]<br>\\[y = \\frac{9}{3} = 3\\]<br>So, the original vector \\(\\mathbf{v}\\) is \\(\\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix}\\).</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(7 + 10\\)), of whom \\(7\\) recorded Pass, giving \\(\\frac{7}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{7}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "Basis Vector",
-          "e₁",
-          "e₂"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "x-comp",
-            "4",
-            "-1"
+            "7",
+            "10",
+            17
           ],
           [
-            "y-comp",
-            "4",
-            "5"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Component & Basis Table (#12)",
-        "caption_ar": "جدول المركبات والمتجهات (#12)",
-        "headers_ar": [
-          "متجه الأساس",
-          "e₁",
-          "e₂"
-        ],
-        "rows_ar": [
-          [
-            "المركبة x",
-            "4",
-            "-1"
+            "6",
+            "6",
+            12
           ],
           [
-            "المركبة y",
-            "4",
-            "5"
+            13,
+            16,
+            29
           ]
-        ]
+        ],
+        "caption": "Cohort Outcomes Summary (EST2L2-1090)",
+        "caption_ar": "ملخص النتائج (EST2L2-1090)"
       }
     },
     {
@@ -630,222 +538,132 @@
       "number": 14,
       "difficulty": "Basic",
       "question": {
-        "en": "Consider an arithmetic sequence where the first term is \\(a_1 = 5\\) and the common difference is \\(d = 3\\). What is the value of the 4th term, \\(a_4\\)?",
+        "en": "Examine the grid assay dataset arranged in the table below (EST2L2-1142); representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The formula for the nth term of an arithmetic sequence is given by \\(a_n = a_1 + (n-1)d\\). In this problem, we are given \\(a_1 = 5\\) and \\(d = 3\\). We need to find the 4th term, so \\(n = 4\\). Plugging these values into the formula, we get: \\(a_4 = 5 + (4-1) \\times 3\\) \\(a_4 = 5 + (3) \\times 3\\) \\(a_4 = 5 + 9\\) \\(a_4 = 14\\). Therefore, the 4th term of the sequence is 14.</p>",
+        "en": "<p>First differences are \\(6, 12, 18\\), giving constant second difference \\(6\\). Thus \\(q(4) = 41 + 24 = 65\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(65\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
+          "0",
           "1",
           "2",
-          "3",
-          "4"
+          "3"
         ],
         "rows": [
           [
-            "f(x)",
-            "3",
+            "\\(q(x)\\)",
             "5",
-            "7",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
+            "11",
+            "23",
+            "41"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#14)",
-        "caption_ar": "جدول القيم المختارة (#14)",
-        "headers_ar": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (grid assay, EST2L2-1142)",
+        "caption_ar": "جدول قيم دالة تربيعية (فحص الشبكة، EST2L2-1142)"
       }
     },
     {
       "number": 15,
       "difficulty": "Basic",
       "question": {
-        "en": "Consider the complex number \\(z = 3 + 4i\\). What is the magnitude of \\(z\\)?",
+        "en": "Referring to the aerodynamics table above (EST2L2-1185), modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The magnitude of a complex number \\(z = a + bi\\) is given by \\(|z| = \\sqrt{a^2 + b^2}\\). For \\(z = 3 + 4i\\), we have \\(a = 3\\) and \\(b = 4\\). Therefore, the magnitude is \\(|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\).</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{4}{2} = 2\\), so \\(E(3) = 8 \\cdot 2 = 16\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(16\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
           "1",
-          "2",
-          "3"
+          "2"
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
+            "\\(E(x)\\)",
+            "2",
+            "4",
+            "8"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#15)",
-        "caption_ar": "جدول نمط مرجعي (#15)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ]
-        ]
+        "caption": "Exponential growth values table (aerodynamics, EST2L2-1185)",
+        "caption_ar": "جدول قيم نمو أسي (الديناميكا الهوائية، EST2L2-1185)"
       }
     },
     {
       "number": 16,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A matrix \\(M = \\begin{pmatrix} k & 2 \\\\ 3 & 1 \\end{pmatrix}\\) transforms a point \\(P(1, 2)\\) to \\(P'(5, 5)\\). Find the value of \\(k\\).",
+        "en": "Selected numerical readings from metallurgy run (EST2L2-1214) appear in the table; representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The transformation of a point \\(P(x, y)\\) by a matrix \\(M = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\) is given by \\(MP\\). In this case, we have \\(\\begin{pmatrix} k & 2 \\\\ 3 & 1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 5 \\end{pmatrix}\\). Performing the matrix multiplication, we get: \\(k(1) + 2(2) = 5\\) and \\(3(1) + 1(2) = 5\\). The second equation, \\(3 + 2 = 5\\), is consistent. For the first equation, we have \\(k + 4 = 5\\). Solving for \\(k\\), we subtract 4 from both sides: \\(k = 5 - 4\\), which gives \\(k = 1\\). Therefore, the value of \\(k\\) is 1.</p>",
+        "en": "<p>First differences are \\(4, 10, 16\\), giving constant second difference \\(6\\). Thus \\(q(4) = 35 + 22 = 57\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(57\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "Basis Vector",
-          "e₁",
-          "e₂"
+          "\\(x\\)",
+          "0",
+          "1",
+          "2",
+          "3"
         ],
         "rows": [
           [
-            "x-comp",
-            "1",
-            "-1"
-          ],
-          [
-            "y-comp",
-            "1",
-            "5"
+            "\\(q(x)\\)",
+            "5",
+            "9",
+            "19",
+            "35"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Component & Basis Table (#16)",
-        "caption_ar": "جدول المركبات والمتجهات (#16)",
-        "headers_ar": [
-          "متجه الأساس",
-          "e₁",
-          "e₂"
-        ],
-        "rows_ar": [
-          [
-            "المركبة x",
-            "1",
-            "-1"
-          ],
-          [
-            "المركبة y",
-            "1",
-            "5"
-          ]
-        ]
+        "caption": "Quadratic sequence values table (metallurgy, EST2L2-1214)",
+        "caption_ar": "جدول قيم دالة تربيعية (علم المعادن، EST2L2-1214)"
       }
     },
     {
       "number": 17,
       "difficulty": "Basic",
       "question": {
-        "en": "A fair six-sided die is rolled. What is the probability of rolling a number greater than 4?",
+        "en": "Given the structured quality audit observations displayed in the table (EST2L2-1257), modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The possible outcomes when rolling a fair six-sided die are {1, 2, 3, 4, 5, 6}. The total number of possible outcomes is 6.<br>We are interested in the event of rolling a number greater than 4. The numbers in the set of outcomes that are greater than 4 are {5, 6}.<br>There are 2 favorable outcomes.<br>The probability of an event is calculated as the ratio of the number of favorable outcomes to the total number of possible outcomes.<br>Probability (rolling > 4) = (Number of favorable outcomes) / (Total number of possible outcomes) = 2 / 6 = 1/3.</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{10}{5} = 2\\), so \\(E(3) = 20 \\cdot 2 = 40\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(40\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
+        ],
         "rows": [
-          "Group I",
-          "Group II",
-          "Total"
-        ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
           [
-            "24",
-            "24",
-            48
-          ],
-          [
-            "13",
-            "18",
-            31
-          ],
-          [
-            37,
-            42,
-            79
+            "\\(E(x)\\)",
+            "5",
+            "10",
+            "20"
           ]
         ],
-        "caption": "Reference Summary Table (#17)",
-        "caption_ar": "جدول ملخص البيانات (#17)",
-        "_totals": {
-          "rowTotals": [
-            48,
-            31
-          ],
-          "colTotals": [
-            37,
-            42
-          ],
-          "grandTotal": 79
-        }
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (quality audit, EST2L2-1257)",
+        "caption_ar": "جدول قيم نمو أسي (تدقيق الجودة، EST2L2-1257)"
       }
     },
     {

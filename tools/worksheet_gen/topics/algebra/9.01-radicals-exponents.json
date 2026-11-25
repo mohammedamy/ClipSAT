@@ -10,20 +10,21 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "Express in simplest algebraic form: \\( \\sqrt{350} \\).",
-          "answer": "**Answer:** B. \\( \\sqrt{350} = \\sqrt{25\\cdot 14} = 5\\sqrt{14} \\).",
+          "q": "Given the structured circuit trial observations displayed in the table (ALGEBRA-210297611), representing a quadratic polynomial \\(q(x)\\) with equally spaced inputs. Determine \\(q(4)\\).",
+          "answer": "**Answer:** B. First differences are \\(5, 13, 21\\), giving constant second difference \\(8\\). Thus \\(q(4) = 43 + 29 = 72\\).",
           "explanation": "\\( \\sqrt{350} = \\sqrt{25\\cdot 14} = 5\\sqrt{14} \\).",
           "choices": [
-            "\\( 350 \\)",
-            "\\( 5\\sqrt{14} \\)",
-            "\\( 6\\sqrt{14} \\)",
-            "\\( 5\\sqrt{15} \\)"
+            "\\(64\\)",
+            "\\(72\\)",
+            "\\(80\\)",
+            "\\(47\\)"
           ],
           "correct": 1,
+          "explain": "First differences are \\(5, 13, 21\\), giving constant second difference \\(8\\). Thus \\(q(4) = 43 + 29 = 72\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "0",
               "1",
               "2",
@@ -31,76 +32,30 @@
             ],
             "rows": [
               [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
+                "\\(q(x)\\)",
+                "4",
+                "9",
+                "22",
+                "43"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
-              ]
-            ]
+            "caption": "Quadratic sequence values table (circuit trial, ALGEBRA-210297611)",
+            "caption_ar": "جدول قيم دالة تربيعية (تجربة الدائرة، ALGEBRA-210297611)"
           }
         },
         {
-          "q": "Real numbers \\( x \\) and \\( y \\) satisfy \\( x + y = 18 \\) and \\( xy = 56 \\). Evaluate the squared difference \\( f = (x - y)^2 \\).",
-          "answer": "Using \\( (x - y)^2 = (x + y)^2 - 4xy \\), we get \\( 324 - 4(56) = 100 \\).",
+          "q": "Referring to the orbital sector figure (ALGEBRA-G260631461) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "answer": "**Answer:** A. From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
           "choices": [
-            "100",
-            "102",
-            "86",
-            "104"
+            "\\(13\\)",
+            "\\(16\\)",
+            "\\(7\\)",
+            "\\(11\\)"
           ],
           "correct": 0,
-          "figure": {
-            "type": "fn",
-            "xl": [
-              -4,
-              4
-            ],
-            "yl": [
-              -5,
-              7
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
-              {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
-              }
-            ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "A discrete exponential function satisfies \\( f(x) = 25 \\cdot 3^{x} \\) for non-negative integers \\( x \\). Evaluate the value \\( f(3) \\).",
-          "answer": "At \\( x = 3 \\), \\( f(3) = 25 \\times 27 = 675 \\).",
-          "choices": [
-            "676",
-            "675",
-            "662",
-            "679"
-          ],
-          "correct": 1,
+          "explain": "From vertex \\((0, 1)\\) and point \\((1, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(2) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -108,187 +63,274 @@
               3
             ],
             "yl": [
-              -4,
-              4
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (0))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 1,
+                "y": 4,
+                "label": "(1, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ALGEBRA-G260631461)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ALGEBRA-G260631461)"
+          }
+        },
+        {
+          "q": "From the plotted harmonic trace figure above (ALGEBRA-G243853842) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** B. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "choices": [
+            "\\(-1\\)",
+            "\\(5\\)",
+            "\\(6\\)",
+            "\\(7\\)"
+          ],
+          "correct": 1,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 2"
+              }
+            ],
+            "pts": [
+              {
+                "x": 4,
+                "y": 4,
+                "label": "(4, 4)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (ALGEBRA-G243853842)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (ALGEBRA-G243853842)"
+          }
+        },
+        {
+          "q": "Referring to the optical bench table above (ALGEBRA-159964747), evaluate \\(f(g(4)) + 5\\).",
+          "answer": "**Answer:** D. From the table, \\(g(4) = 2\\) and \\(f(2) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\).",
+          "choices": [
+            "\\(7\\)",
+            "\\(16\\)",
+            "\\(14\\)",
+            "\\(12\\)"
+          ],
+          "correct": 3,
+          "explain": "From the table, \\(g(4) = 2\\) and \\(f(2) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "5",
+                "7",
+                "12",
+                "11"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "4",
+                "1",
+                "2"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (optical bench, ALGEBRA-159964747)",
+            "caption_ar": "قيم مختارة للدالتين (المنضدة البصرية، ALGEBRA-159964747)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a fluid channel configuration (ALGEBRA-G143188135); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "answer": "**Answer:** A. From the horizontal asymptote \\(d = 4\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 4 = 3\\), so \\(g(2) = 3(2^2) + 4 = 16\\).",
+          "choices": [
+            "\\(16\\)",
+            "\\(10\\)",
+            "\\(14\\)",
+            "\\(20\\)"
+          ],
+          "correct": 0,
+          "explain": "From the horizontal asymptote \\(d = 4\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 4 = 3\\), so \\(g(2) = 3(2^2) + 4 = 16\\).",
+          "qtype": "MCQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              3,
+              18
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "fn": "3*2^x + 4",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 4 (ALGEBRA-G143188135)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ALGEBRA-G143188135)"
           }
         },
         {
-          "q": "What is the sum of all real solutions to the equation\n\\[\n\\sqrt{x + 2\\sqrt{x-1}} + \\sqrt{x - 2\\sqrt{x-1}} = \\frac{x+3}{2}\\,?\n\\]",
-          "answer": "First, determine the domain of the equation. For the inner radical \\(\\sqrt{x-1}\\) to be defined over the real numbers, we must have \\(x - 1 \\ge 0\\), which means \\(x \\ge 1\\).\n\nNext, rewrite the expressions under the outer square roots as perfect squares:\n\\[\nx + 2\\sqrt{x-1} = (x-1) + 2\\sqrt{x-1} + 1 = \\left(\\sqrt{x-1} + 1\\right)^2\n\\]\n\\[\nx - 2\\sqrt{x-1} = (x-1) - 2\\sqrt{x-1} + 1 = \\left(\\sqrt{x-1} - 1\\right)^2\n\\]\n\nTaking the square roots yields:\n\\[\n\\sqrt{\\left(\\sqrt{x-1} + 1\\right)^2} = \\left|\\sqrt{x-1} + 1\\right| = \\sqrt{x-1} + 1\n\\]\n\\[\n\\sqrt{\\left(\\sqrt{x-1} - 1\\right)^2} = \\left|\\sqrt{x-1} - 1\\right|\n\\]\n\nThus, the equation simplifies to:\n\\[\n\\sqrt{x-1} + 1 + \\left|\\sqrt{x-1} - 1\\right| = \\frac{x+3}{2}\n\\]\n\nWe analyze the absolute value by considering two cases based on the value of \\(x\\):\n\n**Case 1: \\(1 \\le x \\le 2\\)**\nHere, \\(0 \\le \\sqrt{x-1} \\le 1\\), so \\(\\left|\\sqrt{x-1} - 1\\right| = 1 - \\sqrt{x-1}\\).\nSubstituting this into the equation:\n\\[\n\\left(\\sqrt{x-1} + 1\\right) + \\left(1 - \\sqrt{x-1}\\right) = \\frac{x+3}{2}\n\\]\n\\[\n2 = \\frac{x+3}{2} \\implies x + 3 = 4 \\implies x = 1\n\\]\nSince \\(x = 1\\) lies in the interval \\([1, 2]\\), \\(x = 1\\) is a valid solution.\n\n**Case 2: \\(x > 2\\)**\nHere, \\(\\sqrt{x-1} > 1\\), so \\(\\left|\\sqrt{x-1} - 1\\right| = \\sqrt{x-1} - 1\\).\nSubstituting this into the equation:\n\\[\n\\left(\\sqrt{x-1} + 1\\right) + \\left(\\sqrt{x-1} - 1\\right) = \\frac{x+3}{2}\n\\]\n\\[\n2\\sqrt{x-1} = \\frac{x+3}{2} \\implies 4\\sqrt{x-1} = x + 3\n\\]\nSquaring both sides:\n\\[\n16(x-1) = (x+3)^2 = x^2 + 6x + 9\n\\]\n\\[\nx^2 - 10x + 25 = 0 \\implies (x-5)^2 = 0 \\implies x = 5\n\\]\nSince \\(x = 5 > 2\\), \\(x = 5\\) is also a valid solution.\n\nAlternatively, observe that for \\(x > 2\\):\n\\[\n\\frac{x+3}{2} - 2\\sqrt{x-1} = \\frac{(x-1) - 4\\sqrt{x-1} + 4}{2} = \\frac{\\left(\\sqrt{x-1} - 2\\right)^2}{2} \\ge 0\n\\]\nwhich equals zero if and only if \\(\\sqrt{x-1} = 2 \\iff x = 5\\).\n\nThus, the only real solutions are \\(x = 1\\) and \\(x = 5\\). Their sum is:\n\\[\n1 + 5 = 6\n\\]\n\n*Common Misconceptions:*\n- Assuming \\(\\sqrt{(\\sqrt{x-1}-1)^2} = \\sqrt{x-1}-1\\) without the absolute value overlooks the case \\(1 \\le x \\le 2\\), missing the root \\(x = 1\\) and leading to the incorrect answer \\(5\\).\n- Applying Vieta's formulas directly to \\(x^2 - 10x + 25 = 0\\) yields \\(10\\), incorrectly treating the repeated root as two distinct solutions while ignoring the piecewise domain restrictions.",
+          "q": "Referring to the bridge arch figure (ALGEBRA-G193520985) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
+          "answer": "**Answer:** D. Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
           "choices": [
-            "\\(1\\)",
-            "\\(10\\)",
-            "\\(5\\)",
+            "\\(2\\)",
+            "\\(8\\)",
+            "\\(4\\)",
             "\\(6\\)"
           ],
           "correct": 3,
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 6\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+            "type": "fn",
+            "xl": [
+              -2,
+              6
             ],
-            "rows": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
+            "yl": [
+              -1,
+              9
             ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2/(x - 2) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 2) + 4"
+              }
             ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Given the expression \\( \\sqrt[3]{64} \\), what is the principal cube root of 64?",
-          "answer": "The cube root of a number 'x', denoted as \\(\\sqrt[3]{x}\\), is a number 'y' such that \\(y^3 = x\\). We are looking for the number that, when multiplied by itself three times, equals 64. Let's test the options:\n\n- \\(2^3 = 2 \\times 2 \\times 2 = 8\\) (Incorrect)\n- \\(4^3 = 4 \\times 4 \\times 4 = 16 \\times 4 = 64\\) (Correct)\n- \\(8^3 = 8 \\times 8 \\times 8 = 64 \\times 8 = 512\\) (Incorrect)\n- \\(16^3 = 16 \\times 16 \\times 16 = 256 \\times 16 = 4096\\) (Incorrect)\n\nTherefore, the principal cube root of 64 is 4.",
-          "choices": [
-            "4",
-            "8",
-            "16",
-            "2"
-          ],
-          "correct": 0,
-          "figure": {
-            "type": "scatter",
             "pts": [
-              [
-                1,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
+              {
+                "x": 3,
+                "y": 6,
+                "label": "(3, 6)"
+              }
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#6)"
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 2 and y = 4 (ALGEBRA-G193520985)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (ALGEBRA-G193520985)"
           }
         },
         {
-          "q": "In the partial fraction identity \\( \\dfrac{15}{(x - 7)(x - 10)} = \\dfrac{f}{x - 10} - \\dfrac{g}{x - 7} \\), \\( f \\) and \\( g \\) are constants. Evaluate the sum \\( f + g \\).",
-          "answer": "Matching numerators gives \\( f = 5 \\) and \\( g = 5 \\), so \\( f + g = 10 \\).",
+          "q": "A benchmark metallurgy log (ALGEBRA-176742366) provides the entries shown in the table; determine \\(2\\,h^{-1}(8)\\) for the invertible function \\(h\\).",
+          "answer": "**Answer:** C. Because \\(h(5) = 8\\), we have \\(h^{-1}(8) = 5\\). Multiplying by \\(2\\) gives \\(10\\).",
           "choices": [
-            "13",
-            "17",
-            "0",
-            "10"
-          ],
-          "correct": 3,
-          "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
-            ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#7)"
-          }
-        },
-        {
-          "q": "Let \\(f(x) = \\sqrt{x^2 - 4x + 4}\\) and \\(g(x) = \\sqrt[3]{x^3 + 6x^2 + 12x + 8}\\). If \\(h(x) = f(x) \\cdot g(x)\\), find the value of \\(h(-3)\\).",
-          "answer": "First, simplify the expressions for \\(f(x)\\) and \\(g(x)\\).\n\nFor \\(f(x) = \\sqrt{x^2 - 4x + 4}\\), we recognize the expression inside the square root as a perfect square trinomial: \\(x^2 - 4x + 4 = (x-2)^2\\).\nTherefore, \\(f(x) = \\sqrt{(x-2)^2} = |x-2|\\).\n\nFor \\(g(x) = \\sqrt[3]{x^3 + 6x^2 + 12x + 8}\\), we recognize the expression inside the cube root as a perfect cube: \\(x^3 + 6x^2 + 12x + 8 = (x+2)^3\\).\nTherefore, \\(g(x) = \\sqrt[3]{(x+2)^3} = x+2\\).\n\nNow, we can find the expression for \\(h(x) = f(x) \\cdot g(x)\\).\n\\(h(x) = |x-2| \\cdot (x+2)\\).\n\nWe need to find the value of \\(h(-3)\\). Substitute \\(x = -3\\) into the expression for \\(h(x)\\).\n\\(h(-3) = |-3-2| \\cdot (-3+2)\\)\n\\(h(-3) = |-5| \\cdot (-1)\\)\n\\(h(-3) = 5 \\cdot (-1)\\)\n\\(h(-3) = -5\\).\n\nThe value of \\(h(-3)\\) is -5.",
-          "choices": [
-            "\\(-15\\)",
             "\\(5\\)",
-            "\\(-5\\)",
-            "\\(15\\)"
+            "\\(16\\)",
+            "\\(10\\)",
+            "\\(6\\)"
           ],
           "correct": 2,
+          "explain": "Because \\(h(5) = 8\\), we have \\(h^{-1}(8) = 5\\). Multiplying by \\(2\\) gives \\(10\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "3",
+              "5",
+              "7",
+              "9"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(h(x)\\)",
                 "6",
-                "10",
-                "14"
+                "8",
+                "11",
+                "16"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "6",
-                "10",
-                "14"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (metallurgy, ALGEBRA-176742366)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (علم المعادن، ALGEBRA-176742366)"
           }
         }
       ]
@@ -297,70 +339,100 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Solve \\(\\sqrt{3x+1}=x-1\\), checking for extraneous solutions.",
+          "q": "From the plotted thermal profile figure above (ALGEBRA-G92855278) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Square both sides: \\(3x+1=(x-1)^2=x^2-2x+1\\Rightarrow x^2-5x=0\\Rightarrow x=0\\) or \\(x=5\\). Check \\(x=0\\): \\(1=-1\\) ✗ (extraneous). Check \\(x=5\\): \\(4=4\\) ✓. Solution: \\(x=5\\).",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
           "explanation": "Square both sides: \\(3x+1=(x-1)^2=x^2-2x+1\\Rightarrow x^2-5x=0\\Rightarrow x=0\\) or \\(x=5\\). Check \\(x=0\\): \\(1=-1\\) ✗ (extraneous). Check \\(x=5\\): \\(4=4\\) ✓. Solution: \\(x=5\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                3
-              ],
-              [
-                2,
-                6
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
+            "type": "fn",
+            "xl": [
+              -2,
+              3
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#9)"
+            "yl": [
+              2,
+              21
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ALGEBRA-G92855278)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ALGEBRA-G92855278)"
           }
         },
         {
-          "q": "Evaluate the expression: \\[ \\sqrt{64} - \\sqrt[3]{27} \\]",
-          "answer": "The square root of 64 is 8, since \\(8^2 = 64\\). The cube root of 27 is 3, since \\(3^3 = 27\\). Therefore, the expression simplifies to \\(8 - 3 = 5\\).",
+          "q": "The accompanying figure illustrates a orbital sector configuration (ALGEBRA-G76077659); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** B. From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "choices": [
-            "6",
-            "5",
-            "7",
-            "8"
+            "\\(16\\)",
+            "\\(13\\)",
+            "\\(7\\)",
+            "\\(11\\)"
           ],
           "correct": 1,
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
+            "type": "fn",
+            "xl": [
+              -1,
+              5
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#10)"
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ALGEBRA-G76077659)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ALGEBRA-G76077659)"
           }
         },
         {
@@ -399,168 +471,178 @@
         },
         {
           "qtype": "MCQ",
-          "q": "Rewrite in fully simplified form: \\( \\sqrt{216} \\).",
-          "answer": "**Answer:** D. \\( \\sqrt{216} = \\sqrt{36\\cdot 6} = 6\\sqrt{6} \\).",
+          "q": "A benchmark circuit trial log (ALGEBRA-774767279) provides the entries shown in the table; evaluate \\(f(g(4)) + 5\\).",
+          "answer": "**Answer:** D. From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
           "explanation": "\\( \\sqrt{216} = \\sqrt{36\\cdot 6} = 6\\sqrt{6} \\).",
           "choices": [
-            "\\( 7\\sqrt{6} \\)",
-            "\\( 216 \\)",
-            "\\( 6\\sqrt{7} \\)",
-            "\\( 6\\sqrt{6} \\)"
+            "\\(7\\)",
+            "\\(18\\)",
+            "\\(14\\)",
+            "\\(19\\)"
           ],
           "correct": 3,
+          "explain": "From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
+              ],
+              [
+                "\\(g(x)\\)",
+                "4",
+                "1",
+                "2",
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#12)",
-            "caption_ar": "جدول نمط مرجعي (#12)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (circuit trial, ALGEBRA-774767279)",
+            "caption_ar": "قيم مختارة للدالتين (تجربة الدائرة، ALGEBRA-774767279)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "Determine the simplified equivalent of: \\( \\sqrt{116} \\).",
-          "answer": "**Answer:** A. \\( \\sqrt{116} = \\sqrt{4\\cdot 29} = 2\\sqrt{29} \\).",
+          "q": "Referring to the field geometry figure (ALGEBRA-G791545905) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
+          "answer": "**Answer:** A. From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\( \\sqrt{116} = \\sqrt{4\\cdot 29} = 2\\sqrt{29} \\).",
           "choices": [
-            "\\( 2\\sqrt{29} \\)",
-            "\\( 2\\sqrt{30} \\)",
-            "\\( 3\\sqrt{29} \\)",
-            "\\( 116 \\)"
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(1\\)",
+            "\\(6\\)"
           ],
           "correct": 0,
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                3
-              ],
-              [
-                2,
-                6
-              ],
-              [
-                3,
-                10
-              ],
-              [
-                4,
-                15
-              ]
+            "type": "fn",
+            "xl": [
+              -3,
+              3
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#13)"
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ALGEBRA-G791545905)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ALGEBRA-G791545905)"
           }
         },
         {
-          "q": "Level 3 · AdvancedUsing the student prep table (Studied: 54 passed, 6 failed; Did not study: 18 passed, 22 failed; Total passed: 72 out of 100), are the events 'passed' and 'studied' independent?",
+          "q": "Based on the structural truss visual model shown (ALGEBRA-G808323517) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Calculate marginal probability: \\(P(\\mathrm{Passed}) = \\frac{72}{100} = 0.72.\\) Step 2: Compare with conditional probability: \\(P(\\mathrm{Passed} \\mid \\mathrm{Studied}) = \\frac{54}{60} = 0.90.\\) Since \\(P(\\mathrm{Passed} \\mid \\mathrm{Studied}) = 0.90 eq 0.72 = P(\\mathrm{Passed})\\), the events are not independent (studying is positively associated with passing).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 7\\).",
           "explanation": "Step 1: Calculate marginal probability: \\(P(\\mathrm{Passed}) = \\frac{72}{100} = 0.72.\\) Step 2: Compare with conditional probability: \\(P(\\mathrm{Passed} \\mid \\mathrm{Studied}) = \\frac{54}{60} = 0.90.\\) Since \\(P(\\mathrm{Passed} \\mid \\mathrm{Studied}) = 0.90 eq 0.72 = P(\\mathrm{Passed})\\), the events are not independent (studying is positively associated with passing).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 2 \\implies h = 2\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                2
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                3,
-                12
-              ],
-              [
-                4,
-                17
-              ]
+            "type": "fn",
+            "xl": [
+              -2,
+              6
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#14)"
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "4/(x - 2) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 2) + 5"
+              }
+            ],
+            "pts": [
+              {
+                "x": 3,
+                "y": 9,
+                "label": "(3, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 2,
+                "label": "x = 2"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 2 and y = 5 (ALGEBRA-G808323517)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (ALGEBRA-G808323517)"
           }
         },
         {
-          "q": "A cuboid has a length of USD 8\\(cm, a width of USD 5\\) cm, and a height of USD 3 cm. Calculate the volume of the cuboid.",
+          "q": "In the acoustics lab record (ALGEBRA-690879184), using the table values, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "The volume of a cuboid is calculated using the formula: Volume = length \\(\\times\\) width \\(\\times\\) height. Given: length = USD 8\\(cm, width = USD 5\\) cm, height = USD 3\\(cm. Volume =\\)8 \\text{ cm} \\times 5 \\text{ cm} \\times 3 \\text{ cm}\\(Volume =\\)40 \\text{ cm}^2 \\times 3 \\text{ cm}\\(Volume =\\)120 \\text{ cm}^3\\(. Therefore, the volume of the cuboid is USD 120\\) cm\\(^3\\).",
+          "answer": "**Answer:** \\(54\\). Constant ratio per unit step is \\(b = \\frac{6}{2} = 3\\), so \\(E(3) = 18 \\cdot 3 = 54\\).",
           "explanation": "The volume of a cuboid is calculated using the formula: Volume = length \\(\\times\\) width \\(\\times\\) height. Given: length = USD 8\\(cm, width = USD 5\\) cm, height = USD 3\\(cm. Volume =\\)8 \\text{ cm} \\times 5 \\text{ cm} \\times 3 \\text{ cm}\\(Volume =\\)40 \\text{ cm}^2 \\times 3 \\text{ cm}\\(Volume =\\)120 \\text{ cm}^3\\(. Therefore, the volume of the cuboid is USD 120\\) cm\\(^3\\).",
+          "explain": "Constant ratio per unit step is \\(b = \\frac{6}{2} = 3\\), so \\(E(3) = 18 \\cdot 3 = 54\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
               "0",
               "1",
-              "2",
-              "3"
+              "2"
             ],
             "rows": [
               [
-                "g(x)",
-                "8",
-                "13",
-                "18",
-                "23"
+                "\\(E(x)\\)",
+                "2",
+                "6",
+                "18"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#15)",
-            "caption_ar": "جدول نمط مرجعي (#15)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "8",
-                "13",
-                "18",
-                "23"
-              ]
-            ]
+            "caption": "Exponential growth values table (acoustics lab, ALGEBRA-690879184)",
+            "caption_ar": "جدول قيم نمو أسي (مختبر الصوت، ALGEBRA-690879184)"
           }
         }
       ]
@@ -569,33 +651,52 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A line has slope 3 and passes through \\((0,2)\\). Find \\(y\\) when \\(x=2\\).",
+          "q": "From the plotted reservoir profile figure above (ALGEBRA-G707657810) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "cross_lesson": "3.01 Exponents & Polynomials",
-          "answer": "Step 1: Identify the line's equation. Since \\((0, 2)\\) is the \\(y\\)-intercept, \\(b = 2\\). Given slope \\(m = 3\\): \\(y = mx + b \\Rightarrow y = 3x + 2\\) Step 2: Evaluate at \\(x = 2\\): \\(y = 3(2) + 2 = 6 + 2 = \\mathbf{8}\\) Alternative Delta Method: For every \\(1\\) unit increase in \\(x\\), \\(y\\) increases by \\(3\\). From \\(x=0\\) to \\(x=2\\) is \\(+2\\) units, so \\(y = 2 + 2(3) = \\mathbf{8}\\).",
+          "answer": "**Answer:** \\(11\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
           "explanation": "Step 1: Identify the line's equation. Since \\((0, 2)\\) is the \\(y\\)-intercept, \\(b = 2\\). Given slope \\(m = 3\\): \\(y = mx + b \\Rightarrow y = 3x + 2\\) Step 2: Evaluate at \\(x = 2\\): \\(y = 3(2) + 2 = 6 + 2 = \\mathbf{8}\\) Alternative Delta Method: For every \\(1\\) unit increase in \\(x\\), \\(y\\) increases by \\(3\\). From \\(x=0\\) to \\(x=2\\) is \\(+2\\) units, so \\(y = 2 + 2(3) = \\mathbf{8}\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -2,
+              3
             ],
             "yl": [
-              -5,
-              7
+              2,
+              13
             ],
-            "xStep": 2,
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
+                "fn": "2*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "title": "Coordinate Graph (#16)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ALGEBRA-G707657810)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ALGEBRA-G707657810)"
           }
         },
         {

@@ -10,287 +10,267 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable \\( X \\) is uniformly distributed on \\( \\{1,2,\\ldots,7\\} \\). Find \\( E(X) \\).",
-          "answer": "**Answer:** C. \\( E(X)=\\dfrac{n+1}{2}=\\dfrac{7+1}{2}=4 \\) [M1][A1]",
+          "q": "In assessment dataset (ASLEVEL-206347296) for photonics, the table reports key quantities; evaluate \\(f(g(1)) + 2\\).",
+          "answer": "**Answer:** C. From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\).",
           "explanation": "\\( E(X)=\\dfrac{n+1}{2}=\\dfrac{7+1}{2}=4 \\) [M1][A1]",
           "choices": [
-            "9/2",
-            "3",
-            "4",
-            "5"
+            "\\(6\\)",
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(11\\)"
           ],
           "correct": 2,
+          "explain": "From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "23",
-                "10",
-                33
+                "\\(f(x)\\)",
+                "4",
+                "6",
+                "11",
+                "10"
               ],
               [
-                "19",
-                "18",
-                37
-              ],
-              [
-                42,
-                28,
-                70
+                "\\(g(x)\\)",
+                "2",
+                "3",
+                "4",
+                "1"
               ]
             ],
-            "caption": "Reference Summary Table (#2)",
-            "caption_ar": "جدول ملخص البيانات (#2)",
-            "_totals": {
-              "rowTotals": [
-                33,
-                37
-              ],
-              "colTotals": [
-                42,
-                28
-              ],
-              "grandTotal": 70
-            }
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (photonics, ASLEVEL-206347296)",
+            "caption_ar": "قيم مختارة للدالتين (الفوتونيات، ASLEVEL-206347296)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable \\( X \\) has distribution \\( P(X=1)=2/5, P(X=2)=3/10, P(X=3)=3/10 \\). State \\( P(X=2) \\).",
-          "answer": "**Answer:** D. Reading directly from the distribution table, \\( P(X=2)=3/10 \\). [M1][A1]",
+          "q": "The accompanying figure illustrates a calibration curve configuration (ASLEVEL-G256681160); using it showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "answer": "**Answer:** D. Counting each disjoint region once yields \\(|A \\cup B| = 9 + 5 + 9 = 23\\).",
           "explanation": "Reading directly from the distribution table, \\( P(X=2)=3/10 \\). [M1][A1]",
           "choices": [
-            "11/15",
-            "3/4",
-            "8/9",
-            "3/10"
+            "\\(25\\)",
+            "\\(18\\)",
+            "\\(28\\)",
+            "\\(23\\)"
           ],
           "correct": 3,
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 9 + 5 + 9 = 23\\).",
           "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
-              4
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "type": "venn",
+            "sets": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "label": "A",
+                "only": 9
+              },
+              {
+                "label": "B",
+                "only": 9
               }
             ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
+            "both": 5,
+            "outside": 2,
+            "caption": "Venn count diagram of sets A and B (ASLEVEL-G256681160)",
+            "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G256681160)"
           }
         },
         {
-          "q": "A random variable \\(X\\) has distribution \\(P(X=1)=0.2\\), \\(P(X=2)=0.5\\), \\(P(X=3)=0.3\\). Find \\(E(X)\\).",
+          "q": "Based on the acoustic chamber visual model shown (ASLEVEL-G239903534) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(3)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Expected value (mean) of a discrete random variable",
-          "answer": "\\(E(X)=\\sum xP(X=x)=1(0.2)+2(0.5)+3(0.3)=0.2+1.0+0.9=2.1\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((1, 1)\\) and point \\((2, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(3) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(E(X)=\\sum xP(X=x)=1(0.2)+2(0.5)+3(0.3)=0.2+1.0+0.9=2.1\\).",
+          "explain": "From vertex \\((1, 1)\\) and point \\((2, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(3) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
+              -2,
               4
             ],
+            "yl": [
+              -1,
+              15
+            ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
+                "fn": "3*(x - (1))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 1,
+                "y": 1,
+                "label": "(1, 1)"
+              },
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ASLEVEL-G239903534)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ASLEVEL-G239903534)"
           }
         },
         {
-          "q": "Using the distribution from the previous question (\\(E(X)=2.1\\)), find \\(\\mathrm{Var}(X)\\), using \\(\\mathrm{Var}(X)=E(X^2)-[E(X)]^2\\).",
+          "q": "Inspect the optical bench values listed across the table (ASLEVEL-290235391); determine \\(3\\,h^{-1}(14)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Variance of a discrete random variable",
-          "answer": "\\(E(X^2)=1^2(0.2)+2^2(0.5)+3^2(0.3)=0.2+2.0+2.7=4.9\\). \\(\\mathrm{Var}(X)=4.9-(2.1)^2=4.9-4.41=0.49\\).",
+          "answer": "**Answer:** \\(24\\). Because \\(h(8) = 14\\), we have \\(h^{-1}(14) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
           "explanation": "\\(E(X^2)=1^2(0.2)+2^2(0.5)+3^2(0.3)=0.2+2.0+2.7=4.9\\). \\(\\mathrm{Var}(X)=4.9-(2.1)^2=4.9-4.41=0.49\\).",
+          "explain": "Because \\(h(8) = 14\\), we have \\(h^{-1}(14) = 8\\). Multiplying by \\(3\\) gives \\(24\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "12",
-                "24",
-                36
-              ],
-              [
-                "19",
-                "16",
-                35
-              ],
-              [
-                31,
-                40,
-                71
+                "\\(h(x)\\)",
+                "8",
+                "11",
+                "14",
+                "19"
               ]
             ],
-            "caption": "Reference Summary Table (#5)",
-            "caption_ar": "جدول ملخص البيانات (#5)",
-            "_totals": {
-              "rowTotals": [
-                36,
-                35
-              ],
-              "colTotals": [
-                31,
-                40
-              ],
-              "grandTotal": 71
-            }
+            "orientation": "horizontal",
+            "caption": "Monotone function values of invertible h (optical bench, ASLEVEL-290235391)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (المنضدة البصرية، ASLEVEL-290235391)"
           }
         },
         {
-          "q": "Using the distribution \\(P(Y=0)=0.1\\), \\(P(Y=1)=0.4\\), \\(P(Y=2)=0.5\\) (\\(E(Y)=1.4\\)), find \\(\\mathrm{Var}(Y)\\), using \\(\\mathrm{Var}(Y)=E(Y^2)-[E(Y)]^2\\).",
+          "q": "From the plotted fluid channel figure above (ASLEVEL-G273458779) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Variance of a discrete random variable",
-          "answer": "\\(E(Y^2)=0^2(0.1)+1^2(0.4)+2^2(0.5)=0+0.4+2.0=2.4\\). \\(\\mathrm{Var}(Y)=2.4-(1.4)^2=2.4-1.96=0.44\\).",
+          "answer": "**Answer:** \\(33\\). Summing bar heights directly from the histogram gives \\(6 + 10 + 10 + 7 = 33\\).",
           "explanation": "\\(E(Y^2)=0^2(0.1)+1^2(0.4)+2^2(0.5)=0+0.4+2.0=2.4\\). \\(\\mathrm{Var}(Y)=2.4-(1.4)^2=2.4-1.96=0.44\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(6 + 10 + 10 + 7 = 33\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "fn",
-            "xl": [
-              -3,
-              3
-            ],
-            "yl": [
-              -4,
-              4
-            ],
-            "xStep": 1,
-            "yStep": 2,
-            "fns": [
+            "type": "histogram",
+            "bins": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "label": "0-9",
+                "count": 6
+              },
+              {
+                "label": "10-19",
+                "count": 10
+              },
+              {
+                "label": "20-29",
+                "count": 10
+              },
+              {
+                "label": "30-39",
+                "count": 7
               }
             ],
-            "title": "Coordinate Graph (#6)",
-            "caption": "Reference graph y = f(x)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (ASLEVEL-G273458779)",
+            "caption_ar": "المدرج التكراري للفئات (ASLEVEL-G273458779)"
           }
         },
         {
-          "q": "A random variable \\(X\\) has \\(E(X)=5\\) and \\(\\mathrm{Var}(X)=3\\). Find \\(E(2X+4)\\) and \\(\\mathrm{Var}(2X+4)\\).",
+          "q": "Given the measurements marked directly on the bridge arch schematic (ASLEVEL-G323791629) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Linear transformations of a random variable",
-          "answer": "\\(E(2X+4)=2E(X)+4=2(5)+4=14\\). \\(\\mathrm{Var}(2X+4)=2^2\\mathrm{Var}(X)=4(3)=12\\).",
+          "answer": "**Answer:** \\(30\\). Summing bar heights directly from the histogram gives \\(4 + 10 + 11 + 5 = 30\\).",
           "explanation": "\\(E(2X+4)=2E(X)+4=2(5)+4=14\\). \\(\\mathrm{Var}(2X+4)=2^2\\mathrm{Var}(X)=4(3)=12\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(4 + 10 + 11 + 5 = 30\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "histogram",
+            "bins": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "label": "0-9",
+                "count": 4
               },
               {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "10-19",
+                "count": 10
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 5
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (ASLEVEL-G323791629)",
+            "caption_ar": "المدرج التكراري للفئات (ASLEVEL-G323791629)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable \\( X \\) has distribution \\( P(X=1)=3/5, P(X=2)=1/5, P(X=3)=1/5 \\). State \\( P(X=3) \\).",
-          "answer": "**Answer:** D. Reading directly from the distribution table, \\( P(X=3)=1/5 \\). [M1][A1]",
+          "q": "Based strictly on the tabulated metallurgy observations (ASLEVEL-307013010), evaluate \\(f(g(3)) + 4\\).",
+          "answer": "**Answer:** D. From the table, \\(g(3) = 4\\) and \\(f(4) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
           "explanation": "Reading directly from the distribution table, \\( P(X=3)=1/5 \\). [M1][A1]",
           "choices": [
-            "1/7",
-            "6/7",
-            "1/2",
-            "1/5"
+            "\\(7\\)",
+            "\\(14\\)",
+            "\\(9\\)",
+            "\\(13\\)"
           ],
           "correct": 3,
+          "explain": "From the table, \\(g(3) = 4\\) and \\(f(4) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "25",
-                "19",
-                44
+                "\\(f(x)\\)",
+                "3",
+                "5",
+                "10",
+                "9"
               ],
               [
-                "14",
-                "27",
-                41
-              ],
-              [
-                39,
-                46,
-                85
+                "\\(g(x)\\)",
+                "2",
+                "3",
+                "4",
+                "1"
               ]
             ],
-            "caption": "Reference Summary Table (#8)",
-            "caption_ar": "جدول ملخص البيانات (#8)",
-            "_totals": {
-              "rowTotals": [
-                44,
-                41
-              ],
-              "colTotals": [
-                39,
-                46
-              ],
-              "grandTotal": 85
-            }
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (metallurgy, ASLEVEL-307013010)",
+            "caption_ar": "قيم مختارة للدالتين (علم المعادن، ASLEVEL-307013010)"
           }
         }
       ]
@@ -299,244 +279,292 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "A fair eight-sided die (labeled 1 to 8) is rolled, and \\(X\\) is the number shown. Find \\(E(X)\\) and \\(\\mathrm{Var}(X)\\), using the same formulas.",
+          "q": "From the plotted specimen plot figure above (ASLEVEL-G357346867) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The discrete uniform distribution",
-          "answer": "\\(n=8\\): \\(E(X)=\\frac{9}{2}=4.5\\). \\(\\mathrm{Var}(X)=\\frac{63}{12}=5.25\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "\\(n=8\\): \\(E(X)=\\frac{9}{2}=4.5\\). \\(\\mathrm{Var}(X)=\\frac{63}{12}=5.25\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#9)"
-          }
-        },
-        {
-          "q": "A fair ten-sided die (labeled 1 to 10) is rolled, and \\(X\\) is the number shown. Find \\(E(X)\\) and \\(\\mathrm{Var}(X)\\), using the same formulas.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "The discrete uniform distribution",
-          "answer": "\\(n=10\\): \\(E(X)=\\frac{11}{2}=5.5\\). \\(\\mathrm{Var}(X)=\\frac{99}{12}=8.25\\).",
-          "explanation": "\\(n=10\\): \\(E(X)=\\frac{11}{2}=5.5\\). \\(\\mathrm{Var}(X)=\\frac{99}{12}=8.25\\).",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
-            ],
-            "caption": "Real-Line Scale (#10)"
-          }
-        },
-        {
-          "q": "A game involves rolling two fair dice and finding the sum \\(X\\). Find \\(P(X=4)\\) and \\(P(X=7)\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Constructing a probability distribution from a real scenario",
-          "answer": "There are 36 equally likely outcomes. \\(X=4\\): \\((1,3),(2,2),(3,1)\\), so \\(P(X=4)=\\frac{3}{36}=\\frac{1}{12}\\). \\(X=7\\): \\((1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\), so \\(P(X=7)=\\frac{6}{36}=\\frac{1}{6}\\).",
-          "explanation": "There are 36 equally likely outcomes. \\(X=4\\): \\((1,3),(2,2),(3,1)\\), so \\(P(X=4)=\\frac{3}{36}=\\frac{1}{12}\\). \\(X=7\\): \\((1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\), so \\(P(X=7)=\\frac{6}{36}=\\frac{1}{6}\\).",
-          "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
-              [
-                "28",
-                "18",
-                46
-              ],
-              [
-                "19",
-                "22",
-                41
-              ],
-              [
-                47,
-                40,
-                87
-              ]
-            ],
-            "caption": "Reference Summary Table (#11)",
-            "caption_ar": "جدول ملخص البيانات (#11)",
-            "_totals": {
-              "rowTotals": [
-                46,
-                41
-              ],
-              "colTotals": [
-                47,
-                40
-              ],
-              "grandTotal": 87
-            }
-          }
-        },
-        {
-          "q": "Using the same game of rolling two fair dice and finding the sum \\(X\\), find \\(P(X=9)\\) and \\(P(X=12)\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Constructing a probability distribution from a real scenario",
-          "answer": "\\(X=9\\): \\((3,6),(4,5),(5,4),(6,3)\\), so \\(P(X=9)=\\frac{4}{36}=\\frac{1}{9}\\). \\(X=12\\): \\((6,6)\\), so \\(P(X=12)=\\frac{1}{36}\\).",
-          "explanation": "\\(X=9\\): \\((3,6),(4,5),(5,4),(6,3)\\), so \\(P(X=9)=\\frac{4}{36}=\\frac{1}{9}\\). \\(X=12\\): \\((6,6)\\), so \\(P(X=12)=\\frac{1}{36}\\).",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -1,
+              5
             ],
             "yl": [
-              -5,
-              7
+              -2,
+              10
             ],
-            "xStep": 2,
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
-          }
-        },
-        {
-          "q": "This question has two parts. A raffle sells 200 tickets for 5 dollars each. One ticket wins a prize of 300 dollars, and two tickets each win a prize of 50 dollars. Let \\(X\\) be the net profit (prize won minus the 5-dollar ticket cost) for a single ticket. (a) Write the probability distribution of \\(X\\). (b) Find \\(E(X)\\), and interpret whether buying a ticket is a fair game.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "A well-designed word problem: a raffle ticket game",
-          "answer": "(a) \\(X=295\\) (win big prize) with \\(P=\\frac{1}{200}\\); \\(X=45\\) (win small prize) with \\(P=\\frac{2}{200}\\); \\(X=-5\\) (no prize) with \\(P=\\frac{197}{200}\\). (b) \\(E(X)=295\\left(\\frac{1}{200}\\right)+45\\left(\\frac{2}{200}\\right)+(-5)\\left(\\frac{197}{200}\\right)=\\frac{295+90-985}{200}=\\frac{-600}{200}=-3\\). Since \\(E(X)=-3\\neq0\\), the game is not fair — on average, a player loses 3 dollars per ticket.",
-          "explanation": "(a) \\(X=295\\) (win big prize) with \\(P=\\frac{1}{200}\\); \\(X=45\\) (win small prize) with \\(P=\\frac{2}{200}\\); \\(X=-5\\) (no prize) with \\(P=\\frac{197}{200}\\). (b) \\(E(X)=295\\left(\\frac{1}{200}\\right)+45\\left(\\frac{2}{200}\\right)+(-5)\\left(\\frac{197}{200}\\right)=\\frac{295+90-985}{200}=\\frac{-600}{200}=-3\\). Since \\(E(X)=-3\\neq0\\), the game is not fair — on average, a player loses 3 dollars per ticket.",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 2,
+                "label": "(3, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#13)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ASLEVEL-G357346867)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ASLEVEL-G357346867)"
           }
         },
         {
-          "q": "A discrete random variable \\(X\\) follows a binomial distribution \\(X \\sim B(15, 0.35)\\). (a) Find \\(P(X = 5)\\). (b) Find \\(P(X \\geq 4)\\). (c) Calculate the mean \\(E(X)\\) and standard deviation \\(\\sigma\\) of \\(X\\).",
+          "q": "The accompanying figure illustrates a reservoir profile configuration (ASLEVEL-G340569248); using it showing a rectangle with labeled side lengths. Find its perimeter.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The discrete uniform distribution",
-          "answer": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
-          "explanation": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
+          "answer": "**Answer:** \\(20\\). Reading length \\(5\\) and width \\(5\\) from the rectangle, perimeter \\(= 2(5 + 5) = 20\\).",
+          "explanation": "\\(n=10\\): \\(E(X)=\\frac{11}{2}=5.5\\). \\(\\mathrm{Var}(X)=\\frac{99}{12}=8.25\\).",
+          "explain": "Reading length \\(5\\) and width \\(5\\) from the rectangle, perimeter \\(= 2(5 + 5) = 20\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
-            "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
+            "type": "polygon",
+            "shape": "rectangle",
+            "vertices": [
               [
-                "15",
-                "20",
-                35
+                0,
+                0
               ],
               [
-                "13",
-                "15",
-                28
+                5,
+                0
               ],
               [
-                28,
-                35,
-                63
+                5,
+                5
+              ],
+              [
+                0,
+                5
               ]
             ],
-            "caption": "Reference Summary Table (#14)",
-            "caption_ar": "جدول ملخص البيانات (#14)",
-            "_totals": {
-              "rowTotals": [
-                35,
-                28
-              ],
-              "colTotals": [
-                28,
-                35
-              ],
-              "grandTotal": 63
-            }
+            "w": 5,
+            "h": 5,
+            "sides": [
+              "5",
+              "5",
+              "5",
+              "5"
+            ],
+            "notToScale": true,
+            "caption": "Rectangle with labeled dimensions (ASLEVEL-G340569248)",
+            "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (ASLEVEL-G340569248)"
           }
         },
         {
-          "q": "A random variable \\(X\\) has distribution \\(\\mathrm{Po}(\\lambda)\\). A single observation of \\(X\\) is taken to test \\(H_0: \\lambda = 6\\) against \\(H_1: \\lambda < 6\\) at the 5% level. (a) Find the critical region. (b) State the actual significance level. (c) Find the probability of a Type II error if the true value of \\(\\lambda\\) is 3.",
+          "q": "An engineering team logged hydraulics measurements in the accompanying table (ASLEVEL-982619376); using these data, evaluate \\(f(g(1)) + 2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Constructing a probability distribution from a real scenario",
-          "answer": "(a) Under \\(H_0\\), \\(X \\sim \\mathrm{Po}(6)\\). Calculate cumulative probabilities: \\(P(X = 0) = e^{-6} \\approx 0.00248\\) \\(P(X \\leq 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735\\) \\(P(X \\leq 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197\\) Since \\(P(X \\leq 1) 0.05\\), the critical region is \\(X \\leq 1\\) (i.e. \\(X = 0\\) or \\(1\\)). (b) Actual significance level = \\(P(X \\leq 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174\\) (or 1.74%). (c) Type II error occurs when we fail to reject \\(H_0\\) when \\(\\lambda = 3\\). We fail to reject when \\(X \\geq 2\\): \\(P(X \\geq 2 \\mid \\lambda = 3) = 1 - P(X \\leq 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\mathrm{\\ (3\\ s.f.)}\\)",
-          "explanation": "(a) Under \\(H_0\\), \\(X \\sim \\mathrm{Po}(6)\\). Calculate cumulative probabilities: \\(P(X = 0) = e^{-6} \\approx 0.00248\\) \\(P(X \\leq 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735\\) \\(P(X \\leq 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197\\) Since \\(P(X \\leq 1) 0.05\\), the critical region is \\(X \\leq 1\\) (i.e. \\(X = 0\\) or \\(1\\)). (b) Actual significance level = \\(P(X \\leq 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174\\) (or 1.74%). (c) Type II error occurs when we fail to reject \\(H_0\\) when \\(\\lambda = 3\\). We fail to reject when \\(X \\geq 2\\): \\(P(X \\geq 2 \\mid \\lambda = 3) = 1 - P(X \\leq 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\mathrm{\\ (3\\ s.f.)}\\)",
+          "answer": "**Answer:** \\(8\\). From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\).",
+          "explanation": "There are 36 equally likely outcomes. \\(X=4\\): \\((1,3),(2,2),(3,1)\\), so \\(P(X=4)=\\frac{3}{36}=\\frac{1}{12}\\). \\(X=7\\): \\((1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\), so \\(P(X=7)=\\frac{6}{36}=\\frac{1}{6}\\).",
+          "explain": "From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "\\(f(x)\\)",
+                "4",
+                "6",
+                "11",
+                "10"
+              ],
+              [
+                "\\(g(x)\\)",
+                "2",
+                "3",
+                "4",
+                "1"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (hydraulics, ASLEVEL-982619376)",
+            "caption_ar": "قيم مختارة للدالتين (الهيدروليك، ASLEVEL-982619376)"
+          }
+        },
+        {
+          "q": "Based on the bridge arch visual model shown (ASLEVEL-G999397995), determine the missing leg length \\(AC\\) using the labeled side lengths on right triangle \\(ABC\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Constructing a probability distribution from a real scenario",
+          "answer": "**Answer:** \\(15\\). By the Pythagorean theorem using hypotenuse \\(17\\) and leg \\(8\\) shown, \\(AC = \\sqrt{17^2 - 8^2} = 15\\).",
+          "explanation": "\\(X=9\\): \\((3,6),(4,5),(5,4),(6,3)\\), so \\(P(X=9)=\\frac{4}{36}=\\frac{1}{9}\\). \\(X=12\\): \\((6,6)\\), so \\(P(X=12)=\\frac{1}{36}\\).",
+          "explain": "By the Pythagorean theorem using hypotenuse \\(17\\) and leg \\(8\\) shown, \\(AC = \\sqrt{17^2 - 8^2} = 15\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "triangle",
+            "verts": [
+              "C",
+              "B",
+              "A"
+            ],
+            "labels": [
+              "C",
+              "B",
+              "A"
+            ],
+            "rightAngle": "C",
+            "rightAt": "C",
+            "sides": [
+              "17",
+              "?",
+              "8"
+            ],
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                0
+              ],
+              [
+                0,
+                15
+              ]
+            ],
+            "coords": [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                0
+              ],
+              [
+                0,
+                15
+              ]
+            ],
+            "notToScale": true,
+            "caption": "Right triangle ABC with angle C = 90 deg (ASLEVEL-G999397995)",
+            "caption_ar": "مثلث قائم الزاوية (ASLEVEL-G999397995)"
+          }
+        },
+        {
+          "q": "Referring to the survey layout figure (ASLEVEL-G16175614) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A well-designed word problem: a raffle ticket game",
+          "answer": "**Answer:** \\(27\\). Counting each disjoint region once yields \\(|A \\cup B| = 11 + 6 + 10 = 27\\).",
+          "explanation": "(a) \\(X=295\\) (win big prize) with \\(P=\\frac{1}{200}\\); \\(X=45\\) (win small prize) with \\(P=\\frac{2}{200}\\); \\(X=-5\\) (no prize) with \\(P=\\frac{197}{200}\\). (b) \\(E(X)=295\\left(\\frac{1}{200}\\right)+45\\left(\\frac{2}{200}\\right)+(-5)\\left(\\frac{197}{200}\\right)=\\frac{295+90-985}{200}=\\frac{-600}{200}=-3\\). Since \\(E(X)=-3\\neq0\\), the game is not fair — on average, a player loses 3 dollars per ticket.",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 11 + 6 + 10 = 27\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "venn",
+            "sets": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "label": "A",
+                "only": 11
               },
               {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "B",
+                "only": 10
               }
             ],
-            "caption": "Real-Line Scale (#15)"
+            "both": 6,
+            "outside": 4,
+            "caption": "Venn count diagram of sets A and B (ASLEVEL-G16175614)",
+            "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G16175614)"
+          }
+        },
+        {
+          "q": "The table summarizes measurements from a biometrics evaluation (ASLEVEL-32952233); using these entries, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The discrete uniform distribution",
+          "answer": "**Answer:** \\(256\\). Constant ratio per unit step is \\(b = \\frac{16}{4} = 4\\), so \\(E(3) = 64 \\cdot 4 = 256\\).",
+          "explanation": "(a) \\(P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123\\). (b) \\(P(X \\geq 4) = 1 - P(X \\leq 3)\\). Using GDC `binomcdf(15, 0.35, 3)`: \\(P(X \\leq 3) \\approx 0.1727\\). \\(P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).\\) (c) Mean: \\(E(X) = np = 15 \\times 0.35 = 5.25\\). Variance: \\(\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125\\). Standard deviation: \\(\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85\\).",
+          "explain": "Constant ratio per unit step is \\(b = \\frac{16}{4} = 4\\), so \\(E(3) = 64 \\cdot 4 = 256\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "0",
+              "1",
+              "2"
+            ],
+            "rows": [
+              [
+                "\\(E(x)\\)",
+                "4",
+                "16",
+                "64"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Exponential growth values table (biometrics, ASLEVEL-32952233)",
+            "caption_ar": "جدول قيم نمو أسي (القياسات الحيوية، ASLEVEL-32952233)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a acoustic chamber configuration (ASLEVEL-G49730852); using it showing a rectangle with labeled side lengths. Find its perimeter.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Constructing a probability distribution from a real scenario",
+          "answer": "**Answer:** \\(34\\). Reading length \\(9\\) and width \\(8\\) from the rectangle, perimeter \\(= 2(9 + 8) = 34\\).",
+          "explanation": "(a) Under \\(H_0\\), \\(X \\sim \\mathrm{Po}(6)\\). Calculate cumulative probabilities: \\(P(X = 0) = e^{-6} \\approx 0.00248\\) \\(P(X \\leq 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735\\) \\(P(X \\leq 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197\\) Since \\(P(X \\leq 1) 0.05\\), the critical region is \\(X \\leq 1\\) (i.e. \\(X = 0\\) or \\(1\\)). (b) Actual significance level = \\(P(X \\leq 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174\\) (or 1.74%). (c) Type II error occurs when we fail to reject \\(H_0\\) when \\(\\lambda = 3\\). We fail to reject when \\(X \\geq 2\\): \\(P(X \\geq 2 \\mid \\lambda = 3) = 1 - P(X \\leq 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\mathrm{\\ (3\\ s.f.)}\\)",
+          "explain": "Reading length \\(9\\) and width \\(8\\) from the rectangle, perimeter \\(= 2(9 + 8) = 34\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "polygon",
+            "shape": "rectangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                0
+              ],
+              [
+                9,
+                8
+              ],
+              [
+                0,
+                8
+              ]
+            ],
+            "w": 9,
+            "h": 8,
+            "sides": [
+              "9",
+              "8",
+              "9",
+              "8"
+            ],
+            "notToScale": true,
+            "caption": "Rectangle with labeled dimensions (ASLEVEL-G49730852)",
+            "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (ASLEVEL-G49730852)"
           }
         }
       ]
@@ -546,121 +574,125 @@
       "questions": [
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable \\( X \\) is uniformly distributed on \\( \\{1,2,\\ldots,6\\} \\). Find \\( \\text{Var}(X) \\).",
-          "answer": "**Answer:** B. \\( \\text{Var}(X)=\\dfrac{n^2-1}{12}=\\dfrac{6^2-1}{12}=35/12 \\) [M1][A1]",
+          "q": "From the plotted structural truss figure above (ASLEVEL-G66508471) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** B. From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "\\( \\text{Var}(X)=\\dfrac{n^2-1}{12}=\\dfrac{6^2-1}{12}=35/12 \\) [M1][A1]",
           "choices": [
-            "17/48",
-            "35/12",
-            "1",
-            "11/35"
+            "\\(10\\)",
+            "\\(8\\)",
+            "\\(4\\)",
+            "\\(6\\)"
           ],
           "correct": 1,
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 2,
+                "label": "(3, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#16)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ASLEVEL-G66508471)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ASLEVEL-G66508471)"
           }
         },
         {
-          "q": "The number of accidents on a highway follows a Poisson distribution with mean 1.6 per week. (a) Find the probability of at least 3 accidents in a 2-week period. (b) Given that at least one accident occurs in a week, find the probability that there are exactly 2 accidents in that week.",
+          "q": "During navigation experiment (ASLEVEL-83285090), observers compiled the following table; evaluate \\(f(g(3)) + 4\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A well-designed word problem: a raffle ticket game",
           "cross_lesson": "14.01 Energy, Work & Power",
-          "answer": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
+          "answer": "**Answer:** \\(9\\). From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
           "explanation": "(a) In a 2-week period, the parameter scales to \\(\\lambda = 1.6 \\times 2 = 3.2\\): \\(P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}\\) (b) For 1 week, \\(\\lambda = 1.6\\). Use conditional probability: \\(P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}\\)",
+          "explain": "From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "25",
+                "\\(f(x)\\)",
+                "3",
+                "5",
                 "10",
-                35
+                "9"
               ],
               [
-                "19",
-                "15",
-                34
-              ],
-              [
-                44,
-                25,
-                69
+                "\\(g(x)\\)",
+                "4",
+                "1",
+                "2",
+                "3"
               ]
             ],
-            "caption": "Reference Summary Table (#17)",
-            "caption_ar": "جدول ملخص البيانات (#17)",
-            "_totals": {
-              "rowTotals": [
-                35,
-                34
-              ],
-              "colTotals": [
-                44,
-                25
-              ],
-              "grandTotal": 69
-            }
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (navigation, ASLEVEL-83285090)",
+            "caption_ar": "قيم مختارة للدالتين (الملاحة، ASLEVEL-83285090)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "A discrete random variable \\( X \\) has probability distribution given by \\( P(X=1)=k, P(X=2)=k, P(X=3)=2k \\), where \\( k \\) is a constant. Find \\( k \\).",
-          "answer": "**Answer:** A. Since probabilities sum to 1: \\( (1+1+2)k=1 \\Rightarrow 4k=1 \\Rightarrow k=1/4 \\) [M1][A1]",
+          "q": "Based on the lab apparatus visual model shown (ASLEVEL-G100063709) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
+          "answer": "**Answer:** A. Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 18 = 11\\).",
           "explanation": "Since probabilities sum to 1: \\( (1+1+2)k=1 \\Rightarrow 4k=1 \\Rightarrow k=1/4 \\) [M1][A1]",
           "choices": [
-            "1/4",
-            "1/5",
-            "1/2",
-            "1/3"
+            "\\(11\\)",
+            "\\(23\\)",
+            "\\(5\\)",
+            "\\(14\\)"
           ],
           "correct": 0,
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 18 = 11\\).",
           "figure": {
-            "type": "fn",
-            "xl": [
-              -2,
-              6
-            ],
-            "yl": [
-              -3,
-              6
-            ],
-            "xStep": 2,
-            "yStep": 2,
-            "fns": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "label": "Sample",
+                "min": 12,
+                "q1": 18,
+                "med": 23,
+                "q3": 29,
+                "max": 35
               }
             ],
-            "title": "Coordinate Graph (#18)",
-            "caption": "Reference graph y = f(x)"
+            "range": [
+              8,
+              39
+            ],
+            "caption": "Five-number summary box plot (ASLEVEL-G100063709)",
+            "caption_ar": "مخطط الصندوق والعارضتين (ASLEVEL-G100063709)"
           }
         },
         {

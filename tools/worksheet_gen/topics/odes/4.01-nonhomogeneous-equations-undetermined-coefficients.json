@@ -36,111 +36,138 @@
           }
         },
         {
-          "q": "Construct the Green's kernel \\(G(x, t)\\) for \\(L[y] = y'' - y\\), and express the particular solution of \\(y'' - y = \\frac{1}{e^x + 1}\\) satisfying \\(y(0) = 0, y'(0) = 0\\) as an explicit definite integral.",
+          "q": "An engineering team logged photonics measurements in the accompanying table (ODES-887940964); using these data, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Basis & Wronskian: \\(y_1(x) = e^x, \\, y_2(x) = e^{-x}\\). \\(W(t) = e^t(-e^{-t}) - e^t(e^{-t}) = -2\\). Step 2: Green's kernel: \\(G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t e^{-x} - e^x e^{-t}}{-2} = \\frac{e^{x - t} - e^{-(x - t)}}{2} = \\sinh(x - t).\\) Step 3: Integral representation: \\(y(x) = \\int_0^x \\sinh(x - t) \\cdot \\frac{1}{e^t + 1}\\,dt.\\) Verifying: \\(G(t, t) = \\sinh(0) = 0\\), and \\(\\left.\\frac{\\partial G}{\\partial x}\\right|_{x=t} = \\cosh(0) = 1\\), satisfying the universal Cauchy impulse properties.",
+          "answer": "**Answer:** \\(7\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(2) = 7\\).",
           "explanation": "Step 1: Basis & Wronskian: \\(y_1(x) = e^x, \\, y_2(x) = e^{-x}\\). \\(W(t) = e^t(-e^{-t}) - e^t(e^{-t}) = -2\\). Step 2: Green's kernel: \\(G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t e^{-x} - e^x e^{-t}}{-2} = \\frac{e^{x - t} - e^{-(x - t)}}{2} = \\sinh(x - t).\\) Step 3: Integral representation: \\(y(x) = \\int_0^x \\sinh(x - t) \\cdot \\frac{1}{e^t + 1}\\,dt.\\) Verifying: \\(G(t, t) = \\sinh(0) = 0\\), and \\(\\left.\\frac{\\partial G}{\\partial x}\\right|_{x=t} = \\cosh(0) = 1\\), satisfying the universal Cauchy impulse properties.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 5 + 1(2) = 7\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
+                "0",
+                "1",
+                "3",
+                "2"
               ],
               [
-                "f'(x)",
+                "1",
+                "2",
                 "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#3)",
-            "caption_ar": "جدول القيم المختارة (#3)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
+                "2"
               ],
               [
-                "f'(x)",
-                "5",
+                "2",
                 "3",
-                "5",
-                "3"
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (photonics, ODES-887940964)",
+            "caption_ar": "جدول خطوات أويلر (الفوتونيات، ODES-887940964)"
           }
         },
         {
-          "q": "Find a particular solution of \\(y'' + 4y = \\sec(2x)\\) for \\(x \\in (-\\pi/4, \\pi/4)\\) using Variation of Parameters.",
+          "q": "Given the measurements marked directly on the structural truss schematic (ODES-G904719583) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Basis & Wronskian: \\(y_1 = \\cos 2x, \\, y_2 = \\sin 2x\\). \\(W = \\cos 2x(2\\cos 2x) - (-2\\sin 2x)\\sin 2x = 2\\). Step 2: Parameter integrals: \\(u_1'(x) = -\\frac{y_2(x)g(x)}{W} = -\\frac{\\sin 2x \\sec 2x}{2} = -\\frac{1}{2}\\tan 2x \\Rightarrow u_1(x) = \\frac{1}{4}\\ln|\\cos 2x|.\\) \\(u_2'(x) = \\frac{y_1(x)g(x)}{W} = \\frac{\\cos 2x \\sec 2x}{2} = \\frac{1}{2} \\Rightarrow u_2(x) = \\frac{x}{2}.\\) Step 3: Particular solution: \\(y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\cos(2x)\\ln|\\cos 2x| + \\frac{x}{2}\\sin(2x).\\)",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Step 1: Basis & Wronskian: \\(y_1 = \\cos 2x, \\, y_2 = \\sin 2x\\). \\(W = \\cos 2x(2\\cos 2x) - (-2\\sin 2x)\\sin 2x = 2\\). Step 2: Parameter integrals: \\(u_1'(x) = -\\frac{y_2(x)g(x)}{W} = -\\frac{\\sin 2x \\sec 2x}{2} = -\\frac{1}{2}\\tan 2x \\Rightarrow u_1(x) = \\frac{1}{4}\\ln|\\cos 2x|.\\) \\(u_2'(x) = \\frac{y_1(x)g(x)}{W} = \\frac{\\cos 2x \\sec 2x}{2} = \\frac{1}{2} \\Rightarrow u_2(x) = \\frac{x}{2}.\\) Step 3: Particular solution: \\(y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\cos(2x)\\ln|\\cos 2x| + \\frac{x}{2}\\sin(2x).\\)",
-          "figure": {
-            "type": "unit_circle",
-            "angles": [
-              {
-                "deg": 45,
-                "label": "θ"
-              }
-            ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#4)"
-          }
-        },
-        {
-          "q": "Solve the initial value problem with step forcing using the Laplace transform: \\(y'' + 4y = 8u(t - 2), \\qquad y(0) = 0, \\quad y'(0) = 0.\\)",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
-          "answer": "Step 1: Transform equation: \\((s^2 + 4)Y(s) = \\frac{8e^{-2s}}{s} \\Rightarrow Y(s) = 8e^{-2s} \\cdot \\frac{1}{s(s^2 + 4)}.\\) Step 2: Partial fractions on transfer factor: \\(\\frac{1}{s(s^2 + 4)} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4} \\Rightarrow \\mathcal{L}^{-1}\\left\\{\\frac{8}{s(s^2 + 4)}\\right\\} = 2 - 2\\cos(2t).\\) Step 3: Apply Second Shift Theorem: \\(y(t) = u(t - 2)(2 - 2\\cos(2(t - 2))).\\)",
-          "explanation": "Step 1: Transform equation: \\((s^2 + 4)Y(s) = \\frac{8e^{-2s}}{s} \\Rightarrow Y(s) = 8e^{-2s} \\cdot \\frac{1}{s(s^2 + 4)}.\\) Step 2: Partial fractions on transfer factor: \\(\\frac{1}{s(s^2 + 4)} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4} \\Rightarrow \\mathcal{L}^{-1}\\left\\{\\frac{8}{s(s^2 + 4)}\\right\\} = 2 - 2\\cos(2t).\\) Step 3: Apply Second Shift Theorem: \\(y(t) = u(t - 2)(2 - 2\\cos(2(t - 2))).\\)",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#5)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G904719583)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G904719583)"
+          }
+        },
+        {
+          "q": "The accompanying figure illustrates a survey layout configuration (ODES-G854386726); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "**Answer:** \\(19\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "explanation": "Step 1: Transform equation: \\((s^2 + 4)Y(s) = \\frac{8e^{-2s}}{s} \\Rightarrow Y(s) = 8e^{-2s} \\cdot \\frac{1}{s(s^2 + 4)}.\\) Step 2: Partial fractions on transfer factor: \\(\\frac{1}{s(s^2 + 4)} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4} \\Rightarrow \\mathcal{L}^{-1}\\left\\{\\frac{8}{s(s^2 + 4)}\\right\\} = 2 - 2\\cos(2t).\\) Step 3: Apply Second Shift Theorem: \\(y(t) = u(t - 2)(2 - 2\\cos(2(t - 2))).\\)",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 7)\\), \\(a = 7 - 3 = 4\\), so \\(g(2) = 4(2^2) + 3 = 19\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              21
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 7,
+                "label": "(0, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G854386726)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G854386726)"
           }
         },
         {
@@ -176,89 +203,79 @@
           "correct": 1
         },
         {
-          "q": "Find the coefficient \\(a_5\\) of the power series solution \\(y=\\sum a_nx^n\\) of \\(y''-xy'-y=0\\) with \\(y(0)=1\\), \\(y'(0)=2\\).",
+          "q": "In assessment dataset (ODES-820830495) for cohort study, the table reports key quantities; approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Substitute the series and match powers of \\(x\\) to get a recurrence; with \\(a_0=1,\\ a_1=2\\) the coefficients are \\(a_0=1, a_1=2, a_2=\\frac{1}{2}, a_3=\\frac{2}{3}, a_4=\\frac{1}{8}, a_5=\\frac{2}{15}\\). Final Answer: \\(\\frac{2}{15}\\)",
+          "answer": "**Answer:** \\(36\\). Trapezoidal sum \\(= \\frac{2}{2}(3 + 5) + \\frac{4}{2}(5 + 9) = 8 + 28 = 36\\).",
           "explanation": "Substitute the series and match powers of \\(x\\) to get a recurrence; with \\(a_0=1,\\ a_1=2\\) the coefficients are \\(a_0=1, a_1=2, a_2=\\frac{1}{2}, a_3=\\frac{2}{3}, a_4=\\frac{1}{8}, a_5=\\frac{2}{15}\\). Final Answer: \\(\\frac{2}{15}\\)",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(3 + 5) + \\frac{4}{2}(5 + 9) = 8 + 28 = 36\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
+              "0",
               "2",
-              "3",
-              "4",
-              "5"
+              "6"
             ],
             "rows": [
               [
-                "f(x)",
+                "\\(R(t)\\)",
+                "3",
                 "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "9"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#7)",
-            "caption_ar": "جدول القيم المختارة (#7)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (cohort study, ODES-820830495)",
+            "caption_ar": "جدول المعدل (دراسة الفوج، ODES-820830495)"
           }
         },
         {
-          "q": "A harvested population evolves according to \\(\\frac{dP}{dt} = P\\left(1 - \\frac{P}{10}\\right) - 2.1\\). Determine the two equilibrium populations, identify which is the extinction threshold, and determine whether a starting population \\(P(0) = 2\\) survives or collapses.",
+          "q": "Given the measurements marked directly on the waveguide design schematic (ODES-G837609107) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Equilibrium quadratic: Set \\(\\frac{dP}{dt} = 0\\): \\(-\\frac{P^2}{10} + P - 2.1 = 0 \\Rightarrow P^2 - 10P + 21 = 0.\\) Factoring: \\((P - 3)(P - 7) = 0 \\Rightarrow P_1 = 3, \\, P_2 = 7\\). Step 2: Stability: \\(f'(P) = 1 - \\frac{P}{5}\\). \\(f'(3) = 1 - 0.6 = +0.4 > 0 \\Rightarrow P = 3\\) is an unstable extinction threshold. \\(f'(7) = 1 - 1.4 = -0.4 < 0 \\Rightarrow P = 7\\) is the stable carrying capacity. Step 3: Dynamics for \\(P(0) = 2\\): Since \\(P(0) = 2 < 3\\), \\(\\frac{dP}{dt} < 0\\). The population strictly declines and collapses to \\(0\\) in finite time, proving that \\(P = 3\\) is the minimum viable population needed to avoid extinction.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "Step 1: Equilibrium quadratic: Set \\(\\frac{dP}{dt} = 0\\): \\(-\\frac{P^2}{10} + P - 2.1 = 0 \\Rightarrow P^2 - 10P + 21 = 0.\\) Factoring: \\((P - 3)(P - 7) = 0 \\Rightarrow P_1 = 3, \\, P_2 = 7\\). Step 2: Stability: \\(f'(P) = 1 - \\frac{P}{5}\\). \\(f'(3) = 1 - 0.6 = +0.4 > 0 \\Rightarrow P = 3\\) is an unstable extinction threshold. \\(f'(7) = 1 - 1.4 = -0.4 < 0 \\Rightarrow P = 7\\) is the stable carrying capacity. Step 3: Dynamics for \\(P(0) = 2\\): Since \\(P(0) = 2 < 3\\), \\(\\frac{dP}{dt} < 0\\). The population strictly declines and collapses to \\(0\\) in finite time, proving that \\(P = 3\\) is the minimum viable population needed to avoid extinction.",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "k1",
-              "k2",
-              "k3",
-              "k4"
+            "type": "fn",
+            "xl": [
+              -1,
+              5
             ],
-            "values": [
-              3,
-              4,
-              7,
-              13
+            "yl": [
+              -1,
+              15
             ],
-            "xLabel": "Index n",
-            "yLabel": "Magnitude",
-            "caption": "Discrete Sequence Profile (#8)"
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G837609107)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G837609107)"
           }
         }
       ]
@@ -267,112 +284,131 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Solve \\(y'' + 4y' + 4y = 0\\) with \\(y(0) = 2\\) and \\(y'(0) = 1\\). Determine the exact time \\(t > 0\\) at which \\(y(t)\\) attains its absolute maximum value.",
+          "q": "The accompanying figure illustrates a calibration curve configuration (ODES-G787276250); using it showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Characteristic roots: \\(r^2 + 4r + 4 = (r + 2)^2 = 0 \\Rightarrow r = -2\\) (repeated). General solution: \\(y(t) = (C_1 + C_2 t)e^{-2t}\\). Step 2: Initial conditions: \\(y(0) = C_1 = 2\\). \\(y'(t) = C_2 e^{-2t} - 2(C_1 + C_2 t)e^{-2t} = ((C_2 - 2C_1) - 2C_2 t)e^{-2t}\\). \\(y'(0) = C_2 - 2(2) = 1 \\Rightarrow C_2 = 5\\). Particular solution: \\(y(t) = (2 + 5t)e^{-2t}.\\) Step 3: Find maximum: Set \\(y'(t) = 0\\): \\(((5 - 4) - 10t)e^{-2t} = (1 - 10t)e^{-2t} = 0 \\Rightarrow 1 - 10t = 0 \\Rightarrow t_{\\max} = \\frac{1}{10} = 0.1.\\) Maximum value: \\(y(0.1) = (2 + 0.5)e^{-0.2} = 2.5e^{-0.2} \\approx 2.0468\\).",
+          "answer": "**Answer:** \\(11\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
           "explanation": "Step 1: Characteristic roots: \\(r^2 + 4r + 4 = (r + 2)^2 = 0 \\Rightarrow r = -2\\) (repeated). General solution: \\(y(t) = (C_1 + C_2 t)e^{-2t}\\). Step 2: Initial conditions: \\(y(0) = C_1 = 2\\). \\(y'(t) = C_2 e^{-2t} - 2(C_1 + C_2 t)e^{-2t} = ((C_2 - 2C_1) - 2C_2 t)e^{-2t}\\). \\(y'(0) = C_2 - 2(2) = 1 \\Rightarrow C_2 = 5\\). Particular solution: \\(y(t) = (2 + 5t)e^{-2t}.\\) Step 3: Find maximum: Set \\(y'(t) = 0\\): \\(((5 - 4) - 10t)e^{-2t} = (1 - 10t)e^{-2t} = 0 \\Rightarrow 1 - 10t = 0 \\Rightarrow t_{\\max} = \\frac{1}{10} = 0.1.\\) Maximum value: \\(y(0.1) = (2 + 0.5)e^{-0.2} = 2.5e^{-0.2} \\approx 2.0468\\).",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 3 = 2\\), so \\(g(2) = 2(2^2) + 3 = 11\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
+              -2,
+              3
             ],
             "yl": [
-              -5,
-              7
+              2,
+              13
             ],
-            "xStep": 2,
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "1.5*x + 1",
-                "label": "y = f(x)"
+                "fn": "2*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
               }
             ],
-            "title": "Coordinate Graph (#9)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G787276250)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G787276250)"
           }
         },
         {
           "qtype": "MCQ",
-          "q": "The separable initial value problem \\( \\dfrac{dp}{dt} = 34t \\) satisfies \\( p(0) = 5 \\). Determine the solution value \\( p(18) \\).",
-          "answer": "**Answer:** D. Integrating gives \\( p(t) = 17t^2 + 5 \\), so \\( p(18) = 5513 \\).",
+          "q": "An engineering team logged quality audit measurements in the accompanying table (ODES-804052869); using these data, approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "answer": "**Answer:** D. Trapezoidal sum \\(= \\frac{2}{2}(7 + 9) + \\frac{4}{2}(9 + 13) = 16 + 44 = 60\\).",
           "explanation": "Integrating gives \\( p(t) = 17t^2 + 5 \\), so \\( p(18) = 5513 \\).",
           "choices": [
-            "5530",
-            "5508",
-            "5516",
-            "5513"
+            "\\(50\\)",
+            "\\(70\\)",
+            "\\(120\\)",
+            "\\(60\\)"
           ],
           "correct": 3,
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(7 + 9) + \\frac{4}{2}(9 + 13) = 16 + 44 = 60\\).",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "0",
-              "1",
               "2",
-              "3"
+              "6"
             ],
             "rows": [
               [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
+                "\\(R(t)\\)",
+                "7",
+                "9",
+                "13"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#10)",
-            "caption_ar": "جدول نمط مرجعي (#10)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "20",
-                "25",
-                "30",
-                "35"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [0, 6] (quality audit, ODES-804052869)",
+            "caption_ar": "جدول المعدل (تدقيق الجودة، ODES-804052869)"
           }
         },
         {
-          "q": "Use the Laplace transform and the Convolution Theorem to solve the integral equation \\(y(t) = t^2 + \\int_0^t e^{t - \\tau} y(\\tau)\\,d\\tau.\\)",
+          "q": "Given the measurements marked directly on the structural truss schematic (ODES-G263596159) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "answer": "Step 1: Recognize convolution: The equation is \\(y(t) = t^2 + e^t * y(t)\\). Step 2: Transform both sides: \\(Y(s) = \\frac{2}{s^3} + \\left(\\frac{1}{s - 1}\\right)Y(s) \\Rightarrow Y(s)\\left(1 - \\frac{1}{s - 1}\\right) = \\frac{2}{s^3}.\\) \\(Y(s)\\left(\\frac{s - 2}{s - 1}\\right) = \\frac{2}{s^3} \\Rightarrow Y(s) = \\frac{2(s - 1)}{s^3(s - 2)}.\\) Step 3: Partial fractions: \\(\\frac{2(s - 1)}{s^3(s - 2)} = \\frac{A}{s} + \\frac{B}{s^2} + \\frac{C}{s^3} + \\frac{D}{s - 2}.\\) By cover-up, \\(D = \\frac{2(2 - 1)}{2^3} = \\frac{2}{8} = \\frac{1}{4}\\). \\(C = \\frac{2(0 - 1)}{0 - 2} = 1\\). Matching terms gives \\(A = -1/4\\), \\(B = -1/2\\). Thus: \\(Y(s) = -\\frac{1/4}{s} - \\frac{1/2}{s^2} + \\frac{1}{s^3} + \\frac{1/4}{s - 2}.\\) Step 4: Inverse transform: \\(y(t) = -\\frac{1}{4} - \\frac{1}{2}t + \\frac{1}{2}t^2 + \\frac{1}{4}e^{2t}.\\)",
+          "answer": "**Answer:** \\(8\\). From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Step 1: Recognize convolution: The equation is \\(y(t) = t^2 + e^t * y(t)\\). Step 2: Transform both sides: \\(Y(s) = \\frac{2}{s^3} + \\left(\\frac{1}{s - 1}\\right)Y(s) \\Rightarrow Y(s)\\left(1 - \\frac{1}{s - 1}\\right) = \\frac{2}{s^3}.\\) \\(Y(s)\\left(\\frac{s - 2}{s - 1}\\right) = \\frac{2}{s^3} \\Rightarrow Y(s) = \\frac{2(s - 1)}{s^3(s - 2)}.\\) Step 3: Partial fractions: \\(\\frac{2(s - 1)}{s^3(s - 2)} = \\frac{A}{s} + \\frac{B}{s^2} + \\frac{C}{s^3} + \\frac{D}{s - 2}.\\) By cover-up, \\(D = \\frac{2(2 - 1)}{2^3} = \\frac{2}{8} = \\frac{1}{4}\\). \\(C = \\frac{2(0 - 1)}{0 - 2} = 1\\). Matching terms gives \\(A = -1/4\\), \\(B = -1/2\\). Thus: \\(Y(s) = -\\frac{1/4}{s} - \\frac{1/2}{s^2} + \\frac{1}{s^3} + \\frac{1/4}{s - 2}.\\) Step 4: Inverse transform: \\(y(t) = -\\frac{1}{4} - \\frac{1}{2}t + \\frac{1}{2}t^2 + \\frac{1}{4}e^{2t}.\\)",
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
-            ],
-            "yl": [
-              -5,
+              -1,
               5
             ],
-            "xStep": 2,
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "-0.5*x^2 + 3",
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#11)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G263596159)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G263596159)"
           }
         },
         {
@@ -402,88 +438,95 @@
         },
         {
           "qtype": "MCQ",
-          "q": "The Laplace transform of \\( M(z) = 42e^{9z} \\) is \\( N(s) = \\dfrac{42}{s - 9} \\) for \\( s > 9 \\). Compute the evaluated transform \\( N(10) \\).",
-          "answer": "**Answer:** C. Substituting \\( s = 10 \\) gives \\( \\frac{42}{10 - 9} = 42 \\).",
+          "q": "Referring to the specimen plot figure (ODES-G297151411) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
+          "answer": "**Answer:** C. From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Substituting \\( s = 10 \\) gives \\( \\frac{42}{10 - 9} = 42 \\).",
           "choices": [
-            "33",
-            "45",
-            "42",
-            "49"
+            "\\(10\\)",
+            "\\(4\\)",
+            "\\(8\\)",
+            "\\(6\\)"
           ],
           "correct": 2,
+          "explain": "From vertex \\((2, 0)\\) and point \\((3, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(4) = 2(2)^2 + (0) = 8\\).",
           "figure": {
-            "type": "numberline",
-            "min": -6,
-            "max": 6,
-            "step": 1,
-            "intervals": [
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "from": -1,
-                "to": 3,
-                "openLeft": true,
-                "openRight": false
+                "fn": "2*(x - (2))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
             "pts": [
               {
-                "x": -1,
-                "open": true,
-                "label": "a"
+                "x": 2,
+                "y": 0,
+                "label": "(2, 0)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "b"
+                "y": 2,
+                "label": "(3, 2)"
               }
             ],
-            "caption": "Number Line Interval (#13)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G297151411)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G297151411)"
           }
         },
         {
-          "q": "Solve \\(x^2 y' + x y = \\frac{1}{x^2 + 1}\\) for \\(x > 0\\), with \\(y(1) = \\frac{\\pi}{4}\\). What is \\(y(\\sqrt{3})\\)?",
+          "q": "Inspect the navigation values listed across the table (ODES-280372778); where \\(P(x) = f(x)g(x)\\). What is the value of \\(P'(3)\\)?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "answer": "Standard form: \\(y' + \\frac{1}{x}y = \\frac{1}{x(x^2 + 1)}\\). \\(\\mu = x\\). Multiplying gives \\((x y)' = \\frac{1}{x(x^2 + 1)} = \\frac{1}{x} - \\frac{x}{x^2 + 1}\\). Integrating gives \\(x y = \\ln x - \\frac{1}{2}\\ln(x^2 + 1) + C\\). Using \\(y(1) = \\pi/4\\) yields \\(\\pi/4 = -\\frac{1}{2}\\ln 2 + C \\Rightarrow C = \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2\\). At \\(x = \\sqrt{3}\\), \\(\\sqrt{3}y = \\frac{1}{2}\\ln 3 - \\frac{1}{2}\\ln 4 + \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2 = \\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\). Thus \\(y(\\sqrt{3}) = \\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\). Final Answer: \\(\\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\)",
+          "answer": "**Answer:** \\(-6\\). By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (5)(-3) = -6\\).",
           "explanation": "Standard form: \\(y' + \\frac{1}{x}y = \\frac{1}{x(x^2 + 1)}\\). \\(\\mu = x\\). Multiplying gives \\((x y)' = \\frac{1}{x(x^2 + 1)} = \\frac{1}{x} - \\frac{x}{x^2 + 1}\\). Integrating gives \\(x y = \\ln x - \\frac{1}{2}\\ln(x^2 + 1) + C\\). Using \\(y(1) = \\pi/4\\) yields \\(\\pi/4 = -\\frac{1}{2}\\ln 2 + C \\Rightarrow C = \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2\\). At \\(x = \\sqrt{3}\\), \\(\\sqrt{3}y = \\frac{1}{2}\\ln 3 - \\frac{1}{2}\\ln 4 + \\frac{\\pi}{4} + \\frac{1}{2}\\ln 2 = \\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\). Thus \\(y(\\sqrt{3}) = \\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\). Final Answer: \\(\\frac{1}{\\sqrt{3}}\\left(\\frac{\\pi}{4} + \\frac{1}{2}\\ln(3/2)\\right)\\)",
+          "explain": "By the product rule, \\(P'(3) = f'(3)g(3) + f(3)g'(3) = (3)(3) + (5)(-3) = -6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
-                "4",
-                "6",
+                "\\(f(x)\\)",
+                "5",
                 "8"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g(x)\\)",
+                "3",
+                "5"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-3",
+                "0"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#14)",
-            "caption_ar": "جدول نمط مرجعي (#14)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (navigation, ODES-280372778)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الملاحة، ODES-280372778)"
           }
         },
         {

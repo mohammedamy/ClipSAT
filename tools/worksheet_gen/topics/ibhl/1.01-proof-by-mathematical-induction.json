@@ -9,247 +9,268 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "State the three steps required for a valid proof by mathematical induction.",
+          "q": "Inspect the calorimetry values listed across the table (IBHL-824560381); determine \\(3\\,h^{-1}(10)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The three steps of induction",
-          "answer": "(1) Base case: verify the statement holds for the smallest value of \\(n\\) (usually \\(n=1\\)). (2) Inductive hypothesis: assume the statement holds for \\(n=k\\). (3) Inductive step: use the assumption to prove the statement holds for \\(n=k+1\\). Concluding, by the principle of mathematical induction, the statement holds for all \\(n\\) in the given range.",
+          "answer": "**Answer:** \\(18\\). Because \\(h(6) = 10\\), we have \\(h^{-1}(10) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
           "explanation": "(1) Base case: verify the statement holds for the smallest value of \\(n\\) (usually \\(n=1\\)). (2) Inductive hypothesis: assume the statement holds for \\(n=k\\). (3) Inductive step: use the assumption to prove the statement holds for \\(n=k+1\\). Concluding, by the principle of mathematical induction, the statement holds for all \\(n\\) in the given range.",
+          "explain": "Because \\(h(6) = 10\\), we have \\(h^{-1}(10) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(x\\)",
               "2",
-              "3"
+              "4",
+              "6",
+              "8"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(h(x)\\)",
+                "4",
                 "7",
-                "12",
-                "17"
+                "10",
+                "15"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (calorimetry, IBHL-824560381)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (قياس السعرات، IBHL-824560381)"
           }
         },
         {
-          "q": "Prove by induction that \\(1+2+3+\\cdots+n=n(n+1)/2\\) for all \\(n\\geq1\\).",
+          "q": "Given the measurements marked directly on the reservoir profile schematic (IBHL-G774228524) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Proving a summation formula",
-          "answer": "Base case (\\(n=1\\)): LHS \\(=1\\). RHS \\(=1(2)/2=1\\). True. Inductive hypothesis: assume \\(1+2+\\cdots+k=k(k+1)/2\\). For \\(n=k+1\\): \\(1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)\\). Factoring out \\((k+1)\\): this is \\((k+1)(k/2+1)=(k+1)(k+2)/2\\), which matches the formula with \\(n=k+1\\). Since it holds for \\(n=1\\) and \\(n=k\\Rightarrow n=k+1\\), by induction it holds for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(9\\). Reading the left and right edges of the box on the scale gives \\(Q_1 = 20\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 20 = 9\\).",
           "explanation": "Base case (\\(n=1\\)): LHS \\(=1\\). RHS \\(=1(2)/2=1\\). True. Inductive hypothesis: assume \\(1+2+\\cdots+k=k(k+1)/2\\). For \\(n=k+1\\): \\(1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)\\). Factoring out \\((k+1)\\): this is \\((k+1)(k/2+1)=(k+1)(k+2)/2\\), which matches the formula with \\(n=k+1\\). Since it holds for \\(n=1\\) and \\(n=k\\Rightarrow n=k+1\\), by induction it holds for all \\(n\\geq1\\).",
+          "explain": "Reading the left and right edges of the box on the scale gives \\(Q_1 = 20\\) and \\(Q_3 = 29\\), so \\(\\text{IQR} = 29 - 20 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "boxplot",
+            "boxes": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "label": "Sample",
+                "min": 14,
+                "q1": 20,
+                "med": 24,
+                "q3": 29,
+                "max": 34
               }
             ],
-            "caption": "Real-Line Scale (#3)"
+            "range": [
+              10,
+              38
+            ],
+            "caption": "Five-number summary box plot (IBHL-G774228524)",
+            "caption_ar": "مخطط الصندوق والعارضتين (IBHL-G774228524)"
           }
         },
         {
-          "q": "Prove by induction that \\(7^n-1\\) is divisible by \\(6\\) for all \\(n\\geq1\\).",
+          "q": "The accompanying figure illustrates a specimen plot configuration (IBHL-G791006143); using it, determine the missing leg length \\(AC\\) using the labeled side lengths on right triangle \\(ABC\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Proving divisibility results",
-          "answer": "Base case (\\(n=1\\)): \\(7^1-1=6\\), divisible by 6. Assume \\(7^k-1=6m\\) for some integer \\(m\\), so \\(7^k=6m+1\\). For \\(n=k+1\\): \\(7^{k+1}-1=7\\cdot7^k-1=7(6m+1)-1=42m+6=6(7m+1)\\), which is divisible by 6. By induction, \\(7^n-1\\) is divisible by 6 for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(24\\). By the Pythagorean theorem using hypotenuse \\(26\\) and leg \\(10\\) shown, \\(AC = \\sqrt{26^2 - 10^2} = 24\\).",
           "explanation": "Base case (\\(n=1\\)): \\(7^1-1=6\\), divisible by 6. Assume \\(7^k-1=6m\\) for some integer \\(m\\), so \\(7^k=6m+1\\). For \\(n=k+1\\): \\(7^{k+1}-1=7\\cdot7^k-1=7(6m+1)-1=42m+6=6(7m+1)\\), which is divisible by 6. By induction, \\(7^n-1\\) is divisible by 6 for all \\(n\\geq1\\).",
+          "explain": "By the Pythagorean theorem using hypotenuse \\(26\\) and leg \\(10\\) shown, \\(AC = \\sqrt{26^2 - 10^2} = 24\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
+            "type": "triangle",
+            "verts": [
+              "C",
+              "B",
+              "A"
+            ],
             "labels": [
-              "k1",
-              "k2",
-              "k3",
-              "k4"
+              "C",
+              "B",
+              "A"
             ],
-            "values": [
-              4,
-              6,
-              9,
-              15
+            "rightAngle": "C",
+            "rightAt": "C",
+            "sides": [
+              "26",
+              "?",
+              "10"
             ],
-            "xLabel": "Index n",
-            "yLabel": "Magnitude",
-            "caption": "Discrete Sequence Profile (#4)"
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                0,
+                24
+              ]
+            ],
+            "coords": [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                0,
+                24
+              ]
+            ],
+            "notToScale": true,
+            "caption": "Right triangle ABC with angle C = 90 deg (IBHL-G791006143)",
+            "caption_ar": "مثلث قائم الزاوية (IBHL-G791006143)"
           }
         },
         {
-          "q": "Prove by induction that \\(2^n>n^2\\) for all integers \\(n\\geq5\\).",
+          "q": "Inspect the reactor bench values listed across the table (IBHL-740672286); evaluate \\(f(g(3)) + 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Induction with inequalities",
-          "answer": "Base case (\\(n=5\\)): \\(2^5=32\\), \\(5^2=25\\), and \\(32>25\\). True. Assume \\(2^k>k^2\\) for some \\(k\\geq5\\). For \\(n=k+1\\): \\(2^{k+1}=2\\cdot2^k>2k^2\\). We need \\(2k^2\\geq(k+1)^2=k^2+2k+1\\), i.e. \\(k^2-2k-1\\geq0\\), which holds for \\(k\\geq3\\) (true since \\(k\\geq5\\)). So \\(2^{k+1}>2k^2\\geq(k+1)^2\\). By induction, \\(2^n>n^2\\) for all \\(n\\geq5\\).",
+          "answer": "**Answer:** \\(14\\). From the table, \\(g(3) = 4\\) and \\(f(4) = 10\\). Adding \\(4\\) yields \\(10 + 4 = 14\\).",
           "explanation": "Base case (\\(n=5\\)): \\(2^5=32\\), \\(5^2=25\\), and \\(32>25\\). True. Assume \\(2^k>k^2\\) for some \\(k\\geq5\\). For \\(n=k+1\\): \\(2^{k+1}=2\\cdot2^k>2k^2\\). We need \\(2k^2\\geq(k+1)^2=k^2+2k+1\\), i.e. \\(k^2-2k-1\\geq0\\), which holds for \\(k\\geq3\\) (true since \\(k\\geq5\\)). So \\(2^{k+1}>2k^2\\geq(k+1)^2\\). By induction, \\(2^n>n^2\\) for all \\(n\\geq5\\).",
+          "explain": "From the table, \\(g(3) = 4\\) and \\(f(4) = 10\\). Adding \\(4\\) yields \\(10 + 4 = 14\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(f(x)\\)",
+                "4",
+                "6",
+                "11",
+                "10"
+              ],
+              [
+                "\\(g(x)\\)",
                 "2",
-                "7",
-                "12",
-                "17"
+                "3",
+                "4",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "7",
-                "12",
-                "17"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (reactor bench, IBHL-740672286)",
+            "caption_ar": "قيم مختارة للدالتين (منصة المفاعل، IBHL-740672286)"
           }
         },
         {
-          "q": "Prove by induction that \\(\\frac{d^n}{dx^n}(e^{ax})=a^ne^{ax}\\) for all positive integers \\(n\\).",
+          "q": "Referring to the bridge arch figure (IBHL-G757450905) showing a sinusoidal wave with dashed midline \\(y = 5\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Induction in calculus: derivatives of a product",
-          "answer": "Base case (\\(n=1\\)): differentiating \\(e^{ax}\\) once gives \\(ae^{ax}=a^1e^{ax}\\), matching the formula. Inductive hypothesis: assume the \\(k\\)-th derivative of \\(e^{ax}\\) is \\(a^ke^{ax}\\). Differentiating this once more: \\(\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}\\) — this is exactly the \\((k+1)\\)-th derivative, matching the formula at \\(n=k+1\\). By induction, true for all positive integers \\(n\\).",
+          "answer": "**Answer:** \\(6\\). From midline \\(5\\) to peak \\(8\\), amplitude is \\(A = 8 - 5 = 3\\), so peak-to-trough range equals \\(2A = 6\\).",
           "explanation": "Base case (\\(n=1\\)): differentiating \\(e^{ax}\\) once gives \\(ae^{ax}=a^1e^{ax}\\), matching the formula. Inductive hypothesis: assume the \\(k\\)-th derivative of \\(e^{ax}\\) is \\(a^ke^{ax}\\). Differentiating this once more: \\(\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}\\) — this is exactly the \\((k+1)\\)-th derivative, matching the formula at \\(n=k+1\\). By induction, true for all positive integers \\(n\\).",
+          "explain": "From midline \\(5\\) to peak \\(8\\), amplitude is \\(A = 8 - 5 = 3\\), so peak-to-trough range equals \\(2A = 6\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "sinusoid",
+            "amp": 3,
+            "freq": 2,
+            "phase": 0,
+            "midline": 5,
+            "fnType": "sin",
+            "xl": [
+              0,
+              6.28
+            ],
+            "yl": [
+              1,
+              9
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 0.785,
+                "y": 8,
+                "label": "max=8"
               }
             ],
-            "caption": "Real-Line Scale (#6)"
+            "showMidline": true,
+            "caption": "Sinusoidal graph with dashed midline y = 5 (IBHL-G757450905)",
+            "caption_ar": "موجة جيبية مع خط الوسط (IBHL-G757450905)"
           }
         },
         {
-          "q": "A sequence is defined by \\(u_1=3\\) and \\(u_{n+1}=2u_n-1\\). Prove by induction that \\(u_n=2^n+1\\) for all \\(n\\geq1\\).",
+          "q": "The accompanying figure illustrates a fluid channel configuration (IBHL-G707118055); using it showing a sinusoidal wave with dashed midline \\(y = 4\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Induction with a recursively defined sequence",
-          "answer": "Base case (\\(n=1\\)): \\(u_1=3\\) (given). Formula: \\(2^1+1=3\\). True. Assume \\(u_k=2^k+1\\). Then \\(u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1\\), matching the formula at \\(n=k+1\\). By induction, \\(u_n=2^n+1\\) for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(10\\). From midline \\(4\\) to peak \\(9\\), amplitude is \\(A = 9 - 4 = 5\\), so peak-to-trough range equals \\(2A = 10\\).",
           "explanation": "Base case (\\(n=1\\)): \\(u_1=3\\) (given). Formula: \\(2^1+1=3\\). True. Assume \\(u_k=2^k+1\\). Then \\(u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1\\), matching the formula at \\(n=k+1\\). By induction, \\(u_n=2^n+1\\) for all \\(n\\geq1\\).",
+          "explain": "From midline \\(4\\) to peak \\(9\\), amplitude is \\(A = 9 - 4 = 5\\), so peak-to-trough range equals \\(2A = 10\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "k1",
-              "k2",
-              "k3",
-              "k4"
+            "type": "sinusoid",
+            "amp": 5,
+            "freq": 2,
+            "phase": 0,
+            "midline": 4,
+            "fnType": "sin",
+            "xl": [
+              0,
+              6.28
             ],
-            "values": [
-              4,
-              6,
-              9,
-              12
+            "yl": [
+              -2,
+              10
             ],
-            "xLabel": "Index n",
-            "yLabel": "Magnitude",
-            "caption": "Discrete Sequence Profile (#7)"
+            "pts": [
+              {
+                "x": 0.785,
+                "y": 9,
+                "label": "max=9"
+              }
+            ],
+            "showMidline": true,
+            "caption": "Sinusoidal graph with dashed midline y = 4 (IBHL-G707118055)",
+            "caption_ar": "موجة جيبية مع خط الوسط (IBHL-G707118055)"
           }
         },
         {
-          "q": "Prove by induction that the sum \\(3^0+3^1+\\cdots+3^{n-1}\\) equals \\((3^n-1)/2\\) for all \\(n\\geq1\\).",
+          "q": "Examine the circuit trial dataset arranged in the table below (IBHL-723894667); determine \\(3\\,h^{-1}(15)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Proving a geometric-series-style summation",
-          "answer": "Base case (\\(n=1\\)): LHS \\(=3^0=1\\). RHS \\(=(3^1-1)/2=2/2=1\\). True. Assume the sum \\(3^0+\\cdots+3^{k-1}=(3^k-1)/2\\). For \\(n=k+1\\): adding the next term \\(3^k\\) gives \\((3^k-1)/2+3^k\\). Combining over a denominator of 2: this is \\((3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2\\), matching the formula at \\(n=k+1\\). By induction, true for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(18\\). Because \\(h(6) = 15\\), we have \\(h^{-1}(15) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
           "explanation": "Base case (\\(n=1\\)): LHS \\(=3^0=1\\). RHS \\(=(3^1-1)/2=2/2=1\\). True. Assume the sum \\(3^0+\\cdots+3^{k-1}=(3^k-1)/2\\). For \\(n=k+1\\): adding the next term \\(3^k\\) gives \\((3^k-1)/2+3^k\\). Combining over a denominator of 2: this is \\((3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2\\), matching the formula at \\(n=k+1\\). By induction, true for all \\(n\\geq1\\).",
+          "explain": "Because \\(h(6) = 15\\), we have \\(h^{-1}(15) = 6\\). Multiplying by \\(3\\) gives \\(18\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "4",
+              "5",
+              "6",
+              "7"
             ],
             "rows": [
               [
-                "g(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "\\(h(x)\\)",
+                "9",
+                "12",
+                "15",
+                "19"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (circuit trial, IBHL-723894667)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (تجربة الدائرة، IBHL-723894667)"
           }
         }
       ]
@@ -258,216 +279,222 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Prove by induction that \\(n^3+2n\\) is divisible by \\(3\\) for all positive integers \\(n\\geq1\\).",
+          "q": "Referring to the field geometry figure (IBHL-G673562817) showing a rectangle with labeled side lengths. Compute its area.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Proving a divisibility result with two variables",
-          "answer": "Base case (\\(n=1\\)): \\(1^3+2(1)=3\\), divisible by 3. Assume \\(k^3+2k=3m\\) for some integer \\(m\\). For \\(n=k+1\\): \\((k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2\\). Grouping terms: this is \\((k^3+2k)+(3k^2+3k+3)=3m+3(k^2+k+1)\\). Factoring out 3: \\(3m+3(k^2+k+1)=3(m+k^2+k+1)\\), which is divisible by 3. By induction, \\(n^3+2n\\) is divisible by 3 for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(30\\). Reading length \\(6\\) and width \\(5\\) from the rectangle, area \\(= 6 \\times 5 = 30\\).",
           "explanation": "Base case (\\(n=1\\)): \\(1^3+2(1)=3\\), divisible by 3. Assume \\(k^3+2k=3m\\) for some integer \\(m\\). For \\(n=k+1\\): \\((k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2\\). Grouping terms: this is \\((k^3+2k)+(3k^2+3k+3)=3m+3(k^2+k+1)\\). Factoring out 3: \\(3m+3(k^2+k+1)=3(m+k^2+k+1)\\), which is divisible by 3. By induction, \\(n^3+2n\\) is divisible by 3 for all \\(n\\geq1\\).",
+          "explain": "Reading length \\(6\\) and width \\(5\\) from the rectangle, area \\(= 6 \\times 5 = 30\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "k1",
-              "k2",
-              "k3",
-              "k4"
+            "type": "polygon",
+            "shape": "rectangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                0,
+                5
+              ]
             ],
-            "values": [
-              4,
-              6,
-              9,
-              14
-            ],
-            "xLabel": "Index n",
-            "yLabel": "Magnitude",
-            "caption": "Discrete Sequence Profile (#9)"
-          }
-        },
-        {
-          "q": "Prove by induction that \\(9^n-1\\) is divisible by \\(8\\) for all positive integers \\(n\\geq1\\), and explain briefly why a similar argument would show \\(a^n-1\\) is divisible by \\(a-1\\) for any integer \\(a>1\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Proving a divisibility result with two variables",
-          "answer": "Base case (\\(n=1\\)): \\(9^1-1=8\\), divisible by 8. Assume \\(9^k-1=8m\\) for some integer \\(m\\), so \\(9^k=8m+1\\). For \\(n=k+1\\): \\(9^{k+1}-1=9\\cdot9^k-1=9(8m+1)-1=72m+9-1=72m+8=8(9m+1)\\), divisible by 8. By induction, true for all \\(n\\geq1\\). The same inductive pattern works for any base \\(a\\): \\(a^{k+1}-1=a\\cdot a^k-1=a[(a-1)m'+1]-1=(a-1)(am')+(a-1)=(a-1)(am'+1)\\), always a multiple of \\(a-1\\).",
-          "explanation": "Base case (\\(n=1\\)): \\(9^1-1=8\\), divisible by 8. Assume \\(9^k-1=8m\\) for some integer \\(m\\), so \\(9^k=8m+1\\). For \\(n=k+1\\): \\(9^{k+1}-1=9\\cdot9^k-1=9(8m+1)-1=72m+9-1=72m+8=8(9m+1)\\), divisible by 8. By induction, true for all \\(n\\geq1\\). The same inductive pattern works for any base \\(a\\): \\(a^{k+1}-1=a\\cdot a^k-1=a[(a-1)m'+1]-1=(a-1)(am')+(a-1)=(a-1)(am'+1)\\), always a multiple of \\(a-1\\).",
-          "figure": {
-            "type": "triangle",
-            "verts": [
-              "A",
-              "B",
-              "C"
-            ],
-            "labels": [
-              "A",
-              "B",
-              "C"
-            ],
+            "w": 6,
+            "h": 5,
             "sides": [
-              "a",
-              "b",
-              "c"
+              "6",
+              "5",
+              "6",
+              "5"
             ],
             "notToScale": true,
-            "caption": "Similar figures (not drawn to scale)."
+            "caption": "Rectangle with labeled dimensions (IBHL-G673562817)",
+            "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (IBHL-G673562817)"
           }
         },
         {
-          "q": "A sequence satisfies \\(S_1=2\\) and \\(S_{n+1}=S_n+6n+2\\) for \\(n\\geq1\\). Prove by induction that \\(S_n=3n^2-n\\) for all \\(n\\geq1\\).",
+          "q": "Based on the structural truss visual model shown (IBHL-G690340429) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a divisibility result with two variables",
+          "answer": "**Answer:** \\(19\\). Counting each disjoint region once yields \\(|A \\cup B| = 8 + 6 + 5 = 19\\).",
+          "explanation": "Base case (\\(n=1\\)): \\(9^1-1=8\\), divisible by 8. Assume \\(9^k-1=8m\\) for some integer \\(m\\), so \\(9^k=8m+1\\). For \\(n=k+1\\): \\(9^{k+1}-1=9\\cdot9^k-1=9(8m+1)-1=72m+9-1=72m+8=8(9m+1)\\), divisible by 8. By induction, true for all \\(n\\geq1\\). The same inductive pattern works for any base \\(a\\): \\(a^{k+1}-1=a\\cdot a^k-1=a[(a-1)m'+1]-1=(a-1)(am')+(a-1)=(a-1)(am'+1)\\), always a multiple of \\(a-1\\).",
+          "explain": "Counting each disjoint region once yields \\(|A \\cup B| = 8 + 6 + 5 = 19\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "venn",
+            "sets": [
+              {
+                "label": "A",
+                "only": 8
+              },
+              {
+                "label": "B",
+                "only": 5
+              }
+            ],
+            "both": 6,
+            "outside": 3,
+            "caption": "Venn count diagram of sets A and B (IBHL-G690340429)",
+            "caption_ar": "مخطط فن للمجموعتين (IBHL-G690340429)"
+          }
+        },
+        {
+          "q": "A benchmark optical bench log (IBHL-185270391) provides the entries shown in the table; determine \\(2\\,h^{-1}(10)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Induction with a recurrence relation for a sequence of sums",
-          "answer": "Base case (\\(n=1\\)): \\(S_1=2\\) (given). Formula: \\(3(1)^2-1=2\\). True. Assume \\(S_k=3k^2-k\\). Then \\(S_{k+1}=S_k+6k+2=3k^2-k+6k+2=3k^2+5k+2\\). The formula at \\(n=k+1\\) gives \\(3(k+1)^2-(k+1)=3k^2+6k+3-k-1=3k^2+5k+2\\), which matches exactly. Since it holds for \\(n=1\\) and \\(n=k\\Rightarrow n=k+1\\), by induction \\(S_n=3n^2-n\\) for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(12\\). Because \\(h(6) = 10\\), we have \\(h^{-1}(10) = 6\\). Multiplying by \\(2\\) gives \\(12\\).",
           "explanation": "Base case (\\(n=1\\)): \\(S_1=2\\) (given). Formula: \\(3(1)^2-1=2\\). True. Assume \\(S_k=3k^2-k\\). Then \\(S_{k+1}=S_k+6k+2=3k^2-k+6k+2=3k^2+5k+2\\). The formula at \\(n=k+1\\) gives \\(3(k+1)^2-(k+1)=3k^2+6k+3-k-1=3k^2+5k+2\\), which matches exactly. Since it holds for \\(n=1\\) and \\(n=k\\Rightarrow n=k+1\\), by induction \\(S_n=3n^2-n\\) for all \\(n\\geq1\\).",
+          "explain": "Because \\(h(6) = 10\\), we have \\(h^{-1}(10) = 6\\). Multiplying by \\(2\\) gives \\(12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
+                "\\(h(x)\\)",
                 "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
+                "10",
+                "14",
+                "17"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#11)",
-            "caption_ar": "جدول القيم المختارة (#11)",
-            "headers_ar": [
-              "x",
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "8",
-                "11",
-                "14"
-              ],
-              [
-                "f'(x)",
-                "4",
-                "2",
-                "4",
-                "2"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (optical bench, IBHL-185270391)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (المنضدة البصرية، IBHL-185270391)"
           }
         },
         {
-          "q": "A student claims to prove that all horses are the same color using induction on the number of horses \\(n\\) in a group: the base case \\(n=1\\) is trivially true (one horse is trivially \"the same color\" as itself), and the student then argues that if any \\(k\\) horses are the same color, then any \\(k+1\\) horses must also be the same color. Explain precisely where this argument breaks down, and state why a correct induction proof must avoid this flaw.",
+          "q": "Referring to the acoustic chamber figure (IBHL-G168493772) showing a rectangle with labeled side lengths. Find its perimeter.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A closing check: identifying an invalid induction argument",
-          "answer": "The flaw is in the inductive step: the argument tries to overlap two groups of \\(k\\) horses (the first \\(k\\) and the last \\(k\\) out of \\(k+1\\) total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires \\(k\\geq2\\). It fails silently at the transition from \\(n=1\\) to \\(n=2\\), since two groups of \\(1\\) horse each (drawn from a total of \\(2\\)) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of \\(k\\) used in the argument, not just assume it holds uniformly for all \\(k\\).",
+          "answer": "**Answer:** \\(34\\). Reading length \\(9\\) and width \\(8\\) from the rectangle, perimeter \\(= 2(9 + 8) = 34\\).",
           "explanation": "The flaw is in the inductive step: the argument tries to overlap two groups of \\(k\\) horses (the first \\(k\\) and the last \\(k\\) out of \\(k+1\\) total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires \\(k\\geq2\\). It fails silently at the transition from \\(n=1\\) to \\(n=2\\), since two groups of \\(1\\) horse each (drawn from a total of \\(2\\)) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of \\(k\\) used in the argument, not just assume it holds uniformly for all \\(k\\).",
+          "explain": "Reading length \\(9\\) and width \\(8\\) from the rectangle, perimeter \\(= 2(9 + 8) = 34\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
-              {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
-              }
+            "type": "polygon",
+            "shape": "rectangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                0
+              ],
+              [
+                9,
+                8
+              ],
+              [
+                0,
+                8
+              ]
             ],
-            "caption": "Real-Line Scale (#12)"
+            "w": 9,
+            "h": 8,
+            "sides": [
+              "9",
+              "8",
+              "9",
+              "8"
+            ],
+            "notToScale": true,
+            "caption": "Rectangle with labeled dimensions (IBHL-G168493772)",
+            "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (IBHL-G168493772)"
           }
         },
         {
-          "q": "Prove by induction that \\(n^3-n\\) is divisible by \\(6\\) for all integers \\(n\\geq1\\).",
+          "q": "From the graphical features displayed in the antenna pattern figure (IBHL-G218826636) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Proving a divisibility result by induction",
-          "answer": "Base case \\(n=1\\): \\(1^3-1=0\\), and \\(0\\) is divisible by \\(6\\). Inductive step: assume \\(m^3-m=6k\\) for some integer \\(k\\). Then \\((m+1)^3-(m+1)=m^3+3m^2+3m+1-m-1\\). Simplifying: this is \\(m^3+3m^2+2m\\). Regrouping: this is \\((m^3-m)+3m(m+1)=6k+3m(m+1)\\). Since \\(m\\) and \\(m+1\\) are consecutive integers, one of them is even, so \\(m(m+1)\\) is even and \\(3m(m+1)\\) is divisible by \\(6\\). Thus \\((m+1)^3-(m+1)=6k+6j=6(k+j)\\) for some integer \\(j\\), which is divisible by \\(6\\). By induction, \\(n^3-n\\) is divisible by \\(6\\) for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(28\\). Summing bar heights directly from the histogram gives \\(3 + 9 + 11 + 5 = 28\\).",
           "explanation": "Base case \\(n=1\\): \\(1^3-1=0\\), and \\(0\\) is divisible by \\(6\\). Inductive step: assume \\(m^3-m=6k\\) for some integer \\(k\\). Then \\((m+1)^3-(m+1)=m^3+3m^2+3m+1-m-1\\). Simplifying: this is \\(m^3+3m^2+2m\\). Regrouping: this is \\((m^3-m)+3m(m+1)=6k+3m(m+1)\\). Since \\(m\\) and \\(m+1\\) are consecutive integers, one of them is even, so \\(m(m+1)\\) is even and \\(3m(m+1)\\) is divisible by \\(6\\). Thus \\((m+1)^3-(m+1)=6k+6j=6(k+j)\\) for some integer \\(j\\), which is divisible by \\(6\\). By induction, \\(n^3-n\\) is divisible by \\(6\\) for all \\(n\\geq1\\).",
+          "explain": "Summing bar heights directly from the histogram gives \\(3 + 9 + 11 + 5 = 28\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "k1",
-              "k2",
-              "k3",
-              "k4"
+            "type": "histogram",
+            "bins": [
+              {
+                "label": "0-9",
+                "count": 3
+              },
+              {
+                "label": "10-19",
+                "count": 9
+              },
+              {
+                "label": "20-29",
+                "count": 11
+              },
+              {
+                "label": "30-39",
+                "count": 5
+              }
             ],
-            "values": [
-              2,
-              6,
-              9,
-              12
-            ],
-            "xLabel": "Index n",
-            "yLabel": "Magnitude",
-            "caption": "Discrete Sequence Profile (#13)"
+            "xLabel": "Interval",
+            "yLabel": "Frequency",
+            "caption": "Frequency histogram of measured intervals (IBHL-G218826636)",
+            "caption_ar": "المدرج التكراري للفئات (IBHL-G218826636)"
           }
         },
         {
-          "q": "Prove by induction that a set with \\(n\\) elements has exactly \\(2^n\\) subsets, for all integers \\(n\\geq1\\).",
+          "q": "Examine the metallurgy dataset arranged in the table below (IBHL-202048010); evaluate \\(f(g(3)) + 4\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Induction in combinatorics: counting subsets",
-          "answer": "Base case \\(n=1\\): a \\(1\\)-element set \\(\\{a\\}\\) has exactly \\(2\\) subsets (\\(\\emptyset\\) and \\(\\{a\\}\\)), and \\(2^1=2\\). True. Inductive step: assume every \\(k\\)-element set has \\(2^k\\) subsets. Consider a \\((k+1)\\)-element set formed by adding one new element \\(x\\) to a \\(k\\)-element set. Every subset of the \\((k+1)\\)-element set either excludes \\(x\\) (giving exactly the \\(2^k\\) subsets of the original \\(k\\)-element set) or includes \\(x\\) (giving one more subset for each of those same \\(2^k\\) subsets, with \\(x\\) added in). This gives \\(2^k+2^k=2\\cdot2^k=2^{k+1}\\) subsets in total. By induction, an \\(n\\)-element set has \\(2^n\\) subsets for all \\(n\\geq1\\).",
+          "answer": "**Answer:** \\(9\\). From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
           "explanation": "Base case \\(n=1\\): a \\(1\\)-element set \\(\\{a\\}\\) has exactly \\(2\\) subsets (\\(\\emptyset\\) and \\(\\{a\\}\\)), and \\(2^1=2\\). True. Inductive step: assume every \\(k\\)-element set has \\(2^k\\) subsets. Consider a \\((k+1)\\)-element set formed by adding one new element \\(x\\) to a \\(k\\)-element set. Every subset of the \\((k+1)\\)-element set either excludes \\(x\\) (giving exactly the \\(2^k\\) subsets of the original \\(k\\)-element set) or includes \\(x\\) (giving one more subset for each of those same \\(2^k\\) subsets, with \\(x\\) added in). This gives \\(2^k+2^k=2\\cdot2^k=2^{k+1}\\) subsets in total. By induction, an \\(n\\)-element set has \\(2^n\\) subsets for all \\(n\\geq1\\).",
+          "explain": "From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(x\\)",
               "1",
               "2",
-              "3"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(f(x)\\)",
+                "3",
+                "5",
+                "10",
+                "9"
+              ],
+              [
+                "\\(g(x)\\)",
                 "4",
-                "6",
-                "8"
+                "1",
+                "2",
+                "3"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#14)",
-            "caption_ar": "جدول نمط مرجعي (#14)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (metallurgy, IBHL-202048010)",
+            "caption_ar": "قيم مختارة للدالتين (علم المعادن، IBHL-202048010)"
           }
         },
         {

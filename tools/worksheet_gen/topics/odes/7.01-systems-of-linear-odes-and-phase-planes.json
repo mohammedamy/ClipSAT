@@ -8,101 +8,98 @@
       "heading": "Systems of Linear ODEs & Phase Plane Topology Practice Exercises",
       "questions": [
         {
-          "q": "The matrix of \\( \\mathbf x'=A\\mathbf x \\) has eigenvalues \\( \\pm i \\). The origin is a:",
+          "q": "In the telemetry record (ODES-218666448), using the table values, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "choices": [
-            "saddle point (unstable)",
-            "unstable spiral",
-            "stable node",
-            "center (stable, not asymptotically)"
+            "\\(3\\)",
+            "\\(5\\)",
+            "\\(8\\)",
+            "\\(6\\)"
           ],
           "correct": 3,
-          "answer": "Complex eigenvalues give spirals; the sign of the real part decides stability, and a zero real part gives a center. Here: center (stable, not asymptotically).",
+          "answer": "**Answer:** D. From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 2 + 1(4) = 6\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 2 + 1(4) = 6\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
+                "0",
+                "0",
+                "1",
+                "1"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "1",
-              "3",
-              "5",
-              "7"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "4",
-                "8",
-                "12",
-                "16"
+                "1",
+                "1",
+                "2",
+                "4"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "2",
+                "2",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (telemetry, ODES-218666448)",
+            "caption_ar": "جدول خطوات أويلر (القياس عن بُعد، ODES-218666448)"
           }
         },
         {
-          "q": "Solve \\( x'=2 x,\\ y'=- y \\) with \\( x(0)=-1,\\ y(0)=3 \\). Find \\( x(\\ln{\\left(2 \\right)}) \\).",
+          "q": "Based on the reservoir profile visual model shown (ODES-G269000312) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
           "choices": [
-            "\\( - \\frac{1}{2} \\)",
-            "\\( 4 \\)",
-            "\\( 12 \\)",
-            "\\( -4 \\)"
+            "\\(9\\)",
+            "\\(10\\)",
+            "\\(21\\)",
+            "\\(17\\)"
           ],
           "correct": 3,
-          "answer": "The equations are decoupled: \\( x=- e^{2 t} \\), \\( y=3 e^{- t} \\). Hence \\( -4 \\).",
+          "answer": "**Answer:** D. From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 1 = 4\\), so \\(g(2) = 4(2^2) + 1 = 17\\).",
+          "explain": "From the horizontal asymptote \\(d = 1\\) and \\(y\\)-intercept \\((0, 5)\\), \\(a = 5 - 1 = 4\\), so \\(g(2) = 4(2^2) + 1 = 17\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "scatter",
-            "pts": [
-              [
-                1,
-                3
-              ],
-              [
-                2,
-                6
-              ],
-              [
-                3,
-                12
-              ],
-              [
-                4,
-                17
-              ]
+            "type": "fn",
+            "xl": [
+              -2,
+              3
             ],
-            "xLabel": "n",
-            "yLabel": "u_n",
-            "caption": "Discrete Term Plot (#3)"
+            "yl": [
+              0,
+              19
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "4*2^x + 1",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 5,
+                "label": "(0, 5)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 1,
+                "label": "y = 1"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 1 (ODES-G269000312)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G269000312)"
           }
         },
         {
@@ -136,33 +133,52 @@
           }
         },
         {
-          "q": "The matrix of \\( \\mathbf x'=A\\mathbf x \\) has eigenvalues \\( \\pm 5i \\). The origin is a:",
+          "q": "The accompanying figure illustrates a waveguide design configuration (ODES-G302555543); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "choices": [
-            "center (stable, not asymptotically)",
-            "unstable node",
-            "saddle point (unstable)",
-            "unstable spiral"
+            "\\(13\\)",
+            "\\(16\\)",
+            "\\(7\\)",
+            "\\(11\\)"
           ],
           "correct": 0,
-          "answer": "Complex eigenvalues give spirals; the sign of the real part decides stability, and a zero real part gives a center. Here: center (stable, not asymptotically).",
+          "answer": "**Answer:** A. From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "MCQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
+            "fns": [
+              {
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
               },
               {
                 "x": 3,
-                "open": false,
-                "label": "q"
+                "y": 4,
+                "label": "(3, 4)"
               }
             ],
-            "caption": "Real-Line Scale (#5)"
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G302555543)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G302555543)"
           }
         },
         {
@@ -196,66 +212,36 @@
           }
         },
         {
-          "q": "With \\( x_1=y \\), \\( x_2=y' \\), the equation \\( y''+y'+y=0 \\) becomes \\( \\mathbf x'=A\\mathbf x \\). Find \\( A \\).",
+          "q": "Given the structured transit study observations displayed in the table (ODES-336109781), approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "choices": [
-            "\\( \\left[\\begin{matrix}0 & 1\\\\-1 & -1\\end{matrix}\\right] \\)",
-            "\\( \\left[\\begin{matrix}0 & 1\\\\1 & 1\\end{matrix}\\right] \\)",
-            "\\( \\left[\\begin{matrix}1 & 0\\\\-1 & -1\\end{matrix}\\right] \\)",
-            "\\( \\left[\\begin{matrix}-1 & -1\\\\1 & 0\\end{matrix}\\right] \\)"
+            "\\(52\\)",
+            "\\(40\\)",
+            "\\(64\\)",
+            "\\(104\\)"
           ],
           "correct": 0,
-          "answer": "\\( x_1'=x_2 \\) and \\( x_2'=y''=- x_{1} - x_{2} \\), so \\( A=\\left[\\begin{matrix}0 & 1\\\\-1 & -1\\end{matrix}\\right] \\).",
+          "answer": "**Answer:** A. Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
+          "qtype": "MCQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(t\\)",
               "2",
-              "3",
               "4",
-              "5"
+              "8"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
+                "\\(R(t)\\)",
+                "4",
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#7)",
-            "caption_ar": "جدول القيم المختارة (#7)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "6",
-                "7",
-                "8"
-              ],
-              [
-                "f'(x)",
-                "2",
-                "0",
-                "2",
-                "0"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 8] (transit study, ODES-336109781)",
+            "caption_ar": "جدول المعدل (دراسة النقل، ODES-336109781)"
           }
         },
         {

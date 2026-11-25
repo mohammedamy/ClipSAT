@@ -52,31 +52,45 @@
       "number": 3,
       "difficulty": "Medium",
       "question": {
-        "en": "The distribution of cholesterol levels in a population is approximately normal with \\(\\mu = 190\\text{ mg/dL}\\) and \\(\\sigma = 24\\text{ mg/dL}\\). (a) What proportion of individuals have cholesterol levels above 226 mg/dL? (b) What cholesterol level marks the 90th percentile?",
+        "en": "Based strictly on the tabulated quality audit observations (APSTATS-753), for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Proportion Above 226:</strong> Standardize: \\[z = \\frac{226 - 190}{24} = \\frac{36}{24} = 1.50.\\] Using standard normal tables: \\[P(Z  \\gt  1.50) = 1 - 0.9332 = \\mathbf{0.0668} \\quad (6.68\\%).\\]</p><p><strong>(b) 90th Percentile:</strong> Find \\(z^*\\) such that \\(P(Z \\lt z^*) = 0.90\\), which gives \\(z^* \\approx 1.282\\). Unstandardize: \\[x = \\mu + z^* \\sigma = 190 + 1.282(24) = 190 + 30.77 = \\mathbf{220.77\\text{ mg/dL}}.\\]</p>",
+        "en": "<p>There are \\(22\\) participants in Lab 1 (\\(12 + 10\\)), of whom \\(12\\) recorded Positive, giving \\(\\frac{6}{11}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{6}{11}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Lab 1",
+          "Lab 2",
+          "Total"
         ],
-        "caption": "Real-Line Scale (#3)"
+        "cols": [
+          "Positive",
+          "Negative",
+          "Total"
+        ],
+        "data": [
+          [
+            "12",
+            "10",
+            22
+          ],
+          [
+            "5",
+            "9",
+            14
+          ],
+          [
+            17,
+            19,
+            36
+          ]
+        ],
+        "caption": "Assay Trials Summary (APSTATS-753)",
+        "caption_ar": "ملخص النتائج (APSTATS-753)"
       }
     },
     {
@@ -166,26 +180,31 @@
       "number": 6,
       "difficulty": "Hard",
       "question": {
-        "en": "A school district with 12 high schools wants to sample 300 teachers. Compare: (a) Stratified sampling (taking an SRS of 25 teachers from each of the 12 schools) vs. (b) Cluster sampling (randomly selecting 2 schools and surveying all 150 teachers in each). Discuss sampling variability and logistical practicality.",
+        "en": "Based on the optical assembly visual model shown (APSTATS-G828) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Stratified Sampling:</strong> Guarantees representation from every high school. Because schools may have differing cultures and student demographics (homogeneous within schools, heterogeneous between schools), stratifying reduces sampling variability between strata, providing a more precise district-wide estimate.</p><p><strong>(b) Cluster Sampling:</strong> Highly practical and cost-effective because surveyors only visit 2 physical campuses. However, if individual schools differ substantially from one another, cluster sampling introduces much higher sampling variability and may yield a non-representative sample if the two chosen schools happen to be atypical.</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 14\\) and \\(Q_3 = 21\\), so \\(\\text{IQR} = 21 - 14 = 7\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(7\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "slope_field",
-        "dydx": "x + y",
-        "xl": [
-          -3,
-          3
+        "type": "boxplot",
+        "boxes": [
+          {
+            "label": "Sample",
+            "min": 10,
+            "q1": 14,
+            "med": 17,
+            "q3": 21,
+            "max": 26
+          }
         ],
-        "yl": [
-          -3,
-          3
+        "range": [
+          6,
+          30
         ],
-        "step": 1,
-        "caption": "Slope field dy/dx = x + y (#6)"
+        "caption": "Five-number summary box plot (APSTATS-G828)",
+        "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G828)"
       }
     },
     {
@@ -193,56 +212,37 @@
       "number": 7,
       "difficulty": "Hard",
       "question": {
-        "en": "An agronomist wants to test whether a new organic fertilizer increases tomato yield compared to a standard commercial fertilizer. Explain how the agronomist must incorporate the four principles of experimental design: Comparison, Random Assignment, Control, and Replication.",
+        "en": "The accompanying figure illustrates a fluid channel configuration (APSTATS-G871); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>1. Comparison:</strong> Use two treatment groups (organic fertilizer vs. standard fertilizer control) grown concurrently under the same environmental conditions.</p><p><strong>2. Random Assignment:</strong> Assign tomato plants to fertilizer treatments using a random number generator to balance unmeasured variables (e.g. baseline soil nutrient variations, microclimates).</p><p><strong>3. Control:</strong> Keep all extraneous variables identical for both groups: sunlight exposure, watering schedule, soil volume, and pest control.</p><p><strong>4. Replication:</strong> Apply each fertilizer to a large number of plants (e.g. 50 plants per treatment) so that genuine yield differences can be distinguished from natural plant-to-plant variation.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(25\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
-          [
-            "14",
-            "12",
-            26
-          ],
-          [
-            "16",
-            "26",
-            42
-          ],
-          [
-            30,
-            38,
-            68
-          ]
-        ],
-        "caption": "Reference Summary Table (#7)",
-        "caption_ar": "جدول ملخص البيانات (#7)",
-        "_totals": {
-          "rowTotals": [
-            26,
-            42
-          ],
-          "colTotals": [
-            30,
-            38
-          ],
-          "grandTotal": 68
-        }
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G871)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G871)"
       }
     },
     {
@@ -250,31 +250,34 @@
       "number": 8,
       "difficulty": "Hard",
       "question": {
-        "en": "In the tomato experiment in Problem 7, the agronomist has two distinct tomato varieties: Roma and Beefsteak. (a) Explain why a randomized block design is superior to a completely randomized design. (b) Outline the blocking protocol.",
+        "en": "Given the structured seismology observations displayed in the table (APSTATS-907), for a valid discrete probability distribution. Determine the missing probability \\(c\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Superiority of Blocking:</strong> Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power.</p><p><strong>(b) Blocking Protocol:</strong> Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.</p>",
+        "en": "<p>Total probability sums to \\(1\\), so \\(c = 1 - \\frac{2+2+2}{10} = \\frac{2}{5}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{2}{5}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "table",
+        "headers": [
+          "\\(X = x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "caption": "Real-Line Scale (#8)"
+        "rows": [
+          [
+            "\\(P(X=x)\\)",
+            "\\(\\frac{2}{10}\\)",
+            "\\(\\frac{2}{10}\\)",
+            "\\(\\frac{2}{10}\\)",
+            "\\(c\\)"
+          ]
+        ],
+        "orientation": "horizontal",
+        "caption": "Discrete probability distribution of X (seismology, APSTATS-907)",
+        "caption_ar": "التوزيع الاحتمالي للمتغير العشوائي (علم الزلازل، APSTATS-907)"
       }
     },
     {
@@ -282,26 +285,37 @@
       "number": 9,
       "difficulty": "Hard",
       "question": {
-        "en": "A health study surveys 5,000 adults and finds that people who sleep 8 hours per night have significantly lower blood pressure than those who sleep 5 hours. (a) Can researchers conclude that increasing sleep causes a reduction in blood pressure? (b) Delineate the scope of inference using the 2×2 selection/assignment matrix.",
+        "en": "Referring to the fluid channel figure (APSTATS-G943) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Causal Inference:</strong> <strong>No</strong>, cause-and-effect cannot be established because this is an observational study where sleep duration was not randomly assigned. Plausible confounding variables (e.g. job stress, diet, exercise) are associated with sleep duration and independently affect blood pressure.</p><p><strong>(b) Scope of Inference:</strong></p><ul><li>Were individuals randomly selected from the adult population? Yes \\(\\implies\\) Inferences can be generalized to the broader adult population.</li><li>Were treatments randomly assigned? No \\(\\implies\\) Inferences are strictly limited to association, NOT causation.</li></ul>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 7 + 11 + 5 = 29\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(29\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "transformation_grid",
-        "matrix": [
-          [
-            1,
-            -1
-          ],
-          [
-            1,
-            1
-          ]
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 7
+          },
+          {
+            "label": "20-29",
+            "count": 11
+          },
+          {
+            "label": "30-39",
+            "count": 5
+          }
         ],
-        "title": "Linear Transformation Action (#9)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G943)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G943)"
       }
     },
     {
@@ -309,56 +323,31 @@
       "number": 10,
       "difficulty": "Hard",
       "question": {
-        "en": "A cereal manufacturer places a collectible card in each box: 20% of boxes have Card A, 30% have Card B, and 50% have Card C. Design a simulation using random digits to estimate the probability that a customer must buy at least 6 boxes to collect all three cards.",
+        "en": "Based on the optical assembly visual model shown (APSTATS-G972) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>1. Assign Digits:</strong> Assign single digits proportional to probabilities: Digits 0–1 represent Card A (20%); digits 2–4 represent Card B (30%); digits 5–9 represent Card C (50%).</p><p><strong>2. Describe One Trial:</strong> Read random digits one at a time. Record which card type is obtained on each digit. Continue reading digits until all three card types (A, B, and C) have appeared at least once. Count the total number of digits (boxes) required.</p><p><strong>3. Record Statistic:</strong> Record whether the total number of boxes opened is \\(\\ge 6\\) (Yes/No).</p><p><strong>4. Replicate & Estimate:</strong> Repeat this trial 100 times. Estimate the probability as the fraction of trials in which 6 or more boxes were required.</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 18\\) and \\(Q_3 = 27\\), so \\(\\text{IQR} = 27 - 18 = 9\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(9\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "boxplot",
+        "boxes": [
+          {
+            "label": "Sample",
+            "min": 14,
+            "q1": 18,
+            "med": 22,
+            "q3": 27,
+            "max": 32
+          }
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
+        "range": [
+          10,
+          36
         ],
-        "data": [
-          [
-            "18",
-            "18",
-            36
-          ],
-          [
-            "14",
-            "29",
-            43
-          ],
-          [
-            32,
-            47,
-            79
-          ]
-        ],
-        "caption": "Reference Summary Table (#10)",
-        "caption_ar": "جدول ملخص البيانات (#10)",
-        "_totals": {
-          "rowTotals": [
-            36,
-            43
-          ],
-          "colTotals": [
-            32,
-            47
-          ],
-          "grandTotal": 79
-        }
+        "caption": "Five-number summary box plot (APSTATS-G972)",
+        "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G972)"
       }
     },
     {
@@ -366,31 +355,45 @@
       "number": 11,
       "difficulty": "Hard",
       "question": {
-        "en": "A diagnostic medical screening test is 95% sensitive (positive if disease present) and 90% specific (negative if disease absent). In a population, 2% of people have the disease. Find the probability that a person who tests positive actually has the disease.",
+        "en": "In the telemetry record (APSTATS-1008), using the table values, for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
         "ar": null
       },
       "solution": {
-        "en": "<p>Let \\(D\\) = disease present, \\(T^+\\) = positive test. \\(P(D) = 0.02\\), \\(P(D^c) = 0.98\\).<br>Sensitivity: \\(P(T^+ \\mid D) = 0.95\\). Specificity: \\(P(T^- \\mid D^c) = 0.90 \\implies P(T^+ \\mid D^c) = 0.10\\).</p><p>By the Law of Total Probability: \\[P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117.\\]</p><p>By Bayes' Theorem: \\[P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%).\\]</p><p>Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.</p>",
+        "en": "<p>There are \\(10\\) participants in Lab 1 (\\(6 + 4\\)), of whom \\(6\\) recorded Positive, giving \\(\\frac{3}{5}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{3}{5}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Lab 1",
+          "Lab 2",
+          "Total"
         ],
-        "caption": "Real-Line Scale (#11)"
+        "cols": [
+          "Positive",
+          "Negative",
+          "Total"
+        ],
+        "data": [
+          [
+            "6",
+            "4",
+            10
+          ],
+          [
+            "5",
+            "5",
+            10
+          ],
+          [
+            11,
+            9,
+            20
+          ]
+        ],
+        "caption": "Assay Trials Summary (APSTATS-1008)",
+        "caption_ar": "ملخص النتائج (APSTATS-1008)"
       }
     },
     {
@@ -398,36 +401,37 @@
       "number": 12,
       "difficulty": "Medium",
       "question": {
-        "en": "Events \\(A\\) and \\(B\\) satisfy \\(P(A) = 0.40\\), \\(P(B) = 0.50\\), and \\(P(A \\cup B) = 0.70\\). (a) Find \\(P(A \\cap B)\\). (b) Determine whether \\(A\\) and \\(B\\) are independent. (c) Determine whether \\(A\\) and \\(B\\) are mutually exclusive.",
+        "en": "From the plotted fluid channel figure above (APSTATS-G1051) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Intersection:</strong> \\[P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.40 + 0.50 - 0.70 = \\mathbf{0.20}.\\]</p><p><strong>(b) Independence:</strong> Test whether \\(P(A \\cap B) = P(A)P(B)\\): \\[P(A)P(B) = (0.40)(0.50) = 0.20.\\] Because \\(P(A \\cap B) = P(A)P(B) = 0.20\\), events \\(A\\) and \\(B\\) are <strong>independent</strong>.</p><p><strong>(c) Mutually Exclusive:</strong> Because \\(P(A \\cap B) = 0.20 \\neq 0\\), events \\(A\\) and \\(B\\) can occur simultaneously and are therefore <strong>not mutually exclusive</strong>.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 6 + 10 + 7 = 29\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(29\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "scatter",
-        "pts": [
-          [
-            1,
-            3
-          ],
-          [
-            2,
-            6
-          ],
-          [
-            3,
-            12
-          ],
-          [
-            4,
-            17
-          ]
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 10
+          },
+          {
+            "label": "30-39",
+            "count": 7
+          }
         ],
-        "xLabel": "n",
-        "yLabel": "u_n",
-        "caption": "Discrete Term Plot (#12)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1051)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1051)"
       }
     },
     {
@@ -435,56 +439,37 @@
       "number": 13,
       "difficulty": "Medium",
       "question": {
-        "en": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\text{Var}(X)\\) and \\(\\sigma_X\\).",
+        "en": "Referring to the fluid channel figure (APSTATS-G1087) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Expected Value:</strong> \\[E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\]</p><p><strong>(b) Expected Value of \\(X^2\\):</strong> \\[E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\]</p><p><strong>(c) Variance & SD:</strong> \\[\\text{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\] \\[\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\]</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 9 + 11 + 7 = 33\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(33\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 9
+          },
+          {
+            "label": "20-29",
+            "count": 11
+          },
+          {
+            "label": "30-39",
+            "count": 7
+          }
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
-          [
-            "22",
-            "16",
-            38
-          ],
-          [
-            "11",
-            "14",
-            25
-          ],
-          [
-            33,
-            30,
-            63
-          ]
-        ],
-        "caption": "Reference Summary Table (#13)",
-        "caption_ar": "جدول ملخص البيانات (#13)",
-        "_totals": {
-          "rowTotals": [
-            38,
-            25
-          ],
-          "colTotals": [
-            33,
-            30
-          ],
-          "grandTotal": 63
-        }
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1087)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1087)"
       }
     },
     {
@@ -492,23 +477,45 @@
       "number": 14,
       "difficulty": "Medium",
       "question": {
-        "en": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\).",
+        "en": "During sensor array experiment (APSTATS-1116), observers compiled the following table; for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Mean:</strong> \\[\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\]</p><p><strong>Variance (Variances Always Add!):</strong> Adding constants adds zero variance. Coefficients are squared: \\[\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\]</p><p><strong>Standard Deviation:</strong> \\[\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\]</p>",
+        "en": "<p>There are \\(16\\) participants in Morning (\\(6 + 10\\)), of whom \\(6\\) recorded Standard, giving \\(\\frac{3}{8}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{3}{8}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "normal_curve",
-        "mean": 50,
-        "sd": 6,
-        "shadeRange": [
-          44,
-          56
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "Morning",
+          "Evening",
+          "Total"
         ],
-        "showRule": true,
-        "caption": "Normal Distribution Model (#14)"
+        "cols": [
+          "Standard",
+          "Honors",
+          "Total"
+        ],
+        "data": [
+          [
+            "6",
+            "10",
+            16
+          ],
+          [
+            "11",
+            "9",
+            20
+          ],
+          [
+            17,
+            19,
+            36
+          ]
+        ],
+        "caption": "Session Roster Summary (APSTATS-1116)",
+        "caption_ar": "ملخص النتائج (APSTATS-1116)"
       }
     },
     {
@@ -516,23 +523,37 @@
       "number": 15,
       "difficulty": "Medium",
       "question": {
-        "en": "A basketball player makes 75% of free throws. In a game, she shoots 12 free throws. Assuming attempts are independent: (a) Find the probability she makes exactly 9 free throws. (b) Find the mean and standard deviation of made free throws.",
+        "en": "The accompanying figure illustrates a fluid channel configuration (APSTATS-G1159); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Binomial PMF:</strong> \\(X \\sim B(n = 12, p = 0.75)\\), \\(k = 9\\): \\[P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.\\]</p><p><strong>(b) Mean & Standard Deviation:</strong> \\[\\mu = np = 12(0.75) = \\mathbf{9.0\\text{ free throws}}.\\] \\[\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\text{ free throws}}.\\]</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 10 + 9 + 4 = 29\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(29\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "normal_curve",
-        "mean": 75,
-        "sd": 12,
-        "shadeRange": [
-          63,
-          87
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 10
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "showRule": true,
-        "caption": "Normal Distribution Model (#15)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1159)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1159)"
       }
     },
     {
@@ -540,56 +561,37 @@
       "number": 16,
       "difficulty": "Hard",
       "question": {
-        "en": "The commute times for employees at a large tech company have a strongly right-skewed distribution with mean \\(\\mu = 38\\text{ minutes}\\) and standard deviation \\(\\sigma = 15\\text{ minutes}\\). A random sample of 49 employees is selected. (a) Describe the shape, mean, and standard error of the sampling distribution of the sample mean \\(\\bar{x}\\). (b) Calculate \\(P(\\bar{x} \\gt 42\\text{ minutes})\\).",
+        "en": "From the plotted fluid channel figure above (APSTATS-G1195) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Sampling Distribution Characteristics:</strong></p><ul><li><strong>Shape:</strong> By the Central Limit Theorem, since \\(n = 49 \\ge 30\\), the sampling distribution of \\(\\bar{x}\\) is <strong>approximately normal</strong>, despite the right skewness of the population.</li><li><strong>Mean:</strong> \\(\\mu_{\\bar{x}} = \\mu = \\mathbf{38\\text{ minutes}}\\).</li><li><strong>Standard Error:</strong> \\(\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{49}} = \\frac{15}{7} \\approx \\mathbf{2.143\\text{ minutes}}\\).</li></ul><p><strong>(b) Probability Calculation:</strong> Standardize: \\[z = \\frac{42 - 38}{2.143} = \\frac{4}{2.143} \\approx 1.87.\\] \\[P(\\bar{x}  \\gt  42) = P(Z  \\gt  1.87) = 1 - 0.9693 = \\mathbf{0.0307} \\quad (3.07\\%).\\]</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 8 + 10 + 5 = 29\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(29\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 8
+          },
+          {
+            "label": "20-29",
+            "count": 10
+          },
+          {
+            "label": "30-39",
+            "count": 5
+          }
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
-        ],
-        "data": [
-          [
-            "19",
-            "13",
-            32
-          ],
-          [
-            "13",
-            "28",
-            41
-          ],
-          [
-            32,
-            41,
-            73
-          ]
-        ],
-        "caption": "Reference Summary Table (#16)",
-        "caption_ar": "جدول ملخص البيانات (#16)",
-        "_totals": {
-          "rowTotals": [
-            32,
-            41
-          ],
-          "colTotals": [
-            32,
-            41
-          ],
-          "grandTotal": 73
-        }
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1195)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1195)"
       }
     },
     {
@@ -597,23 +599,45 @@
       "number": 17,
       "difficulty": "Hard",
       "question": {
-        "en": "In an SRS of 200 registered voters, 116 favor a new environmental regulation. (a) Check all three conditions for constructing a 95% confidence interval for the population proportion. (b) Construct the 95% confidence interval. (c) Interpret the interval in context.",
+        "en": "Selected numerical readings from wind tunnel run (APSTATS-1224) appear in the table; for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Condition Checks:</strong></p><ul><li><strong>Random:</strong> Stated as an SRS of 200 registered voters. (Satisfied).</li><li><strong>10% Condition:</strong> 200 voters is less than 10% of all registered voters (\\(N \\ge 2,000\\)). (Satisfied).</li><li><strong>Large Counts:</strong> \\(n\\hat{p} = 116 \\ge 10\\) and \\(n(1-\\hat{p}) = 84 \\ge 10\\). (Satisfied; normal approximation is valid).</li></ul><p><strong>(b) 95% Confidence Interval:</strong> \\(\\hat{p} = 116/200 = 0.58\\), \\(z^* = 1.96\\). \\[\\text{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349.\\] Margin of error: \\[\\text{ME} = 1.96(0.0349) \\approx 0.0684.\\] Interval: \\[0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\text{or } (51.2\\%, 64.8\\%).\\]</p><p><strong>(c) Interpretation:</strong> We are 95% confident that the interval from <strong>51.2% to 64.8%</strong> captures the true proportion of all registered voters who favor the new regulation.</p>",
+        "en": "<p>There are \\(15\\) participants in North (\\(6 + 9\\)), of whom \\(6\\) recorded Transit, giving \\(\\frac{2}{5}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{2}{5}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "normal_curve",
-        "mean": 200,
-        "sd": 20,
-        "shadeRange": [
-          180,
-          220
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "North",
+          "South",
+          "Total"
         ],
-        "showRule": true,
-        "caption": "Normal Distribution Model (#17)"
+        "cols": [
+          "Transit",
+          "Drive",
+          "Total"
+        ],
+        "data": [
+          [
+            "6",
+            "9",
+            15
+          ],
+          [
+            "9",
+            "5",
+            14
+          ],
+          [
+            15,
+            14,
+            29
+          ]
+        ],
+        "caption": "Commuter Survey Summary (APSTATS-1224)",
+        "caption_ar": "ملخص النتائج (APSTATS-1224)"
       }
     },
     {
@@ -621,31 +645,31 @@
       "number": 18,
       "difficulty": "Hard",
       "question": {
-        "en": "A coffee brand claims its jars contain a mean of 200 grams of coffee. A consumer agency takes an SRS of 16 jars, finding \\(\\bar{x} = 197.5\\text{ g}\\) and \\(s = 4.0\\text{ g}\\). Assume jar weights are approximately normally distributed. Conduct a significance test of \\(H_0: \\mu = 200\\) vs. \\(H_a: \\mu \\lt 200\\) at \\(\\alpha = 0.05\\).",
+        "en": "Based on the optical assembly visual model shown (APSTATS-G1260) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>1. State:</strong> Test \\(H_0: \\mu = 200\\text{ g}\\) vs \\(H_a: \\mu \\lt 200\\text{ g}\\) at \\(\\alpha = 0.05\\), where \\(\\mu\\) is the true mean weight of all coffee jars.</p><p><strong>2. Plan:</strong> 1-sample \\(t\\)-test for mean. Random sample stated; \\(16 \\lt 10\\%\\) of all jars; population stated as approximately normal.</p><p><strong>3. Do:</strong> \\[t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{197.5 - 200}{4.0 / \\sqrt{16}} = \\frac{-2.5}{1.0} = -2.50 \\quad (df = n - 1 = 15).\\] From \\(t\\)-distribution table with \\(df = 15\\): \\[\\text{p-value} = P(T  \\lt  -2.50) \\approx 0.0123.\\]</p><p><strong>4. Conclude:</strong> Because \\(\\text{p-value} = 0.0123 \\lt \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of coffee jars is less than 200 grams.</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 12\\) and \\(Q_3 = 18\\), so \\(\\text{IQR} = 18 - 12 = 6\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(6\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
+        "type": "boxplot",
+        "boxes": [
           {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
+            "label": "Sample",
+            "min": 8,
+            "q1": 12,
+            "med": 15,
+            "q3": 18,
+            "max": 23
           }
         ],
-        "caption": "Real-Line Scale (#18)"
+        "range": [
+          4,
+          27
+        ],
+        "caption": "Five-number summary box plot (APSTATS-G1260)",
+        "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G1260)"
       }
     },
     {
@@ -653,64 +677,37 @@
       "number": 19,
       "difficulty": "Hard",
       "question": {
-        "en": "Eight patients with chronic insomnia try a new relaxation therapy. Their sleep duration (hours/night) is measured before and after 4 weeks of therapy: Patient differences \\(d = \\text{After} - \\text{Before}\\) yield \\(\\bar{x}_d = 1.25\\text{ hours}\\) and \\(s_d = 0.80\\text{ hours}\\). Assuming normality of differences, test whether the therapy significantly increased sleep at \\(\\alpha = 0.01\\).",
+        "en": "The accompanying figure illustrates a fluid channel configuration (APSTATS-G1303); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>1. Method Choice:</strong> Paired data measured on the same 8 patients \\(\\implies\\) <strong>Paired \\(t\\)-test on differences</strong>.</p><p><strong>2. Hypotheses:</strong> \\[H_0: \\mu_d = 0 \\quad \\text{vs.} \\quad H_a: \\mu_d  \\gt  0 \\quad (\\alpha = 0.01),\\] where \\(\\mu_d\\) is the true mean difference in sleep duration (After minus Before).</p><p><strong>3. Test Statistic & p-value:</strong> \\[t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7).\\] With \\(df = 7\\), \\(P(T \\gt 4.42) \\approx 0.0015\\).</p><p><strong>4. Conclusion:</strong> Because \\(\\text{p-value} = 0.0015 \\lt \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 7 + 9 + 6 = 28\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(28\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 7
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 6
+          }
         ],
-        "rows": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#19)",
-        "caption_ar": "جدول القيم المختارة (#19)",
-        "headers_ar": [
-          "x",
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "4",
-            "6",
-            "8"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1303)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1303)"
       }
     },
     {
@@ -718,31 +715,37 @@
       "number": 20,
       "difficulty": "Hard",
       "question": {
-        "en": "A random sample of 200 students is classified by Grade Level (9th vs 12th) and Smartphone Operating System (iOS vs Android). Observed counts: 9th Grade: 70 iOS, 30 Android (100 total); 12th Grade: 50 iOS, 50 Android (100 total). (a) Calculate the expected count of 9th graders with iOS. (b) Compute the Chi-square test statistic \\(\\chi^2\\). (c) With \\(df = 1\\) and \\(\\alpha = 0.05\\) (critical value 3.84), conclude whether Grade Level and Operating System are independent.",
+        "en": "From the plotted fluid channel figure above (APSTATS-G1339) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>(a) Expected Count:</strong> Total iOS = 120, Total Android = 80, Grand Total = 200. \\[E_{1,1} = \\frac{(\\text{Row 1 Total}) \\times (\\text{Col 1 Total})}{\\text{Grand Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}.\\] All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All \\(E \\ge 5\\)).</p><p><strong>(b) Chi-Square Statistic:</strong> \\[\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40}\\] \\[= \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}.\\]</p><p><strong>(c) Conclusion:</strong> With \\(df = (2-1)(2-1) = 1\\), the p-value is \\(P(\\chi^2 \\gt 8.333) \\approx 0.0039\\). Because \\(\\chi^2 = 8.333 \\gt 3.84\\) (or \\(\\text{p-value} = 0.0039 \\lt 0.05\\)), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 10 + 10 + 7 = 33\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(33\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
+        "type": "histogram",
+        "bins": [
           {
-            "x": -2,
-            "open": false,
-            "label": "p"
+            "label": "0-9",
+            "count": 6
           },
           {
-            "x": 3,
-            "open": false,
-            "label": "q"
+            "label": "10-19",
+            "count": 10
+          },
+          {
+            "label": "20-29",
+            "count": 10
+          },
+          {
+            "label": "30-39",
+            "count": 7
           }
         ],
-        "caption": "Real-Line Scale (#20)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1339)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1339)"
       }
     },
     {
@@ -750,31 +753,37 @@
       "number": 21,
       "difficulty": "Hard",
       "question": {
-        "en": "A manufacturing company produces electronic components. They are investigating potential relationships between the type of raw material used and the number of defects per batch. After collecting data for 100 batches, they create a two-way table summarizing the findings. The table shows that 15 batches using Material A had no defects, 20 batches using Material A had 1-2 defects, and 10 batches using Material A had more than 2 defects. For Material B, 25 batches had no defects, 28 batches had 1-2 defects, and 22 batches had more than 2 defects. If the company decides to perform a chi-square test for homogeneity to compare the defect rates across the two materials, what is the degrees of freedom for this test?",
+        "en": "Referring to the fluid channel figure (APSTATS-G1375) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B).</p><p>The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured.</p><p>In this scenario:<br>- Number of rows (groups/materials) = 2 (Material A, Material B)<br>- Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects)</p><p>The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: \\(\\text{df} = (r - 1)(c - 1)\\), where \\(r\\) is the number of rows and \\(c\\) is the number of columns.</p><p>Plugging in the values:<br>\\(\\text{df} = (2 - 1)(3 - 1)\\)<br>\\(\\text{df} = (1)(2)\\)<br>\\(\\text{df} = 2\\)</p><p>Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data.</p><p><strong>Final Answer:</strong> 4</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 8 + 11 + 7 = 32\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(32\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
+        "type": "histogram",
+        "bins": [
           {
-            "x": -2,
-            "open": false,
-            "label": "p"
+            "label": "0-9",
+            "count": 6
           },
           {
-            "x": 3,
-            "open": false,
-            "label": "q"
+            "label": "10-19",
+            "count": 8
+          },
+          {
+            "label": "20-29",
+            "count": 11
+          },
+          {
+            "label": "30-39",
+            "count": 7
           }
         ],
-        "caption": "Real-Line Scale (#21)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1375)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1375)"
       }
     },
     {
@@ -782,31 +791,31 @@
       "number": 22,
       "difficulty": "Medium",
       "question": {
-        "en": "A data set consists of the following five points: \\(P_1 = (2, 3), P_2 = (4, y), P_3 = (6, 7), P_4 = (8, 9), P_5 = (10, 11)\\). If the mean of the x-coordinates is \\(6\\) and the mean of the y-coordinates is \\(7\\), what is the value of \\(y\\)?",
+        "en": "Based on the optical assembly visual model shown (APSTATS-G1404) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The mean of the x-coordinates is given by \\(\\frac{2 + 4 + 6 + 8 + 10}{5} = \\frac{30}{5} = 6\\). This matches the information given in the problem.</p><p>The mean of the y-coordinates is given by \\(\\frac{3 + y + 7 + 9 + 11}{5}\\). We are told that the mean of the y-coordinates is \\(7\\). Therefore, we can set up the equation:</p><p>\\(\\frac{3 + y + 7 + 9 + 11}{5} = 7\\)</p><p>Combine the constant terms in the numerator:</p><p>\\(\\frac{30 + y}{5} = 7\\)</p><p>Multiply both sides by 5:</p><p>\\(30 + y = 35\\)</p><p>Subtract 30 from both sides:</p><p>\\(y = 5\\)</p><p>Therefore, the value of \\(y\\) is 5.</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 24\\), so \\(\\text{IQR} = 24 - 16 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
+        "type": "boxplot",
+        "boxes": [
           {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
+            "label": "Sample",
+            "min": 12,
+            "q1": 16,
+            "med": 20,
+            "q3": 24,
+            "max": 29
           }
         ],
-        "caption": "Real-Line Scale (#22)"
+        "range": [
+          8,
+          33
+        ],
+        "caption": "Five-number summary box plot (APSTATS-G1404)",
+        "caption_ar": "مخطط الصندوق والعارضتين (APSTATS-G1404)"
       }
     },
     {
@@ -814,23 +823,37 @@
       "number": 23,
       "difficulty": "Medium",
       "question": {
-        "en": "A marketing research firm is designing an experiment to test the effectiveness of three different advertising slogans (Slogan A, Slogan B, Slogan C) on product purchase intent. They recruit 240 participants and randomly assign them to one of the three slogan groups. After exposure to their assigned slogan, participants rate their purchase intent on a scale of 1 to 10. The experiment is designed as a completely randomized design. The data collected will be analyzed using ANOVA to compare the mean purchase intent scores across the three groups.<br>In order to determine the minimum number of participants needed in each group for a power analysis, the researchers need to estimate the effect size. A pilot study suggests that the standard deviation of purchase intent scores within each group is approximately \\(\\sigma = 1.8\\). They aim for a minimum of \\(n = 80\\) participants per group to achieve the desired statistical power.<br>If the total number of participants available for this experiment were \\(N = 240\\) and they decided to allocate the participants into \\(k = 3\\) treatment groups, with an equal number of participants in each group, what would be the number of participants per group, \\(n\\)? Additionally, if the experimenters decided to use a blocked design instead, where participants are first blocked by age (Young, Middle-aged, Senior) and then randomly assigned slogans within each block, how many blocks would be needed?",
+        "en": "The accompanying figure illustrates a fluid channel configuration (APSTATS-G1447); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The problem asks for two pieces of information: the number of participants per group in a completely randomized design and the number of blocks in a blocked design.</p><p>Part 1: Participants per group in a completely randomized design.</p><p>Total number of participants \\(N = 240\\).<br>Number of treatment groups \\(k = 3\\).</p><p>Since the participants are to be equally divided among the groups, the number of participants per group \\(n\\) is calculated as:<br>\\(n = \\frac{N}{k} = \\frac{240}{3} = 80\\).</p><p>Part 2: Number of blocks in a blocked design.</p><p>The problem states that participants are blocked by age, with three categories: Young, Middle-aged, and Senior.</p><p>The number of blocks is equal to the number of levels in the blocking variable. Therefore, there are 3 blocks.</p><p>Combining both parts, the experiment would have 80 participants per group and would require 3 blocks if a blocked design were used.</p><p><strong>Final Answer:</strong> 80 participants per group; 3 blocks</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 9 + 9 + 4 = 28\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(28\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "normal_curve",
-        "mean": 240,
-        "sd": 1,
-        "shadeRange": [
-          239,
-          241
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 9
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "showRule": true,
-        "caption": "Normal Distribution Model (#23)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (APSTATS-G1447)",
+        "caption_ar": "المدرج التكراري للفئات (APSTATS-G1447)"
       }
     },
     {

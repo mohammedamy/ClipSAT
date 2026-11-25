@@ -9,249 +9,279 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Evaluate \\(\\int 2x(x^2+1)^4\\,dx\\) using the substitution \\(u=x^2+1\\).",
+          "q": "Referring to the cohort study table above (IBHL-857961071), approximate \\(\\int_{2}^{8} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration by substitution",
-          "answer": "\\(du=2x\\,dx\\). So \\(\\int(x^2+1)^4\\cdot2x\\,dx=\\int u^4\\,du=u^5/5+C=(x^2+1)^5/5+C\\).",
+          "answer": "**Answer:** \\(52\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
           "explanation": "\\(du=2x\\,dx\\). So \\(\\int(x^2+1)^4\\cdot2x\\,dx=\\int u^4\\,du=u^5/5+C=(x^2+1)^5/5+C\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{4}{2}(8 + 12) = 12 + 40 = 52\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(t\\)",
               "2",
-              "3"
+              "4",
+              "8"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(R(t)\\)",
                 "4",
-                "6",
-                "8"
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#2)",
-            "caption_ar": "جدول نمط مرجعي (#2)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 8] (cohort study, IBHL-857961071)",
+            "caption_ar": "جدول المعدل (دراسة الفوج، IBHL-857961071)"
           }
         },
         {
-          "q": "Evaluate \\(\\int x e^x\\,dx\\) using integration by parts.",
+          "q": "The accompanying figure illustrates a calibration curve configuration (IBHL-G874739690); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration by parts",
-          "answer": "Let \\(u=x\\), \\(dv=e^x\\,dx\\), so \\(du=dx\\), \\(v=e^x\\). \\(\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=(x-1)e^x+C\\).",
+          "answer": "**Answer:** \\(7\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
           "explanation": "Let \\(u=x\\), \\(dv=e^x\\,dx\\), so \\(du=dx\\), \\(v=e^x\\). \\(\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=(x-1)e^x+C\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -1,
+              9
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "6/(x - 3) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 4"
               }
             ],
-            "caption": "Real-Line Scale (#3)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 10,
+                "label": "(4, 10)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 4 (IBHL-G874739690)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (IBHL-G874739690)"
           }
         },
         {
-          "q": "Evaluate \\(\\int x^2e^x\\,dx\\), applying integration by parts twice.",
+          "q": "From the plotted fluid channel figure above (IBHL-G891517309) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Repeated integration by parts",
-          "answer": "First application: \\(u=x^2\\), \\(dv=e^xdx\\): \\(\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx\\). From the previous problem, \\(\\int xe^x\\,dx=(x-1)e^x+C\\), so \\(\\int2xe^x\\,dx=2(x-1)e^x\\). Result: \\(x^2e^x-2(x-1)e^x+C=(x^2-2x+2)e^x+C\\).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "First application: \\(u=x^2\\), \\(dv=e^xdx\\): \\(\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx\\). From the previous problem, \\(\\int xe^x\\,dx=(x-1)e^x+C\\), so \\(\\int2xe^x\\,dx=2(x-1)e^x\\). Result: \\(x^2e^x-2(x-1)e^x+C=(x^2-2x+2)e^x+C\\).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -2,
+              10
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
               }
             ],
-            "caption": "Real-Line Scale (#4)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G891517309)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G891517309)"
           }
         },
         {
-          "q": "Evaluate \\(\\int\\cos^2x\\,dx\\) using the identity \\(\\cos^2x=(1+\\cos2x)/2\\).",
+          "q": "Selected numerical readings from thermodynamics run (IBHL-774072976) appear in the table; approximate \\(\\int_{1}^{5} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration using trigonometric identities",
-          "answer": "\\(\\int(1+\\cos2x)/2\\,dx=1/2(x+\\sin2x/2)+C=x/2+\\sin2x/4+C\\).",
+          "answer": "**Answer:** \\(29\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{2}{2}(7 + 11) = 11 + 18 = 29\\).",
           "explanation": "\\(\\int(1+\\cos2x)/2\\,dx=1/2(x+\\sin2x/2)+C=x/2+\\sin2x/4+C\\).",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 7) + \\frac{2}{2}(7 + 11) = 11 + 18 = 29\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
+              "\\(t\\)",
               "1",
-              "2",
-              "3"
+              "3",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "2",
+                "\\(R(t)\\)",
                 "4",
-                "6",
-                "8"
+                "7",
+                "11"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#5)",
-            "caption_ar": "جدول نمط مرجعي (#5)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [1, 5] (thermodynamics, IBHL-774072976)",
+            "caption_ar": "جدول المعدل (الديناميكا الحرارية، IBHL-774072976)"
           }
         },
         {
-          "q": "Evaluate \\(\\int1/(x^2-1)\\,dx\\) by first expressing the integrand in partial fractions.",
+          "q": "Given the measurements marked directly on the specimen plot schematic (IBHL-G790851595) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration using partial fractions",
-          "answer": "\\(1/(x^2-1)=1/((x-1)(x+1))=A/(x-1)+B/(x+1)\\). Solving: \\(A=1/2\\), \\(B=-1/2\\). \\(\\int(1/2/(x-1)-1/2/(x+1))dx=1/2\\ln|x-1|-1/2\\ln|x+1|+C=1/2\\ln|(x-1)/(x+1)|+C\\).",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "explanation": "\\(1/(x^2-1)=1/((x-1)(x+1))=A/(x-1)+B/(x+1)\\). Solving: \\(A=1/2\\), \\(B=-1/2\\). \\(\\int(1/2/(x-1)-1/2/(x+1))dx=1/2\\ln|x-1|-1/2\\ln|x+1|+C=1/2\\ln|(x-1)/(x+1)|+C\\).",
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
             "step": 1,
             "pts": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
               }
             ],
-            "caption": "Real-Line Scale (#6)"
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (IBHL-G790851595)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (IBHL-G790851595)"
           }
         },
         {
-          "q": "Evaluate \\(\\int1/(1+x^2)\\,dx\\), and use it to evaluate \\(\\int_0^1 1/(1+x^2)\\,dx\\).",
+          "q": "The accompanying figure illustrates a harmonic trace configuration (IBHL-G807629214); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration involving inverse trigonometric results",
-          "answer": "\\(\\int1/(1+x^2)\\,dx=\\arctan x+C\\). So \\(\\int_0^1 1/(1+x^2)\\,dx=\\arctan(1)-\\arctan(0)=\\pi/4-0=\\pi/4\\).",
+          "answer": "**Answer:** \\(8\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
           "explanation": "\\(\\int1/(1+x^2)\\,dx=\\arctan x+C\\). So \\(\\int_0^1 1/(1+x^2)\\,dx=\\arctan(1)-\\arctan(0)=\\pi/4-0=\\pi/4\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 5 \\implies c = 5\\), so \\(h + c = 8\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 5,
-            "step": 1,
-            "pts": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              0,
+              10
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "x": -2,
-                "open": false,
-                "label": "p"
-              },
-              {
-                "x": 3,
-                "open": false,
-                "label": "q"
+                "fn": "2/(x - 3) + 5",
+                "color": "#2563eb",
+                "label": "r(x) = 2/(x - 3) + 5"
               }
             ],
-            "caption": "Real-Line Scale (#7)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 7,
+                "label": "(4, 7)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 5,
+                "label": "y = 5"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 5 (IBHL-G807629214)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (IBHL-G807629214)"
           }
         },
         {
-          "q": "Evaluate \\(\\int\\sin^3x\\,dx\\), using the identity \\(\\sin^2x=1-\\cos^2x\\) and the substitution \\(u=\\cos x\\).",
+          "q": "Inspect the biometrics values listed across the table (IBHL-824405833); determine \\(3\\,h^{-1}(15)\\) for the invertible function \\(h\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Integration by substitution with trigonometric functions",
-          "answer": "Rewrite: \\(\\sin^3x=\\sin x(1-\\cos^2x)\\). Let \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\). \\(\\int\\sin x(1-\\cos^2x)\\,dx=-\\int(1-u^2)\\,du=-u+u^3/3+C=-\\cos x+\\cos^3x/3+C\\).",
+          "answer": "**Answer:** \\(12\\). Because \\(h(4) = 15\\), we have \\(h^{-1}(15) = 4\\). Multiplying by \\(3\\) gives \\(12\\).",
           "explanation": "Rewrite: \\(\\sin^3x=\\sin x(1-\\cos^2x)\\). Let \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\). \\(\\int\\sin x(1-\\cos^2x)\\,dx=-\\int(1-u^2)\\,du=-u+u^3/3+C=-\\cos x+\\cos^3x/3+C\\).",
+          "explain": "Because \\(h(4) = 15\\), we have \\(h^{-1}(15) = 4\\). Multiplying by \\(3\\) gives \\(12\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(x\\)",
               "2",
-              "3"
+              "3",
+              "4",
+              "5"
             ],
             "rows": [
               [
-                "g(x)",
-                "3",
-                "5",
-                "7",
-                "9"
+                "\\(h(x)\\)",
+                "9",
+                "12",
+                "15",
+                "19"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (biometrics, IBHL-824405833)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (القياسات الحيوية، IBHL-824405833)"
           }
         }
       ]
@@ -260,187 +290,228 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate \\(\\int1/(5+4\\cos x)\\,dx\\) using the substitution \\(t=\\tan(x/2)\\), given that this substitution transforms \\(\\cos x=(1-t^2)/(1+t^2)\\) and \\(dx=2/(1+t^2)dt\\), leading to the simplified integrand \\(2/(9+t^2)\\).",
+          "q": "Based on the field geometry visual model shown (IBHL-G975405411) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Integration using a Weierstrass-style substitution",
-          "answer": "Substituting: \\(\\int1/(5+4(1-t^2)/(1+t^2))\\cdot2/(1+t^2)\\,dt=\\int2/(5(1+t^2)+4(1-t^2))\\,dt=\\int2/(9+t^2)\\,dt\\). Using the standard result \\(\\int1/(a^2+t^2)\\,dt=(1/a)\\arctan(t/a)+C\\) with \\(a=3\\): \\(2\\cdot(1/3)\\arctan(t/3)+C=(2/3)\\arctan((1/3)\\tan(x/2))+C\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Substituting: \\(\\int1/(5+4(1-t^2)/(1+t^2))\\cdot2/(1+t^2)\\,dt=\\int2/(5(1+t^2)+4(1-t^2))\\,dt=\\int2/(9+t^2)\\,dt\\). Using the standard result \\(\\int1/(a^2+t^2)\\,dt=(1/a)\\arctan(t/a)+C\\) with \\(a=3\\): \\(2\\cdot(1/3)\\arctan(t/3)+C=(2/3)\\arctan((1/3)\\tan(x/2))+C\\).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "sinusoid",
-            "amp": 3,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#9)"
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G975405411)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G975405411)"
           }
         },
         {
-          "q": "Evaluate \\(\\int e^x\\cos x\\,dx\\), applying integration by parts twice and solving the resulting equation for the original integral.",
+          "q": "Given the measurements marked directly on the structural truss schematic (IBHL-G992183023) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Integration by parts with a trigonometric-exponential product",
-          "answer": "Let \\(I=\\int e^x\\cos x\\,dx\\). First application: \\(u=\\cos x\\), \\(dv=e^xdx\\), so \\(du=-\\sin x\\,dx\\), \\(v=e^x\\): \\(I=e^x\\cos x+\\int e^x\\sin x\\,dx\\). Second application on \\(\\int e^x\\sin x\\,dx\\): \\(u=\\sin x\\), \\(dv=e^xdx\\): \\(\\int e^x\\sin x\\,dx=e^x\\sin x-\\int e^x\\cos x\\,dx=e^x\\sin x-I\\). Substituting back: \\(I=e^x\\cos x+e^x\\sin x-I\\), so \\(2I=e^x(\\cos x+\\sin x)\\), giving \\(I=e^x(\\cos x+\\sin x)/2+C\\).",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "explanation": "Let \\(I=\\int e^x\\cos x\\,dx\\). First application: \\(u=\\cos x\\), \\(dv=e^xdx\\), so \\(du=-\\sin x\\,dx\\), \\(v=e^x\\): \\(I=e^x\\cos x+\\int e^x\\sin x\\,dx\\). Second application on \\(\\int e^x\\sin x\\,dx\\): \\(u=\\sin x\\), \\(dv=e^xdx\\): \\(\\int e^x\\sin x\\,dx=e^x\\sin x-\\int e^x\\cos x\\,dx=e^x\\sin x-I\\). Substituting back: \\(I=e^x\\cos x+e^x\\sin x-I\\), so \\(2I=e^x(\\cos x+\\sin x)\\), giving \\(I=e^x(\\cos x+\\sin x)/2+C\\).",
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "sinusoid",
-            "amp": 3,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#10)"
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (IBHL-G992183023)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (IBHL-G992183023)"
           }
         },
         {
-          "q": "Find the area of the region enclosed between \\(y=\\sin x\\) and \\(y=\\cos x\\) for \\(\\pi/4\\leq x\\leq5\\pi/4\\) (the interval on which \\(\\sin x\\geq\\cos x\\)).",
+          "q": "A benchmark aerodynamics log (IBHL-642291533) provides the entries shown in the table; determine \\(4\\,h^{-1}(19)\\) for the invertible function \\(h\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Finding the area between two curves using integration",
-          "answer": "Area \\(=\\int_{\\pi/4}^{5\\pi/4}(\\sin x-\\cos x)\\,dx=[-\\cos x-\\sin x]_{\\pi/4}^{5\\pi/4}\\). At \\(x=5\\pi/4\\): \\(-\\cos5\\pi/4-\\sin5\\pi/4=\\sqrt{2}/2+\\sqrt{2}/2=\\sqrt{2}\\). At \\(x=\\pi/4\\): \\(-\\cos\\pi/4-\\sin\\pi/4=-\\sqrt{2}/2-\\sqrt{2}/2=-\\sqrt{2}\\). Area \\(=\\sqrt{2}-(-\\sqrt{2})=2\\sqrt{2}\\).",
+          "answer": "**Answer:** \\(32\\). Because \\(h(8) = 19\\), we have \\(h^{-1}(19) = 8\\). Multiplying by \\(4\\) gives \\(32\\).",
           "explanation": "Area \\(=\\int_{\\pi/4}^{5\\pi/4}(\\sin x-\\cos x)\\,dx=[-\\cos x-\\sin x]_{\\pi/4}^{5\\pi/4}\\). At \\(x=5\\pi/4\\): \\(-\\cos5\\pi/4-\\sin5\\pi/4=\\sqrt{2}/2+\\sqrt{2}/2=\\sqrt{2}\\). At \\(x=\\pi/4\\): \\(-\\cos\\pi/4-\\sin\\pi/4=-\\sqrt{2}/2-\\sqrt{2}/2=-\\sqrt{2}\\). Area \\(=\\sqrt{2}-(-\\sqrt{2})=2\\sqrt{2}\\).",
+          "explain": "Because \\(h(8) = 19\\), we have \\(h^{-1}(19) = 8\\). Multiplying by \\(4\\) gives \\(32\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(x\\)",
               "2",
-              "3"
+              "4",
+              "6",
+              "8"
             ],
             "rows": [
               [
-                "g(x)",
-                "4",
+                "\\(h(x)\\)",
+                "5",
                 "9",
                 "14",
                 "19"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#11)",
-            "caption_ar": "جدول نمط مرجعي (#11)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "4",
-                "9",
-                "14",
-                "19"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (aerodynamics, IBHL-642291533)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (الديناميكا الهوائية، IBHL-642291533)"
           }
         },
         {
-          "q": "A particle's velocity is given by \\(v(t)=t\\cos t\\) metres per second. Find the particle's displacement over the interval \\(0\\leq t\\leq\\pi\\), using integration by parts.",
+          "q": "Referring to the lab apparatus figure (IBHL-G625514921) displaying the slope field for \\(\\dfrac{dy}{dx} = 3(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Finding the area between two curves using integration",
-          "answer": "Displacement \\(=\\int_0^{\\pi}t\\cos t\\,dt\\). Using integration by parts with \\(u=t\\), \\(dv=\\cos t\\,dt\\), so \\(du=dt\\), \\(v=\\sin t\\): \\(\\int t\\cos t\\,dt=t\\sin t-\\int\\sin t\\,dt=t\\sin t+\\cos t+C\\). Evaluating from \\(0\\) to \\(\\pi\\): \\([\\pi\\sin\\pi+\\cos\\pi]-[0\\sin0+\\cos0]=[0-1]-[0+1]=-1-1=-2\\). Displacement \\(=-2\\) metres.",
+          "answer": "**Answer:** \\(-3\\). At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
           "explanation": "Displacement \\(=\\int_0^{\\pi}t\\cos t\\,dt\\). Using integration by parts with \\(u=t\\), \\(dv=\\cos t\\,dt\\), so \\(du=dt\\), \\(v=\\sin t\\): \\(\\int t\\cos t\\,dt=t\\sin t-\\int\\sin t\\,dt=t\\sin t+\\cos t+C\\). Evaluating from \\(0\\) to \\(\\pi\\): \\([\\pi\\sin\\pi+\\cos\\pi]-[0\\sin0+\\cos0]=[0-1]-[0+1]=-1-1=-2\\). Displacement \\(=-2\\) metres.",
+          "explain": "At highlighted coordinates \\((3, 4)\\), \\(\\frac{dy}{dx} = 3(3 - 4) = -3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "sinusoid",
-            "amp": 4,
-            "freq": 2,
-            "phase": 0,
-            "midline": 1,
-            "fnType": "sin",
-            "showMidline": true,
-            "caption": "Periodic Model (#12)"
+            "type": "slope_field",
+            "dydx": "3*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
+              {
+                "x": 3,
+                "y": 4,
+                "label": "P(3, 4)"
+              }
+            ],
+            "caption": "Direction slope field for dy/dx = 3(x - y) with point P (IBHL-G625514921)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (IBHL-G625514921)"
           }
         },
         {
-          "q": "This question has three parts. (a) Use the substitution \\(u=x^2+4\\) to find \\(\\int x/(x^2+4)\\,dx\\). (b) Use integration by parts to find \\(\\int\\arctan x\\,dx\\). (c) Hence, using the result of part (b) and the standard result \\(\\int1/(1+x^2)dx=\\arctan x+C\\), evaluate \\(\\int_0^1\\arctan x\\,dx\\), giving an exact answer in terms of \\(\\pi\\) and \\(\\ln\\).",
+          "q": "From the graphical features displayed in the optical assembly figure (IBHL-G608737302) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Finding the area between two curves using integration",
-          "answer": "(a) \\(u=x^2+4\\), \\(du=2x\\,dx\\): \\(\\int x/(x^2+4)\\,dx=1/2\\int1/u\\,du=1/2\\ln|x^2+4|+C\\). (b) Let \\(u=\\arctan x\\), \\(dv=dx\\), so \\(du=(1/(1+x^2))\\,dx\\), \\(v=x\\): \\(\\int\\arctan x\\,dx=x\\arctan x-\\int x/(1+x^2)\\,dx=x\\arctan x-1/2\\ln(1+x^2)+C\\) (using the result from part (a), with \\(4\\) replaced by \\(1\\)). (c) Evaluating from \\(0\\) to \\(1\\): \\([1\\cdot\\arctan1-1/2\\ln2]-[0-1/2\\ln1]=\\pi/4-1/2\\ln2\\).",
+          "answer": "**Answer:** \\(10\\). Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), giving total area \\(10\\).",
           "explanation": "(a) \\(u=x^2+4\\), \\(du=2x\\,dx\\): \\(\\int x/(x^2+4)\\,dx=1/2\\int1/u\\,du=1/2\\ln|x^2+4|+C\\). (b) Let \\(u=\\arctan x\\), \\(dv=dx\\), so \\(du=(1/(1+x^2))\\,dx\\), \\(v=x\\): \\(\\int\\arctan x\\,dx=x\\arctan x-\\int x/(1+x^2)\\,dx=x\\arctan x-1/2\\ln(1+x^2)+C\\) (using the result from part (a), with \\(4\\) replaced by \\(1\\)). (c) Evaluating from \\(0\\) to \\(1\\): \\([1\\cdot\\arctan1-1/2\\ln2]-[0-1/2\\ln1]=\\pi/4-1/2\\ln2\\).",
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(1, 2, 3, 4\\), giving total area \\(10\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              0,
+              4.5
             ],
             "yl": [
-              -4,
-              4
+              0,
+              7
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 1,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
-                "label": "y = f(x)"
+                "fn": "1*x + 1",
+                "color": "#2563eb",
+                "label": "f(x) = 1x + 1"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "riemann": {
+              "expr": "1*x + 1",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (IBHL-G608737302)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (IBHL-G608737302)"
           }
         },
         {
-          "q": "Given the reduction formula \\(I_n=\\int x^ne^x\\,dx=x^ne^x-nI_{n-1}\\) (obtained via integration by parts), and that \\(I_0=e^x+C\\), use it to find \\(I_2=\\int x^2e^x\\,dx\\).",
+          "q": "Inspect the photonics values listed across the table (IBHL-591958676); approximate \\(\\int_{2}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Reduction formulas",
-          "answer": "\\(I_1=x^1e^x-1\\cdot I_0=xe^x-e^x\\) (ignoring the constant until the final step). \\(I_2=x^2e^x-2I_1=x^2e^x-2(xe^x-e^x)=x^2e^x-2xe^x+2e^x+C=(x^2-2x+2)e^x+C\\), matching the result found earlier in this worksheet by direct repeated integration by parts.",
+          "answer": "**Answer:** \\(32\\). Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{2}{2}(8 + 12) = 12 + 20 = 32\\).",
           "explanation": "\\(I_1=x^1e^x-1\\cdot I_0=xe^x-e^x\\) (ignoring the constant until the final step). \\(I_2=x^2e^x-2I_1=x^2e^x-2(xe^x-e^x)=x^2e^x-2xe^x+2e^x+C=(x^2-2x+2)e^x+C\\), matching the result found earlier in this worksheet by direct repeated integration by parts.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(4 + 8) + \\frac{2}{2}(8 + 12) = 12 + 20 = 32\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(t\\)",
               "2",
-              "3"
+              "4",
+              "6"
             ],
             "rows": [
               [
-                "g(x)",
-                "1",
-                "3",
-                "5",
-                "7"
+                "\\(R(t)\\)",
+                "4",
+                "8",
+                "12"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#14)",
-            "caption_ar": "جدول نمط مرجعي (#14)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "3",
-                "5",
-                "7"
-              ]
-            ]
+            "caption": "Sampled rate table R(t) on [2, 6] (photonics, IBHL-591958676)",
+            "caption_ar": "جدول المعدل (الفوتونيات، IBHL-591958676)"
           }
         },
         {
-          "q": "The region bounded by \\(y=\\sqrt{x}\\), the \\(x\\)-axis, and \\(x=4\\) is rotated \\(360^\\circ\\) about the \\(x\\)-axis. Find the volume of the resulting solid, using \\(V=\\pi\\int_0^4y^2\\,dx\\).",
+          "q": "Based on the specimen plot visual model shown (IBHL-G575182057) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Volume of revolution using integration",
-          "answer": "Since \\(y=\\sqrt{x}\\), \\(y^2=x\\). \\(V=\\pi\\int_0^4x\\,dx=\\pi[x^2/2]_0^4=\\pi(8-0)=8\\pi\\) cubic units.",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "Since \\(y=\\sqrt{x}\\), \\(y^2=x\\). \\(V=\\pi\\int_0^4x\\,dx=\\pi[x^2/2]_0^4=\\pi(8-0)=8\\pi\\) cubic units.",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -448,19 +519,34 @@
               3
             ],
             "yl": [
-              -4,
-              4
+              -2,
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#15)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (IBHL-G575182057)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (IBHL-G575182057)"
           }
         }
       ]

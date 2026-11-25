@@ -36,212 +36,260 @@
           }
         },
         {
-          "q": "State the order of \\(\\left(\\frac{dy}{dx}\\right)^3 + xy = 0\\), and note that order depends only on the highest derivative, not on any power of it.",
+          "q": "The table summarizes measurements from a acoustics lab evaluation (ODES-581146652); using these entries, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Order and verifying solutions",
-          "answer": "First order — the equation involves only \\(y'\\) (cubed), no higher derivative.",
+          "answer": "**Answer:** \\(11\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(5) = 11\\).",
           "explanation": "First order — the equation involves only \\(y'\\) (cubed), no higher derivative.",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 6 + 1(5) = 11\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
             ],
             "rows": [
               [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
+                "0",
+                "2",
+                "3",
+                "3"
               ],
               [
-                "f'(x)",
-                "5",
+                "1",
                 "3",
-                "5",
-                "3"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Selected Values Table (#3)",
-            "caption_ar": "جدول القيم المختارة (#3)",
-            "headers_ar": [
-              "x",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "5",
-                "9",
-                "13",
-                "17"
+                "6",
+                "5"
               ],
               [
-                "f'(x)",
-                "5",
-                "3",
-                "5",
-                "3"
+                "2",
+                "4",
+                "?",
+                "\\(\\dots\\)"
               ]
-            ]
+            ],
+            "caption": "Euler integration schedule with step h = 1 (acoustics lab, ODES-581146652)",
+            "caption_ar": "جدول خطوات أويلر (مختبر الصوت، ODES-581146652)"
           }
         },
         {
-          "q": "Verify that \\(y = e^{2x}\\) is a solution of \\(y' - 2y = 0\\).",
+          "q": "Based on the orbital sector visual model shown (ODES-G597925271) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Order and verifying solutions",
-          "answer": "\\(y' = 2e^{2x}\\), so \\(y' - 2y = 2e^{2x} - 2e^{2x} = 0\\). Yes, it is a solution.",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(y' = 2e^{2x}\\), so \\(y' - 2y = 2e^{2x} - 2e^{2x} = 0\\). Yes, it is a solution.",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -4,
-              4
-            ],
-            "yl": [
-              -5,
+              -1,
               5
             ],
-            "xStep": 2,
-            "yStep": 2,
+            "yl": [
+              -1,
+              15
+            ],
+            "xStep": 1,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "-0.5*x^2 + 3",
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G597925271)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G597925271)"
           }
         },
         {
-          "q": "Find the equilibrium (constant) solutions of \\(\\frac{dy}{dx} = y(3-y)\\).",
+          "q": "Using the labeled measurements in the turbine profile diagram (ODES-G547592421) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Equilibrium solutions and qualitative behavior",
-          "answer": "Set \\(y(3-y)=0\\): the equilibrium solutions are \\(y=0\\) and \\(y=3\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "Set \\(y(3-y)=0\\): the equilibrium solutions are \\(y=0\\) and \\(y=3\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ],
-            "values": [
-              5,
-              8,
-              6,
-              12
-            ],
-            "xLabel": "Component",
-            "yLabel": "Value",
-            "caption": "Quantity Comparison Chart (#5)"
-          }
-        },
-        {
-          "q": "For \\(\\frac{dy}{dx} = y(3-y)\\), determine whether \\(y=0\\) and \\(y=3\\) are stable or unstable by checking the sign of \\(\\frac{dy}{dx}\\) just above and below each.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Equilibrium solutions and qualitative behavior",
-          "answer": "For \\(0<y<3\\): \\(y(3-y)>0\\), so solutions increase away from \\(y=0\\) and toward \\(y=3\\). For \\(y>3\\): \\(y(3-y)<0\\), so solutions decrease back toward \\(y=3\\). Hence \\(y=0\\) is unstable and \\(y=3\\) is stable.",
-          "explanation": "For \\(0<y<3\\): \\(y(3-y)>0\\), so solutions increase away from \\(y=0\\) and toward \\(y=3\\). For \\(y>3\\): \\(y(3-y)<0\\), so solutions decrease back toward \\(y=3\\). Hence \\(y=0\\) is unstable and \\(y=3\\) is stable.",
-          "figure": {
-            "type": "table",
-            "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows": [
-              [
-                "g(x)",
-                "3",
-                "8",
-                "13",
-                "18"
-              ]
-            ],
-            "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#6)",
-            "caption_ar": "جدول نمط مرجعي (#6)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "3",
-                "8",
-                "13",
-                "18"
-              ]
-            ]
-          }
-        },
-        {
-          "q": "Find the equilibrium solutions of \\(\\frac{dy}{dx} = (y-2)(y+1)\\) and classify each as stable or unstable.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Equilibrium solutions and qualitative behavior",
-          "answer": "Equilibria: \\(y=2\\) and \\(y=-1\\). For \\(-1<y<2\\), \\((y-2)(y+1)<0\\), so solutions decrease toward \\(y=-1\\): \\(y=-1\\) is stable. For \\(y>2\\), the product is positive, pushing solutions away: \\(y=2\\) is unstable.",
-          "explanation": "Equilibria: \\(y=2\\) and \\(y=-1\\). For \\(-1<y<2\\), \\((y-2)(y+1)<0\\), so solutions decrease toward \\(y=-1\\): \\(y=-1\\) is stable. For \\(y>2\\), the product is positive, pushing solutions away: \\(y=2\\) is unstable.",
-          "figure": {
-            "type": "slope_field",
-            "dydx": "-x/y",
+            "type": "fn",
             "xl": [
               -3,
               3
             ],
             "yl": [
               -3,
-              3
+              6
             ],
-            "step": 1,
-            "caption": "Slope field dy/dx = -x/y (#7)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G547592421)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G547592421)"
           }
         },
         {
-          "q": "Find the general solution of \\(\\frac{dy}{dx} = 2x\\), then find the particular solution satisfying \\(y(1)=3\\).",
+          "q": "Given the structured quality audit observations displayed in the table (ODES-564369033), approximate \\(\\int_{0}^{6} R(t)\\,dt\\) using a trapezoidal sum with the two subintervals indicated.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "answer": "**Answer:** \\(54\\). Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{4}{2}(8 + 12) = 14 + 40 = 54\\).",
+          "explanation": "For \\(0<y<3\\): \\(y(3-y)>0\\), so solutions increase away from \\(y=0\\) and toward \\(y=3\\). For \\(y>3\\): \\(y(3-y)<0\\), so solutions decrease back toward \\(y=3\\). Hence \\(y=0\\) is unstable and \\(y=3\\) is stable.",
+          "explain": "Trapezoidal sum \\(= \\frac{2}{2}(6 + 8) + \\frac{4}{2}(8 + 12) = 14 + 40 = 54\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "table",
+            "headers": [
+              "\\(t\\)",
+              "0",
+              "2",
+              "6"
+            ],
+            "rows": [
+              [
+                "\\(R(t)\\)",
+                "6",
+                "8",
+                "12"
+              ]
+            ],
+            "orientation": "horizontal",
+            "caption": "Sampled rate table R(t) on [0, 6] (quality audit, ODES-564369033)",
+            "caption_ar": "جدول المعدل (تدقيق الجودة، ODES-564369033)"
+          }
+        },
+        {
+          "q": "Given the measurements marked directly on the harmonic trace schematic (ODES-G514037190) showing \\(g(x) = a \\cdot 2^x + d\\) with horizontal asymptote and \\(y\\)-intercept labeled. Using the figure, evaluate \\(g(2)\\).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "answer": "**Answer:** \\(15\\). From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "explanation": "Equilibria: \\(y=2\\) and \\(y=-1\\). For \\(-1<y<2\\), \\((y-2)(y+1)<0\\), so solutions decrease toward \\(y=-1\\): \\(y=-1\\) is stable. For \\(y>2\\), the product is positive, pushing solutions away: \\(y=2\\) is unstable.",
+          "explain": "From the horizontal asymptote \\(d = 3\\) and \\(y\\)-intercept \\((0, 6)\\), \\(a = 6 - 3 = 3\\), so \\(g(2) = 3(2^2) + 3 = 15\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -2,
+              3
+            ],
+            "yl": [
+              2,
+              17
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "3*2^x + 3",
+                "color": "#2563eb",
+                "label": "y = g(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": 6,
+                "label": "(0, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Exponential growth curve with asymptote y = 3 (ODES-G514037190)",
+            "caption_ar": "منحنى أسي مع خط التقارب الأفقي (ODES-G514037190)"
+          }
+        },
+        {
+          "q": "Based on the bridge arch visual model shown (ODES-G530814795) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "General versus particular solutions",
-          "answer": "General solution: \\(y=x^2+C\\) (this one is already separated, with \\(\\frac{dy}{dx}\\) depending only on \\(x\\)). Since \\(y(1)=3\\): \\(1+C=3 \\Rightarrow C=2\\). Particular solution: \\(y=x^2+2\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "General solution: \\(y=x^2+C\\) (this one is already separated, with \\(\\frac{dy}{dx}\\) depending only on \\(x\\)). Since \\(y(1)=3\\): \\(1+C=3 \\Rightarrow C=2\\). Particular solution: \\(y=x^2+2\\).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "bars",
-            "labels": [
-              "A",
-              "B",
-              "C",
-              "D"
+            "type": "fn",
+            "xl": [
+              -1,
+              5
             ],
-            "values": [
-              5,
-              8,
-              6,
-              11
+            "yl": [
+              -3,
+              6
             ],
-            "xLabel": "Component",
-            "yLabel": "Value",
-            "caption": "Quantity Comparison Chart (#8)"
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (ODES-G530814795)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (ODES-G530814795)"
           }
         }
       ]

@@ -30,33 +30,32 @@
       "number": 2,
       "difficulty": "Basic",
       "question": {
-        "en": "A fair coin is tossed 3 times. Let X be the number of heads obtained. What is the probability that X = 2?",
+        "en": "The table summarizes measurements from a cohort study evaluation (ASLEVEL-723); using these entries, modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>This is a binomial distribution scenario. The number of trials is \\(n=3\\) (the number of coin tosses). The probability of success (getting a head) in a single trial is \\(p = \\frac{1}{2}\\), and the probability of failure (getting a tail) is \\(q = 1-p = \\frac{1}{2}\\). We want to find the probability of getting exactly \\(k=2\\) heads.</p><p>The binomial probability formula is \\(P(X=k) = \\binom{n}{k} p^k q^{n-k}\\).</p><p>Substituting the values:<br>\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^{3-2}\\)<br>\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^1\\)</p><p>First, calculate the binomial coefficient \\(\\binom{3}{2}\\). This represents the number of ways to choose 2 heads from 3 tosses:<br>\\(\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = \\frac{3!}{2!1!} = \\frac{3 \\times 2 \\times 1}{(2 \\times 1) \\times 1} = 3\\).</p><p>Now, substitute this back into the probability formula:<br>\\(P(X=2) = 3 \\times (\\frac{1}{4}) \\times (\\frac{1}{2})\\)<br>\\(P(X=2) = 3 \\times \\frac{1}{8}\\)<br>\\(P(X=2) = \\frac{3}{8}\\).</p><p>Alternatively, we can list all possible outcomes for 3 coin tosses (H for heads, T for tails):<br>HHH, HHT, HTH, THH, HTT, THT, TTH, TTT.<br>There are \\(2^3 = 8\\) total possible outcomes.</p><p>The outcomes with exactly 2 heads are:<br>HHT, HTH, THH.<br>There are 3 such outcomes.</p><p>Therefore, the probability of getting exactly 2 heads is \\(\\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} = \\frac{3}{8}\\).</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{2}{1} = 2\\), so \\(E(3) = 4 \\cdot 2 = 8\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(8\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "0",
+          "1",
+          "2"
         ],
-        "yl": [
-          -4,
-          4
+        "rows": [
+          [
+            "\\(E(x)\\)",
+            "1",
+            "2",
+            "4"
+          ]
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "x^3 - 3*x",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#2)",
-        "caption": "Reference graph y = f(x)"
+        "orientation": "horizontal",
+        "caption": "Exponential growth values table (cohort study, ASLEVEL-723)",
+        "caption_ar": "جدول قيم نمو أسي (دراسة الفوج، ASLEVEL-723)"
       }
     },
     {
@@ -140,30 +139,63 @@
       "number": 5,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Solve the inequality \\(x^2+x-20 \\gt 0\\).",
-        "ar": "حل المتباينة \\(x^2+x-20 \\gt 0\\)."
+        "en": "Based on the acoustic chamber visual model shown (ASLEVEL-G812), compute the hypotenuse length \\(AB\\) from the side lengths labeled on right triangle \\(ABC\\).",
+        "ar": "ادرس التمثيل المرئي لـ غرفة الصوتيات المعروض (ASLEVEL-G812)، أوجد طول الضلع المجهول في المثلث القائم \\(ABC\\) من القياسات الموضحة على الرسم."
       },
       "solution": {
-        "en": "<p>The quadratic factorises as \\((x-4)(x+5)\\) with roots \\(-5\\) and \\(4\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -5 \\text{ or } x \\gt 4\\).</p>",
+        "en": "<p>By the Pythagorean theorem using legs \\(21\\) and \\(72\\) shown, \\(AB = \\sqrt{21^2 + 72^2} = 75\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(75\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "A",
-          "B",
+        "type": "triangle",
+        "verts": [
           "C",
-          "D"
+          "B",
+          "A"
         ],
-        "values": [
-          3,
-          6,
-          6,
-          11
+        "labels": [
+          "C",
+          "B",
+          "A"
         ],
-        "xLabel": "Component",
-        "yLabel": "Value",
-        "caption": "Quantity Comparison Chart (#5)"
+        "rightAngle": "C",
+        "rightAt": "C",
+        "sides": [
+          "?",
+          "72",
+          "21"
+        ],
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            21,
+            0
+          ],
+          [
+            0,
+            72
+          ]
+        ],
+        "coords": [
+          [
+            0,
+            0
+          ],
+          [
+            21,
+            0
+          ],
+          [
+            0,
+            72
+          ]
+        ],
+        "notToScale": true,
+        "caption": "Right triangle ABC with angle C = 90 deg (ASLEVEL-G812)",
+        "caption_ar": "مثلث قائم الزاوية (ASLEVEL-G812)"
       }
     },
     {
@@ -199,50 +231,37 @@
       "number": 7,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A particle of mass 5 kg moves under the action of a variable force \\(\\mathbf{F}\\) N. The force is given by \\(\\mathbf{F} = (3x^2 - 2x) \\mathbf{i}\\) N, where \\(x\\) is the displacement in metres from a fixed origin O. The particle moves from \\(x = 2\\) m to \\(x = 4\\) m. Find the work done by the force \\(\\mathbf{F}\\) during this displacement.",
+        "en": "The accompanying figure illustrates a fluid channel configuration (ASLEVEL-G871); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The work done by a variable force \\(\\mathbf{F}\\) when a particle moves from position \\(x_1\\) to \\(x_2\\) is given by the integral \\(W = \\int_{x_1}^{x_2} \\mathbf{F} \\cdot d\\mathbf{r}\\).<br>In this case, the force is \\(\\mathbf{F} = (3x^2 - 2x) \\mathbf{i}\\) and the displacement is along the x-axis, so \\(d\\mathbf{r} = dx \\mathbf{i}\\).<br>The particle moves from \\(x_1 = 2\\) m to \\(x_2 = 4\\) m.<br>Therefore, the work done is:<br>\\(W = \\int_{2}^{4} (3x^2 - 2x) dx\\)<br>Integrating term by term:<br>\\(W = \\left[ \\frac{3x^3}{3} - \\frac{2x^2}{2} \\right]_{2}^{4}\\)<br>\\(W = \\left[ x^3 - x^2 \\right]_{2}^{4}\\)<br>Now, substitute the limits of integration:<br>\\(W = (4^3 - 4^2) - (2^3 - 2^2)\\)<br>\\(W = (64 - 16) - (8 - 4)\\)<br>\\(W = 48 - 4\\)<br>\\(W = 44\\) J.</p><p>Common algebraic traps include incorrect integration, incorrect substitution of limits, or forgetting to subtract the lower limit from the upper limit.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(6 + 6 + 9 + 4 = 25\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(25\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 6
+          },
+          {
+            "label": "10-19",
+            "count": 6
+          },
+          {
+            "label": "20-29",
+            "count": 9
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "rows": [
-          [
-            "g(x)",
-            "5",
-            "8",
-            "11",
-            "14"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#7)",
-        "caption_ar": "جدول نمط مرجعي (#7)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "8",
-            "11",
-            "14"
-          ]
-        ]
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (ASLEVEL-G871)",
+        "caption_ar": "المدرج التكراري للفئات (ASLEVEL-G871)"
       }
     },
     {
@@ -277,113 +296,89 @@
       "number": 9,
       "difficulty": "Basic",
       "question": {
-        "en": "A particle of mass 3 kg is at rest on a smooth horizontal surface. A horizontal force of magnitude P N is applied to the particle, causing it to accelerate at a rate of 4 m/s\\(^2\\). Find the value of P.",
+        "en": "Inspect the genetics values listed across the table (ASLEVEL-930); evaluate \\(f(g(3)) + 4\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>According to Newton's Second Law of Motion, the net force acting on an object is equal to the product of its mass and acceleration, i.e., F = ma. In this case, the mass of the particle is m = 3 kg and its acceleration is a = 4 m/s\\(^2\\). The applied force P is the net force acting on the particle, as the surface is smooth and horizontal, meaning there are no other horizontal forces to consider. Therefore, P = ma = (3 kg) * (4 m/s\\(^2\\)) = 12 N. Thus, the value of P is 12 N.</p>",
+        "en": "<p>From the table, \\(g(3) = 4\\) and \\(f(4) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "triangle",
-        "verts": [
-          "C",
-          "B",
-          "A"
+        "type": "table",
+        "headers": [
+          "\\(x\\)",
+          "1",
+          "2",
+          "3",
+          "4"
         ],
-        "labels": [
-          "C",
-          "B",
-          "A"
-        ],
-        "rightAngle": "C",
-        "rightAt": "C",
-        "sides": [
-          "R",
-          "F_y",
-          "F_x"
-        ],
-        "vertices": [
+        "rows": [
           [
-            0,
-            0
+            "\\(f(x)\\)",
+            "3",
+            "5",
+            "10",
+            "9"
           ],
           [
-            4,
-            0
-          ],
-          [
-            0,
-            3
+            "\\(g(x)\\)",
+            "2",
+            "3",
+            "4",
+            "1"
           ]
         ],
-        "coords": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "notToScale": true,
-        "caption": "Component Triangle (not drawn to scale).",
-        "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+        "orientation": "horizontal",
+        "caption": "Selected values of functions f and g (genetics, ASLEVEL-930)",
+        "caption_ar": "قيم مختارة للدالتين (الوراثة، ASLEVEL-930)"
       }
     },
     {
       "number": 10,
       "difficulty": "Basic",
       "question": {
-        "en": "A particle of mass \\(5\\) kg slides down a rough plane inclined at \\(30^\\circ\\) to the horizontal, experiencing a constant friction force of \\(0\\) N. Taking \\(g=9.8\\) m/s\\(^2\\), find its acceleration down the slope.",
+        "en": "Referring to the waveguide design figure (ASLEVEL-G959) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\(W=mg=5\\times9.8=49.00\\) N. Component along slope \\(=W\\sin30^\\circ\\approx24.50\\) N. Net force \\(\\approx24.50\\) N. \\(a=F/m\\approx4.90\\) m/s\\(^2\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(13\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "type": "fn",
+        "xl": [
+          -1,
+          5
         ],
-        "rows": [
-          [
-            "g(x)",
-            "5",
-            "14",
-            "23",
-            "32"
-          ]
+        "yl": [
+          -1,
+          15
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#10)",
-        "caption_ar": "جدول نمط مرجعي (#10)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "xStep": 1,
+        "yStep": 5,
+        "fns": [
+          {
+            "fn": "3*(x - (2))^2 + (1)",
+            "color": "#2563eb",
+            "label": "y = f(x)"
+          }
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "14",
-            "23",
-            "32"
-          ]
-        ]
+        "pts": [
+          {
+            "x": 2,
+            "y": 1,
+            "label": "(2, 1)"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "label": "(3, 4)"
+          }
+        ],
+        "xlabel": "x",
+        "ylabel": "y",
+        "caption": "Plotted quadratic graph with vertex and point (ASLEVEL-G959)",
+        "caption_ar": "تمثيل بياني لدالة تربيعية (ASLEVEL-G959)"
       }
     },
     {
@@ -451,63 +446,37 @@
       "number": 12,
       "difficulty": "Basic",
       "question": {
-        "en": "A particle moves along a straight line. Its velocity, \\(v\\) m/s, at time \\(t\\) seconds is given by \\(v = 3t - 2\\). Find the displacement of the particle during the first 4 seconds of its motion.",
+        "en": "The accompanying figure illustrates a lab apparatus configuration (ASLEVEL-G1025); using it showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement \\(s\\) is given by:<br>\\[s = \\int v \\, dt\\]<br>In this case, \\(v = 3t - 2\\).<br>\\[s = \\int (3t - 2) \\, dt\\]<br>Integrating, we get:<br>\\[s = \\frac{3}{2}t^2 - 2t + C\\]<br>To find the displacement during the first 4 seconds, we evaluate the definite integral from \\(t=0\\) to \\(t=4\\). We can assume \\(C=0\\) for calculating the change in displacement from \\(t=0\\).<br>\\[s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4\\]<br>\\[s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)\\]<br>\\[s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)\\]<br>\\[s(4) - s(0) = (3 \\times 8 - 8)\\]<br>\\[s(4) - s(0) = (24 - 8)\\]<br>\\[s(4) - s(0) = 16\\]<br>Therefore, the displacement of the particle during the first 4 seconds is 16 m.</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(4 + 8 + 8 + 4 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "triangle",
-        "verts": [
-          "C",
-          "B",
-          "A"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 4
+          },
+          {
+            "label": "10-19",
+            "count": 8
+          },
+          {
+            "label": "20-29",
+            "count": 8
+          },
+          {
+            "label": "30-39",
+            "count": 4
+          }
         ],
-        "labels": [
-          "C",
-          "B",
-          "A"
-        ],
-        "rightAngle": "C",
-        "rightAt": "C",
-        "sides": [
-          "R",
-          "F_y",
-          "F_x"
-        ],
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "coords": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "notToScale": true,
-        "caption": "Component Triangle (not drawn to scale).",
-        "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (ASLEVEL-G1025)",
+        "caption_ar": "المدرج التكراري للفئات (ASLEVEL-G1025)"
       }
     },
     {
@@ -536,28 +505,45 @@
       "number": 14,
       "difficulty": "Basic",
       "question": {
-        "en": "A committee of 3 people is to be selected from a group of 5 people. The number of ways to form this committee is given by the combination formula \\(^nC_r = \\frac{n!}{r!(n-r)!}\\). How many different committees can be formed?",
+        "en": "Based strictly on the tabulated wind tunnel observations (ASLEVEL-1084), for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The problem requires us to find the number of combinations of selecting 3 people from a group of 5. This is a direct application of the combination formula \\(^nC_r\\), where \\(n\\) is the total number of items to choose from, and \\(r\\) is the number of items to choose. In this case, \\(n=5\\) and \\(r=3\\).</p><p>Using the formula: \\(^5C_3 = \\frac{5!}{3!(5-3)!} = \\frac{5!}{3!2!} = \\frac{5 \\times 4 \\times 3!}{3! \\times (2 \\times 1)} = \\frac{5 \\times 4}{2} = \\frac{20}{2} = 10\\).</p><p>Therefore, there are 10 different committees that can be formed. The calculation \\(5 \\times 4 \\times 3 = 60\\) represents the number of permutations (where order matters), not combinations. \\(^5C_3\\) calculation is correct.</p>",
+        "en": "<p>There are \\(19\\) participants in North (\\(10 + 9\\)), of whom \\(10\\) recorded Transit, giving \\(\\frac{10}{19}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{10}{19}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "venn",
-        "sets": [
-          {
-            "label": "A",
-            "only": 15
-          },
-          {
-            "label": "B",
-            "only": 12
-          }
+        "type": "two_way_table",
+        "corner": "",
+        "rows": [
+          "North",
+          "South",
+          "Total"
         ],
-        "both": 7,
-        "outside": 5,
-        "caption": "Set Relationship Diagram (#14)"
+        "cols": [
+          "Transit",
+          "Drive",
+          "Total"
+        ],
+        "data": [
+          [
+            "10",
+            "9",
+            19
+          ],
+          [
+            "11",
+            "5",
+            16
+          ],
+          [
+            21,
+            14,
+            35
+          ]
+        ],
+        "caption": "Commuter Survey Summary (ASLEVEL-1084)",
+        "caption_ar": "ملخص النتائج (ASLEVEL-1084)"
       }
     },
     {
@@ -583,50 +569,45 @@
       "number": 16,
       "difficulty": "Basic",
       "question": {
-        "en": "The first three terms of the binomial expansion of \\((1+kx)^n\\) are \\(1 + 6x + 12x^2\\). Find the value of \\(k\\).",
+        "en": "Given the measurements marked directly on the acoustic chamber schematic (ASLEVEL-G1136) showing a rectangle with labeled side lengths. Find its perimeter.",
         "ar": null
       },
       "solution": {
-        "en": "<p>The binomial expansion of \\((1+x)^n\\) is given by \\(1 + nx + \\frac{n(n-1)}{2!}x^2 + \\dots\\).</p><p>For the given expansion \\((1+kx)^n\\), we can substitute \\(y = kx\\) to get \\((1+y)^n\\). The first three terms of the expansion are \\(1 + ny + \\frac{n(n-1)}{2!}y^2 + \\dots\\). Substituting \\(y=kx\\) back, we have:</p><p>\\(1 + n(kx) + \\frac{n(n-1)}{2!}(kx)^2 + \\dots\\)</p><p>\\(1 + nkx + \\frac{n(n-1)}{2!}k^2x^2 + \\dots\\)</p><p>We are given that the first three terms are \\(1 + 6x + 12x^2\\). Comparing the coefficients:</p><p>1. Coefficient of \\(x\\): \\(nk = 6\\)<br>2. Coefficient of \\(x^2\\): \\(\\frac{n(n-1)}{2}k^2 = 12\\)</p><p>From equation (1), \\(n = \\frac{6}{k}\\).<br>Substitute this into equation (2):</p><p>\\(\\frac{\\frac{6}{k}(\\frac{6}{k}-1)}{2}k^2 = 12\\)</p><p>\\(\\frac{6k^2}{2k}(\\frac{6-k}{k}) = 12\\)</p><p>\\(3k(\\frac{6-k}{k}) = 12\\)</p><p>\\(3(6-k) = 12\\)</p><p>\\(18 - 3k = 12\\)</p><p>\\(3k = 18 - 12\\)</p><p>\\(3k = 6\\)</p><p>\\(k = 2\\)</p><p>With \\(k=2\\), we can find \\(n\\): \\(n = \\frac{6}{2} = 3\\). Let's check this with the \\(x^2\\) coefficient: \\(\\frac{3(3-1)}{2}(2^2) = \\frac{3 \\times 2}{2} \\times 4 = 3 \\times 4 = 12\\), which matches the given expansion.</p>",
+        "en": "<p>Reading length \\(5\\) and width \\(5\\) from the rectangle, perimeter \\(= 2(5 + 5) = 20\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(20\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows": [
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
           [
-            "g(x)",
-            "1",
-            "7",
-            "13",
-            "19"
+            0,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            5
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#16)",
-        "caption_ar": "جدول نمط مرجعي (#16)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+        "w": 5,
+        "h": 5,
+        "sides": [
+          "5",
+          "5",
+          "5",
+          "5"
         ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "7",
-            "13",
-            "19"
-          ]
-        ]
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (ASLEVEL-G1136)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (ASLEVEL-G1136)"
       }
     },
     {
@@ -669,63 +650,29 @@
       "number": 18,
       "difficulty": "Basic",
       "question": {
-        "en": "A particle in equilibrium is acted on by three concurrent forces. Two of the forces have equal magnitude \\(15\\) N and act symmetrically either side of the third force's line of action. If the angle between each of the two equal forces and the third force is \\(120^\\circ\\), find the magnitude of the third force.",
+        "en": "From the plotted reservoir profile figure above (ASLEVEL-G1202) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>By symmetry (each pair at \\(120^\\circ\\)), the third force balances the resultant of the two equal forces: \\(F_3=F_1=15\\) N (standard \\(120^\\circ\\)-\\(120^\\circ\\)-\\(120^\\circ\\) symmetric equilibrium).</p>",
+        "en": "<p>Counting each disjoint region once yields \\(|A \\cup B| = 9 + 3 + 6 = 18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "triangle",
-        "verts": [
-          "C",
-          "B",
-          "A"
+        "type": "venn",
+        "sets": [
+          {
+            "label": "A",
+            "only": 9
+          },
+          {
+            "label": "B",
+            "only": 6
+          }
         ],
-        "labels": [
-          "C",
-          "B",
-          "A"
-        ],
-        "rightAngle": "C",
-        "rightAt": "C",
-        "sides": [
-          "R",
-          "F_y",
-          "F_x"
-        ],
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "coords": [
-          [
-            0,
-            0
-          ],
-          [
-            4,
-            0
-          ],
-          [
-            0,
-            3
-          ]
-        ],
-        "notToScale": true,
-        "caption": "Component Triangle (not drawn to scale).",
-        "caption_ar": "مثلث المركبات (الرسم ليس على القياس)."
+        "both": 3,
+        "outside": 4,
+        "caption": "Venn count diagram of sets A and B (ASLEVEL-G1202)",
+        "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G1202)"
       }
     },
     {
@@ -777,165 +724,187 @@
       "number": 21,
       "difficulty": "Intermediate",
       "question": {
-        "en": "The points A, B, and C have coordinates A(2, 5), B(k, 1), and C(8, -3). If A, B, and C are collinear, find the value of \\(k\\).",
+        "en": "Inspect the survey trial values listed across the table (ASLEVEL-1277); showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
         "ar": null
       },
       "solution": {
-        "en": "<p>For three points A, B, and C to be collinear, the gradient of the line segment AB must be equal to the gradient of the line segment BC (or AC).</p><p>The gradient formula between two points \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is given by \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\).</p><p>Gradient of AB, \\(m_{AB} = \\frac{1 - 5}{k - 2} = \\frac{-4}{k - 2}\\).</p><p>Gradient of BC, \\(m_{BC} = \\frac{-3 - 1}{8 - k} = \\frac{-4}{8 - k}\\).</p><p>Equating the gradients:<br>\\(\\frac{-4}{k - 2} = \\frac{-4}{8 - k}\\)<br>Since the numerators are equal and non-zero, the denominators must be equal:<br>\\(k - 2 = 8 - k\\)<br>Add \\(k\\) to both sides:<br>\\(2k - 2 = 8\\)<br>Add 2 to both sides:<br>\\(2k = 10\\)<br>Divide by 2:<br>\\(k = 5\\)</p><p>Common algebraic trap: A student might incorrectly assume that \\(k-2 = -(8-k)\\) leading to \\(k-2 = -8+k\\) which has no solution. Alternatively, cross-multiplying and making an error in expansion is also a pitfall.</p>",
+        "en": "<p>Weighted sum \\(= 2(4) + 4(5) + 6(3) + 8(1) = 54\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(54\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "numberline",
-        "min": -5,
-        "max": 5,
-        "step": 1,
-        "pts": [
-          {
-            "x": -2,
-            "open": false,
-            "label": "p"
-          },
-          {
-            "x": 3,
-            "open": false,
-            "label": "q"
-          }
+        "type": "table",
+        "headers": [
+          "Value \\(x\\)",
+          "Frequency"
         ],
-        "caption": "Real-Line Scale (#21)"
+        "rows": [
+          [
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
+          ]
+        ],
+        "caption": "Frequency distribution summary (survey trial, ASLEVEL-1277)",
+        "caption_ar": "جدول التوزيع التكراري (تجربة المسح، ASLEVEL-1277)",
+        "headers_ar": [
+          "القيمة \\(x\\)",
+          "التكرار"
+        ],
+        "rows_ar": [
+          [
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
+          ]
+        ]
       }
     },
     {
       "number": 22,
       "difficulty": "Basic",
       "question": {
-        "en": "A factory tests 30 independent components, each with a fixed probability of being defective; \\(X\\) is the number of defective components. Is \\(X\\) binomially distributed?",
+        "en": "Using the labeled measurements in the antenna pattern diagram (ASLEVEL-G1320) showing a sinusoidal wave with dashed midline \\(y = 5\\) and labeled peak. What is the peak-to-trough range (maximum minus minimum)?",
         "ar": null
       },
       "solution": {
-        "en": "<p>The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>From midline \\(5\\) to peak \\(7\\), amplitude is \\(A = 7 - 5 = 2\\), so peak-to-trough range equals \\(2A = 4\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(4\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "two_way_table",
-        "corner": "",
-        "rows": [
-          "Group I",
-          "Group II",
-          "Total"
+        "type": "sinusoid",
+        "amp": 2,
+        "freq": 1,
+        "phase": 0,
+        "midline": 5,
+        "fnType": "sin",
+        "xl": [
+          0,
+          6.28
         ],
-        "cols": [
-          "Outcome A",
-          "Outcome B",
-          "Total"
+        "yl": [
+          2,
+          8
         ],
-        "data": [
-          [
-            "17",
-            "19",
-            36
-          ],
-          [
-            "19",
-            "27",
-            46
-          ],
-          [
-            36,
-            46,
-            82
-          ]
+        "pts": [
+          {
+            "x": 1.57,
+            "y": 7,
+            "label": "max=7"
+          }
         ],
-        "caption": "Reference Summary Table (#22)",
-        "caption_ar": "جدول ملخص البيانات (#22)",
-        "_totals": {
-          "rowTotals": [
-            36,
-            46
-          ],
-          "colTotals": [
-            36,
-            46
-          ],
-          "grandTotal": 82
-        }
+        "showMidline": true,
+        "caption": "Sinusoidal graph with dashed midline y = 5 (ASLEVEL-G1320)",
+        "caption_ar": "موجة جيبية مع خط الوسط (ASLEVEL-G1320)"
       }
     },
     {
       "number": 23,
       "difficulty": "Basic",
       "question": {
-        "en": "Solve the inequality \\(x^2+6x \\gt 0\\).",
-        "ar": "حل المتباينة \\(x^2+6x \\gt 0\\)."
+        "en": "From the graphical features displayed in the antenna pattern figure (ASLEVEL-G1356) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
+        "ar": "من المعطيات الهندسية أو البيانية في شكل مخطط الهوائي (ASLEVEL-G1356) لمخطط فن الذي يبيّن أعداد عناصر المجموعتين \\(A\\) و \\(B\\) . أوجد عدد عناصر الاتحاد \\(|A \\cup B|\\) ."
       },
       "solution": {
-        "en": "<p>The quadratic factorises as \\((x+6)x\\) with roots \\(-6\\) and \\(0\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -6 \\text{ or } x \\gt 0\\).</p>",
+        "en": "<p>Counting each disjoint region once yields \\(|A \\cup B| = 7 + 6 + 5 = 18\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(18\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "A",
-          "B",
-          "C",
-          "D"
+        "type": "venn",
+        "sets": [
+          {
+            "label": "A",
+            "only": 7
+          },
+          {
+            "label": "B",
+            "only": 5
+          }
         ],
-        "values": [
-          5,
-          8,
-          5,
-          12
-        ],
-        "xLabel": "Component",
-        "yLabel": "Value",
-        "caption": "Quantity Comparison Chart (#23)"
+        "both": 6,
+        "outside": 2,
+        "caption": "Venn count diagram of sets A and B (ASLEVEL-G1356)",
+        "caption_ar": "مخطط فن للمجموعتين (ASLEVEL-G1356)"
       }
     },
     {
       "number": 24,
       "difficulty": "Basic",
       "question": {
-        "en": "A constant force of 15 N is applied to an object, causing it to move a distance of 4 m in the direction of the force. Calculate the work done by the force.",
+        "en": "The table summarizes measurements from a biometrics evaluation (ASLEVEL-1385); using these entries, showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
         "ar": null
       },
       "solution": {
-        "en": "<p>The work done by a constant force is given by the formula:<br>Work Done = Force × Distance × cos(θ)<br>where θ is the angle between the force and the direction of motion.<br>In this case, the force and the distance are in the same direction, so θ = 0°.<br>Therefore, cos(0°) = 1.<br>Work Done = 15 N × 4 m × 1<br>Work Done = 60 J</p>",
+        "en": "<p>Weighted sum \\(= 2(4) + 4(5) + 6(3) + 8(1) = 54\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(54\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "Value \\(x\\)",
+          "Frequency"
         ],
         "rows": [
           [
-            "g(x)",
-            "15",
-            "19",
-            "23",
-            "27"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#24)",
-        "caption_ar": "جدول نمط مرجعي (#24)",
+        "caption": "Frequency distribution summary (biometrics, ASLEVEL-1385)",
+        "caption_ar": "جدول التوزيع التكراري (القياسات الحيوية، ASLEVEL-1385)",
         "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "القيمة \\(x\\)",
+          "التكرار"
         ],
         "rows_ar": [
           [
-            "g(x)",
-            "15",
-            "19",
-            "23",
-            "27"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "3"
+          ],
+          [
+            "8",
+            "1"
           ]
         ]
       }
@@ -978,100 +947,90 @@
       "number": 26,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A particle of mass \\(m\\) kg is placed on a rough inclined plane. The plane is inclined at an angle \\(\\alpha\\) to the horizontal, where \\(\\tan \\alpha = \\frac{3}{4}\\). The particle is on the point of sliding down the plane. The coefficient of static friction between the particle and the plane is \\(\\mu_s\\). Given that the acceleration due to gravity is \\(g = 9.8 \\text{ m/s}^2\\), find the value of \\(\\mu_s\\).",
+        "en": "During acoustics lab experiment (ASLEVEL-1444), observers compiled the following table; for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
         "ar": null
       },
       "solution": {
-        "en": "<p>When a particle is on the point of sliding down an inclined plane, the angle of inclination \\(\\alpha\\) is equal to the angle of friction \\(\\phi\\), where \\(\\tan \\phi = \\mu_s\\). \\nGiven that \\(\\tan \\alpha = \\frac{3}{4}\\), and the particle is on the point of sliding, we have \\(\\alpha = \\phi\\). \\nTherefore, \\(\\mu_s = \\tan \\phi = \\tan \\alpha = \\frac{3}{4}\\).</p>",
+        "en": "<p>There are \\(18\\) participants in North (\\(10 + 8\\)), of whom \\(10\\) recorded Transit, giving \\(\\frac{5}{9}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{5}{9}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "North",
+          "South",
+          "Total"
+        ],
+        "cols": [
+          "Transit",
+          "Drive",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "3",
+            "10",
+            "8",
+            18
+          ],
+          [
             "7",
-            "11",
-            "15"
+            "5",
+            12
+          ],
+          [
+            17,
+            13,
+            30
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#26)",
-        "caption_ar": "جدول نمط مرجعي (#26)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "7",
-            "11",
-            "15"
-          ]
-        ]
+        "caption": "Commuter Survey Summary (ASLEVEL-1444)",
+        "caption_ar": "ملخص النتائج (ASLEVEL-1444)"
       }
     },
     {
       "number": 27,
       "difficulty": "Advanced",
       "question": {
-        "en": "A machine has a useful power output of \\(883\\) W and wastes \\(367\\) W as heat. Find its efficiency as a percentage, correct to 1 decimal place.",
+        "en": "Examine the sensor array dataset arranged in the table below (ASLEVEL-1480); for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
         "ar": null
       },
       "solution": {
-        "en": "<p>Total input \\(=883+367=1250\\) W. Efficiency \\(=\\dfrac{\\text{useful output}}{\\text{input}}\\times100\\%=\\dfrac{883}{1250}\\times100\\%\\approx70.6\\%\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>There are \\(20\\) participants in Plan A (\\(10 + 10\\)), of whom \\(10\\) recorded Pass, giving \\(\\frac{1}{2}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{1}{2}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "10",
+            "10",
+            20
+          ],
+          [
+            "9",
+            "10",
+            19
+          ],
+          [
+            19,
+            20,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#27)",
-        "caption_ar": "جدول نمط مرجعي (#27)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (ASLEVEL-1480)",
+        "caption_ar": "ملخص النتائج (ASLEVEL-1480)"
       }
     },
     {
@@ -1140,180 +1099,122 @@
       "number": 29,
       "difficulty": "Advanced",
       "question": {
-        "en": "A particle's velocity \\(v\\) m/s at time \\(t\\) seconds is given by \\(v = \\frac{1}{2}t^2 - 3t + 5\\). The displacement of the particle from a fixed origin is \\(s\\) metres. It is known that at \\(t = 2\\), the displacement \\(s = 7\\). The displacement function \\(s(t)\\) can be expressed in the form \\(s(t) = At^3 + Bt^2 + Ct + D\\). Find the value of \\(A\\) and the value of \\(D\\).",
+        "en": "Selected numerical readings from genetics run (ASLEVEL-1546) appear in the table; for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
         "ar": null
       },
       "solution": {
-        "en": "<p>We are given the velocity function \\(v(t) = \\frac{1}{2}t^2 - 3t + 5\\). Since displacement \\(s\\) is the integral of velocity with respect to time, we have:<br>\\[s(t) = \\int v(t) \\, dt = \\int \\left( \\frac{1}{2}t^2 - 3t + 5 \\right) dt\\] <br>Integrating term by term, we get:<br>\\[s(t) = \\frac{1}{2} \\cdot \\frac{t^3}{3} - 3 \\cdot \\frac{t^2}{2} + 5t + K\\] <br>\\[s(t) = \\frac{1}{6}t^3 - \\frac{3}{2}t^2 + 5t + K\\] <br>Comparing this with the given form \\(s(t) = At^3 + Bt^2 + Ct + D\\), we can identify \\(A = \\frac{1}{6}\\), \\(B = -\\frac{3}{2}\\), \\(C = 5\\). The constant of integration is \\(K = D\\).</p><p>We are given that at \\(t = 2\\), \\(s = 7\\). We can use this information to find the value of \\(D\\):<br>\\[7 = \\frac{1}{6}(2)^3 - \\frac{3}{2}(2)^2 + 5(2) + D\\] <br>\\[7 = \\frac{1}{6}(8) - \\frac{3}{2}(4) + 10 + D\\] <br>\\[7 = \\frac{8}{6} - \\frac{12}{2} + 10 + D\\] <br>\\[7 = \\frac{4}{3} - 6 + 10 + D\\] <br>\\[7 = \\frac{4}{3} + 4 + D\\] <br>Subtracting 4 from both sides:<br>\\[3 = \\frac{4}{3} + D\\] <br>To find \\(D\\), subtract \\(\\frac{4}{3}\\) from 3:<br>\\[D = 3 - \\frac{4}{3} = \\frac{9}{3} - \\frac{4}{3} = \\frac{5}{3}\\] <br>Therefore, \\(A = \\frac{1}{6}\\) and \\(D = \\frac{5}{3}\\).</p>",
+        "en": "<p>There are \\(18\\) participants in Morning (\\(13 + 5\\)), of whom \\(13\\) recorded Standard, giving \\(\\frac{13}{18}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{18}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "1",
-          "3",
-          "5",
-          "7"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "cols": [
+          "Standard",
+          "Honors",
+          "Total"
+        ],
+        "data": [
           [
-            "f(x)",
-            "2",
+            "13",
             "5",
-            "8",
-            "11"
+            18
           ],
           [
-            "f'(x)",
-            "4",
-            "2",
-            "4",
-            "2"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected Values Table (#29)",
-        "caption_ar": "جدول القيم المختارة (#29)",
-        "headers_ar": [
-          "x",
-          "1",
-          "3",
-          "5",
-          "7"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "2",
-            "5",
-            "8",
-            "11"
+            "10",
+            "9",
+            19
           ],
           [
-            "f'(x)",
-            "4",
-            "2",
-            "4",
-            "2"
+            23,
+            14,
+            37
           ]
-        ]
+        ],
+        "caption": "Session Roster Summary (ASLEVEL-1546)",
+        "caption_ar": "ملخص النتائج (ASLEVEL-1546)"
       }
     },
     {
       "number": 30,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A particle of mass 8 kg is moving under the action of a net force \\(\\mathbf{F}\\) N. The acceleration of the particle, \\(\\mathbf{a}\\) m/s\\(^2\\), is given by the vector \\(\\mathbf{a} = \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix}\\) for \\(t \\ge 0\\), where \\(t\\) is the time in seconds. Find the magnitude of the net force acting on the particle at \\(t = 2\\) seconds.",
+        "en": "Given the structured navigation observations displayed in the table (ASLEVEL-1582), for the two-way table above. If one participant from Model X is chosen at random, what fraction corresponds to outcome In-Spec?",
         "ar": null
       },
       "solution": {
-        "en": "<p>We are given the acceleration vector \\(\\mathbf{a} = \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix}\\) and the mass of the particle \\(m = 8\\) kg. By Newton's Second Law, the net force is \\(\\mathbf{F} = m\\mathbf{a} = 8 \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix} = \\begin{pmatrix} 16t - 32 \\\\ 8t^2 - 72 \\end{pmatrix}\\).</p><p>Substituting \\(t = 2\\) seconds gives:<br>\\(\\mathbf{F}(2) = \\begin{pmatrix} 16(2) - 32 \\\\ 8(2)^2 - 72 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -40 \\end{pmatrix}\\) N.</p><p>Therefore, the magnitude of the net force is:<br>\\(|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40\\) N.</p>",
+        "en": "<p>There are \\(20\\) participants in Model X (\\(13 + 7\\)), of whom \\(13\\) recorded In-Spec, giving \\(\\frac{13}{20}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{20}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "Basis Vector",
-          "e₁",
-          "e₂"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Model X",
+          "Model Y",
+          "Total"
+        ],
+        "cols": [
+          "In-Spec",
+          "Rework",
+          "Total"
+        ],
+        "data": [
           [
-            "x-comp",
-            "1",
-            "-1"
+            "13",
+            "7",
+            20
           ],
           [
-            "y-comp",
-            "3",
-            "5"
-          ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Component & Basis Table (#30)",
-        "caption_ar": "جدول المركبات والمتجهات (#30)",
-        "headers_ar": [
-          "متجه الأساس",
-          "e₁",
-          "e₂"
-        ],
-        "rows_ar": [
-          [
-            "المركبة x",
-            "1",
-            "-1"
+            "12",
+            "13",
+            25
           ],
           [
-            "المركبة y",
-            "3",
-            "5"
+            25,
+            20,
+            45
           ]
-        ]
+        ],
+        "caption": "Batch Inspection Summary (ASLEVEL-1582)",
+        "caption_ar": "ملخص النتائج (ASLEVEL-1582)"
       }
     },
     {
       "number": 31,
       "difficulty": "Advanced",
       "question": {
-        "en": "A 3 kg particle rests on a rough horizontal surface with \\(\\mu=0.4\\) and is acted on by a horizontal force \\(F\\) N. Take \\(g = 9.8\\text{ m s}^{-2}\\).<br>(a) Find the limiting friction.<br>(b) Find the acceleration when \\(F=20\\) N.<br>(c) Find the time to travel 5 m from rest.",
+        "en": "Inspect the cartography values listed across the table (ASLEVEL-1611); modeling exponential growth \\(E(x) = a \\cdot b^x\\). Determine the next output \\(E(3)\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>(a) \\(F_f=0.4\\times3\\times9.8=11.76\\text{ N}\\).<br>(b) \\(a=\\frac{20-11.76}{3}\\approx2.75\\text{ m s}^{-2}\\).<br>(c) \\(t=\\sqrt{10/2.75}\\approx1.91\\text{ s}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>",
+        "en": "<p>Constant ratio per unit step is \\(b = \\frac{6}{3} = 2\\), so \\(E(3) = 12 \\cdot 2 = 24\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(24\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
+          "\\(x\\)",
           "0",
-          "2",
-          "4",
-          "6"
+          "1",
+          "2"
         ],
         "rows": [
           [
-            "f(x)",
+            "\\(E(x)\\)",
             "3",
-            "5",
-            "7",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
+            "6",
+            "12"
           ]
         ],
         "orientation": "horizontal",
-        "caption": "Selected Values Table (#31)",
-        "caption_ar": "جدول القيم المختارة (#31)",
-        "headers_ar": [
-          "x",
-          "0",
-          "2",
-          "4",
-          "6"
-        ],
-        "rows_ar": [
-          [
-            "f(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ],
-          [
-            "f'(x)",
-            "3",
-            "1",
-            "3",
-            "1"
-          ]
-        ]
+        "caption": "Exponential growth values table (cartography, ASLEVEL-1611)",
+        "caption_ar": "جدول قيم نمو أسي (رسم الخرائط، ASLEVEL-1611)"
       }
     },
     {

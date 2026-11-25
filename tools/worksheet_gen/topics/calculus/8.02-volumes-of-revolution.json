@@ -9,101 +9,95 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the volume generated when the region under \\(y = \\sqrt{x}\\) on \\([0, 4]\\) is revolved about the \\(x\\)-axis.",
+          "q": "Given the structured optics observations displayed in the table (CALCULUS-262226389), evaluate \\(f(g(2)) + 3\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The disk and washer methods",
-          "answer": "\\(V = \\pi\\int_0^4 (\\sqrt{x})^2\\,dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 = 8\\pi\\).",
+          "answer": "**Answer:** \\(16\\). From the table, \\(g(2) = 4\\) and \\(f(4) = 13\\). Adding \\(3\\) yields \\(13 + 3 = 16\\).",
           "explanation": "\\(V = \\pi\\int_0^4 (\\sqrt{x})^2\\,dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 = 8\\pi\\).",
+          "explain": "From the table, \\(g(2) = 4\\) and \\(f(4) = 13\\). Adding \\(3\\) yields \\(13 + 3 = 16\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
+              "\\(x\\)",
+              "1",
               "2",
-              "4",
-              "6",
-              "8"
+              "3",
+              "4"
             ],
             "rows": [
               [
-                "f(x)",
-                "3",
-                "5",
+                "\\(f(x)\\)",
                 "7",
-                "9"
+                "9",
+                "14",
+                "13"
               ],
               [
-                "f'(x)",
+                "\\(g(x)\\)",
                 "3",
+                "4",
                 "1",
-                "3",
-                "1"
+                "2"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Selected Values Table (#2)",
-            "caption_ar": "جدول القيم المختارة (#2)",
-            "headers_ar": [
-              "x",
-              "2",
-              "4",
-              "6",
-              "8"
-            ],
-            "rows_ar": [
-              [
-                "f(x)",
-                "3",
-                "5",
-                "7",
-                "9"
-              ],
-              [
-                "f'(x)",
-                "3",
-                "1",
-                "3",
-                "1"
-              ]
-            ]
+            "caption": "Selected values of functions f and g (optics, CALCULUS-262226389)",
+            "caption_ar": "قيم مختارة للدالتين (البصريات، CALCULUS-262226389)"
           }
         },
         {
-          "q": "The region between \\(y = x^2\\) and \\(y = 4\\) is revolved about the \\(x\\)-axis. Using the washer method, set up and evaluate the volume integral.",
+          "q": "Based on the calibration curve visual model shown (CALCULUS-G211894532) illustrating a four-subinterval left Riemann sum on \\([0, 4]\\). Sum the areas of the shaded rectangles.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The disk and washer methods",
-          "answer": "Bounds \\(x = -2\\) to \\(2\\): \\(V = \\pi\\int_{-2}^{2}\\left[4^2 - (x^2)^2\\right]dx = \\pi\\int_{-2}^2 (16 - x^4)\\,dx = \\pi\\left[16x - \\frac{x^5}{5}\\right]_{-2}^2 = \\frac{384\\pi}{5}\\).",
+          "answer": "**Answer:** \\(26\\). Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
           "explanation": "Bounds \\(x = -2\\) to \\(2\\): \\(V = \\pi\\int_{-2}^{2}\\left[4^2 - (x^2)^2\\right]dx = \\pi\\int_{-2}^2 (16 - x^4)\\,dx = \\pi\\left[16x - \\frac{x^5}{5}\\right]_{-2}^2 = \\frac{384\\pi}{5}\\).",
+          "explain": "Each subinterval has width \\(\\Delta x = 1\\); left heights are \\(2, 5, 8, 11\\), giving total area \\(26\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              0,
+              4.5
             ],
             "yl": [
-              -3,
-              6
+              0,
+              16
             ],
-            "xStep": 2,
-            "yStep": 2,
+            "xStep": 1,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "3*x + 2",
+                "color": "#2563eb",
+                "label": "f(x) = 3x + 2"
               }
             ],
-            "title": "Coordinate Graph (#3)",
-            "caption": "Reference graph y = f(x)"
+            "riemann": {
+              "expr": "3*x + 2",
+              "a": 0,
+              "b": 4,
+              "n": 4,
+              "rule": "left",
+              "color": "#3b82f6"
+            },
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Left Riemann rectangles for f(x) on [0, 4] (CALCULUS-G211894532)",
+            "caption_ar": "مجموع ريمان الأيسر على الفترة المعطاة (CALCULUS-G211894532)"
           }
         },
         {
-          "q": "The region under \\(y = x^2\\) on \\([0, 2]\\) is revolved about the \\(y\\)-axis. Use the shell method to find the volume.",
+          "q": "From the plotted turbine profile figure above (CALCULUS-G228672165) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The shell method",
-          "answer": "\\(V = 2\\pi\\int_0^2 x\\cdot x^2\\,dx = 2\\pi\\int_0^2 x^3\\,dx = 2\\pi\\left[\\frac{x^4}{4}\\right]_0^2 = 8\\pi\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(V = 2\\pi\\int_0^2 x\\cdot x^2\\,dx = 2\\pi\\int_0^2 x^3\\,dx = 2\\pi\\left[\\frac{x^4}{4}\\right]_0^2 = 8\\pi\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -111,170 +105,222 @@
               3
             ],
             "yl": [
-              -4,
-              4
+              -3,
+              6
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "x^3 - 3*x",
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#4)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G228672165)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G228672165)"
           }
         },
         {
-          "q": "The region bounded by \\(y = x\\), \\(y = 0\\), and \\(x = 3\\) is revolved about the \\(y\\)-axis. Find the volume using the shell method.",
+          "q": "Given the structured grid assay observations displayed in the table (CALCULUS-178338294), evaluate \\(f(g(3)) + 4\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The shell method",
-          "answer": "\\(V = 2\\pi\\int_0^3 x\\cdot x\\,dx = 2\\pi\\left[\\frac{x^3}{3}\\right]_0^3 = 18\\pi\\).",
+          "answer": "**Answer:** \\(17\\). From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
           "explanation": "\\(V = 2\\pi\\int_0^3 x\\cdot x\\,dx = 2\\pi\\left[\\frac{x^3}{3}\\right]_0^3 = 18\\pi\\).",
+          "explain": "From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "\\(x\\)",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "24",
-                "10",
-                34
+                "\\(f(x)\\)",
+                "7",
+                "9",
+                "14",
+                "13"
               ],
               [
-                "15",
-                "21",
-                36
-              ],
-              [
-                39,
-                31,
-                70
+                "\\(g(x)\\)",
+                "2",
+                "3",
+                "4",
+                "1"
               ]
             ],
-            "caption": "Reference Summary Table (#5)",
-            "caption_ar": "جدول ملخص البيانات (#5)",
-            "_totals": {
-              "rowTotals": [
-                34,
-                36
-              ],
-              "colTotals": [
-                39,
-                31
-              ],
-              "grandTotal": 70
-            }
+            "orientation": "horizontal",
+            "caption": "Selected values of functions f and g (grid assay, CALCULUS-178338294)",
+            "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، CALCULUS-178338294)"
           }
         },
         {
-          "q": "The region under \\(y=x^2\\) on \\([0,2]\\) is revolved about the \\(x\\)-axis (not the \\(y\\)-axis). Find the volume using the disk method.",
+          "q": "Referring to the cad blueprint figure (CALCULUS-G195116920) displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Comparing methods",
-          "answer": "\\(V=\\pi\\int_0^2(x^2)^2\\,dx = \\pi\\int_0^2 x^4\\,dx = \\pi\\left[\\frac{x^5}{5}\\right]_0^2 = \\frac{32\\pi}{5}\\).",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
           "explanation": "\\(V=\\pi\\int_0^2(x^2)^2\\,dx = \\pi\\int_0^2 x^4\\,dx = \\pi\\left[\\frac{x^5}{5}\\right]_0^2 = \\frac{32\\pi}{5}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 1 \\implies h = 1\\) and horizontal asymptote \\(y = 4 \\implies c = 4\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -2,
-              6
+              -3,
+              5
             ],
             "yl": [
-              -3,
-              6
+              -1,
+              9
             ],
             "xStep": 2,
             "yStep": 2,
             "fns": [
               {
-                "fn": "0.5*x^2 - 2*x + 1",
-                "label": "y = f(x)"
+                "fn": "4/(x - 1) + 4",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 1) + 4"
               }
             ],
-            "title": "Coordinate Graph (#6)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 8,
+                "label": "(2, 8)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 1,
+                "label": "x = 1"
+              },
+              {
+                "type": "h",
+                "v": 4,
+                "label": "y = 4"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 1 and y = 4 (CALCULUS-G195116920)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G195116920)"
           }
         },
         {
-          "q": "The region bounded by \\(y=\\sqrt{x}\\) and \\(y=x\\) (between their two intersection points) is revolved about the \\(x\\)-axis. Find the volume using the washer method.",
+          "q": "The accompanying figure illustrates a calibration curve configuration (CALCULUS-G144784070); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Comparing methods",
-          "answer": "Intersections: \\(\\sqrt{x}=x\\) at \\(x=0,1\\). On \\([0,1]\\), \\(\\sqrt{x}\\geq x\\), so the outer radius is \\(\\sqrt{x}\\), inner is \\(x\\): \\(V=\\pi\\int_0^1\\left[(\\sqrt{x})^2-x^2\\right]dx = \\pi\\int_0^1(x-x^2)\\,dx = \\pi\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1 = \\frac{\\pi}{6}\\).",
+          "answer": "**Answer:** \\(6\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
           "explanation": "Intersections: \\(\\sqrt{x}=x\\) at \\(x=0,1\\). On \\([0,1]\\), \\(\\sqrt{x}\\geq x\\), so the outer radius is \\(\\sqrt{x}\\), inner is \\(x\\): \\(V=\\pi\\int_0^1\\left[(\\sqrt{x})^2-x^2\\right]dx = \\pi\\int_0^1(x-x^2)\\,dx = \\pi\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1 = \\frac{\\pi}{6}\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 3 \\implies c = 3\\), so \\(h + c = 6\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "venn",
-            "sets": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -2,
+              8
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "label": "A",
-                "only": 16
-              },
-              {
-                "label": "B",
-                "only": 13
+                "fn": "6/(x - 3) + 3",
+                "color": "#2563eb",
+                "label": "r(x) = 6/(x - 3) + 3"
               }
             ],
-            "both": 6,
-            "outside": 5,
-            "caption": "Set Relationship Diagram (#7)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 9,
+                "label": "(4, 9)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 3,
+                "label": "y = 3"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 3 (CALCULUS-G144784070)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G144784070)"
           }
         },
         {
-          "q": "The region under \\(y=x^2\\) on \\([0,2]\\) is revolved about the line \\(y=-1\\). Find the volume, using outer radius \\(x^2+1\\).",
+          "q": "Examine the acoustics dataset arranged in the table below (CALCULUS-161560675); where \\(Q(x) = \\dfrac{f(x)}{g(x)}\\). What is the numerator of \\(Q'(2) = \\dfrac{f'(2)g(2) - f(2)g'(2)}{[g(2)]^2}\\)?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Volumes about other axes",
-          "answer": "\\(V=\\pi\\int_0^2\\left[(x^2+1)^2-1^2\\right]dx = \\pi\\int_0^2(x^4+2x^2)\\,dx = \\pi\\left[\\frac{x^5}{5}+\\frac{2x^3}{3}\\right]_0^2 = \\pi\\left(\\frac{32}{5}+\\frac{16}{3}\\right) = \\frac{176\\pi}{15}\\).",
+          "answer": "**Answer:** \\(6\\). Using the quotient rule numerator, \\(f'(2)g(2) - f(2)g'(2) = (1)(2) - (2)(-2) = 6\\).",
           "explanation": "\\(V=\\pi\\int_0^2\\left[(x^2+1)^2-1^2\\right]dx = \\pi\\int_0^2(x^4+2x^2)\\,dx = \\pi\\left[\\frac{x^5}{5}+\\frac{2x^3}{3}\\right]_0^2 = \\pi\\left(\\frac{32}{5}+\\frac{16}{3}\\right) = \\frac{176\\pi}{15}\\).",
+          "explain": "Using the quotient rule numerator, \\(f'(2)g(2) - f(2)g'(2) = (1)(2) - (2)(-2) = 6\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
+              "\\(x\\)",
               "2",
-              "3"
+              "4"
             ],
             "rows": [
               [
-                "g(x)",
+                "\\(f(x)\\)",
                 "2",
-                "4",
-                "6",
-                "8"
+                "5"
+              ],
+              [
+                "\\(f'(x)\\)",
+                "1",
+                "3"
+              ],
+              [
+                "\\(g(x)\\)",
+                "2",
+                "4"
+              ],
+              [
+                "\\(g'(x)\\)",
+                "-2",
+                "1"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#8)",
-            "caption_ar": "جدول نمط مرجعي (#8)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            ]
+            "caption": "Differentiable function & derivative values (acoustics, CALCULUS-161560675)",
+            "caption_ar": "قيم الدالتين ومشتقتيهما (الصوتيات، CALCULUS-161560675)"
           }
         }
       ]
@@ -283,123 +329,191 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "The region under \\(y=x^2\\) on \\([0,2]\\) is revolved about the line \\(x=3\\) (using the shell method with radius \\(3-x\\)).",
+          "q": "The accompanying figure illustrates a cad blueprint configuration (CALCULUS-G379670722); using it displaying a rational function \\(r(x) = \\dfrac{a}{x - h} + c\\) with dashed vertical asymptote \\(x = h\\) and horizontal asymptote \\(y = c\\). Compute \\(h + c\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Volumes about other axes",
-          "answer": "\\(V=2\\pi\\int_0^2(3-x)x^2\\,dx = 2\\pi\\int_0^2(3x^2-x^3)\\,dx = 2\\pi\\left[x^3-\\frac{x^4}{4}\\right]_0^2 = 2\\pi(8-4)=8\\pi\\).",
+          "answer": "**Answer:** \\(5\\). Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
           "explanation": "\\(V=2\\pi\\int_0^2(3-x)x^2\\,dx = 2\\pi\\int_0^2(3x^2-x^3)\\,dx = 2\\pi\\left[x^3-\\frac{x^4}{4}\\right]_0^2 = 2\\pi(8-4)=8\\pi\\).",
+          "explain": "Reading the dashed asymptotes on the graph gives vertical asymptote \\(x = 3 \\implies h = 3\\) and horizontal asymptote \\(y = 2 \\implies c = 2\\), so \\(h + c = 5\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
-          }
-        },
-        {
-          "q": "The region under \\(y=\\sin x\\) on \\([0,\\pi]\\) is revolved about the \\(x\\)-axis. Find the volume, using \\(\\sin^2x=\\frac{1-\\cos2x}{2}\\).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Volumes with trigonometric and exponential curves",
-          "answer": "\\(V=\\pi\\int_0^\\pi \\sin^2x\\,dx = \\pi\\int_0^\\pi \\frac{1-\\cos2x}{2}\\,dx = \\frac{\\pi}{2}\\left[x-\\frac{\\sin2x}{2}\\right]_0^\\pi = \\frac{\\pi}{2}(\\pi-0) = \\frac{\\pi^2}{2}\\).",
-          "explanation": "\\(V=\\pi\\int_0^\\pi \\sin^2x\\,dx = \\pi\\int_0^\\pi \\frac{1-\\cos2x}{2}\\,dx = \\frac{\\pi}{2}\\left[x-\\frac{\\sin2x}{2}\\right]_0^\\pi = \\frac{\\pi}{2}(\\pi-0) = \\frac{\\pi^2}{2}\\).",
-          "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "fn",
+            "xl": [
+              -1,
+              7
+            ],
+            "yl": [
+              -3,
+              7
+            ],
+            "xStep": 2,
+            "yStep": 2,
+            "fns": [
               {
-                "deg": 150,
-                "label": "θ"
+                "fn": "4/(x - 3) + 2",
+                "color": "#2563eb",
+                "label": "r(x) = 4/(x - 3) + 2"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#10)"
+            "pts": [
+              {
+                "x": 4,
+                "y": 6,
+                "label": "(4, 6)"
+              }
+            ],
+            "asymptotes": [
+              {
+                "type": "v",
+                "v": 3,
+                "label": "x = 3"
+              },
+              {
+                "type": "h",
+                "v": 2,
+                "label": "y = 2"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "r(x)",
+            "caption": "Rational curve with asymptotes x = 3 and y = 2 (CALCULUS-G379670722)",
+            "caption_ar": "دالة كسرية مع خطي التقارب (CALCULUS-G379670722)"
           }
         },
         {
-          "q": "The region under \\(y=e^{-x}\\) on \\([0,1]\\) is revolved about the \\(x\\)-axis. Find the volume, to three decimal places.",
+          "q": "From the plotted bridge arch figure above (CALCULUS-G396448341) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Volumes with trigonometric and exponential curves",
-          "answer": "\\(V=\\pi\\int_0^1 e^{-2x}\\,dx = \\pi\\left[-\\frac{1}{2}e^{-2x}\\right]_0^1 = \\frac{\\pi}{2}\\left(1-e^{-2}\\right) \\approx \\frac{\\pi}{2}(0.8647) \\approx 1.358\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "explanation": "\\(V=\\pi\\int_0^\\pi \\sin^2x\\,dx = \\pi\\int_0^\\pi \\frac{1-\\cos2x}{2}\\,dx = \\frac{\\pi}{2}\\left[x-\\frac{\\sin2x}{2}\\right]_0^\\pi = \\frac{\\pi}{2}(\\pi-0) = \\frac{\\pi^2}{2}\\).",
+          "explain": "From vertex \\((0, -1)\\) and point \\((1, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(2) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
+          "figure": {
+            "type": "fn",
+            "xl": [
+              -3,
+              3
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (0))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "(0, -1)"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "label": "(1, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G396448341)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G396448341)"
+          }
+        },
+        {
+          "q": "Referring to the cohort study table above (CALCULUS-305649983), determine \\(4\\,h^{-1}(19)\\) for the invertible function \\(h\\).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Volumes with trigonometric and exponential curves",
+          "answer": "**Answer:** \\(40\\). Because \\(h(10) = 19\\), we have \\(h^{-1}(19) = 10\\). Multiplying by \\(4\\) gives \\(40\\).",
           "explanation": "\\(V=\\pi\\int_0^1 e^{-2x}\\,dx = \\pi\\left[-\\frac{1}{2}e^{-2x}\\right]_0^1 = \\frac{\\pi}{2}\\left(1-e^{-2}\\right) \\approx \\frac{\\pi}{2}(0.8647) \\approx 1.358\\).",
+          "explain": "Because \\(h(10) = 19\\), we have \\(h^{-1}(19) = 10\\). Multiplying by \\(4\\) gives \\(40\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "table",
             "headers": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
+              "\\(x\\)",
+              "4",
+              "6",
+              "8",
+              "10"
             ],
             "rows": [
               [
-                "g(x)",
-                "1",
-                "6",
-                "11",
-                "16"
+                "\\(h(x)\\)",
+                "5",
+                "9",
+                "14",
+                "19"
               ]
             ],
             "orientation": "horizontal",
-            "caption": "Reference Pattern Table (#11)",
-            "caption_ar": "جدول نمط مرجعي (#11)",
-            "headers_ar": [
-              "x",
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
-            "rows_ar": [
-              [
-                "g(x)",
-                "1",
-                "6",
-                "11",
-                "16"
-              ]
-            ]
+            "caption": "Monotone function values of invertible h (cohort study, CALCULUS-305649983)",
+            "caption_ar": "قيم دالة رتيبة قابلة للعكس (دراسة الفوج، CALCULUS-305649983)"
           }
         },
         {
-          "q": "Set up (do not evaluate) the volume integral for the region under \\(y=\\ln x\\) on \\([1,e]\\), revolved about the \\(x\\)-axis.",
+          "q": "The accompanying figure illustrates a orbital sector configuration (CALCULUS-G288873371); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Setting up without evaluating",
-          "answer": "\\(V=\\pi\\int_1^e (\\ln x)^2\\,dx\\).",
+          "answer": "**Answer:** \\(13\\). From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
           "explanation": "\\(V=\\pi\\int_1^e (\\ln x)^2\\,dx\\).",
+          "explain": "From vertex \\((2, 1)\\) and point \\((3, 4)\\), \\(4 = a(1)^2 + 1 \\implies a = 3\\). Hence \\(f(4) = 3(2)^2 + (1) = 13\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
-              -3,
-              3
+              -1,
+              5
             ],
             "yl": [
-              -2,
-              7
+              -1,
+              15
             ],
             "xStep": 1,
-            "yStep": 2,
+            "yStep": 5,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "3*(x - (2))^2 + (1)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#12)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "(2, 1)"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "(3, 4)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G288873371)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G288873371)"
           }
         },
         {
-          "q": "Set up (do not evaluate) the volume integral for the region between \\(y=x^2\\) and \\(y=\\sqrt{x}\\) (on \\([0,1]\\)) revolved about the \\(y\\)-axis, using the shell method.",
+          "q": "Based on the structural truss visual model shown (CALCULUS-G339206221) showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(2)\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Setting up without evaluating",
-          "answer": "\\(V=2\\pi\\int_0^1 x\\left(\\sqrt{x}-x^2\\right)dx\\) (outer curve \\(\\sqrt{x}\\) minus inner curve \\(x^2\\), since \\(\\sqrt{x}\\geq x^2\\) on \\([0,1]\\)).",
+          "answer": "**Answer:** \\(8\\). From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
           "explanation": "\\(V=2\\pi\\int_0^1 x\\left(\\sqrt{x}-x^2\\right)dx\\) (outer curve \\(\\sqrt{x}\\) minus inner curve \\(x^2\\), since \\(\\sqrt{x}\\geq x^2\\) on \\([0,1]\\)).",
+          "explain": "From vertex \\((0, 0)\\) and point \\((1, 2)\\), \\(2 = a(1)^2 + 0 \\implies a = 2\\). Hence \\(f(2) = 2(2)^2 + (0) = 8\\).",
+          "qtype": "FRQ",
           "figure": {
             "type": "fn",
             "xl": [
@@ -408,18 +522,33 @@
             ],
             "yl": [
               -2,
-              7
+              10
             ],
             "xStep": 1,
             "yStep": 2,
             "fns": [
               {
-                "fn": "2^(x) - 1",
+                "fn": "2*(x - (0))^2 + (0)",
+                "color": "#2563eb",
                 "label": "y = f(x)"
               }
             ],
-            "title": "Coordinate Graph (#13)",
-            "caption": "Reference graph y = f(x)"
+            "pts": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G339206221)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G339206221)"
           }
         },
         {
@@ -445,55 +574,44 @@
           }
         },
         {
-          "q": "The region between \\(y=x\\) and \\(y=x^3\\) on \\([0,1]\\) is revolved about the \\(x\\)-axis. Find the volume using the washer method (outer radius \\(x\\), inner radius \\(x^3\\)).",
+          "q": "In the acoustics record (CALCULUS-238539507), using the table values, tracking Euler's method with constant step \\(h = 1\\). Determine the missing approximation \\(y_2\\).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Volume of a solid with a hole (washer method practice)",
-          "answer": "\\(V=\\pi\\int_0^1\\left[x^2-x^6\\right]dx=\\pi\\left[\\frac{x^3}{3}-\\frac{x^7}{7}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{7}\\right)=\\frac{4\\pi}{21}\\).",
+          "answer": "**Answer:** \\(7\\). From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(4) = 7\\).",
           "explanation": "\\(V=\\pi\\int_0^1\\left[x^2-x^6\\right]dx=\\pi\\left[\\frac{x^3}{3}-\\frac{x^7}{7}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{7}\\right)=\\frac{4\\pi}{21}\\).",
+          "explain": "From row \\(n = 1\\), \\(y_2 = y_1 + h \\cdot (dy/dx)_1 = 3 + 1(4) = 7\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "two_way_table",
-            "corner": "",
+            "type": "table",
+            "headers": [
+              "Step \\(n\\)",
+              "\\(x_n\\)",
+              "\\(y_n\\)",
+              "\\(dy/dx\\)"
+            ],
             "rows": [
-              "Group I",
-              "Group II",
-              "Total"
-            ],
-            "cols": [
-              "Outcome A",
-              "Outcome B",
-              "Total"
-            ],
-            "data": [
               [
-                "19",
-                "20",
-                39
+                "0",
+                "0",
+                "2",
+                "1"
               ],
               [
-                "13",
-                "24",
-                37
+                "1",
+                "1",
+                "3",
+                "4"
               ],
               [
-                32,
-                44,
-                76
+                "2",
+                "2",
+                "?",
+                "\\(\\dots\\)"
               ]
             ],
-            "caption": "Reference Summary Table (#15)",
-            "caption_ar": "جدول ملخص البيانات (#15)",
-            "_totals": {
-              "rowTotals": [
-                39,
-                37
-              ],
-              "colTotals": [
-                32,
-                44
-              ],
-              "grandTotal": 76
-            }
+            "caption": "Euler integration schedule with step h = 1 (acoustics, CALCULUS-238539507)",
+            "caption_ar": "جدول خطوات أويلر (الصوتيات، CALCULUS-238539507)"
           }
         }
       ]
@@ -502,21 +620,50 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A vase is modeled by revolving the region under \\(y=\\sqrt{x}+1\\) on \\([0,4]\\) about the \\(x\\)-axis, where \\(x\\) is the height (cm) and \\(y\\) is the radius. Find the volume of the vase.",
+          "q": "The accompanying figure illustrates a bridge arch configuration (CALCULUS-G221762895); using it showing parabola \\(f(x) = a(x - h)^2 + k\\) with vertex and a second point marked. Evaluate \\(f(4)\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "An applied volume problem",
           "cross_lesson": "3.02 Differentiation Rules: Power, Product, Quotient, Chain",
-          "answer": "\\(V=\\pi\\int_0^4(\\sqrt{x}+1)^2\\,dx=\\pi\\int_0^4\\left(x+2\\sqrt{x}+1\\right)dx=\\pi\\left[\\frac{x^2}{2}+\\frac{4}{3}x^{3/2}+x\\right]_0^4=\\pi\\left(8+\\frac{32}{3}+4\\right)=\\pi\\left(\\frac{68}{3}\\right)=\\frac{68\\pi}{3}\\) cm\\(^3\\).",
+          "answer": "**Answer:** \\(3\\). From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
           "explanation": "\\(V=\\pi\\int_0^4(\\sqrt{x}+1)^2\\,dx=\\pi\\int_0^4\\left(x+2\\sqrt{x}+1\\right)dx=\\pi\\left[\\frac{x^2}{2}+\\frac{4}{3}x^{3/2}+x\\right]_0^4=\\pi\\left(8+\\frac{32}{3}+4\\right)=\\pi\\left(\\frac{68}{3}\\right)=\\frac{68\\pi}{3}\\) cm\\(^3\\).",
+          "explain": "From vertex \\((2, -1)\\) and point \\((3, 0)\\), \\(0 = a(1)^2 + -1 \\implies a = 1\\). Hence \\(f(4) = 1(2)^2 + (-1) = 3\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "circle",
-            "r": 5,
-            "radius": "r",
-            "radiusLabel": "r",
-            "notToScale": true,
-            "caption": "Note: Figure not drawn to scale.",
-            "caption_ar": "ملاحظة: الرسم ليس على القياس."
+            "type": "fn",
+            "xl": [
+              -1,
+              5
+            ],
+            "yl": [
+              -3,
+              6
+            ],
+            "xStep": 1,
+            "yStep": 2,
+            "fns": [
+              {
+                "fn": "1*(x - (2))^2 + (-1)",
+                "color": "#2563eb",
+                "label": "y = f(x)"
+              }
+            ],
+            "pts": [
+              {
+                "x": 2,
+                "y": -1,
+                "label": "(2, -1)"
+              },
+              {
+                "x": 3,
+                "y": 0,
+                "label": "(3, 0)"
+              }
+            ],
+            "xlabel": "x",
+            "ylabel": "y",
+            "caption": "Plotted quadratic graph with vertex and point (CALCULUS-G221762895)",
+            "caption_ar": "تمثيل بياني لدالة تربيعية (CALCULUS-G221762895)"
           }
         },
         {
@@ -542,23 +689,36 @@
           }
         },
         {
-          "q": "Find the volume of the solid generated when the region bounded by \\(y = \\sqrt{x}\\), the \\(x\\)-axis, and \\(x = 4\\) is revolved \\(2\\pi\\) radians about the \\(x\\)-axis.",
+          "q": "Referring to the specimen plot figure (CALCULUS-G255318133) displaying the slope field for \\(\\dfrac{dy}{dx} = 2(x - y)\\) and highlighted point \\(P\\). Evaluate the segment slope at \\(P\\).",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing the generating region",
           "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
-          "answer": "Apply the volume of revolution formula: \\(V = \\pi \\int_0^4 y^2\\,dx = \\pi \\int_0^4 (\\sqrt{x})^2\\,dx = \\pi \\int_0^4 x\\,dx = \\pi \\left[ \\frac{x^2}{2} \\right]_0^4 = \\pi \\left( \\frac{16}{2} - 0 \\right) = 8\\pi.\\)",
+          "answer": "**Answer:** \\(0\\). At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
           "explanation": "Apply the volume of revolution formula: \\(V = \\pi \\int_0^4 y^2\\,dx = \\pi \\int_0^4 (\\sqrt{x})^2\\,dx = \\pi \\int_0^4 x\\,dx = \\pi \\left[ \\frac{x^2}{2} \\right]_0^4 = \\pi \\left( \\frac{16}{2} - 0 \\right) = 8\\pi.\\)",
+          "explain": "At highlighted coordinates \\((2, 2)\\), \\(\\frac{dy}{dx} = 2(2 - 2) = 0\\).",
+          "qtype": "FRQ",
           "figure": {
-            "type": "unit_circle",
-            "angles": [
+            "type": "slope_field",
+            "dydx": "2*(x - y)",
+            "xl": [
+              -1,
+              4
+            ],
+            "yl": [
+              -1,
+              5
+            ],
+            "step": 1,
+            "pts": [
               {
-                "deg": 60,
-                "label": "θ"
+                "x": 2,
+                "y": 2,
+                "label": "P(2, 2)"
               }
             ],
-            "showQuadrants": true,
-            "caption": "Unit Circle Reference (#18)"
+            "caption": "Direction slope field for dy/dx = 2(x - y) with point P (CALCULUS-G255318133)",
+            "caption_ar": "حقل الميل للمعادلة التفاضلية عند النقطة المعطاة (CALCULUS-G255318133)"
           }
         },
         {

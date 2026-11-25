@@ -5,274 +5,291 @@
       "number": 1,
       "difficulty": "Basic",
       "question": {
-        "en": "If \\(2x + y = 10\\) and \\(x = 3\\), find \\(y\\).",
-        "ar": "إذا كان \\(2x + y = 10\\) و \\(x = 3\\), أوجد \\(y\\)."
+        "en": "The table summarizes measurements from a telemetry evaluation (EST-700); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة القياس عن بُعد (EST-700). بالاعتماد على القيم المعطاة، للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Substitute \\(x = 3\\):</strong><br>\\[2(3) + y = 10 \\implies 6 + y = 10\\]</p><p><strong>Step 2: Isolate \\(y\\):</strong> Subtract 6 from both sides:<br>\\[y = 10 - 6 = \\mathbf{4}\\]</p><p>The value of \\(y\\) is \\(\\mathbf{4}\\).</p>",
+        "en": "<p>There are \\(17\\) participants in Plan A (\\(13 + 4\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "2",
+            "13",
+            "4",
+            17
+          ],
+          [
             "11",
-            "20",
-            "29"
+            "11",
+            22
+          ],
+          [
+            24,
+            15,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#1)",
-        "caption_ar": "جدول نمط مرجعي (#1)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "11",
-            "20",
-            "29"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (EST-700)",
+        "caption_ar": "ملخص النتائج (EST-700)"
       }
     },
     {
       "number": 2,
       "difficulty": "Basic",
       "question": {
-        "en": "Find the slope of the line through \\((2,\\,5)\\) and \\((6,\\,13)\\).",
-        "ar": "أوجد ميل the line through \\((2,\\,5)\\) و \\((6,\\,13)\\)."
+        "en": "Using the labeled measurements in the waveguide design diagram (EST-G743) showing a rectangle with labeled side lengths. Compute its area.",
+        "ar": "باستخدام القياسات المثبّتة على شكل تصميم الموجه الموجي (EST-G743) لمستطيل بأبعاد مرسومة على أضلاعه. أوجد مساحة المستطيل."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Apply the slope formula:</strong> With \\((x_1, y_1) = (2, 5)\\) and \\((x_2, y_2) = (6, 13)\\):<br>\\[m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{13 - 5}{6 - 2}\\]</p><p><strong>Step 2: Simplify:</strong><br>\\[m = \\frac{8}{4} = \\mathbf{2}\\]</p><p>The slope of the line is \\(\\mathbf{2}\\).</p>",
+        "en": "<p>Reading length \\(12\\) and width \\(8\\) from the rectangle, area \\(= 12 \\times 8 = 96\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(96\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -3,
-          3
+        "type": "polygon",
+        "shape": "rectangle",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            0,
+            8
+          ]
         ],
-        "yl": [
-          -4,
-          4
+        "w": 12,
+        "h": 8,
+        "sides": [
+          "12",
+          "8",
+          "12",
+          "8"
         ],
-        "xStep": 1,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "x^3 - 3*x",
-            "label": "y = f(x)"
-          }
-        ],
-        "title": "Coordinate Graph (#2)",
-        "caption": "Reference graph y = f(x)"
+        "notToScale": true,
+        "caption": "Rectangle with labeled dimensions (EST-G743)",
+        "caption_ar": "مستطيل بأبعاد موضحة على الأضلاع (EST-G743)"
       }
     },
     {
       "number": 3,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Write the equation of the line with slope \\(-2\\) through \\((0,\\,4)\\).",
+        "en": "From the graphical features displayed in the waveguide design figure (EST-G779) representing sample scores as a box-and-whisker plot. Using the plotted box boundaries, compute the interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify slope and \\(y\\)-intercept:</strong> The given point \\((0, 4)\\) lies on the \\(y\\)-axis, so the \\(y\\)-intercept is \\(b = 4\\). The slope is given as \\(m = -2\\).</p><p><strong>Step 2: Write slope-intercept form:</strong><br>\\[y = mx + b \\implies \\mathbf{y = -2x + 4}\\]</p><p>In standard form, this can also be expressed as \\(2x + y = 4\\).</p>",
+        "en": "<p>Reading the left and right edges of the box on the scale gives \\(Q_1 = 16\\) and \\(Q_3 = 26\\), so \\(\\text{IQR} = 26 - 16 = 10\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(10\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -2,
-          6
-        ],
-        "yl": [
-          -3,
-          6
-        ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
+        "type": "boxplot",
+        "boxes": [
           {
-            "fn": "0.5*x^2 - 2*x + 1",
-            "label": "y = f(x)"
+            "label": "Sample",
+            "min": 10,
+            "q1": 16,
+            "med": 21,
+            "q3": 26,
+            "max": 34
           }
         ],
-        "title": "Coordinate Graph (#3)",
-        "caption": "Reference graph y = f(x)"
+        "range": [
+          6,
+          38
+        ],
+        "caption": "Five-number summary box plot (EST-G779)",
+        "caption_ar": "مخطط الصندوق والعارضتين (EST-G779)"
       }
     },
     {
       "number": 4,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A line is perpendicular to \\(y=3x-1\\). What is its slope?",
+        "en": "Examine the sensor array dataset arranged in the table below (EST-808); for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify the given slope:</strong> The line \\(y = 3x - 1\\) has slope \\(m_1 = 3\\).</p><p><strong>Step 2: Apply the perpendicular slope criterion:</strong> Perpendicular lines have negative reciprocal slopes (\\(m_1 \\cdot m_2 = -1\\)):<br>\\[m_2 = -\\frac{1}{m_1} = \\mathbf{-\\frac{1}{3}}\\]</p><p>The perpendicular slope is \\(\\mathbf{-\\frac{1}{3}}\\).</p>",
+        "en": "<p>There are \\(23\\) participants in Lab 1 (\\(13 + 10\\)), of whom \\(13\\) recorded Positive, giving \\(\\frac{13}{23}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{23}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Lab 1",
+          "Lab 2",
+          "Total"
+        ],
+        "cols": [
+          "Positive",
+          "Negative",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "3",
-            "5",
+            "13",
+            "10",
+            23
+          ],
+          [
+            "9",
             "7",
-            "9"
+            16
+          ],
+          [
+            22,
+            17,
+            39
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#4)",
-        "caption_ar": "جدول نمط مرجعي (#4)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
-          ]
-        ]
+        "caption": "Assay Trials Summary (EST-808)",
+        "caption_ar": "ملخص النتائج (EST-808)"
       }
     },
     {
       "number": 5,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Use the quadratic formula to solve \\(x^2 + 2x - 8 = 0\\).",
-        "ar": "Use the quadratic formula to حل \\(x^2 + 2x - 8 = 0\\)."
+        "en": "Based on the cad blueprint visual model shown (EST-G844) showing four contiguous class intervals in a frequency histogram. How many total observations are recorded across all four bars?",
+        "ar": "ادرس التمثيل المرئي لـ المخطط الهندسي المعروض (EST-G844) للمدرج التكراري المكون من أربع فئات. ما العدد الكلي للمشاهدات؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Identify coefficients:</strong> \\(a = 1\\), \\(b = 2\\), \\(c = -8\\).</p><p><strong>Step 2: Apply the quadratic formula:</strong><br>\\[x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\frac{-2 \\pm \\sqrt{2^2 - 4(1)(-8)}}{2(1)} = \\frac{-2 \\pm \\sqrt{4 + 32}}{2} = \\frac{-2 \\pm \\sqrt{36}}{2}\\]</p><p><strong>Step 3: Evaluate roots:</strong><br>\\[x = \\frac{-2 \\pm 6}{2} \\implies x_1 = \\frac{4}{2} = \\mathbf{2}, \\quad x_2 = \\frac{-8}{2} = \\mathbf{-4}\\]</p><p>The solutions are \\(\\mathbf{x = 2}\\) and \\(\\mathbf{x = -4}\\).</p>",
+        "en": "<p>Summing bar heights directly from the histogram gives \\(3 + 8 + 11 + 5 = 27\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(27\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "A",
-          "B",
-          "C",
-          "D"
+        "type": "histogram",
+        "bins": [
+          {
+            "label": "0-9",
+            "count": 3
+          },
+          {
+            "label": "10-19",
+            "count": 8
+          },
+          {
+            "label": "20-29",
+            "count": 11
+          },
+          {
+            "label": "30-39",
+            "count": 5
+          }
         ],
-        "values": [
-          3,
-          6,
-          6,
-          11
-        ],
-        "xLabel": "Component",
-        "yLabel": "Value",
-        "caption": "Quantity Comparison Chart (#5)"
+        "xLabel": "Interval",
+        "yLabel": "Frequency",
+        "caption": "Frequency histogram of measured intervals (EST-G844)",
+        "caption_ar": "المدرج التكراري للفئات (EST-G844)"
       }
     },
     {
       "number": 6,
       "difficulty": "Intermediate",
       "question": {
-        "en": "How many real solutions does \\(x^2 + x + 1 = 0\\) have?",
+        "en": "Using the labeled measurements in the waveguide design diagram (EST-G887) showing region cardinalities for sets \\(A\\) and \\(B\\) inside a universal sample space. Using the Venn regions, find \\(|A \\cup B|\\).",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute the discriminant \\(\\Delta\\):</strong> For \\(a = 1\\), \\(b = 1\\), \\(c = 1\\):<br>\\[\\Delta = b^2 - 4ac = 1^2 - 4(1)(1) = 1 - 4 = -3\\]</p><p><strong>Step 2: Interpret the discriminant:</strong> Because \\(\\Delta = -3 \\lt 0\\), the equation has strictly negative discriminant.</p><p>Therefore, there are <strong>zero real solutions</strong> (exactly two complex conjugate solutions \\(x = -\\frac{1}{2} \\pm i\\frac{\\sqrt{3}}{2}\\)).</p>",
+        "en": "<p>Counting each disjoint region once yields \\(|A \\cup B| = 12 + 4 + 10 = 26\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(26\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "bars",
-        "labels": [
-          "A",
-          "B",
-          "C",
-          "D"
+        "type": "venn",
+        "sets": [
+          {
+            "label": "A",
+            "only": 12
+          },
+          {
+            "label": "B",
+            "only": 10
+          }
         ],
-        "values": [
-          3,
-          6,
-          5,
-          11
-        ],
-        "xLabel": "Component",
-        "yLabel": "Value",
-        "caption": "Quantity Comparison Chart (#6)"
+        "both": 4,
+        "outside": 5,
+        "caption": "Venn count diagram of sets A and B (EST-G887)",
+        "caption_ar": "مخطط فن للمجموعتين (EST-G887)"
       }
     },
     {
       "number": 7,
       "difficulty": "Advanced",
       "question": {
-        "en": "A parabola has vertex \\((3,-2)\\) and passes through \\((5,6)\\). Find \\(a\\) in \\(y=a(x-3)^2-2\\).",
-        "ar": "A parabola has vertex \\((3,-2)\\) و يمر بـ \\((5,6)\\). أوجد \\(a\\) in \\(y=a(x-3)^2-2\\)."
+        "en": "Given the structured circuit trial observations displayed in the table (EST-923), showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
+        "ar": "بالنظر إلى قيم تجربة الدائرة المعروضة في الجدول (EST-923)، الذي يوضّح التكرارات المسجّلة. احسب المجموع الموزون للبيانات."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Substitute the given point \\((x, y) = (5, 6)\\):</strong><br>\\[6 = a(5 - 3)^2 - 2 \\implies 6 = a(2^2) - 2 \\implies 6 = 4a - 2\\]</p><p><strong>Step 2: Solve for \\(a\\):</strong><br>\\[4a = 6 + 2 = 8 \\implies a = \\frac{8}{4} = \\mathbf{2}\\]</p><p>The value of \\(a\\) is \\(\\mathbf{2}\\) (the parabola equation is \\(y = 2(x - 3)^2 - 2\\)).</p>",
+        "en": "<p>Weighted sum \\(= 2(4) + 4(5) + 6(4) + 8(1) = 60\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(60\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "Value \\(x\\)",
+          "Frequency"
         ],
         "rows": [
           [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "8",
+            "1"
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#7)",
-        "caption_ar": "جدول نمط مرجعي (#7)",
+        "caption": "Frequency distribution summary (circuit trial, EST-923)",
+        "caption_ar": "جدول التوزيع التكراري (تجربة الدائرة، EST-923)",
         "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "القيمة \\(x\\)",
+          "التكرار"
         ],
         "rows_ar": [
           [
-            "g(x)",
-            "3",
-            "5",
-            "7",
-            "9"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "8",
+            "1"
           ]
         ]
       }
@@ -281,431 +298,437 @@
       "number": 8,
       "difficulty": "Intermediate",
       "question": {
-        "en": "If \\(f(x) = x^2\\) and \\(g(x) = x + 1\\), find \\(f(g(2))\\).",
-        "ar": "إذا كان \\(f(x) = x^2\\) و \\(g(x) = x + 1\\), أوجد \\(f(g(2))\\)."
+        "en": "Based on the waveguide design visual model shown (EST-G959), determine the missing leg length \\(AC\\) using the labeled side lengths on right triangle \\(ABC\\).",
+        "ar": "ادرس التمثيل المرئي لـ تصميم الموجه الموجي المعروض (EST-G959)، أوجد طول الضلع المجهول في المثلث القائم \\(ABC\\) من القياسات الموضحة على الرسم."
       },
       "solution": {
-        "en": "<p><strong>Step 1: Evaluate the inner function \\(g(2)\\):</strong><br>\\[g(2) = 2 + 1 = 3\\]</p><p><strong>Step 2: Evaluate the outer function \\(f(3)\\):</strong><br>\\[f(3) = 3^2 = \\mathbf{9}\\]</p><p>The composite value \\(f(g(2))\\) is \\(\\mathbf{9}\\).</p>",
+        "en": "<p>By the Pythagorean theorem using hypotenuse \\(78\\) and leg \\(30\\) shown, \\(AC = \\sqrt{78^2 - 30^2} = 72\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(72\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "fn",
-        "xl": [
-          -4,
-          4
+        "type": "triangle",
+        "verts": [
+          "C",
+          "B",
+          "A"
         ],
-        "yl": [
-          -5,
-          7
+        "labels": [
+          "C",
+          "B",
+          "A"
         ],
-        "xStep": 2,
-        "yStep": 2,
-        "fns": [
-          {
-            "fn": "1.5*x + 1",
-            "label": "y = f(x)"
-          }
+        "rightAngle": "C",
+        "rightAt": "C",
+        "sides": [
+          "78",
+          "?",
+          "30"
         ],
-        "title": "Coordinate Graph (#8)",
-        "caption": "Reference graph y = f(x)"
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            30,
+            0
+          ],
+          [
+            0,
+            72
+          ]
+        ],
+        "coords": [
+          [
+            0,
+            0
+          ],
+          [
+            30,
+            0
+          ],
+          [
+            0,
+            72
+          ]
+        ],
+        "notToScale": true,
+        "caption": "Right triangle ABC with angle C = 90 deg (EST-G959)",
+        "caption_ar": "مثلث قائم الزاوية (EST-G959)"
       }
     },
     {
       "number": 9,
       "difficulty": "Intermediate",
       "question": {
-        "en": "The graph of \\(f(x)\\) is shifted 3 units right. Write the new function.",
+        "en": "A benchmark photonics log (EST-988) provides the entries shown in the table; for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Apply horizontal translation principle:</strong> Shifting the graph of any function \\(y = f(x)\\) horizontally to the right by \\(h\\) units replaces the input \\(x\\) with \\((x - h)\\).</p><p><strong>Step 2: Substitute \\(h = 3\\):</strong><br>\\[y = \\mathbf{f(x - 3)}\\]</p>",
+        "en": "<p>There are \\(19\\) participants in Lab 1 (\\(13 + 6\\)), of whom \\(13\\) recorded Positive, giving \\(\\frac{13}{19}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{19}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Lab 1",
+          "Lab 2",
+          "Total"
+        ],
+        "cols": [
+          "Positive",
+          "Negative",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "3",
-            "8",
             "13",
-            "18"
+            "6",
+            19
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            17,
+            41
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#9)",
-        "caption_ar": "جدول نمط مرجعي (#9)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "3",
-            "8",
-            "13",
-            "18"
-          ]
-        ]
+        "caption": "Assay Trials Summary (EST-988)",
+        "caption_ar": "ملخص النتائج (EST-988)"
       }
     },
     {
       "number": 10,
       "difficulty": "Advanced",
       "question": {
-        "en": "If \\(g(x) = \\dfrac{1}{x-2}\\), what is the domain?",
-        "ar": "إذا كان \\(g(x) = \\dfrac{1}{x-2}\\), what is the domain?"
+        "en": "In the acoustics lab record (EST-1024), using the table values, for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
+        "ar": "في سجل مختبر الصوت (EST-1024)، استخدم القيم الواردة في الجدول للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Set denominator not equal to zero:</strong> For a rational function to be defined, the denominator cannot vanish:<br>\\[x - 2 \\neq 0 \\implies x \\neq 2\\]</p><p><strong>Step 2: Express in interval notation:</strong> All real numbers except 2:<br>\\[\\mathbf{(-\\infty, 2) \\cup (2, \\infty)}\\]</p>",
+        "en": "<p>There are \\(21\\) participants in North (\\(13 + 8\\)), of whom \\(13\\) recorded Transit, giving \\(\\frac{13}{21}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{21}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "North",
+          "South",
+          "Total"
+        ],
+        "cols": [
+          "Transit",
+          "Drive",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "1",
-            "3",
+            "13",
+            "8",
+            21
+          ],
+          [
             "5",
-            "7"
+            "7",
+            12
+          ],
+          [
+            18,
+            15,
+            33
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#10)",
-        "caption_ar": "جدول نمط مرجعي (#10)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "1",
-            "3",
-            "5",
-            "7"
-          ]
-        ]
+        "caption": "Commuter Survey Summary (EST-1024)",
+        "caption_ar": "ملخص النتائج (EST-1024)"
       }
     },
     {
       "number": 11,
       "difficulty": "Advanced",
       "question": {
-        "en": "If \\(h(x)=-f(x)+2\\), describe the transformation.",
-        "ar": "إذا كان \\(h(x)=-f(x)+2\\), describe the transformation."
+        "en": "The table summarizes measurements from a sensor array evaluation (EST-1060); using these entries, for the two-way table above. If one participant from Plan A is chosen at random, what fraction corresponds to outcome Pass?",
+        "ar": "يلخّص الجدول قياسات مسجّلة من تجربة مصفوفة الحساسات (EST-1060). بالاعتماد على القيم المعطاة، للجدول ذي الاتجاهين أعلاه. إذا اختير مشارك عشوائيًا من الفئة الأولى، فما الكسر الدال على تحقق النتيجة الأولى؟"
       },
       "solution": {
-        "en": "<p><strong>Step 1: Analyze the negative sign \\(-f(x)\\):</strong> Multiplying the function by \\(-1\\) reflects the graph across the <strong>\\(x\\)-axis</strong>.</p><p><strong>Step 2: Analyze the constant \\(+2\\):</strong> Adding 2 shifts the graph vertically <strong>upward by 2 units</strong>.</p><p>The transformation consists of a <strong>reflection across the \\(x\\)-axis followed by a vertical shift up 2 units</strong>.</p>",
+        "en": "<p>There are \\(23\\) participants in Plan A (\\(13 + 10\\)), of whom \\(13\\) recorded Pass, giving \\(\\frac{13}{23}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{23}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Plan A",
+          "Plan B",
+          "Total"
+        ],
+        "cols": [
+          "Pass",
+          "Retake",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "2",
+            "13",
+            "10",
+            23
+          ],
+          [
             "7",
-            "12",
-            "17"
+            "11",
+            18
+          ],
+          [
+            20,
+            21,
+            41
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#11)",
-        "caption_ar": "جدول نمط مرجعي (#11)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "2",
-            "7",
-            "12",
-            "17"
-          ]
-        ]
+        "caption": "Cohort Outcomes Summary (EST-1060)",
+        "caption_ar": "ملخص النتائج (EST-1060)"
       }
     },
     {
       "number": 12,
       "difficulty": "Basic",
       "question": {
-        "en": "A taxi charges a flat fee of 5 SAR plus 2 SAR per km. Find the cost for 12 km.",
+        "en": "During hydraulics experiment (EST-1096), observers compiled the following table; for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Write the linear cost function:</strong> Let \\(d\\) be the distance in kilometers:<br>\\[C(d) = 5 + 2d\\]</p><p><strong>Step 2: Substitute \\(d = 12\\):</strong><br>\\[C(12) = 5 + 2(12) = 5 + 24 = \\mathbf{29\\text{ SAR}}\\]</p><p>The total fare is <strong>29 SAR</strong>.</p>",
+        "en": "<p>There are \\(18\\) participants in Morning (\\(13 + 5\\)), of whom \\(13\\) recorded Standard, giving \\(\\frac{13}{18}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{18}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "cols": [
+          "Standard",
+          "Honors",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
+            "13",
             "5",
-            "7",
+            18
+          ],
+          [
             "9",
-            "11"
+            "7",
+            16
+          ],
+          [
+            22,
+            12,
+            34
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#12)",
-        "caption_ar": "جدول نمط مرجعي (#12)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "5",
-            "7",
-            "9",
-            "11"
-          ]
-        ]
+        "caption": "Session Roster Summary (EST-1096)",
+        "caption_ar": "ملخص النتائج (EST-1096)"
       }
     },
     {
       "number": 13,
       "difficulty": "Intermediate",
       "question": {
-        "en": "Divide 120 in the ratio \\(3:5\\). Find the larger part.",
+        "en": "Examine the thermodynamics dataset arranged in the table below (EST-1132); for the two-way table above. If one participant from Model X is chosen at random, what fraction corresponds to outcome In-Spec?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Find total ratio parts:</strong> Total parts \\(= 3 + 5 = 8\\).</p><p><strong>Step 2: Compute value of one part:</strong><br>\\[\\text{Value per part} = \\frac{120}{8} = 15\\]</p><p><strong>Step 3: Calculate the larger part (5 parts):</strong><br>\\[5 \\times 15 = \\mathbf{75}\\]</p><p>(The smaller part is \\(3 \\times 15 = 45\\); check: \\(45 + 75 = 120\\) &#10003;). The larger part is <strong>75</strong>.</p>",
+        "en": "<p>There are \\(20\\) participants in Model X (\\(13 + 7\\)), of whom \\(13\\) recorded In-Spec, giving \\(\\frac{13}{20}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{20}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Model X",
+          "Model Y",
+          "Total"
+        ],
+        "cols": [
+          "In-Spec",
+          "Rework",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "20",
-            "23",
-            "26",
-            "29"
+            "13",
+            "7",
+            20
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            18,
+            42
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#13)",
-        "caption_ar": "جدول نمط مرجعي (#13)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "23",
-            "26",
-            "29"
-          ]
-        ]
+        "caption": "Batch Inspection Summary (EST-1132)",
+        "caption_ar": "ملخص النتائج (EST-1132)"
       }
     },
     {
       "number": 14,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A price increased from 80 to 100 SAR. Find the percentage increase.",
+        "en": "An engineering team logged wind tunnel measurements in the accompanying table (EST-1168); using these data, for the two-way table above. If one participant from Lab 1 is chosen at random, what fraction corresponds to outcome Positive?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute absolute change:</strong> \\(\\Delta P = 100 - 80 = 20\\text{ SAR}\\).</p><p><strong>Step 2: Calculate percent increase relative to base price 80:</strong><br>\\[\\text{Percent Increase} = \\frac{\\text{New} - \\text{Old}}{\\text{Old}} \\times 100\\% = \\frac{20}{80} \\times 100\\% = \\frac{1}{4} \\times 100\\% = \\mathbf{25\\%}\\]</p><p>The price increased by <strong>25%</strong>.</p>",
+        "en": "<p>There are \\(22\\) participants in Lab 1 (\\(13 + 9\\)), of whom \\(13\\) recorded Positive, giving \\(\\frac{13}{22}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{22}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Lab 1",
+          "Lab 2",
+          "Total"
+        ],
+        "cols": [
+          "Positive",
+          "Negative",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "13",
+            "9",
+            22
+          ],
+          [
+            "5",
+            "7",
+            12
+          ],
+          [
+            18,
+            16,
+            34
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#14)",
-        "caption_ar": "جدول نمط مرجعي (#14)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "caption": "Assay Trials Summary (EST-1168)",
+        "caption_ar": "ملخص النتائج (EST-1168)"
       }
     },
     {
       "number": 15,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A car travels 240 km at 80 km/h. How long is the trip?",
+        "en": "Selected numerical readings from telemetry run (EST-1204) appear in the table; for the two-way table above. If one participant from North is chosen at random, what fraction corresponds to outcome Transit?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Apply the motion formula:</strong> \\(t = \\frac{d}{v}\\).</p><p><strong>Step 2: Substitute distance and speed:</strong><br>\\[t = \\frac{240\\text{ km}}{80\\text{ km/h}} = \\mathbf{3\\text{ hours}}\\]</p><p>The trip takes <strong>3 hours</strong>.</p>",
+        "en": "<p>There are \\(17\\) participants in North (\\(13 + 4\\)), of whom \\(13\\) recorded Transit, giving \\(\\frac{13}{17}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{17}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "North",
+          "South",
+          "Total"
+        ],
+        "cols": [
+          "Transit",
+          "Drive",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
+            "13",
+            "4",
+            17
+          ],
+          [
+            "7",
+            "11",
+            18
+          ],
+          [
+            20,
+            15,
+            35
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#15)",
-        "caption_ar": "جدول نمط مرجعي (#15)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "20",
-            "29",
-            "38",
-            "47"
-          ]
-        ]
+        "caption": "Commuter Survey Summary (EST-1204)",
+        "caption_ar": "ملخص النتائج (EST-1204)"
       }
     },
     {
       "number": 16,
       "difficulty": "Advanced",
       "question": {
-        "en": "If \\(5\\) workers finish a task in \\(12\\) days, how many days for \\(3\\) workers?",
+        "en": "Given the structured cartography observations displayed in the table (EST-1247), showing recorded frequency counts. Compute the total weighted sum \\(\\sum x \\cdot f\\) of all entries.",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Compute total worker-days needed:</strong> Since work is constant, workers and days vary inversely:<br>\\[W = 5\\text{ workers} \\times 12\\text{ days} = 60\\text{ worker-days}\\]</p><p><strong>Step 2: Determine days for 3 workers:</strong><br>\\[t = \\frac{60\\text{ worker-days}}{3\\text{ workers}} = \\mathbf{20\\text{ days}}\\]</p><p>It will take <strong>20 days</strong>.</p>",
+        "en": "<p>Weighted sum \\(= 2(4) + 4(5) + 6(4) + 8(1) = 60\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(60\\)</strong></p>",
         "ar": null
       },
       "fig": {
         "type": "table",
         "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "Value \\(x\\)",
+          "Frequency"
         ],
         "rows": [
           [
-            "g(x)",
-            "5",
-            "14",
-            "23",
-            "32"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "8",
+            "1"
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#16)",
-        "caption_ar": "جدول نمط مرجعي (#16)",
+        "caption": "Frequency distribution summary (cartography, EST-1247)",
+        "caption_ar": "جدول التوزيع التكراري (رسم الخرائط، EST-1247)",
         "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
+          "القيمة \\(x\\)",
+          "التكرار"
         ],
         "rows_ar": [
           [
-            "g(x)",
-            "5",
-            "14",
-            "23",
-            "32"
+            "2",
+            "4"
+          ],
+          [
+            "4",
+            "5"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "8",
+            "1"
           ]
         ]
       }
@@ -714,50 +737,45 @@
       "number": 17,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A shop offers a 15% discount on a 200 SAR item. Find the sale price.",
+        "en": "Inspect the acoustics lab values listed across the table (EST-1276); for the two-way table above. If one participant from Morning is chosen at random, what fraction corresponds to outcome Standard?",
         "ar": null
       },
       "solution": {
-        "en": "<p><strong>Step 1: Determine the discounted multiplier:</strong> A 15% discount leaves \\(100\\% - 15\\% = 85\\%\\) (multiplier \\(0.85\\)).</p><p><strong>Step 2: Calculate the sale price:</strong><br>\\[P_{\\text{sale}} = 200 \\times 0.85 = \\mathbf{170\\text{ SAR}}\\]</p><p>(Alternatively: Discount is \\(200 \\times 0.15 = 30\\text{ SAR}\\); sale price is \\(200 - 30 = 170\\text{ SAR}\\)).</p>",
+        "en": "<p>There are \\(21\\) participants in Morning (\\(13 + 8\\)), of whom \\(13\\) recorded Standard, giving \\(\\frac{13}{21}\\). Verification: confirm row, axis scale, and boundary values directly from the visual and check intermediate arithmetic. <strong>Final Answer: \\(\\frac{13}{21}\\)</strong></p>",
         "ar": null
       },
       "fig": {
-        "type": "table",
-        "headers": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
+        "type": "two_way_table",
+        "corner": "",
         "rows": [
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "cols": [
+          "Standard",
+          "Honors",
+          "Total"
+        ],
+        "data": [
           [
-            "g(x)",
-            "15",
-            "24",
-            "33",
-            "42"
+            "13",
+            "8",
+            21
+          ],
+          [
+            "11",
+            "11",
+            22
+          ],
+          [
+            24,
+            19,
+            43
           ]
         ],
-        "orientation": "horizontal",
-        "caption": "Reference Pattern Table (#17)",
-        "caption_ar": "جدول نمط مرجعي (#17)",
-        "headers_ar": [
-          "x",
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "rows_ar": [
-          [
-            "g(x)",
-            "15",
-            "24",
-            "33",
-            "42"
-          ]
-        ]
+        "caption": "Session Roster Summary (EST-1276)",
+        "caption_ar": "ملخص النتائج (EST-1276)"
       }
     },
     {
