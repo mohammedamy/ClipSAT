@@ -11,7 +11,7 @@
     if (_promise) return _promise;
     _promise = new Promise(function(resolve, reject) {
       var s = document.createElement('script');
-      s.src = '/js/diagnostic-test.js';
+      s.src = '/js/diagnostic-test.js?v=20261126b';
       s.onload = function() {
         window._diagnosticLoaded = true;
         resolve();

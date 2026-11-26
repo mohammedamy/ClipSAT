@@ -1,4 +1,4 @@
-  <script src="/js/shell-modals.js?v=20261119c"></script>
+  <script src="/js/shell-modals.js?v=20261126b"></script>
   <script src="/js/cloud-config.js?v=20261104w2"></script>
   <script defer src="/vendor/supabase/supabase.min.js?v=20261101c"></script>
   <script defer src="/js/cloud-sync.js?v=20261124a"></script>
@@ -8,15 +8,16 @@
   <script defer src="/js/analytics.js"></script>
   <script src="/js/google-config.js"></script>
   <script defer src="/js/google-integration.js?v=20261125a"></script>
-  <script defer src="/js/math-image.js?v=20261126a"></script>
+  <script defer src="/js/math-image.js?v=20261126b"></script>
   <script defer src="/js/forms-api.js?v=20261125a"></script>
   <script defer src="/js/quiz-capture-ui.js?v=20261125a"></script>
-  <script src="/js/engine.js?v=20261124d"></script>
-  <script src="/js/study-hub-extras.js?v=20261124d"></script>
+  <script src="/js/engine.js?v=20261126b"></script>
+  <script defer src="/sh.js"></script>
+  <script src="/js/study-hub-extras.js?v=20261126b"></script>
   {% if trackId == 'dev-content-preview' %}
-    <script src="/js/ix-engine.js?v=20261124a"></script><script src="/js/universal-graph-explorers.js?v=20261124a"></script>{% for t in explorerTracks %}<script src="/js/ex/{{ t }}.js?v=20261119c"></script>{% endfor %}
+    <script src="/js/ix-engine.js?v=20261126b"></script><script src="/js/universal-graph-explorers.js?v=20261126b"></script>{% for t in explorerTracks %}<script src="/js/ex/{{ t }}.js?v=20261126b"></script>{% endfor %}
   {% elif trackId in explorerTracks %}
-    {% if trackId != 'home' %}<script src="/js/ix-engine.js?v=20261124a"></script><script src="/js/universal-graph-explorers.js?v=20261124a"></script>{% endif %}{% if (not isChapterPage) or chapterHasExplorer %}<script src="/js/ex/{{ trackId }}.js?v=20261119c"></script>{% endif %}
+    {% if trackId != 'home' %}<script src="/js/ix-engine.js?v=20261126b"></script><script src="/js/universal-graph-explorers.js?v=20261126b"></script>{% endif %}{% if (not isChapterPage) or chapterHasExplorer %}<script src="/js/ex/{{ trackId }}.js?v=20261126b"></script>{% endif %}
   {% endif %}
   <script>
   (function(){

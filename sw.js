@@ -19,7 +19,7 @@
 // returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
 // returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
 // to force a new version with no file change.
-const SW_VERSION = 'v2.13';
+const SW_VERSION = 'v2.14';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -208,12 +208,16 @@ function matchOfflineCache(cache, request) {
 
 function cacheFirst(request, cacheName) {
   return caches.open(cacheName).then(function(cache) {
-    return matchOfflineCache(cache, request).then(function(cached) {
+    return cache.match(request).then(function(cached) {
       if (cached) return cached;
       return fetch(request).then(function(response) {
         if (response.ok) cache.put(request, response.clone());
         return response;
-      }).catch(function() { return offlineFallback(request); });
+      }).catch(function() {
+        return matchOfflineCache(cache, request).then(function(relaxed) {
+          return relaxed || offlineFallback(request);
+        });
+      });
     });
   });
 }

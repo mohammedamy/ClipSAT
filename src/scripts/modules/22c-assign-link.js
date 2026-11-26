@@ -15,7 +15,7 @@
   function open(){
     if(!/[?&]assign=[0-9a-z.]+/.test(location.search)) return;
     var s=document.createElement('script');
-    s.src='/js/assignment-view.js';
+    s.src='/js/assignment-view.js?v=20261126b';
     document.head.appendChild(s);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',open); else open();

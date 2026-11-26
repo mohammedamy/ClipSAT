@@ -1,4 +1,5 @@
 (function(){
+  if (typeof window !== 'undefined') window.__CS_ENGINE_V = '20261126b';
   var _doc = typeof document !== 'undefined' ? document : null;
   var fab = _doc ? _doc.getElementById('chatFab') : null,
       panel = _doc ? _doc.getElementById('chatPanel') : null,
@@ -678,7 +679,7 @@ window._ensurePracticeQuiz=function(){
   if(_pqPromise) return _pqPromise;
   _pqPromise=new Promise(function(resolve,reject){
     var s=document.createElement('script');
-    s.src='/js/practice-quiz.js';
+    s.src='/js/practice-quiz.js?v=20261126b';
     s.onload=function(){ window.CSPracticeQuiz?resolve():reject(new Error('practice-quiz.js did not register')); };
     s.onerror=function(){ _pqPromise=null; reject(new Error('practice-quiz.js failed to load')); };
     document.head.appendChild(s);
