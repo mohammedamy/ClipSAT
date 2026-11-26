@@ -140,6 +140,32 @@ module.exports = function (eleventyConfig) {
   // ── Watch for changes to JS/CSS in development ───────────────────────────
   eleventyConfig.addWatchTarget("public/");
 
+  // Serve /downloads/* from public/downloads/* during `eleventy --serve` without bloating _site/
+  eleventyConfig.setServerOptions({
+    middleware: [
+      function (req, res, next) {
+        var reqUrl = (req.url || "").split("?")[0];
+        if (!reqUrl.startsWith("/downloads/")) return next();
+        var fsMod = require("fs");
+        var pathMod = require("path");
+        var dlRoot = pathMod.join(__dirname, "public", "downloads");
+        var rel = decodeURIComponent(reqUrl.slice("/downloads/".length)).replace(/^\/+/, "");
+        var target = pathMod.resolve(dlRoot, rel);
+        if (!target.startsWith(dlRoot + pathMod.sep)) return next();
+        fsMod.readFile(target, function (err, buf) {
+          if (err) return next();
+          var ext = pathMod.extname(target).toLowerCase();
+          var mime = ext === ".pdf" ? "application/pdf"
+            : ext === ".json" ? "application/json; charset=utf-8"
+            : ext === ".html" ? "text/html; charset=utf-8"
+            : "application/octet-stream";
+          res.setHeader("Content-Type", mime);
+          res.end(buf);
+        });
+      }
+    ]
+  });
+
   // ── Allow raw HTML in includes to render unescaped ────────────────────────
   eleventyConfig.addFilter("safe", (str) => str);
   eleventyConfig.addNunjucksFilter("jsonAttr", function (spec) {

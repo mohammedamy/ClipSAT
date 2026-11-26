@@ -38,7 +38,7 @@
     if (_promise) return _promise;
     _promise = new Promise(function(resolve, reject){
       var s = document.createElement('script');
-      s.src = '/js/teacher-mode.js?v=20261126b';
+      s.src = '/js/teacher-mode.js?v=20261126c';
       s.onload = function(){
         if (window._applyTeacherModeDecoration) window._applyTeacherModeDecoration();
         resolve();

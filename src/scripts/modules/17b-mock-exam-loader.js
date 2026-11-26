@@ -39,6 +39,7 @@
 
   _forward('openMockExam');
   _forward('openDownloadExamCBT');
+  _forward('openSatBankCBT');
   _forward('closeMockExam');
   _forward('exitMockExam');
   _forward('submitMockExam');

@@ -22,6 +22,87 @@
   var _lastDownloadArgs = null;
   var _satFullPool = [];
   var _satAdaptiveState = null;
+  var _satBankState = null;
+  var _satBankIndexCache = {};
+  var _satBankShardCache = {};
+
+  function _satBankBaseUrls() {
+    var cdnPrefix = String(window.CLIPSAT_CDN_BASE || '').replace(/\/+$/, '');
+    var isProdNoCdn = !cdnPrefix && typeof location !== 'undefined' && /(?:^|\.)clipsat\.org$/i.test(location.hostname || '');
+    var rawBase = 'https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public/downloads/sat/bank-packs/';
+    var localBase = (cdnPrefix ? (cdnPrefix + '/downloads/sat/bank-packs/') : '/downloads/sat/bank-packs/');
+    return isProdNoCdn ? [rawBase, localBase] : [localBase, rawBase];
+  }
+
+  function _fetchSatBankJson(relPath) {
+    var urls = _satBankBaseUrls();
+    function tryIdx(idx) {
+      return fetch(urls[idx] + relPath).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).catch(function (err) {
+        if (idx + 1 < urls.length) return tryIdx(idx + 1);
+        throw err;
+      });
+    }
+    return tryIdx(0);
+  }
+
+  function _loadSatBankIndex(tier) {
+    if (_satBankIndexCache[tier]) return Promise.resolve(_satBankIndexCache[tier]);
+    return _fetchSatBankJson('cbt/' + tier + '-index.json').then(function (data) {
+      _satBankIndexCache[tier] = data;
+      return data;
+    });
+  }
+
+  function _loadSatBankShard(tier, shardId) {
+    var pad = shardId < 10 ? ('0' + shardId) : String(shardId);
+    var key = tier + '-' + pad;
+    if (_satBankShardCache[key]) return Promise.resolve(_satBankShardCache[key]);
+    return _fetchSatBankJson('cbt/' + key + '.json').then(function (data) {
+      _satBankShardCache[key] = data;
+      return data;
+    });
+  }
+
+  function _saveSatBankProgress() {
+    if (!_satBankState || _satBankState.mode !== 'full') return;
+    try {
+      localStorage.setItem('clipsat_sat_bank_v1_' + _satBankState.tier, JSON.stringify({
+        answers: _satBankState.fullAnswers || {},
+        checked: _satBankState.fullChecked || {},
+        flags: _satBankState.fullFlags || {},
+        domainFilter: _satBankState.domainFilter || 'all',
+        lastOrigIdx: (_pool[_curIdx] && typeof _pool[_curIdx].origIdx === 'number') ? _pool[_curIdx].origIdx : 0
+      }));
+    } catch (_e) { }
+  }
+
+  function _loadSatBankProgress(tier) {
+    try {
+      var raw = localStorage.getItem('clipsat_sat_bank_v1_' + tier);
+      if (raw) return JSON.parse(raw);
+    } catch (_e) { }
+    return null;
+  }
+
+  function _syncFullStateFromActive() {
+    if (!_satBankState || _satBankState.mode !== 'full') return;
+    _satBankState.fullAnswers = _satBankState.fullAnswers || {};
+    _satBankState.fullFlags = _satBankState.fullFlags || {};
+    _satBankState.fullChecked = _satBankState.fullChecked || {};
+    for (var i = 0; i < _pool.length; i++) {
+      var oid = _pool[i].origIdx;
+      if (_answers[i] !== undefined && _answers[i] !== null && String(_answers[i]).trim() !== '') {
+        _satBankState.fullAnswers[oid] = _answers[i];
+      } else {
+        delete _satBankState.fullAnswers[oid];
+      }
+      if (_flags[i]) _satBankState.fullFlags[oid] = true;
+      else delete _satBankState.fullFlags[oid];
+    }
+  }
 
   /* ── WP-42: 3PL IRT & 2-Stage Adaptive Digital SAT Engine ────────────── */
   var _SAT_DOMAIN_QUOTAS = [
@@ -221,27 +302,46 @@
     return finalModule;
   }
 
+  function _matchSprValue(userAns, targetOrList) {
+    var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
+    if (!val) return false;
+    var list = Array.isArray(targetOrList) ? targetOrList : [targetOrList];
+    var toN = function (s) {
+      if (!s) return NaN;
+      s = String(s).trim().replace(/,/g, '');
+      if (s.indexOf('/') !== -1) {
+        var p = s.split('/');
+        var n = parseFloat(p[0]), d = parseFloat(p[1]);
+        return (d !== 0 && !isNaN(n) && !isNaN(d)) ? (n / d) : NaN;
+      }
+      return parseFloat(s);
+    };
+    var vn = toN(val);
+    var valNoComma = val.replace(/,/g, '');
+    for (var i = 0; i < list.length; i++) {
+      var rawTarget = list[i] != null ? String(list[i]).trim().toLowerCase() : '';
+      if (!rawTarget) continue;
+      if (val === rawTarget || valNoComma === rawTarget.replace(/,/g, '')) return true;
+      if (window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function') {
+        try { if (window.ClipSATAnswerCheck.equivalent(val, rawTarget)) return true; } catch (_e) { }
+      }
+      var tn = toN(rawTarget);
+      if (!isNaN(vn) && !isNaN(tn)) {
+        var decPart = rawTarget.split('.')[1] || '';
+        var tol = decPart.length >= 3 ? 1.5e-3 : 1e-4;
+        if (Math.abs(vn - tn) <= tol) return true;
+      }
+    }
+    return false;
+  }
+
   function _gradeSingleItemQuick(q, userAns) {
     if (!q) return false;
     if (q.type === 'spr') {
-      var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
-      var target = String(q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : '')).trim().toLowerCase();
-      if (!val || !target) return false;
-      if (val === target) return true;
-      if (window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function') {
-        try { if (window.ClipSATAnswerCheck.equivalent(val, target)) return true; } catch (_e) { }
-      }
-      var toN = function (s) {
-        if (!s) return NaN;
-        if (s.indexOf('/') !== -1) {
-          var p = s.split('/');
-          var n = parseFloat(p[0]), d = parseFloat(p[1]);
-          return (d !== 0 && !isNaN(n) && !isNaN(d)) ? (n / d) : NaN;
-        }
-        return parseFloat(s);
-      };
-      var vn = toN(val), tn = toN(target);
-      return (!isNaN(vn) && !isNaN(tn) && Math.abs(vn - tn) < 1e-4);
+      var accepted = (Array.isArray(q.sprAnswers) && q.sprAnswers.length)
+        ? q.sprAnswers
+        : [q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : '')];
+      return _matchSprValue(userAns, accepted);
     }
     var chosen = (userAns !== undefined && userAns !== null) ? parseInt(userAns, 10) : -1;
     return chosen === q.answer;
@@ -412,7 +512,10 @@
       { name: 'Digital SAT® Math — Full 2-Stage Adaptive Test (Module 1 + Module 2)', minutes: 35, qCount: 22, calc: true, adaptiveTwoStage: true, satStratified: true, stage: 1, domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
       { name: 'Digital SAT® Math — Module 1 (Routing Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 1, domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
       { name: 'Digital SAT® Math — Module 2 (Hard Adaptive Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 2, adaptiveTrack: 'hard', domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
-      { name: 'Digital SAT® Math — Module 2 (Standard Adaptive Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 2, adaptiveTrack: 'standard', domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] }
+      { name: 'Digital SAT® Math — Module 2 (Standard Adaptive Stage)', minutes: 35, qCount: 22, calc: true, satStratified: true, stage: 2, adaptiveTrack: 'standard', domains: ['algebra', 'advanced', 'problem-solving', 'geometry'] },
+      { name: 'Digital SAT® Math Bank — ALL EASY (770 Questions)', minutes: 35, qCount: 770, calc: true, satBankTier: 'easy' },
+      { name: 'Digital SAT® Math Bank — ALL MEDIUM (680 Questions)', minutes: 35, qCount: 680, calc: true, satBankTier: 'medium' },
+      { name: 'Digital SAT® Math Bank — ALL HARD (645 Questions)', minutes: 35, qCount: 645, calc: true, satBankTier: 'hard' }
     ],
     igcse: [
       { name: 'Cambridge IGCSE® 0580 — Paper 2 (Non-Calculator)', minutes: 90, qCount: 20, calc: false, domains: ['number', 'algebra', 'geometry', 'trigonometry', 'probability', 'statistics'] },
@@ -754,6 +857,15 @@
     var body = document.getElementById('mock-exam-body');
     if (!body) return;
 
+    if (_paper && _paper.isSatBank && !_isSubmitted && _viewMode === 'cbt') {
+      _renderSatBankActiveQuestion();
+      _updateHeaderTools();
+      _updateFooterNav();
+      _saveSatBankProgress();
+      body.scrollTop = 0;
+      return;
+    }
+
     var qs = body.querySelectorAll('.mock-q');
     qs.forEach(function (el, i) {
       if (_viewMode === 'all') {
@@ -779,6 +891,20 @@
 
   function _toggleViewMode() {
     _viewMode = (_viewMode === 'cbt' ? 'all' : 'cbt');
+    if (_paper && _paper.isSatBank && _viewMode === 'all') {
+      var body = document.getElementById('mock-exam-body');
+      if (body) {
+        var html = _buildSatBankControlBarHtml();
+        _pool.forEach(function (q, i) {
+          html += _buildSatBankQCardHtml(q, i, _getCachedSatBankAsset(q), true);
+        });
+        body.innerHTML = html;
+        _updateHeaderTools();
+        _updateFooterNav();
+        body.scrollTop = 0;
+        return;
+      }
+    }
     _goToQuestion(_curIdx);
   }
 
@@ -827,18 +953,31 @@
       if (_isQuestionAnswered(i)) answeredCount++;
     }
 
+    var isSatFull = Boolean(_paper && _paper.isSatBank && _paper.satBankMode === 'full');
+    var viewAllBtnHtml = isSatFull
+      ? '<button type="button" class="cbt-nav-btn" style="padding:7px 12px;font-size:.78rem;background:#eef2ff;color:#1e3a8a;border-color:#93c5fd" onclick="window.cbtCheckSatBankCurrent()">✓ Check Answer</button>'
+      : '<button type="button" class="cbt-nav-btn" style="padding:7px 12px;font-size:.78rem" onclick="window.cbtToggleViewMode()">' + (_viewMode === 'cbt' ? '📄 View All' : '🎯 Single Q') + '</button>';
+
     var html = '<div class="mock-cbt-nav">'
       + '<button type="button" class="cbt-nav-btn" onclick="window.cbtPrevQuestion()" ' + (isFirst ? 'disabled' : '') + '>← Previous</button>'
-      + '<div style="display:flex;align-items:center;gap:8px">'
+      + '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
       + '  <button type="button" class="cbt-q-pill" onclick="window.toggleCBTPalette()">'
       + '    <span>▤ Question ' + (_curIdx + 1) + ' of ' + _pool.length + '</span>'
       + '    <span style="font-size:.72rem;background:rgba(0,0,0,.08);padding:2px 7px;border-radius:10px">' + answeredCount + '/' + _pool.length + '</span>'
       + '  </button>'
-      + '  <button type="button" class="cbt-nav-btn" style="padding:7px 12px;font-size:.78rem" onclick="window.cbtToggleViewMode()">' + (_viewMode === 'cbt' ? '📄 View All' : '🎯 Single Q') + '</button>'
+      + viewAllBtnHtml
       + '</div>';
 
-    if (isLast) {
-      html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtShowReviewScreen()">Review & Finish →</button>';
+    if (isLast || isSatFull) {
+      var finishLabel = isSatFull ? 'Finish &amp; Score Attempted' : 'Review &amp; Finish →';
+      html += '<div style="display:flex;gap:8px">';
+      if (isSatFull && !isLast) {
+        html += '<button type="button" class="cbt-nav-btn" onclick="window.cbtShowReviewScreen()">' + finishLabel + '</button>';
+        html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtNextQuestion()">Next →</button>';
+      } else {
+        html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtShowReviewScreen()">' + finishLabel + '</button>';
+      }
+      html += '</div>';
     } else {
       html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtNextQuestion()">Next →</button>';
     }
@@ -977,6 +1116,13 @@
   };
 
   window.cbtReturnToQuestion = function (idx) {
+    if (_paper && _paper.isSatBank && _viewMode === 'cbt') {
+      _curIdx = idx || 0;
+      _renderSatBankActiveQuestion();
+      _updateHeaderTools();
+      _updateFooterNav();
+      return;
+    }
     // Re-render questions into body and jump
     _renderQuestionsDOM();
     _goToQuestion(idx || 0);
@@ -1241,6 +1387,10 @@
       });
     }
     _updateFooterNav();
+    if (_paper && _paper.isSatBank) {
+      _syncFullStateFromActive();
+      _saveSatBankProgress();
+    }
   };
 
   function _enterCBTModalLock(){
@@ -1346,6 +1496,10 @@
     }
     _updateHeaderTools();
     _updateFooterNav();
+    if (_paper && _paper.isSatBank) {
+      _syncFullStateFromActive();
+      _saveSatBankProgress();
+    }
   };
 
   window.openMockExam = function (viewId, pidx) {
@@ -1362,6 +1516,9 @@
     if (!trackId) trackId = 'sat';
 
     pidx = parseInt(pidx, 10) || 0;
+    if (trackId === 'sat' && PAPERS.sat && PAPERS.sat[pidx] && PAPERS.sat[pidx].satBankTier) {
+      return window.openSatBankCBT(PAPERS.sat[pidx].satBankTier);
+    }
     _trackId = trackId;
     _pidx = pidx;
     _curIdx = 0;
@@ -1532,6 +1689,376 @@
           + '  <button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam(\'' + trackId + '\',' + pidx + ')">↻ Retry</button>'
           + '  <button type="button" class="cbt-nav-btn" onclick="window.closeMockExam()">✕ Close</button>'
           + '</div></div>';
+      }
+    });
+  };
+
+  function _buildSatBankControlBarHtml() {
+    if (!_satBankState) return '';
+    var idxData = _satBankState.indexData;
+    var mode = _satBankState.mode;
+    var domFilter = _satBankState.domainFilter || 'all';
+    var doms = ['Algebra', 'Advanced Math', 'Problem-Solving and Data Analysis', 'Geometry and Trigonometry'];
+    var domOpts = '<option value="all"' + (domFilter === 'all' ? ' selected' : '') + '>All Domains (' + idxData.total + ' Qs)</option>';
+    doms.forEach(function (dn) {
+      var cnt = idxData.items.filter(function (x) { return x.domain === dn; }).length;
+      domOpts += '<option value="' + dn + '"' + (domFilter === dn ? ' selected' : '') + '>' + dn + ' (' + cnt + ')</option>';
+    });
+    return '<div id="cs-sat-bank-bar" class="cs-sat-bank-bar">'
+      + '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
+      + '  <span style="font-weight:800;color:var(--indigo,#1e3a6e)">Mode:</span>'
+      + '  <select aria-label="Practice mode" onchange="window.cbtSetSatBankMode(this.value)">'
+      + '    <option value="full"' + (mode === 'full' ? ' selected' : '') + '>Full Bank Practice (Untimed)</option>'
+      + '    <option value="module"' + (mode === 'module' ? ' selected' : '') + '>22-Q Timed SAT Module (35 min)</option>'
+      + '  </select>'
+      + (mode === 'full'
+        ? ('  <select aria-label="Filter by SAT domain" onchange="window.cbtSetSatBankDomain(this.value)">' + domOpts + '</select>')
+        : '')
+      + '</div>'
+      + '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">'
+      + '  <label style="font-size:.8rem;font-weight:700">Jump to Q#</label>'
+      + '  <input type="number" id="cs-sat-jump-inp" min="1" max="' + _pool.length + '" value="' + (_curIdx + 1) + '" style="width:68px" onkeydown="if(event.key===\'Enter\'){event.preventDefault();window.cbtJumpSatBankInput();}">'
+      + '  <button type="button" class="cbt-nav-btn" style="padding:5px 10px;font-size:.78rem" onclick="window.cbtJumpSatBankInput()">Go</button>'
+      + (mode === 'full'
+        ? '  <button type="button" class="cbt-nav-btn" style="padding:5px 10px;font-size:.78rem" onclick="window.cbtResetSatBankProgress()">↺ Reset</button>'
+        : '')
+      + '</div>'
+      + '</div>';
+  }
+
+  function _buildSatBankQCardHtml(q, i, asset, isVisible) {
+    var diffKey = (q.difficulty || 'medium').toLowerCase();
+    var diffLabel = diffKey === 'easy' ? 'Foundational' : (diffKey === 'hard' ? 'Challenging' : 'Standard');
+    var diffStyle = diffKey === 'easy'
+      ? 'background:#dcfce7;color:#166534;border:1px solid #bbf7d0'
+      : (diffKey === 'hard'
+        ? 'background:#fee2e2;color:#991b1b;border:1px solid #fecaca'
+        : 'background:#fef3c7;color:#92400e;border:1px solid #fde68a');
+    var currentAns = _answers[i];
+    var isChecked = Boolean(_satBankState && _satBankState.mode === 'full' && _satBankState.fullChecked && _satBankState.fullChecked[q.origIdx]);
+    var stemHtml = asset && asset.stem
+      ? '<img class="cs-cbt-crop-img" src="' + asset.stem.src + '" width="' + asset.stem.w + '" height="' + asset.stem.h + '" alt="SAT Question ' + (i + 1) + '">'
+      : '<div style="padding:20px;color:var(--muted)">Loading question…</div>';
+
+    var h = '<div class="mock-q' + (isVisible ? '' : ' cbt-hidden') + '" id="mock-q-' + i + '" dir="ltr">'
+      + '<div class="mq-num" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">'
+      + '  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px">'
+      + '    <span style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3e70)">Question ' + (i + 1) + ' of ' + _pool.length + '</span>'
+      + '    <span style="font-size:.74rem;background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px;color:var(--muted,#64748b)">' + (q.domain || 'Math') + (q.skill ? ' · ' + q.skill : '') + '</span>'
+      + '    <span style="font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;' + diffStyle + '">' + diffLabel + '</span>'
+      + '    <span style="font-size:.7rem;color:var(--muted,#64748b);font-family:var(--mono,monospace)">#' + (q.origIdx + 1) + ' (' + q.id + ')</span>'
+      + '  </div>'
+      + '</div>'
+      + '<div class="mq-text" style="margin-bottom:16px">' + stemHtml + '</div>';
+
+    if (q.type === 'spr') {
+      h += '<div class="mock-spr-wrap" style="margin:14px 0">'
+        + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">Student-Produced Response (Grid-in):</label>'
+        + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null && typeof currentAns !== 'object' ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:220px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
+        + '</div>';
+    } else if (asset && Array.isArray(asset.choices)) {
+      var letters = ['A', 'B', 'C', 'D'];
+      h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:8px">';
+      asset.choices.forEach(function (chObj, ci) {
+        var letLabel = letters[ci] || String.fromCharCode(65 + ci);
+        var isSel = (currentAns === ci);
+        var rowBg = isSel ? 'rgba(59,130,246,0.08)' : 'var(--paper,#fff)';
+        var rowBorder = isSel ? '#3b82f6' : 'var(--border,#e2e8f0)';
+        if (isChecked) {
+          if (ci === q.answer) { rowBg = '#f0fdf4'; rowBorder = '#22c55e'; }
+          else if (isSel && ci !== q.answer) { rowBg = '#fef2f2'; rowBorder = '#ef4444'; }
+        }
+        h += '<div class="mock-choice-wrap" style="display:flex;align-items:center;gap:6px">'
+          + '<label class="mock-choice-row" style="flex:1;display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + rowBorder + ';border-radius:8px;cursor:pointer;background:' + rowBg + ';transition:all .15s ease">'
+          + '<input type="radio" name="mq' + i + '" value="' + ci + '" aria-label="Choice ' + letLabel + '" ' + (isSel ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
+          + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
+          + '<span class="mock-choice-text" style="flex:1"><img class="cs-cbt-choice-img" src="' + chObj.src + '" width="' + chObj.w + '" height="' + chObj.h + '" alt="Choice ' + letLabel + '"></span>'
+          + '</label>'
+          + '<button type="button" class="cbt-strike-btn" title="Cross out / eliminate option" aria-label="Cross out option ' + letLabel + '" aria-pressed="false" onclick="window.cbtToggleStrike(' + i + ',' + ci + ',this)" style="min-width:34px;min-height:34px;border-radius:8px;border:1px solid var(--border,#cbd5e1);background:var(--paper,#fff);color:var(--muted,#64748b);font-size:.8rem;font-weight:800;cursor:pointer;flex-shrink:0"><span style="text-decoration:line-through">' + letLabel + '</span></button>'
+          + '</div>';
+      });
+      h += '</div>';
+    }
+
+    if (isChecked && asset && asset.sol) {
+      var okNow = _gradeSingleItemQuick(q, currentAns);
+      var ansDisplay = q.type === 'mcq'
+        ? ('Choice ' + ['A', 'B', 'C', 'D'][q.answer])
+        : (Array.isArray(q.sprAnswers) && q.sprAnswers.length ? q.sprAnswers.join(' or ') : q.sprAnswer);
+      h += '<div class="mock-res-feedback" style="margin-top:14px;padding:12px 16px;border-radius:8px;font-size:.88rem;line-height:1.6;' + (okNow ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b') + '">'
+        + '<div style="font-weight:700;font-size:.95rem;margin-bottom:6px">' + (okNow ? '✓ Correct Answer' : '✗ Incorrect') + ' · Official Answer: <code>' + ansDisplay + '</code></div>'
+        + '<div style="margin-top:8px;border-top:1px dashed rgba(0,0,0,.15);padding-top:8px;background:var(--panel,#fff);padding:10px;border-radius:6px">'
+        + '<div style="font-weight:700;color:var(--ink,#0e1726);margin-bottom:6px">Official Explanation:</div>'
+        + '<img class="cs-cbt-crop-img" src="' + asset.sol.src + '" width="' + asset.sol.w + '" height="' + asset.sol.h + '" alt="Official Rationale">'
+        + '</div></div>';
+    }
+
+    h += '</div>';
+    return h;
+  }
+
+  function _getCachedSatBankAsset(q) {
+    if (!_satBankState) return null;
+    var shSize = _satBankState.indexData.shardSize || 25;
+    var shId = Math.floor(q.origIdx / shSize);
+    var pad = shId < 10 ? ('0' + shId) : String(shId);
+    var shard = _satBankShardCache[_satBankState.tier + '-' + pad];
+    return shard && shard.items ? shard.items[String(q.origIdx)] : null;
+  }
+
+  function _renderSatBankActiveQuestion() {
+    var body = document.getElementById('mock-exam-body');
+    if (!body || !_satBankState || !_pool.length) return;
+    var q = _pool[_curIdx];
+    var shSize = _satBankState.indexData.shardSize || 25;
+    var shId = Math.floor(q.origIdx / shSize);
+    var cached = _getCachedSatBankAsset(q);
+
+    if (cached) {
+      body.innerHTML = _buildSatBankControlBarHtml() + _buildSatBankQCardHtml(q, _curIdx, cached, true);
+      // Prefetch next question's shard
+      if (_curIdx + 1 < _pool.length) {
+        var nextSh = Math.floor(_pool[_curIdx + 1].origIdx / shSize);
+        _loadSatBankShard(_satBankState.tier, nextSh).catch(function () { });
+      }
+      return;
+    }
+
+    body.innerHTML = _buildSatBankControlBarHtml()
+      + '<div style="text-align:center;padding:48px 20px;color:var(--muted)"><div class="ai-spinner" style="margin:0 auto 12px"></div><p>Loading Question ' + (_curIdx + 1) + '…</p></div>';
+
+    var renderIdx = _curIdx;
+    _loadSatBankShard(_satBankState.tier, shId).then(function () {
+      if (_curIdx !== renderIdx || _isSubmitted || !_satBankState) return;
+      var asset = _getCachedSatBankAsset(q);
+      body.innerHTML = _buildSatBankControlBarHtml() + _buildSatBankQCardHtml(q, renderIdx, asset, true);
+      if (renderIdx + 1 < _pool.length) {
+        var nextSh = Math.floor(_pool[renderIdx + 1].origIdx / shSize);
+        _loadSatBankShard(_satBankState.tier, nextSh).catch(function () { });
+      }
+    }).catch(function (err) {
+      body.innerHTML = _buildSatBankControlBarHtml()
+        + '<div style="text-align:center;padding:40px;color:#dc2626">Failed to load question shard: ' + String(err && err.message || err) + '</div>';
+    });
+  }
+
+  function _hydrateSatBankItems(indices) {
+    if (!_satBankState) return Promise.resolve();
+    var shSize = _satBankState.indexData.shardSize || 25;
+    var needed = {};
+    indices.forEach(function (i) {
+      var q = _pool[i];
+      if (!q) return;
+      var shId = Math.floor(q.origIdx / shSize);
+      needed[shId] = true;
+    });
+    return Promise.all(Object.keys(needed).map(function (shId) {
+      return _loadSatBankShard(_satBankState.tier, parseInt(shId, 10));
+    }));
+  }
+
+  function _applySatBankPool(mode, domainFilter) {
+    if (!_satBankState) return;
+    _syncFullStateFromActive();
+    var idxData = _satBankState.indexData;
+    _satBankState.mode = mode;
+    _satBankState.domainFilter = domainFilter || 'all';
+    if (_tmr) { clearInterval(_tmr); _tmr = null; }
+
+    var allWrapped = idxData.items.map(function (it) {
+      var b = it.difficulty === 'easy' ? -1.1 : (it.difficulty === 'hard' ? 1.3 : 0.1);
+      return Object.assign({}, it, {
+        origIdx: it.idx,
+        irt: { a: 1.3, b: b, c: it.type === 'mcq' ? 0.25 : 0.0 }
+      });
+    });
+
+    if (mode === 'module') {
+      _paper = Object.assign({}, _paper, { satBankMode: 'module', minutes: 35, qCount: 22 });
+      _pool = _drawSatAdaptiveModule(allWrapped, { stage: 1, sprCount: 5 });
+      _answers = {};
+      _flags = {};
+      _curIdx = 0;
+      _viewMode = 'cbt';
+      _isSubmitted = false;
+      _secs = 35 * 60;
+      _totalSecs = _secs;
+      _hydrateSatBankItems(_pool.map(function (_q, idx) { return idx; })).then(function () {
+        _renderSatBankActiveQuestion();
+        _updateHeaderTools();
+        _updateFooterNav();
+        _renderTimer();
+        _tmr = setInterval(function () {
+          _secs--;
+          _renderTimer();
+          if (_secs <= 0) {
+            clearInterval(_tmr);
+            _tmr = null;
+            submitMockExam();
+          }
+        }, 1000);
+      });
+      return;
+    }
+
+    // Full Bank Mode
+    _paper = Object.assign({}, _paper, { satBankMode: 'full', minutes: 0 });
+    _pool = (domainFilter && domainFilter !== 'all')
+      ? allWrapped.filter(function (q) { return q.domain === domainFilter; })
+      : allWrapped;
+    _paper.qCount = _pool.length;
+    _answers = {};
+    _flags = {};
+    var restoredIdx = 0;
+    var targetOrig = _satBankState.lastOrigIdx || 0;
+    _pool.forEach(function (q, i) {
+      if (_satBankState.fullAnswers && _satBankState.fullAnswers[q.origIdx] !== undefined) {
+        _answers[i] = _satBankState.fullAnswers[q.origIdx];
+      }
+      if (_satBankState.fullFlags && _satBankState.fullFlags[q.origIdx]) {
+        _flags[i] = true;
+      }
+      if (q.origIdx === targetOrig) restoredIdx = i;
+    });
+    _curIdx = restoredIdx;
+    _viewMode = 'cbt';
+    _isSubmitted = false;
+    _secs = 0;
+    _totalSecs = 0;
+    var timerEl = document.getElementById('mock-exam-timer');
+    if (timerEl) { timerEl.textContent = 'Untimed'; timerEl.style.color = '#ffffff'; }
+    _renderSatBankActiveQuestion();
+    _updateHeaderTools();
+    _updateFooterNav();
+  }
+
+  window.cbtSetSatBankMode = function (mode) {
+    if (!_satBankState) return;
+    _applySatBankPool(mode === 'module' ? 'module' : 'full', _satBankState.domainFilter || 'all');
+  };
+
+  window.cbtSetSatBankDomain = function (dom) {
+    if (!_satBankState) return;
+    _satBankState.lastOrigIdx = 0;
+    _applySatBankPool('full', dom || 'all');
+    _saveSatBankProgress();
+  };
+
+  window.cbtJumpSatBankInput = function () {
+    var inp = document.getElementById('cs-sat-jump-inp');
+    if (!inp) return;
+    var n = parseInt(inp.value, 10);
+    if (!isNaN(n) && n >= 1 && n <= _pool.length) {
+      _goToQuestion(n - 1);
+    }
+  };
+
+  window.cbtCheckSatBankCurrent = function () {
+    if (!_satBankState || !_pool[_curIdx]) return;
+    _satBankState.fullChecked = _satBankState.fullChecked || {};
+    _satBankState.fullChecked[_pool[_curIdx].origIdx] = true;
+    _syncFullStateFromActive();
+    _saveSatBankProgress();
+    _renderSatBankActiveQuestion();
+  };
+
+  window.cbtResetSatBankProgress = function () {
+    if (!_satBankState) return;
+    if (!confirm('Reset your saved answers and flags for this SAT question bank?')) return;
+    _satBankState.fullAnswers = {};
+    _satBankState.fullChecked = {};
+    _satBankState.fullFlags = {};
+    _satBankState.lastOrigIdx = 0;
+    try { localStorage.removeItem('clipsat_sat_bank_v1_' + _satBankState.tier); } catch (_e) { }
+    _applySatBankPool('full', _satBankState.domainFilter || 'all');
+  };
+
+  window.openSatBankCBT = function (tier, opts) {
+    tier = String(tier || 'easy').toLowerCase().trim();
+    if (tier !== 'easy' && tier !== 'medium' && tier !== 'hard') tier = 'easy';
+    opts = opts || {};
+    _trackId = 'sat';
+    _pidx = tier === 'easy' ? 4 : (tier === 'medium' ? 5 : 6);
+    _curIdx = 0;
+    _answers = {};
+    _flags = {};
+    _viewMode = 'cbt';
+    _isSubmitted = false;
+    _lastDownloadArgs = null;
+    _satAdaptiveState = null;
+    if (_tmr) { clearInterval(_tmr); _tmr = null; }
+
+    var overlay = document.getElementById('mock-exam-overlay');
+    if (!overlay) return;
+    var body = document.getElementById('mock-exam-body');
+    if (body) {
+      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)">'
+        + '<div class="ai-spinner" style="margin:0 auto 16px"></div>'
+        + '<p style="font-size:1.05rem;font-weight:600;margin-bottom:6px">Preparing Digital SAT® ' + tier.toUpperCase() + ' CBT Bank…</p>'
+        + '<p style="font-size:.85rem;color:var(--muted,#64748b)">Loading question index and ClipSAT practice pack</p>'
+        + '</div>';
+    }
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Digital SAT Question Bank CBT Simulator');
+    overlay.classList.add('show');
+    _enterCBTModalLock();
+
+    return _loadSatBankIndex(tier).then(function (idxData) {
+      var saved = _loadSatBankProgress(tier) || {};
+      _satBankState = {
+        tier: tier,
+        indexData: idxData,
+        mode: opts.mode === 'module' ? 'module' : 'full',
+        domainFilter: saved.domainFilter || 'all',
+        fullAnswers: saved.answers || {},
+        fullChecked: saved.checked || {},
+        fullFlags: saved.flags || {},
+        lastOrigIdx: saved.lastOrigIdx || 0
+      };
+      _paper = {
+        name: idxData.title,
+        minutes: 0,
+        qCount: idxData.total,
+        calc: true,
+        isSatBank: true,
+        satBankTier: tier,
+        satBankMode: _satBankState.mode
+      };
+
+      var titleEl = document.getElementById('mock-exam-title');
+      if (titleEl) {
+        titleEl.innerHTML = '<span>' + _paper.name + '</span> <span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:600">🖩 Calculator Allowed</span>';
+      }
+      if (typeof window.setFloatingCalcLocked === 'function') {
+        window.setFloatingCalcLocked(false, _paper.name);
+      }
+      var hdr = document.getElementById('mock-exam-header');
+      if (hdr) {
+        var toolsDiv = hdr.querySelector('.mock-tools-wrap');
+        if (!toolsDiv) {
+          toolsDiv = document.createElement('div');
+          toolsDiv.className = 'mock-tools-wrap';
+          toolsDiv.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:12px';
+          var timerEl = document.getElementById('mock-exam-timer');
+          if (timerEl) hdr.insertBefore(toolsDiv, timerEl);
+        }
+        var pracPdfUrl = '/downloads/sat/bank-packs/clipsat-sat-all-' + tier + '-practice.pdf';
+        var akPdfUrl = '/downloads/sat/bank-packs/clipsat-sat-all-' + tier + '-answerkey.pdf';
+        var pdfLinksHtml = '<a class="hdr-btn" href="' + pracPdfUrl + '" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,\'Digital SAT All ' + tier + ' Practice PDF\'):true" style="text-decoration:none" title="Open ClipSAT Branded Practice PDF">📄 Practice PDF</a>'
+          + '<a class="hdr-btn" href="' + akPdfUrl + '" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,\'Digital SAT All ' + tier + ' Answer Key PDF\'):true" style="text-decoration:none" title="Open Answer Key & Solutions PDF">✓ Key PDF</a>';
+        var calcBtnHtml = '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" title="Open Desmos Graphing Calculator (Alt+C)">🧮 Calculator</button>';
+        toolsDiv.innerHTML = _buildCBTToolsHtml(pdfLinksHtml, calcBtnHtml);
+      }
+
+      _applySatBankPool(_satBankState.mode, _satBankState.domainFilter);
+    }).catch(function (err) {
+      if (body) {
+        body.innerHTML = '<div style="text-align:center;padding:60px 20px">'
+          + '<h3 style="color:#dc2626">Unable to Load SAT ' + tier.toUpperCase() + ' Bank</h3>'
+          + '<p style="color:var(--muted)">' + String((err && err.message) || err) + '</p>'
+          + '<button type="button" class="cbt-nav-btn" onclick="window.closeMockExam()">✕ Close</button>'
+          + '</div>';
       }
     });
   };
@@ -1709,7 +2236,13 @@
   };
 
   window.retakeCurrentCBTExam = function () {
-    if (_lastDownloadArgs && _lastDownloadArgs.length >= 2) {
+    if (_paper && _paper.isSatBank && _satBankState) {
+      if (_satBankState.mode === 'module') {
+        _applySatBankPool('module', _satBankState.domainFilter || 'all');
+      } else {
+        window.openSatBankCBT(_satBankState.tier);
+      }
+    } else if (_lastDownloadArgs && _lastDownloadArgs.length >= 2) {
       window.openDownloadExamCBT(_lastDownloadArgs[0], _lastDownloadArgs[1], _lastDownloadArgs[2], _lastDownloadArgs[3]);
     } else {
       window.openMockExam(_trackId, _pidx);
@@ -1838,6 +2371,53 @@
       _renderQuestionsDOM();
     }
 
+    if (_paper && _paper.isSatBank && _satBankState) {
+      var targetIdxs = [];
+      if (_satBankState.mode === 'module') {
+        for (var si = 0; si < _pool.length; si++) targetIdxs.push(si);
+      } else {
+        for (var fi = 0; fi < _pool.length; fi++) {
+          if (_isQuestionAnswered(fi)) targetIdxs.push(fi);
+        }
+        if (!targetIdxs.length) {
+          for (var d0 = 0; d0 < Math.min(10, _pool.length); d0++) targetIdxs.push(d0);
+        }
+      }
+      var allCached = targetIdxs.every(function (idx) { return Boolean(_getCachedSatBankAsset(_pool[idx])); });
+      if (!allCached) {
+        _hydrateSatBankItems(targetIdxs).then(function () { submitMockExam(); });
+        return;
+      }
+      var sbHtml = '';
+      var sbPoolMeta = [];
+      var sbSubPool = [];
+      var sbSubAnswers = {};
+      var sbSubFlags = {};
+      targetIdxs.forEach(function (origPos, newPos) {
+        var qObj = _pool[origPos];
+        var asset = _getCachedSatBankAsset(qObj);
+        sbSubPool.push(qObj);
+        if (_answers[origPos] !== undefined) sbSubAnswers[newPos] = _answers[origPos];
+        if (_flags[origPos]) sbSubFlags[newPos] = true;
+        sbHtml += _buildSatBankQCardHtml(qObj, newPos, asset, true);
+        sbPoolMeta.push({
+          answer: qObj.answer,
+          ans: qObj.sprAnswer || '',
+          sprAnswer: qObj.sprAnswer || '',
+          sprAnswers: qObj.sprAnswers || (qObj.sprAnswer ? [qObj.sprAnswer] : []),
+          type: qObj.type || 'mcq',
+          marks: 1,
+          domain: qObj.domain || 'Math',
+          sol: asset && asset.sol ? ('<img class="cs-cbt-crop-img" src="' + asset.sol.src + '" width="' + asset.sol.w + '" height="' + asset.sol.h + '" alt="Official Rationale">') : ''
+        });
+      });
+      _pool = sbSubPool;
+      _answers = sbSubAnswers;
+      _flags = sbSubFlags;
+      body.innerHTML = sbHtml;
+      body.setAttribute('data-pool', JSON.stringify(sbPoolMeta));
+    }
+
     _isSubmitted = true;
 
     if (typeof window.setFloatingCalcLocked === 'function') {
@@ -1896,29 +2476,10 @@
       } else if (isSPR) {
         totalGraded++;
         var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
-        isRight = (val !== '' && val === targetAns);
-
-        if (!isRight && val !== '' && window.ClipSATAnswerCheck && typeof window.ClipSATAnswerCheck.equivalent === 'function') {
-          try { isRight = Boolean(window.ClipSATAnswerCheck.equivalent(val, targetAns)); } catch (_eqErr) { }
-        }
-
-        if (!isRight) {
-          var _toNum = function (s) {
-            if (!s) return NaN;
-            s = String(s).trim();
-            if (s.indexOf('/') !== -1) {
-              var p = s.split('/');
-              var n = parseFloat(p[0]), den = parseFloat(p[1]);
-              return (den !== 0 && !isNaN(n) && !isNaN(den)) ? (n / den) : NaN;
-            }
-            return parseFloat(s);
-          };
-          var vNum = _toNum(val);
-          var tNum = _toNum(targetAns);
-          if (!isNaN(vNum) && !isNaN(tNum) && Math.abs(vNum - tNum) < 1e-4) {
-            isRight = true;
-          }
-        }
+        var acceptedList = (Array.isArray(meta.sprAnswers) && meta.sprAnswers.length)
+          ? meta.sprAnswers
+          : [targetAns];
+        isRight = _matchSprValue(val, acceptedList);
 
         if (isRight) {
           correct++;
@@ -2179,7 +2740,8 @@
     thetaToSatScaled: _thetaToSatScaled,
     drawSatAdaptiveModule: _drawSatAdaptiveModule,
     routeSatModule2: _routeSatModule2,
-    gradeSingleItemQuick: _gradeSingleItemQuick
+    gradeSingleItemQuick: _gradeSingleItemQuick,
+    matchSprValue: _matchSprValue
   };
   window.CSMockExamConfig = {
     PAPERS: PAPERS,

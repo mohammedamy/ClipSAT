@@ -639,8 +639,8 @@ body.dark .nav-select {
 
 @keyframes fade {
   from {
-    opacity: 1;
-    transform: translateY(4px)
+    opacity: 0;
+    transform: translateY(6px)
   }
 
   to {
@@ -7656,7 +7656,17 @@ body.dark .fep-spr-note {
   /* Figure container — background matches the figure SVG's own baked-in
      FIG_BG (#fbfcfe) so the wrapper reads as one seamless card in both
      themes, instead of the old generic #fafafa gray. */
-  .mfig{margin:14px auto;width:fit-content;position:relative;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg, var(--paper, #fbfcfe));box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mfig {
+    margin: 14px auto;
+    width: fit-content;
+    position: relative;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--fig-bg, var(--paper, #fbfcfe));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .04)
+  }
 
   .mfig:has(table),
   .mfig:has(.mfig-table),
@@ -7664,7 +7674,14 @@ body.dark .fep-spr-note {
     width: 100%
   }
 
-  .mfig-svg{display:block;width:100%;max-width:320px;max-height:230px;height:auto;margin:0 auto}
+  .mfig-svg {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    max-height: 230px;
+    height: auto;
+    margin: 0 auto
+  }
 
   .mfig-wide .mfig-svg {
     max-width: 440px
@@ -8117,17 +8134,7 @@ body.dark .ai-status.err {
 /* Figure container — background matches the figure SVG's own baked-in
      FIG_BG (#fbfcfe) so the wrapper reads as one seamless card in both
      themes, instead of the old generic #fafafa gray. */
-.mfig {
-  margin: 14px auto;
-  width: fit-content;
-  position: relative;
-  max-width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--fig-bg, var(--paper, #fbfcfe));
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .04)
-}
+.mfig{margin:14px auto;width:fit-content;position:relative;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg,var(--paper,#fbfcfe));box-shadow:0 1px 3px rgba(0,0,0,.04)}
 
 .mfig:has(table),
 .mfig:has(.mfig-table),
@@ -8135,14 +8142,7 @@ body.dark .ai-status.err {
   width: 100%
 }
 
-.mfig-svg {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  max-height: 230px;
-  height: auto;
-  margin: 0 auto
-}
+.mfig-svg{display:block;width:100%;max-width:320px;max-height:230px;height:auto;margin:0 auto}
 
 .mfig-wide .mfig-svg {
   max-width: 440px
@@ -18551,18 +18551,6 @@ body.dark .tm-chapter-panel {
     transform: translateX(0);
   }
 
-  [dir="rtl"] .view.active aside.rail {
-    left: auto;
-    right: 0;
-    border-right: 0;
-    border-left: 1px solid var(--border);
-    transform: translateX(105%);
-  }
-
-  [dir="rtl"] .view.active aside.rail.rail-open {
-    transform: translateX(0);
-  }
-
   .view.active aside.rail .rt {
     display: block;
     padding: 0 var(--sp-4) var(--sp-2);
@@ -23256,8 +23244,15 @@ body.track-trust .formula-fab {
   display: none !important;
 }
 
-/* Mobile (390×844) ergonomic polish: touch targets, horizontal tables, non-overlapping bottom study dock */
+/* Mobile (390×844) ergonomic polish: touch targets, non-sticky rail, horizontal tables, non-overlapping bottom study dock */
 @media (max-width: 767px) {
+
+  .rail,
+  [id^="rail-"] {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+  }
 
   input[type="text"],
   input[type="email"],
@@ -24148,22 +24143,201 @@ body.dark .lesson-figure:hover {
   .ix-fn-hud,
   .ex-drag-hint,
   .ex-challenge-card,
-    .explorer input[type="range"]::-webkit-slider-thumb,
-    .ix-box input[type="range"]::-webkit-slider-thumb {
-      transition: none !important;
-      animation: none !important;
-    }
+  .explorer input[type="range"]::-webkit-slider-thumb,
+  .ix-box input[type="range"]::-webkit-slider-thumb {
+    transition: none !important;
+    animation: none !important;
   }
+}
 
-  /* ── Exam-Authentic Tables, Horizontal Value Tables & Chapter Structured FRQs ── */
+/* ── Exam-Authentic Tables, Horizontal Value Tables & Chapter Structured FRQs ── */
+.exam-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.exam-table-wrap>table.exam-table {
+  margin: 0 auto;
+}
+
+table.exam-table.exam-table-horiz tbody tr:first-child th,
+table.exam-table.exam-table-horiz tbody tr td:first-child {
+  background: #1a1a2e;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+}
+
+body.dark table.exam-table.exam-table-horiz tbody tr td:first-child {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.exam-table-caption {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-2, #475569);
+  margin-top: 6px;
+}
+
+body.dark .exam-table-caption {
+  color: #cbd5e1;
+}
+
+.cs-chapter-frq {
+  border: 1.5px solid var(--border, #d8e1ee);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 18px 0;
+  background: var(--surface, #fff);
+}
+
+body.dark .cs-chapter-frq {
+  background: #111827;
+  border-color: #2d3748;
+}
+
+.cs-chapter-frq-hdr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+}
+
+.cs-chapter-frq-title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.cs-chapter-frq-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cs-frq-badge {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.cs-frq-marks {
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.cs-frq-calc {
+  color: #0f766e;
+  background: rgba(15, 118, 110, 0.08);
+}
+
+.cs-frq-nocalc {
+  color: #b45309;
+  background: rgba(180, 83, 9, 0.08);
+}
+
+body.dark .cs-frq-marks {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.16);
+}
+
+body.dark .cs-frq-calc {
+  color: #5eead4;
+  background: rgba(20, 184, 166, 0.16);
+}
+
+body.dark .cs-frq-nocalc {
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.16);
+}
+
+.cs-chapter-frq-parts {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.cs-chapter-frq-part {
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface-2, #f8fafc);
+}
+
+body.dark .cs-chapter-frq-part {
+  background: #0f172a;
+  border-color: #293548;
+}
+
+.cs-chapter-frq-part-hdr {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.cs-chapter-frq-part-pts {
+  color: #475569;
+  font-size: 0.82rem;
+}
+
+body.dark .cs-chapter-frq-part-pts {
+  color: #94a3b8;
+}
+
+.cs-chapter-frq-rubric,
+.cs-chapter-frq-solution {
+  margin-top: 8px;
+}
+
+.cs-chapter-frq-rubric summary,
+.cs-chapter-frq-solution summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: #1d4ed8;
+}
+
+body.dark .cs-chapter-frq-rubric summary,
+body.dark .cs-chapter-frq-solution summary {
+  color: #93c5fd;
+}
+
+.cs-chapter-frq-scheme {
+  list-style: none;
+  padding: 6px 0 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.cs-ms-code {
+  display: inline-block;
+  font-weight: 700;
+  font-family: var(--mono, monospace);
+  min-width: 34px;
+}
+
+@media print {
   .exam-table-wrap,
   .table-wrap {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 10px auto;
-    text-align: center;
+    overflow: visible !important;
   }
   .exam-table-wrap > table.exam-table,
   .table-wrap > table.exam-table {
@@ -24209,122 +24383,143 @@ body.dark .lesson-figure:hover {
     color: #cbd5e1;
   }
 
-  .cs-chapter-frq {
-    border: 1.5px solid var(--border, #d8e1ee);
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin: 18px 0;
-    background: var(--surface, #fff);
-  }
-  body.dark .cs-chapter-frq {
-    background: #111827;
-    border-color: #2d3748;
-  }
-  .cs-chapter-frq-hdr {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border, #e2e8f0);
-  }
-  .cs-chapter-frq-title {
-    margin: 0;
-    font-size: 1.02rem;
-    font-weight: 700;
-  }
-  .cs-chapter-frq-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .cs-frq-badge {
-    display: inline-block;
-    font-size: 0.76rem;
-    font-weight: 700;
-    padding: 2px 9px;
-    border-radius: 999px;
-    border: 1px solid currentColor;
-  }
-  .cs-frq-marks {
-    color: #1d4ed8;
-    background: rgba(37, 99, 235, 0.08);
-  }
-  .cs-frq-calc {
-    color: #0f766e;
-    background: rgba(15, 118, 110, 0.08);
-  }
-  .cs-frq-nocalc {
-    color: #92400e;
-    background: rgba(180, 83, 9, 0.08);
-  }
-  body.dark .cs-frq-marks { color: #93c5fd; background: rgba(59, 130, 246, 0.16); }
-  body.dark .cs-frq-calc { color: #5eead4; background: rgba(20, 184, 166, 0.16); }
-  body.dark .cs-frq-nocalc { color: #fcd34d; background: rgba(245, 158, 11, 0.16); }
-  .cs-chapter-frq-parts {
-    list-style: none;
-    padding: 0;
-    margin: 12px 0 0;
-    display: grid;
-    gap: 10px;
-  }
-  .cs-chapter-frq-part {
-    border: 1px solid var(--border, #e2e8f0);
-    border-radius: 8px;
-    padding: 10px 12px;
-    background: var(--surface-2, #f8fafc);
-  }
-  body.dark .cs-chapter-frq-part {
-    background: #0f172a;
-    border-color: #293548;
-  }
-  .cs-chapter-frq-part-hdr {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
-  }
-  .cs-chapter-frq-part-pts {
-    color: #475569;
-    font-size: 0.82rem;
-  }
-  body.dark .cs-chapter-frq-part-pts {
-    color: #94a3b8;
-  }
   .cs-chapter-frq-rubric,
   .cs-chapter-frq-solution {
-    margin-top: 8px;
+    display: block !important;
   }
-  .cs-chapter-frq-rubric summary,
-  .cs-chapter-frq-solution summary {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.86rem;
-    color: #1d4ed8;
-  }
-  body.dark .cs-chapter-frq-rubric summary,
-  body.dark .cs-chapter-frq-solution summary {
-    color: #93c5fd;
-  }
-  .cs-chapter-frq-scheme {
-    list-style: none;
-    padding: 6px 0 0;
-    margin: 0;
-    display: grid;
-    gap: 4px;
-    font-size: 0.88rem;
-  }
-  .cs-ms-code {
-    display: inline-block;
-    font-weight: 700;
-    font-family: var(--mono, monospace);
-    min-width: 34px;
-  }
-  @media print {
-    .exam-table-wrap { overflow: visible !important; }
-    .cs-chapter-frq-rubric,
-    .cs-chapter-frq-solution { display: block !important; }
-  }
+}
+
+/* ── SAT Tiered Question Bank Packs (CBT + ClipSAT Branded PDFs) ── */
+.cs-cbt-crop-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.cs-cbt-choice-img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] .cs-cbt-crop-img,
+[data-theme="dark"] .cs-cbt-choice-img,
+[data-dark="1"] .cs-cbt-crop-img,
+[data-dark="1"] .cs-cbt-choice-img,
+.dark .cs-cbt-crop-img,
+.dark .cs-cbt-choice-img {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}
+
+.cs-sat-bank-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--panel, #fff);
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: .84rem;
+}
+
+.cs-sat-bank-bar select,
+.cs-sat-bank-bar input[type="number"] {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border, #cbd5e1);
+  background: var(--paper, #fff);
+  color: var(--ink, #0f172a);
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .cs-sat-bank-bar,
+[data-dark="1"] .cs-sat-bank-bar,
+.dark .cs-sat-bank-bar {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .cs-sat-bank-bar select,
+[data-theme="dark"] .cs-sat-bank-bar input[type="number"],
+[data-dark="1"] .cs-sat-bank-bar select,
+[data-dark="1"] .cs-sat-bank-bar input[type="number"],
+.dark .cs-sat-bank-bar select,
+.dark .cs-sat-bank-bar input[type="number"] {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+.cs-sat-packs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+
+.cs-sat-pack-card {
+  background: var(--panel, #fff);
+  border: 1.5px solid var(--border, #cbd5e1);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cs-sat-pack-card h4 {
+  margin: 0;
+  font-size: .98rem;
+  color: var(--ink, #0e1726);
+}
+
+.cs-sat-pack-card p {
+  margin: 0;
+  font-size: .82rem;
+  color: var(--muted, #5a6577);
+}
+
+.cs-sat-pack-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.cs-sat-pack-badge.easy { background: #dcfce7; color: #166534; }
+.cs-sat-pack-badge.medium { background: #fef3c7; color: #92400e; }
+.cs-sat-pack-badge.hard { background: #fee2e2; color: #991b1b; }
+
+.cs-sat-pack-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+[data-theme="dark"] .cs-sat-pack-card,
+[data-dark="1"] .cs-sat-pack-card,
+.dark .cs-sat-pack-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .cs-sat-pack-card h4,
+[data-dark="1"] .cs-sat-pack-card h4,
+.dark .cs-sat-pack-card h4 {
+  color: #f8fafc;
+}

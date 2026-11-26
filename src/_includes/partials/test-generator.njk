@@ -116,9 +116,54 @@
     {% else %}
       <button class="btn amber" onclick="genFullExam(this,'{{ testGenerator.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(testGenerator.examButtonLabel) }}</button>
     {% endif %}
+    {% if trackId == 'sat' %}
+    <select id="tg-sat-cbt-select" class="tg-cbt-paper" aria-label="Select Digital SAT CBT Paper" style="padding:8px 12px;border-radius:8px;border:1.5px solid var(--border,#cbd5e1);background:var(--panel,#fff);color:var(--ink,#0f172a);font-weight:600;font-size:.86rem">
+      <option value="0">{{ bl.text({"en": "2-Stage Adaptive SAT (M1 + M2)", "ar": "اختبار SAT التكيّفي الكامل (M1 + M2)"}) }}</option>
+      <option value="1">{{ bl.text({"en": "SAT Module 1 (Routing Stage · 22 Qs)", "ar": "الوحدة الأولى SAT (تحديد المستوى · 22 سؤال)"}) }}</option>
+      <option value="2">{{ bl.text({"en": "SAT Module 2 — Hard (22 Qs)", "ar": "الوحدة الثانية SAT — صعب (22 سؤال)"}) }}</option>
+      <option value="3">{{ bl.text({"en": "SAT Module 2 — Standard (22 Qs)", "ar": "الوحدة الثانية SAT — قياسي (22 سؤال)"}) }}</option>
+      <option value="4">{{ bl.text({"en": "1. ALL EASY Bank CBT (770 Qs)", "ar": "1. بنك أسئلة SAT سهل كامل CBT (770 سؤال)"}) }}</option>
+      <option value="5">{{ bl.text({"en": "2. ALL MEDIUM Bank CBT (680 Qs)", "ar": "2. بنك أسئلة SAT متوسط كامل CBT (680 سؤال)"}) }}</option>
+      <option value="6">{{ bl.text({"en": "3. ALL HARD Bank CBT (645 Qs)", "ar": "3. بنك أسئلة SAT صعب كامل CBT (645 سؤال)"}) }}</option>
+    </select>
+    {% endif %}
     <button class="btn tg-cbt" type="button" onclick="var p=this.closest('.chapter');var s=p&&p.querySelector('.tg-cbt-paper');openMockExam('{{ trackId }}',s?parseInt(s.value,10)||0:0)">{{ bl.text({"en":"💻 Launch CBT Simulator ↗","ar":"💻 تشغيل محاكي الاختبار ↗"}) }}</button>
     <button class="btn tg-print" onclick="tgPrint(this)">{{ bl.text({"en":"Print paper ↓","ar":"طباعة الورقة ↓"}) }}</button>
   </div>
+  {% if trackId == 'sat' %}
+  <div class="cs-sat-packs-grid" aria-label="Digital SAT Tiered Question Banks">
+    <div class="cs-sat-pack-card">
+      <span class="cs-sat-pack-badge easy">{{ bl.text({"en": "1 · All Easy", "ar": "1 · المستوى السهل"}) }}</span>
+      <h4>{{ bl.text({"en": "ALL EASY Bank · 770 Questions", "ar": "بنك السهل الكامل · 770 سؤالًا"}) }}</h4>
+      <p>{{ bl.text({"en": "657 MCQs + 113 SPRs across all 4 SAT domains — interactive CBT & ClipSAT practice PDF.", "ar": "657 سؤال اختيار من متعدد + 113 إجابة رقمية عبر المجالات الأربعة — محاكي CBT وملف PDF للطباعة."}) }}</p>
+      <div class="cs-sat-pack-actions">
+        <button type="button" class="btn primary" onclick="openSatBankCBT('easy')">{{ bl.text({"en": "💻 Solve in CBT", "ar": "💻 حل في CBT"}) }}</button>
+        <a class="btn" href="/downloads/sat/bank-packs/clipsat-sat-all-easy-practice.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Easy Practice PDF'):true">{{ bl.text({"en": "📄 Practice PDF", "ar": "📄 ملف التدريب PDF"}) }}</a>
+        <a class="btn ghost" href="/downloads/sat/bank-packs/clipsat-sat-all-easy-answerkey.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Easy Solutions PDF'):true">{{ bl.text({"en": "✓ Solutions", "ar": "✓ الحلول"}) }}</a>
+      </div>
+    </div>
+    <div class="cs-sat-pack-card">
+      <span class="cs-sat-pack-badge medium">{{ bl.text({"en": "2 · All Medium", "ar": "2 · المستوى المتوسط"}) }}</span>
+      <h4>{{ bl.text({"en": "ALL MEDIUM Bank · 680 Questions", "ar": "بنك المتوسط الكامل · 680 سؤالًا"}) }}</h4>
+      <p>{{ bl.text({"en": "522 MCQs + 158 SPRs across all 4 SAT domains — interactive CBT & ClipSAT practice PDF.", "ar": "522 سؤال اختيار من متعدد + 158 إجابة رقمية عبر المجالات الأربعة — محاكي CBT وملف PDF للطباعة."}) }}</p>
+      <div class="cs-sat-pack-actions">
+        <button type="button" class="btn primary" onclick="openSatBankCBT('medium')">{{ bl.text({"en": "💻 Solve in CBT", "ar": "💻 حل في CBT"}) }}</button>
+        <a class="btn" href="/downloads/sat/bank-packs/clipsat-sat-all-medium-practice.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Medium Practice PDF'):true">{{ bl.text({"en": "📄 Practice PDF", "ar": "📄 ملف التدريب PDF"}) }}</a>
+        <a class="btn ghost" href="/downloads/sat/bank-packs/clipsat-sat-all-medium-answerkey.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Medium Solutions PDF'):true">{{ bl.text({"en": "✓ Solutions", "ar": "✓ الحلول"}) }}</a>
+      </div>
+    </div>
+    <div class="cs-sat-pack-card">
+      <span class="cs-sat-pack-badge hard">{{ bl.text({"en": "3 · All Hard", "ar": "3 · المستوى الصعب"}) }}</span>
+      <h4>{{ bl.text({"en": "ALL HARD Bank · 645 Questions", "ar": "بنك الصعب الكامل · 645 سؤالًا"}) }}</h4>
+      <p>{{ bl.text({"en": "413 MCQs + 232 SPRs across all 4 SAT domains — interactive CBT & ClipSAT practice PDF.", "ar": "413 سؤال اختيار من متعدد + 232 إجابة رقمية عبر المجالات الأربعة — محاكي CBT وملف PDF للطباعة."}) }}</p>
+      <div class="cs-sat-pack-actions">
+        <button type="button" class="btn primary" onclick="openSatBankCBT('hard')">{{ bl.text({"en": "💻 Solve in CBT", "ar": "💻 حل في CBT"}) }}</button>
+        <a class="btn" href="/downloads/sat/bank-packs/clipsat-sat-all-hard-practice.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Hard Practice PDF'):true">{{ bl.text({"en": "📄 Practice PDF", "ar": "📄 ملف التدريب PDF"}) }}</a>
+        <a class="btn ghost" href="/downloads/sat/bank-packs/clipsat-sat-all-hard-answerkey.pdf" target="_blank" rel="noopener" onclick="return window._openDownloadInBrowser?window._openDownloadInBrowser(event,this.href,'Digital SAT Math — All Hard Solutions PDF'):true">{{ bl.text({"en": "✓ Solutions", "ar": "✓ الحلول"}) }}</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
   <div class="tg-out" aria-live="polite"></div>
   {% endif %}
   {% endif %}

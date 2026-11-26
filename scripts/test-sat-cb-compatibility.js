@@ -231,11 +231,12 @@ check('11 SAT worksheets have 495 globally unique skeletons, 0 bare $ currency, 
 });
 
 // 6. 20 Full Printable Exams & manifest.json
-check('20 printable SAT full exams (40 HTMLs, 880 disjoint items) & manifest.json (31 entries) pass scope checks', () => {
+check('20 printable SAT full exams (40 HTMLs, 880 disjoint items) & manifest.json (34 entries incl. 3 Practice Banks) pass scope checks', () => {
   const dlDir = path.join(ROOT, 'public', 'downloads', 'sat');
   const manifest = JSON.parse(fs.readFileSync(path.join(dlDir, 'manifest.json'), 'utf8'));
-  assert.strictEqual(manifest.length, 31);
-  assert.strictEqual(manifest.filter(e => e.isFullExam).length, 20);
+  assert.strictEqual(manifest.length, 34);
+  assert.strictEqual(manifest.filter(e => e.isPracticeBank).length, 3);
+  assert.strictEqual(manifest.filter(e => e.isFullExam && !e.isPracticeBank).length, 20);
   assert.strictEqual(manifest.filter(e => !e.isFullExam).length, 11);
 
   const seenExamStems = new Set();

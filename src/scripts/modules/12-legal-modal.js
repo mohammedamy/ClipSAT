@@ -66,11 +66,14 @@
             ? ('https://raw.githubusercontent.com/mohammedamy/ClipSAT/main/public/downloads/' + safeTrack + '/')
             : (cdnPrefix + '/downloads/' + safeTrack + '/');
           var isExam = Boolean(d.isFullExam);
+          var isSatBank = Boolean(d.cbtBankTier);
           var wsLabel = d.wsLabel || (isExam ? t.exam : t.ws);
           var akLabel = d.akLabel || (isExam ? t.examAk : t.ak);
-          var cbtBtn = isExam
-            ? '<button type="button" class="wl-link cbt" data-track="' + _esc(safeTrack) + '" data-ws="' + _esc(safeWs) + '" data-title="' + _esc(d.title) + '" data-lang="' + safeLang + '" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(this.dataset.track,this.dataset.ws,this.dataset.title,this.dataset.lang)">' + _esc(t.cbt) + '</button>'
-            : '';
+          var cbtBtn = isSatBank
+            ? '<button type="button" class="wl-link cbt" data-tier="' + _esc(d.cbtBankTier) + '" onclick="window.openSatBankCBT&amp;&amp;window.openSatBankCBT(this.dataset.tier)">' + _esc(t.cbt) + '</button>'
+            : (isExam
+              ? '<button type="button" class="wl-link cbt" data-track="' + _esc(safeTrack) + '" data-ws="' + _esc(safeWs) + '" data-title="' + _esc(d.title) + '" data-lang="' + safeLang + '" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(this.dataset.track,this.dataset.ws,this.dataset.title,this.dataset.lang)">' + _esc(t.cbt) + '</button>'
+              : '');
           var gformBtn = isExam ? '' : '<button type="button" class="wl-link gform" data-track="' + _esc(safeTrack) + '" data-num="' + _esc(d.num) + '" data-lang="' + safeLang + '" data-title="' + _esc(d.title) + '" data-ws="' + _esc(safeWs) + '" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(this.dataset.track,this.dataset.num,this.dataset.lang,this.dataset.title,this.dataset.ws)" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
           var wsOpenClick = ' data-dl-title="' + _esc(d.title + ' — ' + wsLabel) + '" onclick="return window._openDownloadInBrowser(event,this.href,this.dataset.dlTitle)"';
           var akOpenClick = ' data-dl-title="' + _esc(d.title + ' — ' + akLabel) + '" onclick="return window._openDownloadInBrowser(event,this.href,this.dataset.dlTitle)"';
