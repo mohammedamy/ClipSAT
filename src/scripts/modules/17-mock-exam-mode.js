@@ -566,7 +566,7 @@
     var f = q.figure || q.fig || q.table;
     if (!f) return '';
     if (typeof f === 'string') return f;
-    if (f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)) {
+    if ((f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)) && !(Array.isArray(f.data) || Array.isArray(f.values) || Array.isArray(f.cells) || f.type === 'two_way_table' || f.type === 'twoWayTable' || (Array.isArray(f.rows) && f.rows[0] && typeof f.rows[0] === 'object' && !Array.isArray(f.rows[0])))) {
       var hdrs = (Array.isArray(f.headers) ? f.headers : []).map(function (th) {
         return '<th>' + (typeof window._autoMath === 'function' ? window._autoMath(th != null ? String(th) : '') : th) + '</th>';
       }).join('');
@@ -800,13 +800,14 @@
       flagBtn.style.display = _isSubmitted ? 'none' : 'inline-flex';
     }
     var curQ = _pool[_curIdx];
-    if (curQ && typeof curQ.calc === 'boolean' && !_isSubmitted) {
+    var effCalc = (_paper && typeof _paper.calc === 'boolean') ? _paper.calc : (curQ && typeof curQ.calc === 'boolean' ? curQ.calc : null);
+    if (typeof effCalc === 'boolean' && !_isSubmitted) {
       if (typeof window.setFloatingCalcLocked === 'function') {
-        window.setFloatingCalcLocked(curQ.calc === false, (_paper && _paper.name) || '');
+        window.setFloatingCalcLocked(effCalc === false, (_paper && _paper.name) || '');
       }
       var titleEl = document.getElementById('mock-exam-title');
       if (titleEl && _paper) {
-        var calcBadge = curQ.calc
+        var calcBadge = effCalc
           ? '<span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:600">🖩 Calculator Allowed</span>'
           : '<span style="background:#b91c1c;padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:700">🚫 No Calculator</span>';
         titleEl.innerHTML = '<span>' + _paper.name + '</span> ' + calcBadge;
@@ -1094,10 +1095,11 @@
           : 'background:#fef3c7;color:#92400e;border:1px solid #fde68a');
       var secBanner = '';
       if (q.sectionTitle) {
+        var _itemCalc = (_paper && typeof _paper.calc === 'boolean') ? _paper.calc : q.calc;
         secBanner = '<div style="font-size:.75rem;font-weight:700;color:var(--indigo,#1e3e70);background:var(--paper-2,#f1f5f9);padding:5px 10px;border-radius:6px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">'
           + '<span>' + q.sectionTitle + (q.partLabel ? ' · ' + q.partLabel : '') + '</span>'
-          + (typeof q.calc === 'boolean'
-            ? '<span style="font-size:.7rem;padding:2px 7px;border-radius:4px;color:#fff;background:' + (q.calc ? '#15803d' : '#dc2626') + '">' + (q.calc ? (isArPaper ? '🖩 مسموح بالآلة الحاسبة' : '🖩 Calculator Permitted') : (isArPaper ? '🚫 بدون آلة حاسبة' : '🚫 No Calculator')) + '</span>'
+          + (typeof _itemCalc === 'boolean'
+            ? '<span style="font-size:.7rem;padding:2px 7px;border-radius:4px;color:#fff;background:' + (_itemCalc ? '#15803d' : '#dc2626') + '">' + (_itemCalc ? (isArPaper ? '🖩 مسموح بالآلة الحاسبة' : '🖩 Calculator Permitted') : (isArPaper ? '🚫 بدون آلة حاسبة' : '🚫 No Calculator')) + '</span>'
             : '')
           + '</div>';
       }
@@ -2109,6 +2111,9 @@
 
     _typesetMath(body);
 
+    if (typeof window.closeFormulaModal === 'function') {
+      window.closeFormulaModal();
+    }
     if (window.CSGamify && window.CSGamify.wbActive && window.CSGamify.toggleWhiteboard) {
       window.CSGamify.toggleWhiteboard();
     }
@@ -2151,6 +2156,9 @@
     if (_tmr) { clearInterval(_tmr); _tmr = null; }
     if (typeof window.setFloatingCalcLocked === 'function') {
       window.setFloatingCalcLocked(false);
+    }
+    if (typeof window.closeFormulaModal === 'function') {
+      window.closeFormulaModal();
     }
     if (typeof window.closeFloatingCalc === 'function') {
       window.closeFloatingCalc();

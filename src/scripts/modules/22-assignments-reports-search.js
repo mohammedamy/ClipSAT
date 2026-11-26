@@ -234,9 +234,10 @@ function _setupMobileRail() {
     var btn = document.createElement('button');
     btn.id = 'rail-toggle-btn';
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg> Chapters';
-    function openRail()  { rail.classList.add('rail-open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-    function closeRail() { rail.classList.remove('rail-open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    var _isArRail = Boolean((window.CSItemLocale && window.CSItemLocale.isAr()) || (document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl')));
+    btn.innerHTML = '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg> <span class="rail-toggle-lbl">' + (_isArRail ? 'الفصول' : 'Chapters') + '</span>';
+    function openRail()  { rail.classList.add('rail-open'); overlay.classList.add('open'); document.body.classList.add('cs-rail-open'); btn.setAttribute('aria-expanded','true'); }
+    function closeRail() { rail.classList.remove('rail-open'); overlay.classList.remove('open'); document.body.classList.remove('cs-rail-open'); btn.setAttribute('aria-expanded','false'); }
     btn.addEventListener('click', function() {
       rail.classList.contains('rail-open') ? closeRail() : openRail();
     });

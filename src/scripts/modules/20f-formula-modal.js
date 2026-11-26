@@ -280,24 +280,77 @@
     linalg: 'univ', mvc: 'univ', odes: 'univ'
   };
 
+  var _lastFormulaFocus = null;
+  var _formulaEscHandler = null;
+  var _mockModalWasShown = false;
+
   var CSFormula = {
     activeTab: 'sat',
     open: function(tab){
       var overlay = document.getElementById('formulaOverlay');
       if(!overlay) return;
+      _lastFormulaFocus = document.activeElement;
+      var mockEl = document.getElementById('mock-exam-overlay');
+      if(mockEl && mockEl.classList.contains('show')){
+        _mockModalWasShown = true;
+        mockEl.setAttribute('aria-modal', 'false');
+        mockEl.setAttribute('aria-hidden', 'true');
+      } else {
+        _mockModalWasShown = false;
+      }
+      overlay.inert = false;
+      overlay.removeAttribute('inert');
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-modal', 'true');
       if(!tab){
         var bodyTrack = document.body && document.body.getAttribute('data-track');
         if(bodyTrack && TRACK_TO_FORMULA_TAB[bodyTrack]) tab = TRACK_TO_FORMULA_TAB[bodyTrack];
       }
       CSFormula.setTab(tab || CSFormula.activeTab || 'sat');
+      if(!_formulaEscHandler){
+        _formulaEscHandler = function(e){
+          if(e.key === 'Escape'){
+            var ov = document.getElementById('formulaOverlay');
+            if(ov && ov.classList.contains('open')){
+              e.preventDefault();
+              e.stopPropagation();
+              CSFormula.close();
+            }
+          }
+        };
+        document.addEventListener('keydown', _formulaEscHandler, true);
+      }
+      setTimeout(function(){
+        var closeBtn = overlay.querySelector('.formula-close');
+        if(closeBtn && typeof closeBtn.focus === 'function'){
+          try { closeBtn.focus({ preventScroll: true }); } catch(_) { closeBtn.focus(); }
+        }
+      }, 20);
     },
     close: function(){
       var overlay = document.getElementById('formulaOverlay');
       if(!overlay) return;
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.inert = true;
+      overlay.setAttribute('inert', '');
+      if(_formulaEscHandler){
+        document.removeEventListener('keydown', _formulaEscHandler, true);
+        _formulaEscHandler = null;
+      }
+      var mockEl = document.getElementById('mock-exam-overlay');
+      if(mockEl && (mockEl.classList.contains('show') || _mockModalWasShown)){
+        if(mockEl.classList.contains('show')){
+          mockEl.setAttribute('aria-modal', 'true');
+          mockEl.setAttribute('aria-hidden', 'false');
+        }
+        _mockModalWasShown = false;
+      }
+      if(_lastFormulaFocus && typeof _lastFormulaFocus.focus === 'function' && document.body.contains(_lastFormulaFocus)){
+        try { _lastFormulaFocus.focus({ preventScroll: true }); } catch(_) {}
+      }
+      _lastFormulaFocus = null;
     },
     setTab: function(tabKey, btn){
       if(!FORMULA_DATA[tabKey]) tabKey = 'sat';

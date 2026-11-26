@@ -6612,7 +6612,18 @@ table.exam-table {
 .pq-stem-table table td {
   border: 1.5px solid #888;
   padding: 5px 14px;
-  text-align: center
+  text-align: center;
+  word-break: normal;
+  overflow-wrap: normal
+}
+
+.exam-table,
+.mfig-table,
+.callout table,
+.callout th,
+.callout td {
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .exam-table thead,
@@ -16202,13 +16213,19 @@ body.dark .whats-new-btn[href*="paypal"] {
     font-size: .76rem;
   }
 
-  /* Hide secondary nav buttons on phone — keep only Mistakes + Course select */
-  #i18n-toggle-btn,
+  /* Hide secondary nav buttons on phone — keep EN/AR switcher + Mistakes + Course select */
   #teacherModeBtn,
   .whats-new-btn,
   a.whats-new-btn,
   .g-sharetoclassroom-wrap {
     display: none;
+  }
+
+  #i18n-toggle-btn {
+    padding: 4px 8px;
+    font-size: .74rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   #mistakeBtn {
@@ -22256,6 +22273,13 @@ body.dark .cs-pw-step-pill.done {
     inset-inline-start: 126px !important;
     inset-inline-end: auto !important;
   }
+
+  body:has(.rail.rail-open) #fsb-toggle,
+  body:has(.rail.rail-open) #fc-toggle-btn,
+  body.cs-rail-open #fsb-toggle,
+  body.cs-rail-open #fc-toggle-btn {
+    display: none !important;
+  }
 }
 
 /* Shared compact template classes (deduplicating repeated inline styles across 612 chapter pages) */
@@ -24132,7 +24156,8 @@ body.dark .lesson-figure:hover {
   }
 
   /* ── Exam-Authentic Tables, Horizontal Value Tables & Chapter Structured FRQs ── */
-  .exam-table-wrap {
+  .exam-table-wrap,
+  .table-wrap {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -24140,8 +24165,28 @@ body.dark .lesson-figure:hover {
     margin: 10px auto;
     text-align: center;
   }
-  .exam-table-wrap > table.exam-table {
+  .exam-table-wrap > table.exam-table,
+  .table-wrap > table.exam-table {
     margin: 0 auto;
+  }
+  @media (max-width: 767px) {
+    .exam-table-wrap > table.exam-table,
+    .exam-table-wrap > table.mfig-table,
+    .table-wrap > table.exam-table {
+      max-width: none;
+      width: max-content;
+      min-width: 100%;
+    }
+    .callout table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+  }
+  .cs-ms-pts {
+    margin-inline-start: 0.35em;
+    display: inline-block;
   }
   table.exam-table.exam-table-horiz tbody tr:first-child th,
   table.exam-table.exam-table-horiz tbody tr td:first-child {

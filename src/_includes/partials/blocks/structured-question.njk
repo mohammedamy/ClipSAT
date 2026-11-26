@@ -54,8 +54,7 @@
               <ul class="cs-chapter-frq-scheme">
                 {% for ms in pt.markScheme %}
                   <li>
-                    <span class="cs-ms-code">[{{ ms.code | default('M1') }}]</span> <span class="cs-ms-crit">{{ ms.criterion.ar if (_sqLang == 'ar' and ms.criterion and ms.criterion.ar) else (ms.criterion.en if (ms.criterion and ms.criterion.en) else '') | safe }}</span>
-                    <span class="cs-ms-pts">({{ ms.marks }} {{ 'نقطة' if _sqLang == 'ar' else 'pt' }})</span>
+                    <span class="cs-ms-code">[{{ ms.code | default('M1') }}]</span> <span class="cs-ms-crit">{{ ms.criterion.ar if (_sqLang == 'ar' and ms.criterion and ms.criterion.ar) else (ms.criterion.en if (ms.criterion and ms.criterion.en) else '') | safe }}</span>&nbsp;<span class="cs-ms-pts">({{ ms.marks }} {{ 'نقطة' if _sqLang == 'ar' else 'pt' }})</span>
                   </li>
                 {% endfor %}
               </ul>

@@ -2007,11 +2007,18 @@
       }
       return drawQ(basePool,part.q);
     }
+    function _isPlainTableFig(f){
+      if(!f||typeof f!=='object') return false;
+      if(f.type&&f.type!=='table') return false;
+      if(f.cols||f.columns||f.colLabels||f.col_labels||f.column_labels||f.columnLabels||f.col_totals||f.column_totals||f.cell_values||f.observed) return false;
+      if(Array.isArray(f.rows)&&f.rows.length&&!Array.isArray(f.rows[0])) return false;
+      return f.type==='table'||Array.isArray(f.headers)||Array.isArray(f.rows);
+    }
     function renderQFig(q){
       var f = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
       if(!f) return '';
       if(typeof f === 'string') return f;
-      if(f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)){
+      if(_isPlainTableFig(f)){
         var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
         var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
         var rws = rawRows.map(function(r){
@@ -2769,9 +2776,9 @@
         + '</div>';
     }
     var raw = String((q && (q.text || q.q)) || '');
-    if(!/القيمة الأولى|Quantity A/i.test(raw)) return '';
-    var mAr = raw.match(/القيمة الأولى\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+و\s*|\s*،\s*)القيمة الثانية\s*:\s*([^\n<]*)/);
-    var mEn = raw.match(/Quantity A\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+and\s*|\s*,\s*)Quantity B\s*:\s*([^\n<]*)/i);
+    if(!/القيمة الأولى|Quantity A|العمود\s*A\s*:|Column\s*A\s*:/i.test(raw)) return '';
+    var mAr = raw.match(/(?:القيمة الأولى|العمود\s*A)\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+و\s*|\s*،\s*|<br\s*\/?>\s*)(?:القيمة الثانية|العمود\s*B)\s*:\s*([^\n<]*)/);
+    var mEn = raw.match(/(?:Quantity A|Column A)\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+and\s*|\s*,\s*|<br\s*\/?>\s*)(?:Quantity B|Column B)\s*:\s*([^\n<]*)/i);
     if(!mAr && !mEn) return '';
     var qA_ar = mAr ? mAr[1].trim().replace(/[.\s]+$/, '') : '';
     var qB_ar = mAr ? mAr[2].trim().replace(/[.\s]+$/, '') : '';

@@ -79,10 +79,11 @@ function render(){
       if(mcq) nMcq++;
       h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(rawStem)+'">';
       var _f = q.figure || q.fig || q.table;
+      var _isPlainT = _f && typeof _f === 'object' && !(_f.type && _f.type !== 'table') && !(_f.cols || _f.columns || _f.colLabels || _f.col_labels || _f.column_labels || _f.columnLabels || _f.col_totals || _f.column_totals || _f.cell_values || _f.observed) && !(Array.isArray(_f.rows) && _f.rows.length && !Array.isArray(_f.rows[0])) && (_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows));
       if(_f){
         if(typeof _f === 'string'){
           h+='<div class="cq-figure">'+_f+'</div>';
-        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+        } else if(_isPlainT){
           var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
           var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
           var _rws=_rawRows.map(function(r){
@@ -132,7 +133,8 @@ function render(){
       window._ensureFigures().then(function(){
         paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
           var _fItem = figs[+el.getAttribute('data-fig')];
-          if(_fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows))){
+          var _isPlainT2 = _fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows)) && !(Array.isArray(_fItem.data) || Array.isArray(_fItem.values) || Array.isArray(_fItem.cells) || _fItem.type === 'two_way_table' || _fItem.type === 'twoWayTable' || (_fItem.rows && _fItem.rows[0] && typeof _fItem.rows[0] === 'object' && !Array.isArray(_fItem.rows[0])));
+          if(_isPlainT2){
             var _hdrs=(Array.isArray(_fItem.headers)?_fItem.headers:[]).map(function(th){return '<th>'+M(th!=null?String(th):'')+'</th>';}).join('');
             var _rawRows=Array.isArray(_fItem.rows)?_fItem.rows:(Array.isArray(_fItem.data)?_fItem.data:[]);
             var _rws=_rawRows.map(function(r){

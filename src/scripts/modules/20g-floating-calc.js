@@ -181,7 +181,7 @@
       'border:1.5px solid var(--border,#cbd5e1)',
       'border-radius:12px',
       'box-shadow:0 14px 40px rgba(0,0,0,.26), 0 3px 10px rgba(0,0,0,.12)',
-      'z-index:98000',
+      'z-index:99995',
       'display:none',
       'flex-direction:column',
       'overflow:hidden',

@@ -5086,9 +5086,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -5310,9 +5310,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -9112,9 +9112,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -9344,9 +9344,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -9576,9 +9576,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -9808,9 +9808,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -10731,9 +10731,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -11147,9 +11147,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -11379,9 +11379,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -11631,9 +11631,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -18392,9 +18392,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -24645,73 +24645,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "medium",
-      "text": "During survey trial experiment (OLYMPIAD-5477), observers compiled the following table; evaluate \\(f(g(2)) + 3\\).",
+      "text": "Using the committee constraint table (OLYMPIAD-0413), count the strictly increasing \\(3\\)-tuples chosen from \\(\\{1, 2, \\dots, 7\\}\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-4",
       "educational_aim": "Combinatorics I: apply applying combinatorics, counting principles, and discrete proof strategies across multi-step problems (ol combinatorics counting 4).",
       "exam_archetype": "Three-Set Principle of Inclusion-Exclusion",
       "choices": [
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(5\\)",
-        "\\(8\\)"
+        "\\(35\\)",
+        "\\(28\\)",
+        "\\(46\\)",
+        "\\(42\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 5\\). Adding \\(3\\) yields \\(5 + 3 = 8\\).",
+      "answer": 0,
+      "sol": "Every \\(3\\)-subset has a unique strictly increasing ordering, giving \\(\\binom{7}{3} = 35\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Notice that fixing strictly increasing order turns each tuple choice into choosing a subset.",
+        "Count the number of \\(3\\)-element subsets from \\(7\\) integers.",
+        "Evaluate \\(\\binom{7}{3}\\) carefully."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 5 + 3",
+      "sympy_cert": "EXPECTED = sp.binomial(7, 3)",
       "sympy_verified": true,
       "irt": {
         "a": 1.485,
         "b": 0.679,
         "c": 0.25
       },
-      "text_ar": "خلال تجربة تجربة المسح (OLYMPIAD-5477) تم تجميع الجدول التالي. من الجدول، لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 5\\) . بإضافة \\(3\\) نحصل على \\(5 + 3 = 8\\) .",
+      "text_ar": "باستعمال جدول شروط اللجان (OLYMPIAD-0413)، كم عدداً من الثلاثيات المتزايدة تماماً يمكن اختياره من \\(\\{1, 2, \\dots, 7\\}\\)؟",
+      "sol_ar": "لكل مجموعة جزئية من \\(3\\) عناصر ترتيب متزايد وحيد، لذا العدد هو \\(\\binom{7}{3} = 35\\).",
       "choices_ar": [
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(5\\)",
-        "\\(8\\)"
+        "\\(35\\)",
+        "\\(28\\)",
+        "\\(46\\)",
+        "\\(42\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "الترتيب المتزايد يطابق اختيار مجموعة جزئية واحدة دون تكرار للترتيب.",
+        "احسب عدد المجموعات الجزئية من \\(3\\) عناصر من بين \\(7\\) عنصراً.",
+        "احسب قيمة التوافيق \\(\\binom{7}{3}\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Selection Rule (OLYMPIAD-0413)",
+        "caption_ar": "قاعدة الاختيار (OLYMPIAD-0413)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Universe Size",
+          "Tuple Length",
+          "Order Rule"
+        ],
+        "headers_ar": [
+          "حجم المجموعة",
+          "طول الثلاثية",
+          "الترتيب"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(7\\)",
+            "\\(3\\)",
+            "Strictly increasing"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (survey trial, OLYMPIAD-5477)",
-        "caption_ar": "قيم مختارة للدالتين (تجربة المسح، OLYMPIAD-5477)"
+        ]
       }
     },
     {
@@ -25092,73 +25085,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "medium",
-      "text": "In the seismology record (OLYMPIAD-6059), using the table values, evaluate \\(f(g(4)) + 5\\).",
+      "text": "A deterministic token machine follows the transition table (OLYMPIAD-0419); compute term \\(a_4\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-5",
       "educational_aim": "Combinatorics I: apply applying combinatorics, counting principles, and discrete proof strategies across multi-step problems (ol combinatorics counting 5).",
       "exam_archetype": "Derangements & Fixed-Point Counting",
       "choices": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(53\\)",
+        "\\(161\\)",
+        "\\(159\\)",
+        "\\(163\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
+      "sol": "Iterating yields \\(a_1=5\\), \\(a_2=17\\), \\(a_3=53\\), and \\(a_4=3(53)+2 = 161\\) (matching \\(2\\cdot 3^4 - 1\\)).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Notice \\(a_n + 1 = 3(a_{n-1} + 1)\\) forms a geometric progression.",
+        "Compute consecutive values starting from \\(a_0 = 1\\) up to \\(n = 3\\).",
+        "Substitute \\(a_3 = 53\\) into \\(3a_3 + 2\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 14 + 5",
+      "sympy_cert": "EXPECTED = 2 * 3**4 - 1",
       "sympy_verified": true,
       "irt": {
         "a": 1.23,
         "b": -0.138,
         "c": 0.25
       },
-      "text_ar": "في سجل علم الزلازل (OLYMPIAD-6059)، استخدم القيم الواردة في الجدول لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 14\\) . بإضافة \\(5\\) نحصل على \\(14 + 5 = 19\\) .",
+      "text_ar": "تتبع آلة عدّ انتقالية الجدول (OLYMPIAD-0419)؛ أوجد قيمة الحد \\(a_4\\).",
+      "sol_ar": "بالتعويض المتكرر نجد \\(a_1=5\\)، \\(a_2=17\\)، \\(a_3=53\\)، ثم \\(a_4 = 161\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(53\\)",
+        "\\(161\\)",
+        "\\(159\\)",
+        "\\(163\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "لاحظ أن \\(a_n + 1 = 3(a_{n-1} + 1)\\) يكوّن متتالية هندسية.",
+        "احسب الحدود المتتالية من \\(a_0 = 1\\) حتى \\(a_3\\).",
+        "عوّض بالحد الثالث في القاعدة \\(3a_3 + 2\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Transition Recurrence (OLYMPIAD-0419)",
+        "caption_ar": "علاقة التكرار (OLYMPIAD-0419)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Initial \\(a_0\\)",
+          "Rule",
+          "Target Index"
+        ],
+        "headers_ar": [
+          "الحد الأول \\(a_0\\)",
+          "القاعدة",
+          "المطلوب"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(1\\)",
+            "\\(a_n = 3a_{n-1} + 2\\)",
+            "\\(n = 4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (seismology, OLYMPIAD-6059)",
-        "caption_ar": "قيم مختارة للدالتين (علم الزلازل، OLYMPIAD-6059)"
+        ]
       }
     },
     {
@@ -25588,73 +25574,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "medium",
-      "text": "Inspect the optics values listed across the table (OLYMPIAD-6641); evaluate \\(f(g(2)) + 3\\).",
+      "text": "Inspect the partition parameters tabulated in (OLYMPIAD-0425) to count positive integer solutions to \\(x_1 + x_2 + x_3 + x_4 = 12\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-5",
       "educational_aim": "Combinatorics I: apply applying combinatorics, counting principles, and discrete proof strategies across multi-step problems (ol combinatorics counting 5).",
       "exam_archetype": "Derangements & Fixed-Point Counting",
       "choices": [
-        "\\(9\\)",
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(7\\)"
+        "\\(455\\)",
+        "\\(120\\)",
+        "\\(165\\)",
+        "\\(220\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 4\\). Adding \\(3\\) yields \\(4 + 3 = 7\\).",
+      "answer": 2,
+      "sol": "By Stars and Bars for positive integers, there are \\(\\binom{12-1}{4-1} = \\binom{11}{3} = 165\\) solutions.",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Place \\(3\\) dividers among the \\(11\\) interior gaps between \\(12\\) identical unit balls.",
+        "Identify \\(n-1 = 11\\) gaps and \\(k-1 = 3\\) dividers.",
+        "Evaluate \\(\\binom{11}{3}\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 4 + 3",
+      "sympy_cert": "EXPECTED = sp.binomial(11, 3)",
       "sympy_verified": true,
       "irt": {
         "a": 1.691,
         "b": 0.385,
         "c": 0.25
       },
-      "text_ar": "تأمل مدخلات البصريات في الجدول (OLYMPIAD-6641) لتحديد لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 4\\) . بإضافة \\(3\\) نحصل على \\(4 + 3 = 7\\) .",
+      "text_ar": "ادرس معطيات التجزئة في الجدول (OLYMPIAD-0425) لإيجاد عدد الحلول الصحيحة الموجبة للمعادلة \\(x_1 + x_2 + x_3 + x_4 = 12\\).",
+      "sol_ar": "باستعمال طريقة النجوم والفواصل للأعداد الصحيحة الموجبة: \\(\\binom{11}{3} = 165\\).",
       "choices_ar": [
-        "\\(9\\)",
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(7\\)"
+        "\\(455\\)",
+        "\\(120\\)",
+        "\\(165\\)",
+        "\\(220\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "اختر \\(3\\) مواضع فواصل من بين \\(11\\) فراغاً بين \\(12\\) وحدة متماثلة.",
+        "طبّق قانون التوافيق \\(\\binom{n-1}{k-1}\\).",
+        "احسب قيمة \\(\\binom{11}{3}\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Integer Composition Spec (OLYMPIAD-0425)",
+        "caption_ar": "مواصفات التجزئة (OLYMPIAD-0425)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Variables",
+          "Total Sum",
+          "Lower Bound"
+        ],
+        "headers_ar": [
+          "عدد المتغيرات",
+          "المجموع الكلي",
+          "الحد الأدنى"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(4\\)",
+            "\\(12\\)",
+            "\\(x_i \\ge 1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (optics, OLYMPIAD-6641)",
-        "caption_ar": "قيم مختارة للدالتين (البصريات، OLYMPIAD-6641)"
+        ]
       }
     },
     {
@@ -26035,73 +26014,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "medium",
-      "text": "An engineering team logged circuit trial measurements in the accompanying table (OLYMPIAD-7223); using these data, evaluate \\(f(g(4)) + 5\\).",
+      "text": "In permutation log table (OLYMPIAD-0431), determine how many bijections of \\(5\\) badges leave no badge in its original slot.",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-6",
       "educational_aim": "Combinatorics I: apply applying combinatorics, counting principles, and discrete proof strategies across multi-step problems (ol combinatorics counting 6).",
       "exam_archetype": "Hockey-Stick Binomial Identity",
       "choices": [
-        "\\(18\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(45\\)",
+        "\\(40\\)",
+        "\\(120\\)",
+        "\\(44\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 13\\). Adding \\(5\\) yields \\(13 + 5 = 18\\).",
+      "answer": 3,
+      "sol": "Using the derangement recurrence \\(D_5 = 4(D_4 + D_3) = 4(9 + 2) = 44\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Use the subfactorial recurrence \\(D_n = (n-1)(D_{n-1} + D_{n-2})\\).",
+        "Substitute \\(D_4 = 9\\) and \\(D_3 = 2\\) directly from the table.",
+        "Multiply \\(4\\) by \\((9+2)\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 13 + 5",
+      "sympy_cert": "EXPECTED = 4 * (9 + 2)",
       "sympy_verified": true,
       "irt": {
         "a": 1.435,
         "b": 0.388,
         "c": 0.25
       },
-      "text_ar": "سجّل فريق دراسة تجربة الدائرة القياسات في الجدول المرفق (OLYMPIAD-7223). مستخدمًا هذه البيانات، لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 13\\) . بإضافة \\(5\\) نحصل على \\(13 + 5 = 18\\) .",
+      "text_ar": "في سجل التبديلات (OLYMPIAD-0431)، كم عدد التبديلات الممكنة لـ \\(5\\) بطاقات بحيث لا تبقى أي بطاقة في موضعها الأصلي؟",
+      "sol_ar": "باستعمال علاقة الاختلال الكامل: \\(D_5 = 4(D_4 + D_3) = 4(9 + 2) = 44\\).",
       "choices_ar": [
-        "\\(18\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(45\\)",
+        "\\(40\\)",
+        "\\(120\\)",
+        "\\(44\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "استعمل علاقة التكرار للاختلال \\(D_n = (n-1)(D_{n-1} + D_{n-2})\\).",
+        "عوّض بالقيمتين المعطاة \\(D_4 = 9\\) و\\(D_3 = 2\\) من الجدول.",
+        "احسب \\(4(9+2)\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Derangement Count Table (OLYMPIAD-0431)",
+        "caption_ar": "بيانات الاختلال الكامل (OLYMPIAD-0431)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Items",
+          "Fixed Points Allowed",
+          "Known \\(D_3, D_4\\)"
+        ],
+        "headers_ar": [
+          "العناصر",
+          "النقاط الثابتة المسموحة",
+          "قيم سابقة"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(5\\)",
+            "\\(0\\)",
+            "\\(D_3 = 2, D_4 = 9\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (circuit trial, OLYMPIAD-7223)",
-        "caption_ar": "قيم مختارة للدالتين (تجربة الدائرة، OLYMPIAD-7223)"
+        ]
       }
     },
     {
@@ -26768,9 +26740,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -27261,73 +27233,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "Examine the biometrics dataset arranged in the table below (OLYMPIAD-8525); evaluate \\(f(g(2)) + 3\\).",
+      "text": "Apply inclusion-exclusion to the sieve dataset (OLYMPIAD-0452) to count integers from \\(1\\) to \\(120\\) divisible by neither \\(2\\) nor \\(3\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-7",
       "educational_aim": "Combinatorics I: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol combinatorics counting 7).",
       "exam_archetype": "Burnside's Lemma & Cyclic Symmetry Orbits",
       "choices": [
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)",
-        "\\(6\\)"
+        "\\(40\\)",
+        "\\(60\\)",
+        "\\(80\\)",
+        "\\(36\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 3\\). Adding \\(3\\) yields \\(3 + 3 = 6\\).",
+      "answer": 0,
+      "sol": "Counts are \\(60\\) multiples of \\(2\\), \\(40\\) of \\(3\\), and \\(20\\) of \\(6\\). Remaining integers: \\(120 - (60 + 40 - 20) = 40\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Count multiples of \\(2\\), multiples of \\(3\\), and add back multiples of \\(6\\).",
+        "Notice \\(120/2 = 60\\), \\(120/3 = 40\\), and \\(120/6 = 20\\).",
+        "Subtract the union size \\(80\\) from \\(120\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 3 + 3",
+      "sympy_cert": "EXPECTED = 120 - (120//2 + 120//3 - 120//6)",
       "sympy_verified": true,
       "irt": {
         "a": 1.5,
         "b": 0.905,
         "c": 0.25
       },
-      "text_ar": "ادرس بيانات القياسات الحيوية المرتبة في الجدول أدناه (OLYMPIAD-8525) ثم لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 3\\) . بإضافة \\(3\\) نحصل على \\(3 + 3 = 6\\) .",
+      "text_ar": "طبّق مبدأ التضمين والإقصاء على بيانات الغربال (OLYMPIAD-0452) لحساب عدد الأعداد الصحيحة من \\(1\\) إلى \\(120\\) التي لا تقبل القسمة على \\(2\\) ولا على \\(3\\).",
+      "sol_ar": "عدد المضاعفات المستبعدة هو \\(60 + 40 - 20 = 80\\)، لذا الباقي يساوي \\(120 - 80 = 40\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)",
-        "\\(6\\)"
+        "\\(40\\)",
+        "\\(60\\)",
+        "\\(80\\)",
+        "\\(36\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "احسب مضاعفات \\(2\\) ومضاعفات \\(3\\) ثم اطرح التقاطع (مضاعفات \\(6\\)).",
+        "مجموع المستبعدات هو \\(60 + 40 - 20 = 80\\).",
+        "اطرح \\(80\\) من \\(120\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Divisibility Filter (OLYMPIAD-0452)",
+        "caption_ar": "معطيات القابلية للقسمة (OLYMPIAD-0452)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Range",
+          "Excluded Divisors",
+          "LCM Overlap"
+        ],
+        "headers_ar": [
+          "النطاق",
+          "القواسم المستبعدة",
+          "المضاعف المشترك"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(\\{1,\\dots,120\\}\\)",
+            "\\(2, 3\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (biometrics, OLYMPIAD-8525)",
-        "caption_ar": "قيم مختارة للدالتين (القياسات الحيوية، OLYMPIAD-8525)"
+        ]
       }
     },
     {
@@ -27415,73 +27380,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "Based strictly on the tabulated acoustics observations (OLYMPIAD-8795), evaluate \\(f(g(4)) + 5\\).",
+      "text": "The lattice grid specification (OLYMPIAD-0455) permits only Right and Up steps; find the number of shortest paths from \\((0,0)\\) to \\((5,3)\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-8",
       "educational_aim": "Combinatorics I: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol combinatorics counting 8).",
       "exam_archetype": "Surjective Mappings & Stirling Numbers",
       "choices": [
-        "\\(15\\)",
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(70\\)",
+        "\\(56\\)",
+        "\\(42\\)",
+        "\\(112\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 10\\). Adding \\(5\\) yields \\(10 + 5 = 15\\).",
+      "answer": 1,
+      "sol": "Every shortest path needs \\(5\\) Right and \\(3\\) Up moves (total \\(8\\)), giving \\(\\binom{8}{3} = 56\\) routes.",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Any shortest path makes \\(5 + 3 = 8\\) total moves.",
+        "Choose which \\(3\\) of the \\(8\\) moves go upward.",
+        "Calculate \\(\\binom{8}{3}\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 10 + 5",
+      "sympy_cert": "EXPECTED = sp.binomial(8, 3)",
       "sympy_verified": true,
       "irt": {
         "a": 1.546,
         "b": 2.269,
         "c": 0.25
       },
-      "text_ar": "استنادًا إلى بيانات الصوتيات المجدولة (OLYMPIAD-8795)، لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 10\\) . بإضافة \\(5\\) نحصل على \\(10 + 5 = 15\\) .",
+      "text_ar": "تسمح مواصفات الشبكة (OLYMPIAD-0455) بخطوات لليمين وللأعلى فقط؛ ما عدد أقصر المسارات من \\((0,0)\\) إلى \\((5,3)\\)؟",
+      "sol_ar": "يتطلب كل مسار أقصر \\(5\\) خطوات يميناً و\\(3\\) لأعلى، فيكون عدد المسارات \\(\\binom{8}{3} = 56\\).",
       "choices_ar": [
-        "\\(15\\)",
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(70\\)",
+        "\\(56\\)",
+        "\\(42\\)",
+        "\\(112\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "يتكون أي مسار أقصر من \\(5+3=8\\) خطوات كلية.",
+        "اختر مواضع الخطوات الثلاث المتجهة لأعلى من بين \\(8\\) خطوات.",
+        "احسب قيمة \\(\\binom{8}{3}\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Grid Path Parameters (OLYMPIAD-0455)",
+        "caption_ar": "معطيات الشبكة (OLYMPIAD-0455)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Start",
+          "Destination",
+          "Allowed Steps"
+        ],
+        "headers_ar": [
+          "البداية",
+          "النهاية",
+          "الخطوات"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\((0,0)\\)",
+            "\\((5,3)\\)",
+            "\\((+1,0), (0,+1)\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (acoustics, OLYMPIAD-8795)",
-        "caption_ar": "قيم مختارة للدالتين (الصوتيات، OLYMPIAD-8795)"
+        ]
       }
     },
     {
@@ -27569,73 +27527,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "A benchmark transit study log (OLYMPIAD-9065) provides the entries shown in the table; evaluate \\(f(g(2)) + 3\\).",
+      "text": "Review the domino tiling summary (OLYMPIAD-0458); how many ways can a \\(2\\times 7\\) board be tiled using \\(1\\times 2\\) dominoes?",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-8",
       "educational_aim": "Combinatorics I: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol combinatorics counting 8).",
       "exam_archetype": "Surjective Mappings & Stirling Numbers",
       "choices": [
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)",
-        "\\(6\\)"
+        "\\(13\\)",
+        "\\(34\\)",
+        "\\(21\\)",
+        "\\(16\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 3\\). Adding \\(3\\) yields \\(3 + 3 = 6\\).",
+      "answer": 2,
+      "sol": "Tilings satisfy \\(T_n = T_{n-1} + T_{n-2}\\): \\(1, 2, 3, 5, 8, 13, 21\\). So \\(T_7 = 21\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Consider placing either one vertical domino at the end or two horizontal dominoes.",
+        "Notice \\(T_n = T_{n-1} + T_{n-2}\\) with \\(T_1 = 1, T_2 = 2\\).",
+        "Extend the Fibonacci sequence up to \\(T_7\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 3 + 3",
+      "sympy_cert": "EXPECTED = sp.fibonacci(8)",
       "sympy_verified": true,
       "irt": {
         "a": 1.661,
         "b": 0.978,
         "c": 0.25
       },
-      "text_ar": "يقدّم سجل دراسة النقل (OLYMPIAD-9065) القياسات الموضحة في الجدول: لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 3\\) . بإضافة \\(3\\) نحصل على \\(3 + 3 = 6\\) .",
+      "text_ar": "انظر ملخص التبليط (OLYMPIAD-0458)؛ بكم طريقة يمكن تبليط لوح مقاسه \\(2\\times 7\\) باستخدام قطع دومينو \\(1\\times 2\\)؟",
+      "sol_ar": "يتبع التبليط متتالية فيبوناتشي \\(T_n = T_{n-1} + T_{n-2}\\)، ليكون الحد السابع \\(21\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)",
-        "\\(6\\)"
+        "\\(13\\)",
+        "\\(34\\)",
+        "\\(21\\)",
+        "\\(16\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "راقب أن النهاية تتكون إما من قطعة رأسية واحدة أو قطعتين أفقيتين.",
+        "تتبع القاعدة المتتالية \\(T_n = T_{n-1} + T_{n-2}\\).",
+        "أكمل المتتالية حتى الحد السابع."
       ],
       "figure": {
         "type": "table",
+        "caption": "Domino Tiling Counts (OLYMPIAD-0458)",
+        "caption_ar": "أعداد طرق التبليط (OLYMPIAD-0458)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Board \\(2\\times n\\)",
+          "Tile Size",
+          "Known Base Counts"
+        ],
+        "headers_ar": [
+          "مقاس اللوح",
+          "مقاس البلاطة",
+          "قيم أساس"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(2\\times 7\\)",
+            "\\(1\\times 2\\)",
+            "\\(T_1=1, T_2=2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (transit study, OLYMPIAD-9065)",
-        "caption_ar": "قيم مختارة للدالتين (دراسة النقل، OLYMPIAD-9065)"
+        ]
       }
     },
     {
@@ -27723,73 +27674,69 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "Inspect the seismology values listed across the table (OLYMPIAD-9335); evaluate \\(f(g(4)) + 5\\).",
+      "text": "Given the urn inventory table (OLYMPIAD-0461), find the minimum blind draw guaranteed to contain \\(7\\) balls of the same color.",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-8",
       "educational_aim": "Combinatorics I: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol combinatorics counting 8).",
       "exam_archetype": "Surjective Mappings & Stirling Numbers",
       "choices": [
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(18\\)",
+        "\\(17\\)",
+        "\\(16\\)",
+        "\\(19\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 10\\). Adding \\(5\\) yields \\(10 + 5 = 15\\).",
+      "answer": 3,
+      "sol": "In the worst case before a match, one draws \\(6\\) of each color (\\(18\\) total). The \\(19\\text{th}\\) ball guarantees \\(7\\) of one color.",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Apply the Pigeonhole Principle by maximizing draws without reaching \\(7\\) in any single color.",
+        "In the worst case, pull \\(6\\) balls from each of the \\(3\\) colors.",
+        "Add \\(1\\) final draw to break the tie."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 10 + 5",
+      "sympy_cert": "EXPECTED = 3 * 6 + 1",
       "sympy_verified": true,
       "irt": {
         "a": 1.669,
         "b": 1.988,
         "c": 0.25
       },
-      "text_ar": "تأمل مدخلات علم الزلازل في الجدول (OLYMPIAD-9335) لتحديد لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 10\\) . بإضافة \\(5\\) نحصل على \\(10 + 5 = 15\\) .",
+      "text_ar": "وفق جدول محتويات الصندوق (OLYMPIAD-0461)، ما أقل عدد من السحبات العشوائية لضمان الحصول على \\(7\\) كرات من اللون نفسه؟",
+      "sol_ar": "أسوأ حالة قبل تحقق الشرط هي سحب \\(6\\) من كل لون أي \\(18\\) كرة، لذا الكرة التاسعة عشرة تضمن المطلوب.",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(18\\)",
+        "\\(17\\)",
+        "\\(16\\)",
+        "\\(19\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "استعمل مبدأ برج الحمام عبر سحب أكبر عدد دون بلوغ \\(7\\) كرات من لون واحد.",
+        "أسوأ سيناريو هو سحب \\(6\\) كرات من كل لون من الألوان الثلاثة.",
+        "أضف كرة واحدة إضافية لضمان تحقق الشرط."
       ],
       "figure": {
         "type": "table",
+        "caption": "Urn Color Inventory (OLYMPIAD-0461)",
+        "caption_ar": "محتويات الصندوق (OLYMPIAD-0461)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Red",
+          "Blue",
+          "Green",
+          "Required Match"
+        ],
+        "headers_ar": [
+          "أحمر",
+          "أزرق",
+          "أخضر",
+          "الهدف"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(12\\)",
+            "\\(12\\)",
+            "\\(12\\)",
+            "\\(7\\) of same color"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (seismology, OLYMPIAD-9335)",
-        "caption_ar": "قيم مختارة للدالتين (علم الزلازل، OLYMPIAD-9335)"
+        ]
       }
     },
     {
@@ -28329,73 +28276,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "A benchmark circuit trial log (OLYMPIAD-10415) provides the entries shown in the table; evaluate \\(f(g(4)) + 5\\).",
+      "text": "Referring to region specification (OLYMPIAD-0473) in the table, compute the probability that a random point in \\([0,8]\\times[0,4]\\) satisfies both \\(x < 4\\) and \\(y > \\frac{x}{2}\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-9",
       "educational_aim": "Combinatorics I: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol combinatorics counting 9).",
       "exam_archetype": "Combinatorial Double-Counting & Committee-Leader Identity",
       "choices": [
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(10\\)",
-        "\\(15\\)"
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{8}\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 10\\). Adding \\(5\\) yields \\(10 + 5 = 15\\).",
+      "answer": 0,
+      "sol": "Total area is \\(32\\). On \\(0\\le x < 4\\), \\(y\\) runs from \\(x/2\\) to \\(4\\), forming a trapezoid with bases \\(4\\) and \\(2\\) and width \\(4\\), giving area \\(12\\) and probability \\(\\frac{12}{32} = \\frac{3}{8}\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Compute the area of the bounding rectangle first.",
+        "Evaluate the trapezoidal region between \\(y = x/2\\) and \\(y = 4\\) over \\([0,4]\\).",
+        "Divide the target area \\(12\\) by the total rectangle area \\(32\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 10 + 5",
+      "sympy_cert": "EXPECTED = sp.Rational(12, 32)",
       "sympy_verified": true,
       "irt": {
         "a": 1.114,
         "b": 1.551,
         "c": 0.25
       },
-      "text_ar": "يقدّم سجل تجربة الدائرة (OLYMPIAD-10415) القياسات الموضحة في الجدول: لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 10\\) . بإضافة \\(5\\) نحصل على \\(10 + 5 = 15\\) .",
+      "text_ar": "بالرجوع إلى مواصفات المنطقة (OLYMPIAD-0473) في الجدول، أوجد احتمال أن تحقق نقطة عشوائية في \\([0,8]\\times[0,4]\\) الشرطين \\(x < 4\\) و\\(y > \\frac{x}{2}\\) معاً.",
+      "sol_ar": "المساحة الكلية \\(32\\)، ومساحة شبه المنحرف الموافق للشرط تساوي \\(\\frac{4+2}{2}\\times 4 = 12\\)، فالنسبة هي \\(\\frac{3}{8}\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(10\\)",
-        "\\(15\\)"
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{8}\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "احسب المساحة الكلية للمستطيل المحيط أولاً.",
+        "احسب مساحة شبه المنحرف المحصور بين المستقيم \\(y = x/2\\) والحد \\(y = 4\\) على \\([0,4]\\).",
+        "اقسم المساحة المطلوبة على المساحة الكلية."
       ],
       "figure": {
         "type": "table",
+        "caption": "Probability Region Table (OLYMPIAD-0473)",
+        "caption_ar": "جدول منطقة الاحتمال (OLYMPIAD-0473)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Sample Rectangle",
+          "Horizontal Strip",
+          "Line Bound"
+        ],
+        "headers_ar": [
+          "المستطيل الكلي",
+          "النطاق الأفقي",
+          "الشرط الخطي"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\([0,8]\\times[0,4]\\)",
+            "\\(0 \\le x < 4\\)",
+            "\\(y > x/2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (circuit trial, OLYMPIAD-10415)",
-        "caption_ar": "قيم مختارة للدالتين (تجربة الدائرة، OLYMPIAD-10415)"
+        ]
       }
     },
     {
@@ -28483,73 +28423,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "Inspect the survey trial values listed across the table (OLYMPIAD-10685); evaluate \\(f(g(2)) + 3\\).",
+      "text": "Check Dyck-path constraint table (OLYMPIAD-0476) and determine the count of valid \\(4\\)-pair balanced bracket strings.",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-9",
       "educational_aim": "Combinatorics I: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol combinatorics counting 9).",
       "exam_archetype": "Combinatorial Double-Counting & Committee-Leader Identity",
       "choices": [
-        "\\(6\\)",
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)"
+        "\\(16\\)",
+        "\\(14\\)",
+        "\\(5\\)",
+        "\\(42\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 3\\). Adding \\(3\\) yields \\(3 + 3 = 6\\).",
+      "answer": 1,
+      "sol": "Applying the Catalan formula for \\(n=4\\) gives \\(\\frac{1}{5}\\binom{8}{4} = \\frac{70}{5} = 14\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Use the formula \\(C_n = \\frac{1}{n+1}\\binom{2n}{n}\\) shown in the table.",
+        "Evaluate \\(\\binom{8}{4} = 70\\) first.",
+        "Divide \\(70\\) by \\(5\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 3 + 3",
+      "sympy_cert": "EXPECTED = sp.catalan(4)",
       "sympy_verified": true,
       "irt": {
         "a": 1.609,
         "b": 1.017,
         "c": 0.25
       },
-      "text_ar": "تأمل مدخلات تجربة المسح في الجدول (OLYMPIAD-10685) لتحديد لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 3\\) . بإضافة \\(3\\) نحصل على \\(3 + 3 = 6\\) .",
+      "text_ar": "راجع جدول قيود المسارات (OLYMPIAD-0476) ثم أوجد عدد سلاسل الأقواس المتوازنة المكونة من \\(4\\) أزواج.",
+      "sol_ar": "بتطبيق صيغة عدد كاتالان الرابع: \\(\\frac{1}{5}\\binom{8}{4} = \\frac{70}{5} = 14\\).",
       "choices_ar": [
-        "\\(6\\)",
-        "\\(8\\)",
-        "\\(3\\)",
-        "\\(9\\)"
+        "\\(16\\)",
+        "\\(14\\)",
+        "\\(5\\)",
+        "\\(42\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق صيغة كاتالان الظاهرة في الجدول عند \\(n=4\\).",
+        "احسب \\(\\binom{8}{4} = 70\\) أولاً.",
+        "اقسم الناتج على \\(5\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Catalan Sequence Data (OLYMPIAD-0476)",
+        "caption_ar": "بيانات أعداد كاتالان (OLYMPIAD-0476)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Pairs \\(n\\)",
+          "Formula",
+          "Base Case"
+        ],
+        "headers_ar": [
+          "عدد الأزواج \\(n\\)",
+          "الصيغة",
+          "حالة الأساس"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(4\\)",
+            "\\(\\frac{1}{n+1}\\binom{2n}{n}\\)",
+            "\\(C_1=1, C_2=2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (survey trial, OLYMPIAD-10685)",
-        "caption_ar": "قيم مختارة للدالتين (تجربة المسح، OLYMPIAD-10685)"
+        ]
       }
     },
     {
@@ -28637,73 +28570,66 @@
       "type": "mcq",
       "domain": "Bijective Counting, Inclusion-Exclusion & Pigeonhole",
       "difficulty": "hard",
-      "text": "Selected numerical readings from robotics run (OLYMPIAD-10955) appear in the table; evaluate \\(f(g(4)) + 5\\).",
+      "text": "A second-order linear sequence is defined in summary table (OLYMPIAD-0479); evaluate \\(a_4\\).",
       "topic_id": "ol-combinatorics-counting",
       "subskill_id": "ol-combinatorics-counting-9",
       "educational_aim": "Combinatorics I: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol combinatorics counting 9).",
       "exam_archetype": "Combinatorial Double-Counting & Committee-Leader Identity",
       "choices": [
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(89\\)",
+        "\\(95\\)",
+        "\\(97\\)",
+        "\\(101\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 10\\). Adding \\(5\\) yields \\(10 + 5 = 15\\).",
+      "answer": 2,
+      "sol": "Computing step-by-step: \\(a_2 = 25 - 12 = 13\\), \\(a_3 = 65 - 30 = 35\\), and \\(a_4 = 175 - 78 = 97\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Notice the characteristic roots are \\(2\\) and \\(3\\), or iterate directly from \\(a_0, a_1\\).",
+        "Calculate \\(a_2 = 13\\) and \\(a_3 = 35\\).",
+        "Evaluate \\(5(35) - 6(13)\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 10 + 5",
+      "sympy_cert": "EXPECTED = 2**4 + 3**4",
       "sympy_verified": true,
       "irt": {
         "a": 1.609,
         "b": 2.289,
         "c": 0.25
       },
-      "text_ar": "تظهر قراءات الروبوتات المختارة (OLYMPIAD-10955) في الجدول التالي؛ استخدم الجدول لإيجاد لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 10\\) . بإضافة \\(5\\) نحصل على \\(10 + 5 = 15\\) .",
+      "text_ar": "متتالية خطية من الدرجة الثانية معرّفة في الجدول الملخص (OLYMPIAD-0479)؛ أوجد قيمة الحد \\(a_4\\).",
+      "sol_ar": "بالتعويض التدريجي: \\(a_2 = 13\\) و\\(a_3 = 35\\) ثم \\(a_4 = 5(35)-6(13) = 97\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(89\\)",
+        "\\(95\\)",
+        "\\(97\\)",
+        "\\(101\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "الجذران المميزان هما \\(2\\) و\\(3\\)، أو احسب الحدود خطوة بخطوة.",
+        "أوجد \\(a_2 = 13\\) ثم \\(a_3 = 35\\).",
+        "احسب قيمة \\(5(35) - 6(13)\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Second-Order Recurrence (OLYMPIAD-0479)",
+        "caption_ar": "علاقة التكرار التربيعية (OLYMPIAD-0479)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Initial Terms",
+          "Recurrence Relation",
+          "Target"
+        ],
+        "headers_ar": [
+          "الحدود الأولى",
+          "العلاقة",
+          "المطلوب"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(a_0=2, a_1=5\\)",
+            "\\(a_n = 5a_{n-1} - 6a_{n-2}\\)",
+            "\\(a_4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (robotics, OLYMPIAD-10955)",
-        "caption_ar": "قيم مختارة للدالتين (الروبوتات، OLYMPIAD-10955)"
+        ]
       }
     },
     {
@@ -31419,73 +31345,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "medium",
-      "text": "A benchmark aerodynamics log (OLYMPIAD-7037) provides the entries shown in the table; evaluate \\(f(g(2)) + 3\\).",
+      "text": "Count the subsets of \\(\\{1, 2, \\dots, 8\\}\\) described in parity table (OLYMPIAD-0526) whose elements sum to an even integer.",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-1",
       "educational_aim": "Combinatorics II: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol recurrence probability 1).",
       "exam_archetype": "Second-Order Characteristic Polynomial",
       "choices": [
-        "\\(8\\)",
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(5\\)"
+        "\\(64\\)",
+        "\\(256\\)",
+        "\\(127\\)",
+        "\\(128\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 5\\). Adding \\(3\\) yields \\(5 + 3 = 8\\).",
+      "answer": 3,
+      "sol": "Toggling membership of the odd element \\(1\\) pairs every even-sum subset with an odd-sum subset, leaving \\(2^8 / 2 = 128\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Pair each subset \\(S\\) with its symmetric difference with \\(\\{1\\}\\).",
+        "Exactly half of the \\(256\\) subsets have an even sum.",
+        "Compute \\(2^8 / 2\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 5 + 3",
+      "sympy_cert": "EXPECTED = 2**7",
       "sympy_verified": true,
       "irt": {
         "a": 0.997,
         "b": 0.238,
         "c": 0.25
       },
-      "text_ar": "يقدّم سجل الديناميكا الهوائية (OLYMPIAD-7037) القياسات الموضحة في الجدول: لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 5\\) . بإضافة \\(3\\) نحصل على \\(5 + 3 = 8\\) .",
+      "text_ar": "عدّ المجموعات الجزئية من \\(\\{1, 2, \\dots, 8\\}\\) المبينة في جدول الزوجية (OLYMPIAD-0526) والتي يكون مجموع عناصرها زوجياً.",
+      "sol_ar": "إدخال أو إخراج العنصر الفردي \\(1\\) ينشئ تقابلاً بين المجموعات ذات المجموع الزوجي والفردي، لذا العدد هو \\(128\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(4\\)",
-        "\\(10\\)",
-        "\\(5\\)"
+        "\\(64\\)",
+        "\\(256\\)",
+        "\\(127\\)",
+        "\\(128\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "كوّن تقابلاً بإضافة أو إزالة العدد \\(1\\) من كل مجموعة جزئية.",
+        "نصف المجموعات الجزئية الكلية لها مجموع زوجي بالضبط.",
+        "اقسم \\(256\\) على \\(2\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Subset Parity Table (OLYMPIAD-0526)",
+        "caption_ar": "جدول زوجية المجموعات (OLYMPIAD-0526)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Base Set",
+          "Condition",
+          "Total Subsets"
+        ],
+        "headers_ar": [
+          "المجموعة الأساسية",
+          "الشرط",
+          "العدد الكلي"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(\\{1,\\dots,8\\}\\)",
+            "Even element sum",
+            "\\(2^8 = 256\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (aerodynamics, OLYMPIAD-7037)",
-        "caption_ar": "قيم مختارة للدالتين (الديناميكا الهوائية، OLYMPIAD-7037)"
+        ]
       }
     },
     {
@@ -31893,73 +31812,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "medium",
-      "text": "Given the structured acoustics observations displayed in the table (OLYMPIAD-7619), evaluate \\(f(g(4)) + 5\\).",
+      "text": "Examine tournament schedule table (OLYMPIAD-0532) and compute the total round-robin matches played among \\(9\\) clubs.",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-1",
       "educational_aim": "Combinatorics II: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol recurrence probability 1).",
       "exam_archetype": "Second-Order Characteristic Polynomial",
       "choices": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(36\\)",
+        "\\(72\\)",
+        "\\(45\\)",
+        "\\(28\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
+      "answer": 0,
+      "sol": "Every pair of the \\(9\\) clubs meets once, giving \\(\\binom{9}{2} = \\frac{9\\times 8}{2} = 36\\) matches.",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Each match corresponds uniquely to choosing an unordered pair of clubs.",
+        "Evaluate \\(\\binom{9}{2}\\).",
+        "Multiply \\(9 \\times 8\\) and divide by \\(2\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 14 + 5",
+      "sympy_cert": "EXPECTED = sp.binomial(9, 2)",
       "sympy_verified": true,
       "irt": {
         "a": 1.487,
         "b": -0.2,
         "c": 0.25
       },
-      "text_ar": "بالنظر إلى قيم الصوتيات المعروضة في الجدول (OLYMPIAD-7619)، لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 14\\) . بإضافة \\(5\\) نحصل على \\(14 + 5 = 19\\) .",
+      "text_ar": "افحص جدول جدول المباريات (OLYMPIAD-0532) واحسب العدد الكلي لمباريات الدوري بين \\(9\\) أندية يلعب كل نادٍ مع البقية مرة واحدة.",
+      "sol_ar": "يلتقي كل زوج من الأندية التسعة مرة واحدة، أي \\(\\binom{9}{2} = 36\\) مباراة.",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(36\\)",
+        "\\(72\\)",
+        "\\(45\\)",
+        "\\(28\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "كل مباراة تمثل اختيار زوج غير مرتب من ناديين.",
+        "استعمل قانون التوافيق \\(\\binom{9}{2}\\).",
+        "اقسم حاصل ضرب \\(9 \\times 8\\) على \\(2\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Round-Robin Tournament Spec (OLYMPIAD-0532)",
+        "caption_ar": "بيانات البطولة (OLYMPIAD-0532)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Clubs",
+          "Meetings per Pair",
+          "Format"
+        ],
+        "headers_ar": [
+          "الأندية",
+          "المواجهات لكل زوج",
+          "النظام"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(9\\)",
+            "\\(1\\)",
+            "Single round-robin"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (acoustics, OLYMPIAD-7619)",
-        "caption_ar": "قيم مختارة للدالتين (الصوتيات، OLYMPIAD-7619)"
+        ]
       }
     },
     {
@@ -32340,73 +32252,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "medium",
-      "text": "Examine the quality audit dataset arranged in the table below (OLYMPIAD-8201); evaluate \\(f(g(2)) + 3\\).",
+      "text": "Evaluate the probability from dice-outcome table (OLYMPIAD-0538) that two fair \\(6\\)-sided dice show a sum divisible by \\(4\\).",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-2",
       "educational_aim": "Combinatorics II: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol recurrence probability 2).",
       "exam_archetype": "Rendezvous Diagonal-Band Probability",
       "choices": [
-        "\\(9\\)",
-        "\\(7\\)",
-        "\\(4\\)",
-        "\\(10\\)"
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{7}{36}\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 4\\). Adding \\(3\\) yields \\(4 + 3 = 7\\).",
+      "sol": "There are \\(3\\) ways to sum to \\(4\\), \\(5\\) ways to sum to \\(8\\), and \\(1\\) way to sum to \\(12\\): \\(\\frac{3+5+1}{36} = \\frac{1}{4}\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Count ordered pairs \\((d_1, d_2)\\) summing to \\(4\\), \\(8\\), and \\(12\\) separately.",
+        "Add the favorable pair counts \\(3 + 5 + 1\\).",
+        "Divide \\(9\\) by \\(36\\) and reduce the fraction."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 4 + 3",
+      "sympy_cert": "EXPECTED = sp.Rational(9, 36)",
       "sympy_verified": true,
       "irt": {
         "a": 1.119,
         "b": 0.299,
         "c": 0.25
       },
-      "text_ar": "ادرس بيانات تدقيق الجودة المرتبة في الجدول أدناه (OLYMPIAD-8201) ثم لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 4\\) . بإضافة \\(3\\) نحصل على \\(4 + 3 = 7\\) .",
+      "text_ar": "احسب من جدول نواتج النرد (OLYMPIAD-0538) احتمال أن يكون مجموع عددي حجرَي نرد منتظمين من مضاعفات \\(4\\).",
+      "sol_ar": "توجد \\(3\\) طرق للمجموع \\(4\\) و\\(5\\) للمجموع \\(8\\) وطريقة واحدة للمجموع \\(12\\)، فالناتج هو \\(\\frac{9}{36} = \\frac{1}{4}\\).",
       "choices_ar": [
-        "\\(9\\)",
-        "\\(7\\)",
-        "\\(4\\)",
-        "\\(10\\)"
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{7}{36}\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "عدّ الأزواج المرتبة التي تعطي المجموع \\(4\\) أو \\(8\\) أو \\(12\\).",
+        "اجمع النواتج المواتية: \\(3 + 5 + 1 = 9\\).",
+        "اقسم على \\(36\\) وبسّط الكسر."
       ],
       "figure": {
         "type": "table",
+        "caption": "Divisible Dice Sums (OLYMPIAD-0538)",
+        "caption_ar": "جدول المجاميع المضاعفة (OLYMPIAD-0538)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Sample Space",
+          "Valid Multiples of 4",
+          "Condition"
+        ],
+        "headers_ar": [
+          "فضاء العينة",
+          "المجاميع الممكنة",
+          "الشرط"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(36\\) pairs",
+            "\\(4, 8, 12\\)",
+            "Uniform fair dice"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (quality audit, OLYMPIAD-8201)",
-        "caption_ar": "قيم مختارة للدالتين (تدقيق الجودة، OLYMPIAD-8201)"
+        ]
       }
     },
     {
@@ -32798,73 +32703,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "medium",
-      "text": "The table summarizes measurements from a optical bench evaluation (OLYMPIAD-8783); using these entries, evaluate \\(f(g(4)) + 5\\).",
+      "text": "Using bijection table (OLYMPIAD-0544), determine the number of onto functions from a \\(4\\)-element domain to a \\(3\\)-element codomain.",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-2",
       "educational_aim": "Combinatorics II: apply solving ordinary differential equations and initial-value problems across multi-step problems (ol recurrence probability 2).",
       "exam_archetype": "Rendezvous Diagonal-Band Probability",
       "choices": [
-        "\\(18\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(81\\)",
+        "\\(48\\)",
+        "\\(36\\)",
+        "\\(24\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 13\\). Adding \\(5\\) yields \\(13 + 5 = 18\\).",
+      "answer": 2,
+      "sol": "By inclusion-exclusion, onto functions count \\(3^4 - \\binom{3}{1}2^4 + \\binom{3}{2}1^4 = 81 - 48 + 3 = 36\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Start from all \\(3^4\\) functions and subtract those missing at least one codomain value.",
+        "Evaluate \\(3^4 - 3\\cdot 2^4 + 3\\cdot 1^4\\).",
+        "Combine \\(81 - 48 + 3\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 13 + 5",
+      "sympy_cert": "EXPECTED = 3**4 - 3*(2**4) + 3",
       "sympy_verified": true,
       "irt": {
         "a": 1.621,
         "b": 0.402,
         "c": 0.25
       },
-      "text_ar": "يلخّص الجدول قياسات مسجّلة من تجربة المنضدة البصرية (OLYMPIAD-8783). بالاعتماد على القيم المعطاة، لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 13\\) . بإضافة \\(5\\) نحصل على \\(13 + 5 = 18\\) .",
+      "text_ar": "باستعمال جدول التطبيقات (OLYMPIAD-0544)، كم عدداً من التطبيقات الشاملة يمكن تكوينه من مجموعة ذات \\(4\\) عناصر إلى مجموعة ذات \\(3\\) عناصر؟",
+      "sol_ar": "بتطبيق التضمين والإقصاء يكون عدد التطبيقات الشاملة \\(81 - 48 + 3 = 36\\).",
       "choices_ar": [
-        "\\(18\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(81\\)",
+        "\\(48\\)",
+        "\\(36\\)",
+        "\\(24\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "ابدأ بجميع التطبيقات \\(3^4\\) واطرح منها ما يهمل عنصراً واحداً على الأقل من المدى.",
+        "طبّق الصيغة \\(3^4 - 3\\cdot 2^4 + 3\\cdot 1^4\\).",
+        "احسب \\(81 - 48 + 3\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Surjection Count Parameters (OLYMPIAD-0544)",
+        "caption_ar": "بيانات التطبيق الشامل (OLYMPIAD-0544)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Domain Size",
+          "Codomain Size",
+          "All Maps"
+        ],
+        "headers_ar": [
+          "عناصر المجال",
+          "عناصر المدى",
+          "كل التطبيقات"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(4\\)",
+            "\\(3\\)",
+            "\\(3^4 = 81\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (optical bench, OLYMPIAD-8783)",
-        "caption_ar": "قيم مختارة للدالتين (المنضدة البصرية، OLYMPIAD-8783)"
+        ]
       }
     },
     {
@@ -35189,73 +35087,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "hard",
-      "text": "Referring to the cohort study table above (OLYMPIAD-9599), evaluate \\(f(g(4)) + 5\\).",
+      "text": "From circular seating rules in table (OLYMPIAD-0575), find how many circular seatings of \\(6\\) delegates keep two chairs A and B adjacent.",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-2",
       "educational_aim": "Combinatorics II: apply core concepts and algebraic reasoning to standard exam items (ol recurrence probability 2).",
       "exam_archetype": "Fixed-Point Non-Homogeneous Recurrence",
       "choices": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(120\\)",
+        "\\(24\\)",
+        "\\(96\\)",
+        "\\(48\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
+      "answer": 3,
+      "sol": "Treat \\(A,B\\) as one block, leaving \\(5\\) units around a circle in \\((5-1)! = 24\\) ways, times \\(2!\\) internal swaps gives \\(48\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Bind \\(\\{A,B\\}\\) into a single super-delegate to reduce the circle to \\(5\\) objects.",
+        "Arrange \\(5\\) items around a circle in \\(4!\\) ways.",
+        "Multiply by \\(2\\) for the internal order \\(AB\\) vs \\(BA\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 14 + 5",
+      "sympy_cert": "EXPECTED = 2 * sp.factorial(4)",
       "sympy_verified": true,
       "irt": {
         "a": 1.029,
         "b": 2.375,
         "c": 0.25
       },
-      "text_ar": "بالرجوع إلى جدول دراسة الفوج أعلاه (OLYMPIAD-9599)، لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 14\\) . بإضافة \\(5\\) نحصل على \\(14 + 5 = 19\\) .",
+      "text_ar": "من جدول قواعد الجلوس الدائري (OLYMPIAD-0575)، بكم طريقة يمكن جلوس \\(6\\) مندوبين حول طاولة دائرية بحيث يجلس A و B متجاورين؟",
+      "sol_ar": "بربط الزوجين معاً يصبح لدينا \\(5\\) وحدات دائرية بعدد \\(4! = 24\\) طريقة، وبالضرب في \\(2\\) ينتج \\(48\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(19\\)",
-        "\\(18\\)",
-        "\\(14\\)"
+        "\\(120\\)",
+        "\\(24\\)",
+        "\\(96\\)",
+        "\\(48\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "اعتبر \\(\\{A,B\\}\\) وحدة واحدة فيصبح عدد الوحدات الدائرية \\(5\\).",
+        "رتّب \\(5\\) وحدات دائرياً بعدد \\(4!\\) طريقة.",
+        "اضرب في \\(2\\) لتبديل موضعَي الزوجين."
       ],
       "figure": {
         "type": "table",
+        "caption": "Circular Seating Constraint (OLYMPIAD-0575)",
+        "caption_ar": "شروط الطاولة الدائرية (OLYMPIAD-0575)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Total Delegates",
+          "Paired Block",
+          "Rotation Rule"
+        ],
+        "headers_ar": [
+          "إجمالي المندوبين",
+          "الزوج المتجاور",
+          "قاعدة الدوران"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(6\\)",
+            "\\(\\{A, B\\}\\)",
+            "Equate rotations"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (cohort study, OLYMPIAD-9599)",
-        "caption_ar": "قيم مختارة للدالتين (دراسة الفوج، OLYMPIAD-9599)"
+        ]
       }
     },
     {
@@ -36861,73 +36752,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "hard",
-      "text": "Examine the optical bench dataset arranged in the table below (OLYMPIAD-11219); evaluate \\(f(g(4)) + 5\\).",
+      "text": "According to polygon chord table (OLYMPIAD-0593), find the probability that two random vertices of a regular hexagon form a main diameter.",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-3",
       "educational_aim": "Combinatorics II: apply core concepts and algebraic reasoning to standard exam items (ol recurrence probability 3).",
       "exam_archetype": "Coupled Graph-Walk Recurrence on K_m",
       "choices": [
-        "\\(7\\)",
-        "\\(18\\)",
-        "\\(19\\)",
-        "\\(14\\)"
+        "\\(\\frac{1}{5}\\)",
+        "\\(\\frac{2}{5}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{3}{10}\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 14\\). Adding \\(5\\) yields \\(14 + 5 = 19\\).",
+      "answer": 0,
+      "sol": "A hexagon has \\(\\binom{6}{2} = 15\\) vertex pairs and \\(3\\) opposite-vertex main diameters, so the probability is \\(\\frac{3}{15} = \\frac{1}{5}\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Count all \\(\\binom{6}{2}\\) unordered vertex pairs in the denominator.",
+        "Identify the \\(3\\) pairs connecting diametrically opposite vertices.",
+        "Reduce \\(\\frac{3}{15}\\) to lowest terms."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 14 + 5",
+      "sympy_cert": "EXPECTED = sp.Rational(3, 15)",
       "sympy_verified": true,
       "irt": {
         "a": 1.569,
         "b": 1.648,
         "c": 0.25
       },
-      "text_ar": "ادرس بيانات المنضدة البصرية المرتبة في الجدول أدناه (OLYMPIAD-11219) ثم لحساب قيمة \\(f(g(4)) + 5\\) .",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 14\\) . بإضافة \\(5\\) نحصل على \\(14 + 5 = 19\\) .",
+      "text_ar": "وفق جدول أوتار المضلع (OLYMPIAD-0593)، أوجد احتمال أن يشكل رأسان مختاران عشوائياً من سداسي منتظم قطراً رئيسياً.",
+      "sol_ar": "عدد أزواج الرؤوس الكلي هو \\(15\\) وعدد الأقطار المارة بالمركز \\(3\\)، إذن الاحتمال يساوي \\(\\frac{3}{15} = \\frac{1}{5}\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(18\\)",
-        "\\(19\\)",
-        "\\(14\\)"
+        "\\(\\frac{1}{5}\\)",
+        "\\(\\frac{2}{5}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{3}{10}\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "احسب عدد كل أزواج الرؤوس عبر \\(\\binom{6}{2} = 15\\).",
+        "حدّد عدد الأقطار الثلاثة الواصلة بين كل رأسين متقابلين.",
+        "بسّط النسبة \\(\\frac{3}{15}\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Hexagon Vertex Chords (OLYMPIAD-0593)",
+        "caption_ar": "أوتار السداسي المنتظم (OLYMPIAD-0593)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Polygon",
+          "Total Vertex Pairs",
+          "Longest Diagonals"
+        ],
+        "headers_ar": [
+          "المضلع",
+          "الأزواج الكلية",
+          "الأقطار الرئيسية"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Regular Hexagon",
+            "\\(\\binom{6}{2}\\)",
+            "Through center"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (optical bench, OLYMPIAD-11219)",
-        "caption_ar": "قيم مختارة للدالتين (المنضدة البصرية، OLYMPIAD-11219)"
+        ]
       }
     },
     {
@@ -37123,73 +37007,66 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "hard",
-      "text": "Based strictly on the tabulated aerodynamics observations (OLYMPIAD-11489), evaluate \\(f(g(2)) + 3\\).",
+      "text": "From finite-series table (OLYMPIAD-0596), evaluate the exact sum \\(\\sum_{k=1}^{9} \\frac{1}{k(k+1)}\\).",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-3",
       "educational_aim": "Combinatorics II: apply applying circle equations, arc-sector geometry, and tangent-chord theorems across multi-step problems (ol recurrence probability 3).",
       "exam_archetype": "Coupled Graph-Walk Recurrence on K_m",
       "choices": [
-        "\\(6\\)",
-        "\\(10\\)",
-        "\\(12\\)",
-        "\\(7\\)"
+        "\\(\\frac{10}{11}\\)",
+        "\\(\\frac{9}{10}\\)",
+        "\\(\\frac{8}{9}\\)",
+        "\\(\\frac{4}{5}\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 7\\). Adding \\(3\\) yields \\(7 + 3 = 10\\).",
+      "sol": "Every interior fraction cancels pairwise, leaving \\(1 - \\frac{1}{10} = \\frac{9}{10}\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Expand the first few terms using \\(\\frac{1}{k} - \\frac{1}{k+1}\\).",
+        "Observe the consecutive cancellations from \\(k=1\\) through \\(k=9\\).",
+        "Compute \\(1 - \\frac{1}{10}\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 7 + 3",
+      "sympy_cert": "EXPECTED = 1 - sp.Rational(1, 10)",
       "sympy_verified": true,
       "irt": {
         "a": 1.068,
         "b": 0.859,
         "c": 0.25
       },
-      "text_ar": "استنادًا إلى بيانات الديناميكا الهوائية المجدولة (OLYMPIAD-11489)، لحساب قيمة \\(f(g(2)) + 3\\) .",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 7\\) . بإضافة \\(3\\) نحصل على \\(7 + 3 = 10\\) .",
+      "text_ar": "من جدول المجموع المنتهي (OLYMPIAD-0596)، احسب القيمة الدقيقة للمجموع \\(\\sum_{k=1}^{9} \\frac{1}{k(k+1)}\\).",
+      "sol_ar": "تتلاشى جميع الحدود المتوسطة ليتبقى \\(1 - \\frac{1}{10} = \\frac{9}{10}\\).",
       "choices_ar": [
-        "\\(6\\)",
-        "\\(10\\)",
-        "\\(12\\)",
-        "\\(7\\)"
+        "\\(\\frac{10}{11}\\)",
+        "\\(\\frac{9}{10}\\)",
+        "\\(\\frac{8}{9}\\)",
+        "\\(\\frac{4}{5}\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "افتح الحدود الأولى باستعمال التجزئة الظاهرة في الجدول.",
+        "لاحظ اختصار الحدود المتجاورة من \\(k=1\\) إلى \\(k=9\\).",
+        "احسب \\(1 - \\frac{1}{10}\\)."
       ],
       "figure": {
         "type": "table",
+        "caption": "Telescoping Series Index (OLYMPIAD-0596)",
+        "caption_ar": "جدول حدود السلسلة (OLYMPIAD-0596)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Lower Limit",
+          "Upper Limit",
+          "Partial Decomposition"
+        ],
+        "headers_ar": [
+          "الحد الأدنى",
+          "الحد الأعلى",
+          "التجزئة الكسرية"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(k=1\\)",
+            "\\(k=9\\)",
+            "\\(\\frac{1}{k} - \\frac{1}{k+1}\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (aerodynamics, OLYMPIAD-11489)",
-        "caption_ar": "قيم مختارة للدالتين (الديناميكا الهوائية، OLYMPIAD-11489)"
+        ]
       }
     },
     {
@@ -48210,9 +48087,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -48422,9 +48299,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -48654,9 +48531,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -48886,9 +48763,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -49118,9 +48995,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -49754,9 +49631,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -49917,9 +49794,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -68806,9 +68683,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -69038,9 +68915,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -69270,9 +69147,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -69486,9 +69363,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -70309,9 +70186,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -70541,9 +70418,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -70773,9 +70650,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -71005,9 +70882,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -79623,9 +79500,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -97115,39 +96992,39 @@
       "type": "mcq",
       "domain": "Recurrence Relations & Geometric Probability",
       "difficulty": "easy",
-      "text": "Examine the robotics dataset arranged in the table below (OLYMPIAD-26327); evaluate \\(f(g(4)) + 5\\).",
-      "text_ar": "ادرس بيانات الروبوتات المرتبة في الجدول أدناه (OLYMPIAD-26327) ثم لحساب قيمة \\(f(g(4)) + 5\\) .",
+      "text": "Read the grid-coloring matrix (OLYMPIAD-1620) in the table; how many ways can \\(4\\) distinct rows of a \\(10\\)-row array be flagged?",
+      "text_ar": "اقرأ مواصفات المصفوفة (OLYMPIAD-1620) في الجدول؛ بكم طريقة يمكن تمييز \\(4\\) صفوف مختلفة من أصل \\(10\\) صفوف؟",
       "topic_id": "ol-recurrence-probability",
       "subskill_id": "ol-recurrence-probability-1",
       "educational_aim": "Combinatorics II: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol recurrence probability 1).",
       "exam_archetype": "Reciprocal Linearization Recurrence",
       "choices": [
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(12\\)",
-        "\\(17\\)"
+        "\\(120\\)",
+        "\\(252\\)",
+        "\\(210\\)",
+        "\\(180\\)"
       ],
       "choices_ar": [
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(12\\)",
-        "\\(17\\)"
+        "\\(120\\)",
+        "\\(252\\)",
+        "\\(210\\)",
+        "\\(180\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(4) = 3\\) and \\(f(3) = 12\\). Adding \\(5\\) yields \\(12 + 5 = 17\\).",
-      "sol_ar": "من الجدول نجد \\(g(4) = 3\\) ثم \\(f(3) = 12\\) . بإضافة \\(5\\) نحصل على \\(12 + 5 = 17\\) .",
+      "answer": 2,
+      "sol": "Selecting an unordered \\(4\\)-row subset gives \\(\\binom{10}{4} = \\frac{10\\cdot 9\\cdot 8\\cdot 7}{24} = 210\\).",
+      "sol_ar": "عدد طرق اختيار \\(4\\) صفوف غير مرتبة يساوي \\(\\binom{10}{4} = 210\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Treat the \\(4\\) flagged rows as an unordered subset of the \\(10\\) rows.",
+        "Set up \\(\\frac{10\\times 9\\times 8\\times 7}{4!}\\).",
+        "Cancel \\(24\\) cleanly against \\(8\\cdot 9\\) before multiplying."
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 4\\) واقرأ قيمة \\(g(4)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(4))\\) .",
-        "أضف \\(5\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "اعتبر الصفوف المحددة مجموعة جزئية غير مرتبة من الصفوف العشرة.",
+        "طبّق القانون \\(\\binom{10}{4}\\).",
+        "اختصر البسط مع \\(24\\) للحصول على الناتج النهائي."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 12 + 5",
+      "sympy_cert": "EXPECTED = sp.binomial(10, 4)",
       "sympy_verified": true,
       "irt": {
         "a": 1.41,
@@ -97156,32 +97033,25 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Array Flagging Spec (OLYMPIAD-1620)",
+        "caption_ar": "مواصفات التحديد (OLYMPIAD-1620)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Total Rows",
+          "Flagged Count",
+          "Order Sensitivity"
+        ],
+        "headers_ar": [
+          "إجمالي الصفوف",
+          "الصفوف المحددة",
+          "الترتيب"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(10\\)",
+            "\\(4\\)",
+            "Unordered subset"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (robotics, OLYMPIAD-26327)",
-        "caption_ar": "قيم مختارة للدالتين (الروبوتات، OLYMPIAD-26327)"
+        ]
       }
     },
     {
@@ -98640,9 +98510,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "12",
           "?",
-          "16",
-          "12"
+          "16"
         ],
         "vertices": [
           [
@@ -98943,9 +98813,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -99175,9 +99045,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -99407,9 +99277,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -99639,9 +99509,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -102031,39 +101901,39 @@
       "type": "mcq",
       "domain": "Triangle Centers, Ceva, Menelaus & Stewart",
       "difficulty": "medium",
-      "text": "An engineering team logged aerodynamics measurements in the accompanying table (OLYMPIAD-27029); using these data, evaluate \\(f(g(2)) + 3\\).",
-      "text_ar": "سجّل فريق دراسة الديناميكا الهوائية القياسات في الجدول المرفق (OLYMPIAD-27029). مستخدمًا هذه البيانات، لحساب قيمة \\(f(g(2)) + 3\\) .",
+      "text": "From the entries recorded in the engineering blueprint table (OLYMPIAD-1702), determine the exact value of \\(20\\sin^2(\\frac{\\pi}{4}) + 24\\cos^2(\\frac{\\pi}{3})\\) using the listed angles.",
+      "text_ar": "من القيم المسجلة في جدول جدول المخطط الهندسي (OLYMPIAD-1702)، احسب القيمة الدقيقة للمقدار \\(20\\sin^2(\\frac{\\pi}{4}) + 24\\cos^2(\\frac{\\pi}{3})\\) باستعمال الزوايا المدرجة.",
       "topic_id": "ol-triangle-centers-trig",
       "subskill_id": "ol-triangle-centers-trig-3",
       "educational_aim": "Euclidean Geometry II: apply modeling and solving linear or nonlinear inequalities across multi-step problems (ol triangle centers trig 3).",
       "exam_archetype": "Double Angle Triangle Side Length",
       "choices": [
-        "\\(6\\)",
-        "\\(12\\)",
-        "\\(7\\)",
-        "\\(10\\)"
+        "\\(19\\)",
+        "\\(16\\)",
+        "\\(14\\)",
+        "\\(44\\)"
       ],
       "choices_ar": [
-        "\\(6\\)",
-        "\\(12\\)",
-        "\\(7\\)",
-        "\\(10\\)"
+        "\\(19\\)",
+        "\\(16\\)",
+        "\\(14\\)",
+        "\\(44\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(2) = 1\\) and \\(f(1) = 7\\). Adding \\(3\\) yields \\(7 + 3 = 10\\).",
-      "sol_ar": "من الجدول نجد \\(g(2) = 1\\) ثم \\(f(1) = 7\\) . بإضافة \\(3\\) نحصل على \\(7 + 3 = 10\\) .",
+      "answer": 1,
+      "sol": "Using exact trigonometric values \\(\\sin(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}\\) and \\(\\cos(\\frac{\\pi}{3}) = \\frac{1}{2}\\), squaring gives \\(20\\cdot\\frac{1}{2} + 24\\cdot\\frac{1}{4} = 16\\).",
+      "sol_ar": "باستعمال القيم المثلثية الدقيقة \\(\\sin(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}\\) و\\(\\cos(\\frac{\\pi}{3}) = \\frac{1}{2}\\) وبتربيع كل نسبة نجد \\(20\\cdot\\frac{1}{2} + 24\\cdot\\frac{1}{4} = 16\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Recall the exact unit-circle values of \\(\\sin\\alpha\\) and \\(\\cos\\beta\\) for standard angles.",
+        "Square both ratios first to eliminate any square roots before multiplying by \\(20\\) and \\(24\\).",
+        "Sum the two simplified integer terms to obtain \\(16\\)."
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 2\\) واقرأ قيمة \\(g(2)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(2))\\) .",
-        "أضف \\(3\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر القيم الدقيقة لنسبتي \\(\\sin\\alpha\\) و\\(\\cos\\beta\\) للزوايا القياسية في دائرة الوحدة.",
+        "ربّع النسبتين أولاً للتخلص من الجذور قبل الضرب في المعاملين \\(20\\) و\\(24\\).",
+        "اجمع الحدين المبسطين لتحصل على \\(16\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 7 + 3",
+      "sympy_cert": "EXPECTED = int(20 * sp.Rational(1, 2) + 24 * sp.Rational(1, 4))",
       "sympy_verified": true,
       "irt": {
         "a": 1.25,
@@ -102072,32 +101942,30 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Special Angle Reference Values (OLYMPIAD-1702)",
+        "caption_ar": "جدول الزوايا الخاصة (OLYMPIAD-1702)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Angle Label",
+          "Measure",
+          "Coefficient"
+        ],
+        "headers_ar": [
+          "الرمز",
+          "قياس الزاوية",
+          "المعامل"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\alpha\\)",
+            "\\(\\frac{\\pi}{4}\\)",
+            "\\(20\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(\\beta\\)",
+            "\\(\\frac{\\pi}{3}\\)",
+            "\\(24\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (aerodynamics, OLYMPIAD-27029)",
-        "caption_ar": "قيم مختارة للدالتين (الديناميكا الهوائية، OLYMPIAD-27029)"
+        ]
       }
     },
     {

@@ -28,6 +28,12 @@
   var stubFormula = {
     activeTab: 'sat',
     open: function(tab){
+      var overlay = document.getElementById('formulaOverlay');
+      if (overlay){
+        overlay.inert = false;
+        overlay.removeAttribute('inert');
+        overlay.setAttribute('aria-hidden', 'false');
+      }
       _ensureFormulaModal().then(function(){
         if (window.CSFormula && window.CSFormula !== stubFormula && typeof window.CSFormula.open === 'function'){
           window.CSFormula.open(tab);
@@ -39,6 +45,13 @@
       if (overlay){
         overlay.classList.remove('open');
         overlay.setAttribute('aria-hidden', 'true');
+        overlay.inert = true;
+        overlay.setAttribute('inert', '');
+      }
+      var mockEl = document.getElementById('mock-exam-overlay');
+      if (mockEl && mockEl.classList.contains('show')){
+        mockEl.setAttribute('aria-modal', 'true');
+        mockEl.setAttribute('aria-hidden', 'false');
       }
     },
     setTab: function(tabKey, btn){

@@ -790,9 +790,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "51",
-          "?",
-          "24"
+          "?"
         ],
         "vertices": [
           [
@@ -1051,9 +1051,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "10",
           "26",
-          "?",
-          "10"
+          "?"
         ],
         "vertices": [
           [
@@ -1380,9 +1380,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "51",
-          "?",
-          "24"
+          "?"
         ],
         "vertices": [
           [
@@ -9265,39 +9265,39 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "easy",
-      "text": "An engineering team logged navigation measurements in the accompanying table (EST2L2-2506); using these data, evaluate \\(f(g(3)) + 4\\).",
+      "text": "The engineering blueprint table (EST2L2-0328) reports the values in the table; find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices & Vectors by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Matrices & Vectors — Direct Concept & Representation",
       "choices": [
-        "\\(8\\)",
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(4\\)"
+        "\\(45\\)",
+        "\\(69\\)",
+        "\\(81\\)",
+        "\\(70\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 4\\). Adding \\(4\\) yields \\(4 + 4 = 8\\).",
+      "answer": 1,
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(3^2+3\\cdot4\\) and \\(3\\cdot4+6^2\\), whose sum is \\(9 + 24 + 36 = 69\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(9 + 24 + 36\\) to reach \\(69\\)."
       ],
       "calc": true,
-      "text_ar": "سجّل فريق دراسة الملاحة القياسات في الجدول المرفق (EST2L2-2506). مستخدمًا هذه البيانات، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 4\\) . بإضافة \\(4\\) نحصل على \\(4 + 4 = 8\\) .",
+      "text_ar": "يعرض جدول جدول المخطط الهندسي (EST2L2-0328) القيم المقاسة التالية؛ أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(9 + 24 + 36 = 69\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(4\\)"
+        "\\(45\\)",
+        "\\(69\\)",
+        "\\(81\\)",
+        "\\(70\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(69\\)."
       ],
-      "sympy_cert": "EXPECTED = 4 + 4",
+      "sympy_cert": "M = sp.Matrix([[3,3],[4,6]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
       "irt": {
         "a": 1.268,
@@ -9306,32 +9306,30 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-0328)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-0328)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "Row 1",
+            "\\(3\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(4\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, EST2L2-2506)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، EST2L2-2506)"
+        ]
       }
     },
     {
@@ -9699,39 +9697,39 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "easy",
-      "text": "Referring to the grid assay table above (EST2L2-2878), evaluate \\(f(g(3)) + 4\\).",
+      "text": "Examining the entries in the navigation telemetry summary (EST2L2-0339), matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Apply core Matrices & Vectors principles to solve foundational problems accurately.",
       "exam_archetype": "Matrices & Vectors — Core Procedural Application",
       "choices": [
-        "\\(5\\)",
-        "\\(17\\)",
-        "\\(10\\)",
-        "\\(6\\)"
+        "\\(-4\\)",
+        "\\(-18\\)",
+        "\\(-12\\)",
+        "\\(-8\\)"
       ],
       "answer": 2,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 6\\). Adding \\(4\\) yields \\(6 + 4 = 10\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-4)(2) - (4)(1) = -8 - 4 = -12\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-4)(2)\\) and subtract the anti-diagonal product \\((4)(1)\\).",
+        "Simplify \\(-8 - 4\\) to find the determinant \\(-12\\)."
       ],
       "calc": false,
-      "text_ar": "بالرجوع إلى جدول فحص الشبكة أعلاه (EST2L2-2878)، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 6\\) . بإضافة \\(4\\) نحصل على \\(6 + 4 = 10\\) .",
+      "text_ar": "بالرجوع إلى المدخلات في جدول ملخص قياسات الملاحة (EST2L2-0339)، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-4)(2) - (4)(1) = -12\\).",
       "choices_ar": [
-        "\\(5\\)",
-        "\\(17\\)",
-        "\\(10\\)",
-        "\\(6\\)"
+        "\\(-4\\)",
+        "\\(-18\\)",
+        "\\(-12\\)",
+        "\\(-8\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-4)(2)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((4)(1)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-12\\)."
       ],
-      "sympy_cert": "EXPECTED = 6 + 4",
+      "sympy_cert": "EXPECTED = (-4)*(2) - (4)*(1)",
       "sympy_verified": true,
       "irt": {
         "a": 1.299,
@@ -9740,32 +9738,30 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-0339)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-0339)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(-4\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(1\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (grid assay, EST2L2-2878)",
-        "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، EST2L2-2878)"
+        ]
       }
     },
     {
@@ -10134,73 +10130,71 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "easy",
-      "text": "Given the structured logistics observations displayed in the table (EST2L2-3250), evaluate \\(f(g(3)) + 4\\).",
+      "text": "According to the summarized dataset in the structural testing dataset (EST2L2-0004), find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices & Vectors by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Matrices & Vectors — Direct Concept & Representation",
       "choices": [
-        "\\(7\\)",
-        "\\(6\\)",
-        "\\(14\\)",
-        "\\(3\\)"
+        "\\(34\\)",
+        "\\(64\\)",
+        "\\(40\\)",
+        "\\(38\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 3\\). Adding \\(4\\) yields \\(3 + 4 = 7\\).",
+      "answer": 3,
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(5^2+1\\cdot2\\) and \\(1\\cdot2+3^2\\), whose sum is \\(25 + 4 + 9 = 38\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(25 + 4 + 9\\) to reach \\(38\\)."
       ],
       "calc": true,
-      "text_ar": "بالنظر إلى قيم العمليات اللوجستية المعروضة في الجدول (EST2L2-3250)، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 3\\) . بإضافة \\(4\\) نحصل على \\(3 + 4 = 7\\) .",
+      "text_ar": "وفقاً لمجموعة البيانات الملخصة في جدول بيانات الاختبار الإنشائي (EST2L2-0004)، أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(25 + 4 + 9 = 38\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(6\\)",
-        "\\(14\\)",
-        "\\(3\\)"
+        "\\(34\\)",
+        "\\(64\\)",
+        "\\(40\\)",
+        "\\(38\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(38\\)."
       ],
       "irt": {
         "a": 1.23,
         "b": -0.582,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 3 + 4",
+      "sympy_cert": "M = sp.Matrix([[5,1],[2,3]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-0004)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-0004)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "Row 1",
+            "\\(5\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(2\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, EST2L2-3250)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، EST2L2-3250)"
+        ]
       }
     },
     {
@@ -10553,73 +10547,71 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "easy",
-      "text": "Inspect the metallurgy values listed across the table (EST2L2-3622); evaluate \\(f(g(3)) + 4\\).",
+      "text": "Using the laboratory measurement table (EST2L2-0351) shown in the table below, matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Apply properties and theorems of Introductory Calculus in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Introductory Calculus — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(8\\)",
-        "\\(16\\)",
-        "\\(9\\)",
-        "\\(5\\)"
+        "\\(-30\\)",
+        "\\(-18\\)",
+        "\\(-24\\)",
+        "\\(-26\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "answer": 0,
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-6)(4) - (2)(3) = -24 - 6 = -30\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-6)(4)\\) and subtract the anti-diagonal product \\((2)(3)\\).",
+        "Simplify \\(-24 - 6\\) to find the determinant \\(-30\\)."
       ],
       "calc": false,
-      "text_ar": "تأمل مدخلات علم المعادن في الجدول (EST2L2-3622) لتحديد لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 5\\) . بإضافة \\(4\\) نحصل على \\(5 + 4 = 9\\) .",
+      "text_ar": "باستعمال البيانات الواردة في جدول القياسات المخبرية (EST2L2-0351) الموضح بالجدول أدناه، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-6)(4) - (2)(3) = -30\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(16\\)",
-        "\\(9\\)",
-        "\\(5\\)"
+        "\\(-30\\)",
+        "\\(-18\\)",
+        "\\(-24\\)",
+        "\\(-26\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-6)(4)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((2)(3)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-30\\)."
       ],
       "irt": {
         "a": 1.219,
         "b": -1.311,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "EXPECTED = (-6)*(4) - (2)*(3)",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-0351)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-0351)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "Row 1",
+            "\\(-6\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(3\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (metallurgy, EST2L2-3622)",
-        "caption_ar": "قيم مختارة للدالتين (علم المعادن، EST2L2-3622)"
+        ]
       }
     },
     {
@@ -13585,73 +13577,71 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "medium",
-      "text": "Based strictly on the tabulated genetics observations (EST2L2-5438), evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the optics alignment chart (EST2L2-0364), find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices & Vectors by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Matrices & Vectors — Direct Concept & Representation",
       "choices": [
-        "\\(8\\)",
-        "\\(17\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(29\\)",
+        "\\(53\\)",
+        "\\(49\\)",
+        "\\(65\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 8\\). Adding \\(4\\) yields \\(8 + 4 = 12\\).",
+      "answer": 1,
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(2^2+3\\cdot4\\) and \\(3\\cdot4+5^2\\), whose sum is \\(4 + 24 + 25 = 53\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(4 + 24 + 25\\) to reach \\(53\\)."
       ],
       "calc": true,
-      "text_ar": "استنادًا إلى بيانات الوراثة المجدولة (EST2L2-5438)، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 8\\) . بإضافة \\(4\\) نحصل على \\(8 + 4 = 12\\) .",
+      "text_ar": "من القيم المسجلة في جدول جدول ضبط البصريات (EST2L2-0364)، أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(4 + 24 + 25 = 53\\).",
       "choices_ar": [
-        "\\(8\\)",
-        "\\(17\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(29\\)",
+        "\\(53\\)",
+        "\\(49\\)",
+        "\\(65\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(53\\)."
       ],
       "irt": {
         "a": 1.094,
         "b": -0.303,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 8 + 4",
+      "sympy_cert": "M = sp.Matrix([[2,3],[4,5]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-0364)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-0364)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(2\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Row 2",
+            "\\(4\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, EST2L2-5438)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، EST2L2-5438)"
+        ]
       }
     },
     {
@@ -13883,73 +13873,71 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "medium",
-      "text": "In assessment dataset (EST2L2-5658) for logistics, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the robotics kinematics log (EST2L2-0418) table, matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices & Vectors by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Matrices & Vectors — Direct Concept & Representation",
       "choices": [
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(16\\)",
-        "\\(12\\)"
+        "\\(-14\\)",
+        "\\(-18\\)",
+        "\\(-22\\)",
+        "\\(-21\\)"
       ],
       "answer": 2,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-3)(6) - (4)(1) = -18 - 4 = -22\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-3)(6)\\) and subtract the anti-diagonal product \\((4)(1)\\).",
+        "Simplify \\(-18 - 4\\) to find the determinant \\(-22\\)."
       ],
       "calc": true,
-      "text_ar": "في مجموعة بيانات العمليات اللوجستية (EST2L2-5658) يعرض الجدول القيم الأساسية؛ لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 4\\) ثم \\(f(4) = 12\\) . بإضافة \\(4\\) نحصل على \\(12 + 4 = 16\\) .",
+      "text_ar": "اعتماداً على المعطيات المجدولة في سجل حركية الروبوت (EST2L2-0418)، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-3)(6) - (4)(1) = -22\\).",
       "choices_ar": [
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(16\\)",
-        "\\(12\\)"
+        "\\(-14\\)",
+        "\\(-18\\)",
+        "\\(-22\\)",
+        "\\(-21\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-3)(6)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((4)(1)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-22\\)."
       ],
       "irt": {
         "a": 1.064,
         "b": -0.219,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "EXPECTED = (-3)*(6) - (4)*(1)",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-0418)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-0418)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(-3\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(1\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, EST2L2-5658)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، EST2L2-5658)"
+        ]
       }
     },
     {
@@ -15966,35 +15954,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "An engineering team logged logistics measurements in the accompanying table (EST2L2-6190); using these data, evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 3\\). Adding \\(4\\) yields \\(3 + 4 = 7\\).",
+      "text": "Inspect the data rows in the acoustic signal summary (EST2L2-2290); find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(4^2+1\\cdot2\\) and \\(1\\cdot2+2^2\\), whose sum is \\(16 + 4 + 4 = 24\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(16 + 4 + 4\\) to reach \\(24\\)."
       ],
       "choices": [
-        "\\(6\\)",
-        "\\(14\\)",
-        "\\(3\\)",
-        "\\(7\\)"
+        "\\(20\\)",
+        "\\(36\\)",
+        "\\(26\\)",
+        "\\(24\\)"
       ],
       "answer": 3,
       "calc": false,
-      "sympy_cert": "EXPECTED = 3 + 4",
+      "sympy_cert": "M = sp.Matrix([[4,1],[2,2]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
-      "text_ar": "سجّل فريق دراسة العمليات اللوجستية القياسات في الجدول المرفق (EST2L2-6190). مستخدمًا هذه البيانات، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 3\\) . بإضافة \\(4\\) نحصل على \\(3 + 4 = 7\\) .",
+      "text_ar": "ادرس الصفوف الواردة في جدول ملخص الإشارة الصوتية (EST2L2-2290)؛ أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(16 + 4 + 4 = 24\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(24\\)."
       ],
       "choices_ar": [
-        "\\(6\\)",
-        "\\(14\\)",
-        "\\(3\\)",
-        "\\(7\\)"
+        "\\(20\\)",
+        "\\(36\\)",
+        "\\(26\\)",
+        "\\(24\\)"
       ],
       "id": "est2l2-2290",
       "domain": "Matrices & Vectors",
@@ -16008,32 +15996,30 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-2290)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-2290)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "Row 1",
+            "\\(4\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(2\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, EST2L2-6190)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، EST2L2-6190)"
+        ]
       }
     },
     {
@@ -16250,35 +16236,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "In the flow bench record (EST2L2-6410), using the table values, evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "text": "Refer to the tabulated measurements in the CAD verification schedule (EST2L2-2341) to matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-5)(3) - (2)(3) = -15 - 6 = -21\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-5)(3)\\) and subtract the anti-diagonal product \\((2)(3)\\).",
+        "Simplify \\(-15 - 6\\) to find the determinant \\(-21\\)."
       ],
       "choices": [
-        "\\(5\\)",
-        "\\(14\\)",
-        "\\(9\\)",
-        "\\(11\\)"
+        "\\(-21\\)",
+        "\\(-9\\)",
+        "\\(-19\\)",
+        "\\(-17\\)"
       ],
-      "answer": 2,
+      "answer": 0,
       "calc": true,
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "EXPECTED = (-5)*(3) - (2)*(3)",
       "sympy_verified": true,
-      "text_ar": "في سجل مختبر التدفق (EST2L2-6410)، استخدم القيم الواردة في الجدول لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 5\\) . بإضافة \\(4\\) نحصل على \\(5 + 4 = 9\\) .",
+      "text_ar": "ارجع إلى القياسات المجدولة في جدول التحقق الهندسي (EST2L2-2341) من أجل أن المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-5)(3) - (2)(3) = -21\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-5)(3)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((2)(3)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-21\\)."
       ],
       "choices_ar": [
-        "\\(5\\)",
-        "\\(14\\)",
-        "\\(9\\)",
-        "\\(11\\)"
+        "\\(-21\\)",
+        "\\(-9\\)",
+        "\\(-19\\)",
+        "\\(-17\\)"
       ],
       "id": "est2l2-2341",
       "domain": "Matrices & Vectors",
@@ -16292,66 +16278,64 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-2341)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-2341)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "Row 1",
+            "\\(-5\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Row 2",
+            "\\(3\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, EST2L2-6410)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، EST2L2-6410)"
+        ]
       }
     },
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "During hydraulics experiment (EST2L2-6472), observers compiled the following table; evaluate \\(f(g(1)) + 2\\).",
-      "sol": "From the table, \\(g(1) = 3\\) and \\(f(3) = 12\\). Adding \\(2\\) yields \\(12 + 2 = 14\\).",
+      "text": "The aerospace sensor table (EST2L2-2374) reports the values in the table; find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(6^2+3\\cdot4\\) and \\(3\\cdot4+4^2\\), whose sum is \\(36 + 24 + 16 = 76\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(36 + 24 + 16\\) to reach \\(76\\)."
       ],
       "choices": [
-        "\\(5\\)",
-        "\\(7\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(52\\)",
+        "\\(76\\)",
+        "\\(100\\)",
+        "\\(88\\)"
       ],
-      "answer": 3,
+      "answer": 1,
       "calc": false,
-      "sympy_cert": "EXPECTED = 12 + 2",
+      "sympy_cert": "M = sp.Matrix([[6,3],[4,4]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
-      "text_ar": "خلال تجربة الهيدروليك (EST2L2-6472) تم تجميع الجدول التالي. من الجدول، لحساب قيمة \\(f(g(1)) + 2\\) .",
-      "sol_ar": "من الجدول نجد \\(g(1) = 3\\) ثم \\(f(3) = 12\\) . بإضافة \\(2\\) نحصل على \\(12 + 2 = 14\\) .",
+      "text_ar": "يعرض جدول جدول مستشعرات الطيران (EST2L2-2374) القيم المقاسة التالية؛ أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(36 + 24 + 16 = 76\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 1\\) واقرأ قيمة \\(g(1)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(1))\\) .",
-        "أضف \\(2\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(76\\)."
       ],
       "choices_ar": [
-        "\\(5\\)",
-        "\\(7\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(52\\)",
+        "\\(76\\)",
+        "\\(100\\)",
+        "\\(88\\)"
       ],
       "id": "est2l2-2374",
       "domain": "Matrices & Vectors",
@@ -16365,32 +16349,30 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-2374)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-2374)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "Row 1",
+            "\\(6\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(4\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (hydraulics, EST2L2-6472)",
-        "caption_ar": "قيم مختارة للدالتين (الهيدروليك، EST2L2-6472)"
+        ]
       }
     },
     {
@@ -16681,35 +16663,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "A benchmark genetics log (EST2L2-6698) provides the entries shown in the table; evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 8\\). Adding \\(4\\) yields \\(8 + 4 = 12\\).",
+      "text": "Examining the entries in the harmonic oscillator log (EST2L2-2434), matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-2)(5) - (4)(1) = -10 - 4 = -14\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-2)(5)\\) and subtract the anti-diagonal product \\((4)(1)\\).",
+        "Simplify \\(-10 - 4\\) to find the determinant \\(-14\\)."
       ],
       "choices": [
-        "\\(12\\)",
-        "\\(8\\)",
-        "\\(17\\)",
-        "\\(14\\)"
+        "\\(-6\\)",
+        "\\(-13\\)",
+        "\\(-14\\)",
+        "\\(-10\\)"
       ],
-      "answer": 0,
+      "answer": 2,
       "calc": false,
-      "sympy_cert": "EXPECTED = 8 + 4",
+      "sympy_cert": "EXPECTED = (-2)*(5) - (4)*(1)",
       "sympy_verified": true,
-      "text_ar": "يقدّم سجل الوراثة (EST2L2-6698) القياسات الموضحة في الجدول: لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 8\\) . بإضافة \\(4\\) نحصل على \\(8 + 4 = 12\\) .",
+      "text_ar": "بالرجوع إلى المدخلات في جدول سجل المتذبذب التوافقي (EST2L2-2434)، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-2)(5) - (4)(1) = -14\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-2)(5)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((4)(1)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-14\\)."
       ],
       "choices_ar": [
-        "\\(12\\)",
-        "\\(8\\)",
-        "\\(17\\)",
-        "\\(14\\)"
+        "\\(-6\\)",
+        "\\(-13\\)",
+        "\\(-14\\)",
+        "\\(-10\\)"
       ],
       "id": "est2l2-2434",
       "domain": "Matrices & Vectors",
@@ -16723,32 +16705,30 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-2434)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-2434)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(-2\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Row 2",
+            "\\(1\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, EST2L2-6698)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، EST2L2-6698)"
+        ]
       }
     },
     {
@@ -16964,35 +16944,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "Selected numerical readings from logistics run (EST2L2-6918) appear in the table; evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "text": "According to the summarized dataset in the fabrication tolerance chart (EST2L2-2471), find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(3^2+1\\cdot2\\) and \\(1\\cdot2+6^2\\), whose sum is \\(9 + 4 + 36 = 49\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(9 + 4 + 36\\) to reach \\(49\\)."
       ],
       "choices": [
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(16\\)",
-        "\\(12\\)"
+        "\\(45\\)",
+        "\\(81\\)",
+        "\\(51\\)",
+        "\\(49\\)"
       ],
-      "answer": 2,
+      "answer": 3,
       "calc": true,
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "M = sp.Matrix([[3,1],[2,6]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
-      "text_ar": "تظهر قراءات العمليات اللوجستية المختارة (EST2L2-6918) في الجدول التالي؛ استخدم الجدول لإيجاد لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 4\\) ثم \\(f(4) = 12\\) . بإضافة \\(4\\) نحصل على \\(12 + 4 = 16\\) .",
+      "text_ar": "وفقاً لمجموعة البيانات الملخصة في جدول جدول سماحيات التصنيع (EST2L2-2471)، أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(9 + 4 + 36 = 49\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(49\\)."
       ],
       "choices_ar": [
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(16\\)",
-        "\\(12\\)"
+        "\\(45\\)",
+        "\\(81\\)",
+        "\\(51\\)",
+        "\\(49\\)"
       ],
       "id": "est2l2-2471",
       "domain": "Matrices & Vectors",
@@ -17006,32 +16986,30 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-2471)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-2471)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(3\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(2\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, EST2L2-6918)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، EST2L2-6918)"
+        ]
       }
     },
     {
@@ -17112,35 +17090,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "Inspect the navigation values listed across the table (EST2L2-6986); evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 6\\). Adding \\(4\\) yields \\(6 + 4 = 10\\).",
+      "text": "Using the surveying log (EST2L2-2494) shown in the table below, matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-4)(2) - (2)(3) = -8 - 6 = -14\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-4)(2)\\) and subtract the anti-diagonal product \\((2)(3)\\).",
+        "Simplify \\(-8 - 6\\) to find the determinant \\(-14\\)."
       ],
       "choices": [
-        "\\(6\\)",
-        "\\(15\\)",
-        "\\(10\\)",
-        "\\(12\\)"
+        "\\(-14\\)",
+        "\\(-2\\)",
+        "\\(-10\\)",
+        "\\(-13\\)"
       ],
-      "answer": 2,
+      "answer": 0,
       "calc": false,
-      "sympy_cert": "EXPECTED = 6 + 4",
+      "sympy_cert": "EXPECTED = (-4)*(2) - (2)*(3)",
       "sympy_verified": true,
-      "text_ar": "تأمل مدخلات الملاحة في الجدول (EST2L2-6986) لتحديد لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 6\\) . بإضافة \\(4\\) نحصل على \\(6 + 4 = 10\\) .",
+      "text_ar": "باستعمال البيانات الواردة في سجل المسح الهندسي (EST2L2-2494) الموضح بالجدول أدناه، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-4)(2) - (2)(3) = -14\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-4)(2)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((2)(3)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-14\\)."
       ],
       "choices_ar": [
-        "\\(6\\)",
-        "\\(15\\)",
-        "\\(10\\)",
-        "\\(12\\)"
+        "\\(-14\\)",
+        "\\(-2\\)",
+        "\\(-10\\)",
+        "\\(-13\\)"
       ],
       "id": "est2l2-2494",
       "domain": "Matrices & Vectors",
@@ -17154,32 +17132,30 @@
       "subskill_id": "est2l2-matrices-vectors-2",
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-2494)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-2494)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "Row 1",
+            "\\(-4\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Row 2",
+            "\\(3\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, EST2L2-6986)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، EST2L2-6986)"
+        ]
       }
     },
     {
@@ -17267,39 +17243,39 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "hard",
-      "text": "A benchmark flow bench log (EST2L2-7054) provides the entries shown in the table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the engineering blueprint table (EST2L2-0052), find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-3",
       "educational_aim": "Synthesize Matrices & Vectors with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Matrices & Vectors — Non-Routine Synthesis & Past-Paper Challenge",
       "choices": [
-        "\\(6\\)",
-        "\\(11\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(34\\)",
+        "\\(58\\)",
+        "\\(64\\)",
+        "\\(70\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(5^2+3\\cdot4\\) and \\(3\\cdot4+3^2\\), whose sum is \\(25 + 24 + 9 = 58\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(25 + 24 + 9\\) to reach \\(58\\)."
       ],
       "calc": true,
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(58\\)."
       ],
-      "text_ar": "يقدّم سجل مختبر التدفق (EST2L2-7054) القياسات الموضحة في الجدول: لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 7\\) . بإضافة \\(4\\) نحصل على \\(7 + 4 = 11\\) .",
+      "text_ar": "من القيم المسجلة في جدول جدول المخطط الهندسي (EST2L2-0052)، أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(25 + 24 + 9 = 58\\).",
       "choices_ar": [
-        "\\(6\\)",
-        "\\(11\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(34\\)",
+        "\\(58\\)",
+        "\\(64\\)",
+        "\\(70\\)"
       ],
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "M = sp.Matrix([[5,3],[4,3]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
       "irt": {
         "a": 1.037,
@@ -17308,32 +17284,30 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-0052)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-0052)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "Row 1",
+            "\\(5\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(4\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, EST2L2-7054)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، EST2L2-7054)"
+        ]
       }
     },
     {
@@ -17554,39 +17528,39 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "hard",
-      "text": "Selected numerical readings from grid assay run (EST2L2-7274) appear in the table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the navigation telemetry summary (EST2L2-0438) table, matrix \\(M\\) has its entries recorded in the table. Compute \\(\\det(M)\\).",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-3",
       "educational_aim": "Demonstrate foundational mastery of Sequences & Series by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Sequences & Series — Direct Concept & Representation",
       "choices": [
-        "\\(5\\)",
-        "\\(18\\)",
-        "\\(13\\)",
-        "\\(9\\)"
+        "\\(-20\\)",
+        "\\(-24\\)",
+        "\\(-28\\)",
+        "\\(-27\\)"
       ],
       "answer": 2,
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+      "sol": "For a \\(2\\times 2\\) matrix, \\(\\det(M) = ad - bc = (-6)(4) - (4)(1) = -24 - 4 = -28\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the standard \\(2\\times 2\\) determinant formula \\(ad - bc\\).",
+        "Multiply the main diagonal \\((-6)(4)\\) and subtract the anti-diagonal product \\((4)(1)\\).",
+        "Simplify \\(-24 - 4\\) to find the determinant \\(-28\\)."
       ],
       "calc": true,
-      "text_ar": "تظهر قراءات فحص الشبكة المختارة (EST2L2-7274) في الجدول التالي؛ استخدم الجدول لإيجاد لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 9\\) . بإضافة \\(4\\) نحصل على \\(9 + 4 = 13\\) .",
+      "text_ar": "اعتماداً على المعطيات المجدولة في ملخص قياسات الملاحة (EST2L2-0438)، المصفوفة \\(M\\) معطاة مدخلاتها في الجدول. احسب محدد المصفوفة \\(\\det(M)\\).",
+      "sol_ar": "لأي مصفوفة ثنائية يكون المحدد \\(\\det(M) = ad - bc = (-6)(4) - (4)(1) = -28\\).",
       "choices_ar": [
-        "\\(5\\)",
-        "\\(18\\)",
-        "\\(13\\)",
-        "\\(9\\)"
+        "\\(-20\\)",
+        "\\(-24\\)",
+        "\\(-28\\)",
+        "\\(-27\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "طبّق قانون محدد المصفوفة الثنائية \\(ad - bc\\).",
+        "اضرب عناصر القطر الرئيسي \\((-6)(4)\\) ثم اطرح حاصل ضرب القطر الثانوي \\((4)(1)\\).",
+        "بسّط المقدار للحصول على الناتج \\(-28\\)."
       ],
-      "sympy_cert": "EXPECTED = 9 + 4",
+      "sympy_cert": "EXPECTED = (-6)*(4) - (4)*(1)",
       "sympy_verified": true,
       "irt": {
         "a": 1.485,
@@ -17595,32 +17569,30 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Transformation Matrix Entries (EST2L2-0438)",
+        "caption_ar": "جدول مدخلات مصفوفة التحويل (EST2L2-0438)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "Row 1",
+            "\\(-6\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Row 2",
+            "\\(1\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (grid assay, EST2L2-7274)",
-        "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، EST2L2-7274)"
+        ]
       }
     },
     {
@@ -17841,73 +17813,71 @@
       "type": "mcq",
       "domain": "Matrices & Vectors",
       "difficulty": "hard",
-      "text": "During reactor bench experiment (EST2L2-7494), observers compiled the following table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Inspect the data rows in the structural testing dataset (EST2L2-0402); find the trace \\(\\operatorname{tr}(M^2)\\) of the \\(2\\times 2\\) matrix \\(M\\) represented in the table.",
       "topic_id": "est2l2-matrices-vectors",
       "subskill_id": "est2l2-matrices-vectors-3",
       "educational_aim": "Demonstrate foundational mastery of Sequences & Series by solving direct algebraic, graphical, or geometric formulations tested on EST2L2 past papers.",
       "exam_archetype": "Sequences & Series — Direct Concept & Representation",
       "choices": [
-        "\\(7\\)",
-        "\\(18\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(29\\)",
+        "\\(49\\)",
+        "\\(35\\)",
+        "\\(33\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+      "answer": 3,
+      "sol": "Multiplying \\(M\\cdot M\\) gives diagonal entries \\(2^2+1\\cdot2\\) and \\(1\\cdot2+5^2\\), whose sum is \\(4 + 4 + 25 = 33\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall that \\(\\operatorname{tr}(M^2) = (M^2)_{11} + (M^2)_{22}\\).",
+        "Compute the two diagonal entries using row-by-column dot products: \\(a^2+bc\\) and \\(bc+d^2\\).",
+        "Combine \\(4 + 4 + 25\\) to reach \\(33\\)."
       ],
       "calc": true,
-      "text_ar": "خلال تجربة منصة المفاعل (EST2L2-7494) تم تجميع الجدول التالي. من الجدول، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 4\\) ثم \\(f(4) = 13\\) . بإضافة \\(4\\) نحصل على \\(13 + 4 = 17\\) .",
+      "text_ar": "ادرس الصفوف الواردة في جدول بيانات الاختبار الإنشائي (EST2L2-0402)؛ أوجد أثر مربع المصفوفة \\(\\operatorname{tr}(M^2)\\) للمصفوفة الثنائية المعطاة في الجدول.",
+      "sol_ar": "بحساب القطر الرئيسي لحاصل الضرب \\(M^2\\) نجد المجموع \\(4 + 4 + 25 = 33\\).",
       "choices_ar": [
-        "\\(7\\)",
-        "\\(18\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(29\\)",
+        "\\(49\\)",
+        "\\(35\\)",
+        "\\(33\\)"
       ],
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر أن أثر مربع المصفوفة يساوي مجموع عنصري القطر الرئيسي في \\(M^2\\).",
+        "احسب العنصرين القطريين عبر ضرب الصف في العمود الموافق: \\(a^2+bc\\) و\\(bc+d^2\\).",
+        "اجمع الحدود لتصل إلى القيمة \\(33\\)."
       ],
       "irt": {
         "a": 1.71,
         "b": 2.024,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 13 + 4",
+      "sympy_cert": "M = sp.Matrix([[2,1],[2,5]]); EXPECTED = sp.trace(M*M)",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Matrix M Component Table (EST2L2-0402)",
+        "caption_ar": "جدول عناصر المصفوفة (EST2L2-0402)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Col 1",
+          "Col 2"
+        ],
+        "headers_ar": [
+          "الصف",
+          "العمود ١",
+          "العمود ٢"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "Row 1",
+            "\\(2\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(2\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (reactor bench, EST2L2-7494)",
-        "caption_ar": "قيم مختارة للدالتين (منصة المفاعل، EST2L2-7494)"
+        ]
       }
     },
     {
@@ -21922,9 +21892,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "10",
           "26",
-          "?",
-          "10"
+          "?"
         ],
         "vertices": [
           [
@@ -29898,9 +29868,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "18",
           "?",
-          "24",
-          "18"
+          "24"
         ],
         "vertices": [
           [
@@ -30649,9 +30619,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "5",
           "13",
-          "?",
-          "5"
+          "?"
         ],
         "vertices": [
           [
@@ -43875,35 +43845,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "In assessment dataset (EST2L2-11058) for flow bench, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "text": "Refer to the tabulated measurements in the laboratory measurement table (EST2L2-2308) to compute the exact value of \\(10(2\\sin\\theta + 1\\cos\\theta)\\).",
+      "sol": "From the right-triangle table, \\(\\sin\\theta = \\frac{6}{10}\\) and \\(\\cos\\theta = \\frac{8}{10}\\). Substituting gives \\(10\\left(2\\cdot\\frac{6}{10} + 1\\cdot\\frac{8}{10}\\right) = 12 + 8 = 20\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the right-triangle definitions relating opposite side, adjacent side, and hypotenuse to \\(\\sin\\theta\\) and \\(\\cos\\theta\\).",
+        "Substitute \\(\\sin\\theta = \\frac{6}{10}\\) and \\(\\cos\\theta = \\frac{8}{10}\\) before distributing \\(10\\).",
+        "Multiply through to get \\(12 + 8\\), which simplifies to \\(20\\)."
       ],
       "choices": [
-        "\\(16\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(12\\)"
+        "\\(20\\)",
+        "\\(22\\)",
+        "\\(4\\)",
+        "\\(28\\)"
       ],
       "answer": 0,
       "calc": false,
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "EXPECTED = sp.simplify(10 * (2 * sp.Rational(6, 10) + 1 * sp.Rational(8, 10)))",
       "sympy_verified": true,
-      "text_ar": "في مجموعة بيانات مختبر التدفق (EST2L2-11058) يعرض الجدول القيم الأساسية؛ لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 4\\) ثم \\(f(4) = 12\\) . بإضافة \\(4\\) نحصل على \\(12 + 4 = 16\\) .",
+      "text_ar": "ارجع إلى القياسات المجدولة في جدول القياسات المخبرية (EST2L2-2308) من أجل أن أوجد القيمة الدقيقة للمقدار \\(10(2\\sin\\theta + 1\\cos\\theta)\\) للزاوية الحادة \\(\\theta\\).",
+      "sol_ar": "من جدول المثلث القائم نجد أن \\(\\sin\\theta = \\frac{6}{10}\\) و\\(\\cos\\theta = \\frac{8}{10}\\). بالتعويض المباشر ينتج \\(12 + 8 = 20\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "استعمل تعريفَي جيب وجيب تمام الزاوية الحادة بدلالة الضلع المقابل والمجاور والوتر.",
+        "عوّض بالقيمتين \\(\\sin\\theta = \\frac{6}{10}\\) و\\(\\cos\\theta = \\frac{8}{10}\\) قبل التوزيع بالعدد \\(10\\).",
+        "احسب المجموع \\(12 + 8\\) للحصول على \\(20\\)."
       ],
       "choices_ar": [
-        "\\(16\\)",
-        "\\(6\\)",
-        "\\(17\\)",
-        "\\(12\\)"
+        "\\(20\\)",
+        "\\(22\\)",
+        "\\(4\\)",
+        "\\(28\\)"
       ],
       "id": "est2l2-2308",
       "domain": "Trigonometry, Polar & Conic Sections",
@@ -43917,32 +43887,28 @@
       "subskill_id": "est2l2-trig-polar-conics-2",
       "figure": {
         "type": "table",
+        "caption": "Right-Triangle Measurements (EST2L2-2308)",
+        "caption_ar": "قياسات المثلث القائم (EST2L2-2308)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Side Role",
+          "Opposite to \\(\\theta\\)",
+          "Adjacent to \\(\\theta\\)",
+          "Hypotenuse"
+        ],
+        "headers_ar": [
+          "الضلع",
+          "المقابل للزاوية \\(\\theta\\)",
+          "المجاور للزاوية \\(\\theta\\)",
+          "الوتر"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
-          ],
-          [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Length",
+            "\\(6\\)",
+            "\\(8\\)",
+            "\\(10\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, EST2L2-11058)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، EST2L2-11058)"
+        ]
       }
     },
     {
@@ -44170,35 +44136,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "Referring to the navigation table above (EST2L2-11270), evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "text": "The optics alignment chart (EST2L2-2346) reports the values in the table; determine the exact value of \\(30\\sin^2(\\frac{\\pi}{4}) + 36\\cos^2(\\frac{\\pi}{3})\\) using the listed angles.",
+      "sol": "Using exact trigonometric values \\(\\sin(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}\\) and \\(\\cos(\\frac{\\pi}{3}) = \\frac{1}{2}\\), squaring gives \\(30\\cdot\\frac{1}{2} + 36\\cdot\\frac{1}{4} = 24\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Recall the exact unit-circle values of \\(\\sin\\alpha\\) and \\(\\cos\\beta\\) for standard angles.",
+        "Square both ratios first to eliminate any square roots before multiplying by \\(30\\) and \\(36\\).",
+        "Sum the two simplified integer terms to obtain \\(24\\)."
       ],
       "choices": [
-        "\\(5\\)",
-        "\\(9\\)",
-        "\\(14\\)",
-        "\\(11\\)"
+        "\\(27\\)",
+        "\\(24\\)",
+        "\\(22\\)",
+        "\\(66\\)"
       ],
       "answer": 1,
       "calc": false,
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "EXPECTED = int(30 * sp.Rational(1, 2) + 36 * sp.Rational(1, 4))",
       "sympy_verified": true,
-      "text_ar": "بالرجوع إلى جدول الملاحة أعلاه (EST2L2-11270)، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 5\\) . بإضافة \\(4\\) نحصل على \\(5 + 4 = 9\\) .",
+      "text_ar": "يعرض جدول جدول ضبط البصريات (EST2L2-2346) القيم المقاسة التالية؛ احسب القيمة الدقيقة للمقدار \\(30\\sin^2(\\frac{\\pi}{4}) + 36\\cos^2(\\frac{\\pi}{3})\\) باستعمال الزوايا المدرجة.",
+      "sol_ar": "باستعمال القيم المثلثية الدقيقة \\(\\sin(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}\\) و\\(\\cos(\\frac{\\pi}{3}) = \\frac{1}{2}\\) وبتربيع كل نسبة نجد \\(30\\cdot\\frac{1}{2} + 36\\cdot\\frac{1}{4} = 24\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "تذكّر القيم الدقيقة لنسبتي \\(\\sin\\alpha\\) و\\(\\cos\\beta\\) للزوايا القياسية في دائرة الوحدة.",
+        "ربّع النسبتين أولاً للتخلص من الجذور قبل الضرب في المعاملين \\(30\\) و\\(36\\).",
+        "اجمع الحدين المبسطين لتحصل على \\(24\\)."
       ],
       "choices_ar": [
-        "\\(5\\)",
-        "\\(9\\)",
-        "\\(14\\)",
-        "\\(11\\)"
+        "\\(27\\)",
+        "\\(24\\)",
+        "\\(22\\)",
+        "\\(66\\)"
       ],
       "id": "est2l2-2346",
       "domain": "Trigonometry, Polar & Conic Sections",
@@ -44212,32 +44178,30 @@
       "subskill_id": "est2l2-trig-polar-conics-2",
       "figure": {
         "type": "table",
+        "caption": "Special Angle Reference Values (EST2L2-2346)",
+        "caption_ar": "جدول الزوايا الخاصة (EST2L2-2346)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Angle Label",
+          "Measure",
+          "Coefficient"
+        ],
+        "headers_ar": [
+          "الرمز",
+          "قياس الزاوية",
+          "المعامل"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "\\(\\alpha\\)",
+            "\\(\\frac{\\pi}{4}\\)",
+            "\\(30\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "\\(\\beta\\)",
+            "\\(\\frac{\\pi}{3}\\)",
+            "\\(36\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, EST2L2-11270)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، EST2L2-11270)"
+        ]
       }
     },
     {
@@ -44465,35 +44429,35 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "text": "Based strictly on the tabulated logistics observations (EST2L2-11482), evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "text": "Examining the entries in the robotics kinematics log (EST2L2-2388), a periodic wave follows \\(y(t) = A\\cos\\left(\\frac{2\\pi}{4}t\\right) + D\\) with \\(A > 0\\). Find the amplitude \\(A\\) from its extreme points in the table.",
+      "sol": "From the table, \\(y_{\\max} = 12\\) and \\(y_{\\min} = 2\\). Therefore amplitude \\(A = \\frac{y_{\\max}-y_{\\min}}{2} = \\frac{12-2}{2} = 5\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Identify the maximum and minimum output values of the cosine wave from the table.",
+        "Use the half-difference formula connecting \\(y_{\\max} = 12\\) and \\(y_{\\min} = 2\\) to \\(A\\).",
+        "Evaluate \\(\\frac{12 - 2}{2}\\) to get \\(5\\)."
       ],
       "choices": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(5\\)"
+        "\\(10\\)",
+        "\\(7\\)",
+        "\\(5\\)",
+        "\\(6\\)"
       ],
-      "answer": 1,
+      "answer": 2,
       "calc": false,
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "EXPECTED = (12 - 2) // 2",
       "sympy_verified": true,
-      "text_ar": "استنادًا إلى بيانات العمليات اللوجستية المجدولة (EST2L2-11482)، لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 1\\) ثم \\(f(1) = 5\\) . بإضافة \\(4\\) نحصل على \\(5 + 4 = 9\\) .",
+      "text_ar": "بالرجوع إلى المدخلات في جدول سجل حركية الروبوت (EST2L2-2388)، يتبع منحنى دوري المعادلة \\(y(t) = A\\cos\\left(\\frac{2\\pi}{4}t\\right) + D\\) حيث \\(A > 0\\). أوجد قيمة السعة \\(A\\) من الجدول.",
+      "sol_ar": "من الجدول نجد القيمة العظمى \\(y_{\\max} = 12\\) والصغرى \\(y_{\\min} = 2\\). وبذلك فإن السعة تساوي \\(\\frac{12-2}{2} = 5\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "حدّد القيمة العظمى والقيمة الصغرى لدالة جيب التمام من صف الجدول.",
+        "طبّق علاقة نصف الفرق بين \\(12\\) و\\(2\\) لإيجاد السعة.",
+        "احسب \\(\\frac{12 - 2}{2}\\) لتجد \\(5\\)."
       ],
       "choices_ar": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(5\\)"
+        "\\(10\\)",
+        "\\(7\\)",
+        "\\(5\\)",
+        "\\(6\\)"
       ],
       "id": "est2l2-2388",
       "domain": "Trigonometry, Polar & Conic Sections",
@@ -44507,32 +44471,28 @@
       "subskill_id": "est2l2-trig-polar-conics-2",
       "figure": {
         "type": "table",
+        "caption": "Wave Extrema Table (EST2L2-2388)",
+        "caption_ar": "جدول القيم القصوى للموجة (EST2L2-2388)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Time \\(t\\)",
+          "\\(0\\)",
+          "\\(2\\)",
+          "\\(4\\)"
+        ],
+        "headers_ar": [
+          "الزمن \\(t\\)",
+          "\\(0\\)",
+          "\\(2\\)",
+          "\\(4\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
-          ],
-          [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Wave Height \\(y(t)\\)",
+            "\\(12\\)",
+            "\\(2\\)",
+            "\\(12\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, EST2L2-11482)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، EST2L2-11482)"
+        ]
       }
     },
     {
@@ -47324,35 +47284,35 @@
     {
       "type": "mcq",
       "difficulty": "hard",
-      "text": "Examine the flow bench dataset arranged in the table below (EST2L2-12906); evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 10\\). Adding \\(4\\) yields \\(10 + 4 = 14\\).",
+      "text": "According to the summarized dataset in the acoustic signal summary (EST2L2-2360), triangle \\(PQR\\) has two tabulated side lengths and included angle \\(\\angle Q = 120^{\\circ}\\). Compute \\(PR^2\\).",
+      "sol": "By the Law of Cosines, \\(PR^2 = PQ^2 + QR^2 - 2(PQ)(QR)\\cos(120^{\\circ}) = 9^2 + 7^2 - 2(9)(7)(-\\frac{1}{2}) = 193\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Apply the Law of Cosines for two sides and their included angle \\(\\angle Q\\).",
+        "Substitute \\(PQ = 9\\), \\(QR = 7\\), and the exact value of \\(\\cos(120^{\\circ})\\) carefully with its sign.",
+        "Compute \\(81 + 49 + 63\\) to find \\(PR^2 = 193\\)."
       ],
       "choices": [
-        "\\(8\\)",
-        "\\(15\\)",
-        "\\(10\\)",
-        "\\(14\\)"
+        "\\(67\\)",
+        "\\(130\\)",
+        "\\(202\\)",
+        "\\(193\\)"
       ],
       "answer": 3,
       "calc": false,
-      "sympy_cert": "EXPECTED = 10 + 4",
+      "sympy_cert": "EXPECTED = 9**2 + 7**2 - 2*9*7*sp.cos(2*sp.pi/3)",
       "sympy_verified": true,
-      "text_ar": "ادرس بيانات مختبر التدفق المرتبة في الجدول أدناه (EST2L2-12906) ثم لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 4\\) ثم \\(f(4) = 10\\) . بإضافة \\(4\\) نحصل على \\(10 + 4 = 14\\) .",
+      "text_ar": "وفقاً لمجموعة البيانات الملخصة في جدول ملخص الإشارة الصوتية (EST2L2-2360)، في المثلث \\(PQR\\) قياسا الضلعين والزاوية المحصورة \\(\\angle Q = 120^{\\circ}\\) معطاة في الجدول. أوجد قيمة \\(PR^2\\).",
+      "sol_ar": "بتطبيق قانون جيب التمام: \\(PR^2 = 9^2 + 7^2 - 2(9)(7)\\cos(120^{\\circ}) = 193\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "استعمل قانون جيب التمام لربط ضلعين والزاوية المحصورة بينهما بالضلع الثالث.",
+        "عوّض بالقيم \\(PQ = 9\\) و\\(QR = 7\\) والقيمة الدقيقة مع الإشارة للنسبة \\(\\cos(120^{\\circ})\\).",
+        "احسب المجموع لتحصل على \\(193\\)."
       ],
       "choices_ar": [
-        "\\(8\\)",
-        "\\(15\\)",
-        "\\(10\\)",
-        "\\(14\\)"
+        "\\(67\\)",
+        "\\(130\\)",
+        "\\(202\\)",
+        "\\(193\\)"
       ],
       "id": "est2l2-2360",
       "domain": "Trigonometry, Polar & Conic Sections",
@@ -47366,32 +47326,25 @@
       "subskill_id": "est2l2-trig-polar-conics-3",
       "figure": {
         "type": "table",
+        "caption": "Triangle PQR Side-Angle Table (EST2L2-2360)",
+        "caption_ar": "جدول أضلاع وزاوية المثلث (EST2L2-2360)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(PQ\\)",
+          "\\(QR\\)",
+          "Included Angle \\(\\angle Q\\)"
+        ],
+        "headers_ar": [
+          "طول \\(PQ\\)",
+          "طول \\(QR\\)",
+          "الزاوية المحصورة \\(\\angle Q\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
-          ],
-          [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(9\\)",
+            "\\(7\\)",
+            "\\(120^{\\circ}\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, EST2L2-12906)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، EST2L2-12906)"
+        ]
       }
     },
     {
@@ -48072,35 +48025,35 @@
     {
       "type": "mcq",
       "difficulty": "hard",
-      "text": "Inspect the flow bench values listed across the table (EST2L2-13382); evaluate \\(f(g(3)) + 4\\).",
-      "sol": "From the table, \\(g(3) = 2\\) and \\(f(2) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "text": "Using the CAD verification schedule (EST2L2-2450) shown in the table below, compute the exact value of \\(87(3\\sin\\theta + 1\\cos\\theta)\\).",
+      "sol": "From the right-triangle table, \\(\\sin\\theta = \\frac{60}{87}\\) and \\(\\cos\\theta = \\frac{63}{87}\\). Substituting gives \\(87\\left(3\\cdot\\frac{60}{87} + 1\\cdot\\frac{63}{87}\\right) = 180 + 63 = 243\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Use the right-triangle definitions relating opposite side, adjacent side, and hypotenuse to \\(\\sin\\theta\\) and \\(\\cos\\theta\\).",
+        "Substitute \\(\\sin\\theta = \\frac{60}{87}\\) and \\(\\cos\\theta = \\frac{63}{87}\\) before distributing \\(87\\).",
+        "Multiply through to get \\(180 + 63\\), which simplifies to \\(243\\)."
       ],
       "choices": [
-        "\\(7\\)",
-        "\\(16\\)",
-        "\\(11\\)",
-        "\\(13\\)"
+        "\\(243\\)",
+        "\\(249\\)",
+        "\\(117\\)",
+        "\\(324\\)"
       ],
-      "answer": 2,
+      "answer": 0,
       "calc": false,
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "EXPECTED = sp.simplify(87 * (3 * sp.Rational(60, 87) + 1 * sp.Rational(63, 87)))",
       "sympy_verified": true,
-      "text_ar": "تأمل مدخلات مختبر التدفق في الجدول (EST2L2-13382) لتحديد لحساب قيمة \\(f(g(3)) + 4\\) .",
-      "sol_ar": "من الجدول نجد \\(g(3) = 2\\) ثم \\(f(2) = 7\\) . بإضافة \\(4\\) نحصل على \\(7 + 4 = 11\\) .",
+      "text_ar": "باستعمال البيانات الواردة في جدول التحقق الهندسي (EST2L2-2450) الموضح بالجدول أدناه، أوجد القيمة الدقيقة للمقدار \\(87(3\\sin\\theta + 1\\cos\\theta)\\) للزاوية الحادة \\(\\theta\\).",
+      "sol_ar": "من جدول المثلث القائم نجد أن \\(\\sin\\theta = \\frac{60}{87}\\) و\\(\\cos\\theta = \\frac{63}{87}\\). بالتعويض المباشر ينتج \\(180 + 63 = 243\\).",
       "hints_ar": [
-        "ابدأ بالعمود \\(x = 3\\) واقرأ قيمة \\(g(3)\\) من الصف الأخير.",
-        "استخدم الناتج كمدخل في صف \\(x\\) العلوي لإيجاد \\(f(g(3))\\) .",
-        "أضف \\(4\\) إلى الناتج النهائي وتحقق من دقة الصفوف."
+        "استعمل تعريفَي جيب وجيب تمام الزاوية الحادة بدلالة الضلع المقابل والمجاور والوتر.",
+        "عوّض بالقيمتين \\(\\sin\\theta = \\frac{60}{87}\\) و\\(\\cos\\theta = \\frac{63}{87}\\) قبل التوزيع بالعدد \\(87\\).",
+        "احسب المجموع \\(180 + 63\\) للحصول على \\(243\\)."
       ],
       "choices_ar": [
-        "\\(7\\)",
-        "\\(16\\)",
-        "\\(11\\)",
-        "\\(13\\)"
+        "\\(243\\)",
+        "\\(249\\)",
+        "\\(117\\)",
+        "\\(324\\)"
       ],
       "id": "est2l2-2450",
       "domain": "Trigonometry, Polar & Conic Sections",
@@ -48114,32 +48067,28 @@
       "subskill_id": "est2l2-trig-polar-conics-3",
       "figure": {
         "type": "table",
+        "caption": "Right-Triangle Measurements (EST2L2-2450)",
+        "caption_ar": "قياسات المثلث القائم (EST2L2-2450)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Side Role",
+          "Opposite to \\(\\theta\\)",
+          "Adjacent to \\(\\theta\\)",
+          "Hypotenuse"
+        ],
+        "headers_ar": [
+          "الضلع",
+          "المقابل للزاوية \\(\\theta\\)",
+          "المجاور للزاوية \\(\\theta\\)",
+          "الوتر"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
-          ],
-          [
-            "\\(g(x)\\)",
-            "4",
-            "1",
-            "2",
-            "3"
+            "Length",
+            "\\(60\\)",
+            "\\(63\\)",
+            "\\(87\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, EST2L2-13382)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، EST2L2-13382)"
+        ]
       }
     },
     {

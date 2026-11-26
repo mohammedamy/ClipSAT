@@ -404,6 +404,30 @@ def _draw_right_angle(ax, vertex, p1, p2, size):
                               edgecolor=INK, linewidth=1.1, zorder=5))
 
 
+def _clean_mpl_label(val):
+    """Convert inline LaTeX \\(...\\) delimiters into safe Matplotlib $...$ mathtext."""
+    if val is None:
+        return None
+    s = str(val)
+    if not s:
+        return s
+    s = re.sub(r"\\\((.*?)\\\)", lambda m: "$" + m.group(1).strip() + "$", s)
+    s = re.sub(r"\\\[(.*?)\\\]", lambda m: "$" + m.group(1).strip() + "$", s)
+    def _norm_span(m):
+        inner = _normalize_mathtext(m.group(1)).strip()
+        cand = "$" + inner + "$"
+        if _math_parser is not None and MATH_PROP is not None:
+            try:
+                _math_parser.parse(cand, dpi=72, prop=MATH_PROP)
+                return cand
+            except Exception:
+                return inner.replace("\\", "").strip()
+        return cand
+    if "$" in s:
+        s = re.sub(r"\$([^$]+)\$", _norm_span, s)
+    return s
+
+
 def _draw_angle_arc(ax, vertex, p1, p2, radius, label=None, color=AMBER):
     """Arc marking the angle at `vertex` swept from the ray toward p1 to p2."""
     v = np.array(vertex, dtype=float)
@@ -418,13 +442,13 @@ def _draw_angle_arc(ax, vertex, p1, p2, radius, label=None, color=AMBER):
     if label:
         mid = np.radians(a1 + d / 2)
         lx, ly = v[0] + radius * 1.45 * np.cos(mid), v[1] + radius * 1.45 * np.sin(mid)
-        ax.text(lx, ly, label, fontsize=8.5, color=color, ha="center", va="center")
+        ax.text(lx, ly, _clean_mpl_label(label), fontsize=8.5, color=color, ha="center", va="center")
 
 
 def _draw_triangle(ax, spec):
     verts = [tuple(v) for v in spec["vertices"]]
-    labels = spec.get("labels", [None, None, None])
-    side_labels = spec.get("side_labels", [None, None, None])
+    labels = [_clean_mpl_label(x) for x in spec.get("labels", [None, None, None])]
+    side_labels = [_clean_mpl_label(x) for x in spec.get("side_labels", [None, None, None])]
     fill = spec.get("fill", False)
     scale = _bbox_scale(verts)
 
@@ -494,6 +518,10 @@ def _draw_circle(ax, spec):
         sector = {"start_deg": 0, "end_deg": float(sector), "label": f"${sector}^\\circ$"}
     elif isinstance(sector, (list, tuple)) and len(sector) >= 2:
         sector = {"start_deg": float(sector[0]), "end_deg": float(sector[1])}
+    elif isinstance(sector, dict):
+        s_deg = float(sector.get("start_deg", sector.get("start", 0)))
+        e_deg = float(sector.get("end_deg", sector.get("end", sector.get("angle_deg", sector.get("angle", 60)))))
+        sector = dict(sector, start_deg=s_deg, end_deg=e_deg)
     elif not isinstance(sector, dict):
         sector = None
 
@@ -504,13 +532,13 @@ def _draw_circle(ax, spec):
         if sector.get("label"):
             mid = np.radians((sector["start_deg"] + sector["end_deg"]) / 2)
             lx, ly = cx + r * 0.55 * np.cos(mid), cy + r * 0.55 * np.sin(mid)
-            ax.text(lx, ly, sector["label"], fontsize=9.5, color=AMBER_TEXT,
+            ax.text(lx, ly, _clean_mpl_label(sector["label"]), fontsize=9.5, color=AMBER_TEXT,
                     ha="center", va="center")
 
     ax.add_patch(plt.Circle((cx, cy), r, fill=False, edgecolor=INDIGO, linewidth=1.8))
     ax.plot([cx], [cy], "o", color=INK, markersize=3.5)
     if spec.get("center_label"):
-        ax.text(cx - r * 0.1, cy - r * 0.1, spec["center_label"], fontsize=9.5,
+        ax.text(cx - r * 0.1, cy - r * 0.1, _clean_mpl_label(spec["center_label"]), fontsize=9.5,
                  color=INK, ha="right", va="top")
 
     if spec.get("radius_label"):
@@ -526,7 +554,7 @@ def _draw_circle(ax, spec):
         ex, ey = cx + r * np.cos(ang), cy + r * np.sin(ang)
         ax.plot([cx, ex], [cy, ey], color=INDIGO2, linewidth=1.3, linestyle=(0, (4, 3)))
         mx, my = cx + r * 0.52 * np.cos(ang), cy + r * 0.52 * np.sin(ang)
-        ax.text(mx, my, spec["radius_label"], fontsize=9, color=INDIGO2,
+        ax.text(mx, my, _clean_mpl_label(spec["radius_label"]), fontsize=9, color=INDIGO2,
                 ha="left", va="bottom")
 
     for p in spec.get("points", []):
@@ -535,7 +563,7 @@ def _draw_circle(ax, spec):
         ax.plot([px], [py], "o", color=INK, markersize=3.5)
         if p.get("label"):
             lx, ly = cx + r * 1.16 * np.cos(ang), cy + r * 1.16 * np.sin(ang)
-            ax.text(lx, ly, p["label"], fontsize=9.5, color=INK, ha="center", va="center")
+            ax.text(lx, ly, _clean_mpl_label(p["label"]), fontsize=9.5, color=INK, ha="center", va="center")
 
     if spec.get("chord"):
         ch = spec["chord"]
@@ -553,7 +581,7 @@ def _draw_polygon(ax, spec):
     """General polygon (rectangles, composite/L-shapes) with side labels."""
     verts = [tuple(v) for v in spec["vertices"]]
     n = len(verts)
-    side_labels = spec.get("side_labels", [None] * n)
+    side_labels = [_clean_mpl_label(x) for x in spec.get("side_labels", [None] * n)]
     scale = _bbox_scale(verts)
     cut = spec.get("cutout")  # optional inner polygon rendered as a hatched hole
 
@@ -614,7 +642,7 @@ def _draw_numberline(ax, spec):
                 markerfacecolor="white" if open_ else AMBER,
                 markeredgecolor=AMBER, markeredgewidth=1.7, zorder=3)
         if lbl:
-            ax.text(xv, 0.26, lbl, fontsize=8.5, color=AMBER_TEXT,
+            ax.text(xv, 0.26, _clean_mpl_label(lbl), fontsize=8.5, color=AMBER_TEXT,
                     ha="center", va="bottom")
     ax.set_xlim(lo - 0.65, hi + 0.65)
     ax.set_ylim(-0.55, 0.55)
@@ -670,7 +698,7 @@ def _draw_solid(spec):
                 linestyle=(0, (4, 3)), zorder=1)
 
     def lab(x, y, text, ha="center", va="center"):
-        ax.text(x, y, text, fontsize=9.5, color=INDIGO, ha=ha, va=va, fontweight="bold")
+        ax.text(x, y, _clean_mpl_label(text), fontsize=9.5, color=INDIGO, ha=ha, va=va, fontweight="bold")
 
     if solid in ("rectangular_prism", "cube"):
         dash(_iso3(0, 0, 0), _iso3(l, 0, 0))
@@ -679,15 +707,18 @@ def _draw_solid(spec):
         face([_iso3(0, 0, w), _iso3(0, h, w), _iso3(l, h, w), _iso3(l, 0, w)], 0.16)
         face([_iso3(l, 0, w), _iso3(l, h, w), _iso3(l, h, 0), _iso3(l, 0, 0)], 0.28)
         face([_iso3(0, h, 0), _iso3(0, h, w), _iso3(l, h, w), _iso3(l, h, 0)], 0.10)
-        if labels.get("l"):
+        lbl_l = labels.get("l") or labels.get("length")
+        lbl_w = labels.get("w") or labels.get("width")
+        lbl_h = labels.get("h") or labels.get("height")
+        if lbl_l:
             x, y = _iso3(l / 2, 0, w + 0.4)
-            lab(x, y - 0.05, labels["l"], va="top")
-        if labels.get("w"):
+            lab(x, y - 0.05, lbl_l, va="top")
+        if lbl_w:
             x, y = _iso3(l + 0.4, 0, w / 2)
-            lab(x + 0.05, y, labels["w"], ha="left")
-        if labels.get("h"):
+            lab(x + 0.05, y, lbl_w, ha="left")
+        if lbl_h:
             x, y = _iso3(l + 0.4, h / 2, 0)
-            lab(x + 0.05, y, labels["h"], ha="left")
+            lab(x + 0.05, y, lbl_h, ha="left")
 
     elif solid == "cylinder":
         r = l / 2.0
@@ -720,13 +751,15 @@ def _draw_solid(spec):
                                        edgecolor=INDIGO2, linewidth=1.3, zorder=2))
         ax.plot([cxb - ex, apex[0]], [cyb, apex[1]], color=INDIGO2, linewidth=1.5, zorder=3)
         ax.plot([cxb + ex, apex[0]], [cyb, apex[1]], color=INDIGO2, linewidth=1.5, zorder=3)
+        ax.plot([cxb, apex[0]], [cyb, apex[1]], color=INK, linewidth=1.0,
+                linestyle=(0, (4, 3)), zorder=1)
         pts = [(cxb - ex, cyb - ey), (cxb + ex, cyb - ey), apex]
         if labels.get("r"):
             ax.plot([cxb, cxb + ex], [cyb, cyb], color=INDIGO, linewidth=1.2,
                     linestyle=(0, (3, 2)), zorder=4)
-            lab(cxb + ex / 2, cyb + 0.14, labels["r"], va="bottom")
+            lab(cxb + ex / 2, cyb - max(0.18, ey * 0.25), labels["r"], va="top")
         if labels.get("h"):
-            lab(apex[0] + 0.18, (cyb + apex[1]) / 2, labels["h"], ha="left")
+            lab(cxb - max(0.16, ex * 0.08), (cyb + apex[1]) / 2, labels["h"], ha="right")
 
     elif solid == "square_pyramid":
         base_pts = [_iso3(0, 0, 0), _iso3(l, 0, 0), _iso3(l, 0, l), _iso3(0, 0, l)]
@@ -847,13 +880,13 @@ def _draw_venn(ax, spec):
     """Render a 2-set Venn diagram inside a universal rectangle."""
     ax.add_patch(mpatches.Rectangle((-2.3, -1.45), 4.6, 2.9, fill=True,
                                     facecolor="#f8fafc", edgecolor=INDIGO, linewidth=1.4))
-    ax.text(-2.1, 1.22, spec.get("u_label", "$U$"), fontsize=9.5, color=INK, fontweight="bold")
+    ax.text(-2.1, 1.22, _clean_mpl_label(spec.get("u_label", "$U$")), fontsize=9.5, color=INK, fontweight="bold")
     c1 = mpatches.Circle((-0.65, -0.05), 1.05, facecolor=INDIGO2, alpha=0.16, edgecolor=INDIGO, linewidth=1.6)
     c2 = mpatches.Circle((0.65, -0.05), 1.05, facecolor=AMBER, alpha=0.18, edgecolor=AMBER_TEXT, linewidth=1.6)
     ax.add_patch(c1)
     ax.add_patch(c2)
-    ax.text(-1.15, 0.85, spec.get("label_a", "$A$"), fontsize=9.5, color=INDIGO, fontweight="bold", ha="center")
-    ax.text(1.15, 0.85, spec.get("label_b", "$B$"), fontsize=9.5, color=AMBER_TEXT, fontweight="bold", ha="center")
+    ax.text(-1.15, 0.85, _clean_mpl_label(spec.get("label_a", "$A$")), fontsize=9.5, color=INDIGO, fontweight="bold", ha="center")
+    ax.text(1.15, 0.85, _clean_mpl_label(spec.get("label_b", "$B$")), fontsize=9.5, color=AMBER_TEXT, fontweight="bold", ha="center")
     ax.text(-1.05, -0.08, str(spec.get("only_a", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
     ax.text(0.0, -0.08, str(spec.get("both", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
     ax.text(1.05, -0.08, str(spec.get("only_b", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
@@ -869,32 +902,32 @@ def _draw_table(ax, spec):
     """Render a clean data table or two-way frequency table."""
     ax.axis("off")
     if spec.get("type") == "two_way_table" or spec.get("cells") is not None:
-        col_h = [str(c) for c in spec.get("col_headers", [])]
-        row_h = [str(r) for r in spec.get("row_headers", [])]
+        col_h = [_clean_mpl_label(c) for c in spec.get("col_headers", [])]
+        row_h = [_clean_mpl_label(r) for r in spec.get("row_headers", [])]
         cells = spec.get("cells", [])
-        r_tot = spec.get("row_totals", [])
-        c_tot = spec.get("col_totals", [])
-        g_tot = spec.get("grand_total", "")
+        r_tot = [_clean_mpl_label(x) for x in spec.get("row_totals", [])]
+        c_tot = [_clean_mpl_label(x) for x in spec.get("col_totals", [])]
+        g_tot = _clean_mpl_label(spec.get("grand_total", ""))
         headers = [""] + col_h + (["Total"] if r_tot else [])
         rows = []
         for i, rh in enumerate(row_h):
-            row_vals = [str(x) for x in (cells[i] if i < len(cells) else [])]
+            row_vals = [_clean_mpl_label(x) for x in (cells[i] if i < len(cells) else [])]
             if r_tot and i < len(r_tot):
-                row_vals.append(str(r_tot[i]))
+                row_vals.append(r_tot[i])
             rows.append([rh] + row_vals)
         if c_tot:
-            tot_row = ["Total"] + [str(x) for x in c_tot]
+            tot_row = ["Total"] + c_tot
             if r_tot:
-                tot_row.append(str(g_tot))
+                tot_row.append(g_tot)
             rows.append(tot_row)
     else:
-        headers = [str(h) for h in spec.get("headers", ["$x$", "$y$"])]
-        rows = [[str(c) for c in r] for r in spec.get("rows", [])]
+        headers = [_clean_mpl_label(h) for h in spec.get("headers", ["$x$", "$y$"])]
+        rows = [[_clean_mpl_label(c) for c in r] for r in spec.get("rows", [])]
 
     if not rows:
         return
     if spec.get("title"):
-        ax.set_title(str(spec["title"]), fontsize=9, fontweight="bold", color=INK, pad=6)
+        ax.set_title(_clean_mpl_label(spec["title"]), fontsize=9, fontweight="bold", color=INK, pad=6)
     tbl = ax.table(cellText=rows, colLabels=headers, loc="center", cellLoc="center")
     tbl.auto_set_font_size(False)
     tbl.set_fontsize(8.5)
@@ -935,8 +968,8 @@ def _draw_transversal(ax, spec):
     # Transversal line passing through (-0.45, -0.85) and (0.45, 0.85)
     ax.plot([-0.85, 0.85], [-1.6, 1.6], color=INDIGO2, linewidth=1.7, zorder=4)
     ax.text(0.92, 1.48, "$t$", fontsize=9.5, color=INDIGO2, fontweight="bold")
-    a1 = str(spec.get("angle1", ""))
-    a2 = str(spec.get("angle2", ""))
+    a1 = _clean_mpl_label(spec.get("angle1", "")) or ""
+    a2 = _clean_mpl_label(spec.get("angle2", "")) or ""
     rel = spec.get("rel", "cointerior")
     # Upper intersection at (0.45, 0.85), lower intersection at (-0.45, -0.85)
     arc1 = mpatches.Arc((0.45, 0.85), 0.72, 0.72, angle=0, theta1=0, theta2=62, color=AMBER, linewidth=1.4, zorder=5)
@@ -1324,7 +1357,7 @@ def render_figure(raw_spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     spec = _normalize_fig_spec(raw_spec)
     os.makedirs(CACHE_DIR, exist_ok=True)
-    key = hashlib.sha1(json.dumps(spec, sort_keys=True).encode()).hexdigest()[:16]
+    key = hashlib.sha1(("figv2|" + json.dumps(spec, sort_keys=True)).encode()).hexdigest()[:16]
     path = os.path.join(CACHE_DIR, "fig_" + key + ".png")
     ftype = spec.get("type", "plot")
     if not os.path.exists(path):
@@ -1405,7 +1438,7 @@ def render_figure(raw_spec):
                     px, py = pl["x"], pl["y"]
                     dx, dy = pl.get("dx", 0.25), pl.get("dy", 0.35)
                     ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
-                    ax.text(px + dx, py + dy, pl["label"], fontsize=8, color=INK,
+                    ax.text(px + dx, py + dy, _clean_mpl_label(pl["label"]), fontsize=8, color=INK,
                             ha="left" if dx >= 0 else "right", va="bottom" if dy >= 0 else "top",
                             bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8))
             elif ftype == "shaded_region":

@@ -1138,7 +1138,7 @@ window.launchPracticeQuiz=function(mistake){
       if(_f){
         if(typeof _f === 'string'){
           _fHtml = _f;
-        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+        } else if((_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)) && !(Array.isArray(_f.data) || Array.isArray(_f.values) || Array.isArray(_f.cells) || _f.type === 'two_way_table' || _f.type === 'twoWayTable' || (Array.isArray(_f.rows) && _f.rows[0] && typeof _f.rows[0] === 'object' && !Array.isArray(_f.rows[0])))){
           var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
           var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
           var _rws=_rawRows.map(function(r){
@@ -1165,7 +1165,9 @@ window.launchPracticeQuiz=function(mistake){
       } else if(_f){
         h+='<div class="cq-figure" data-fig="'+_figs.length+'" data-q-idx="'+i+'"></div>'; _figs.push(_f);
       }
-      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+'</div></div>';
+      var _cqQcHtml = (window.CSRenderQiyasComparisonCard && (q.qc_col_a || q.qc_col_a_ar || /القيمة الأولى|Quantity A|العمود A\s*:|Column A\s*:/i.test(rawStem)))
+        ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+_cqQcHtml+'</div></div>';
       h+='<ul class="cq-opts" role="radiogroup" aria-label="Question '+(i+1)+' choices">';
       choices.forEach(function(c,ci){
         var rawC=rawChoices&&rawChoices[ci]?String(rawChoices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';
@@ -1179,7 +1181,8 @@ window.launchPracticeQuiz=function(mistake){
       if(rawSol) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px"><strong>'+(_isArLocale?'الحل:':'Solution:')+'</strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div class="cq-sol-body">'+_maths(rawSol)+'</div></div>';
       h+='</div>';
     });
-    h+='<div class="cq-score-bar">Answered: <strong class="cq-ans-v">0</strong> / '+pick.length+' &nbsp;|&nbsp; Score: <strong class="cq-sv">0</strong> / '+pick.length+'</div>';
+    var _cqAr = _loc && _loc.isAr();
+    h+='<div class="cq-score-bar">'+(_cqAr?'تمت الإجابة: ':'Answered: ')+'<strong class="cq-ans-v">0</strong> / '+pick.length+' &nbsp;|&nbsp; '+(_cqAr?'الدرجة: ':'Score: ')+'<strong class="cq-sv">0</strong> / '+pick.length+'</div>';
     h+='</div>';
     out.innerHTML=h;
     /* hide all solutions initially */
@@ -1190,7 +1193,7 @@ window.launchPracticeQuiz=function(mistake){
         _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
           var _fItem = _figs[+el.getAttribute('data-fig')];
           var _rendered = '';
-          if(_fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows))){
+          if(_fItem && (_fItem.type === 'table' || Array.isArray(_fItem.headers) || Array.isArray(_fItem.rows)) && !(Array.isArray(_fItem.data) || Array.isArray(_fItem.values) || Array.isArray(_fItem.cells) || _fItem.type === 'two_way_table' || _fItem.type === 'twoWayTable' || (Array.isArray(_fItem.rows) && _fItem.rows[0] && typeof _fItem.rows[0] === 'object' && !Array.isArray(_fItem.rows[0])))){
             var _hdrs=(Array.isArray(_fItem.headers)?_fItem.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
             var _rawRows=Array.isArray(_fItem.rows)?_fItem.rows:(Array.isArray(_fItem.data)?_fItem.data:[]);
             var _rws=_rawRows.map(function(r){

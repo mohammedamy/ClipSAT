@@ -100864,26 +100864,26 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "Referring to the transit study table above (CALCULUS-25389), evaluate \\(f(g(2)) + 3\\).",
+      "text": "Using the laboratory measurement table (CALCULUS-1954) shown in the table below, determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-3",
       "educational_aim": "Apply core Applications of Derivatives principles to solve foundational problems accurately.",
       "exam_archetype": "Applications of Derivatives — Core Procedural Application",
       "choices": [
-        "\\(17\\)",
-        "\\(7\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(3\\)",
+        "\\(-3\\)",
+        "\\(5\\)",
+        "\\(0\\)"
       ],
       "answer": 0,
-      "sol": "From the table, \\(g(2) = 3\\) and \\(f(3) = 14\\). Adding \\(3\\) yields \\(14 + 3 = 17\\).",
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(-11(1) + 3k + 2(1) = 0 \\implies 3k = 9 \\implies k = 3\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((-11)(1) + (3)k + (2)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(3\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 14 + 3",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((-11) + (3)*k + (2), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.649,
@@ -100892,32 +100892,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (CALCULUS-1954)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-11\\)",
+            "\\(3\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (transit study, CALCULUS-25389)",
-        "caption_ar": "قيم مختارة للدالتين (دراسة النقل، CALCULUS-25389)"
+        ]
       }
     },
     {
@@ -101068,23 +101063,23 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "Given the structured hydraulics observations displayed in the table (CALCULUS-25764), evaluate \\(f(g(1)) + 2\\).",
+      "text": "From the entries recorded in the optics alignment chart (CALCULUS-1957), compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-3",
       "educational_aim": "Apply core Differential Equations principles to solve foundational problems accurately.",
       "exam_archetype": "Differential Equations — Core Procedural Application",
       "choices": [
-        "\\(11\\)",
-        "\\(5\\)",
-        "\\(9\\)",
-        "\\(13\\)"
+        "\\(53\\)",
+        "\\(89\\)",
+        "\\(13\\)",
+        "\\(96\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\).",
+      "answer": 1,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (2, 9, -2)\\). Summing squares yields \\(2^2 + 9^2 + -2^2 = 89\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((2, 9, -2)\\) and add them together.",
+        "Add \\(4 + 81 + 4\\) to obtain \\(89\\)."
       ],
       "calc": false,
       "irt": {
@@ -101092,36 +101087,31 @@
         "b": -1.729,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 9 + 2",
+      "sympy_cert": "EXPECTED = (2)**2 + (9)**2 + (-2)**2",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (CALCULUS-1957)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(5\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(-4\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (hydraulics, CALCULUS-25764)",
-        "caption_ar": "قيم مختارة للدالتين (الهيدروليك، CALCULUS-25764)"
+        ]
       }
     },
     {
@@ -101258,23 +101248,23 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "Inspect the cartography values listed across the table (CALCULUS-26139); evaluate \\(f(g(4)) + 5\\).",
+      "text": "Based on the values compiled in the robotics kinematics log (CALCULUS-1960) table, vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-3",
       "educational_aim": "Apply core Integrals principles to solve foundational problems accurately.",
       "exam_archetype": "Integrals — Core Procedural Application",
       "choices": [
-        "\\(6\\)",
-        "\\(18\\)",
-        "\\(7\\)",
-        "\\(12\\)"
+        "\\(-24\\)",
+        "\\(-11\\)",
+        "\\(-30\\)",
+        "\\(-13\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(4) = 1\\) and \\(f(1) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\).",
+      "answer": 2,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (-4)(2) + (1)(-2) + (-1)(5) = -15\\). Scaling by \\(2\\) gives \\(-30\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((-4)(2) + (1)(-2) + (-1)(5)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(-30\\)."
       ],
       "calc": true,
       "irt": {
@@ -101282,36 +101272,31 @@
         "b": -1.296,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 7 + 5",
+      "sympy_cert": "EXPECTED = 2 * ((-4)*(2) + (1)*(-2) + (-1)*(5))",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (CALCULUS-1960)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-4\\)",
+            "\\(1\\)",
+            "\\(-1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(2\\)",
+            "\\(-2\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (cartography, CALCULUS-26139)",
-        "caption_ar": "قيم مختارة للدالتين (رسم الخرائط، CALCULUS-26139)"
+        ]
       }
     },
     {
@@ -101427,26 +101412,26 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "In assessment dataset (CALCULUS-26514) for flow bench, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Inspect the data rows in the acoustic signal summary (CALCULUS-1963); determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-3",
       "educational_aim": "Apply core Parametric & Polar principles to solve foundational problems accurately.",
       "exam_archetype": "Parametric & Polar — Core Procedural Application",
       "choices": [
-        "\\(7\\)",
-        "\\(18\\)",
-        "\\(17\\)",
-        "\\(13\\)"
+        "\\(1\\)",
+        "\\(-4\\)",
+        "\\(0\\)",
+        "\\(-1\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+      "answer": 3,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(2(1) + 3k + 1(1) = 0 \\implies 3k = -3 \\implies k = -1\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((2)(1) + (3)k + (1)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(-1\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 13 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((2) + (3)*k + (1), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.534,
@@ -101455,32 +101440,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (CALCULUS-1963)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(2\\)",
+            "\\(3\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, CALCULUS-26514)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، CALCULUS-26514)"
+        ]
       }
     },
     {
@@ -101638,23 +101618,23 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "In the aerodynamics record (CALCULUS-26889), using the table values, evaluate \\(f(g(2)) + 3\\).",
+      "text": "Refer to the tabulated measurements in the CAD verification schedule (CALCULUS-1966) to compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-3",
       "educational_aim": "Apply core Techniques of Integration principles to solve foundational problems accurately.",
       "exam_archetype": "Techniques of Integration — Core Procedural Application",
       "choices": [
-        "\\(17\\)",
-        "\\(7\\)",
-        "\\(12\\)",
-        "\\(14\\)"
+        "\\(86\\)",
+        "\\(14\\)",
+        "\\(93\\)",
+        "\\(87\\)"
       ],
       "answer": 0,
-      "sol": "From the table, \\(g(2) = 3\\) and \\(f(3) = 14\\). Adding \\(3\\) yields \\(14 + 3 = 17\\).",
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (-6, 7, -1)\\). Summing squares yields \\(-6^2 + 7^2 + -1^2 = 86\\).",
       "hints": [
-        "Locate column x = 2 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(2) and look it up in the top x header row to find f(g(2)).",
-        "Add 3 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((-6, 7, -1)\\) and add them together.",
+        "Add \\(36 + 49 + 1\\) to obtain \\(86\\)."
       ],
       "calc": true,
       "irt": {
@@ -101662,36 +101642,31 @@
         "b": -0.51,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 14 + 3",
+      "sympy_cert": "EXPECTED = (-6)**2 + (7)**2 + (-1)**2",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (CALCULUS-1966)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-2\\)",
+            "\\(3\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(4\\)",
+            "\\(-4\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (aerodynamics, CALCULUS-26889)",
-        "caption_ar": "قيم مختارة للدالتين (الديناميكا الهوائية، CALCULUS-26889)"
+        ]
       }
     },
     {
@@ -101849,26 +101824,26 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "The table summarizes measurements from a wind tunnel evaluation (CALCULUS-27264); using these entries, evaluate \\(f(g(1)) + 2\\).",
+      "text": "The aerospace sensor table (CALCULUS-1969) reports the values in the table; vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Applications of Integration by solving direct algebraic, graphical, or geometric formulations tested on CALCULUS past papers.",
       "exam_archetype": "Applications of Integration — Direct Concept & Representation",
       "choices": [
-        "\\(5\\)",
-        "\\(9\\)",
-        "\\(11\\)",
-        "\\(13\\)"
+        "\\(8\\)",
+        "\\(2\\)",
+        "\\(17\\)",
+        "\\(3\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\).",
+      "answer": 1,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (3)(1) + (4)(-2) + (2)(3) = 1\\). Scaling by \\(2\\) gives \\(2\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((3)(1) + (4)(-2) + (2)(3)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(2\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 9 + 2",
+      "sympy_cert": "EXPECTED = 2 * ((3)*(1) + (4)*(-2) + (2)*(3))",
       "sympy_verified": true,
       "irt": {
         "a": 1.656,
@@ -101877,32 +101852,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (CALCULUS-1969)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(-2\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (wind tunnel, CALCULUS-27264)",
-        "caption_ar": "قيم مختارة للدالتين (نفق الرياح، CALCULUS-27264)"
+        ]
       }
     },
     {
@@ -102039,23 +102009,23 @@
       "type": "mcq",
       "domain": "Vectors and Vector-Valued Functions",
       "difficulty": "easy",
-      "text": "During acoustics experiment (CALCULUS-27639), observers compiled the following table; evaluate \\(f(g(4)) + 5\\).",
+      "text": "Examining the entries in the harmonic oscillator log (CALCULUS-1972), determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "ch-vectors",
       "subskill_id": "ch-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Derivatives by solving direct algebraic, graphical, or geometric formulations tested on CALCULUS past papers.",
       "exam_archetype": "Derivatives — Direct Concept & Representation",
       "choices": [
+        "\\(-4\\)",
         "\\(6\\)",
-        "\\(12\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(4\\)",
+        "\\(1\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(4) = 1\\) and \\(f(1) = 7\\). Adding \\(5\\) yields \\(7 + 5 = 12\\).",
+      "answer": 2,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(-16(1) + 3k + 4(1) = 0 \\implies 3k = 12 \\implies k = 4\\).",
       "hints": [
-        "Locate column x = 4 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(4) and look it up in the top x header row to find f(g(4)).",
-        "Add 5 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((-16)(1) + (3)k + (4)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(4\\)."
       ],
       "calc": true,
       "irt": {
@@ -102063,36 +102033,31 @@
         "b": -0.455,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 7 + 5",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((-16) + (3)*k + (4), k)[0]",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (CALCULUS-1972)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-16\\)",
+            "\\(3\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (acoustics, CALCULUS-27639)",
-        "caption_ar": "قيم مختارة للدالتين (الصوتيات، CALCULUS-27639)"
+        ]
       }
     },
     {
@@ -131842,12 +131807,12 @@
       ],
       "figure": {
         "type": "geometry_3d",
-        "solid": "cone",
-        "radius": 4,
-        "height": 10,
+        "solid": "cylinder",
+        "radius": 2,
+        "height": 1,
         "labels": {
-          "r": "r",
-          "h": "h"
+          "r": "r = 2",
+          "h": "h = 1"
         }
       },
       "calc": false,

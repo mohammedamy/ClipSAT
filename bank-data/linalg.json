@@ -1040,26 +1040,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "easy",
-      "text": "In the genetics record (LINALG-678), using the table values, evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the aerospace sensor table (LINALG-0018), vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-3",
       "educational_aim": "Apply core Eigenvalues, Eigenvectors & Diagonalization principles to solve foundational problems accurately.",
       "exam_archetype": "Eigenvalues, Eigenvectors & Diagonalization — Core Procedural Application",
       "choices": [
-        "\\(6\\)",
-        "\\(16\\)",
+        "\\(8\\)",
+        "\\(2\\)",
         "\\(17\\)",
-        "\\(12\\)"
+        "\\(3\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (3)(1) + (4)(-2) + (2)(3) = 1\\). Scaling by \\(2\\) gives \\(2\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((3)(1) + (4)(-2) + (2)(3)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(2\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "EXPECTED = 2 * ((3)*(1) + (4)*(-2) + (2)*(3))",
       "sympy_verified": true,
       "irt": {
         "a": 1.14,
@@ -1068,32 +1068,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0018)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(-2\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, LINALG-678)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، LINALG-678)"
+        ]
       }
     },
     {
@@ -1142,9 +1137,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "10",
           "26",
-          "?",
-          "10"
+          "?"
         ],
         "vertices": [
           [
@@ -1902,26 +1897,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "medium",
-      "text": "A benchmark navigation log (LINALG-994) provides the entries shown in the table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the harmonic oscillator log (LINALG-0031) table, determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces — Direct Concept & Representation",
       "choices": [
+        "\\(-4\\)",
         "\\(6\\)",
-        "\\(18\\)",
-        "\\(7\\)",
-        "\\(11\\)"
+        "\\(4\\)",
+        "\\(1\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "answer": 2,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(-16(1) + 3k + 4(1) = 0 \\implies 3k = 12 \\implies k = 4\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((-16)(1) + (3)k + (4)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(4\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((-16) + (3)*k + (4), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.447,
@@ -1930,32 +1925,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0031)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-16\\)",
+            "\\(3\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, LINALG-994)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، LINALG-994)"
+        ]
       }
     },
     {
@@ -2140,26 +2130,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "easy",
-      "text": "Referring to the sensor array table above (LINALG-1200), evaluate \\(f(g(1)) + 2\\).",
+      "text": "Inspect the data rows in the fabrication tolerance chart (LINALG-0035); compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-1",
       "educational_aim": "Apply properties and theorems of Linear Transformations, Matrix Representations & Change of Basis in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Linear Transformations, Matrix Representations & Change of Basis — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(5\\)",
-        "\\(9\\)",
-        "\\(7\\)",
-        "\\(10\\)"
+        "\\(98\\)",
+        "\\(12\\)",
+        "\\(61\\)",
+        "\\(54\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\).",
+      "answer": 3,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (2, 5, -5)\\). Summing squares yields \\(2^2 + 5^2 + -5^2 = 54\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((2, 5, -5)\\) and add them together.",
+        "Add \\(4 + 25 + 25\\) to obtain \\(54\\)."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 5 + 2",
+      "sympy_cert": "EXPECTED = (2)**2 + (5)**2 + (-5)**2",
       "sympy_verified": true,
       "irt": {
         "a": 1.439,
@@ -2168,32 +2158,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0035)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "\\(\\mathbf{u}\\)",
+            "\\(5\\)",
+            "\\(1\\)",
+            "\\(0\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(3\\)",
+            "\\(-4\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (sensor array, LINALG-1200)",
-        "caption_ar": "قيم مختارة للدالتين (مصفوفة الحساسات، LINALG-1200)"
+        ]
       }
     },
     {
@@ -2423,9 +2408,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "?",
-          "32",
-          "24"
+          "32"
         ],
         "vertices": [
           [
@@ -3491,9 +3476,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "36",
           "?",
-          "48",
-          "36"
+          "48"
         ],
         "vertices": [
           [
@@ -3863,26 +3848,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "medium",
-      "text": "A benchmark hydraulics log (LINALG-1992) provides the entries shown in the table; evaluate \\(f(g(1)) + 2\\).",
+      "text": "Refer to the tabulated measurements in the surveying log (LINALG-0062) to vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-2",
       "educational_aim": "Apply properties and theorems of Systems of Linear Equations & Row Reduction in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Systems of Linear Equations & Row Reduction — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(3\\)",
-        "\\(7\\)",
-        "\\(11\\)",
-        "\\(9\\)"
+        "\\(-22\\)",
+        "\\(-16\\)",
+        "\\(-3\\)",
+        "\\(-9\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 7\\). Adding \\(2\\) yields \\(7 + 2 = 9\\).",
+      "answer": 0,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (-2)(4) + (2)(-2) + (1)(1) = -11\\). Scaling by \\(2\\) gives \\(-22\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((-2)(4) + (2)(-2) + (1)(1)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(-22\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 7 + 2",
+      "sympy_cert": "EXPECTED = 2 * ((-2)*(4) + (2)*(-2) + (1)*(1))",
       "sympy_verified": true,
       "irt": {
         "a": 1.398,
@@ -3891,32 +3876,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0062)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "\\(\\mathbf{u}\\)",
+            "\\(-2\\)",
+            "\\(2\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(4\\)",
+            "\\(-2\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (hydraulics, LINALG-1992)",
-        "caption_ar": "قيم مختارة للدالتين (الهيدروليك، LINALG-1992)"
+        ]
       }
     },
     {
@@ -4891,26 +4871,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "medium",
-      "text": "During telemetry experiment (LINALG-3108), observers compiled the following table; evaluate \\(f(g(1)) + 2\\).",
+      "text": "The engineering blueprint table (LINALG-0080) reports the values in the table; determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-2",
       "educational_aim": "Demonstrate foundational mastery of Vector Spaces, Subspaces & The Four Fundamental Subspaces by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Vector Spaces, Subspaces & The Four Fundamental Subspaces — Direct Concept & Representation",
       "choices": [
-        "\\(10\\)",
-        "\\(4\\)",
-        "\\(8\\)",
-        "\\(12\\)"
+        "\\(2\\)",
+        "\\(-2\\)",
+        "\\(0\\)",
+        "\\(-5\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 8\\). Adding \\(2\\) yields \\(8 + 2 = 10\\).",
+      "answer": 1,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(3(1) + 3k + 3(1) = 0 \\implies 3k = -6 \\implies k = -2\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((3)(1) + (3)k + (3)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(-2\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 8 + 2",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((3) + (3)*k + (3), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.223,
@@ -4919,32 +4899,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0080)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(3\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (telemetry, LINALG-3108)",
-        "caption_ar": "قيم مختارة للدالتين (القياس عن بُعد، LINALG-3108)"
+        ]
       }
     },
     {
@@ -5682,26 +5657,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "medium",
-      "text": "Referring to the sensor array table above (LINALG-4224), evaluate \\(f(g(1)) + 2\\).",
+      "text": "Examining the entries in the navigation telemetry summary (LINALG-0098), compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-1",
       "educational_aim": "Demonstrate foundational mastery of Eigenvalues, Eigenvectors & Diagonalization by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Eigenvalues, Eigenvectors & Diagonalization — Direct Concept & Representation",
       "choices": [
-        "\\(5\\)",
-        "\\(11\\)",
-        "\\(9\\)",
-        "\\(13\\)"
+        "\\(8\\)",
+        "\\(18\\)",
+        "\\(116\\)",
+        "\\(123\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 9\\). Adding \\(2\\) yields \\(9 + 2 = 11\\).",
+      "answer": 2,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (-6, 8, -4)\\). Summing squares yields \\(-6^2 + 8^2 + -4^2 = 116\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((-6, 8, -4)\\) and add them together.",
+        "Add \\(36 + 64 + 16\\) to obtain \\(116\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 9 + 2",
+      "sympy_cert": "EXPECTED = (-6)**2 + (8)**2 + (-4)**2",
       "sympy_verified": true,
       "irt": {
         "a": 1.727,
@@ -5710,32 +5685,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0098)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-4\\)",
+            "\\(4\\)",
+            "\\(-1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(2\\)",
+            "\\(-4\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (sensor array, LINALG-4224)",
-        "caption_ar": "قيم مختارة للدالتين (مصفوفة الحساسات، LINALG-4224)"
+        ]
       }
     },
     {
@@ -6420,26 +6390,26 @@
       "type": "mcq",
       "domain": "Vectors",
       "difficulty": "hard",
-      "text": "In assessment dataset (LINALG-5340) for wind tunnel, the table reports key quantities; evaluate \\(f(g(1)) + 2\\).",
+      "text": "According to the summarized dataset in the structural testing dataset (LINALG-0116), vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectors",
       "subskill_id": "la-vectors-3",
       "educational_aim": "Synthesize Matrices, Matrix Algebra & Inverses with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Matrices, Matrix Algebra & Inverses — Non-Routine Synthesis & Past-Paper Challenge",
       "choices": [
-        "\\(5\\)",
+        "\\(16\\)",
+        "\\(25\\)",
         "\\(7\\)",
-        "\\(9\\)",
         "\\(10\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 5\\). Adding \\(2\\) yields \\(5 + 2 = 7\\).",
+      "answer": 3,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (5)(3) + (5)(-2) + (0)(4) = 5\\). Scaling by \\(2\\) gives \\(10\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((5)(3) + (5)(-2) + (0)(4)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(10\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 5 + 2",
+      "sympy_cert": "EXPECTED = 2 * ((5)*(3) + (5)*(-2) + (0)*(4))",
       "sympy_verified": true,
       "irt": {
         "a": 1.468,
@@ -6448,32 +6418,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0116)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "\\(\\mathbf{u}\\)",
+            "\\(5\\)",
+            "\\(5\\)",
+            "\\(0\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "\\(\\mathbf{v}\\)",
+            "\\(3\\)",
+            "\\(-2\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (wind tunnel, LINALG-5340)",
-        "caption_ar": "قيم مختارة للدالتين (نفق الرياح، LINALG-5340)"
+        ]
       }
     },
     {
@@ -7868,9 +7833,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "9",
           "?",
-          "12",
-          "9"
+          "12"
         ],
         "vertices": [
           [
@@ -8684,9 +8649,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "15",
           "39",
-          "?",
-          "15"
+          "?"
         ],
         "vertices": [
           [
@@ -26519,9 +26484,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "51",
-          "?",
-          "24"
+          "?"
         ],
         "vertices": [
           [
@@ -29173,9 +29138,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "8",
           "17",
-          "?",
-          "8"
+          "?"
         ],
         "vertices": [
           [
@@ -29647,9 +29612,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "10",
           "26",
-          "?",
-          "10"
+          "?"
         ],
         "vertices": [
           [
@@ -33909,9 +33874,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "51",
-          "?",
-          "24"
+          "?"
         ],
         "vertices": [
           [
@@ -34019,26 +33984,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "In the grid assay record (LINALG-8422), using the table values, evaluate \\(f(g(3)) + 4\\).",
+      "text": "Using the laboratory measurement table (LINALG-0604) shown in the table below, determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices, Matrix Algebra & Inverses by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Matrices, Matrix Algebra & Inverses — Direct Concept & Representation",
       "choices": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(5\\)"
+        "\\(5\\)",
+        "\\(-5\\)",
+        "\\(7\\)",
+        "\\(2\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "answer": 0,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(-17(1) + 3k + 2(1) = 0 \\implies 3k = 15 \\implies k = 5\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((-17)(1) + (3)k + (2)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(5\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((-17) + (3)*k + (2), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.388,
@@ -34047,32 +34012,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0604)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "\\(\\mathbf{u}\\)",
+            "\\(-17\\)",
+            "\\(3\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (grid assay, LINALG-8422)",
-        "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، LINALG-8422)"
+        ]
       }
     },
     {
@@ -34186,9 +34146,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "24",
           "51",
-          "?",
-          "24"
+          "?"
         ],
         "vertices": [
           [
@@ -34381,9 +34341,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "30",
           "78",
-          "?",
-          "30"
+          "?"
         ],
         "vertices": [
           [
@@ -34423,26 +34383,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "Based strictly on the tabulated logistics observations (LINALG-8794), evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the optics alignment chart (LINALG-0610), compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-2",
       "educational_aim": "Apply properties and theorems of Eigenvalues, Eigenvectors & Diagonalization in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Eigenvalues, Eigenvectors & Diagonalization — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(11\\)",
-        "\\(6\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(29\\)",
+        "\\(41\\)",
+        "\\(9\\)",
+        "\\(48\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "answer": 1,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (2, 6, 1)\\). Summing squares yields \\(2^2 + 6^2 + 1^2 = 41\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((2, 6, 1)\\) and add them together.",
+        "Add \\(4 + 36 + 1\\) to obtain \\(41\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "EXPECTED = (2)**2 + (6)**2 + (1)**2",
       "sympy_verified": true,
       "irt": {
         "a": 1.022,
@@ -34451,32 +34411,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0610)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(2\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(-4\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, LINALG-8794)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، LINALG-8794)"
+        ]
       }
     },
     {
@@ -34781,23 +34736,23 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "During metallurgy experiment (LINALG-9166), observers compiled the following table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the robotics kinematics log (LINALG-0616) table, vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-2",
       "educational_aim": "Apply properties and theorems of Vector Spaces, Subspaces & The Four Fundamental Subspaces in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Vector Spaces, Subspaces & The Four Fundamental Subspaces — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(8\\)",
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(4\\)"
+        "\\(-26\\)",
+        "\\(-4\\)",
+        "\\(-32\\)",
+        "\\(-14\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 4\\). Adding \\(4\\) yields \\(4 + 4 = 8\\).",
+      "answer": 2,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (-4)(2) + (3)(-2) + (-1)(2) = -16\\). Scaling by \\(2\\) gives \\(-32\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((-4)(2) + (3)(-2) + (-1)(2)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(-32\\)."
       ],
       "calc": true,
       "irt": {
@@ -34805,36 +34760,31 @@
         "b": -0.783,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 4 + 4",
+      "sympy_cert": "EXPECTED = 2 * ((-4)*(2) + (3)*(-2) + (-1)*(2))",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0616)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "\\(\\mathbf{u}\\)",
+            "\\(-4\\)",
+            "\\(3\\)",
+            "\\(-1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(2\\)",
+            "\\(-2\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (metallurgy, LINALG-9166)",
-        "caption_ar": "قيم مختارة للدالتين (علم المعادن، LINALG-9166)"
+        ]
       }
     },
     {
@@ -35073,9 +35023,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "21",
           "?",
-          "72",
-          "21"
+          "72"
         ],
         "vertices": [
           [
@@ -35173,26 +35123,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "Examine the reactor bench dataset arranged in the table below (LINALG-9538); evaluate \\(f(g(3)) + 4\\).",
+      "text": "Inspect the data rows in the acoustic signal summary (LINALG-0622); determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-3",
       "educational_aim": "Apply core Systems of Linear Equations & Row Reduction principles to solve foundational problems accurately.",
       "exam_archetype": "Systems of Linear Equations & Row Reduction — Core Procedural Application",
       "choices": [
-        "\\(5\\)",
-        "\\(10\\)",
-        "\\(17\\)",
-        "\\(6\\)"
+        "\\(3\\)",
+        "\\(-1\\)",
+        "\\(-6\\)",
+        "\\(-3\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 6\\). Adding \\(4\\) yields \\(6 + 4 = 10\\).",
+      "answer": 3,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(8(1) + 3k + 1(1) = 0 \\implies 3k = -9 \\implies k = -3\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((8)(1) + (3)k + (1)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(-3\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 6 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((8) + (3)*k + (1), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.063,
@@ -35201,32 +35151,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0622)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "\\(\\mathbf{u}\\)",
+            "\\(8\\)",
+            "\\(3\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (reactor bench, LINALG-9538)",
-        "caption_ar": "قيم مختارة للدالتين (منصة المفاعل، LINALG-9538)"
+        ]
       }
     },
     {
@@ -35275,9 +35220,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -35546,9 +35491,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -35588,26 +35533,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "An engineering team logged flow bench measurements in the accompanying table (LINALG-9910); using these data, evaluate \\(f(g(3)) + 4\\).",
+      "text": "Refer to the tabulated measurements in the CAD verification schedule (LINALG-0628) to compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices, Matrix Algebra & Inverses by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Matrices, Matrix Algebra & Inverses — Direct Concept & Representation",
       "choices": [
-        "\\(6\\)",
-        "\\(14\\)",
-        "\\(7\\)",
-        "\\(3\\)"
+        "\\(126\\)",
+        "\\(30\\)",
+        "\\(18\\)",
+        "\\(133\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 3\\). Adding \\(4\\) yields \\(3 + 4 = 7\\).",
+      "answer": 0,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (-6, 9, -3)\\). Summing squares yields \\(-6^2 + 9^2 + -3^2 = 126\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((-6, 9, -3)\\) and add them together.",
+        "Add \\(36 + 81 + 9\\) to obtain \\(126\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 3 + 4",
+      "sympy_cert": "EXPECTED = (-6)**2 + (9)**2 + (-3)**2",
       "sympy_verified": true,
       "irt": {
         "a": 1.345,
@@ -35616,32 +35561,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0628)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "\\(\\mathbf{u}\\)",
+            "\\(-2\\)",
+            "\\(5\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(4\\)",
+            "\\(-4\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, LINALG-9910)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، LINALG-9910)"
+        ]
       }
     },
     {
@@ -35741,9 +35681,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "7",
           "?",
-          "24",
-          "7"
+          "24"
         ],
         "vertices": [
           [
@@ -35946,23 +35886,23 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "Selected numerical readings from genetics run (LINALG-10282) appear in the table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "The aerospace sensor table (LINALG-0634) reports the values in the table; vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-2",
       "educational_aim": "Apply properties and theorems of Eigenvalues, Eigenvectors & Diagonalization in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Eigenvalues, Eigenvectors & Diagonalization — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(5\\)"
+        "\\(28\\)",
+        "\\(22\\)",
+        "\\(15\\)",
+        "\\(13\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (3)(1) + (1)(-2) + (2)(5) = 11\\). Scaling by \\(2\\) gives \\(22\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((3)(1) + (1)(-2) + (2)(5)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(22\\)."
       ],
       "calc": true,
       "irt": {
@@ -35970,36 +35910,31 @@
         "b": -0.737,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "EXPECTED = 2 * ((3)*(1) + (1)*(-2) + (2)*(5))",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0634)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "\\(\\mathbf{u}\\)",
+            "\\(3\\)",
+            "\\(1\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(-2\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, LINALG-10282)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، LINALG-10282)"
+        ]
       }
     },
     {
@@ -36513,26 +36448,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "Inspect the grid assay values listed across the table (LINALG-11026); evaluate \\(f(g(3)) + 4\\).",
+      "text": "Examining the entries in the harmonic oscillator log (LINALG-0646), determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-3",
       "educational_aim": "Apply core Systems of Linear Equations & Row Reduction principles to solve foundational problems accurately.",
       "exam_archetype": "Systems of Linear Equations & Row Reduction — Core Procedural Application",
       "choices": [
-        "\\(7\\)",
-        "\\(8\\)",
-        "\\(15\\)",
-        "\\(4\\)"
+        "\\(-1\\)",
+        "\\(3\\)",
+        "\\(1\\)",
+        "\\(-2\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 4\\). Adding \\(4\\) yields \\(4 + 4 = 8\\).",
+      "answer": 2,
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(-7(1) + 3k + 4(1) = 0 \\implies 3k = 3 \\implies k = 1\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((-7)(1) + (3)k + (4)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(1\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 4 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((-7) + (3)*k + (4), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 0.967,
@@ -36541,32 +36476,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0646)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "\\(\\mathbf{u}\\)",
+            "\\(-7\\)",
+            "\\(3\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (grid assay, LINALG-11026)",
-        "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، LINALG-11026)"
+        ]
       }
     },
     {
@@ -36755,26 +36685,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "A benchmark logistics log (LINALG-11398) provides the entries shown in the table; evaluate \\(f(g(3)) + 4\\).",
+      "text": "According to the summarized dataset in the fabrication tolerance chart (LINALG-0652), compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices, Matrix Algebra & Inverses by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Matrices, Matrix Algebra & Inverses — Direct Concept & Representation",
       "choices": [
-        "\\(10\\)",
-        "\\(5\\)",
-        "\\(17\\)",
-        "\\(6\\)"
+        "\\(69\\)",
+        "\\(11\\)",
+        "\\(64\\)",
+        "\\(57\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 6\\). Adding \\(4\\) yields \\(6 + 4 = 10\\).",
+      "answer": 3,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (2, 7, -2)\\). Summing squares yields \\(2^2 + 7^2 + -2^2 = 57\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((2, 7, -2)\\) and add them together.",
+        "Add \\(4 + 49 + 4\\) to obtain \\(57\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 6 + 4",
+      "sympy_cert": "EXPECTED = (2)**2 + (7)**2 + (-2)**2",
       "sympy_verified": true,
       "irt": {
         "a": 1.041,
@@ -36783,32 +36713,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0652)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "\\(\\mathbf{u}\\)",
+            "\\(5\\)",
+            "\\(3\\)",
+            "\\(0\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(3\\)",
+            "\\(-4\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, LINALG-11398)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، LINALG-11398)"
+        ]
       }
     },
     {
@@ -36998,23 +36923,23 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "medium",
-      "text": "In the metallurgy record (LINALG-11770), using the table values, evaluate \\(f(g(3)) + 4\\).",
+      "text": "Using the surveying log (LINALG-0658) shown in the table below, vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-2",
       "educational_aim": "Apply properties and theorems of Eigenvalues, Eigenvectors & Diagonalization in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Eigenvalues, Eigenvectors & Diagonalization — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(6\\)",
-        "\\(14\\)",
+        "\\(-26\\)",
+        "\\(-20\\)",
         "\\(3\\)",
-        "\\(7\\)"
+        "\\(-11\\)"
       ],
-      "answer": 3,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 3\\). Adding \\(4\\) yields \\(3 + 4 = 7\\).",
+      "answer": 0,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (-2)(4) + (4)(-2) + (1)(3) = -13\\). Scaling by \\(2\\) gives \\(-26\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((-2)(4) + (4)(-2) + (1)(3)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(-26\\)."
       ],
       "calc": true,
       "irt": {
@@ -37022,36 +36947,31 @@
         "b": 0.568,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 3 + 4",
+      "sympy_cert": "EXPECTED = 2 * ((-2)*(4) + (4)*(-2) + (1)*(3))",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0658)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "\\(\\mathbf{u}\\)",
+            "\\(-2\\)",
+            "\\(4\\)",
+            "\\(1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(4\\)",
+            "\\(-2\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (metallurgy, LINALG-11770)",
-        "caption_ar": "قيم مختارة للدالتين (علم المعادن، LINALG-11770)"
+        ]
       }
     },
     {
@@ -37240,26 +37160,26 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "easy",
-      "text": "The table summarizes measurements from a reactor bench evaluation (LINALG-12142); using these entries, evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the engineering blueprint table (LINALG-0664), determine the scalar parameter \\(k\\) that makes vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in the table orthogonal.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-2",
       "educational_aim": "Apply properties and theorems of Vector Spaces, Subspaces & The Four Fundamental Subspaces in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Vector Spaces, Subspaces & The Four Fundamental Subspaces — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(16\\)",
-        "\\(5\\)"
+        "\\(4\\)",
+        "\\(-4\\)",
+        "\\(-2\\)",
+        "\\(-7\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 5\\). Adding \\(4\\) yields \\(5 + 4 = 9\\).",
+      "sol": "Orthogonality requires \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\), so \\(9(1) + 3k + 3(1) = 0 \\implies 3k = -12 \\implies k = -4\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Two non-zero vectors are orthogonal if and only if their dot product equals zero.",
+        "Set up \\((9)(1) + (3)k + (3)(1) = 0\\) from the tabulated components.",
+        "Solve the linear equation for \\(k\\) to obtain \\(-4\\)."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 5 + 4",
+      "sympy_cert": "k = sp.Symbol('k'); EXPECTED = sp.solve((9) + (3)*k + (3), k)[0]",
       "sympy_verified": true,
       "irt": {
         "a": 1.354,
@@ -37268,32 +37188,27 @@
       },
       "figure": {
         "type": "table",
+        "caption": "Orthogonal Vector Parameter Table (LINALG-0664)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "\\(\\mathbf{u}\\)",
+            "\\(9\\)",
+            "\\(3\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(1\\)",
+            "\\(k\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (reactor bench, LINALG-12142)",
-        "caption_ar": "قيم مختارة للدالتين (منصة المفاعل، LINALG-12142)"
+        ]
       }
     },
     {
@@ -37492,23 +37407,23 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "medium",
-      "text": "Based strictly on the tabulated flow bench observations (LINALG-12514), evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the navigation telemetry summary (LINALG-0670) table, compute the squared Euclidean distance \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2\\) from the vector components in the table.",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-3",
       "educational_aim": "Connect Systems of Linear Equations & Row Reduction concepts to solve standard-difficulty exam problems.",
       "exam_archetype": "Systems of Linear Equations & Row Reduction — Non-Routine Synthesis & Past-Paper Challenge",
       "choices": [
-        "\\(11\\)",
-        "\\(6\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(29\\)",
+        "\\(17\\)",
+        "\\(97\\)",
+        "\\(104\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "answer": 2,
+      "sol": "First subtract components: \\(\\mathbf{u}-\\mathbf{v} = (-6, 5, -6)\\). Summing squares yields \\(-6^2 + 5^2 + -6^2 = 97\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Subtract matching coordinates to form the difference vector \\(\\mathbf{u} - \\mathbf{v}\\).",
+        "Square each component of \\((-6, 5, -6)\\) and add them together.",
+        "Add \\(36 + 25 + 36\\) to obtain \\(97\\)."
       ],
       "calc": true,
       "irt": {
@@ -37516,36 +37431,31 @@
         "b": 0.527,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "EXPECTED = (-6)**2 + (5)**2 + (-6)**2",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "3D Vector Coordinates Table (LINALG-0670)",
         "headers": [
+          "Vector",
           "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "\\(y\\)",
+          "\\(z\\)"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "\\(\\mathbf{u}\\)",
+            "\\(-4\\)",
+            "\\(1\\)",
+            "\\(-1\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(2\\)",
+            "\\(-4\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, LINALG-12514)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، LINALG-12514)"
+        ]
       }
     },
     {
@@ -37736,23 +37646,23 @@
       "type": "mcq",
       "domain": "Vector Spaces & Linear Independence",
       "difficulty": "medium",
-      "text": "Examine the genetics dataset arranged in the table below (LINALG-12886); evaluate \\(f(g(3)) + 4\\).",
+      "text": "Inspect the data rows in the structural testing dataset (LINALG-0676); vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) have the tabulated components. Evaluate \\(2(\\mathbf{u}\\cdot\\mathbf{v})\\).",
       "topic_id": "la-vectorspaces",
       "subskill_id": "la-vectorspaces-1",
       "educational_aim": "Demonstrate foundational mastery of Matrices, Matrix Algebra & Inverses by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Matrices, Matrix Algebra & Inverses — Direct Concept & Representation",
       "choices": [
-        "\\(8\\)",
-        "\\(7\\)",
-        "\\(15\\)",
-        "\\(4\\)"
+        "\\(28\\)",
+        "\\(19\\)",
+        "\\(13\\)",
+        "\\(22\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 4\\). Adding \\(4\\) yields \\(4 + 4 = 8\\).",
+      "answer": 3,
+      "sol": "The dot product is \\(\\mathbf{u}\\cdot\\mathbf{v} = (5)(3) + (2)(-2) + (0)(1) = 11\\). Scaling by \\(2\\) gives \\(22\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Compute the dot product by summing the products of matching components.",
+        "Evaluate \\((5)(3) + (2)(-2) + (0)(1)\\) first.",
+        "Multiply the resulting dot product by \\(2\\) to obtain \\(22\\)."
       ],
       "calc": true,
       "irt": {
@@ -37760,36 +37670,31 @@
         "b": 0.195,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 4 + 4",
+      "sympy_cert": "EXPECTED = 2 * ((5)*(3) + (2)*(-2) + (0)*(1))",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "Vector Component Table (LINALG-0676)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Vector",
+          "\\(x\\)-component",
+          "\\(y\\)-component",
+          "\\(z\\)-component"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "\\(\\mathbf{u}\\)",
+            "\\(5\\)",
+            "\\(2\\)",
+            "\\(0\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "\\(\\mathbf{v}\\)",
+            "\\(3\\)",
+            "\\(-2\\)",
+            "\\(1\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, LINALG-12886)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، LINALG-12886)"
+        ]
       }
     },
     {
@@ -40345,9 +40250,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "30",
           "78",
-          "?",
-          "30"
+          "?"
         ],
         "vertices": [
           [
@@ -41212,26 +41117,26 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "easy",
-      "text": "Given the structured navigation observations displayed in the table (LINALG-10654), evaluate \\(f(g(3)) + 4\\).",
+      "text": "Refer to the tabulated measurements in the laboratory measurement table (LINALG-0766) to matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-3",
       "educational_aim": "Apply core Systems of Linear Equations & Row Reduction principles to solve foundational problems accurately.",
       "exam_archetype": "Systems of Linear Equations & Row Reduction — Core Procedural Application",
       "choices": [
-        "\\(11\\)",
-        "\\(6\\)",
-        "\\(18\\)",
-        "\\(7\\)"
+        "\\(3\\)",
+        "\\(0\\)",
+        "\\(5\\)",
+        "\\(4\\)"
       ],
       "answer": 0,
-      "sol": "From the table, \\(g(3) = 1\\) and \\(f(1) = 7\\). Adding \\(4\\) yields \\(7 + 4 = 11\\).",
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (3)\\lambda + (0) = (\\lambda - 3)(\\lambda - 0) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 3\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(3\\) and determinant \\(0\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(3\\) and \\(0\\); select the larger root."
       ],
       "calc": true,
-      "sympy_cert": "EXPECTED = 7 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[0,3],[0,3]]).eigenvals().keys())",
       "sympy_verified": true,
       "irt": {
         "a": 1.351,
@@ -41240,32 +41145,24 @@
       },
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0766)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "Row 1",
+            "\\(0\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "3",
-            "4",
-            "1",
-            "2"
+            "Row 2",
+            "\\(0\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, LINALG-10654)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، LINALG-10654)"
+        ]
       }
     },
     {
@@ -42253,9 +42150,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "3",
           "?",
-          "4",
-          "3"
+          "4"
         ],
         "vertices": [
           [
@@ -42447,9 +42344,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "7",
           "?",
-          "24",
-          "7"
+          "24"
         ],
         "vertices": [
           [
@@ -42489,26 +42386,26 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "easy",
-      "text": "Based strictly on the tabulated acoustics lab observations (LINALG-11496), evaluate \\(f(g(1)) + 2\\).",
+      "text": "The optics alignment chart (LINALG-0785) reports the values in the table; matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-3",
       "educational_aim": "Apply core Determinants & Geometric Volume principles to solve foundational problems accurately.",
       "exam_archetype": "Determinants & Geometric Volume — Core Procedural Application",
       "choices": [
+        "\\(1\\)",
+        "\\(5\\)",
         "\\(6\\)",
-        "\\(10\\)",
-        "\\(8\\)",
-        "\\(11\\)"
+        "\\(7\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(1) = 2\\) and \\(f(2) = 6\\). Adding \\(2\\) yields \\(6 + 2 = 8\\).",
+      "answer": 1,
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (6)\\lambda + (5) = (\\lambda - 5)(\\lambda - 1) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 5\\).",
       "hints": [
-        "Locate column x = 1 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(1) and look it up in the top x header row to find f(g(1)).",
-        "Add 2 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(6\\) and determinant \\(5\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(5\\) and \\(1\\); select the larger root."
       ],
       "calc": false,
-      "sympy_cert": "EXPECTED = 6 + 2",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[1,4],[0,5]]).eigenvals().keys())",
       "sympy_verified": true,
       "irt": {
         "a": 1.232,
@@ -42517,32 +42414,24 @@
       },
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0785)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "Row 1",
+            "\\(1\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(0\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (acoustics lab, LINALG-11496)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر الصوت، LINALG-11496)"
+        ]
       }
     },
     {
@@ -44827,23 +44716,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "Given the structured metallurgy observations displayed in the table (LINALG-12666), evaluate \\(f(g(3)) + 4\\).",
+      "text": "Examining the entries in the robotics kinematics log (LINALG-0819), matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-1",
       "educational_aim": "Demonstrate foundational mastery of Linear Transformations, Matrix Representations & Change of Basis by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Linear Transformations, Matrix Representations & Change of Basis — Direct Concept & Representation",
       "choices": [
-        "\\(8\\)",
-        "\\(15\\)",
-        "\\(14\\)",
-        "\\(10\\)"
+        "\\(2\\)",
+        "\\(9\\)",
+        "\\(7\\)",
+        "\\(8\\)"
       ],
       "answer": 2,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 10\\). Adding \\(4\\) yields \\(10 + 4 = 14\\).",
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (9)\\lambda + (14) = (\\lambda - 7)(\\lambda - 2) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 7\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(9\\) and determinant \\(14\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(7\\) and \\(2\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -44851,36 +44740,28 @@
         "b": 0.627,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 10 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[5,2],[3,4]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0819)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "Row 1",
+            "\\(5\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(3\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (metallurgy, LINALG-12666)",
-        "caption_ar": "قيم مختارة للدالتين (علم المعادن، LINALG-12666)"
+        ]
       }
     },
     {
@@ -45109,9 +44990,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "16",
           "34",
-          "?",
-          "16"
+          "?"
         ],
         "vertices": [
           [
@@ -45182,23 +45063,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "Inspect the reactor bench values listed across the table (LINALG-13038); evaluate \\(f(g(3)) + 4\\).",
+      "text": "According to the summarized dataset in the acoustic signal summary (LINALG-0825), matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-2",
       "educational_aim": "Apply properties and theorems of Determinants & Geometric Volume in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Determinants & Geometric Volume — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(6\\)",
-        "\\(16\\)",
-        "\\(17\\)",
-        "\\(12\\)"
+        "\\(3\\)",
+        "\\(12\\)",
+        "\\(11\\)",
+        "\\(9\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "answer": 3,
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (12)\\lambda + (27) = (\\lambda - 9)(\\lambda - 3) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 9\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(12\\) and determinant \\(27\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(9\\) and \\(3\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -45206,36 +45087,28 @@
         "b": 0.638,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[6,3],[3,6]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0825)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(6\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(3\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (reactor bench, LINALG-13038)",
-        "caption_ar": "قيم مختارة للدالتين (منصة المفاعل، LINALG-13038)"
+        ]
       }
     },
     {
@@ -45422,23 +45295,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "In assessment dataset (LINALG-13410) for flow bench, the table reports key quantities; evaluate \\(f(g(3)) + 4\\).",
+      "text": "Using the CAD verification schedule (LINALG-0831) shown in the table below, matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-2",
       "educational_aim": "Apply properties and theorems of Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(13\\)",
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(9\\)"
+        "\\(2\\)",
+        "\\(-1\\)",
+        "\\(1\\)",
+        "\\(4\\)"
       ],
       "answer": 0,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (1)\\lambda + (-2) = (\\lambda - 2)(\\lambda - -1) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 2\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(1\\) and determinant \\(-2\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(2\\) and \\(-1\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -45446,36 +45319,28 @@
         "b": 0.481,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 9 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[-2,4],[-1,3]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0831)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "Row 1",
+            "\\(-2\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(-1\\)",
+            "\\(3\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (flow bench, LINALG-13410)",
-        "caption_ar": "قيم مختارة للدالتين (مختبر التدفق، LINALG-13410)"
+        ]
       }
     },
     {
@@ -45662,23 +45527,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "In the genetics record (LINALG-13782), using the table values, evaluate \\(f(g(3)) + 4\\).",
+      "text": "From the entries recorded in the aerospace sensor table (LINALG-0837), matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-3",
       "educational_aim": "Connect Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares concepts to solve standard-difficulty exam problems.",
       "exam_archetype": "Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares — Non-Routine Synthesis & Past-Paper Challenge",
       "choices": [
-        "\\(5\\)",
-        "\\(15\\)",
-        "\\(16\\)",
-        "\\(11\\)"
+        "\\(0\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(5\\)"
       ],
       "answer": 1,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 11\\). Adding \\(4\\) yields \\(11 + 4 = 15\\).",
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (4)\\lambda + (0) = (\\lambda - 4)(\\lambda - 0) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 4\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(4\\) and determinant \\(0\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(4\\) and \\(0\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -45686,36 +45551,28 @@
         "b": 0.007,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 11 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[2,2],[2,2]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0837)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "5",
-            "7",
-            "12",
-            "11"
+            "Row 1",
+            "\\(2\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(2\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (genetics, LINALG-13782)",
-        "caption_ar": "قيم مختارة للدالتين (الوراثة، LINALG-13782)"
+        ]
       }
     },
     {
@@ -45912,23 +45769,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "The table summarizes measurements from a navigation evaluation (LINALG-14154); using these entries, evaluate \\(f(g(3)) + 4\\).",
+      "text": "Based on the values compiled in the harmonic oscillator log (LINALG-0843) table, matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-1",
       "educational_aim": "Demonstrate foundational mastery of Linear Transformations, Matrix Representations & Change of Basis by solving direct algebraic, graphical, or geometric formulations tested on LINALG past papers.",
       "exam_archetype": "Linear Transformations, Matrix Representations & Change of Basis — Direct Concept & Representation",
       "choices": [
+        "\\(1\\)",
         "\\(7\\)",
-        "\\(17\\)",
-        "\\(18\\)",
-        "\\(13\\)"
+        "\\(6\\)",
+        "\\(8\\)"
       ],
-      "answer": 1,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 13\\). Adding \\(4\\) yields \\(13 + 4 = 17\\).",
+      "answer": 2,
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (7)\\lambda + (6) = (\\lambda - 6)(\\lambda - 1) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 6\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(7\\) and determinant \\(6\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(6\\) and \\(1\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -45936,36 +45793,28 @@
         "b": 0.055,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 13 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[3,3],[2,4]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0843)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "7",
-            "9",
-            "14",
-            "13"
+            "Row 1",
+            "\\(3\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(2\\)",
+            "\\(4\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (navigation, LINALG-14154)",
-        "caption_ar": "قيم مختارة للدالتين (الملاحة، LINALG-14154)"
+        ]
       }
     },
     {
@@ -46162,23 +46011,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "medium",
-      "text": "Based strictly on the tabulated grid assay observations (LINALG-14526), evaluate \\(f(g(3)) + 4\\).",
+      "text": "Inspect the data rows in the fabrication tolerance chart (LINALG-0849); matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-2",
       "educational_aim": "Apply properties and theorems of Determinants & Geometric Volume in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Determinants & Geometric Volume — Multi-Step Application & Parameter Solve",
       "choices": [
-        "\\(8\\)",
-        "\\(15\\)",
+        "\\(2\\)",
         "\\(10\\)",
-        "\\(14\\)"
+        "\\(9\\)",
+        "\\(8\\)"
       ],
       "answer": 3,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 10\\). Adding \\(4\\) yields \\(10 + 4 = 14\\).",
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (10)\\lambda + (16) = (\\lambda - 8)(\\lambda - 2) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 8\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(10\\) and determinant \\(16\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(8\\) and \\(2\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -46186,36 +46035,28 @@
         "b": 0.261,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 10 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[4,4],[2,6]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0849)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "4",
-            "6",
-            "11",
-            "10"
+            "Row 1",
+            "\\(4\\)",
+            "\\(4\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(2\\)",
+            "\\(6\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (grid assay, LINALG-14526)",
-        "caption_ar": "قيم مختارة للدالتين (فحص الشبكة، LINALG-14526)"
+        ]
       }
     },
     {
@@ -46403,23 +46244,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "hard",
-      "text": "Examine the logistics dataset arranged in the table below (LINALG-14898); evaluate \\(f(g(3)) + 4\\).",
+      "text": "Refer to the tabulated measurements in the surveying log (LINALG-0855) to matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-2",
       "educational_aim": "Apply properties and theorems of Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces — Multi-Step Application & Parameter Solve",
       "choices": [
         "\\(6\\)",
-        "\\(17\\)",
-        "\\(16\\)",
-        "\\(12\\)"
+        "\\(3\\)",
+        "\\(9\\)",
+        "\\(8\\)"
       ],
-      "answer": 2,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 12\\). Adding \\(4\\) yields \\(12 + 4 = 16\\).",
+      "answer": 0,
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (9)\\lambda + (18) = (\\lambda - 6)(\\lambda - 3) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 6\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(9\\) and determinant \\(18\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(6\\) and \\(3\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -46427,36 +46268,28 @@
         "b": 0.973,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 12 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[4,2],[1,5]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0855)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "6",
-            "8",
-            "13",
-            "12"
+            "Row 1",
+            "\\(4\\)",
+            "\\(2\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(1\\)",
+            "\\(5\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (logistics, LINALG-14898)",
-        "caption_ar": "قيم مختارة للدالتين (العمليات اللوجستية، LINALG-14898)"
+        ]
       }
     },
     {
@@ -46655,23 +46488,23 @@
       "type": "mcq",
       "domain": "Eigenvalues & Eigenvectors",
       "difficulty": "hard",
-      "text": "An engineering team logged metallurgy measurements in the accompanying table (LINALG-15270); using these data, evaluate \\(f(g(3)) + 4\\).",
+      "text": "The engineering blueprint table (LINALG-0861) reports the values in the table; matrix \\(A\\) has its row entries listed in the table. Find the largest eigenvalue of \\(A\\).",
       "topic_id": "la-eigen",
       "subskill_id": "la-eigen-3",
       "educational_aim": "Synthesize Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares — Non-Routine Synthesis & Past-Paper Challenge",
       "choices": [
-        "\\(13\\)",
-        "\\(7\\)",
-        "\\(14\\)",
-        "\\(9\\)"
+        "\\(-1\\)",
+        "\\(3\\)",
+        "\\(2\\)",
+        "\\(5\\)"
       ],
-      "answer": 0,
-      "sol": "From the table, \\(g(3) = 4\\) and \\(f(4) = 9\\). Adding \\(4\\) yields \\(9 + 4 = 13\\).",
+      "answer": 1,
+      "sol": "The characteristic polynomial is \\(\\lambda^2 - (2)\\lambda + (-3) = (\\lambda - 3)(\\lambda - -1) = 0\\). Thus the larger eigenvalue is \\(\\lambda = 3\\).",
       "hints": [
-        "Locate column x = 3 first and read the row for g(x) to find the inner output.",
-        "Take the value obtained for g(3) and look it up in the top x header row to find f(g(3)).",
-        "Add 4 to the second lookup value and verify no row mix-up occurred."
+        "Form the characteristic equation \\(\\det(A - \\lambda I) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det(A) = 0\\).",
+        "Compute trace \\(2\\) and determinant \\(-3\\) from the table entries before factoring.",
+        "The quadratic factors into integer roots \\(3\\) and \\(-1\\); select the larger root."
       ],
       "calc": false,
       "irt": {
@@ -46679,36 +46512,28 @@
         "b": 0.943,
         "c": 0.25
       },
-      "sympy_cert": "EXPECTED = 9 + 4",
+      "sympy_cert": "EXPECTED = max(sp.Matrix([[0,3],[1,2]]).eigenvals().keys())",
       "sympy_verified": true,
       "figure": {
         "type": "table",
+        "caption": "2x2 Matrix Entries Table (LINALG-0861)",
         "headers": [
-          "\\(x\\)",
-          "1",
-          "2",
-          "3",
-          "4"
+          "Row",
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "\\(f(x)\\)",
-            "3",
-            "5",
-            "10",
-            "9"
+            "Row 1",
+            "\\(0\\)",
+            "\\(3\\)"
           ],
           [
-            "\\(g(x)\\)",
-            "2",
-            "3",
-            "4",
-            "1"
+            "Row 2",
+            "\\(1\\)",
+            "\\(2\\)"
           ]
-        ],
-        "orientation": "horizontal",
-        "caption": "Selected values of functions f and g (metallurgy, LINALG-15270)",
-        "caption_ar": "قيم مختارة للدالتين (علم المعادن، LINALG-15270)"
+        ]
       }
     },
     {
@@ -48258,9 +48083,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "14",
           "?",
-          "48",
-          "14"
+          "48"
         ],
         "vertices": [
           [
@@ -48454,9 +48279,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "30",
           "78",
-          "?",
-          "30"
+          "?"
         ],
         "vertices": [
           [
@@ -49396,9 +49221,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "15",
           "39",
-          "?",
-          "15"
+          "?"
         ],
         "vertices": [
           [
@@ -49881,9 +49706,9 @@
         "rightAngle": "C",
         "rightAt": "C",
         "sides": [
+          "6",
           "?",
-          "8",
-          "6"
+          "8"
         ],
         "vertices": [
           [

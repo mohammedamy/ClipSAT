@@ -198,7 +198,7 @@ window.CSAssign = {
       if(_f){
         if(typeof _f === 'string'){
           figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">'+_f+'</div>';
-        } else if(_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)){
+        } else if(_f && (!(_f.type && _f.type !== 'table') && !(_f.cols || _f.columns || _f.colLabels || _f.col_labels || _f.column_labels || _f.columnLabels || _f.col_totals || _f.column_totals || _f.cell_values || _f.observed) && !(Array.isArray(_f.rows) && _f.rows.length && !Array.isArray(_f.rows[0])) && (_f.type === 'table' || Array.isArray(_f.headers) || Array.isArray(_f.rows)))){
           var _hdrs=(Array.isArray(_f.headers)?_f.headers:[]).map(function(th){return '<th>'+_mesc(th!=null?String(th):'')+'</th>';}).join('');
           var _rawRows=Array.isArray(_f.rows)?_f.rows:(Array.isArray(_f.data)?_f.data:[]);
           var _rws=_rawRows.map(function(r){

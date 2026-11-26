@@ -237,7 +237,10 @@
     } else if(t === 'circle'){
       res = 'Circle';
       if(fig.center) res += ' centered at ' + fig.center;
-      if(fig.radius) res += ' with radius ' + fig.radius;
+      if(fig.radius){
+        var _rStr = String(fig.radius).trim();
+        res += /^[rd]\s*=/.test(_rStr) ? (' with ' + _rStr) : (' with radius ' + _rStr);
+      }
       if(fig.diameter) res += ' with diameter ' + fig.diameter;
       if(fig.sector) res += ' with shaded sector ' + (fig.sector.label || '');
       if(fig.arc) res += ' showing marked arc';
@@ -4317,16 +4320,28 @@ function renderSlopeField(s){
 /* ── Two-Way Table ────────────────────────────────────── */
 function renderTwoWayTable(s){
   var a11y = _figA11yLabel(s);
+  var _cellStr = function(v){
+    if(v == null) return '\u2014';
+    if(typeof v === 'object') return String(v.val != null ? v.val : (v.value != null ? v.value : (v.label != null ? v.label : (v.text != null ? v.text : JSON.stringify(v)))));
+    return String(v);
+  };
+  var _isArUi = Boolean((window.CSItemLocale && window.CSItemLocale.isAr()) || (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang === 'ar'));
   var rawData = s.data || s.observed || s.cell_values || null;
   var rows = null, cols = null, data = null, corner = '';
 
-  var candCols = s.cols || s.colLabels || s.col_labels || s.column_labels || s.columnLabels || s.columns || null;
-  var candRows = s.rows || s.rowLabels || s.row_labels || s.categories || null;
+  var _arr = function(v){ return Array.isArray(v) ? v : null; };
+  var candCols = _arr(s.cols) || _arr(s.colLabels) || _arr(s.col_labels) || _arr(s.column_labels) || _arr(s.columnLabels) || _arr(s.columns) || null;
+  var candRows = _arr(s.rows) || _arr(s.rowLabels) || _arr(s.row_labels) || _arr(s.categories) || null;
 
   if(Array.isArray(s.rows) && s.rows.length && typeof s.rows[0] === 'object' && !Array.isArray(s.rows[0])){
     rows = s.rows.map(function(r, i){ return r.label != null ? r.label : ('Row ' + (i+1)); });
     data = s.rows.map(function(r){ return Array.isArray(r.data) ? r.data : (Array.isArray(r.cells) ? r.cells : []); });
-    cols = Array.isArray(candCols) ? candCols : (data[0]||[]).map(function(_, i){ return 'Col ' + (i+1); });
+    if(Array.isArray(candCols) && candCols.length === ((data[0]||[]).length + 1)){
+      corner = _cellStr(candCols[0]);
+      cols = candCols.slice(1);
+    } else {
+      cols = Array.isArray(candCols) ? candCols : (data[0]||[]).map(function(_, i){ return 'Col ' + (i+1); });
+    }
   } else if(Array.isArray(s.rows) && s.rows.length && Array.isArray(s.rows[0])){
     if(Array.isArray(candCols) && candCols.length){
       if(candCols.length === s.rows[0].length){
@@ -4400,13 +4415,14 @@ function renderTwoWayTable(s){
   var h = '<div class="exam-table-wrap"'+(s.dir?' dir="'+s.dir+'"':'')+'><table class="mfig-table" role="table" aria-label="'+esc(a11y)+'" style="margin:8px auto;border-collapse:collapse;font-size:12px;font-family:sans-serif;color:'+FIG_INK+';background:'+FIG_BG+';border:1px solid '+FIG_BORDER+';border-radius:6px;overflow:hidden">';
   if(title) h += '<caption>' + esc(title) + '</caption>';
   h += '<thead><tr style="background:'+FIG_INDIGO_FILL+'">';
-  h += '<th style="padding:6px 12px;border:1px solid '+FIG_BORDER+'">' + esc(corner) + '</th>';
-  cols.forEach(function(c){ h += '<th style="padding:6px 12px;border:1px solid '+FIG_BORDER+'">' + esc(c) + '</th>'; });
+  h += '<th style="padding:6px 12px;border:1px solid '+FIG_BORDER+'">' + esc(_cellStr(corner || '')) + '</th>';
+  cols.forEach(function(c){ h += '<th style="padding:6px 12px;border:1px solid '+FIG_BORDER+'">' + esc(_cellStr(c)) + '</th>'; });
   h += '</tr></thead><tbody>';
   rows.forEach(function(r, ri){
-    h += '<tr><th style="padding:6px 12px;border:1px solid '+FIG_BORDER+';background:'+FIG_INDIGO_FILL+'">' + esc(r) + '</th>';
+    h += '<tr><th style="padding:6px 12px;border:1px solid '+FIG_BORDER+';background:'+FIG_INDIGO_FILL+'">' + esc(_cellStr(r)) + '</th>';
     cols.forEach(function(c, ci){
-      var val = (data[ri] && data[ri][ci] != null) ? data[ri][ci] : '';
+      var rawVal = (data[ri] && data[ri][ci] !== undefined) ? data[ri][ci] : undefined;
+      var val = rawVal == null ? '\u2014' : (typeof rawVal === 'object' ? (rawVal.val != null ? rawVal.val : (rawVal.value != null ? rawVal.value : (rawVal.label != null ? rawVal.label : (rawVal.text != null ? rawVal.text : JSON.stringify(rawVal))))) : rawVal);
       var isHigh = s.highlight && s.highlight.row === ri && s.highlight.col === ci;
       var cellStyle = 'padding:6px 12px;text-align:center;border:1px solid '+FIG_BORDER+';';
       if(isHigh) cellStyle += 'background:'+FIG_AMBER_FILL+';font-weight:bold;color:'+FIG_AMBER_TEXT+';';

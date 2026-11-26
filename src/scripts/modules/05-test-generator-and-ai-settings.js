@@ -62,11 +62,18 @@ function _runAI(btn,run,optViewId){
     if(out) out.innerHTML='<p class="tg-empty" style="color:#dc2626">Error: '+esc(err.message)+'</p>';
   });
 }
+function _isPlainTableFig(f){
+  if(!f||typeof f!=='object') return false;
+  if(f.type&&f.type!=='table') return false;
+  if(f.cols||f.columns||f.colLabels||f.col_labels||f.column_labels||f.columnLabels||f.col_totals||f.column_totals||f.cell_values||f.observed) return false;
+  if(Array.isArray(f.rows)&&f.rows.length&&!Array.isArray(f.rows[0])) return false;
+  return f.type==='table'||Array.isArray(f.headers)||Array.isArray(f.rows);
+}
 function _renderQFig(q){
   var f = q.figure || q.fig || q.table;
   if(!f) return '';
   if(typeof f === 'string') return f;
-  if(f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)){
+  if(_isPlainTableFig(f)){
     var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){
       return '<th>' + (typeof window._autoMath === 'function' ? window._autoMath(th != null ? String(th) : '') : th) + '</th>';
     }).join('');

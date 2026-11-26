@@ -456,7 +456,7 @@
       } else if (figure) {
         if (typeof figure === 'string') {
           figHtml = figure;
-        } else if (figure.type === 'table' || figure.headers || figure.rows || figure.data) {
+        } else if ((figure.type === 'table' || figure.headers || figure.rows) && !(Array.isArray(figure.data) || Array.isArray(figure.values) || Array.isArray(figure.cells) || figure.type === 'two_way_table' || figure.type === 'twoWayTable' || (Array.isArray(figure.rows) && figure.rows[0] && typeof figure.rows[0] === 'object' && !Array.isArray(figure.rows[0])))) {
           var hdrs = (figure.headers || []).map(function (h) {
             return '<th>' + escHtml(String(h != null ? h : '')) + '</th>';
           }).join('');

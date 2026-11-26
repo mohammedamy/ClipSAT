@@ -168,7 +168,7 @@
   /* Render HTML for a 3-tier progressive hint bar + collapsible stack inside any question card */
   function renderHintWidget(q, uid){
     var hints = buildHints(q);
-    var isAr = _isArabicText(hints[0]);
+    var isAr = Boolean((window.CSItemLocale && window.CSItemLocale.isAr()) || (typeof document !== 'undefined' && document.documentElement && (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl')) || _isArabicText(hints[0]));
     var labels = isAr ? TIER_LABELS_AR : TIER_LABELS;
     var fmtMath = typeof window.CSQuizMath === 'function'
       ? window.CSQuizMath
