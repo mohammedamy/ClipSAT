@@ -11539,6 +11539,8 @@ body.dark .ch-note-area {
   bottom: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh;
+  overscroll-behavior: contain;
   background: var(--paper);
   z-index: 97000;
   flex-direction: column;
@@ -11552,57 +11554,97 @@ body.dark .ch-note-area {
 #mock-exam-header {
   background: var(--indigo);
   color: #fff;
-  padding: 12px 20px;
+  padding: max(6px, env(safe-area-inset-top)) 14px 6px;
+  min-height: 44px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: nowrap;
   position: sticky;
   top: 0;
-  z-index: 1
+  z-index: 3;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .14)
+}
+
+@media(max-width:980px) {
+  #mock-exam-header {
+    flex-wrap: wrap;
+    padding: 6px 10px;
+    gap: 6px
+  }
 }
 
 #mock-exam-title {
-  font-size: 1rem;
+  margin: 0;
+  font-size: .88rem;
   font-weight: 700;
-  flex: 1
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+#mock-exam-title > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis
 }
 
 #mock-exam-timer {
-  font-size: 1.3rem;
+  font-size: .92rem;
   font-weight: 700;
   font-family: monospace;
   background: rgba(0, 0, 0, .25);
-  padding: 4px 12px;
-  border-radius: 8px
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0
+}
+
+#mock-exam-header .mock-exit-btn {
+  padding: 4px 10px !important;
+  font-size: .76rem !important;
+  margin-inline-start: 4px !important;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .08);
+  white-space: nowrap;
+  flex-shrink: 0
 }
 
 #mock-exam-body {
   flex: 1;
-  padding: 20px;
-  max-width: 800px;
+  padding: 10px 20px 16px;
+  max-width: 1080px;
   margin: 0 auto;
-  width: 100%
+  width: 100%;
+  box-sizing: border-box
 }
 
 .mock-q {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 16px
+  padding: 20px 24px;
+  margin-bottom: 12px
 }
 
 .mq-num {
-  font-size: .78rem;
+  font-size: .82rem;
   color: var(--muted);
   font-weight: 600;
-  margin-bottom: 6px
+  margin-bottom: 8px
 }
 
 .mq-text {
-  font-size: .95rem;
-  margin-bottom: 12px;
-  line-height: 1.6
+  font-size: 1.06rem;
+  margin-bottom: 14px;
+  line-height: 1.65
 }
 
 .mock-q textarea {
@@ -11611,18 +11653,22 @@ body.dark .ch-note-area {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px;
-  font-size: .9rem;
+  font-size: .95rem;
   background: var(--paper);
   color: var(--ink)
 }
 
 #mock-exam-footer {
-  padding: 16px 20px;
+  padding: 8px 18px max(8px, env(safe-area-inset-bottom));
   border-top: 1px solid var(--line);
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  background: var(--panel)
+  background: var(--panel);
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  box-sizing: border-box
 }
 
 .mock-exit-btn {
@@ -11668,23 +11714,34 @@ body.dark .ch-note-area {
 .mock-tools-wrap {
   display: flex;
   align-items: center;
-  gap: 8px
+  gap: 5px;
+  margin-left: auto;
+  flex-wrap: wrap
 }
 
-.mock-tools-wrap .hdr-btn {
-  padding: 5px 12px;
-  font-size: .8rem;
+.mock-tools-wrap .hdr-btn,
+#mock-exam-header .cbt-flag-btn {
+  padding: 4px 8px;
+  font-size: .75rem;
   font-weight: 600;
+  line-height: 1.2;
   background: rgba(255, 255, 255, .15);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, .3);
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
+  white-space: nowrap;
   transition: background .15s ease
 }
 
 .mock-tools-wrap .hdr-btn:hover {
   background: rgba(255, 255, 255, .28)
+}
+
+#mock-exam-header #cbt-mode-switch-btn.practice-on {
+  background: rgba(251, 191, 36, .24);
+  border-color: rgba(251, 191, 36, .65);
+  color: #fef3c7
 }
 
 .mock-qc-grid {
@@ -11713,12 +11770,12 @@ body.dark .ch-note-area {
 }
 
 .mock-spr-input {
-  width: 180px;
-  padding: 9px 14px;
+  width: 230px;
+  padding: 10px 14px;
   border: 1.5px solid var(--border, #cbd5e1);
   border-radius: 8px;
   font-family: var(--mono, monospace);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   background: var(--paper);
   color: var(--ink);
@@ -11733,9 +11790,10 @@ body.dark .ch-note-area {
 
 .mock-choice-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  padding: 10px 14px;
+  padding: 11px 16px;
+  font-size: 1.02rem;
   border: 1px solid var(--border, #e2e8f0);
   border-radius: 8px;
   cursor: pointer;
@@ -24420,24 +24478,116 @@ body.dark .cs-chapter-frq-solution summary {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
   background: var(--panel, #fff);
-  border: 1.5px solid var(--border, #cbd5e1);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 14px;
-  font-size: .84rem;
+  border: 1px solid var(--border, #cbd5e1);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: .78rem;
 }
 
 .cs-sat-bank-bar select,
 .cs-sat-bank-bar input[type="number"] {
-  padding: 5px 8px;
+  padding: 4px 7px;
   border-radius: 6px;
-  border: 1.5px solid var(--border, #cbd5e1);
+  border: 1px solid var(--border, #cbd5e1);
   background: var(--paper, #fff);
   color: var(--ink, #0f172a);
-  font-size: .82rem;
+  font-size: .78rem;
   font-weight: 600;
+}
+
+.cs-sat-bar-pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--border, #cbd5e1);
+  background: var(--paper-2, #f8fafc);
+  color: var(--indigo, #1e3a6e);
+  font-size: .75rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cs-sat-bar-pdf-link:hover {
+  background: #e2e8f0;
+}
+
+@media(min-width:680px) {
+  .mock-choices-list.mock-choices-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px !important;
+  }
+}
+
+.cbt-practice-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.cbt-check-ans-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: .86rem;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #1e3a8a;
+  color: #fff;
+  border: 1px solid #1e40af;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.cbt-check-ans-btn:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+.cbt-reveal-ans-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  font-size: .82rem;
+  font-weight: 700;
+  border-radius: 7px;
+  background: var(--paper-2, #f1f5f9);
+  color: var(--indigo, #1e3a8a);
+  border: 1px solid #93c5fd;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .cs-sat-bar-pdf-link,
+[data-dark="1"] .cs-sat-bar-pdf-link,
+.dark .cs-sat-bar-pdf-link {
+  background: #0f172a;
+  border-color: #475569;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .cbt-check-ans-btn,
+[data-dark="1"] .cbt-check-ans-btn,
+.dark .cbt-check-ans-btn {
+  background: #2563eb;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .cbt-reveal-ans-btn,
+[data-dark="1"] .cbt-reveal-ans-btn,
+.dark .cbt-reveal-ans-btn {
+  background: #1e293b;
+  border-color: #475569;
+  color: #93c5fd;
 }
 
 [data-theme="dark"] .cs-sat-bank-bar,
@@ -24522,4 +24672,261 @@ body.dark .cs-chapter-frq-solution summary {
 [data-dark="1"] .cs-sat-pack-card h4,
 .dark .cs-sat-pack-card h4 {
   color: #f8fafc;
+}
+
+.cbt-show-sm {
+  display: none;
+}
+
+.cbt-mobile-zoom-btn {
+  display: none;
+}
+
+.cs-cbt-crop-img.cs-crop-zoomed {
+  max-width: none !important;
+  width: min(680px, 175vw) !important;
+  height: auto !important;
+}
+
+[data-theme="dark"] .cbt-mobile-zoom-btn,
+[data-dark="1"] .cbt-mobile-zoom-btn,
+.dark .cbt-mobile-zoom-btn {
+  background: #0f172a;
+  border-color: #475569;
+  color: #93c5fd;
+}
+
+/* ── Mobile & Tablet Optimization for CBT Simulator ── */
+@media (max-width: 768px) {
+  #mock-exam-header {
+    flex-wrap: wrap;
+    padding: max(6px, env(safe-area-inset-top)) 10px 6px;
+    gap: 4px 6px;
+    min-height: 0;
+  }
+
+  #mock-exam-title {
+    order: 1;
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: .82rem;
+  }
+
+  #mock-exam-timer {
+    order: 2;
+    font-size: .8rem;
+    padding: 2px 7px;
+  }
+
+  #mock-exam-header .mock-exit-btn {
+    order: 3;
+    padding: 3px 8px !important;
+    font-size: .73rem !important;
+  }
+
+  #mock-exam-header .mock-tools-wrap {
+    order: 4;
+    flex: 1 1 100%;
+    width: 100%;
+    margin: 0 !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 5px;
+    padding-bottom: 1px;
+  }
+
+  #mock-exam-header .mock-tools-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mock-tools-wrap .hdr-btn,
+  #mock-exam-header .cbt-flag-btn {
+    padding: 4px 8px;
+    font-size: .73rem;
+    flex-shrink: 0;
+  }
+
+  #cbt-fs-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .cbt-mobile-zoom-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    font-size: .72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    border: 1px solid var(--border, #cbd5e1);
+    background: var(--paper-2, #f8fafc);
+    color: var(--indigo, #1e3a8a);
+    cursor: pointer;
+    margin-bottom: 6px;
+  }
+
+  .cs-cbt-crop-img {
+    cursor: zoom-in;
+  }
+
+  .cs-cbt-crop-img.cs-crop-zoomed {
+    cursor: zoom-out;
+  }
+}
+
+@media (max-width: 640px) {
+  .cbt-hide-sm {
+    display: none !important;
+  }
+
+  .cbt-show-sm {
+    display: inline !important;
+  }
+
+  #mock-exam-body {
+    padding: 8px 8px 14px;
+  }
+
+  .mock-q {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .mq-text {
+    font-size: 1rem;
+    line-height: 1.58;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mock-spr-input {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 16px !important;
+    min-height: 44px;
+  }
+
+  .mock-q textarea {
+    font-size: 16px;
+  }
+
+  .mock-choice-row {
+    padding: 10px 12px !important;
+    min-height: 44px;
+    font-size: .96rem;
+    gap: 8px;
+  }
+
+  .mock-choice-row input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .cbt-strike-btn {
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .cbt-practice-actions .cbt-check-ans-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 42px;
+    font-size: .9rem;
+  }
+
+  .cs-sat-bank-bar {
+    padding: 6px 8px;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .cs-sat-bar-primary {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .cs-sat-bar-primary select {
+    flex: 1 1 0;
+    min-width: 0;
+    text-overflow: ellipsis;
+  }
+
+  .cs-sat-bar-secondary {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .cs-sat-bank-bar select,
+  .cs-sat-bank-bar input[type="number"] {
+    font-size: 16px;
+    min-height: 36px;
+    padding: 4px 6px;
+  }
+
+  #mock-exam-footer {
+    padding: 6px 10px max(6px, env(safe-area-inset-bottom));
+  }
+
+  .mock-cbt-nav {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .cbt-nav-btn {
+    padding: 8px 11px;
+    font-size: .8rem;
+    min-height: 40px;
+    white-space: nowrap;
+  }
+
+  .cbt-q-pill {
+    padding: 6px 10px;
+    font-size: .78rem;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .cbt-footer-check-btn {
+    display: none !important;
+  }
+
+  .cbt-palette-card {
+    width: 96%;
+    padding: 14px;
+    max-height: 86dvh;
+    border-radius: 12px;
+  }
+
+  .cbt-palette-grid {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 7px;
+    margin: 12px 0;
+  }
+
+  .cbt-pal-item {
+    height: 40px;
+    font-size: .84rem;
+  }
+
+  #cbt-results-hero {
+    padding: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #cbt-results-hero h2 {
+    font-size: 1.2rem !important;
+  }
 }

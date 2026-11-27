@@ -45,4 +45,6 @@
   _forward('submitMockExam');
   _forward('retakeCurrentCBTExam');
   _forward('cbtFilterReview');
+  _forward('cbtCheckCurrentAnswer');
+  _forward('cbtTogglePracticeMode');
 })();

@@ -13,7 +13,7 @@
     if (_promise) return _promise;
     _promise = new Promise(function (resolve, reject) {
       var s = document.createElement('script');
-      s.src = '/js/floating-calc.js?v=20261126b';
+      s.src = '/js/floating-calc.js?v=20261126e';
       s.onload = function () {
         window.__csFloatingCalcLoaded = true;
         var q = _queue.slice();

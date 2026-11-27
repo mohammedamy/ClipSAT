@@ -501,7 +501,7 @@
     if(_figuresPromise) return _figuresPromise;
     _figuresPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/figures.js?v=20261126c';
+      s.src='/js/figures.js?v=20261126e';
       s.onload=function(){ window._renderFig&&window.renderMathFigure?resolve():reject(new Error('figures.js did not register')); };
       s.onerror=function(){ _figuresPromise=null; reject(new Error('The figures could not load. Check your connection and try again.')); };
       document.head.appendChild(s);

@@ -716,6 +716,7 @@
         _calcEl.style.left = _savedBounds.left;
         _calcEl.style.top = _savedBounds.top;
         _calcEl.style.right = _savedBounds.right;
+        _calcEl.style.bottom = _savedBounds.bottom || '';
       }
       if(maxBtn) { maxBtn.textContent = '⛶'; maxBtn.title = 'Expand'; }
       _isMaximized = false;
@@ -726,13 +727,15 @@
         height: _calcEl.style.height || '600px',
         left: _calcEl.style.left || '',
         top: _calcEl.style.top || '',
-        right: _calcEl.style.right || '24px'
+        right: _calcEl.style.right || '24px',
+        bottom: _calcEl.style.bottom || ''
       };
       var maxW = Math.min(880, Math.floor(window.innerWidth * 0.94));
       var maxH = Math.min(720, Math.floor(window.innerHeight * 0.88));
       var left = Math.max(12, Math.floor((window.innerWidth - maxW) / 2));
       var top = Math.max(20, Math.floor((window.innerHeight - maxH) / 2));
       _calcEl.style.right = 'auto';
+      _calcEl.style.bottom = 'auto';
       _calcEl.style.left = left + 'px';
       _calcEl.style.top = top + 'px';
       _calcEl.style.width = maxW + 'px';
@@ -743,6 +746,18 @@
     setTimeout(function(){
       if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
     }, 60);
+  }
+
+  function _applyMobileCalcLayout(el){
+    if(!el || typeof window === 'undefined' || window.innerWidth > 640 || _hasMoved || _isMaximized) return;
+    el.style.top = 'auto';
+    el.style.bottom = '8px';
+    el.style.left = '6px';
+    el.style.right = '6px';
+    el.style.width = 'calc(100vw - 12px)';
+    el.style.height = Math.min(380, Math.max(240, Math.round((window.innerHeight || 667) * 0.5))) + 'px';
+    el.style.minHeight = '240px';
+    el.style.resize = 'none';
   }
 
   function _toggleMinimize(){
@@ -760,9 +775,13 @@
     } else {
       if(body) body.style.display = 'block';
       if(presetsBar && _activeMode === 'graphing') presetsBar.style.display = 'flex';
-      _calcEl.style.height = _isMaximized ? Math.min(720, Math.floor(window.innerHeight * 0.88)) + 'px' : '600px';
-      _calcEl.style.minHeight = '300px';
-      _calcEl.style.resize = 'both';
+      if(typeof window !== 'undefined' && window.innerWidth <= 640 && !_hasMoved && !_isMaximized){
+        _applyMobileCalcLayout(_calcEl);
+      } else {
+        _calcEl.style.height = _isMaximized ? Math.min(720, Math.floor(window.innerHeight * 0.88)) + 'px' : '600px';
+        _calcEl.style.minHeight = '300px';
+        _calcEl.style.resize = 'both';
+      }
       if(minBtn) { minBtn.textContent = '_'; minBtn.title = 'Minimize'; }
       setTimeout(function(){
         if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
@@ -877,6 +896,7 @@
       return;
     }
     var el = _buildCalcDOM();
+    if(!_isMinimized) _applyMobileCalcLayout(el);
     if(mode && MODES[mode]){
       _switchMode(mode);
     } else {

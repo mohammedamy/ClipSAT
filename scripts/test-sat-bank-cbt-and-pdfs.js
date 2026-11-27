@@ -141,12 +141,26 @@ check('CBT simulator & loader wire openSatBankCBT, 7 SAT papers, and multi-answe
   vm.runInNewContext(cbtSrc, { window: win, document: win.document, localStorage: win.localStorage, console, Math, Object, Array, Number, String, Boolean, Set, Promise, JSON, parseInt, parseFloat, isNaN, setInterval, clearInterval });
 
   assert.strictEqual(typeof win.openSatBankCBT, 'function', 'window.openSatBankCBT must be defined');
+  assert.strictEqual(typeof win.cbtCheckCurrentAnswer, 'function', 'window.cbtCheckCurrentAnswer must be defined');
+  assert.strictEqual(typeof win.cbtTogglePracticeMode, 'function', 'window.cbtTogglePracticeMode must be defined');
+  assert.strictEqual(typeof win.isCBTTestingMode, 'function', 'window.isCBTTestingMode must be defined');
+  assert.strictEqual(typeof win.cbtToggleMobileCropZoom, 'function', 'window.cbtToggleMobileCropZoom must be defined');
   assert.strictEqual(win.CSMockExamConfig.PAPERS.sat.length, 7, 'PAPERS.sat must include 4 standard + 3 bank tiers');
+  assert.ok(win.CSSatAdaptive.scaleCrop({ w: 494, h: 43 }, 'stem').w >= 800, 'SAT Bank stem crops must scale >= 800px wide for comfortable desktop reading');
+  assert.ok(win.CSSatAdaptive.scaleCrop({ w: 64, h: 14 }, 'choice').w >= 100, 'SAT Bank choice crops must scale >= 100px wide');
   assert.strictEqual(win.CSSatAdaptive.matchSprValue('3/17', ['3/17', '.1764', '.1765']), true);
   assert.strictEqual(win.CSSatAdaptive.matchSprValue('0.1765', ['3/17', '.1764', '.1765']), true);
   assert.strictEqual(win.CSSatAdaptive.matchSprValue('3540', ['3,540', '3540']), true);
   assert.strictEqual(win.CSSatAdaptive.matchSprValue('13', ['7', '8', '13']), true);
   assert.strictEqual(win.CSSatAdaptive.matchSprValue('99', ['7', '8', '13']), false);
+
+  const cssSrc = fs.readFileSync(path.join(ROOT, 'src', 'styles', 'main.css'), 'utf8');
+  assert.ok(/#mock-exam-header\s*\{[\s\S]*min-height:\s*44px/.test(cssSrc), 'Compact #mock-exam-header must set min-height: 44px');
+  assert.ok(/#mock-exam-title\s*\{[\s\S]*margin:\s*0/.test(cssSrc), 'Compact #mock-exam-title must set margin: 0');
+  assert.ok(/#mock-exam-body\s*\{[\s\S]*max-width:\s*1080px/.test(cssSrc), '#mock-exam-body must expand to max-width: 1080px');
+  assert.ok(/#mock-exam-overlay\s*\{[\s\S]*height:\s*100dvh/.test(cssSrc), '#mock-exam-overlay must use 100dvh for mobile viewports');
+  assert.ok(/@media\s*\(max-width:\s*640px\)[\s\S]*\.mock-spr-input\s*\{[^}]*font-size:\s*16px\s*!important/.test(cssSrc), 'Mobile .mock-spr-input must use 16px to prevent iOS Safari auto-zoom');
+  assert.ok(/@media\s*\(max-width:\s*640px\)[\s\S]*\.mock-cbt-nav\s*\{[^}]*flex-wrap:\s*nowrap/.test(cssSrc), 'Mobile .mock-cbt-nav must stay single-row');
 });
 
 check('Built _site/sat/index.html & _site/ar/sat/index.html expose Easy/Medium/Hard CBT & ClipSAT PDF links', () => {
